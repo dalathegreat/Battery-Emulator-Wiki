@@ -1,11 +1,8 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Kia e-Niro 64 kWh / Hyundai Kona Electric 64 kWh
 
 ## A word of caution about battery fires 🔥
-> [!CAUTION]
-> The batteries manufactured by LG Chem were recalled due to fire risk. If you are using a battery from a vehicle that did not get the recall, there is a higher risk to re-use these 64kWh batteries. The recall started in 2021, so if you are using a battery from a vehicle that was crashed before 2021, there is a high probability you have an pre-recall battery. **You have been warned!**
+!!! warning "CAUTION"
+    The batteries manufactured by LG Chem were recalled due to fire risk. If you are using a battery from a vehicle that did not get the recall, there is a higher risk to re-use these 64kWh batteries. The recall started in 2021, so if you are using a battery from a vehicle that was crashed before 2021, there is a high probability you have an pre-recall battery. **You have been warned!**
 
 What are the affected vehicles? The subject vehicles include:
 
@@ -26,21 +23,21 @@ So can it be that the battery donor car is from 2020 or 2021 but has received th
 Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Number Q is used for Niro. ✅ means that someone has succesfully used the pack with the Battery-Emulator
 
 - 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ This battery uses **CAN-FD**, Use `Kia 64kWh **FD** Battery` option in software!
-![image](../images/kia-niro-hyundai-kona-64-kwh-16.png)
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-16.png" />
 
 - 37501 GI050 is Hyundai Ioniq 5 72kWh (For this battery see [EGMP](Hyundai-E‐GMP-platform-(58.2-‐-77.4-kWh).md))
 - 37501 CV050 is Kia EV6 78kWh (For this battery see [EGMP](Hyundai-E‐GMP-platform-(58.2-‐-77.4-kWh).md))
 - 37510 E4050 is [Kia Soul 27kWh](Kia-Soul-27kWh.md) ❌ (not supported,pinout unclear)
 
 All Ioniq 28kWh packs use the following options
-![image](../images/kia-niro-hyundai-kona-64-kwh-17.png)
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-17.png" />
 
 - 37501 G7200 is Hyundai Ioniq 28kWh
 - 37501 G7250 is Hyundai Ioniq 28kWh
 
 All the following options use
 
-![image](../images/kia-niro-hyundai-kona-64-kwh-18.png)
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-18.png" />
 
 - 37501 DD150 is Hyundai Kona 64kWh ✅ 
 - 37501 DD151 is Hyundai Kona 64kWh ✅ 
@@ -67,7 +64,6 @@ This also applies when a emergency knob/button is installed in the interlock lus
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
-
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch E437586000 |  [Ebay](https://www.ebay.co.uk/sch/i.html?_from=R40&_trksid=p2332490.m570.l1313&_nkw=E437586000&_sacat=0)   |
@@ -78,7 +74,6 @@ Incase your battery is missing some wires/disconnect switches, here are the OEM 
 ![image](../images/kia-niro-hyundai-kona-64-kwh-01.png)
 
 (Optional for contactor control inside battery, by adding additional pins to unused positions in battery side low voltage connector (MG646089): 2pcs KET ST741378-3 | 2pcs DJ7019-6.3-21 | 4pcs KET ST741376-3 | 2pcs KET MG651026)
-
 
 ## Wiring info
 
@@ -118,8 +113,7 @@ Note: PIN side (pack) layout. Not female connector side.
 
 Overview of battery, cooling ports, low voltage connector, HVDC connectors
 
-![image](../images/kia-niro-hyundai-kona-64-kwh-19.png)
-
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-19.png" />
 
 see picture for positive ( red ) and negative ( black ).
 
@@ -135,12 +129,11 @@ see picture for positive ( red ) and negative ( black ).
 Silver one needs HV cable p/n 91662K4000 (Picture below)
 Orange one needs HV cable p/n 91662K4100
 
-![image](../images/kia-niro-hyundai-kona-64-kwh-20.png)
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-20.png" />
 
 The two cables side by side 
 
-![image](../images/kia-niro-hyundai-kona-64-kwh-21.png)
-
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-21.png" />
 
 ## HVIL
 The battery packs has interlock monitoring on all high voltage connections. To get the contactors to engage, the battery needs to see that all plugs have been seated. If you dont have the original plugs, these are the HVIL connectors that need to be connected together to make the battery think the connectors are seated:
@@ -165,30 +158,28 @@ Plus, the HV side must be connected together (diagram missing for running withou
 
 There are STL files available to 3D print covers for the unused battery connectors.
 
-
-
 ## Special notes on 37501-AO050 battery
 There is a 2022+ Hyundai Kona or Kia e-niro battery that uses CAN-FD, that comes with a AO050 part number sticker. It is CATL made, it consist in 24 modules(2.835 kwh) x 4 cells(3.7v), configured 96s1p(358v in total) 64.8kwh(68.4 in total)
 
 This battery has the part number 37501-AO050, and this battery requires a CAN-FD hardware interface. Easiest to get a [Stark CMR](../30-hardware/Stark-CMR.md), but you can also add a [CANFD addon interface](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md). To use this battery, enable the `Kia 64kWh FD battery` option in the software.
 
-> [!IMPORTANT]
-> The contactor control for these FD batteries are not working, they open after a few seconds. To get around this, you need to force the contactors closed with 12V/GND. This can be automated with GPIO Controlled contactors
+!!! info "IMPORTANT"
+    The contactor control for these FD batteries are not working, they open after a few seconds. To get around this, you need to force the contactors closed with 12V/GND. This can be automated with GPIO Controlled contactors
 
 ![image](../images/kia-niro-hyundai-kona-64-kwh-14.png)
 
 ### Manual contactor control on the 37501-AO050 FD battery
 To setup manual contactor control, open the battery lid, and locate the contactor assembly box
 
-![image](../images/kia-niro-hyundai-kona-64-kwh-22.png)
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-22.png" />
 
 You can connect your own contactor control wiring directly to the white plug.
 
-![image](../images/kia-niro-hyundai-kona-64-kwh-23.png)
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-23.png" />
 
 To get the contactor control wires out of the battery (and into the Battery-Emulator GPIO), you can use the unused pins on the low voltage connector:
 
-![image](../images/kia-niro-hyundai-kona-64-kwh-24.png)
+<img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-24.png" />
 
 For controlling the contactors, it is enough to take out 3 wires outside the battery (precharge+, contPos+, contNeg+), the negative side is common with the BMS power supply.
 
@@ -209,8 +200,8 @@ If you see Battery Voltage being reported as 6553.5V, it means that the battery 
 
 ## Notes on waterdamage :droplet: 
 
-> [!WARNING]
-> These batteries are not waterproof. Water can easily enter thru the service disconnect switch. Store and operate in a dry area!
+!!! warning "WARNING"
+    These batteries are not waterproof. Water can easily enter thru the service disconnect switch. Store and operate in a dry area!
 
 Attached pictures from packs that did not detect all cells. Root cause was water damage, causing fuses and PCB traces to blow up. Placing batteries vertically can make water sloosh around and short out. You have been warned!
 

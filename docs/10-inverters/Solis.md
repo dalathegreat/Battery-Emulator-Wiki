@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Solis inverters
 Please note that naming conventions may vary slightly for Solis devices depending on the target market. For example:
 
@@ -33,11 +30,10 @@ The Solis inverter works via CAN. The LilyGo board can have both a CAN battery a
 
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
-
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-![image](../images/afore-01.png){ width="484" height="68" }
+<img width="484" height="68" alt="image" src="../images/afore-01.png" />
 
 In the Solis inverter settings, select the "BYD-HVS/HVM/HVL" option:
 
@@ -45,9 +41,7 @@ In the Solis inverter settings, select the "BYD-HVS/HVM/HVL" option:
 
 BYD_HVL option when looking directly at the inverter screen:
 
-![image](../images/solis-05.png){ width="1203" height="726" }
-
-
+<img width="1203" height="726" alt="image" src="../images/solis-05.png" />
 
 ## Startup example
 The sequence that seems to work most reliably is to get the battery up and running but still disconnected from the power supply to the inverter (I have a pair of inline DC 32A breakers for this). Once the battery is awake, go into the inverter menu and select BYD from the battery menu. Then select 'Battery Wakeup'. The alarm light on the inverter should now go out, and the lilygo will be pulsing green on its led. You can now flip the DC breakers to connect the battery power to the inverter. 
@@ -57,7 +51,6 @@ The sequence that seems to work most reliably is to get the battery up and runni
 - If you see BatName-FAIL, please contact Solis local service center by email to obtain the latest firmware version. This will fix the issue
 
 ![image](../images/solis-02.png)
-
 
 ## Installation examples
 
@@ -70,7 +63,4 @@ Note that the supplied web portal is a bit hit and miss, data only **updates eve
 You can also use the local debug mode of the app via Bluetooth, and you'd get real time data (**updates every 5sec**).
 
 You can also connect the inverter via RS485, for instance via a Waveshare USB to RS485 dongle, and connect this to for instance a raspberry Pi5 to get data out instantly
-
-
-
 

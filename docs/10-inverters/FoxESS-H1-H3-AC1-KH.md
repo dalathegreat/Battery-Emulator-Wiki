@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # ⚠️ Word of caution, CAN overvoltage ⚠️
 FoxESS inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE. 
 <br>Note: This does not impact the lilygo T-2CAN, it is galvanically isolated, Foxess cannot fry the T-2CAN!
@@ -13,8 +10,8 @@ Another way to tackle this is with the use of a CAN isolator between the inverte
 
 # Word of caution, isolated CAN
 
-> [!IMPORTANT]  
-> This inverter does not handle a CAN connected EV battery on the same channel.
+!!! info "IMPORTANT"
+    This inverter does not handle a CAN connected EV battery on the same channel.
 If the inverter which likes to see only extended CAN frames sees standard automotive CAN frames, the inverter will enter a fault state.
 
 This can be solved in a few ways:
@@ -39,19 +36,19 @@ This can be solved in a few ways:
 ## Communication wiring
 The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to the Battery-Emulator
 
-> [!IMPORTANT]  
-> Different versions of the Foxess have different pinouts. Check user manual to see which pins are CAN-H / CAN-L
+!!! info "IMPORTANT"
+    Different versions of the Foxess have different pinouts. Check user manual to see which pins are CAN-H / CAN-L
 
 ![image](../images/foxess-h1-h3-ac1-kh-03.png)
 
 ## Which protocol to use
 For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting
 
-![image](../images/foxess-h1-h3-ac1-kh-07.png){ width="495" height="63" }
+<img width="495" height="63" alt="image" src="../images/foxess-h1-h3-ac1-kh-07.png" />
 
 The default values allow for a 400V EV battery to be used. If you are using a low voltage battery, you can lower the "FoxESS module count", it works in steps of 1-8 , each step being 50V. So if you are using a 200V battery, set the module count to 4
 
-![image](../images/foxess-h1-h3-ac1-kh-08.png){ width="570" height="97" }
+<img width="570" height="97" alt="image" src="../images/foxess-h1-h3-ac1-kh-08.png" />
 
 By default the battery will appear as a HV2600 battery. If you want to change this, the following enumerations have been successfully tested:
 
@@ -71,24 +68,21 @@ Battery subtype: 131 used for all entries.
 
 Module count: default value used
 
-![11750](../images/foxess-h1-h3-ac1-kh-09.jpg){ width="652" height="4096" }
-
-
+![alt](url)
+<img width="652" height="4096" alt="11750" src="../images/foxess-h1-h3-ac1-kh-09.jpg" />
 
 Notes
 
 Last confirmed valid battery profile found: 134 (0x86) S28-H2.0
 Values above 134 tested as empty/no battery profiles.
 
-
 ## Note on smartmeter
 
 Note in the CHINT DDSU666 (single phase) meters with the fox. _I bought a generic meter off a UK electrical wholesaler initially as the FoxESS instructions didn’t say it had to be a Fox branded version. It read accurately on the meter, but gave rogue readings to the inverter so was inoperable. I just installed a FoxESS branded meter and it works perfectly out the box (settings 8n1, Ch01, 9600)_
 
-![image](../images/foxess-h1-h3-ac1-kh-10.png)
+<img alt="image" src="../images/foxess-h1-h3-ac1-kh-10.png" />
 
-![image](../images/foxess-h1-h3-ac1-kh-11.png)
-
+<img alt="image" src="../images/foxess-h1-h3-ac1-kh-11.png" />
 
 ## Troubleshooting
 
@@ -105,7 +99,6 @@ Note in the CHINT DDSU666 (single phase) meters with the fox. _I bought a generi
 ![alt](../images/foxess-h1-h3-ac1-kh-04.jpg)
 FOX H1-6.0-E and renault zoe 26 kwh
 Feel free to add your own images here!
-
 
 # Video Guide
 To aid installation Battery Man has produced a video series using the H3 Pro inverter which documents an install with Tesla LFP batteries and both the LilyGo and Stark CMR. There is a full playlist touching on different aspects

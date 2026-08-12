@@ -3,8 +3,8 @@ The Battery-Emulator has support for Cellpower BMS, used on Intercel CLPL batter
 
 ## Setting up the Battery-Emulator configuration
 
-> [!IMPORTANT]
-> The Cellpower BMS runs at 250kbps CAN speed. Due to this it cannot be connected to same CAN bus as solar inverters
+!!! info "IMPORTANT"
+    The Cellpower BMS runs at 250kbps CAN speed. Due to this it cannot be connected to same CAN bus as solar inverters
 
 Start by connecting the CAN port of the BMS, to the Native CAN port on the Battery-Emulator
 
@@ -18,7 +18,7 @@ Start by connecting the CAN port of the BMS, to the Native CAN port on the Batte
 ## Software configuration
 For this battery type, use the option called "Cellpower BMS" under the "Battery Protocol" setting. Also make sure to configure the interface to Native CAN
 
-![image](../images/cellpower-bms-01.png){ width="665" height="350" }
+<img width="665" height="350" alt="image" src="../images/cellpower-bms-01.png" />
 
 Also remember to configure all battery limits to suite the battery you are using!
 

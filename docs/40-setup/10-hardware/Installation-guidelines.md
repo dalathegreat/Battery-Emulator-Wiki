@@ -1,11 +1,8 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Installation guidelines
 This section will guide you towards making a safer installation of the battery. Please start by familiarizing yourself with your local regulations regarding solar inverters and stationary storage requirements. Make sure the inverter selection is approved by your grid operator before ordering parts. Finally, make sure the person installing the hardware has a valid electrical safety & installation training.
 
-> [!CAUTION]
-> ***At the end of the day, you alone are responsible for the system.***
+!!! warning "CAUTION"
+    ***At the end of the day, you alone are responsible for the system.***
 
 ## Battery placement
 The most important decision to make is battery placement. Any used EV pack should always be operated in an area where a potential fire would not be of risk for human life. Almost all salvage batteries come from crashed vehicles, with an unknown history. While the Battery-Emulator and your solar inverter performs several safety checks, note that almost all checks rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be easily detectable via software.
@@ -19,8 +16,8 @@ Due to all this, it is recommended to only install batteries in the following pl
 
 Regardless of placement, great care must be taken to avoid water getting into the battery. While most EV batteries are splash proof, they cannot cope with large amounts of water/rain. If you are installing a battery outside, construct a roof to keep the battery dry.
 
-> [!TIP]
-> Batteries can often be tilted, and installed on the side of a wall to save space. To this date we have not encountered any packs that would not function in a wallmounted position!
+!!! tip "TIP"
+    Batteries can often be tilted, and installed on the side of a wall to save space. To this date we have not encountered any packs that would not function in a wallmounted position!
 
 ### Keeping the temperature in check
 Lithium batteries are like humans, they perform best at 20°C. Many installs will have the batteries outside or in basic sheds/shelters. This means the battery might be subject to extreme temperatures, which will affect the battery performance. Depending on your climate, this might mean -40°C, or +40°C, both being bad for battery performance/longevity.
@@ -40,7 +37,6 @@ While on the topic of temperatures, it is also important to keep the hardware ru
 4. You can also mount a small heatsink to the CPU. RAM heatsinks make for great makeshift ESP32 heatsinks!
 https://vi.aliexpress.com/w/wholesale-Raspberry-Pi--aluminium-heatsink.html
 5. For extreme ambient temperatures (>40°C), you can further combat the overheating by mounting a fan to provide some air circulation
-
 
 ![image](../../images/installation-guidelines-01.png)
 
@@ -68,7 +64,6 @@ Example: Shipping container
 
 ![image](../../images/installation-guidelines-06.png)
 
-
 ## Wires and fuses
 ### Wire gauge (cross sectional area)
 DC wire sizing is a very important part of planning your battery build. Most inverters accept 6mm² or 10mm²(check your inverter manual for more info), but most EV packs are 50mm². This creates a small problem, you will need to step down this wire size. When stepping down, it's a good idea to install fuses directly near the battery, to protect your wiring. 
@@ -85,8 +80,8 @@ Note: Since multiple people have assumed 4-way connecting blocks to be 2x2, resu
 
 * Avoid installing communication wires next to high voltage wiring, in order to avoid signal interference. Keep 300mm distance between AC / DC / CAN cabling at all times when possible to avoid interference.
 
-> [!CAUTION]
-> Verify polarity of HV system before wiring it to the inverter. Many EV batteries don't have markings which side is +/-, so doing a test run without the inverter connected is a good idea to ensure polarity. Incorrect polarity will destroy your system.
+!!! warning "CAUTION"
+    Verify polarity of HV system before wiring it to the inverter. Many EV batteries don't have markings which side is +/-, so doing a test run without the inverter connected is a good idea to ensure polarity. Incorrect polarity will destroy your system.
 
 Example, 50mm² cable stepped down to 10mm², and at the same time fused off with a 25A solar DC ceramic fuse
 
@@ -96,10 +91,9 @@ Example, two EV battery inputs stepped down to 10mm² using DC fuses
 
 ![image](../../images/installation-guidelines-08.png)
 
-
 If you just want to step down the wire size (from 50mm² cable to 10mm² cable), you can use a terminal block such as [UKK 160](https://www.aliexpress.com/item/1005007537314525.html)
 
-![image](../../images/installation-guidelines-10.png){ width="630" height="546" }
+<img width="630" height="546" alt="image" src="../../images/installation-guidelines-10.png" />
 
 ### DC Fuses
 
@@ -126,8 +120,8 @@ Note the spread: the same 5kW load draws 33% more current at the bottom of the v
 
 The fuse must not be used as your current limiter. Set the inverter or Battery Emulator max discharge current *below* the fuse rating (≤80% is a good rule) so the fuse only acts on genuine faults. Fuses can either be DC Ceramic, or DC DIN-mounted fuses. Make sure the fuse you are purchasing is certified for DC and for the voltage range of your battery. 
 
-> [!CAUTION]
-> Polarized DC breakers should not be used. These are only intended for solar DC, with one direction of current flow. If these are used on batteries that have bi-directional current flow, they will break. For this reason, gBat fuses are recommended!
+!!! warning "CAUTION"
+    Polarized DC breakers should not be used. These are only intended for solar DC, with one direction of current flow. If these are used on batteries that have bi-directional current flow, they will break. For this reason, gBat fuses are recommended!
 
 [DF Electric PMX Fuse Holders](https://www.dfelectric.es/products/pmx-fuse-holders/)
 
@@ -137,14 +131,12 @@ The fuse must not be used as your current limiter. Set the inverter or Battery E
 
 Don't buy cheap products from AliExpress unless you intend to burn your house down (images courtesy of WJD on Dala's EV Discord);
 
-![image](../../images/installation-guidelines-11.png){ width="1000" height="868" }
-
+<img width="1000" height="868" alt="image" src="../../images/installation-guidelines-11.png" />
 
 #### Disconnect switches
 Some countries have legislation that dictate a need for DC disconnect switches (also known as DC isolation switch). The idea behind this is that these switches will be installed in a place where first responders and firefighters can easily turn off your solar/battery combination. Check your local legislation to see if this is required in your area.
 
-![1170104_1_5](../../images/installation-guidelines-12.png){ width="600" height="600" }
-
+<img width="600" height="600" alt="1170104_1_5" src="../../images/installation-guidelines-12.png" />
 
 [IP67 Waterproof 32A 1000V Disconnect Switch](https://imopc.com/imo_uk_gbp_view/enclosed-dc-switch-ip66-6249d58eb8c4a.html)
 
@@ -156,8 +148,8 @@ The battery case **needs** to be connected to protective earth (PE). This is req
 * Isolation testing. Your inverter will periodically test how safe the high voltage system is by measuring insulation resistance between HV+/- to PE. If the battery case is left freefloating and not connected to PE, any HV leaks might go unnoticed. 
 * If you are in a country that requires a residual current device in your electrical panel (GFCI/RCD), these also need to be able to accurately measure any DC leakage to PE and trip
 
-> [!CAUTION]
-> **Failure to connect battery case to protective earth can lead to dangerous situations where high voltage leaks are not detected**
+!!! warning "CAUTION"
+    **Failure to connect battery case to protective earth can lead to dangerous situations where high voltage leaks are not detected**
 
 Example, Nissan LEAF battery case connected to PE
 
@@ -168,14 +160,14 @@ If either HV+ or HV- touches protective earth while the system is running, the s
 
 Example, wire shielding cut too close to copper, making the shield touch HV-. This was causing inverter to stop operation
 
-![image](../../images/installation-guidelines-13.png){ width="608" height="558" }
+<img width="608" height="558" alt="image" src="../../images/installation-guidelines-13.png" />
 
 Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the wiring is OK, the battery itself can also have an internal leak. These are much harder to diagnose compared to external wiring issues. Checkout this video for more example of leakage to ground https://www.youtube.com/watch?v=00eEj_EgMas
 
 #### Optional stuff!
 
-> [!TIP]  
-> You can also add an [equipment stop button](../20-software/Equipment-Stop.md) to the Battery-Emulator, to make it easier to stop the system
+!!! tip "TIP"
+    You can also add an [equipment stop button](../20-software/Equipment-Stop.md) to the Battery-Emulator, to make it easier to stop the system
 
 [IP67 1NO1NC Stop Switch](https://vi.aliexpress.com/item/1005008119829541.html)
 
@@ -186,8 +178,8 @@ While EV batteries are designed to be low-maintenance, periodic checks are cruci
 
 The information below is general guidance
 
-> [!CAUTION]
-> De-energize and isolate the system from all power sources (AC and DC) before performing any physical maintenance, and only qualified personnel should perform these tasks.
+!!! warning "CAUTION"
+    De-energize and isolate the system from all power sources (AC and DC) before performing any physical maintenance, and only qualified personnel should perform these tasks.
 
 ## Software update :cd: 
 Perform periodic [over the air software updates](../20-software/OTA-Update.md) to the Battery-Emulator board. Pay extra attention to the [release notes](https://github.com/dalathegreat/Battery-Emulator/releases), and if you see an improvement concerning the components you are using, update the system. If you see changes concerning Safety, also update the system right away.
@@ -207,7 +199,7 @@ Electrical connections can loosen over time due to thermal cycling (expansion an
    - **Consult your manufacturer's manual for the exact torque specification** (e.g., 4-5 Nm or 35-45 in-lbs). On some terminals the torque value is stamped directly on them. Do not over-tighten, as this can strip threads or damage terminals.
    -Visually inspect terminals for signs of corrosion, melting, or discoloration.
 
-![image](../../images/installation-guidelines-14.png){ width="536" height="523" }
+<img width="536" height="523" alt="image" src="../../images/installation-guidelines-14.png" />
 
 Example of terminal with torque values printed on it
 

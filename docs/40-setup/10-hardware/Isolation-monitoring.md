@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # What is insulation monitoring?
 
 ## Insulation monitoring inside an EV battery
@@ -8,8 +5,8 @@ All EVs have some form of insulation monitoring. The vehicle/battery constantly 
 
 Generally it can be said than EV batteries have to comply to at least 100 Ω per volt for DC, meaning that a 400V battery needs to provide at least 40 kΩ insulation resistance (ISO 6469-3 / UNECE R100). PV inverters / stationary energy storage systems may be stricter, tend to be designed to comply to 1kΩ per volt, thus they offer measurement ranges between 100 kΩ and 1 MΩ. 
 
-> [!TIP]  
-> **Why the difference exists**: EV packs are designed to operate inside a vehicle occupants sit in (they don't contact with ground), so the 100 Ω/V rule is tuned to the "worst case single fault while a person is present" scenario - automotive points of view. PV/home energy storage installations are stationary, often outdoors, and the people at risk are typically installers/technicians during maintenance — these standards are imposing stricter values with regards to the conditions.
+!!! tip "TIP"
+    **Why the difference exists**: EV packs are designed to operate inside a vehicle occupants sit in (they don't contact with ground), so the 100 Ω/V rule is tuned to the "worst case single fault while a person is present" scenario - automotive points of view. PV/home energy storage installations are stationary, often outdoors, and the people at risk are typically installers/technicians during maintenance — these standards are imposing stricter values with regards to the conditions.
 
 See [this excellent Youtube video](https://www.youtube.com/watch?v=00eEj_EgMas) explaining insulation resistance on EV side. 
 
@@ -47,8 +44,8 @@ Some batteries do have Y-capacitors between the HV terminals and ground, for int
 ## Battery/inverter compatibility
 In stationary use, insulation resistance cam be a key early indicator of the battery pack health (moisture ingress, degrading waterproofing). For several supported battery types it is visible in the More Battery Info page, but that's just the momentary value, which is completely irrelevant in the majority of the cases. Being exposed over MQTT integration allowing long-term trending, dashboards and alerting in various third patry systems.
 
-> [!NOTE]  
-> Whenever the inverter does insulation measurement the value reported by the battery dips low. How often this is done depends on the inverter type. Usually it correlates with the tests imposed by the PV inputs of the inverter. This will influence the insulation resistance seen by the battery, which is passed to Battery Emulator. Evaluation of the insulation resistance needs to be done on long term, not by finding unique outlier peaks!
+!!! note "NOTE"
+    Whenever the inverter does insulation measurement the value reported by the battery dips low. How often this is done depends on the inverter type. Usually it correlates with the tests imposed by the PV inputs of the inverter. This will influence the insulation resistance seen by the battery, which is passed to Battery Emulator. Evaluation of the insulation resistance needs to be done on long term, not by finding unique outlier peaks!
 
 For critical failure prevention it's enough to rely on the inverter, plus the earth bonding which grounds the battery case, ensuring safety and detecting any true insulation failures.
 

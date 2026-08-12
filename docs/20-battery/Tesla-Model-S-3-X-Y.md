@@ -1,10 +1,7 @@
 # Wiring up a Tesla Model S/3/X/Y battery
 ## Safety warning 💀 ⚡ 
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
-> [!WARNING]  
-> Re-using the Tesla batteries might require opening the Penthouse to verify that fuses have not blown. To do this safely, the correct personal protective equipment (PPE) is required. The pyrofuse for instance contains a small explosive charge to be able to disconnect the high voltage quickly. When handling the inside of a Tesla battery, please make sure you check your local electrical legislation requirements. This is a good starting point when it comes to PPE:
+!!! warning "WARNING"
+    Re-using the Tesla batteries might require opening the Penthouse to verify that fuses have not blown. To do this safely, the correct personal protective equipment (PPE) is required. The pyrofuse for instance contains a small explosive charge to be able to disconnect the high voltage quickly. When handling the inside of a Tesla battery, please make sure you check your local electrical legislation requirements. This is a good starting point when it comes to PPE:
 
 * Electrical safety training valid
 * Class 0 voltage gloves
@@ -40,7 +37,7 @@ The Tesla Model 3/Y packs have many hardware/software revisions. Due to this it 
 
 Note that 2024 and onwards might require setting the "Digital HVIL (2024+)" option in the Settings page to get contactor closing to work
 
-![image](../images/tesla-model-s-3-x-y-15.png){ width="561" height="81" }
+<img width="561" height="81" alt="image" src="../images/tesla-model-s-3-x-y-15.png" />
 
 Also note that Tesla Model S/X needs to be newer than 2020+ to work with the current code!
 
@@ -54,8 +51,8 @@ It is possible to test a battery quite easily before purchase. For this you need
 
 ![I’m the first person in the world to do this! 2](../images/tesla-model-s-3-x-y-01.jpg)
 
-> [!TIP]
-> When you want to test only battery, do not use any inverter protocol at the same time. Only compile software for Tesla battery to make life easier
+!!! tip "TIP"
+    When you want to test only battery, do not use any inverter protocol at the same time. Only compile software for Tesla battery to make life easier
 
 Example, LilyGo board with 12V battery used to test a Tesla Model Y battery, which had sat for 2 years and turned out to have a nasty 500mV defect. So the person really avoided a costly mistake by testing the battery beforehand!
 
@@ -64,7 +61,7 @@ Example, LilyGo board with 12V battery used to test a Tesla Model Y battery, whi
 ## Software configuration
 For this battery type, use the option called "Tesla Model 3/Y", or "Tesla Model S/X" under the "Battery Protocol" setting
 
-![image](../images/tesla-model-s-3-x-y-16.png){ width="543" height="386" }
+<img width="543" height="386" alt="image" src="../images/tesla-model-s-3-x-y-16.png" />
 
 Configure all the options correctly, according to what pack size and from which country the donor car came from. This is very important to get right, otherwise fault codes will be active on the battery side.
 
@@ -77,12 +74,10 @@ Some Model 3/Y packs are LFP chemistry, and some are NCM/A chemistry.
 
 The code autodetects incase you have an LFP battery, but the detection method can take up to 5minutes. Incase you want to speed this up for additional safety, configure "Battery chemistry" as LFP. Why you might ask? Well in some rare circumstances, like say you restart everything when the battery sits at true 100% charge, it will be treated as a NCM battery for the first few minutes of boot. This might overcharge the battery, until it figures out it is an LFP pack and should use the more restricted voltage range.
 
-![image](../images/tesla-model-s-3-x-y-17.png){ width="592" height="33" }
-
+<img width="592" height="33" alt="image" src="../images/tesla-model-s-3-x-y-17.png" />
 
 ## Part numbers for Tesla Model 3 batteries
 Incase your battery is missing some wires/fuses, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
-
 |  Product | Part # | Purchase Link |
 | :--------: | :---------: | :---------: |
 | Pyrofuse | 1064689 106469-00-J 1064689-00 10646900J 1064689-00 | https://www.amazon.com/dp/B0CBRQJL7B?psc=1&ref=ppx_yo2ov_dt_b_product_details |
@@ -112,9 +107,7 @@ This picture shows how to connect the capacitor. If you're using the Tesla HV co
 
 If you are adding the capacitor to the outside of battery, connect it to the correct polarity (1=- , 2=+)
 
-![image](../images/tesla-model-s-3-x-y-18.png)
-
-
+<img alt="image" src="../images/tesla-model-s-3-x-y-18.png" />
 
 ## Low voltage wiring
 The X098 connector has a few connections itself, scroll down to see where the pins should go.
@@ -128,11 +121,11 @@ The connector above will need the following connections...(apart the grounding o
 * Pin 9 - GND 
 * Pin 16 and 15 - To LilyGo CAN-H and CAN-L (Note, you might need to add 120Ohm resistor here, depending on CAN network structure)
 
-![Tesla X098 HVC](../images/tesla-model-s-3-x-y-19.png){ width="520" height="298" }
+<img width="520" height="298" alt="Tesla X098 HVC" src="../images/tesla-model-s-3-x-y-19.png" />
 
-![Tesla X098](../images/tesla-model-s-3-x-y-20.png){ width="1313" height="894" }
+<img width="1313" height="894" alt="Tesla X098" src="../images/tesla-model-s-3-x-y-20.png" />
 
-![Tesla HV Battery and HVIL](../images/tesla-model-s-3-x-y-21.png){ width="1301" height="923" }
+<img width="1301" height="923" alt="Tesla HV Battery and HVIL" src="../images/tesla-model-s-3-x-y-21.png" />
 
 ### 12 Volt or 16 Volt?
 Tesla used a standard Lead Acid 12 Volt battery in most applications. Beginning in Mid-2021, Tesla began converting the low voltage battery system in its vehicles to utilize a 15.5V 6.9Ah Li-Ion battery. [ohmmu.com](https://support.ohmmu.com/battery-product-support/tesla-all-models-identifying-low-voltage-battery-system-12v-vs-15-5v) Has some information to know if your car has the standard LA or Li-Ion. In 2024+ a new 12.8V LFP battery was introduced. More information from Weber State University YouTube Channel [Tesla 16V](https://www.youtube.com/watch?v=8-MNFgashpQ), [Tesla Low Voltage Charging System](https://www.youtube.com/watch?v=M1ZEorMeuDo), [Tesla 12.8V LFP](https://www.youtube.com/watch?v=QJsy1ay6tXs)
@@ -142,7 +135,7 @@ Make sure to connect the 12V battery to the PCS (two M8 screws close to the X098
 
 ℹ️ The 12V requirement is quite large for the Tesla packs. Use a high power 14V source (large fully charged lead acid battery OR 30A lab power supply set to 12-16V). If the 12V supply is too weak, closing contactors wont be possible. The cables also need to be quite thick to avoid voltage drop. 1.5mm² is too small, the cables need to be 13mm² (6AWG) at minimum!
 
-![image](../images/tesla-model-s-3-x-y-22.png){ width="895" height="750" }
+<img width="895" height="750" alt="image" src="../images/tesla-model-s-3-x-y-22.png" />
 
 ## High voltage interlock circuit (HVIL)
 The Tesla battery contains pyro and glass fuses that can be broken if the battery comes from a crashed vehicle. Do not use the battery unattended with these fuses bypassed !
@@ -164,8 +157,7 @@ There seems to be many hardware and firmware revisions of the Tesla Model 3/Y ba
 
 It is recommended to turn on `Enable general logging via USB serial` OR `Enable general logging via Webserver` in the settings page get more info why HVIL is not allowing to close. Below are some messages you can encounter, along with troubleshooting tips:
 
-![image](../images/tesla-model-s-3-x-y-23.png){ width="556" height="271" }
-
+<img width="556" height="271" alt="image" src="../images/tesla-model-s-3-x-y-23.png" />
 
 | Symptom | Fix   |
 | :-----: | :---: |
@@ -182,8 +174,6 @@ It is recommended to turn on `Enable general logging via USB serial` OR `Enable 
 If the battery gets really stuck, removing the yellow connector here for a few minutes also helps:
 
 ![bild](../images/tesla-model-s-3-x-y-09.png)
-
-
 
 If all else fails and you can not get HVIL loop to close, the last resort method is to solder 2 wires on the back of this PCB board:
 ![bild](../images/tesla-model-s-3-x-y-10.png)
@@ -228,8 +218,8 @@ Tesla batteries are very specific when they want to balance, and it is hard to g
 
 ### Current theory on balancing conditions
 
-> [!WARNING]  
-> Not all inverters are OK with contactors opening in operation. One user damaged their Fronius inverter while opening contactors under load. Always ensure 0 current before opening contactors, and if unsure, power off inverter.
+!!! warning "WARNING"
+    Not all inverters are OK with contactors opening in operation. One user damaged their Fronius inverter while opening contactors under load. Always ensure 0 current before opening contactors, and if unsure, power off inverter.
 
 Tesla batteries are intended to fully charge, and then enter a balancing phase after charging is completed and contactors open. This means that in order to balance the Tesla batteries, you cannot use them 24/7, and have to periodically charge the batteries full (99%) and press the "Pause" button, wait for current to go to 0A, and then press "Open Contactors" button in the webserver.
 
@@ -237,10 +227,10 @@ Tesla batteries will balance ~2mV per 24h or balancing.
 
 Once you are done balancing, you can press the "Close Contactors" button, and "Unpause" to resume operation
 
-> [!WARNING]  
-> During balancing with contactors open, 12V lead acid battery will NOT be charged. Make sure the lead acid battery has an external charger available while in this state
+!!! warning "WARNING"
+    During balancing with contactors open, 12V lead acid battery will NOT be charged. Make sure the lead acid battery has an external charger available while in this state
 
-![image](../images/tesla-model-s-3-x-y-24.png){ width="902" height="289" }
+<img width="902" height="289" alt="image" src="../images/tesla-model-s-3-x-y-24.png" />
 
 ### Periodic forced charge-balancing (Can potentially aid to balance LFP)
 
@@ -248,7 +238,7 @@ To help keep LFP batteries balanced outside of a Tesla vehicle, the emulator has
 
 When enabling the Manual LFP balancing , the forced top charge runs for the specified amount of time, set in Balancing max time. The balancing parameters, Balancing float power , Max battery voltage , Max cell voltage and Max cell voltage deviation can also be adjusted from here. During this time, the SOC% is faked towards the inverter, and we allow the charge W set by user. This will help the battery reach higher SOC needed to balance?
 
-![image](../images/tesla-model-s-3-x-y-25.png){ width="414" height="382" }
+<img width="414" height="382" alt="image" src="../images/tesla-model-s-3-x-y-25.png" />
 
 ### Replacement BMS to balance
 There is an ongoing open source project called the CellKeeper that aims to replace the BMS inside the Tesla battery with a standalone controller. This would instantly solve the balancing issue. Note that this board is still in development, and as soon as it is ready this page will be updated.

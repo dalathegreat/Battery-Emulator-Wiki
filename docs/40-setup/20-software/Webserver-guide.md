@@ -1,8 +1,8 @@
 ## Webserver
 You can interact with the Battery-Emulator via the built in Webserver. Here you can check battery status, change battery settings, update the software over-the-air, check active events, monitor cell voltages plus much more! It is easy to commission a new system, and the preferred way to monitor a newly setup battery system.
 
-> [!IMPORTANT]  
-> Never expose the Battery-Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a VPN to the site to access its web interface over an encrypted channel.
+!!! info "IMPORTANT"
+    Never expose the Battery-Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a VPN to the site to access its web interface over an encrypted channel.
 
 ## Prerequisites
 To be able to use the Webserver, you need to connect to the Battery-Emulator to either your home Wifi, or connect directly to the access point that the Battery-Emulator itself is broadcasting.
@@ -10,8 +10,8 @@ To be able to use the Webserver, you need to connect to the Battery-Emulator to 
 ### A: Connect to your home network
 To have the Battery-Emulator accessible in your home network, you need to enter your home Wifi credentials into the webserver settings. See the quickstart guide for more information on how to perform the initial Wifi setup.
 
-> [!NOTE]  
-> SSID can max be 63 chars, and password needs to be atleast 8 chars long. Only 2.4Ghz networks are supported, 5Ghz will NOT work! 
+!!! note "NOTE"
+    SSID can max be 63 chars, and password needs to be atleast 8 chars long. Only 2.4Ghz networks are supported, 5Ghz will NOT work! 
 
 When the board boots, it will attempt to connect to the wifi network you specified. Your router will give it a unique IP, so next up is figuring out what the actual address is. There are a few options you can do
 
@@ -31,14 +31,13 @@ After connecting your laptop/phone to this network, you can open a webbrowser an
 
 If you don't plan to use the Access Point on a regular basis, disable it. Not only the system will be more secure, but it will also consume less energy plus the board will run 10 degrees cooler because the radio will not be transmitting continuously. Bonus: less radio interference. 
 
-> [!TIP]  
-> If you disabled the Access Point earlier and need to use it again without having access to the home network, you can [turn it back on with the BOOT button](BOOT-button-functions.md#start-wi-fi-access-point) on the board.
+!!! tip "TIP"
+    If you disabled the Access Point earlier and need to use it again without having access to the home network, you can [turn it back on with the BOOT button](BOOT-button-functions.md#start-wi-fi-access-point) on the board.
 
-> [!TIP]  
-> You can improve signal quality on the LilyGo board by adding an external Wifi antenna. You can easily salvage one from an old router. There is a SMD resistor that needs to be moved in order for the board to use the external antenna.
+!!! tip "TIP"
+    You can improve signal quality on the LilyGo board by adding an external Wifi antenna. You can easily salvage one from an old router. There is a SMD resistor that needs to be moved in order for the board to use the external antenna.
 
 ![image](../../images/webserver-guide-02.png)
-
 
 ## Using the Webserver
 The front page will contain some quick information about the system. What software version the system has, Inverter protocol, Battery type, Livedata from the battery transmitted to the Inverter, along with some buttons to go to other pages. The page will be green incase all is well, go yellow incase there is an active warning, and go red incase an error is active and blocking operation. Incase there is a warning/error active, you can click the `Events` button to go to this view.
@@ -90,7 +89,7 @@ The system will automatically go into a warning state incase a cellvoltage goes 
 
 On some battery types (Nissan LEAF, Renault Zoe Gen2, more), we visualize the balancing status that the BMS sends in the graph view. You will see cyan colored bars for cells that balance, along with a text saying BALANCING when you hover over the cell.
 
-![image](../../images/webserver-guide-13.png){ width="954" height="312" }
+<img width="954" height="312" alt="image" src="../../images/webserver-guide-13.png" />
 
 ## Perform OTA Update
 
@@ -100,13 +99,11 @@ Via this page you can update the software. [See the page OTA Update for more inf
 
 This button will restart the emulator. Can be useful to get out of a latched error message blocking operation (critical cell condition, etc.). Pressing the button will prompt you, "Are you sure you want to reboot?"
 
-> [!Note]  
-> Rebooting the Emulator might open contactors! If you have configured the hardware to control contactors via GPIO (see [Automatic Contactor Control](Contactor-Control-via-GPIO-pins.md)), they will absolutely open during a reboot! CAN controlled contactors have undefined behavior during reboot.
+!!! note "NOTE"
+    Rebooting the Emulator might open contactors! If you have configured the hardware to control contactors via GPIO (see [Automatic Contactor Control](Contactor-Control-via-GPIO-pins.md)), they will absolutely open during a reboot! CAN controlled contactors have undefined behavior during reboot.
 
-> [!Note]  
-> Rebooting the Emulator might put your inverter in a fault state. Some inverters take the reboot without any issues (Fronius Gen24), but others can properly lock themselves (SMA Tripower), and require a reset on the inverter side to get going again. 
-
-
+!!! note "NOTE"
+    Rebooting the Emulator might put your inverter in a fault state. Some inverters take the reboot without any issues (Fronius Gen24), but others can properly lock themselves (SMA Tripower), and require a reset on the inverter side to get going again. 
 
 ## Settings
 
@@ -116,7 +113,7 @@ This protection level is not particularly robust (Digest access authentication),
 
 ### Inverter config
 
-![image](../../images/webserver-guide-14.png){ width="573" height="247" }
+<img width="573" height="247" alt="image" src="../../images/webserver-guide-14.png" />
 
 From the appropriate dropdown lists select the Inverter protocol and the interface you wish the Emulator to talk with your inverter.
 
@@ -124,15 +121,15 @@ From the appropriate dropdown lists select the Inverter protocol and the interfa
 
 **Charge power tapering based on SOC** will start gradually reducing the allowed charge power when approaching top of SOC, from full allowed power down to 0W at 100% SOC, for a smooth approach to full instead of an abrupt cutoff. Also works with Scaled SOC. It has two settings: **Start tapering at SOC, percent**, this is the (scaled) SOC where charge power tapering begins; and **Float charge power, W** which is the minimum charge power held during tapering until 100% SOC is reached. Recommended to set it to 5-10% of the inverter's max power for a single battery (for double and triple, you can increase the value accordingly). 0 disables this, tapering will go linearly to 0W.
 
-> [!IMPORTANT]
-> Remember to set **Max charge speed (A)** and **Max discharge speed (A)** correctly to match your setup for these options to work properly!
+!!! info "IMPORTANT"
+    Remember to set **Max charge speed (A)** and **Max discharge speed (A)** correctly to match your setup for these options to work properly!
 
-> [!NOTE]
-> Certain battery integrations will enable **Charge power tapering based on SOC** automatically, making it mandatory to use this function. 
+!!! note "NOTE"
+    Certain battery integrations will enable **Charge power tapering based on SOC** automatically, making it mandatory to use this function. 
 
 ### Battery
 
-![image](../../images/webserver-guide-15.png){ width="570" height="164" }
+<img width="570" height="164" alt="image" src="../../images/webserver-guide-15.png" />
 
 From the appropriate dropdown lists select the driver you'd like to use when communicating with your battery. An intersting type is **Fake battery for testing purposes** which simulates the setup of a single, double or triple battery towards the inverter and the integration plaftforms. This "battery" offers a "Fake battery voltage:" configurable option at the bottom of the page: you can simulate various SOCs, even balancing of simulated cells if you set SOC above 85%.
 
@@ -152,12 +149,11 @@ If enabled, the system will rescale SOC% between the configured min/max-percenta
 
 ![image](../../images/webserver-guide-11.png)
 
+!!! note "NOTE"
+    For some battery chemistries (LFP especially), rescaling SOC% prevents the battery from top-balancing properly. For these chemistries it is recommended only to rescale the bottom section (e.g. using 20-100%) 
 
-> [!NOTE]
-> For some battery chemistries (LFP especially), rescaling SOC% prevents the battery from top-balancing properly. For these chemistries it is recommended only to rescale the bottom section (e.g. using 20-100%) 
-
-> [!TIP]
-> Starting from software 8.10.0, it is now possible to do [negative rescaling](https://github.com/dalathegreat/Battery-Emulator/pull/1040)
+!!! tip "TIP"
+    Starting from software 8.10.0, it is now possible to do [negative rescaling](https://github.com/dalathegreat/Battery-Emulator/pull/1040)
 
 #### Battery charge/discharge limit
 
@@ -166,8 +162,8 @@ If enabled, the system will rescale SOC% between the configured min/max-percenta
 
 This setting caps the amount of power that can go in/out of the battery. Even though most EV packs can push out hundreds of ampere, most inverters will not handle so large amounts of current. Some inverters even stop functioning in case they see allowed a large value. By default this is set to 30A on charge and discharge. Set this value to correspond to the parameters of your inverter (Inverter Power / Vmin), the wiring or the fuses in your system (whichever the lowest). It is important for these numbers to be correct, in order for the filters and the taper to operate correctly. 
 
-> [!TIP]
-> If you have a 3kW inverter, the Max charge/discharge speed would be 3000W / 300Vmin = 10A
+!!! tip "TIP"
+    If you have a 3kW inverter, the Max charge/discharge speed would be 3000W / 300Vmin = 10A
 
 #### Manual charge voltage limits
 
@@ -179,29 +175,29 @@ Disabled by default. This option can be enabled to manually limit min/max voltag
 
 When **General logging via Webserver** (or SD-card logging) is enabled, a **Log** button appears on the front page. This page streams the general debug log from the emulator, and lets you **Refresh** the data, **Export to .txt**, and **Delete the log file**.
 
-> [!NOTE]
-> Logging adds overhead. Webserver and SD-card logging are fine for troubleshooting, but USB-serial logging in particular can cause performance issues and should be left off during normal operation.
+!!! note "NOTE"
+    Logging adds overhead. Webserver and SD-card logging are fine for troubleshooting, but USB-serial logging in particular can cause performance issues and should be left off during normal operation.
 
 ### Logging destinations (USB, SD card and syslog)
 
 Battery-Emulator keeps two independent log streams: **general logging** (human-readable status/debug text) and **CAN message logging** (the raw bus traffic covered under CAN logging above). General logging can be sent to any combination of four sinks — the Webserver [Log](#log) page, USB serial, an SD card, and a remote syslog server — while CAN message logging can additionally be written to USB serial or an SD card. All of these are toggled under Settings → Debug options, and every general-log line is prefixed with an uptime timestamp (`seconds.milliseconds`).
 
-> [!NOTE]
-> Logging is entirely optional and off by default. Enable only the sinks you actually need — each one adds processing overhead, and USB serial in particular is best left off during normal operation.
+!!! note "NOTE"
+    Logging is entirely optional and off by default. Enable only the sinks you actually need — each one adds processing overhead, and USB serial in particular is best left off during normal operation.
 
 #### USB serial
 
 **General logging via USB serial** and **CAN message logging via USB serial** stream the log live over the USB cable. Open a serial terminal on the connected computer at **115200 baud** to watch it in real time. This is the quickest way to see what the board is doing during bring-up, but it is also the heaviest option.
 
-> [!WARNING]
-> USB serial logging causes performance issues and should be avoided if possible — especially CAN message logging, which prints every incoming and outgoing frame.
+!!! warning "WARNING"
+    USB serial logging causes performance issues and should be avoided if possible — especially CAN message logging, which prints every incoming and outgoing frame.
 
 #### SD card
 
 On hardware that has an µSD slot, **General logging to SD card** and **CAN message logging to SD card** persist the log across reboots. Entries are buffered in RAM and flushed to two files in the card root: general logging to **`/log.txt`** and CAN traffic to **`/canlog.txt`**. You can download or clear these files from the browser — the general log via the [Log](#log) page's *Export to .txt* / *Delete log file* buttons, and the CAN log via the [CAN logger](#can-logging) page. Because it survives power cycles, SD logging is the best option for catching an intermittent fault that only shows up after hours of running.
 
-> [!NOTE]
-> SD logging only works on SD-equipped boards, and on hardware where the slot pins are shared the µSD slot must first be enabled under the Hardware config. CAN-to-SD logging is high-volume and adds load, so enable it only while actively troubleshooting.
+!!! note "NOTE"
+    SD logging only works on SD-equipped boards, and on hardware where the slot pins are shared the µSD slot must first be enabled under the Hardware config. CAN-to-SD logging is high-volume and adds load, so enable it only while actively troubleshooting.
 
 #### Remote syslog
 
@@ -209,11 +205,11 @@ On hardware that has an µSD slot, **General logging to SD card** and **CAN mess
 
 Each line is tagged with a syslog **severity**: lines that originate from an event carry that event's level (error → *err*, warning → *warning*, firmware update → *notice*, info → *info*), and all other lines are sent as *debug*. The datagram uses the board's hostname and an app-name of `BatteryEmulator`, and it leaves the timestamp field empty (NILVALUE `-`) so the receiving syslog server stamps each message on arrival. Datagrams can only be received while the board is joined to the Wi-Fi.
 
-> [!TIP]
-> If you own a Synology NAS, in the Log Center set up a Log Receiving entry in **IETF** format.
+!!! tip "TIP"
+    If you own a Synology NAS, in the Log Center set up a Log Receiving entry in **IETF** format.
 
-> [!NOTE]
-> Remote syslog is not available on small-flash builds.
+!!! note "NOTE"
+    Remote syslog is not available on small-flash builds.
 
 #### CAN logging
 

@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Read this first
 
 Preface, the entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Take extra precaution when working on a custom DIY HV battery, you have been warned.
@@ -11,9 +8,6 @@ The BMW S-BOX is a safety box that includes precharge contactors as well as volt
 |  Part Number |  Supported | Precharge resistor | Negative/Positive Relays | Precharge relay | Fuse |  Notes |
 | :--------: | :---------: | :---------: | :---------: | :---------: | :---------: |:---------: |
 | 8686893 | ✅ | 15 Ω | AEV14012 120A/450V (400A 30s) | AEC51012 | 7GP074 450V 350A | HW 24.002, SW 10.050 |
-
-
-
 
 ## Wiring
 

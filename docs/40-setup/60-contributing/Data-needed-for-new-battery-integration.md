@@ -25,8 +25,8 @@ This data is typically matched to noted values "offline", such as reading the SO
 ## Hardware for logging
 You will first have to get some hardware capable of reading the communication. Here are some examples, listed from least expensive to more expensive. Do note that more expensive tools will be easier to use, since the software provided with the tools are very user friendly. Also more expensive tools will have better timing and accuracy on timestamps.
 
-> [!Tip]  
-> You can use the Battery-Emulator to log CAN messages. See the [CAN logging page](../40-can-related/CAN-logging.md)
+!!! tip "TIP"
+    You can use the Battery-Emulator to log CAN messages. See the [CAN logging page](../40-can-related/CAN-logging.md)
 
     LilyGo board (can log data in testing mode!)💲 
     USBCAN PCAN clone 💲 Recommended,link: https://www.aliexpress.us/item/1005006341852788.html 
@@ -56,8 +56,8 @@ The CAN-logging is available when using the `TEST_FAKE_BATTERY` mode. This enabl
 7592  5BF  8  0 0 0 0 28 0 0 1A 
 7593  1D4  8  F7 7 0 0 47 46 0 BC 
 ```
-> [!NOTE]  
-> If your serial monitor is filled with strange symbols "???!"?¤¤%" , change the baud rate in the serial monitor window from 9600 -> 115200  
+!!! note "NOTE"
+    If your serial monitor is filled with strange symbols "???!"?¤¤%" , change the baud rate in the serial monitor window from 9600 -> 115200  
 
 # Reverse engineering values
 Say you want to locate voltage from a CAN log. Read the physical value with a multimeter (370.0V), and try to find a CAN message that contains this value (0xE74)

@@ -1,14 +1,14 @@
 ## CAN termination practices
 
-![image](../../images/can-wiring-practices-and-troubleshooting-05.png){ width="461" height="149" }
+<img width="461" height="149" alt="image" src="../../images/can-wiring-practices-and-troubleshooting-05.png" />
 
-> [!IMPORTANT]  
-> CAN wires need to be twisted pair to ensure signal integrity!
+!!! info "IMPORTANT"
+    CAN wires need to be twisted pair to ensure signal integrity!
 
 Every CAN bus must be terminated with a 120 Ohm resistor at each end of the bus. For quick testing, the exact value of the termination resistors is not always critical. Sometimes a single terminator is sufficient. For final installs, proper termination is essential. If you see strange errors, you should check the termination.
 
-> [!IMPORTANT]  
-> To save yourself a lot of trouble, always terminate the CAN bus properly.
+!!! info "IMPORTANT"
+    To save yourself a lot of trouble, always terminate the CAN bus properly.
 
 ## CAN error messages
 
@@ -45,16 +45,16 @@ If you get events like  BATTERY_MISSING or INVERTER_MISSING, you need to check t
 To verify that the CAN channels on the Battery-Emulator hardware you have are working properly, you can perform a loopback test. This can be done by connecting two CAN channels together
 
 Example, loopback test on Stark CMR to verify that both hardware channels are OK
-![image](../../images/can-wiring-practices-and-troubleshooting-06.png)
+<img alt="image" src="../../images/can-wiring-practices-and-troubleshooting-06.png" />
 
 In the Software, enable the following options as a test,
 Sono Motors on CAN1, Schneider Inverter on CANFD2
 
-![image](../../images/can-wiring-practices-and-troubleshooting-07.png)
+<img alt="image" src="../../images/can-wiring-practices-and-troubleshooting-07.png" />
 
 Save and reboot. Open the "CAN logger" page
 
-![image](../../images/can-wiring-practices-and-troubleshooting-08.png)
+<img alt="image" src="../../images/can-wiring-practices-and-troubleshooting-08.png" />
 
 You can see  both RX0/TX1 (CAN) function, and RX6/TX3 (CAN-FD). In this successful test both CAN buses can send and receive, since both are visible in the log :heavy_check_mark: 
 
@@ -64,8 +64,8 @@ Bonus: You can also use this handy automated test page for the Stark CMR: https:
 
 CAN networks are vulnerable to lightning strikes. [See the dedicated wiki page for this for more info](../10-hardware/Lightning-strike.md) :cloud_with_lightning: 
 
-> [!CAUTION]  
-> Grounding everything is especially important for certain inverters. If you fail to ground inverter or battery casing to protective earth (PE), there might be a voltage difference between the two components, which can fry the CAN communication chips on the Battery-Emulator. Always connect every component, and the communication shield wire to protective earth before turning the system on!
+!!! warning "CAUTION"
+    Grounding everything is especially important for certain inverters. If you fail to ground inverter or battery casing to protective earth (PE), there might be a voltage difference between the two components, which can fry the CAN communication chips on the Battery-Emulator. Always connect every component, and the communication shield wire to protective earth before turning the system on!
 
 See this image for grounding: 
 
@@ -75,5 +75,5 @@ Here is the best way to ensure that there are no paths for spikes in CAN voltage
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-04.png)
 
-> [!CAUTION]  
-> Never connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be freefloating, like shown in the above pictures.
+!!! warning "CAUTION"
+    Never connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be freefloating, like shown in the above pictures.

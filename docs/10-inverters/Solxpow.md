@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Solxpow inverters
 * SOLXPOW X3-12K ✅
 * SOLXPOW X3 20kW ✅
@@ -14,7 +11,7 @@
 ## Which protocol to use
 For this inverter type, use the option called "Solxpow compatible battery" under the "Inverter Protocol" setting
 
-![image](../images/solxpow-01.png){ width="573" height="221" }
+<img width="573" height="221" alt="image" src="../images/solxpow-01.png" />
 
 ## Reverse engineering info
 The Solxpow inverters use a slightly modified version of the Pylontech HV protocol

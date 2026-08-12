@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # SAJ inverter wiki page
 
 ## Types of compatible SAJ inverters
@@ -27,7 +24,6 @@ For >255Ah batteries, the latest version contains a [bugfix](https://github.com/
 
 Specific settings are not needed regarding geometry of the battery
 
-
 For a 72-cell battery 280Ah LFP battery, this works for me
 * TOTAL_CELL_AMOUNT = 72;
 * MODULES_IN_SERIES = 4;
@@ -52,11 +48,4 @@ When going deeper into the Elekeeper APP (change battery settings) via BT or clo
 * The inverter only looks at low and high SOC% disconnect values implement on inverter side, no effect by changing the battery threshold settings on webinterface of BE
 
 WIP on the mapping of the battery modules towards the Pylon modules.
-
-
-
-
-
-
-
 

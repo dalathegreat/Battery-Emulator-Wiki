@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Note on stationary storage :notebook: :zap: 
 1. To use the eCMP battery in stationary storage, the BMS needs to be isolated to keep contactors engaged. This requires opening the battery, exposing yourself to 400V. Only proceed with this battery if you are OK with High Voltage work. For the full procedure, see [this section of the wiki](Stellantis-eCMP-(Citroen,-DS,-Opel,-Peugeot).md#disabling-isolation-monitoring-via-hw-modification)
 2. Also note that CAN communication needs to be completely electrically isolated to keep contactors engaged. **This can easiest be achieved by using a "LilyGo T-2CAN" board, or adding a separate CAN Bus isolator,** links in the [Lightning strike wiki page](../40-setup/10-hardware/Lightning-strike.md)
@@ -21,7 +18,7 @@ The same Stellantis eCMP platform integration can be used for **some** Toyota/Ci
 #### V1 vs V2 VANs
 Only V1 VAN packs work, V2 does not. You can spot the V1 by looking at the small HV connector which has 4 screws. On the V2, this connector is larger and has two screws.
 
-![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-15.png)
+<img alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-15.png" />
 
 - Toyota Proace / Proace Verso Electric ✔️
 - Citroën e-Jumpy / e-SpaceTourer ✔️
@@ -61,42 +58,39 @@ For this battery type, use the option called "Stellantis ECMP battery" under the
 
 ### HV connection
 
-> [!IMPORTANT]
-> **There are High Voltage Interlock (HVIL) connections that need to be seated on the battery.**
-> 
-> Depending on which battery you get, there will be multiple pins to jumper.
-> 
-> If you fail to jumper all HVIL pins, an event will be raised, and under the More Batter info page you will see a low IN reading
-> 
-> HVIL circuit open (bad)<br>
-> HVIL IN Voltage: 2mV<br>
-> HVIL Out Voltage: 4998mV<br>
-> 
-> HVIL circuit closed (good)<br>
-> HVIL IN Voltage: 4970mV<br>
-> HVIL Out Voltage: 4998mV<br>
+!!! info "IMPORTANT"
+    **There are High Voltage Interlock (HVIL) connections that need to be seated on the battery.**
+
+    Depending on which battery you get, there will be multiple pins to jumper.
+
+    If you fail to jumper all HVIL pins, an event will be raised, and under the More Batter info page you will see a low IN reading
+
+    HVIL circuit open (bad)<br>
+    HVIL IN Voltage: 2mV<br>
+    HVIL Out Voltage: 4998mV<br>
+
+    HVIL circuit closed (good)<br>
+    HVIL IN Voltage: 4970mV<br>
+    HVIL Out Voltage: 4998mV<br>
 
 Example of jumpered HVIL on **unused** HV connector on the rear end of the battery:
 
-![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-16.png){ width="50%" }
+<img width="50%" alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-16.png" />
 
 Polarity on cable side for the VAN Pack:
 
-![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-17.png)
+<img alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-17.png" />
 
+!!! warning "CAUTION"
+    **For the 50kWh CAR Packs this polarity is REVERSED!!!**
 
-
-> [!CAUTION]
-> **For the 50kWh CAR Packs this polarity is REVERSED!!!**
-> 
-> ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-18.png){ width="50%" }
+    <img width="50%" alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-18.png" />
 
 <a name="HVIL"></a>
-> [!TIP]
-> To disable completely the HVIL, just short the 2 wires from the BMS connector:
-> 
-> ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-03.png)
+!!! tip "TIP"
+    To disable completely the HVIL, just short the 2 wires from the BMS connector:
 
+    ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-03.png)
 
 ### Wiring pinout
 The following pinout has been reverse engineered on an ë-C4
@@ -137,7 +131,6 @@ Did your battery not come with all the required cables/plugs? No worries, here a
 
 ![5Q0971015](../images/stellantis-ecmp-citroen-ds-opel-peugeot-07.jpeg)
 
-
 #### Class-Y Capacitors 10NF 400V:
 - Aliexpress: https://a.aliexpress.com/_EH7Rw0k
 
@@ -145,7 +138,7 @@ Did your battery not come with all the required cables/plugs? No worries, here a
 
 LFP low voltage connector in stock on Mouser incase you are not able to get the harness with connector when you buy the battery. The connector has the pin numbering stamped on it.
 
-![image](../images/stellantis-cmp-smart-car-platform-07.png)
+<img alt="image" src="../images/stellantis-cmp-smart-car-platform-07.png" />
 
 - Connector: 27ZRO-B-1A
 - Pins 0.3 to 0.5 mm$`^2`$: SZRO-A021T-M0.64 
@@ -154,9 +147,6 @@ LFP low voltage connector in stock on Mouser incase you are not able to get the 
 - Aliexpress: https://aliexpress.com/item/1005010560783903.html
 
 ### Disabling isolation monitoring via HW modification
-
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
 
 The eCMP BMS performs real time insulation monitoring. When installing the battery to a stationary storage system, the solar inverter will start to perform insulation monitoring. This means the vehicle monitoring is no longer required, and unfortunately on the eCMP this monitoring will incorrectly detect leakage and open contactors after 1 minute when in use.
 
@@ -180,30 +170,26 @@ On this PCB inside the battery, place 2x Y capacitors 10nF between:
 
 In a (75kwh) Van pack it looks a bit different, there doesn't seem to be a BMS ground in the contactor enclosure. But! You can run a wire from the BMS ground through the pack (30cm distance) to meet up in the contactor box. The pcb in the contactor box also looks a bit different. The top yellow wire is B-, the bottom pink wire is B+:
 
-![WhatsApp Image 2026-04-18 at 22 06 23 (3)](../images/stellantis-ecmp-citroen-ds-opel-peugeot-20.jpeg)
+<img alt="WhatsApp Image 2026-04-18 at 22 06 23 (3)" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-20.jpeg" />
  
 In the BMS enclosure, the 2 bottom blue wires of the top plug are BMS ground: 
 
-![WhatsApp Image 2026-04-18 at 22 06 23 (2)](../images/stellantis-ecmp-citroen-ds-opel-peugeot-21.jpeg)
+<img alt="WhatsApp Image 2026-04-18 at 22 06 23 (2)" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-21.jpeg" />
  
 And an overview of the components in a Van Pack: 
 
-![WhatsApp Image 2026-04-18 at 22 06 23](../images/stellantis-ecmp-citroen-ds-opel-peugeot-22.jpeg)
+<img alt="WhatsApp Image 2026-04-18 at 22 06 23" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-22.jpeg" />
 (open the image in a new tab to see the details)
 <br><br>
 End result: 
 
-![WhatsApp Image 2026-04-18 at 22 06 23 (4)](../images/stellantis-ecmp-citroen-ds-opel-peugeot-23.jpeg)
+<img alt="WhatsApp Image 2026-04-18 at 22 06 23 (4)" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-23.jpeg" />
 <br><br>
 Alternatively, the same capacitors can be installed on the OUTSIDE of the battery, for a much safer install, not requiring dismantling the contactor box
 
 ![capacitors](../images/stellantis-ecmp-citroen-ds-opel-peugeot-11.jpg)
 
-
 ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-12.png)
-
-
-
 
 #### Step 3, Insulate CAN bus from inverter
 CAN needs to be on separate GND plane compared to inverter. Use a CAN opto isolator, or a board that has isolation between CAN chips like for instance the LilyGo T-2CAN. You can also add a CAN Bus isolator, links in the [Lightning strike wiki page](../40-setup/10-hardware/Lightning-strike.md)
@@ -237,7 +223,6 @@ For T2CAN you can get a MCP2518FD and set it up as classic CAN. The 2 onboard CA
 Currently you cant clear the 2nd battery error codes from BE, only the 1st battery.
 
 Schematics below. As always - take extra care when working with HV batteries
-![double-ecmp-battery-emulator](../images/stellantis-ecmp-citroen-ds-opel-peugeot-24.jpg)
-
+<img alt="double-ecmp-battery-emulator" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-24.jpg" />
 
 NOTE: When  

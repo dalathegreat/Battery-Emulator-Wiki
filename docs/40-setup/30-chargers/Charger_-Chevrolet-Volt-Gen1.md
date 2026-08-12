@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Charger Details
 ## Overview
 The Battery-Emulator project has support for the independent battery chargers starting in release 5.0. This feature is optional, intended to facilitate emergency charging from generators, supplemental charging when inverter lacks an onboard charger, or as part of battery commissioning/maintenance. 
@@ -35,7 +32,6 @@ Related cables: 20972413 and 22889574
 ![s-l1600](../../images/charger-chevrolet-volt-gen1-02.jpg)
 ![s-l1600](../../images/charger-chevrolet-volt-gen1-03.jpg)
 ![s-l1600](../../images/charger-chevrolet-volt-gen1-04.jpg)
-
 
 # Integration
 Integration with T-CAN485 is straightforward.
@@ -73,7 +69,6 @@ also 15366021.
 | NA | K | Blue | JA3 pin 4 | CAN B High |
 | NA | L | White | JA3 pin 3 | CAN B Low |
 | NA | M | N/C |
-
 
 The 2 pin Low Voltage power connector on the charger is a Yazaki part number 7282-5596-10. The terminals are part number 7114-4142-02, and the cable seals 7159-3083. The required mating connector (vehicle side) is Yazaki part number 7283-5596-10 and uses terminals part number 7116-4142-02. The cable seals are also 7158-3083.
 

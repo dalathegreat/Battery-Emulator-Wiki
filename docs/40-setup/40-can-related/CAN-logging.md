@@ -10,11 +10,11 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 
 ## CAN logging via Webserver
 
-> [!NOTE]  
-> CAN logging via Webserver does not store all messages due to limited RAM. If you need to log absolutely everything, do it via USB or to SD-CARD
+!!! note "NOTE"
+    CAN logging via Webserver does not store all messages due to limited RAM. If you need to log absolutely everything, do it via USB or to SD-CARD
 
-> [!NOTE]  
-> Some mobile phone browsers can have issues displaying long data lists. If you see no data, try using a Desktop PC / Laptop
+!!! note "NOTE"
+    Some mobile phone browsers can have issues displaying long data lists. If you see no data, try using a Desktop PC / Laptop
 
 Start by accessing the [Webserver](../20-software/Webserver-guide.md)
 
@@ -30,7 +30,7 @@ Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible
 
 ## USB CAN logging
 
-![image](../../images/can-logging-03.png){ width="482" height="186" }
+<img width="482" height="186" alt="image" src="../../images/can-logging-03.png" />
 
 To access the CAN-logging, enable the `Enable CAN message logging via USB serial:` feature. When this is enabled, all the incoming/outgoing CAN&CAN-FD messages will get timestamp, direction, ID, DLC, and data fields printed out via the Arduino IDE serial monitor. This can then be exported to a .txt file for later analysis.
 
@@ -62,15 +62,15 @@ Example format, CAN-FD log:
 (64.681) TX3 120 [32] A4 18 9A 00 00 00 00 01 FF 01 00 00 37 35 37 37 C9 02 00 00 00 00 00 35 00 00 0A 00 00 00 00 00 
 ```
 
-> [!NOTE]  
-> If your serial monitor is filled with strange symbols "???!"?¤¤%" , change the baud rate in the serial monitor window from 9600 -> 115200  
-> When a large amount of CAN traffic is present on the bus, you may need to increase the serial monitor baud rate to 460800 in Software.ino (  by changing Serial.begin(115200); to Serial.begin(460800); ) of course the serial baud rate of the serial monitor then also needs to be increased to 460800.
+!!! note "NOTE"
+    If your serial monitor is filled with strange symbols "???!"?¤¤%" , change the baud rate in the serial monitor window from 9600 -> 115200  
+    When a large amount of CAN traffic is present on the bus, you may need to increase the serial monitor baud rate to 460800 in Software.ino (  by changing Serial.begin(115200); to Serial.begin(460800); ) of course the serial baud rate of the serial monitor then also needs to be increased to 460800.
 
 ## SD card CAN logging
 
 To enable logging of CAN messages to an SD card enable the `Enable CAN message logging via SD card: ` feature. To maximize performance you should not enable other debug features at the same time as it could lead to CAN messages not being logged. The format of the log file is the same as the USB can log feature and can be read by tools like Savvy CAN directly.
 
-![image](../../images/can-logging-04.png){ width="471" height="87" }
+<img width="471" height="87" alt="image" src="../../images/can-logging-04.png" />
 
 If you have debug logging enabled and there are too many messages on the CAN bus to write to the SD card the error `Failed to send message to can ring buffer!` will be logged.
 

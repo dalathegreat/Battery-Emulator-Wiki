@@ -65,8 +65,8 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 - Connect your Battery-Emulator hardware to your computer using a USB cable.
 - Select the right board type (Stark, LilyGo)
 - At the bottom left of VScode, click the Env to bring up a menu of boards. Select the board you are using
-![image](../../images/contributing-01.png){ width="396" height="95" }
-![image](../../images/contributing-02.png){ width="679" height="177" }
+<img width="396" height="95" alt="image" src="../../images/contributing-01.png" />
+<img width="679" height="177" alt="image" src="../../images/contributing-02.png" />
 
 - Ensure the correct upload port is set in the platformio.ini file (it's often auto-detected, but you may need to set it manually. See Troubleshooting below).
 - Upload the code:
@@ -132,7 +132,7 @@ First, login to Github. If you don't have an account already, create one.
 
 Start by clicking on the "**Checks**" tab
 
-![image](../../images/contributing-03.png)
+<img alt="image" src="../../images/contributing-03.png" />
 
 Then click the down arrow next to the "Compile Common Images" selection, and then click on the hardware you need the binaries for. Currently we build for these hardwares:
 - LilyGo T-CAN485
@@ -141,12 +141,11 @@ Then click the down arrow next to the "Compile Common Images" selection, and the
 - ESP32 Devkit
 - BECom
 
-![image](../../images/contributing-04.png)
+<img alt="image" src="../../images/contributing-04.png" />
 
 After selecting the hardware you need, click the "**Upload Artifact**", and there will be a download link. Download the file!
 
-![image](../../images/contributing-05.png)
+<img alt="image" src="../../images/contributing-05.png" />
 
 After downloading the .zip file, extract the .bin file from it. Then [OTA Update](../20-software/OTA-Update.md) your device with this .bin file!
-
 

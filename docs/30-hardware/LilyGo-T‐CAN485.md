@@ -1,13 +1,13 @@
 ## Hardware basics
 The LilyGo T-CAN485 is what the Battery-Emulator originally started development with. It is a very cheap microcontroller, that runs the entire project easily. It has 1x CAN, 1x RS485, and GPIO pins for expansion.
 
-> [!TIP]
-> Only get this board if you need Modbus/RS485. For CAN components, the new [T-2CAN](LilyGo-T‐2CAN.md) board is easier for beginners.
+!!! tip "TIP"
+    Only get this board if you need Modbus/RS485. For CAN components, the new [T-2CAN](LilyGo-T‐2CAN.md) board is easier for beginners.
 
-![image](../images/lilygo-t-can485-02.png)
+<img alt="image" src="../images/lilygo-t-can485-02.png" />
 
-> [!Warning]
-> This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
+!!! warning "WARNING"
+    This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
 
 ## Purchase link
 The hardware can be bought via sites like [AliExpress](https://www.aliexpress.com/item/1005003624034092.html)
@@ -24,12 +24,12 @@ The board comes with 1x CAN channel, and 1x RS485 channel. Some integrations nee
 
 Example, LilyGo + MCP2515 board
 
-![image](../images/lilygo-t-can485-03.png)
+<img alt="image" src="../images/lilygo-t-can485-03.png" />
 
 ### Expanding the board with more IO pins
 The SD card slot can be used to gain more pins. This can be useful on setups that need lots of inputs/outputs, for instance add-on CAN + contactor control and/or enable line inputs. To use the SD card slot, you will need a "SD Card breakout board"
 
-![image](../images/lilygo-t-can485-04.png)
+<img alt="image" src="../images/lilygo-t-can485-04.png" />
 
 By installing one of these breakout boards, you can then remap the src/devboard/hal/hw_lilygo.h file to suit your newfound pins
 
@@ -40,13 +40,12 @@ By installing one of these breakout boards, you can then remap the src/devboard/
 
 Completed product:
 
-![image](../images/lilygo-t-can485-05.png)
+<img alt="image" src="../images/lilygo-t-can485-05.png" />
 
 ### Expanding the board further
 To make the board even more professional (DIN mounting solution with CANFD and contactor drivers built in), you can get the [LilyGo T‐CAN485 & CAN‐FD Motherboard](LilyGo-T‐CAN485-and-CAN‐FD-Motherboard.md)
 
-![image](../images/lilygo-t-can485-06.png)
-
+<img alt="image" src="../images/lilygo-t-can485-06.png" />
 
 ## Enhancements notes, things to know
 The chip has the tendacy to run quite hot. Some people book good results by adding a RAM or Raspberry Pi heatsinks on the chip, reducint the heat.

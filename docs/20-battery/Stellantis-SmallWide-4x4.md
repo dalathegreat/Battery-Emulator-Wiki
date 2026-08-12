@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ### Supported Stellantis SmallWide 4x4 batteries
 
 The following vehicles are part of the SmallWide 4x4 platform according to Wikipedia

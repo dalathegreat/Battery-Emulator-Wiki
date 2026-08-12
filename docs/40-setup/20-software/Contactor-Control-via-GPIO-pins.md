@@ -1,8 +1,5 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
-> [!CAUTION]
-> Contactors can weld themselves together if handled improperly, which may result in high voltage being present on connectors even when the system is powered down. Always assume high voltage is present on any high voltage wiring. To ensure safety, unplug the wiring from the battery or remove safety disconnect switches before working on the system. Then measure with a multimeter to confirm the system is off
+!!! warning "CAUTION"
+    Contactors can weld themselves together if handled improperly, which may result in high voltage being present on connectors even when the system is powered down. Always assume high voltage is present on any high voltage wiring. To ensure safety, unplug the wiring from the battery or remove safety disconnect switches before working on the system. Then measure with a multimeter to confirm the system is off
 
 Start by familiarizing yourself with how contactor and precharge circuits work. [Here is a good whitepaper](https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf) that explains how precharging works in great detail
 
@@ -16,21 +13,21 @@ This is done via the 3.3V digital output header that is located on the board. To
 
 For instance, 3x ASR-10DD can be used. ASR-M02DD is a din mounted version. If you don't need SSR, and just want a relay, you can use a 4-channel-relay such as [this](https://www.aliexpress.com/item/1005007431826795.html?)
 
-> [!CAUTION]
-> Be sure to get a **DC** SSR. Using an AC triggered SSR will not work, these will latch while waiting for zero crossing.
+!!! warning "CAUTION"
+    Be sure to get a **DC** SSR. Using an AC triggered SSR will not work, these will latch while waiting for zero crossing.
 
 ### Software setup
 
 To enable the feature in the software, Enable the "Contactor Control via GPIO" option under Hardware Config, Save and reboot
 
-![image](../../images/contactor-control-via-gpio-pins-04.png)
+<img alt="image" src="../../images/contactor-control-via-gpio-pins-04.png" />
 
 By default a 100 millisecond long precharge is performed. This value should be set to account for the resistance and capacitance of the inverter you use. 
 
 There is also an option to use "Use Normally Closed logic:" This is for very rare contactor setups, and should for 99.99% of users not be enabled :warning: 
 
-> [!NOTE]
-> Normally EVs perform a much more robust precharge, measuring motor inverter voltage and basing precharge duration based on this info, but since we dont have this info available a simple timer is used. Not optimal, but better than nothing!
+!!! note "NOTE"
+    Normally EVs perform a much more robust precharge, measuring motor inverter voltage and basing precharge duration based on this info, but since we dont have this info available a simple timer is used. Not optimal, but better than nothing!
 
 ### Example wiring diagram 🗺️ 
 To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
@@ -47,8 +44,8 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 
 ![bild](../../images/nissan-leaf-e-nv200-08.png)
 
-> [!WARNING]
-> In case the whole Emulator goes into Fault state, the contactors will open, and latch. To get them to close again, you need to restart the entire Battery-Emulator (after having analysed the fault)
+!!! warning "WARNING"
+    In case the whole Emulator goes into Fault state, the contactors will open, and latch. To get them to close again, you need to restart the entire Battery-Emulator (after having analysed the fault)
 
 You can check the Event view in the webserver, to see if any critical Error has been encountered
 
@@ -64,7 +61,7 @@ Optional: It is also possible to reduce power consumption of keeping the big con
 
 To use the PWM function, enable the "PWM contactor control" option
 
-![image](../../images/contactor-control-via-gpio-pins-05.png)
+<img alt="image" src="../../images/contactor-control-via-gpio-pins-05.png" />
 
 By default we use a Hold value of 250, which is suitable for Nissan LEAF contactors. Tweak this value to suit your contactors
 

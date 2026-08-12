@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ### What is this feature?
 Double Battery means running two battery packs at the same time. This doubles the capacity of the system. Incase you need more energy than one EV pack can provide, this functionality is for you.
 
@@ -11,17 +8,17 @@ If you need more capacity than Double Battery provides, you can also go [Triple 
 ### How does parallel operation work?
 The batteries get connected in parallel. This means the voltage stays the same, but the capacity doubles.
 
-> [!IMPORTANT]  
-> The batteries need to be of the same model and size, and preferably as close as possible in state of health. Do not connect battery packs with too much variation in condition, this lowers overall efficiency significantly!
+!!! info "IMPORTANT"
+    The batteries need to be of the same model and size, and preferably as close as possible in state of health. Do not connect battery packs with too much variation in condition, this lowers overall efficiency significantly!
 
-> [!CAUTION]
-> Do not connect packs in series. There are no safeties implemented for operation in series connection!
+!!! warning "CAUTION"
+    Do not connect packs in series. There are no safeties implemented for operation in series connection!
 
 ### Which inverters are supported?
 Double-Battery can be run on all inverters. The inverter will think that there is just one large battery attached.
 
-> [!Note]  
-> Double-Battery should not be confused with Dual Input inverters. Dual input can have 2 separate batteries operating at the same time (Foxess or Sofar for instance).  lookup how to in your inverter type/brand Wiki for more information about Dual input.
+!!! note "NOTE"
+    Double-Battery should not be confused with Dual Input inverters. Dual input can have 2 separate batteries operating at the same time (Foxess or Sofar for instance).  lookup how to in your inverter type/brand Wiki for more information about Dual input.
 
 ### Which batteries are supported?
 Double battery support is only available for highly stable battery types. The ones with checkmark have been confirmed working well.
@@ -72,7 +69,7 @@ When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), si
 #### CAN-controlled contactors
 Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
-![image](../../images/double-battery-03.png){ width="785" height="306" }
+<img width="785" height="306" alt="image" src="../../images/double-battery-03.png" />
 
 After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2 (Cont ext), if it falls within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses
 
@@ -83,11 +80,9 @@ Enable "Double-Battery Contactor control via GPIO:" in the Settings page. When B
 ### Taking Double Battery into use.
 Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, controlled via GPIO contactors
 
-![image](../../images/double-battery-04.png)
+<img alt="image" src="../../images/double-battery-04.png" />
 
 ### Example wiring diagram - Stark Box + 2x BMW i3 + Fronius Gen24
 
-![image](../../images/double-battery-05.png)
-
-
+<img alt="image" src="../../images/double-battery-05.png" />
 

@@ -3,7 +3,7 @@
 <table >
   <tr>
     <td style="text-align: center;" width="175">
-      ![](../../images/equipment-stop-01.png){ width="165" height="126" }
+      <img width="165" height="126" src="../../images/equipment-stop-01.png"/>
     </td>
     <td style="padding-left: 20px;">
 <p><b>Equipment Stop</b> is a critical safety feature that immediately pauses all operations and sets maximum charge and discharge values to zero. Once current reaches zero, the battery contactors are opened immediately — interrupting all high-voltage connections. If current does not reach zero, the contactors are opened unconditionally after 7 seconds regardless.</p>
@@ -11,8 +11,8 @@
   </tr>
 </table>
 
-> [!CAUTION]
-> Equipment stop should not be confused with Emergency stop. Equipment performs a graceful stop (which can fail), while an emergency stop button cuts power to the system. If you need more safety than an equipment stop button can offer, consider wiring an emergency stop button instead
+!!! warning "CAUTION"
+    Equipment stop should not be confused with Emergency stop. Equipment performs a graceful stop (which can fail), while an emergency stop button cuts power to the system. If you need more safety than an equipment stop button can offer, consider wiring an emergency stop button instead
 
 [IP67 1NO1NC Stop Switch](https://vi.aliexpress.com/item/1005008119829541.html)
 
@@ -27,8 +27,8 @@ Connect the Equipment stop button to the GPIO pins on the LilyGo
 - GPIO Pin35 - Switch NC
 - Any VDD pin - Switch NC
 
-> [!NOTE]  
-> There are not many free GPIO pins on the LilyGo board. The Pin35 might already be in use if you use some other optional functionality. If a collision happens, you can check the `Battery-Emulator/Software/src/devboard/hal/hw_lilygo.h` for free pins and remap
+!!! note "NOTE"
+    There are not many free GPIO pins on the LilyGo board. The Pin35 might already be in use if you use some other optional functionality. If a collision happens, you can check the `Battery-Emulator/Software/src/devboard/hal/hw_lilygo.h` for free pins and remap
 
 #### Stark CMR
 
@@ -44,7 +44,7 @@ _- VDC pin - Switch NC_<br>
 <table >
   <tr>
     <td style="text-align: center;" width="175">
-      ![](../../images/equipment-stop-02.png)
+      <img src="../../images/equipment-stop-02.png"/>
     </td>
     <td style="padding-left: 20px;">
       <p>In our system, we use external pull resistors to ensure stable and reliable readings from the equipment stop button. Specifically, we use a 2kΩ resistor between the switch and VCC (3.3V) and a 10kΩ resistor between the GPIO pin and GND. This configuration creates a pull-down circuit, which stabilizes the signal and prevents floating values when the button is not pressed.</p>
@@ -65,7 +65,7 @@ _- VDC pin - Switch NC_<br>
 
 To enable the Equipment Stop Button functionality, go to the Webserver, Settings page and scroll down to the Hardware configuration.
 
-![image](../../images/equipment-stop-03.png){ width="522" height="43" }
+<img width="522" height="43" alt="image" src="../../images/equipment-stop-03.png" />
 
 Set the Switch Behavior to either latching or momentary, depending on the type of button you are using.
 

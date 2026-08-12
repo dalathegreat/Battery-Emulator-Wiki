@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Growatt inverters
 TODO
 
@@ -17,4 +14,4 @@ The Growatt LV compatible inverters works via CAN. The LilyGo board can have bot
 ## Which protocol to use
 For this inverter type, use the option called "Growatt Low Voltage (48V) protocol via CAN" under the "Inverter Protocol" setting
 
-![image](../images/growatt-lv-01.png){ width="483" height="68" }
+<img width="483" height="68" alt="image" src="../images/growatt-lv-01.png" />

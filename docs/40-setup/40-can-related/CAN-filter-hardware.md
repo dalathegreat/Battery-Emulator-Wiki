@@ -3,7 +3,6 @@ Since some inverters need to see only certain CAN messages on the bus, we can ac
 
 ![image](../../images/can-filter-hardware-01.png)
 
-
 ## How do I get the hardware?
 We utilize the cheaply and readily available CAN filter also used for Nissan LEAF battery upgrades. It is available on Aliexpress. Below are some purchase links, please note that you need the BLUE PCB for this code to work.
 
@@ -20,7 +19,6 @@ Software for the CAN filter [can be found here](https://github.com/No-Signal/Can
 See this video: https://www.youtube.com/watch?v=LssrvVYLtp8
 
 Flash with BridgeFlasher.exe located in software folder. The compiled .srec files are [located in the releases section](https://github.com/dalathegreat/Nissan-LEAF-Battery-Upgrade/releases)  . For ST LINK CLI, point the exe towards the "ST-LINK_CLI.exe" located in the "STM32 ST-LINK Utility" folder that appears after installing it. Incase the BridgeFlasher.exe doesn't run, make sure you have installed [vc++ 2015 x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) 
-
 
 This is what the BridgeFlasher.exe should look like. Press Start to flash.
 ![alt text](../../images/can-filter-hardware-02.jpg)

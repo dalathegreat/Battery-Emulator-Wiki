@@ -1,10 +1,5 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
-
-> [!IMPORTANT]  
-> The EGMP battery platform cannot communicate over CAN. It only supports CAN FD!
-
+!!! info "IMPORTANT"
+    The EGMP battery platform cannot communicate over CAN. It only supports CAN FD!
 
 Pinout on battery
 ![image](../images/kia-ev6-01.png)
@@ -13,9 +8,6 @@ Pinout on battery
 ![image](../images/kia-ev6-03.png)
 ![image](../images/kia-ev6-04.png)
 ![image](../images/kia-ev6-05.png)
-
-
-
 
 Batterie Data (from Kia/Hyundai Service Manual)
 ![image](../images/kia-ev6-06.png)
@@ -26,9 +18,8 @@ Batterie BMU/CMU Info
 ![image](../images/kia-ev6-09.png)
 ![image](../images/kia-ev6-10.png)
 ![image](../images/kia-ev6-11.png)
-![Zrzut_ekranu_2025-07-16_111425-1](../images/kia-ev6-12.png)
-![Zrzut_ekranu_2025-07-16_111419](../images/kia-ev6-13.png)
-
+<img alt="Zrzut_ekranu_2025-07-16_111425-1" src="../images/kia-ev6-12.png" />
+<img alt="Zrzut_ekranu_2025-07-16_111419" src="../images/kia-ev6-13.png" />
 
 Images etc.
 

@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # FAQ: Renault Zoe Battery Gen1
 Zoe Generation 1 batteries have perfect support in the Battery-Emulator
 
@@ -25,7 +22,7 @@ Example, Zoe battery being tested with a Stark CMR and Lead acid battery before 
 ## Software configuration
 For this battery type, use the option called "Renault Zoe Gen1 22/40kWh" under the "Battery Protocol" setting
 
-![image](../images/renault-zoe-gen1-11.png){ width="591" height="79" }
+<img width="591" height="79" alt="image" src="../images/renault-zoe-gen1-11.png" />
 
 Note that you can also enable "Contactor Control via GPIO" to automate the closing/opening of contactors
 
@@ -49,8 +46,8 @@ There are also two other fuses inside the pack. There is a fuse under the cover 
 
 ## Wiring diagrams
 
-> [!IMPORTANT]
-> This battery does not have a negative contactor. You only control precharge and positive contactor.
+!!! info "IMPORTANT"
+    This battery does not have a negative contactor. You only control precharge and positive contactor.
 
 Example of contactor control via SSR relays, connected to a LilyGo T-CAN485 board:
 

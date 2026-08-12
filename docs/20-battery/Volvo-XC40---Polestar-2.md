@@ -1,10 +1,7 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Volvo XC40, C40 / Polestar 2 (SPA platform) battery wiki
 
-> [!CAUTION]
-> Battery can lock itself permanently if started without DC-DC converter on HV side! You have been warned, please read the Wiki carefully!
+!!! warning "CAUTION"
+    Battery can lock itself permanently if started without DC-DC converter on HV side! You have been warned, please read the Wiki carefully!
 
 ### Measurements
 148x176cm and about 500kg
@@ -26,7 +23,7 @@ The following SPA platform batteries are supported, checkbox on those confirmed 
 ## Software configuration
 For this battery type, use the option called "Volvo / Polestar 69/78kWh SPA battery" under the "Battery Protocol" setting
 
-![image](../images/volvo-xc40-polestar-2-11.png){ width="592" height="72" }
+<img width="592" height="72" alt="image" src="../images/volvo-xc40-polestar-2-11.png" />
 
 ## Buying tips
 
@@ -34,11 +31,11 @@ Make sure the contactor assembly (Left picture, silver box) is included with the
 
 ![image](../images/volvo-xc40-polestar-2-02.png)
 
-> [!NOTE]
-> It is OK to buy a battery from an airbag crashed vehicle. It is possible to clear that fault code via the "More Battery Info" page
+!!! note "NOTE"
+    It is OK to buy a battery from an airbag crashed vehicle. It is possible to clear that fault code via the "More Battery Info" page
 
-> [!CAUTION]
-> If you want to use Battery-Emulator to read info, check cells, on a standalone battery before buying, comment out any sending of 0x140 messages in the VOLVO-SPA-BATTERY.cpp file. Otherwise it will try to close contactors, and without the DC/DC converter it will permanently lock the contactors as welded. See further down for more info on DC/DC requirement
+!!! warning "CAUTION"
+    If you want to use Battery-Emulator to read info, check cells, on a standalone battery before buying, comment out any sending of 0x140 messages in the VOLVO-SPA-BATTERY.cpp file. Otherwise it will try to close contactors, and without the DC/DC converter it will permanently lock the contactors as welded. See further down for more info on DC/DC requirement
 
 ## Wiring diagram, low voltage
 Connect HVIL2_EXT_IN and HVIL2_EXT_OUT together with a cable. (this will close the HVIL loop in BECM.)
@@ -73,8 +70,8 @@ Test wires attached:
 
 ![image](../images/volvo-xc40-polestar-2-07.png)
 
-> [!CAUTION]
-> Battery can lock itself permanently if started without DC-DC converter on HV side!
+!!! warning "CAUTION"
+    Battery can lock itself permanently if started without DC-DC converter on HV side!
 
 In order to start the battery you need to have capacitance and current draw ready on HV lines. This can be achieved by connecting a DC-DC converter (which you can purchase from the link below) to the high-voltage output from the front motor. If you skip this step and try to start the battery directly, an irreversible fault code will trigger (Contactor welded). After this fault code is set, you won't be able to engage the contactors via the CAN bus anymore.
 
@@ -88,7 +85,6 @@ DC/DC connected:
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
-
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch 32324494 |  [Volvoshop](https://www.volvopartswebstore.com/products/volvo/Drive-Motor-Battery-Pack-Disconnect-Switch/17175319/32324494.html?srsltid=AfmBOorBmq44EIa0XG8wFXfUVbIYV8hX9a3dqO7GA3DVw_9dIVlpyGXg)   |
@@ -121,8 +117,7 @@ Another thing to test if issue with comm is to leave pin 24 (+12V) disconnected 
 ## Reading DTCs
 To read Diagnostic Trouble Codes, go to the More Battery Info page and press Read DTC
 
-![image](../images/volvo-xc40-polestar-2-12.png){ width="543" height="432" }
-
+<img width="543" height="432" alt="image" src="../images/volvo-xc40-polestar-2-12.png" />
 
 ## Unlocking a permanently locked BMS
 
@@ -130,26 +125,24 @@ If the BMS is permanently locked, replacing the BMS is the easiest solution.
 
 There is a chance that reflashing the BMS can help, but the success rate is low. Some .hex files available on Discord
 
-![image](../images/volvo-xc40-polestar-2-13.png)
+<img alt="image" src="../images/volvo-xc40-polestar-2-13.png" />
 
 Miniwiggler v3 dap attached to BMS board via PCI-e from old motherboard to avoid soldering
 
-![image](../images/volvo-xc40-polestar-2-14.png)
+<img alt="image" src="../images/volvo-xc40-polestar-2-14.png" />
 
-![image](../images/volvo-xc40-polestar-2-15.png){ width="900" height="485" }
+<img width="900" height="485" alt="image" src="../images/volvo-xc40-polestar-2-15.png" />
 
-![image](../images/volvo-xc40-polestar-2-16.png){ width="621" height="480" }
+<img width="621" height="480" alt="image" src="../images/volvo-xc40-polestar-2-16.png" />
 
-![image](../images/volvo-xc40-polestar-2-17.png){ width="624" height="475" }
+<img width="624" height="475" alt="image" src="../images/volvo-xc40-polestar-2-17.png" />
 
-![image](../images/volvo-xc40-polestar-2-18.png){ width="624" height="475" }
+<img width="624" height="475" alt="image" src="../images/volvo-xc40-polestar-2-18.png" />
 
 Flashing tips;
 
 - External 5V to VREF and GND is required
 - If it is toggling "Device has no ID register", thhe supplied current might be too low. You must apply external 5v with around 1A
 - If you cannot make connection with memtool, it could be that access is blocked via code, see picture below. password is unknown until now, if blocked like picture then BECM board needs to be swapped
-![image](../images/volvo-xc40-polestar-2-19.png){ width="630" height="262" }
-
-
+<img width="630" height="262" alt="image" src="../images/volvo-xc40-polestar-2-19.png" />
 

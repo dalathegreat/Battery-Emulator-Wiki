@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Work in progress integration :construction: 
 
 ## General info
@@ -13,13 +10,12 @@ The Nissan Ariya [battery](https://www.batterydesign.net/2022-nissan-ariya/) com
 
 ![image](../images/nissan-ariya-01.png)
 
-
 ## Pinout BMS
 The Ariya battery uses the same 36-pin Yazaki connector as the Nissan LEAF, but it uses more pins:
 
 ![bild](../images/nissan-ariya-02.png)
 
-![image](../images/nissan-ariya-04.png)
+<img alt="image" src="../images/nissan-ariya-04.png" />
 
 * Pin 34 CAN-H - Connect to LilyGo CAN-H
 * Pin 35 CAN-L - Connect to LilyGo CAN-L
@@ -46,8 +42,6 @@ If using QC-HV: (UNCLEAR HOW THIS WORKS)
 
 You can use either QC-HV or the MAIN-HV connector. The QC-HV uses the same high voltage cable as the Nissan LEAF.
 ![bild](../images/nissan-ariya-03.png)
-
-
 
 ## Precharge/Contactor closing
 Almost all EV batteries contain contactors and precharge relays. Contactors act like big relays, and are used to control electrical circuits where currents are high. They are designed to be able to break the flow of current in a safe manner without electrical arcing. There are two contactors, one for positive and one for negative. To avoid electrical arcing when turning on the battery, the initial inrush of current is led thru a precharge resistor, to allow for slow charging of the capacitors inside the inverter. If the inverter has been turned off for a long time, the capacitors inside will act almost as a dead-short, 0 ohm resistance. If you skip using the precharge, then your contactors will spark every time you close them, wearing them out prematurely. Now that we know what the contactors/precharge does, we can look at ways to control it.

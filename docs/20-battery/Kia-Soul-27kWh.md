@@ -23,10 +23,6 @@ HV Cable part no. 91876E 4000
 
 ![image](../images/kia-soul-27kwh-01.png)
 
-
-
-
-
 ### Wiring diagram
 
 Connect the following pins to 12V, GND and CAN;
@@ -55,7 +51,6 @@ Connect the following pins to 12V, GND and CAN;
 | 20 GND | To GND of 12V system |
 
 ![image](../images/kia-soul-27kwh-02.png)
-
 
 ### Pictures
 

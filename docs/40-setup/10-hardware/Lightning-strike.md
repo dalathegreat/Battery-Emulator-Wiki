@@ -1,7 +1,7 @@
 ## ⚡️ Lightning Strikes and System Protection :cloud_with_lightning: 
 
-> [!CAUTION]
-> Lightning strikes near your inverter, battery, or smartmeter can result in costly damage to sensitive equipment. Always power down or disconnect your system when thunderstorms are in the area to minimize the risk of damage!
+!!! warning "CAUTION"
+    Lightning strikes near your inverter, battery, or smartmeter can result in costly damage to sensitive equipment. Always power down or disconnect your system when thunderstorms are in the area to minimize the risk of damage!
 
 ## How Lightning Strikes Damage Systems
 
@@ -25,8 +25,8 @@ The CAN bus should have a termination resistance of 120Ω between CAN High and C
    - The expected reading should be close to 60Ω if both terminators are present (120Ω in parallel). If you get a significantly different reading, check the terminations or for potential damage along the bus.
    - Disconnect each device, and if they contain a termination resistor, it should read 120Ω when measuring.
 
-> [!TIP]
-> Not all CAN devices contain a terminating resistor. So be sure to confirm this before stating it broken
+!!! tip "TIP"
+    Not all CAN devices contain a terminating resistor. So be sure to confirm this before stating it broken
 
 2. Inspect CAN Transceivers
 
@@ -42,7 +42,6 @@ If you suspect damage, you may need to replace the transceiver ICs or even the e
 
 Below is an example of a damaged CAN transceiver, caused by direct lightning strike to equipment.
 ![image](../../images/lightning-strike-01.png)
-
 
 3. Check Modbus Communication Ports
 
@@ -75,6 +74,5 @@ Below are some products you can use to increase the resilience of your CAN/RS485
 
 Example of CAN isolator in use, and PE connections between elements:
 
-![image](../../images/lightning-strike-02.png){ width="1350" height="787" }
-
+<img width="1350" height="787" alt="image" src="../../images/lightning-strike-02.png" />
 

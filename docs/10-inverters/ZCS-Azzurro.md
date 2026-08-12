@@ -1,13 +1,10 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible ZCS Azurro inverters
 TODO: Add list
 
 ## Which protocol to use
 For this inverter type, use the option called "Pylontech battery over CAN" under the "Inverter Config" setting. Send group 1 might be needed if inverter throws error.
 
-![image](../images/zcs-azzurro-01.png)
+<img alt="image" src="../images/zcs-azzurro-01.png" />
 
 ## Communication wiring
 The ZCS Azurro inverter works via CAN. The Battery-Emulator board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor might need to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../40-setup/index.md#can-wiring-troubleshooting)

@@ -16,7 +16,6 @@ If the battery has a 🅱️ symbol, cell balancing has been confirmed working (
 
 If the battery has a 2️⃣ or 3️⃣ symbol, double- or triple battery is supported
 
-
 | Car (Manufacturer) | Product Name | Capacity (kWh) | Supported status | Support level | Balancing (🅱️) | Parallel Packs (2️⃣/3️⃣) | Voltage min (V) | Voltage max (V) | Notes |
 | :--------: | :---------: | :---------: | :---------: | :---------: | :---------: | :---------: | :---------: | :---------: | :---------: |
 | BMW | [BMW i3 (all sizes)](BMW-i3.md) | 18 / 22 / 40 | ✅ | ⭐⭐⭐ | 🅱️ | 2️⃣ | 270 | 400 | Balancing only when powered off |

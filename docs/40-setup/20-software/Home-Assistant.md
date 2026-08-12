@@ -1,7 +1,7 @@
 # Home Assistant goodies
 
-> [!TIP]
-> In the examples below, replace the dummy hostname `battery-emulator-a1b2` with the hostname of your own Battery Emulator device!
+!!! tip "TIP"
+    In the examples below, replace the dummy hostname `battery-emulator-a1b2` with the hostname of your own Battery Emulator device!
 
 ## Chart examples
 
@@ -9,7 +9,7 @@ Using the [Plotly Graph Card](https://github.com/dbuezas/lovelace-plotly-graph-c
 
 ### 2D cell monitor with balancing info
 
-![image](../../images/home-assistant-01.png){ width="504" height="327" }
+<img width="504" height="327" alt="image" src="../../images/home-assistant-01.png" />
 
 Add to your Home Assistant `configuration.yaml` a manual MQTT sensor to read all the cell data of the battery into a single sensor's attributes (and a recorder exclusion to save database from load):
 
@@ -103,7 +103,7 @@ config:
 
 ### 3D Cell monitor (in relation with time) for 96 cells
 
-![image](../../images/home-assistant-02.png){ width="606" height="542" }
+<img width="606" height="542" alt="image" src="../../images/home-assistant-02.png" />
 
 ```yaml
 type: custom:plotly-graph

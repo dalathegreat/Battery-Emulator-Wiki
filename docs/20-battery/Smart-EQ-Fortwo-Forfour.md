@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible batteries
 For this platform...
 - Model year, energy amoung
@@ -34,7 +31,7 @@ Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
 
 Low Voltage connectors:
 
-![image](../images/smart-eq-fortwo-forfour-01.png){ width="810" height="621" }
+<img width="810" height="621" alt="image" src="../images/smart-eq-fortwo-forfour-01.png" />
 
 Diagram:
 - Yellow-Green: CAN-H and CAN-L

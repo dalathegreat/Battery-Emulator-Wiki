@@ -1,6 +1,3 @@
-
-
-
 ### Volkswagen Group MSB platform
 - [Porsche Taycan](https://en.wikipedia.org/wiki/Porsche_Taycan) (J1 Performance; 2019–present)
 - [Audi e-tron GT](https://en.wikipedia.org/wiki/Audi_e-tron_GT) (J1 Performance; 2020–present)
@@ -11,8 +8,6 @@
 - 93.4 kWh (83.7 kWh usable) liquid-cooled lithium-ion "Performance Battery Plus"
 
 ![IMG_5353](../images/taycan-e-tron-01.jpeg)
-
-
 
 ### Wiring
 
@@ -28,7 +23,6 @@ Pin 15: Temp Sensor Ground (pre-Run)
 Pin 18: Temp Sensor Ground (return)
 Pin 16: CAN High
 Pin 19: CAN Low
-
 
 Only CAN Pins 16 and 19 are populated in both Audi Etron GT and Porsche Taycan Batteries so thats where I have taken the CAN data from
 

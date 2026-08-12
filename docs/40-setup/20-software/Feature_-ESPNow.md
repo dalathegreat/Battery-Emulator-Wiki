@@ -489,11 +489,7 @@ lvgl:
                       # runtime (see CELL branch). lv_chart is unavailable in 
                       # ESPHome (LV_USE_CHART is compiled out at time of writing).
 ```
-![Battery Monitor](../../images/feature-espnow-01.png){ width="700" height="357" }
-
-
-
-
+<img width="700" height="357" alt="Battery Monitor" src="../../images/feature-espnow-01.png" />
 
 ### Arduino
 Contents of **battery.h** file:

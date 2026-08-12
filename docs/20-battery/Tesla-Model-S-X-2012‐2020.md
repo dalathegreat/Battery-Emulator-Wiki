@@ -1,13 +1,9 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Legacy Tesla Model S/X (2012-2020)
 The earlier Tesla batteries use a radically different CAN structure compared to the 2020+ S/3/X/Y platform, so we have separate integrations for each platform.
 
 When using a Legacy battery, make sure to select the "Tesla Model S/X 2012-2020" option
 
-![image](../images/tesla-model-s-x-2012-2020-01.png){ width="517" height="118" }
-
+<img width="517" height="118" alt="image" src="../images/tesla-model-s-x-2012-2020-01.png" />
 
 ## High voltage connectors
 
@@ -18,24 +14,22 @@ The Tesla Model S/X is equipped with an HV Rapid Mate connector. When using the 
 The plug also features two pins; the smaller one is responsible for the HVIL continuity. The bigger one should be connected to battery frame. 
 From the battery side, the pinout is as follows:
 
-![images](../images/tesla-model-s-x-2012-2020-02.png){ width="298" height="169" }
+<img width="298" height="169" alt="images" src="../images/tesla-model-s-x-2012-2020-02.png" />
 
 ## Low voltage connectors
 
 Connector X035:
 
-![image](../images/tesla-model-s-x-2012-2020-03.png){ width="451" height="347" }
+<img width="451" height="347" alt="image" src="../images/tesla-model-s-x-2012-2020-03.png" />
 
 Connector X036:
 
-![image](../images/tesla-model-s-x-2012-2020-04.png){ width="465" height="360" }
-
+<img width="465" height="360" alt="image" src="../images/tesla-model-s-x-2012-2020-04.png" />
 
 Pinout X035:
 * 2 + 5: +12 V (10 A fuse)
 * 8 + 12: GND
 * 10: HVIL in
-
 
 Pinout X036:
 * 2 + 5: +12 V (10 A fuse)
@@ -43,7 +37,6 @@ Pinout X036:
 * 9: PT_CAN-
 * 10: PT_CAN+
 * 11: HVIL out
-
 
 Digikey links:
 * X035: https://www.digikey.be/nl/products/detail/molex/0334721201/1756779
@@ -67,4 +60,4 @@ The best way to balance the Model 3 pack is to set charge limit to 90% or higher
 ## Examples
 The first testing of a 85kWh battery with a Deye inverter
 
-![](../images/tesla-model-s-x-2012-2020-05.png)
+<img src="../images/tesla-model-s-x-2012-2020-05.png" />
