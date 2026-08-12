@@ -1,7 +1,7 @@
-# Fronius inverter wiki page
-
 ## Types of compatible Fronius inverters
-The code works with the following Fronius inverters
+
+The code works with the following Fronius inverters:
+
 * Fronius Primo Gen24 Plus (all sizes) ✅
 * Fronius Symo Gen24 Plus (all sizes) ✅
 * Fronius Symo Gen24 Plus SC 12.0 ✅
@@ -12,7 +12,7 @@ On this date (23.04.2025) Fronius deployed a new software version that momentari
 
 - Installed: ROW 1.35.8-1 (Working ✅ ) Works with BE versions below 8.11.0
 - New: ROW 1.36.5-1 (Breaks ❌ ) Works with BE versions above 8.12.0
-- Newest firmware (1.40.8-1) works with the latest BE version. (info updated on 18.04.2026)
+- Newest firmware (1.41.11-1) works with the current BE version. (as of 2026-08-12)
 
 It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator
 
@@ -143,7 +143,8 @@ A quick solution is to enable the "450V maxvoltage cap" setting. This fakes it s
 
 ![image](../images/fronius-14.png){ width="675" height="172" }
 
-NOTE: This setting should not be used with Fronius Symo 3-phase inverters. These inverters are OK with battery voltages up to 700VDC
+!!! note "NOTE"
+    This setting should not be used with Fronius Symo 3-phase inverters. These inverters are OK with battery voltages up to 700VDC
 
 ## Advanced control of energy (Spot price, scheduled charge/discharge etc.)
 Once you have your battery connected to the Fronius, it is possible to add additional hardware into the mix for advanced control of how energy should flow in the system. This is useful for those with spot-price electricity, or a nightly tarriff. Below are some examples you can utilize to control the Fronius Gen24 directly via Modbus TCP
@@ -179,8 +180,8 @@ Pin0 is not used when hard wiring for full backup. Pin0 is used for automatic sw
 
 The Fronius Gen24 configuration documents describe both automatic and manual switch-over to backup mode using combination of switches and/or relays. Both options can be commercially sourced if you need a non hard-wired off-grid only solution. 
 
-**IMPORTANT NOTE: **
-When running as Full-Backup, the inverter will run at 53Hz. As such, no other inverter can be active on the AC circuit. Only the Gen24 can be providing power! If you need additional power, then a true Micro-Grid should be used (AC coupling with Victron etc)  
+!!! note "IMPORTANT NOTE"
+    When running as Full-Backup, the inverter will run at 53Hz. As such, no other inverter can be active on the AC circuit. Only the Gen24 can be providing power! If you need additional power, then a true Micro-Grid should be used (AC coupling with Victron etc).
 
 Also note, that Fronius officially supports 2000h off-grid (full-backup) per year on the Gen24. Exceeding this hour count voids the warranty. There is no reports of any inverters shutting down after 2000hours. 
 
