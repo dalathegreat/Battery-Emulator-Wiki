@@ -34,6 +34,7 @@ This has the ability 6 Power Pins (13A max) + 26 Signals (5A max)
 The rear is protected in a (EDPM KR 06) boot that is cable tied closed 
 
 The connection on the battery has following Pins
+
 | Pin| Output           | Colour         | Notes
 |----|------------------|----------------|----------
 | 1: | <!-- -->         | Blue & Yellow  | 1.2mm Power

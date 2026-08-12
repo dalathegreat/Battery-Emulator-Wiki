@@ -85,6 +85,7 @@ DC/DC connected:
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch 32324494 |  [Volvoshop](https://www.volvopartswebstore.com/products/volvo/Drive-Motor-Battery-Pack-Disconnect-Switch/17175319/32324494.html?srsltid=AfmBOorBmq44EIa0XG8wFXfUVbIYV8hX9a3dqO7GA3DVw_9dIVlpyGXg)   |

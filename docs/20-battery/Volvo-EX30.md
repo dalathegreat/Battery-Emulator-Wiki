@@ -61,6 +61,7 @@ BMS inside:
 LV connector:
 
 ![image](../images/volvo-ex30-04.png)
+
 |  Pin |   Function   |  Connect |
 | :--------: | :---------: | :---------: |
 | 1 | KL30 | +12v |

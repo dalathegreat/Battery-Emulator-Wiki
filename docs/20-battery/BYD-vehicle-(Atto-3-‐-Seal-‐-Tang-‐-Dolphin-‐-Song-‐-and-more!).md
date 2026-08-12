@@ -151,11 +151,12 @@ Contactors are commanded **open automatically** whenever:
   fault / e-stop / inverter interlocks above and treat manual control as on-site only.
 
 ## Parts list
-Here are some of the part numbers and purchase links, incase your battery came without them
+Here are some of the part numbers and purchase links, incase your battery came without them:
+
 |  Part |  Product Link | Notes |
 | :--------: | :---------: | :---------: |
 | LV connector |  [AliExpress](https://a.aliexpress.com/_EugRLIo)   | 19pin 1192800MB 1192800FB BYD
-LV connecor Pre-wired  | https://a.aliexpress.com/_EHMKS3i
+| LV connecor Pre-wired  | https://a.aliexpress.com/_EHMKS3i | ----
 | HV cable | ---- | OEM numbers: 1364774600 & SC2EM215300A or SC2EM-2105300
 | HV cable PE5/PE6 | ---- | OEM numbers: EKEA2105300Y / 13568667-00
 

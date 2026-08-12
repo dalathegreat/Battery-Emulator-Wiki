@@ -25,6 +25,7 @@ Physical size;
 ![image](../images/renault-kangoo-02.png){ width="622" height="913" }
 
 ## Part numbers for Renault Kangoo batteries
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Battery communication connector, Yazaki 7282-8854-30 |  [AliExpress](https://de.aliexpress.com/item/4000174903780.html)   |
@@ -42,6 +43,7 @@ Grey Yazaki x
 | 12 | Blue | Can Low |
 
 Black Yazaki 7283-8854-30
+
 | Pin | Internal Wire | Function |
 | :--------: | :---------: | :---------: |
 | 1 | Black | Ground  |
@@ -49,6 +51,7 @@ Black Yazaki 7283-8854-30
 | 5 | Blue | Pre-charge relay (ground to close) |
 
 The 22kWh pack pinout (black connector)
+
 | Pin | Internal Wire | Function |
 | :--------: | :---------: | :---------: |
 | 1 | Red | fused +12V permanent to BMS  |
@@ -59,4 +62,5 @@ The 22kWh pack pinout (black connector)
 | 9 | Green | Power relay 2 - negativ (ground to close) |
 | 10 | Brown | Precharge relay (ground to close) |
 | 12 | Violet | Can Low |
+
 6 Violet and 12 White are twisted together (CAN bus)
