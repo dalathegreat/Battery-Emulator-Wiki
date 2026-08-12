@@ -1,5 +1,3 @@
-# SAJ inverter wiki page
-
 ## Types of compatible SAJ inverters
 [H2 Hybrid](https://global.saj-electric.com/solarenergy-detail/63)
 
