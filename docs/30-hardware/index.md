@@ -24,7 +24,7 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 
 ## How do I configure the software for my battery/inverter?
 
-<img alt="image" src="../images/30-hardware-index-01.png" />
+![image](../images/30-hardware-index-01.png)
 
 All the changes to the software are done on the _Change Settings_ page, which can be accessed thru the Webserver. At the top of this webpage, you can select which battery, inverter protocol and what interface they are connected to. If you are unsure which protocol you need, check the specific page for the battery/inverter you are using linked here in the Wiki
 

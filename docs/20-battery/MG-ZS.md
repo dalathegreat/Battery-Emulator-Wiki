@@ -10,10 +10,10 @@ There is overlap with some of the the MG5 packs, see [MG5](MG5-‐-Marvel-R.md) 
 
 ## Battery overview
 
-<img alt="image" src="../images/mg-zs-01.png" />
+![image](../images/mg-zs-01.png)
 
 
 
 ## Low voltage connector
 
-<img alt="image" src="../images/mg-zs-02.png" />
+![image](../images/mg-zs-02.png)

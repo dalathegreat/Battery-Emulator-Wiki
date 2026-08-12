@@ -37,7 +37,7 @@ The Solis inverter works via CAN. The LilyGo board can have both a CAN battery a
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-<img width="484" height="68" alt="image" src="../images/afore-01.png" />
+![image](../images/afore-01.png){ width="484" height="68" }
 
 In the Solis inverter settings, select the "BYD-HVS/HVM/HVL" option:
 
@@ -45,7 +45,7 @@ In the Solis inverter settings, select the "BYD-HVS/HVM/HVL" option:
 
 BYD_HVL option when looking directly at the inverter screen:
 
-<img width="1203" height="726" alt="image" src="../images/solis-05.png" />
+![image](../images/solis-05.png){ width="1203" height="726" }
 
 
 

@@ -27,7 +27,7 @@ Connect the following:
 ## Software configuration
 For this battery type, use the option called "Santa Fe PHEV" under the "Battery Protocol" setting
 
-<img width="603" height="74" alt="image" src="../images/hyundai-santa-fe-phev-04.png" />
+![image](../images/hyundai-santa-fe-phev-04.png){ width="603" height="74" }
 
 # Credits
 Credits go to maciek16c for the CAN findings!

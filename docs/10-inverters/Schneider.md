@@ -19,6 +19,6 @@ The Schneider inverter works via CAN. The CAN connection is done at the Gateway
 ## Which protocol to use
 For this inverter type, use the option called "Schneider V2 SE BMS CAN" under the "Inverter Protocol" setting
 
-<img width="493" height="71" alt="image" src="../images/schneider-03.png" />
+![image](../images/schneider-03.png){ width="493" height="71" }
 
 ## Installation examples

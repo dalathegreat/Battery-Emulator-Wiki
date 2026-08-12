@@ -90,7 +90,7 @@ The system will automatically go into a warning state incase a cellvoltage goes 
 
 On some battery types (Nissan LEAF, Renault Zoe Gen2, more), we visualize the balancing status that the BMS sends in the graph view. You will see cyan colored bars for cells that balance, along with a text saying BALANCING when you hover over the cell.
 
-<img width="954" height="312" alt="image" src="../../images/webserver-guide-13.png" />
+![image](../../images/webserver-guide-13.png){ width="954" height="312" }
 
 ## Perform OTA Update
 
@@ -116,7 +116,7 @@ This protection level is not particularly robust (Digest access authentication),
 
 ### Inverter config
 
-<img width="573" height="247" alt="image" src="../../images/webserver-guide-14.png" />
+![image](../../images/webserver-guide-14.png){ width="573" height="247" }
 
 From the appropriate dropdown lists select the Inverter protocol and the interface you wish the Emulator to talk with your inverter.
 
@@ -132,7 +132,7 @@ From the appropriate dropdown lists select the Inverter protocol and the interfa
 
 ### Battery
 
-<img width="570" height="164" alt="image" src="../../images/webserver-guide-15.png" />
+![image](../../images/webserver-guide-15.png){ width="570" height="164" }
 
 From the appropriate dropdown lists select the driver you'd like to use when communicating with your battery. An intersting type is **Fake battery for testing purposes** which simulates the setup of a single, double or triple battery towards the inverter and the integration plaftforms. This "battery" offers a "Fake battery voltage:" configurable option at the bottom of the page: you can simulate various SOCs, even balancing of simulated cells if you set SOC above 85%.
 

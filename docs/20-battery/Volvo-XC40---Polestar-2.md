@@ -26,7 +26,7 @@ The following SPA platform batteries are supported, checkbox on those confirmed 
 ## Software configuration
 For this battery type, use the option called "Volvo / Polestar 69/78kWh SPA battery" under the "Battery Protocol" setting
 
-<img width="592" height="72" alt="image" src="../images/volvo-xc40-polestar-2-11.png" />
+![image](../images/volvo-xc40-polestar-2-11.png){ width="592" height="72" }
 
 ## Buying tips
 
@@ -88,6 +88,7 @@ DC/DC connected:
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch 32324494 |  [Volvoshop](https://www.volvopartswebstore.com/products/volvo/Drive-Motor-Battery-Pack-Disconnect-Switch/17175319/32324494.html?srsltid=AfmBOorBmq44EIa0XG8wFXfUVbIYV8hX9a3dqO7GA3DVw_9dIVlpyGXg)   |
@@ -120,7 +121,7 @@ Another thing to test if issue with comm is to leave pin 24 (+12V) disconnected 
 ## Reading DTCs
 To read Diagnostic Trouble Codes, go to the More Battery Info page and press Read DTC
 
-<img width="543" height="432" alt="image" src="../images/volvo-xc40-polestar-2-12.png" />
+![image](../images/volvo-xc40-polestar-2-12.png){ width="543" height="432" }
 
 
 ## Unlocking a permanently locked BMS
@@ -129,26 +130,26 @@ If the BMS is permanently locked, replacing the BMS is the easiest solution.
 
 There is a chance that reflashing the BMS can help, but the success rate is low. Some .hex files available on Discord
 
-<img alt="image" src="../images/volvo-xc40-polestar-2-13.png" />
+![image](../images/volvo-xc40-polestar-2-13.png)
 
 Miniwiggler v3 dap attached to BMS board via PCI-e from old motherboard to avoid soldering
 
-<img alt="image" src="../images/volvo-xc40-polestar-2-14.png" />
+![image](../images/volvo-xc40-polestar-2-14.png)
 
-<img width="900" height="485" alt="image" src="../images/volvo-xc40-polestar-2-15.png" />
+![image](../images/volvo-xc40-polestar-2-15.png){ width="900" height="485" }
 
-<img width="621" height="480" alt="image" src="../images/volvo-xc40-polestar-2-16.png" />
+![image](../images/volvo-xc40-polestar-2-16.png){ width="621" height="480" }
 
-<img width="624" height="475" alt="image" src="../images/volvo-xc40-polestar-2-17.png" />
+![image](../images/volvo-xc40-polestar-2-17.png){ width="624" height="475" }
 
-<img width="624" height="475" alt="image" src="../images/volvo-xc40-polestar-2-18.png" />
+![image](../images/volvo-xc40-polestar-2-18.png){ width="624" height="475" }
 
 Flashing tips;
 
 - External 5V to VREF and GND is required
 - If it is toggling "Device has no ID register", thhe supplied current might be too low. You must apply external 5v with around 1A
 - If you cannot make connection with memtool, it could be that access is blocked via code, see picture below. password is unknown until now, if blocked like picture then BECM board needs to be swapped
-<img width="630" height="262" alt="image" src="../images/volvo-xc40-polestar-2-19.png" />
+![image](../images/volvo-xc40-polestar-2-19.png){ width="630" height="262" }
 
 
 

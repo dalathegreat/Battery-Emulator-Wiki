@@ -25,7 +25,7 @@ Example, Zoe battery being tested with a Stark CMR and Lead acid battery before 
 ## Software configuration
 For this battery type, use the option called "Renault Zoe Gen1 22/40kWh" under the "Battery Protocol" setting
 
-<img width="591" height="79" alt="image" src="../images/renault-zoe-gen1-11.png" />
+![image](../images/renault-zoe-gen1-11.png){ width="591" height="79" }
 
 Note that you can also enable "Contactor Control via GPIO" to automate the closing/opening of contactors
 

@@ -13,12 +13,12 @@ A checkbox indicates that the battery has been tested and confirmed working
 - E-Transit Model years 2022-present
    - 66kWh net, 77kWh gross ✅
    - 89kWh net :question: 
-<img width="674" height="320" alt="Battery Dimensions" src="../images/ford-mach-e-01.jpg" />
+![Battery Dimensions](../images/ford-mach-e-01.jpg){ width="674" height="320" }
 
 98.8kWh AWD Battery, from front side, showing battery dimensions and connections. 
 Red is overall width, Yellow is overall length, Purple is height of short area, Pink is height of the hump to bottom of battery.
 
-<img alt="image" src="../images/ford-mach-e-02.png" />
+![image](../images/ford-mach-e-02.png)
 
 75kWh battery, from backside, showing only one HV connector
 
@@ -44,11 +44,11 @@ Detailed LV connector C144 pin description
 
 [C144.pdf](https://github.com/user-attachments/files/22634843/C144.pdf)
 
-<img width="450" alt="image" src="../images/ford-f-150-lightning-03.png" />
+![image](../images/ford-f-150-lightning-03.png){ width="450" }
 
-<img width="450" alt="image" src="../images/ford-f-150-lightning-04.png" />
+![image](../images/ford-f-150-lightning-04.png){ width="450" }
 
-[<img width="900" alt="MachE-2 SMA inverter setup" src="../images/ford-f-150-lightning-05.png" />](../images/ford-f-150-lightning-05.png)
+[![MachE-2 SMA inverter setup](../images/ford-f-150-lightning-05.png){ width="900" }](../images/ford-f-150-lightning-05.png)
 
 
 For communication only:
@@ -81,12 +81,12 @@ Note: The battery does NOT contain a terminating resistor, so it is a good idea 
 
 ## Wiring, High voltage
 
-<img width="930" height="382" alt="image" src="../images/ford-mach-e-06.png" />
+![image](../images/ford-mach-e-06.png){ width="930" height="382" }
 
 ### High voltage interlocks
 Jumpers need to be fitted on interlock detection pins, to make the battery believe the HV connectors are seated OK. The largest DC fast charge port does NOT need jumpering.
 
-<img width="547" height="274" alt="image" src="../images/ford-mach-e-07.png" />
+![image](../images/ford-mach-e-07.png){ width="547" height="274" }
 
 ## High voltage Isolation Monitoring
 
@@ -114,12 +114,12 @@ The label should be weather-resistant, difficult to remove accidentally and posi
 
 **Overview — location of the disconnected and insulated isolation-monitoring wire above the BMS:**
 
-![Overview showing the disconnected isolation-monitoring wire above the Ford BMS]<img width="600" height="800" alt="IMG_0215" src="../images/ford-mach-e-08.jpg" />
+![Overview showing the disconnected isolation-monitoring wire above the Ford BMS]![IMG_0215](../images/ford-mach-e-08.jpg){ width="600" height="800" }
 
 **Detail — disconnected wire protected by red insulation:**
 
 ![Close-up of the disconnected Ford isolation-monitoring wire with red insulation]
-<img width="900" height="675" alt="IMG_0214" src="../images/ford-mach-e-09.jpg" />
+![IMG_0214](../images/ford-mach-e-09.jpg){ width="900" height="675" }
 
 ## Cell balancing
 
@@ -134,7 +134,7 @@ The following points have been confirmed during testing:
 - Balancing starts after the pack reaches a high state of charge with a significant cell/module deviation.
 - Balancing continued while the pack was discharged at approximately 1-3 kW. It remained active after the cells returned to the normal flat operating region around 3.3 V with an instantaneous cell-voltage spread of only approximately 3 mV.
 - Continued balancing at only approximately 3 mV strongly suggests that the BECM is not controlling maintenance balancing solely from instantaneous maximum-minus-minimum cell voltage. The leading hypothesis is that it uses its calculated/learned module-SOC variation, or a balancing quantity derived from it, to decide how long the selected cells require bleeding.
-<img width="363" height="61" alt="rebalance active and deviation reported" src="../images/ford-mach-e-10.png" />
+![rebalance active and deviation reported](../images/ford-mach-e-10.png){ width="363" height="61" }
 
 - Removing all optional experimental charging CAN frames did not stop balancing. The standard Ford Battery Emulator CAN implementation is sufficient once the BECM has decided that balancing is required.
 - Actual bleed-resistor operation was confirmed independently by observing temperatures of approximately 60 °C on the active balancing resistors.
@@ -150,7 +150,7 @@ Useful BECM diagnostic data:
 - DID `0x483E` — Hybrid battery variation in state of charge between battery modules. This is a big-endian 16-bit value with a scale of `0.002%` per count. For example, raw value `0x01D4` is 468 counts, or `0.936%`, which FORScan displays as `0.94%`.
 
 The `0x483E` module-SOC variation is not the same measurement as subtracting the lowest instantaneous cell voltage from the highest. This distinction is particularly important for LFP cells because their voltage curve is very flat through most of their usable SOC range and becomes steep near the top.
-<img width="787" height="261" alt="balancing active even after mv reduces" src="../images/ford-mach-e-11.png" />
+![balancing active even after mv reduces](../images/ford-mach-e-11.png){ width="787" height="261" }
 
 The `Successfully` state has also been observed when the pack had not been charged high enough for the upper LFP voltage knee to expose the larger imbalance. This may mean that the BECM considered the maintenance-rebalance request complete or found no balancing action necessary under those conditions. The exact completion criteria remain to be confirmed.
 
@@ -178,7 +178,7 @@ If the battery 12 V is powered up with an interlock not connected when you try t
 
 This requires the DTC error clearing and then contactors will immediately close. DTC clear can be accessed from the More Battery Info page
 
-<img width="376" height="81" alt="image" src="../images/ford-mach-e-12.png" />
+![image](../images/ford-mach-e-12.png){ width="376" height="81" }
 
 DTC Reading is still under development
 

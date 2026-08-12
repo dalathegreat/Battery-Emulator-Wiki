@@ -20,7 +20,7 @@ The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged dif
 ## Software configuration
 For this battery type, use the option called "Nissan LEAF battery" under the "Battery Protocol" setting
 
-<img width="598" height="146" alt="image" src="../images/nissan-leaf-e-nv200-21.png" />
+![image](../images/nissan-leaf-e-nv200-21.png){ width="598" height="146" }
 
 * If you are using the 2011-2012 24kWh battery, you can enable "Interlock required" in the software for extra safety. Then the software checks that high voltage connectors are plugged in before you can start.
    * If you use "Interlock required" on a 2013-2023 battery, both HV plugs need to be seated (80kW and 6kW heater).
@@ -57,7 +57,7 @@ Battery Emulator hardware can act on its own, and turn on/off the contactors/pre
 
 To enable the feature in the software, Enable the "Contactor control via GPIO" option on the Settings page
 
-<img width="505" height="42" alt="image" src="../images/nissan-leaf-e-nv200-22.png" />
+![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
 
 To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
 - (LilyGo) Precharge pin 25 - Precharge SSR + input
@@ -67,7 +67,7 @@ To keep things simple, it is recommended to use Solid State Relays (SSR). These 
 
 OPTIONAL: If you use SSR relays with the LilyGo, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM
 
-<img width="624" height="118" alt="image" src="../images/nissan-leaf-e-nv200-23.png" />
+![image](../images/nissan-leaf-e-nv200-23.png){ width="624" height="118" }
 
 ![bild](../images/nissan-leaf-e-nv200-07.png)
 
@@ -90,6 +90,7 @@ Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most f
 
 ## Part numbers for Nissan LEAF batteries
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch (2011-2012) 2971C13NA0B |  [Ebay](https://www.ebay.com/sch/i.html?_nkw=fuse+2971C13NA0B)   |
@@ -163,7 +164,7 @@ The 2013-2023 batteries have an external high voltage heater port. The socket ca
 
 Here is a [3D printed SDS for 2013-2025 batteries](https://www.printables.com/model/1337831-nissan-leaf-ze1-service-disconnect-plug) (AZE0, ZE1)
 
-<img width="900" height="675" alt="3d_AZE0_ZE1_SDS" src="../images/nissan-leaf-e-nv200-24.jpeg" />
+![3d_AZE0_ZE1_SDS](../images/nissan-leaf-e-nv200-24.jpeg){ width="900" height="675" }
 
 The link contains the drawing of the copper contact part, you can cut yourself or ask a workshop to cut and silver-plate it.
 
@@ -218,7 +219,7 @@ To see some results, follow these steps after you do the reset (in normal ambien
 - Watch how the values of **Cell Voltage Delta** and **SOC (real)** change over time as approaching full and empty
 
 For example:
-<img width="2200" height="1000" alt="image" src="../images/nissan-leaf-e-nv200-25.png" />
+![image](../images/nissan-leaf-e-nv200-25.png){ width="2200" height="1000" }
 
 Try to find the widest time area of **Cell Voltage Delta** where the value changes least - that's the most comfortable and safe "zone" for the cells to operate. Look at the **SOH** graph in the same time period - that should give you the min and the max percentage of SOC rescaling you can set in Battery Emulator, to prevent the battery to go in the high cell voltage delta zone. Take into account the absolute minimum SOC value your inverter is willing to go until (eg. Fronius allows discharging to 5% only, doesn't go below), you can reduce min SOC rescale about by that amount. 
 

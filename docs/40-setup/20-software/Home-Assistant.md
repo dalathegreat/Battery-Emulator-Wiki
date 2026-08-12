@@ -9,7 +9,7 @@ Using the [Plotly Graph Card](https://github.com/dbuezas/lovelace-plotly-graph-c
 
 ### 2D cell monitor with balancing info
 
-<img width="504" height="327" alt="image" src="../../images/home-assistant-01.png" />
+![image](../../images/home-assistant-01.png){ width="504" height="327" }
 
 Add to your Home Assistant `configuration.yaml` a manual MQTT sensor to read all the cell data of the battery into a single sensor's attributes (and a recorder exclusion to save database from load):
 
@@ -103,7 +103,7 @@ config:
 
 ### 3D Cell monitor (in relation with time) for 96 cells
 
-<img width="606" height="542" alt="image" src="../../images/home-assistant-02.png" />
+![image](../../images/home-assistant-02.png){ width="606" height="542" }
 
 ```yaml
 type: custom:plotly-graph

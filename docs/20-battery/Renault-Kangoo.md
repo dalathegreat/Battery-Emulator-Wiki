@@ -14,7 +14,7 @@ There are 3x batteries available for the Kangoo:
 * 44kWh 2022+
    * Pinout unknown, NOT SUPPORTED YET since nobody has tested it
 
-<img width="393" height="91" alt="image" src="../images/renault-kangoo-01.png" />
+![image](../images/renault-kangoo-01.png){ width="393" height="91" }
 
 Physical size;
 * Weight 295 kg (22kWh)
@@ -25,7 +25,7 @@ Physical size;
 
 44kWh pack example:
 
-<img width="622" height="913" alt="image" src="../images/renault-kangoo-02.png" />
+![image](../images/renault-kangoo-02.png){ width="622" height="913" }
 
 
 ## Part numbers for Renault Kangoo batteries
@@ -46,6 +46,7 @@ Grey Yazaki x
 | 12 | Blue | Can Low |
 
 Black Yazaki 7283-8854-30
+
 | Pin | Internal Wire | Function |
 | :--------: | :---------: | :---------: |
 | 1 | Black | Ground  |
@@ -53,6 +54,7 @@ Black Yazaki 7283-8854-30
 | 5 | Blue | Pre-charge relay (ground to close) |
 
 The 22kWh pack pinout (black connector)
+
 | Pin | Internal Wire | Function |
 | :--------: | :---------: | :---------: |
 | 1 | Red | fused +12V permanent to BMS  |

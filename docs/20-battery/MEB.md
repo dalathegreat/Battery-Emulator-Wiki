@@ -20,28 +20,28 @@ The capacity of the battery is determined by the number of modules. Each module 
 | 9       | 2p12s         | 61 kWh   | 108             |
 | 12      | 3p8s          | 82 kWh   | 96              |
 
-<details>
+<details markdown="1">
 <summary><strong>Vehicles using the MEB platform</strong></summary>
 
 - Audi Q4 e-tron (2021–present)
-  - Audi Q4 Sportback e-tron (2021–present)
+- Audi Q4 Sportback e-tron (2021–present)
 - Audi Q5 e-tron (2021–present)
 - Cupra Born (2021–present)
 - Cupra Tavascan (2023–present)
-  - Volkswagen ID. UNYX (2024–present)
+- Volkswagen ID. UNYX (2024–present)
 - Ford Explorer EV (2024–present)
 - Ford Capri EV (2024–present)
 - Škoda Enyaq iV (2020–present)
-  - Škoda Enyaq Coupé iV (2022–present)
+- Škoda Enyaq Coupé iV (2022–present)
 - Škoda Elroq iV (2025–present)
 - Volkswagen ID.3 (2019–present)
 - Volkswagen ID.4 (2020–present)
-  - Volkswagen ID.5 (2021–present)
+- Volkswagen ID.5 (2021–present)
 - Volkswagen ID.6 (2021–present)
 - Volkswagen ID.7 (2023–present)
-  - Volkswagen ID.7 Tourer (2024–present)
+- Volkswagen ID.7 Tourer (2024–present)
 - Volkswagen ID. Buzz (2022–present)
-  - Volkswagen ID. Buzz Cargo (2022–present)
+- Volkswagen ID. Buzz Cargo (2022–present)
 
 </details>
 
@@ -57,20 +57,20 @@ For even more info on the MEB battery, you can use ODIS to read out the full err
 
 For this battery type, use the option **"Volkswagen Group MEB platform via CAN-FD"** under the **Battery Protocol** setting.
 
-<img width="584" alt="Battery Protocol setting" src="../images/meb-01.png" />
+![Battery Protocol setting](../images/meb-01.png){ width="584" }
 
 ## LV connector
 
-<img width="600" alt="MEB connector" src="../images/meb-02.png" />
+![MEB connector](../images/meb-02.png){ width="600" }
 
 For communication with the battery, **slot C** must be used.
 You can either reuse an existing connector or buy a new one.
 
-<img width="500" alt="Slot C female" src="../images/meb-03.png" />
+![Slot C female](../images/meb-03.png){ width="500" }
 
 The original TE connector is restricted, no information will be given by TE, but it can be found via AliExpress or Alibaba (some will arrive without terminals/receptacles — ask the seller up front). The easiest and quickest way to get the connector housing is to buy it as a spare part from a VAG dealer.
 
-<img width="500" alt="VAG part 5Q0973733A" src="../images/meb-04.jpg" />
+![VAG part 5Q0973733A](../images/meb-04.jpg){ width="500" }
 
 - **Connector housing** (complete spare part kit including connector cover etc., but without pins):
   - TE part: `0-2315221-1` or `5-2315221-1`
@@ -83,7 +83,7 @@ The pins can also be requested directly from TE.com as a (free) sample.
 
 ## HV connector
 
-<img width="600" alt="MEB HV connector description" src="../images/meb-05.png" />
+![MEB HV connector description](../images/meb-05.png){ width="600" }
 
 The connector marked **AC Charger** is wired in parallel to the **motor inverter** port. The DC-charging port has its own contactors.
 
@@ -102,9 +102,9 @@ If reusing cables from a donor car:
 
 ## Wiring details
 
-<img width="600" alt="Slot C pin description" src="../images/meb-06.png" />
-<img width="600" alt="Slot C details" src="../images/meb-07.png" />
-<img width="600" alt="Wiring example" src="../images/meb-08.png" />
+![Slot C pin description](../images/meb-06.png){ width="600" }
+![Slot C details](../images/meb-07.png){ width="600" }
+![Wiring example](../images/meb-08.png){ width="600" }
 
 An AWG24 ethernet cable seems to work well: one pair for CAN, one for the pilot line, two pairs for 12 V — with two wires crimped together on pin 1 for GND.
 
@@ -126,7 +126,7 @@ The same approach is required when the battery is outside the car and you want t
 
 You can check if your battery fulfills the required preconditions by opening the **More Battery Info** page. This is what a functional battery looks like, with the contactors ON:
 
-<img width="600" alt="Status" src="../images/meb-09.png" />
+![Status](../images/meb-09.png){ width="600" }
 
 ### Hardware list
 
@@ -146,8 +146,8 @@ You can check if your battery fulfills the required preconditions by opening the
 
 Stark CMR based, automatic precharge enabled.
 
-<img width="600" alt="SW settings 1" src="../images/meb-10.png" />
-<img width="600" alt="SW settings 2" src="../images/meb-11.png" />
+![SW settings 1](../images/meb-10.png){ width="600" }
+![SW settings 2](../images/meb-11.png){ width="600" }
 
 ### Strange behaviors
 
@@ -189,8 +189,8 @@ BATTERY_TYPE 131
 The connection is indicated as a VDA c-lock connection size NW16.
 After some searching i found these at Autodock for a few Euro's.
 See picture below, they fit perfect.
-<img width="600" height="700" alt="20260526_165440" src="../images/meb-12.jpg" />
-<img width="600" height="700" alt="20260526_165433" src="../images/meb-13.jpg" />
+![20260526_165440](../images/meb-12.jpg){ width="600" height="700" }
+![20260526_165433](../images/meb-13.jpg){ width="600" height="700" }
 
 
 
@@ -225,127 +225,127 @@ See picture below, they fit perfect.
 ## Clearing the crash log from MEB using ODIS V25
 
 1. Go to **Self-diagnoses**. ODIS will try to detect the VIN but will fail — this can take some time, just wait. When it fails, add a VIN. Any VIN should work, e.g. `WVGZZZE2ZPE010564`. Then start **OBD** to launch ODIS.
-   <img width="900" alt="ODIS step 1" src="../images/meb-14.png" />
+   ![ODIS step 1](../images/meb-14.png){ width="900" }
 
 2. After starting ODIS you get this screen, where you can select the vehicle.
-   <img width="900" alt="ODIS step 2" src="../images/meb-15.png" />
+   ![ODIS step 2](../images/meb-15.png){ width="900" }
 
 3. We need to access `008C` — just double-click it. Sometimes this throws an error; when it does, just restart the ODIS gateway and continue.
-   <img width="900" alt="ODIS step 3" src="../images/meb-16.png" />
+   ![ODIS step 3](../images/meb-16.png){ width="900" }
 
 4. After selecting `008C` we get the following screen.
-   <img width="900" alt="ODIS step 4" src="../images/meb-17.png" />
+   ![ODIS step 4](../images/meb-17.png){ width="900" }
 
 5. Here we can see the crash log is active.
-   <img width="900" alt="ODIS step 5" src="../images/meb-18.png" />
+   ![ODIS step 5](../images/meb-18.png){ width="900" }
 
 6. Go to **Access Authorization** and press the small green arrow.
-   <img width="900" alt="ODIS step 6" src="../images/meb-19.png" />
+   ![ODIS step 6](../images/meb-19.png){ width="900" }
 
 7. To get access, use code `20103` and press **Implement**.
-   <img width="900" alt="ODIS step 7" src="../images/meb-20.png" />
+   ![ODIS step 7](../images/meb-20.png){ width="900" }
 
 8. Switch to **Basic settings** and press the small green arrow again. Then we can start clearing the crash log memory.
-   <img width="900" alt="ODIS step 8" src="../images/meb-21.png" />
+   ![ODIS step 8](../images/meb-21.png){ width="900" }
 
 9. In Basic settings, select **DTC memory entry deletion trigger** and move it to the right with the arrows in the middle. Press **Next** (arrow bottom-right above the red cross), and **Next** again on the following page.
-   <img width="900" alt="ODIS step 9" src="../images/meb-22.png" />
+   ![ODIS step 9](../images/meb-22.png){ width="900" }
 
 10. You will see many entries, but the one we need is **Crash signal**. Search for it and move it to the right. **Only clear this one!**
-    <img width="900" alt="ODIS step 10" src="../images/meb-23.png" />
+    ![ODIS step 10](../images/meb-23.png){ width="900" }
 
 11. Press **Start** and go back to **DTC Memory** via the small arrow top-right.
-    <img width="900" alt="ODIS step 11" src="../images/meb-24.png" />
+    ![ODIS step 11](../images/meb-24.png){ width="900" }
 
 12. Finally, to clear out the crash log press **OBD-System** and **OK** on the next screen.
-    <img width="900" alt="ODIS step 12" src="../images/meb-25.png" />
+    ![ODIS step 12](../images/meb-25.png){ width="900" }
 
 13. If everything went successfully, there should be no more crash log after pressing **Update NOW**.
-    <img width="900" alt="ODIS step 13" src="../images/meb-26.png" />
+    ![ODIS step 13](../images/meb-26.png){ width="900" }
 
 ### Battery disassembly and replacing the pyrofuse
 
 1. Remove all the small Torx screws (TX20) around the top. There are many, so make use of an electric impact screwdriver.
-   <img width="480" alt="Step 1" src="../images/meb-27.jpg" />
+   ![Step 1](../images/meb-27.jpg){ width="480" }
 
 2. Remove the larger big-head bolts (TX30), coated in paraffin. Remove the 4 big lug nuts (28 mm). They are really tight — a large impact wrench is advised.
-   <img width="480" alt="Step 2" src="../images/meb-28.jpg" />
+   ![Step 2](../images/meb-28.jpg){ width="480" }
 
 3. Remove the lid so you can access the BMS, and remove its orange protection cap (loose fit — just grab and lift).
-   <img width="480" alt="Step 3" src="../images/meb-29.jpg" />
+   ![Step 3](../images/meb-29.jpg){ width="480" }
 
 4. BMS top view.
-<img width="480" alt="Step 4" src="../images/meb-30.jpg" />
+![Step 4](../images/meb-30.jpg){ width="480" }
 
 5. Remove both HV bus bars, preferably with insulated tools (TX30).
-<img width="480" alt="Step 5" src="../images/meb-31.jpg" />
+![Step 5](../images/meb-31.jpg){ width="480" }
 
 6. Pull the red lid up to unlock the connector and get it out of the BMS.
-<img width="480" alt="Step 6" src="../images/meb-32.jpg" />
+![Step 6](../images/meb-32.jpg){ width="480" }
 
 7. Push both sides of this connector and pull it up.
-<img width="480" alt="Step 7" src="../images/meb-33.jpg" />
+![Step 7](../images/meb-33.jpg){ width="480" }
 
 8. The black connectors just have a locking latch — push them to the side and lightly pull to remove (mark them **R** and **L** to avoid swapping). The pyrofuse can be stuck; wiggle with a small screwdriver.
-<img width="480" alt="Step 8" src="../images/meb-34.jpg" />
+![Step 8](../images/meb-34.jpg){ width="480" }
 
 9. Loosen all 4 long bolts in the corners of the BMS. Loosen the 4 black bolts of the bus bar. Put a small screwdriver under the BMS to loosen the adhesive thermal paste, and push it as far to the back as possible to create space for the bus bar.
-<img width="480" alt="Step 9" src="../images/meb-35.jpg" />
+![Step 9](../images/meb-35.jpg){ width="480" }
 
 10. When you know how, it’s easy. Spoiler: lift the bus bar vertically. 🙂
-<img width="480" alt="Step 10" src="../images/meb-36.jpg" />
+![Step 10](../images/meb-36.jpg){ width="480" }
 
 11. All clear to take it out.
-<img width="480" alt="Step 11" src="../images/meb-37.jpg" />
+![Step 11](../images/meb-37.jpg){ width="480" }
 
 12. There are small locking hooks on the left and right. Push them in with a screwdriver while you pull upwards. You can use a screwdriver on the corners to push the lid up. (Keep the locking hooks in your line of attention!)
-<img width="480" alt="Step 12a" src="../images/meb-38.jpg" />
-<img width="480" alt="Step 12b" src="../images/meb-39.jpg" />
+![Step 12a](../images/meb-38.jpg){ width="480" }
+![Step 12b](../images/meb-39.jpg){ width="480" }
 
 13. Opened.
-<img width="480" alt="Step 13" src="../images/meb-40.jpg" />
+![Step 13](../images/meb-40.jpg){ width="480" }
 
 14. The culprit: defective pyrofuse.
-<img width="480" alt="Step 14" src="../images/meb-41.jpg" />
+![Step 14](../images/meb-41.jpg){ width="480" }
 
 15. When disassembled, measure your pyrofuse. There are 2 dimensions: one 83 mm long and one 85 mm long. Holes of 7 mm at 63 vs 70 mm heart-to-heart. A nickel-plated grounding bar of 20 mm wide and 6 mm thick was used, capable of 360 A.
-<img width="480" alt="Step 15a" src="../images/meb-42.jpg" />
-<img width="480" alt="Step 15b" src="../images/meb-43.jpg" />
-<img width="480" alt="Step 15c" src="../images/meb-44.jpg" />
+![Step 15a](../images/meb-42.jpg){ width="480" }
+![Step 15b](../images/meb-43.jpg){ width="480" }
+![Step 15c](../images/meb-44.jpg){ width="480" }
 
 16. Note the differences.
-<img width="480" alt="Step 16" src="../images/meb-45.jpg" />
+![Step 16](../images/meb-45.jpg){ width="480" }
 
 17. Try to recover the pins of the pyrofuse.
-<img width="480" alt="Step 17" src="../images/meb-46.jpg" />
+![Step 17](../images/meb-46.jpg){ width="480" }
 
 18. Bus bar in place.
-<img width="480" alt="Step 18a" src="../images/meb-47.jpg" />
-<img width="480" alt="Step 18b" src="../images/meb-48.jpg" />
-<img width="480" alt="Step 18c" src="../images/meb-49.jpg" />
-<img width="480" alt="Step 18d" src="../images/meb-50.jpg" />
+![Step 18a](../images/meb-47.jpg){ width="480" }
+![Step 18b](../images/meb-48.jpg){ width="480" }
+![Step 18c](../images/meb-49.jpg){ width="480" }
+![Step 18d](../images/meb-50.jpg){ width="480" }
 
 19. Close it up.
-<img width="480" alt="Step 19" src="../images/meb-51.jpg" />
+![Step 19](../images/meb-51.jpg){ width="480" }
 
 20. The recovered pins connected to a 2.7 Ω resistor, insulated with shrink tube.
-<img width="480" alt="Step 20" src="../images/meb-52.jpg" />
+![Step 20](../images/meb-52.jpg){ width="480" }
 
 21. Install it on the pyrofuse connector.
-<img width="480" alt="Step 21" src="../images/meb-53.jpg" />
+![Step 21](../images/meb-53.jpg){ width="480" }
 
 22. Put a shrink tube on the connector and resistor so it cannot come loose.
-<img width="480" alt="Step 22a" src="../images/meb-54.jpg" />
-<img width="480" alt="Step 22b" src="../images/meb-55.jpg" />
+![Step 22a](../images/meb-54.jpg){ width="480" }
+![Step 22b](../images/meb-55.jpg){ width="480" }
 
 23. Install everything in reversed order. Don’t forget the cable ties to keep it all in place.
-<img width="480" alt="Step 23" src="../images/meb-56.jpg" />
+![Step 23](../images/meb-56.jpg){ width="480" }
 
 24. Install the 2 HV bus bars. Don’t be afraid of a little protest — it’s charging the capacitors and electronics. (Be very careful though — HV DC is not to be joked with!)
-<img width="480" alt="Step 24" src="../images/meb-57.jpg" />
+![Step 24](../images/meb-57.jpg){ width="480" }
 
 25. Put the orange cap on and assemble the lid again. (Testing first is advised.)
-<img width="480" alt="Step 25" src="../images/meb-58.jpg" />
+![Step 25](../images/meb-58.jpg){ width="480" }
 
 Good luck, and have fun with your beautiful battery! 🔋
 
@@ -371,7 +371,7 @@ Good luck, and have fun with your beautiful battery! 🔋
 - Normal fuse, like _(TODO: add type number)_ and a 2.5 Ω resistor to the BMS connection (can replace the external fuse)
 - Jumper bridge (DIY) and a 2.5 Ω resistor to the BMS connection (external fuse still required)
 
-<img width="600" alt="Pyrofuse" src="../images/meb-59.jpg" />
+![Pyrofuse](../images/meb-59.jpg){ width="600" }
 
 There are 2 different lengths of pyrofuses used: 63 mm and 70 mm (screw holes center-to-center). _(Note: my pack only had 1 pyrofuse.)_
 
@@ -388,7 +388,7 @@ There are 2 different lengths of pyrofuses used: 63 mm and 70 mm (screw holes ce
 Below is the connection diagram for the setup. When Wi-Fi APs are used, make sure both Lilygos have a different name.
 Remove the 2 × 60 Ω resistors in series.
 
-<img width="700" alt="Lilygo ODIS setup" src="../images/meb-60.png" />
+![Lilygo ODIS setup](../images/meb-60.png){ width="700" }
 
 ### Short unlock procedure
 
@@ -428,7 +428,7 @@ For the **8s3p** module you need the **JK BMS B2A16S** active balancer, as it ha
 
 For the **12s2p** it doesn't really matter which one you use, as the module voltage is high enough and within range of both balancers.
 
-<img width="500" alt="JK B2A16S" src="../images/meb-61.jpg" />
+![JK B2A16S](../images/meb-61.jpg){ width="500" }
 
 ## Making the connectors
 
@@ -438,17 +438,17 @@ The white connector is the module connector for the **8s** module; the black con
 
 Cut the wires of the blue/brown connector and solder them to the corresponding leads of the balancer. The wire of the last positive cell also needs to be connected to the **PWR** input of the balancer.
 
-<img width="600" alt="20s battery wiring diagram" src="../images/meb-62.jpg" />
+![20s battery wiring diagram](../images/meb-62.jpg){ width="600" }
 
 ## Module layout
 
 The battery modules follow the order they are plugged into the CMU modules. You can see the alternating brown / blue / … connectors indicating the module order.
 
-<img width="600" alt="MEB module order" src="../images/meb-63.jpg" />
+![MEB module order](../images/meb-63.jpg){ width="600" }
 
 In this example, cells 31, 33, 49, 65, 72 and 88 need to be balanced (or modules 4, 5, 7, 9 and 11).
 
-<img width="600" alt="MEB cell monitor" src="../images/meb-64.png" />
+![MEB cell monitor](../images/meb-64.png){ width="600" }
 
 ## Steps
 
@@ -471,11 +471,11 @@ In this example, cells 31, 33, 49, 65, 72 and 88 need to be balanced (or modules
 7. Enable balancing and wait. The 120 mV imbalance of cell 31 took about 8 days to fully equalize.
 8. Reassemble the battery when finished. Make sure to follow the torque specs when tightening the bolts ⬇️
 
-<img width="600" alt="MEB torque specifications" src="../images/meb-65.png" />
+![MEB torque specifications](../images/meb-65.png){ width="600" }
 
 Example of balancing current after connecting the modules in parallel ⬇️
 
-<img width="600" alt="Balancing current example" src="../images/meb-66.jpg" />
+![Balancing current example](../images/meb-66.jpg){ width="600" }
 
 ### Extra info
 

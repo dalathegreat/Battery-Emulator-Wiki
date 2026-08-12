@@ -34,7 +34,7 @@ For this battery type, use the option called "MG4 battery" under the "Battery co
 
 ![be](../images/mg4-01.jpg)
 
-<img width="782" height="146" alt="image" src="../images/mg4-08.png" />
+![image](../images/mg4-08.png){ width="782" height="146" }
 
 ## Connectors
 
@@ -48,7 +48,7 @@ The MG4 battery has an HV connector (Orange), and a 12 pin Low Voltage signal co
 
 ![39d3687d-7d61-4841-a597-aa59d4bf7a2a](../images/mg4-03.jpg)
 
-<img width="545" height="382" alt="MG4_LV" src="../images/mg4-09.png" />
+![MG4_LV](../images/mg4-09.png){ width="545" height="382" }
 
 This is the Low voltage connector plug: https://www.aliexpress.com/item/1005004677986133.html
 
@@ -56,7 +56,7 @@ The one you need is the female.
 
 There's are non-wired versions avaialable too for doing your own crimping but this looks easier to implement.
 
-<img width="344" height="348" alt="alilvplug" src="../images/mg4-10.png" />
+![alilvplug](../images/mg4-10.png){ width="344" height="348" }
 
 
 Lots of useful information here: [MG4 ESS SM.pdf](https://github.com/user-attachments/files/25114213/MG4.ESS.SM.pdf)

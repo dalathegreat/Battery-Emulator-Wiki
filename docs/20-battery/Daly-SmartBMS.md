@@ -20,7 +20,7 @@ But also directly via CAN to Growatt SPH LV and HV inverters.
 ## Battery Emulator Configuration
 For this battery type, use the option called "DALY RS485" under the "Battery Protocol" setting. Also make sure to configure the interface to RS485.
 
-<img width="795" height="522" alt="Daly config options" src="../images/daly-smartbms-08.png" />
+![Daly config options](../images/daly-smartbms-08.png){ width="795" height="522" }
 
 The Daly BMS does not communicate maximum charging voltages or currents. We calculate our own based on SoC, Voltage and Temperature.
 You can adjust these limits using the configuration options shown in the screenshot above using the guidelines below. Refer to your cell datasheet in order to determine safe values.
@@ -60,5 +60,5 @@ Lastly you may connect power and test actual charging and discharging.
 ![photo_2025-03-03_09-42-25](../images/daly-smartbms-07.jpg)
 
 #### Used Tesla Model S cell packs + 45S 60A Daly BMS - On Growatt SPH 7000 BH by Kelas
-<img alt="Tower of power" src="../images/daly-smartbms-09.jpeg" />
-<img alt="Daly BMS" src="../images/daly-smartbms-10.jpeg" />
+![Tower of power](../images/daly-smartbms-09.jpeg)
+![Daly BMS](../images/daly-smartbms-10.jpeg)

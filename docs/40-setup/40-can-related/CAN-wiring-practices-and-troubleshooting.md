@@ -1,6 +1,6 @@
 ## CAN termination practices
 
-<img width="461" height="149" alt="image" src="../../images/can-wiring-practices-and-troubleshooting-05.png" />
+![image](../../images/can-wiring-practices-and-troubleshooting-05.png){ width="461" height="149" }
 
 > [!IMPORTANT]  
 > CAN wires need to be twisted pair to ensure signal integrity!
@@ -45,16 +45,16 @@ If you get events like  BATTERY_MISSING or INVERTER_MISSING, you need to check t
 To verify that the CAN channels on the Battery-Emulator hardware you have are working properly, you can perform a loopback test. This can be done by connecting two CAN channels together
 
 Example, loopback test on Stark CMR to verify that both hardware channels are OK
-<img alt="image" src="../../images/can-wiring-practices-and-troubleshooting-06.png" />
+![image](../../images/can-wiring-practices-and-troubleshooting-06.png)
 
 In the Software, enable the following options as a test,
 Sono Motors on CAN1, Schneider Inverter on CANFD2
 
-<img alt="image" src="../../images/can-wiring-practices-and-troubleshooting-07.png" />
+![image](../../images/can-wiring-practices-and-troubleshooting-07.png)
 
 Save and reboot. Open the "CAN logger" page
 
-<img alt="image" src="../../images/can-wiring-practices-and-troubleshooting-08.png" />
+![image](../../images/can-wiring-practices-and-troubleshooting-08.png)
 
 You can see  both RX0/TX1 (CAN) function, and RX6/TX3 (CAN-FD). In this successful test both CAN buses can send and receive, since both are visible in the log :heavy_check_mark: 
 

@@ -30,7 +30,7 @@ Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible
 
 ## USB CAN logging
 
-<img width="482" height="186" alt="image" src="../../images/can-logging-03.png" />
+![image](../../images/can-logging-03.png){ width="482" height="186" }
 
 To access the CAN-logging, enable the `Enable CAN message logging via USB serial:` feature. When this is enabled, all the incoming/outgoing CAN&CAN-FD messages will get timestamp, direction, ID, DLC, and data fields printed out via the Arduino IDE serial monitor. This can then be exported to a .txt file for later analysis.
 
@@ -70,7 +70,7 @@ Example format, CAN-FD log:
 
 To enable logging of CAN messages to an SD card enable the `Enable CAN message logging via SD card: ` feature. To maximize performance you should not enable other debug features at the same time as it could lead to CAN messages not being logged. The format of the log file is the same as the USB can log feature and can be read by tools like Savvy CAN directly.
 
-<img width="471" height="87" alt="image" src="../../images/can-logging-04.png" />
+![image](../../images/can-logging-04.png){ width="471" height="87" }
 
 If you have debug logging enabled and there are too many messages on the CAN bus to write to the SD card the error `Failed to send message to can ring buffer!` will be logged.
 

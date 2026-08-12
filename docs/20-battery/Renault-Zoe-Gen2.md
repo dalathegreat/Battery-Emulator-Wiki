@@ -17,7 +17,7 @@ Stickers signaling that the battery is the Gen2 50/52kWh battery
 ## Software configuration
 For this battery type, use the option called "Renault Zoe Gen2 50kWh" under the "Battery Protocol" setting
 
-<img width="593" height="73" alt="image" src="../images/renault-zoe-gen2-15.png" />
+![image](../images/renault-zoe-gen2-15.png){ width="593" height="73" }
 
 ## Zoe Gen2 pictures and pinout
 Credit goes to ljames28 for the excellent repo: https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information
@@ -49,7 +49,7 @@ Example Wiring Diagram: LilyGo T-2CAN + Zoe Gen2 + optional equipment stop butto
 
 Example Wiring Diagram: Stark CMR + Zoe Gen2
 
-<img width="1064" height="764" alt="image" src="../images/renault-zoe-gen2-16.png" />
+![image](../images/renault-zoe-gen2-16.png){ width="1064" height="764" }
 
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Example Wiring Diagram: Stark CMR + Zoe Gen2
 > [!WARNING]
 > It is very important to not mix up the wiring between precharge/positive-contactor. Running all the power thru the precharge will result in it blowing up 
 
-<img alt="image" src="../images/renault-zoe-gen2-17.png" />
+![image](../images/renault-zoe-gen2-17.png)
 
 
 ## Part list
@@ -132,5 +132,5 @@ Wallmounted Zoe 41kWh battery:
 ## Troubleshooting
 The Zoe2 pack has fuses that can be blown. Telltale sign of this being blown is that the voltage was dropping below what was read by BE, so the voltage was read via CAN as 358 but actual voltage measuring was 310-320v
 
-<img alt="image" src="../images/renault-zoe-gen2-18.png" />
+![image](../images/renault-zoe-gen2-18.png)
 

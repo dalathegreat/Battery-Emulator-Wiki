@@ -47,11 +47,11 @@ The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to th
 ## Which protocol to use
 For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting
 
-<img width="495" height="63" alt="image" src="../images/foxess-h1-h3-ac1-kh-07.png" />
+![image](../images/foxess-h1-h3-ac1-kh-07.png){ width="495" height="63" }
 
 The default values allow for a 400V EV battery to be used. If you are using a low voltage battery, you can lower the "FoxESS module count", it works in steps of 1-8 , each step being 50V. So if you are using a 200V battery, set the module count to 4
 
-<img width="570" height="97" alt="image" src="../images/foxess-h1-h3-ac1-kh-08.png" />
+![image](../images/foxess-h1-h3-ac1-kh-08.png){ width="570" height="97" }
 
 By default the battery will appear as a HV2600 battery. If you want to change this, the following enumerations have been successfully tested:
 
@@ -71,8 +71,7 @@ Battery subtype: 131 used for all entries.
 
 Module count: default value used
 
-![alt](url)
-<img width="652" height="4096" alt="11750" src="../images/foxess-h1-h3-ac1-kh-09.jpg" />
+![11750](../images/foxess-h1-h3-ac1-kh-09.jpg){ width="652" height="4096" }
 
 
 
@@ -86,9 +85,9 @@ Values above 134 tested as empty/no battery profiles.
 
 Note in the CHINT DDSU666 (single phase) meters with the fox. _I bought a generic meter off a UK electrical wholesaler initially as the FoxESS instructions didn’t say it had to be a Fox branded version. It read accurately on the meter, but gave rogue readings to the inverter so was inoperable. I just installed a FoxESS branded meter and it works perfectly out the box (settings 8n1, Ch01, 9600)_
 
-<img alt="image" src="../images/foxess-h1-h3-ac1-kh-10.png" />
+![image](../images/foxess-h1-h3-ac1-kh-10.png)
 
-<img alt="image" src="../images/foxess-h1-h3-ac1-kh-11.png" />
+![image](../images/foxess-h1-h3-ac1-kh-11.png)
 
 
 ## Troubleshooting

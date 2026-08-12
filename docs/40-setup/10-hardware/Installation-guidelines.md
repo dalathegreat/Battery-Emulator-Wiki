@@ -99,7 +99,7 @@ Example, two EV battery inputs stepped down to 10mm² using DC fuses
 
 If you just want to step down the wire size (from 50mm² cable to 10mm² cable), you can use a terminal block such as [UKK 160](https://www.aliexpress.com/item/1005007537314525.html)
 
-<img width="630" height="546" alt="image" src="../../images/installation-guidelines-10.png" />
+![image](../../images/installation-guidelines-10.png){ width="630" height="546" }
 
 ### DC Fuses
 
@@ -137,13 +137,13 @@ The fuse must not be used as your current limiter. Set the inverter or Battery E
 
 Don't buy cheap products from AliExpress unless you intend to burn your house down (images courtesy of WJD on Dala's EV Discord);
 
-<img width="1000" height="868" alt="image" src="../../images/installation-guidelines-11.png" />
+![image](../../images/installation-guidelines-11.png){ width="1000" height="868" }
 
 
 #### Disconnect switches
 Some countries have legislation that dictate a need for DC disconnect switches (also known as DC isolation switch). The idea behind this is that these switches will be installed in a place where first responders and firefighters can easily turn off your solar/battery combination. Check your local legislation to see if this is required in your area.
 
-<img width="600" height="600" alt="1170104_1_5" src="../../images/installation-guidelines-12.png" />
+![1170104_1_5](../../images/installation-guidelines-12.png){ width="600" height="600" }
 
 
 [IP67 Waterproof 32A 1000V Disconnect Switch](https://imopc.com/imo_uk_gbp_view/enclosed-dc-switch-ip66-6249d58eb8c4a.html)
@@ -168,7 +168,7 @@ If either HV+ or HV- touches protective earth while the system is running, the s
 
 Example, wire shielding cut too close to copper, making the shield touch HV-. This was causing inverter to stop operation
 
-<img width="608" height="558" alt="image" src="../../images/installation-guidelines-13.png" />
+![image](../../images/installation-guidelines-13.png){ width="608" height="558" }
 
 Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the wiring is OK, the battery itself can also have an internal leak. These are much harder to diagnose compared to external wiring issues. Checkout this video for more example of leakage to ground https://www.youtube.com/watch?v=00eEj_EgMas
 
@@ -207,7 +207,7 @@ Electrical connections can loosen over time due to thermal cycling (expansion an
    - **Consult your manufacturer's manual for the exact torque specification** (e.g., 4-5 Nm or 35-45 in-lbs). On some terminals the torque value is stamped directly on them. Do not over-tighten, as this can strip threads or damage terminals.
    -Visually inspect terminals for signs of corrosion, melting, or discoloration.
 
-<img width="536" height="523" alt="image" src="../../images/installation-guidelines-14.png" />
+![image](../../images/installation-guidelines-14.png){ width="536" height="523" }
 
 Example of terminal with torque values printed on it
 

@@ -6,15 +6,15 @@
 ### How
 A scary looking option is added to the Settings page
 
-<img alt="image" src="../../images/recovering-undercharged-battery-01.png" />
+![image](../../images/recovering-undercharged-battery-01.png)
 
 If user presses Start, they have to enter "1" to confirm going into the emergency recovery mode
 
-<img alt="image" src="../../images/recovering-undercharged-battery-02.png" />
+![image](../../images/recovering-undercharged-battery-02.png)
 
 User gets notified also via Events that this mode started
 
-<img alt="image" src="../../images/recovering-undercharged-battery-03.png" />
+![image](../../images/recovering-undercharged-battery-03.png)
 
 In this mode, charging up to 5.0A is allowed. Current can be lowered manually via the max charge A setting. After 30 minutes, the mode is exited.
 
@@ -24,5 +24,5 @@ In this mode, charging up to 5.0A is allowed. Current can be lowered manually vi
 ## Notes on SOC
 Some inverters wont charge if SOC is 0.xx%. Use the Scaled SOC feature, and set minSOC to -10%. This will force SOC to appear higher towards t he inverter, and allow it to hopefully charge
 
-<img width="309" height="191" alt="image" src="../../images/recovering-undercharged-battery-04.png" />
+![image](../../images/recovering-undercharged-battery-04.png){ width="309" height="191" }
 

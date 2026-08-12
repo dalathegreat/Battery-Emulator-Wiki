@@ -19,7 +19,7 @@ Deye only listens to two things when it comes to stopping charge.
 That is the only time Deye inverters stop charging/discharging. Due to this we recommend reaching out to Deye and demand improved firmware on the Inverter side. It is simply not fully safe to operate a Deye inverter
 
 Be sure to enable the "Deye avoid over/undercharge fix: " option in the meantime
-<img width="660" height="210" alt="image" src="../images/deye-06.png" />
+![image](../images/deye-06.png){ width="660" height="210" }
 
 This will force SOC% to either fully charged (100%), fully discharged (0%) incase we need to stop. It looks odd on the inverter side, but it is the only way we can stop Deye inverters at the moment. You have been warned about Deye's lackluster software!
 
@@ -49,7 +49,7 @@ The Deye inverter works via CAN. The LilyGo board can have both a CAN battery an
 ## Which protocol to use
 For this inverter type, the recommended option is the "BYD Battery-Box Premium HVS over CAN Bus" m which is found under the "Inverter Protocol" setting. Also be sure to enable the "Deye avoid over/undercharge fix:" checkbox, otherwise the Deye inverter can over/undercharge the battery.
 
-<img alt="image" src="../images/deye-07.png" />
+![image](../images/deye-07.png)
 
 > [!WARNING]
 > Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
@@ -58,12 +58,12 @@ For this inverter type, the recommended option is the "BYD Battery-Box Premium H
 The Deye inverters can rely on charge voltage instead of only SOC%. Battery charge voltage defaults to the value set in the integration. This is the theoretical max the battery can take. This becomes the charge target for Deye. To make things safer, you can enable "Manual Charge Voltage Limits", and set the max voltage to your liking. Note that this will reduce the capacity you can extract from the battery, and on integrations that rely on getting fully charged in order to balance/calibrate, you will also disrupt it.
 . To enable this feature, go to the Settings page on BE, and enable manual voltage control and set charge voltage max and min discharge voltage.
 
-<img width="410" height="202" alt="image" src="../images/deye-08.png" />
+![image](../images/deye-08.png){ width="410" height="202" }
 
 #### Note on Pylon
 Not recommended, but it is also possible to use the Pylon HV protocol. For this to work, 30k offset and inverterd byteorder is required. Set manufacturer to "Deye". Most users should go for the BYD protocol instead, since it is simpler to setup.
 
-<img width="795" height="472" alt="image" src="../images/deye-09.png" />
+![image](../images/deye-09.png){ width="795" height="472" }
 
 ## Connecting the low voltage wiring
 
