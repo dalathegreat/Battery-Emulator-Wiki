@@ -1,4 +1,4 @@
-# BMW i3 60 / 94 / 120AH battery pack info
+# BMW i3 60/94/120AH
 
 ## Supported BMW batteries
 
