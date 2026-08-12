@@ -1,12 +1,9 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Read this first
 
 Preface, the entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Cell balancing wire taps, shunts, busbar connections, BMS integration, temperature monitoring, fuses, contactors, interlocks, etc. all will have to be implemented by yourself instead of using a pre-made product. As with all things custom, there are higher risks of human error. Take extra precaution when working on a custom DIY battery, you have been warned.
 
-> [!CAUTION]
-> If you are unsure of your technical knowhow, avoid building a battery from scratch
+!!! warning "CAUTION"
+    If you are unsure of your technical knowhow, avoid building a battery from scratch
 
 ## Custom DIY battery with Daly SmartBMS
 The Daly SmartBMS is a series of 4S up to 48S battery management systems allowing to build 12V to 180V DIY batteries.
@@ -20,7 +17,7 @@ But also directly via CAN to Growatt SPH LV and HV inverters.
 ## Battery Emulator Configuration
 For this battery type, use the option called "DALY RS485" under the "Battery Protocol" setting. Also make sure to configure the interface to RS485.
 
-![Daly config options](../images/daly-smartbms-08.png){ width="795" height="522" }
+<img width="795" height="522" alt="Daly config options" src="../images/daly-smartbms-08.png" />
 
 The Daly BMS does not communicate maximum charging voltages or currents. We calculate our own based on SoC, Voltage and Temperature.
 You can adjust these limits using the configuration options shown in the screenshot above using the guidelines below. Refer to your cell datasheet in order to determine safe values.
@@ -52,7 +49,6 @@ Next connect your inverter (via CAN). Best not to connect power cables just yet,
 Lastly you may connect power and test actual charging and discharging.
 ![photo_2025-02-12_22-53-35](../images/daly-smartbms-05.jpg)
 
-
 ## Example integrations
 
 #### Used Renault Twizy cells + 60A Daly BMS by @M4GNV5
@@ -60,5 +56,5 @@ Lastly you may connect power and test actual charging and discharging.
 ![photo_2025-03-03_09-42-25](../images/daly-smartbms-07.jpg)
 
 #### Used Tesla Model S cell packs + 45S 60A Daly BMS - On Growatt SPH 7000 BH by Kelas
-![Tower of power](../images/daly-smartbms-09.jpeg)
-![Daly BMS](../images/daly-smartbms-10.jpeg)
+<img alt="Tower of power" src="../images/daly-smartbms-09.jpeg" />
+<img alt="Daly BMS" src="../images/daly-smartbms-10.jpeg" />

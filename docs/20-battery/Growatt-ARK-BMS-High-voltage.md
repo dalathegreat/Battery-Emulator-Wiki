@@ -13,17 +13,11 @@ A complete system can consist of 1 BMS and 1 to 10 modules with a total voltage 
 
 Connect CAN,
 
-![image](../images/growatt-ark-bms-high-voltage-01.png){ width="150" height="210" }
+<img width="150" height="210" alt="image" src="../images/growatt-ark-bms-high-voltage-01.png" />
 
-![image](../images/growatt-ark-bms-high-voltage-02.png){ width="147" height="209" }
-
+<img width="147" height="209" alt="image" src="../images/growatt-ark-bms-high-voltage-02.png" />
 
 Set Battery type to Growatt ARK
 
-![image](../images/growatt-ark-bms-high-voltage-03.png){ width="817" height="631" }
-
-
-
-
-
+<img width="817" height="631" alt="image" src="../images/growatt-ark-bms-high-voltage-03.png" />
 

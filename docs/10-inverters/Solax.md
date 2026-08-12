@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Solax inverters
 * Solax X3 (all revisions)
 * Solax X3 Ultra (all revisions)
@@ -39,18 +36,18 @@ This can be solved in three ways:
 ## Which protocol to use
 For this inverter type, use the option called "SolaX Triple Power LFP over CAN bus" under the "Inverter Protocol" setting
 
-![image](../images/solax-04.png){ width="569" height="160" }
+<img width="569" height="160" alt="image" src="../images/solax-04.png" />
 
-> [!WARNING]
-> Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
+!!! warning "WARNING"
+    Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
 
-> [!IMPORTANT]  
-> If you see a **BattVoltFault** fault code on the inverter, you might need to edit the CAN data content. This can happen if you use a 60S battery instead of 96S battery. Follow the steps below
+!!! info "IMPORTANT"
+    If you see a **BattVoltFault** fault code on the inverter, you might need to edit the CAN data content. This can happen if you use a 60S battery instead of 96S battery. Follow the steps below
 
 1. Start with checking that your battery contactors are closing, and that high voltage is present on the inverter input pins. 
 2. If the inverter has voltage, but is still throwing the BattVoltFault error, "Reported module count" and the "Reported battery type" option
 
-![image](../images/solax-05.png){ width="556" height="69" }
+<img width="556" height="69" alt="image" src="../images/solax-05.png" />
 
 ## Battery type information (pre-2026)
 
@@ -67,7 +64,7 @@ Feel free to experiment, and post what settings worked for your voltage range. T
 
 Also note, if you are using Custom batteries, remember to configure the max/min design voltage marked in red here. Solax will listen to these limits on Pylon/RJXZS/Orion/DIY packs
 
-![image](../images/solax-06.png){ width="551" height="289" }
+<img width="551" height="289" alt="image" src="../images/solax-06.png" />
 
 ## Battery type information (2026)
 
@@ -143,17 +140,17 @@ TPCU011(HR522): 171
 
 ## Notes on CAN controlled contactors
 
-> [!IMPORTANT]  
-> Solax is one of the few protocols that demands contactors to open from time to time. This works great with GPIO controlled contactors, but on battery packs that are only controllable via CAN (Like Tesla), this does not play nice. Tesla batteries like to treat contactor opening requests as a really bad thing, and require 12V removal to get going again.
+!!! info "IMPORTANT"
+    Solax is one of the few protocols that demands contactors to open from time to time. This works great with GPIO controlled contactors, but on battery packs that are only controllable via CAN (Like Tesla), this does not play nice. Tesla batteries like to treat contactor opening requests as a really bad thing, and require 12V removal to get going again.
 
 To get around this issue for instance on Tesla batteries, enable the "Inverter should ignore contactors" checkbox
 
-![image](../images/solax-07.png){ width="430" height="30" }
+<img width="430" height="30" alt="image" src="../images/solax-07.png" />
 
 This will make Battery Emulator ignore requests from the inverter to open contactors, and always report to the inverter that the contactors are closed (regardless of their actual state), preventing the inverter from waiting for the contactors to open.
 
-> [!WARNING]
-> This contactor-opening-suppression seems to cause issues with double-input inverters, since the inverter insists on waiting for both batteries to open their contactors before starting. (Note: even if only one battery input is occupied!) There is a pending change to allow stubborn integrations to suspend their initial closing (but then not to reopen once closed), but this needs further testing.
+!!! warning "WARNING"
+    This contactor-opening-suppression seems to cause issues with double-input inverters, since the inverter insists on waiting for both batteries to open their contactors before starting. (Note: even if only one battery input is occupied!) There is a pending change to allow stubborn integrations to suspend their initial closing (but then not to reopen once closed), but this needs further testing.
 
 Additional: When experiencing a "waiting" status when all other settings are good, unchecking this box can result in normal operation. Be aware of this, as Solax is not too helpful in telling why it is in actual "waiting" status, this can be an easy test.
 
@@ -208,10 +205,8 @@ Other battery Kind ranges I checked just to see if they showed in the about menu
 
 - Like others said before you dont seem to need the announce 0100a001 frame or even respond to the 1871 frame the inverter sends every 1000ms. I am sending all frames every 900ms at a non-synced interval and it plays fine.
 
-
 all credits to the guys from this thread: 
 https://secondlifestorage.com/index.php?threads/help-with-older-solax-x1-g4-firmware-ie07-batvoltfault.12493/
-
 
 ## Connection diagram
 BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wires to the Battery-Emulator
@@ -225,7 +220,6 @@ BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wi
 | Inverter stuck in "Waiting..." | Check that high voltage is present on inverter terminals, and that polarity is right way. Also check that the precharge/positive-contactor control has not been accidentally swapped around. A telltale of this accidental swap is that the voltage reading on the inverter side will be jump +-50VDC all the time. |
 | Contactors close, then after a few seconds they open. With the battery on its own, without inverter connected, contactors stay on. | Solax controls contactor opening, this is not working good on CAN controlled packs. See the [Notes on CAN controlled contactors](Solax.md#notes-on-can-controlled-contactors) |
 | Inverter screen showing "Bat Mismatch IE102" error | Configure "Reported battery type (in decimal):" to 81 in the webserver settings, OR update Battery-Emulator to latest version |
-
 
 ## Notes about Ultra
 When using two batteries, the Ultra inverter only connects both batteries if the second one closes its contactor exactly at the time the inverter requests it to close. if both contactors are closed from the beginning then it will not turn on. I tried a bit the last days and the best option at least for tesla batteries is to start with inverter_allows_contactor_closing = false and after the inverter requests it set inverter_allows_contactor_closing = true. After that happened I will never reset it to false since tesla batteries sometimes won't be able to close the contactor any more.

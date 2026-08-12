@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Notes on RS485
 Kostal uses a proprietary RS485 protocol. The protocol uses the RS485 pins on the Battery-Emulator hardware and has been mostly decoded. The integration is mostly stable.
 
@@ -23,7 +20,7 @@ Note that for some models the battery feature is optional, and needs to be activ
 ## Which protocol to use
 For this inverter type, use the option called "BYD battery via Kostal RS485" under the "Inverter Protocol" setting. Also set the "Inverter Interface" to the "RS485" option.
 
-![image](../images/kostal-02.png){ width="488" height="66" }
+<img width="488" height="66" alt="image" src="../images/kostal-02.png" />
 
 ## Communication wiring
 
@@ -34,7 +31,6 @@ The Kostal inverter works via RS485. Connect pins A, B and GND from the Kostal c
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 ## Traces for reverse engineering
-
 
 |  Inverter |  Battery | Source | Traces | 
 | :--------: | :---------: | :---------: | :---------: |
@@ -47,9 +43,7 @@ The Kostal inverter works via RS485. Connect pins A, B and GND from the Kostal c
 
 **WANTED**: Setups involving BYD HVM or HVS. Even better if there are multiple units in parallel via the HV Combiner Box.
 
-
 ***
-
 
 Use this tree of the battery emulator on a LilyGo: https://github.com/lewurm/Battery-Emulator/tree/rs485-sniffing
 Compile with Arduino ide ESP32 firmware 3.1.3.
@@ -57,7 +51,7 @@ It will just print whatever bytes are seen on the RS485 line to the USB serial.
 
 In terms of wiring, connect A/B/GND accordingly between inverter and LilyGo.  Power the LilyGo via USB-C (connect to a Laptop) and observe the serial monitor.
 
-![Screenshot 2025-02-21 at 23 33 04](../images/kostal-03.png){ width="1220" }
-![Screenshot 2025-02-21 at 23 33 23](../images/kostal-04.png){ width="1223" }
-![Screenshot 2025-02-21 at 23 33 16](../images/kostal-05.png){ width="1216" }
+<img width="1220" alt="Screenshot 2025-02-21 at 23 33 04" src="../images/kostal-03.png" />
+<img width="1223" alt="Screenshot 2025-02-21 at 23 33 23" src="../images/kostal-04.png" />
+<img width="1216" alt="Screenshot 2025-02-21 at 23 33 16" src="../images/kostal-05.png" />
 

@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## FAQ: Renault Kangoo Battery
 Renault Zoe support is still being developed. The Kangoo shares a fair share of CAN data with the Renault Zoe and Renault Fluence
 
@@ -14,7 +11,7 @@ There are 3x batteries available for the Kangoo:
 * 44kWh 2022+
    * Pinout unknown, NOT SUPPORTED YET since nobody has tested it
 
-![image](../images/renault-kangoo-01.png){ width="393" height="91" }
+<img width="393" height="91" alt="image" src="../images/renault-kangoo-01.png" />
 
 Physical size;
 * Weight 295 kg (22kWh)
@@ -25,8 +22,7 @@ Physical size;
 
 44kWh pack example:
 
-![image](../images/renault-kangoo-02.png){ width="622" height="913" }
-
+<img width="622" height="913" alt="image" src="../images/renault-kangoo-02.png" />
 
 ## Part numbers for Renault Kangoo batteries
 |  Product |  Purchase Link |
@@ -46,7 +42,6 @@ Grey Yazaki x
 | 12 | Blue | Can Low |
 
 Black Yazaki 7283-8854-30
-
 | Pin | Internal Wire | Function |
 | :--------: | :---------: | :---------: |
 | 1 | Black | Ground  |
@@ -54,7 +49,6 @@ Black Yazaki 7283-8854-30
 | 5 | Blue | Pre-charge relay (ground to close) |
 
 The 22kWh pack pinout (black connector)
-
 | Pin | Internal Wire | Function |
 | :--------: | :---------: | :---------: |
 | 1 | Red | fused +12V permanent to BMS  |

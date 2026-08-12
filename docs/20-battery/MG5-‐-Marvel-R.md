@@ -1,6 +1,5 @@
 # Current status
 
-
 | Car | kWh | Chemistry | Battery type  | Part number | Status |
 |----------|----------|----------|--------|----------|---------|
 | MG5  | 52.5  | NMC  |    EU150A52S  | 10847655 | Tested and working |
@@ -14,34 +13,29 @@ Battery Emulator currently has two different integrations supporting MG5, the le
 # MG5 Batteries
 
 There are three types of batteries found in the MG5, a 52.5 kWh NMC, a 61.1 kWh NMC and a 50.3 kWh LFP pack, see details below.
-![image](../images/mg5-marvel-r-02.png){ width="1059" height="311" }
+<img width="1059" height="311" alt="image" src="../images/mg5-marvel-r-02.png" />
 
 You can recognize the battery by the checking the label of the battery, the cell capacity and kWh is given, see photo below.
 ![thumbnail_PXL_20251107_214138973 MP1](../images/mg5-marvel-r-01.jpg)
 
 You can also recognize the different types by the cooling in/outlets. For the 50.3kWh and 61.1 kWh battery they are located right next to the connectors on the EDM(the connector extension coming out of the battery), see below:
 
-![image](../images/mg5-marvel-r-03.png){ width="791" height="460" }
-
-
+<img width="791" height="460" alt="image" src="../images/mg5-marvel-r-03.png" />
 
 While for the 52.5 kWh battery they are farther way, not on the EDM:
 
-![image](../images/mg5-marvel-r-04.png){ width="1054" height="595" }
+<img width="1054" height="595" alt="image" src="../images/mg5-marvel-r-04.png" />
 
 #### Main Service Disconnect
 Make sure the MSD is fitted. Without this, the battery will be disabled.
 
 Example, missing MSD:
 
-![image](../images/mg5-marvel-r-05.png){ width="234" height="224" }
-
+<img width="234" height="224" alt="image" src="../images/mg5-marvel-r-05.png" />
 
 # MG Marvel R Batteries
 
-![image](../images/mg5-marvel-r-06.png){ width="1428" height="398" }
-
-
+<img width="1428" height="398" alt="image" src="../images/mg5-marvel-r-06.png" />
 
 # Hardware setup
 
@@ -55,11 +49,11 @@ The high voltage connector(HV009): This is the main HV connector from the batter
 The 52.5 kWh battery has an amphenol HVC3P80MV108227U19 connector, it fits with a high voltage cable MG part number 10824432.
 The 50.3 kWh and 61.1 kWh batteries should fit with HV cable MG part number 10863642(to be confirmed)
 
-![image](../images/mg5-marvel-r-07.png){ width="1469" height="600" }
+<img width="1469" height="600" alt="image" src="../images/mg5-marvel-r-07.png" />
 
 The low voltage connector(EB212): This connector is the same for all battery versions. It fits the molex connector part 643193211. You can either assemble the connector on your own with crimp terminals(64322 and 64323) and plugs(643191201 and 643251010) and a cap(643191201) or you can buy a premade connector from alieexpress.
 
-![image](../images/mg5-marvel-r-08.png){ width="1064" height="1003" }
+<img width="1064" height="1003" alt="image" src="../images/mg5-marvel-r-08.png" />
 
 To make the battery work, you need to connect:
 
@@ -82,8 +76,7 @@ Since we need both PT CAN and Hybrid CAN we connect them together for BE.
 An example connection diagram is shown below. It uses an external HV DC/DC that converts the 400V to 12V to charge a lead acid car battery.
 
 Note: If an external 12V DC power supply is used the DC/DC converter is not required.
-![Screenshot From 2026-01-08 23-02-56](../images/mg5-marvel-r-09.png){ width="2066" height="600" }
-
+<img width="2066" height="600" alt="Screenshot From 2026-01-08 23-02-56" src="../images/mg5-marvel-r-09.png" />
 
 # Sofware configuration
 
@@ -96,15 +89,7 @@ In the battery specific options the contactors can also be controlled. This will
 
 There is also an option to request the DTC errors and clear the error codes, this is interesting for debugging purposes. When the button is pressed, the BE will request the DTC error codes of the battery, you can see them in the logging screen. It will show the status of each error code, to get the explanation of each DTC code you check the battery diagnostics manual. Whenever a request is made to close the contactors, the BE will also automatically clear all the error codes.
 
-![image](../images/mg5-marvel-r-10.png){ width="1666" height="348" }
+<img width="1666" height="348" alt="image" src="../images/mg5-marvel-r-10.png" />
 
-![image](../images/mg5-marvel-r-11.png){ width="1362" height="1528" }
-
-
-
-
-
-
-
-
+<img width="1362" height="1528" alt="image" src="../images/mg5-marvel-r-11.png" />
 

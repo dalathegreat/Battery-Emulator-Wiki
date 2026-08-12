@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Deye inverters
 * Deye SUN 5-25K-SG01HP3-EU-AM2 ✅ 
 * Deye SUN 29.9-50K SG01HP3-EU-BM3 ✅
@@ -19,7 +16,7 @@ Deye only listens to two things when it comes to stopping charge.
 That is the only time Deye inverters stop charging/discharging. Due to this we recommend reaching out to Deye and demand improved firmware on the Inverter side. It is simply not fully safe to operate a Deye inverter
 
 Be sure to enable the "Deye avoid over/undercharge fix: " option in the meantime
-![image](../images/deye-06.png){ width="660" height="210" }
+<img width="660" height="210" alt="image" src="../images/deye-06.png" />
 
 This will force SOC% to either fully charged (100%), fully discharged (0%) incase we need to stop. It looks odd on the inverter side, but it is the only way we can stop Deye inverters at the moment. You have been warned about Deye's lackluster software!
 
@@ -32,8 +29,8 @@ When using the smaller <25k inverters with two batteries, you will need to join 
 
 ## Notes on geo-lock :world_map: 
 
-> [!WARNING]
-> Sol-Ark manufacturer has turned on location validation in recent firmwares. This in turn disabled the inverters if they are used in the UK, US, Canada and Pakistan. Be careful with connecting your Deye inverter to the internet!
+!!! warning "WARNING"
+    Sol-Ark manufacturer has turned on location validation in recent firmwares. This in turn disabled the inverters if they are used in the UK, US, Canada and Pakistan. Be careful with connecting your Deye inverter to the internet!
 
 Picture of remotely disabled unit in the US:
 
@@ -49,21 +46,21 @@ The Deye inverter works via CAN. The LilyGo board can have both a CAN battery an
 ## Which protocol to use
 For this inverter type, the recommended option is the "BYD Battery-Box Premium HVS over CAN Bus" m which is found under the "Inverter Protocol" setting. Also be sure to enable the "Deye avoid over/undercharge fix:" checkbox, otherwise the Deye inverter can over/undercharge the battery.
 
-![image](../images/deye-07.png)
+<img alt="image" src="../images/deye-07.png" />
 
-> [!WARNING]
-> Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
+!!! warning "WARNING"
+    Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
 
 ### Manual charge voltage limits
 The Deye inverters can rely on charge voltage instead of only SOC%. Battery charge voltage defaults to the value set in the integration. This is the theoretical max the battery can take. This becomes the charge target for Deye. To make things safer, you can enable "Manual Charge Voltage Limits", and set the max voltage to your liking. Note that this will reduce the capacity you can extract from the battery, and on integrations that rely on getting fully charged in order to balance/calibrate, you will also disrupt it.
 . To enable this feature, go to the Settings page on BE, and enable manual voltage control and set charge voltage max and min discharge voltage.
 
-![image](../images/deye-08.png){ width="410" height="202" }
+<img width="410" height="202" alt="image" src="../images/deye-08.png" />
 
 #### Note on Pylon
 Not recommended, but it is also possible to use the Pylon HV protocol. For this to work, 30k offset and inverterd byteorder is required. Set manufacturer to "Deye". Most users should go for the BYD protocol instead, since it is simpler to setup.
 
-![image](../images/deye-09.png){ width="795" height="472" }
+<img width="795" height="472" alt="image" src="../images/deye-09.png" />
 
 ## Connecting the low voltage wiring
 
@@ -80,14 +77,13 @@ If you connected everything correctly, you will see data on the display:
 
 ![bild](../images/deye-04.png)
 
-
 ## Installation examples
 ![bild](../images/deye-05.png)
 
 ## Special notes on usage with BMW i3
 
-> [!NOTE]  
-> If you intend on using BYD-CAN with the BMW i3, the battery needs to be on a separate CAN bus. The BMW i3 is using the same CAN IDs as BYD do, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong. There are a few ways to solve this:
+!!! note "NOTE"
+    If you intend on using BYD-CAN with the BMW i3, the battery needs to be on a separate CAN bus. The BMW i3 is using the same CAN IDs as BYD do, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong. There are a few ways to solve this:
 
 * You can [add an isolated MCP2515 CAN channel](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md)
 * You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)

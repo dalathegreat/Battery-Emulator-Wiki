@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## GM BEV2 platform
 The 60-66kWh battery in the GM BEV2 platform can be found in the following vehicles
 
@@ -12,13 +9,13 @@ The 60-66kWh battery in the GM BEV2 platform can be found in the following vehic
 ## Software configuration
 For this battery type, use the option called "Chevrolet Bolt EV/Opel Ampera-E" under the "Battery Protocol" setting
 
-![image](../images/ampera-e-64-kwh-23.png){ width="656" height="156" }
+<img width="656" height="156" alt="image" src="../images/ampera-e-64-kwh-23.png" />
 
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 
 The battery uses 12V controlled contactors, so use `Contactor Control via GPIO` if you want Battery-Emulator to also control the contactors via GPIO
 
-![image](../images/ampera-e-64-kwh-24.png){ width="514" height="49" }
+<img width="514" height="49" alt="image" src="../images/ampera-e-64-kwh-24.png" />
 
 One user reported using 3x this type of relay with the LilyGo hardware 
 https://nl.aliexpress.com/item/1005005622431177.html?spm=a2g0o.order_list.order_list_main.126.d91579d2FEesY4&gatewayAdapt=glo2nld
@@ -49,16 +46,14 @@ X357 connector (gray)
 
 **All three CAN's should be connected to BE device.**
 
-
 The following diagrams will help you to connect to the CAN buses on the Opel/Chevy batteries:
 
-> [!NOTE]
-> These batteries have multiple CAN buses that needs to be jumpered together to form one large CAN bus
+!!! note "NOTE"
+    These batteries have multiple CAN buses that needs to be jumpered together to form one large CAN bus
     the resistor on the Lilygo must be removed
 Example, development environment with contactor control via GPIO, and all 3x CAN buses connected together as one single bus
 
 ![image](../images/ampera-e-64-kwh-01.png)
-
 
 ![AC laden](../images/ampera-e-64-kwh-02.png)
 ![DC laden](../images/ampera-e-64-kwh-03.png)

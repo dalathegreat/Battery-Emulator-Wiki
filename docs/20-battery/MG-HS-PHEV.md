@@ -12,7 +12,6 @@
   - Earth leakage / isolation resistance testing modification
 - Additional information
 
-
 ## Current status
 
 The Gen1 MG HS PHEV battery is fully usable, although a modification may be necessary (depending on your inverter/RCD) that requires opening up the battery.
@@ -64,7 +63,7 @@ There's a non-wired version too for doing your own crimping but this looks easie
 
 This is how Molex and MG label the terminals in the connector:
 
-![32 Pin Molex MG](../images/mg-hs-phev-05.png){ width="897" height="691" }
+<img width="897" height="691" alt="32 Pin Molex MG" src="../images/mg-hs-phev-05.png" />
 
 The battery needs a 12V-14V supply, and draws 600mA continuous with the contactors closed, and ~3A briefly when closing the contactors. It also needs a 12V signal to wake it up (via a 1kR resistor, or connected directly) as shown.
 
@@ -118,11 +117,11 @@ The isolation resistance measuring circuit does not have a DC connection to the 
 
 This can be done by removing the ground connection from the chassis to the contactor board, which is the dangling wire here (ignore the missing capacitor!):
 
-![image](../images/mg-hs-phev-06.png){ width="934" height="744" }
+<img width="934" height="744" alt="image" src="../images/mg-hs-phev-06.png" />
 
 and reinstalling the screw without the wire, and then insulating the dangling wire with some heatshrink:
 
-![Screenshot_20250712_120242](../images/mg-hs-phev-07.png){ width="1078" height="757" }
+<img width="1078" height="757" alt="Screenshot_20250712_120242" src="../images/mg-hs-phev-07.png" />
 
 #### Step 2: Floating the BMS ground above the case ground
 
@@ -141,6 +140,6 @@ You will also need to use an isolated 12V power supply (a 2-pin power supply wit
 
 Here is a list of functions for those pins on the second generation model:
 
-![32 Pin Molex pins](../images/mg-hs-phev-08.png){ width="433" height="731" }
+<img width="433" height="731" alt="32 Pin Molex pins" src="../images/mg-hs-phev-08.png" />
 
 Lots of useful information here: https://cardiagn.com/2022-2024-mg-ehs-hybrid-service-and-repair-manual-incl-wiring/

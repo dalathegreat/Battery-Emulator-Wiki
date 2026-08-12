@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Fronius inverter wiki page
 
 ## Types of compatible Fronius inverters
@@ -65,16 +62,16 @@ When the low voltage communication is handled, also connect the high voltage sid
 
 ![HighVoltageWiringFronius](../images/fronius-07.png)
 
-> [!WARNING]  
-> New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installls using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO or CAN will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. 
+!!! warning "WARNING"
+    New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installls using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO or CAN will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. 
 
 ## Which protocol to use
 For this inverter type, use the option called "BYD 11kWh HVM battery over Modbus" under the "Inverter Protocol" setting. Also select the Inverter interface as "Modbus"
 
-![image](../images/fronius-12.png){ width="490" height="65" }
+<img width="490" height="65" alt="image" src="../images/fronius-12.png" />
 
-> [!NOTE]  
-> If you intend to use the [Periodic Reset](../40-setup/10-hardware/Periodic-BMS-reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
+!!! note "NOTE"
+    If you intend to use the [Periodic Reset](../40-setup/10-hardware/Periodic-BMS-reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
 
 ## Starting and stopping the system
 When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode.
@@ -138,13 +135,13 @@ Make sure the Battery-Emulator has a good modbus connection to the Inverter
 
 ### Invalid battery size detected
 
-![image](../images/fronius-13.png){ width="445" height="233" }
+<img width="445" height="233" alt="image" src="../images/fronius-13.png" />
 
 If you see this error, it might be because the battery you are using is having higher allowed maxvoltage than the Fronius inverter accepts. A good example is using BYD Atto3 battery (Max 460V), with a Fronius Primo single phase inverter, that only can take 450.
 
 A quick solution is to enable the "450V maxvoltage cap" setting. This fakes it so that all batteries appear as 450V max. 
 
-![image](../images/fronius-14.png){ width="675" height="172" }
+<img width="675" height="172" alt="image" src="../images/fronius-14.png" />
 
 NOTE: This setting should not be used with Fronius Symo 3-phase inverters. These inverters are OK with battery voltages up to 700VDC
 
@@ -172,11 +169,11 @@ If needed for a future grid or generator power source, the smart-meter can be wi
 
 To hard wire the Gen24 as off-grid and 'cold-start' using the EV battery pack or PV, I/O pins 6 and 7 need to be jumpered to the V+ on the I/O connector as shown below. 
 
-![Screenshot 2026-05-12 at 12 19 41 pm](../images/fronius-15.png){ width="403" height="478" }
+<img width="403" height="478" alt="Screenshot 2026-05-12 at 12 19 41 pm" src="../images/fronius-15.png" />
 
 Additionally, Full-Backup mode needs to be configured on the Gen24 as follows:
 
-![image](../images/fronius-16.png){ width="610" height="671" }
+<img width="610" height="671" alt="image" src="../images/fronius-16.png" />
 
 Pin0 is not used when hard wiring for full backup. Pin0 is used for automatic switchover to full-backup int the event of a grid failure. Follow the Fronius documentation for this type of configuration. 
 

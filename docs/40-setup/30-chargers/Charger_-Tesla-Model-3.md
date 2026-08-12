@@ -4,9 +4,6 @@ If you have the full Tesla model 3 battery (with penthouse), then you have a cha
 
 If you got a whole (crashed) Tesla just for the battery, you can scavenge a few extra parts from it (otherwise you will have to buy them) to get a charge port (in my case, a CCS charge port) along with the cables to connect them to the HV battery and the charge port ECU, and the Charge Port ECU to the Penthouse.
 
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Parts Required
 Remove the lining material from the trunk so you can access the "CP ECU" (Charge Port Electronic Control Unit) plus the Charge Port itself, and the wiring harness in this area. The CP ECU has three electrical connectors and a 10mm bolt holding it in.  Remove the connectors and unbolt.  One of the connectors goes to the charge port flap, keep it and the flap.  One of the connectors appears to be bundled into the wiring harness, but actually it is self contained (it only goes between the CP ECU and the CP) - so unwrap the tape around the harness so you can keep this cable.  The last connector does disappear into the wiring harness, you will need the connector and some of the wire coming out of it so you can bond new (longer) wires to it.
 

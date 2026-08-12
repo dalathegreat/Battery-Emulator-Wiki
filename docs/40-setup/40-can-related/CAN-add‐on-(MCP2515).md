@@ -1,9 +1,9 @@
-> [!TIP]
-> If you're considering using a Lilygo T-CAN485, you may find the [Lilygo T-2CAN](../../30-hardware/LilyGo-T‐2CAN.md) to be a better choice:
-> - It has two CAN interfaces already
-> - The interfaces are galvanically-isolated, so you don't need separate CAN isolators for troublesome inverters (like Solax)
-> - It has a wider input voltage range (up to 24V)
-> - Can add-on RS485 if needed, which is simpler than soldering a MCP2515
+!!! tip "TIP"
+    If you're considering using a Lilygo T-CAN485, you may find the [Lilygo T-2CAN](../../30-hardware/LilyGo-T‐2CAN.md) to be a better choice:
+    - It has two CAN interfaces already
+    - The interfaces are galvanically-isolated, so you don't need separate CAN isolators for troublesome inverters (like Solax)
+    - It has a wider input voltage range (up to 24V)
+    - Can add-on RS485 if needed, which is simpler than soldering a MCP2515
 
 # Why add another CAN channel?
 Some Inverters do not like to see automotive CAN frames on the CAN channel meant for stationary storage. When they see these messages, they enter a fault state. To get around this, we can add an additional MCP2515 chip to the LilyGo, to get an isolated secondary CAN bus.
@@ -20,7 +20,6 @@ You can use this MCP2515 board from Seeed Studio - it operates directly on the l
 
 ![image](../../images/can-add-on-mcp2515-01.png)
 
-
 These pins need to be connected between the LilyGo header and the MCP2515 board: (Warning! the print of the 2x3 connectors on the board itself is WRONG, it's mirrored! Use the added pindescription.)
 
 | Pin on 3.3V MCP2515 board | MCP2515 board comment | Pin on Lilygo |
@@ -35,14 +34,12 @@ These pins need to be connected between the LilyGo header and the MCP2515 board:
 
 Note on CAN termination: The board doesn't have a 120 ohm terminating resistor enabled by default. If you want to enable this resistor (which is in most cases when running battery emulator extended can through this board), solder over the p1 pads on the back of the board.
 
-
 ### Option 1: MCP2515 powered via 5V (easiest no-solder method)
 (Available here: https://aliexpress.com/item/1005006646252397.html)
 
 If you want to avoid soldering and just use the MCP2515 module, supply the VCC pin on the MCP2515 module with 5V.
 
 ![image](../../images/can-add-on-mcp2515-02.png)
-
 
 ### Option 2: MCP2515 powered via Lilygo VDD pin converted to 5V
 (Available here: https://aliexpress.com/item/1005006646252397.html)
@@ -98,7 +95,6 @@ When using the MCP2515, make sure that the can_config inside USER_SETTINGS.cpp i
 Also make sure the option #define CAN_ADDON is enabled in the USER_SETTINGS.h
 
 ![image](../../images/can-add-on-mcp2515-08.png)
-
 
 ## Troubleshooting steps
 If you are having problems with the MCP2515 add-on chip not detecting/sending any CAN messages, check the following:

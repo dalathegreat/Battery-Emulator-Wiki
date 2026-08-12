@@ -4,7 +4,6 @@ hide:
   - toc
 ---
 
-
 # Supported inverters list
 
 The following solar inverters have support. Remember to double check that the voltage range of your inverter matches the battery you intend to use. Click the link in the "Vendor" tab to get a more detailed page about how to set up a specific inverter with the Battery-Emulator. Also pay attention to the star rating to see how easy the inverter is to use.

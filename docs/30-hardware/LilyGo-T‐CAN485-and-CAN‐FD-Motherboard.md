@@ -12,8 +12,6 @@ This is work in progress **BETA** PCB design for a motherboard to hold both a li
 * Entire cost should be around 55USD
 * Requires both 12V (contactors) and 5V input
 
-
-
 ## BOM
 * 1x PCB [Link](https://oshwlab.com/cloudy62/batemudaughterboard)  - Please make your own checks before manufacturing
 * 1x 83mm DIN Rail case with terminals AK-DR-105A [Link](https://www.aliexpress.com/item/1005006067012648.html)
@@ -26,7 +24,6 @@ This is work in progress **BETA** PCB design for a motherboard to hold both a li
 * 2x [Optional] 1206 120ohm resistors (if you need to add termination on either can-bus) Both boards also have can jumpers
 * 1x Infineon BTS716G [Link](https://www.mouser.co.uk/ProductDetail/Infineon-Technologies/BTS716G?qs=MGskQgfwDzus89Wlyk6rrg%3D%3D&srsltid=AfmBOorB3UWUL11UHGQ6T4TqtPE6G-uxXzaoZuVttZVdFuyMxHTPvx4-)
 
-
 ## Notes
 
 * Requires 20Mhz setting for CANFD (#define CANFD_ADDON_CRYSTAL_FREQUENCY_MHZ  ACAN2517FDSettings::OSC_20MHz)
@@ -35,5 +32,4 @@ This is work in progress **BETA** PCB design for a motherboard to hold both a li
 ![image](../images/lilygo-t-can485-and-can-fd-motherboard-01.png)
 ![image](../images/lilygo-t-can485-and-can-fd-motherboard-02.png)
 ![image](../images/lilygo-t-can485-and-can-fd-motherboard-03.png)
-
 

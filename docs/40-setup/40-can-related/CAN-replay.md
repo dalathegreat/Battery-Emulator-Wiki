@@ -15,11 +15,10 @@ This opens the Replay page. Via this page you can:
 
 ![image](../../images/can-replay-02.png)
 
-> [!IMPORTANT]  
-> The log file needs to be a .txt CANdump format (same format the CAN logging feature uses)
+!!! info "IMPORTANT"
+    The log file needs to be a .txt CANdump format (same format the CAN logging feature uses)
 
 The CANdump format looks like this:
 
 `(28291.286) TX1 1F2 [8] 10 64 00 B0 00 1E 00 8F`
-
 

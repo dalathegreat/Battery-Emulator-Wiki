@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## FAQ: Renault Zoe Battery Gen2
 The Renault Zoe Gen2 has good support in the Battery-Emulator project. Note that confused packs need NVROL reset, more info on that further down in this Wiki
 
@@ -17,7 +14,7 @@ Stickers signaling that the battery is the Gen2 50/52kWh battery
 ## Software configuration
 For this battery type, use the option called "Renault Zoe Gen2 50kWh" under the "Battery Protocol" setting
 
-![image](../images/renault-zoe-gen2-15.png){ width="593" height="73" }
+<img width="593" height="73" alt="image" src="../images/renault-zoe-gen2-15.png" />
 
 ## Zoe Gen2 pictures and pinout
 Credit goes to ljames28 for the excellent repo: https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information
@@ -27,8 +24,6 @@ Allso note plug pinout is seen from the rear of the plug where the wires come ou
 ![image](../images/renault-zoe-gen2-02.png)
 ![connections](../images/renault-zoe-gen2-03.png)
 ![image](../images/renault-zoe-gen2-04.png)
-
-
 
 ## Low voltage wiring diagram
 Connect the pins from the battery to the Battery-Emulator, according to this diagram:
@@ -49,18 +44,15 @@ Example Wiring Diagram: LilyGo T-2CAN + Zoe Gen2 + optional equipment stop butto
 
 Example Wiring Diagram: Stark CMR + Zoe Gen2
 
-![image](../images/renault-zoe-gen2-16.png){ width="1064" height="764" }
+<img width="1064" height="764" alt="image" src="../images/renault-zoe-gen2-16.png" />
 
+!!! note "NOTE"
+    This Zoe battery contains GND switched precharge relay and positive contactor. There is no negative contactor to control
 
-> [!NOTE]
-> This Zoe battery contains GND switched precharge relay and positive contactor. There is no negative contactor to control
+!!! warning "WARNING"
+    It is very important to not mix up the wiring between precharge/positive-contactor. Running all the power thru the precharge will result in it blowing up 
 
-
-> [!WARNING]
-> It is very important to not mix up the wiring between precharge/positive-contactor. Running all the power thru the precharge will result in it blowing up 
-
-![image](../images/renault-zoe-gen2-17.png)
-
+<img alt="image" src="../images/renault-zoe-gen2-17.png" />
 
 ## Part list
 Incase your battery is missing parts, here is a list of the spare part numbers along with purchase links
@@ -78,7 +70,6 @@ Incase your battery is missing parts, here is a list of the spare part numbers a
 
 **The correct part number can be found by looking at the area as shown below.**
 ![image](../images/renault-zoe-gen2-08.png)
-
 
 My 52kwh battery came with following part:
 ![image](../images/renault-zoe-gen2-09.png)
@@ -119,8 +110,8 @@ Zoe gen2 52kWh. First balancing started at last. Procedure that worked on my set
 - Stark CMR power up
 - Balancing started immediately, visible from Cellmonitor page
 
-> [!NOTE]
-> The reset requires a 30 seconds sleep after completion. To sleep properly, all CAN communication is halted. If the Battery is connected to the same CAN channel as an inverter, this inverter will prevent the sleep cycle. So in order to properly do the NVROL-sleep, a dedicated CAN channel for the Zoe battery is required
+!!! note "NOTE"
+    The reset requires a 30 seconds sleep after completion. To sleep properly, all CAN communication is halted. If the Battery is connected to the same CAN channel as an inverter, this inverter will prevent the sleep cycle. So in order to properly do the NVROL-sleep, a dedicated CAN channel for the Zoe battery is required
 
 ## Example integration
 Wallmounted Zoe 41kWh battery:
@@ -132,5 +123,5 @@ Wallmounted Zoe 41kWh battery:
 ## Troubleshooting
 The Zoe2 pack has fuses that can be blown. Telltale sign of this being blown is that the voltage was dropping below what was read by BE, so the voltage was read via CAN as 358 but actual voltage measuring was 310-320v
 
-![image](../images/renault-zoe-gen2-18.png)
+<img alt="image" src="../images/renault-zoe-gen2-18.png" />
 

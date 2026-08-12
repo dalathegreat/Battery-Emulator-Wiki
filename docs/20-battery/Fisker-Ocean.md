@@ -8,16 +8,15 @@ The Fisker Ocean was produced between 2022-2024, and came with three battery var
 
 The typelabel on the battery specifies the capacity
 
-![image](../images/fisker-ocean-01.png)
+<img alt="image" src="../images/fisker-ocean-01.png" />
 
 ## Battery overview
 
-![image](../images/fisker-ocean-02.png)
+<img alt="image" src="../images/fisker-ocean-02.png" />
 
 The front connectors has coolant ports, HV and LV connectors. On the back of the battery there is another HV connection.
 
-![image](../images/fisker-ocean-03.png)
-
+<img alt="image" src="../images/fisker-ocean-03.png" />
 
 ## Low voltage connector
 
@@ -29,10 +28,9 @@ The low voltage connector has three CAN channels. The following pins are require
 - CAN H: Blue wire → CANHB
 - CAN L: Violet wire → CANLB
 
-![battery pinout1 ](../images/fisker-ocean-04.jpeg)
+<img alt="battery pinout1 " src="../images/fisker-ocean-04.jpeg" />
 
-
-![image](../images/fisker-ocean-05.png)
+<img alt="image" src="../images/fisker-ocean-05.png" />
 
 #### DTCs
 Descriptions soon integrated to software directly

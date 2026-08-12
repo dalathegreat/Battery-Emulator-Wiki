@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Hyundai Santa Fe PHEV battery
 Information on re-using the 13.8 kWh lithium-ion polymer battery out of a 2018-Present Hyundai Santa Fe **PHEV** vehicle
 
@@ -27,7 +24,7 @@ Connect the following:
 ## Software configuration
 For this battery type, use the option called "Santa Fe PHEV" under the "Battery Protocol" setting
 
-![image](../images/hyundai-santa-fe-phev-04.png){ width="603" height="74" }
+<img width="603" height="74" alt="image" src="../images/hyundai-santa-fe-phev-04.png" />
 
 # Credits
 Credits go to maciek16c for the CAN findings!

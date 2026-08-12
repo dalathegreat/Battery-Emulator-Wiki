@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ### Supported Stellantis Pro One / MCA batteries
 
 110kWh - 90S - min ~270V max ~380V 
@@ -15,27 +12,26 @@ The following vehicles are supported
 
 ## Connectors
 
-
 ## HV connector
 The battery needs to see capacitance on the HV lines in order to engage contactors. Two 470uF capacitors in parallel is confirmed working
 
 HV connector (175 A max). This is the easiest one to source and use, while the others are much harder to find. (Has HVIL that needs to be seated!)
 
-![image](../images/stellantis-pro-one-01.png){ width="532" height="504" }
+<img width="532" height="504" alt="image" src="../images/stellantis-pro-one-01.png" />
 
 https://nl.aliexpress.com/item/1005003639011124.html?spm=a2g0o.order_list.order_list_main.18.252f79d2fTtchH&gatewayAdapt=glo2nld
 
 Another HV connector, rated for up to 600 A, can also be used if you can find one. (Has HVIL that needs to be seated!)
 
-![image](../images/stellantis-pro-one-02.png){ width="642" height="568" }
+<img width="642" height="568" alt="image" src="../images/stellantis-pro-one-02.png" />
 
 The HV connector on the right side (DC fast charging) cannot be used with the Battery Emulator. (Has HVIL that needs to be seated!)
 
-![image](../images/stellantis-pro-one-03.png){ width="648" height="469" }
+<img width="648" height="469" alt="image" src="../images/stellantis-pro-one-03.png" />
 
 ## Low voltage connector
 
-![image](../images/stellantis-pro-one-04.png){ width="691" height="1019" }
+<img width="691" height="1019" alt="image" src="../images/stellantis-pro-one-04.png" />
 
 https://nl.aliexpress.com/item/1005005787269820.html?spm=a2g0o.order_list.order_list_main.12.252f79d2fTtchH&gatewayAdapt=glo2nld
 

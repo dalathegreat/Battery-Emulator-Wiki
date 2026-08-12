@@ -4,8 +4,8 @@ The Battery-Emulator has MQTT support. It can be configured to publish data to y
 
 The main purpose of this implementation is better integration with popular home automation platforms such as Home Assistant, in order to (for example) keep track of battery temperature and cell deviation. If "MQTT" and "Home Assistant" are not familiar words, you will likely not benefit from this until you're up to speed on the current state of home automation.
 
-> [!NOTE]
-> The MQTT topic name, the Home Assistant object-ID prefix, the HA device name, and the HA device identifier are no longer independently configurable settings. All four are automatically set to the device's **hostname**, which itself defaults to `battery-emulator-xxxx` (`xxxx` being the last two bytes of the device's MAC address) unless a custom hostname has been set on the Connectivity settings page. The examples on this page use `battery-emulator-a1b2` as a stand-in for this value — substitute your device's actual hostname wherever you see it.
+!!! note "NOTE"
+    The MQTT topic name, the Home Assistant object-ID prefix, the HA device name, and the HA device identifier are no longer independently configurable settings. All four are automatically set to the device's **hostname**, which itself defaults to `battery-emulator-xxxx` (`xxxx` being the last two bytes of the device's MAC address) unless a custom hostname has been set on the Connectivity settings page. The examples on this page use `battery-emulator-a1b2` as a stand-in for this value — substitute your device's actual hostname wherever you see it.
 
 - [Enabling MQTT in the software](#enabling-mqtt-in-the-software)
 - [Published data](#published-data)
@@ -25,8 +25,8 @@ The main purpose of this implementation is better integration with popular home 
 - [Migrating from older releases](#migrating-from-older-releases)
 - [References](#references)
 
-> [!NOTE]
-> This page documents the MQTT implementation as found in `Software/src/devboard/mqtt/mqtt.cpp`. The behaviour described here matches recent builds. Older releases behave differently — see [Migrating from older releases](#migrating-from-older-releases).
+!!! note "NOTE"
+    This page documents the MQTT implementation as found in `Software/src/devboard/mqtt/mqtt.cpp`. The behaviour described here matches recent builds. Older releases behave differently — see [Migrating from older releases](#migrating-from-older-releases).
 
 # Enabling MQTT in the software
 
@@ -34,8 +34,8 @@ To start using MQTT, enable the **Enable MQTT** checkbox under the Integration s
 
 The server IP/hostname, port, username and password for MQTT can be set there. The device's **Hostname** field (set in Network config section) determines the MQTT topic name, the HA object-ID prefix, the HA device name, and the HA device identifier — see the note at the top of this page.
 
-> [!NOTE]
-> Make sure that your LAN is not on `192.168.4.x`, since this conflicts with the built-in ESP access point!**
+!!! note "NOTE"
+    Make sure that your LAN is not on `192.168.4.x`, since this conflicts with the built-in ESP access point!**
 
 # Published data
 
@@ -350,8 +350,8 @@ Recent builds changed the MQTT layout in two ways that affect anyone consuming t
 - **Battery 2/3 moved to their own topics.** Previously, a second/third battery's values were added to `.../info` with suffixed keys (`SOC_2`, `battery_voltage_3`, …). They are now published to `.../info_2` and `.../info_3` using the same plain key names as battery #1. Update raw consumers to subscribe to the per-battery topic and drop the key suffix.
 - **`balancing_data*` topics were removed.** The per-cell balancing arrays are now part of the `spec_data*` messages, under the `cell_balancing` key. Update raw consumers to read `cell_balancing` from `.../spec_data` (or `.../spec_data_2` / `_3`).
 
-> [!NOTE]
-> Cell data now updates every 60 seconds rather than at the main publish interval, and battery values are omitted from the JSON until real data has been received from the battery — consumers must tolerate absent keys rather than assuming every key is present in every message.
+!!! note "NOTE"
+    Cell data now updates every 60 seconds rather than at the main publish interval, and battery values are omitted from the JSON until real data has been received from the battery — consumers must tolerate absent keys rather than assuming every key is present in every message.
 
 # References
 

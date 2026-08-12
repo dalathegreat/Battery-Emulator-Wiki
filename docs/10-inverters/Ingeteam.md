@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Ingeteam inverters
 * Ingeteam STORAGE 1Play TL M (3-6 kW)
 
@@ -14,7 +11,7 @@ The Ingeteam inverter works via CAN. The LilyGo board can have both a CAN batter
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-![image](../images/afore-01.png){ width="484" height="68" }
+<img width="484" height="68" alt="image" src="../images/afore-01.png" />
 
 ## Installation examples
 A completed integration using LEAF battery and an Ingeteam inverter:

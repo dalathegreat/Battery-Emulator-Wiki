@@ -1,7 +1,7 @@
 ## ESP32 DevKit V1 hardware compatible with Battery-Emulator
 
-> [!WARNING]  
-> The Devkit is for advanced users that are OK with troubleshooting wiring and complex software setups. For easy use of Battery-Emulator, consider using LilyGo or Stark CMR
+!!! warning "WARNING"
+    The Devkit is for advanced users that are OK with troubleshooting wiring and complex software setups. For easy use of Battery-Emulator, consider using LilyGo or Stark CMR
 
 The ESP32 DevKit V1 hardware can be used with Battery-Emulator, and has the following advantages:
 - 25 configurable GPIO pins, allowing the following features simultaneously:
@@ -16,8 +16,8 @@ The ESP32 DevKit V1 hardware can be used with Battery-Emulator, and has the foll
 ### Power
 * Power via USB
 * Supply voltage (+6.5VDC - +16VDC), if used with ESP32 DevKit V1 breakout board.
-> [!WARNING]  
-> USB connection and simultaneous external power may not be supported. Ensure to disconnect the external power before connecting USB.
+!!! warning "WARNING"
+    USB connection and simultaneous external power may not be supported. Ensure to disconnect the external power before connecting USB.
 ### Communication
 * 1 x CAN channel using Texas Instruments SN65HVD230 breakout board
 * 1 x CAN channel using Microchip Technology MCP2515 breakout board

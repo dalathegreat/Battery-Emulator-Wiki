@@ -1,7 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
->**DC ARC is a REAL THING - ENSURE NO LOAD** is on any DC wires before working on the system.
-
 ## Contents
 - [Compatible Inverters](#compatible-inverters)
 - [Protocol Selection](#protocol-selection)
@@ -23,7 +19,6 @@
   - [Error Codes 714, 703, "Inverter_missing"](#error-codes-714-703-inverter_missing)
   - [Tested Configurations](#tested-configurations)
 
-
 ## Compatible Inverters
 
 | Model | BYD CAN | Sungrow SBRXXX CAN | Notes |
@@ -35,8 +30,8 @@
 | SH15T/SH20T/SH25T | ✅ | ✅ | Some regions dropping BYD support |
 | SH15T/SH20T/SH25T (Australia) | ❌ | ✅ | No BYD support |
 
-> [!NOTE]
-> Sungrow is promoting their own battery systems and dropping third-party battery support in some regions. As of June 2024, [Australia has officially dropped all support for non-Sungrow batteries](https://service.sungrowpower.com.au/TI_20210824_Approved%20battery%20declaration%20for%20sungrow%20hybrid%20inverters_V16_EN-1.pdf). If your inverter lacks BYD support, use the Sungrow SBRXXX protocol instead.
+!!! note "NOTE"
+    Sungrow is promoting their own battery systems and dropping third-party battery support in some regions. As of June 2024, [Australia has officially dropped all support for non-Sungrow batteries](https://service.sungrowpower.com.au/TI_20210824_Approved%20battery%20declaration%20for%20sungrow%20hybrid%20inverters_V16_EN-1.pdf). If your inverter lacks BYD support, use the Sungrow SBRXXX protocol instead.
 
 ## Protocol Selection
 
@@ -46,8 +41,7 @@ Use **"BYD Battery-Box Premium HVS over CAN Bus"** for inverters with BYD suppor
 
 Remember to enable "Long inverter CAN timeout" to avoid false positive CAN_INVERTER_MISSING events. The Sungrow is very slow to communicate via CAN, and we incorrectly detect it as missing without this fix
 
-![image](../images/sungrow-03.png){ width="572" height="215" }
-
+<img width="572" height="215" alt="image" src="../images/sungrow-03.png" />
 
 ### Sungrow SBRXXX Protocol
 
@@ -67,11 +61,11 @@ When using this protocol, select the battery model that best matches your actual
 
 See the [SBR battery datasheet](https://info-support.sungrowpower.com/application/pdf/2024/09/13/DS_20240907_SBR064_096_128_160_192_224_256_Datasheet_V5_EN.pdf) for full specifications.
 
-> [!NOTE]
-> The Sungrow SBRXXX protocol uses 250 kbps CAN bitrate, which differs from most battery protocols. This means you cannot have an EV battery on the same CAN channel as the Sungrow
+!!! note "NOTE"
+    The Sungrow SBRXXX protocol uses 250 kbps CAN bitrate, which differs from most battery protocols. This means you cannot have an EV battery on the same CAN channel as the Sungrow
 
-> [!IMPORTANT]
-> The emulator sends your actual battery's minimum and maximum voltage limits to the inverter. Before connecting, verify that your battery's voltage range is compatible with your Sungrow inverter's supported battery voltage range (check your inverter's datasheet).
+!!! info "IMPORTANT"
+    The emulator sends your actual battery's minimum and maximum voltage limits to the inverter. Before connecting, verify that your battery's voltage range is compatible with your Sungrow inverter's supported battery voltage range (check your inverter's datasheet).
 
 ## Hardware Setup
 
@@ -81,8 +75,8 @@ Sungrow inverters have the wiring diagram on the side of the unit. Check your sp
 
 ![SHxxRS wiring diagram](../images/sungrow-01.png)
 
-> [!NOTE]
-> Sungrow inverters have an inbuilt fuse on the battery terminals. Check the [data spec sheet](https://aus.sungrowpower.com/upload/file/20210816/SH3.0_3.6_4.0_5.0_6.0RS-UEN-Ver11-20210629.pdf) for details.
+!!! note "NOTE"
+    Sungrow inverters have an inbuilt fuse on the battery terminals. Check the [data spec sheet](https://aus.sungrowpower.com/upload/file/20210816/SH3.0_3.6_4.0_5.0_6.0RS-UEN-Ver11-20210629.pdf) for details.
 
 ![Fuse location](../images/sungrow-02.png)
 
@@ -102,8 +96,8 @@ When the LilyGo board connects to both a CAN battery and CAN inverter on the sam
 
 ### Dedicated CAN Channel (Recommended)
 
-> [!CAUTION]
-> **Safety Warning:** If using a single CAN channel and the LilyGo board disconnects while the system is running (wire break or hardware failure), the inverter will continue charging/discharging the battery. The Sungrow inverter interprets automotive CAN messages as the system being alive, which can lead to dangerous over/under-charge conditions.
+!!! warning "CAUTION"
+    **Safety Warning:** If using a single CAN channel and the LilyGo board disconnects while the system is running (wire break or hardware failure), the inverter will continue charging/discharging the battery. The Sungrow inverter interprets automotive CAN messages as the system being alive, which can lead to dangerous over/under-charge conditions.
 
 For maximum safety and stability, use a dedicated CAN channel for the inverter. Options:
 
@@ -112,8 +106,8 @@ For maximum safety and stability, use a dedicated CAN channel for the inverter. 
 - Use [Stark CMR hardware](../30-hardware/Stark-CMR.md)
 - Use a [CAN filter](../40-setup/40-can-related/CAN-filter-hardware.md) between inverter and the rest of the system
 
-> [!NOTE]
-> Some Sungrow inverters (e.g., SH5.0RS with Leaf battery) have CAN communication issues when battery and inverter share the same LilyGo channel. A dedicated channel resolves this.
+!!! note "NOTE"
+    Some Sungrow inverters (e.g., SH5.0RS with Leaf battery) have CAN communication issues when battery and inverter share the same LilyGo channel. A dedicated channel resolves this.
 
 ## Inverter Configuration
 
@@ -124,13 +118,13 @@ To limit grid export (feed-in), you need a Sungrow Smart Meter (e.g., DTSU666 in
 Configure via Winet-S local web interface, iSolarCloud app, or isolarcloud.com:
 
 **Winet-S local web interface:**
-![Winet-S energy management parameters](../images/sungrow-04.png){ width="1717" }
+<img width="1717" alt="Winet-S energy management parameters" src="../images/sungrow-04.png">
 
 **iSolarCloud.com:**
-![iSolarCloud energy management parameters](../images/sungrow-05.png){ width="1724" }
+<img width="1724" alt="iSolarCloud energy management parameters" src="../images/sungrow-05.png">
 
-> [!NOTE]
-> iSolarCloud takes 10-15 minutes to update inverter settings.
+!!! note "NOTE"
+    iSolarCloud takes 10-15 minutes to update inverter settings.
 
 ## Operation
 
@@ -173,7 +167,7 @@ I remembered reading something in an Australian Facebook group about how certain
 So I checked it — and sure enough, that was the issue!
 Once I corrected the schema setting, everything started working perfectly.So now it’s finally up and running — YES! 
 
-![image](../images/sungrow-06.png)
+<img alt="image" src="../images/sungrow-06.png" />
 
 ### Firmware Compatibility
 

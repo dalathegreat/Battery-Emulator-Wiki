@@ -1,18 +1,14 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Disclaimer and Safety notes 
 
-> [!WARNING]  
-> The entire Battery-Emulator project focuses on re-using EV batteries for stationary storage. The following support page for CHAdeMO connection to the in-vehicle battery is only to be used for emergencies, where the grid is down and you need backup power. It is not intended for daily usage, the following info is ONLY for emergency situations!
+!!! warning "WARNING"
+    The entire Battery-Emulator project focuses on re-using EV batteries for stationary storage. The following support page for CHAdeMO connection to the in-vehicle battery is only to be used for emergencies, where the grid is down and you need backup power. It is not intended for daily usage, the following info is ONLY for emergency situations!
 
-> [!CAUTION]  
-> 🔥 The CHAdeMO connection requires a genuine CHAdeMO cable. This is to prevent electrical shock to the person plugging in the vehicle. Using 3d-printed parts where you are close to 500VDC is potentially lethal 💀 Do not use anything other than a genuine connector! Genuine connectors known to work will be listed in the wiring and parts detail below.
+!!! warning "CAUTION"
+    🔥 The CHAdeMO connection requires a genuine CHAdeMO cable. This is to prevent electrical shock to the person plugging in the vehicle. Using 3d-printed parts where you are close to 500VDC is potentially lethal 💀 Do not use anything other than a genuine connector! Genuine connectors known to work will be listed in the wiring and parts detail below.
 
 Be mindful that there is inherent risk to the rest of the vehicle and that you assume responsibility for that risk. Do not attempt on a vehicle you do not own. Be aware that some Nissan Leaf vehicles have experienced contactor welding when using other V2X equipment like Setec inverters; it is a possibility here even despite our best efforts to avoid such issues.
 
 ***
-
 
 # Overview
 
@@ -43,8 +39,8 @@ Dala 2025: I have updated the Wiki. There are some things we need to change with
  - GPIO connections, logic level converter...
 
 ## Connection diagram
-> [!CAUTION]  
-> Use only OEM CHAdeMO cables. Do not compromise your safety by using a 3d-printed connector. Your life depends on it.
+!!! warning "CAUTION"
+    Use only OEM CHAdeMO cables. Do not compromise your safety by using a 3d-printed connector. Your life depends on it.
 
 The 12V supply used needs to be able to handle 2A continuous load to engage the Chademo contactors in the vehicle.
 
@@ -130,7 +126,6 @@ If a more controlled behavior is wanted, the charger should output a current tha
 
 ## ZE0 V2X
 As long as the reported (charging) current is faked, tests show that it's possible to do both charging and discharging. However, no long term testing has been performed yet.
-
 
 # Sources used
 - [Lars Rengersen, Chademo fast charging](https://www.evcreate.com/chademo-fast-charging-in-diy/)

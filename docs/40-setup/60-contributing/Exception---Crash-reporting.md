@@ -1,6 +1,6 @@
 ### What is a crash?
 
-![image](../../images/exception-crash-reporting-01.png){ width="435" height="269" }
+<img width="435" height="269" alt="image" src="../../images/exception-crash-reporting-01.png" />
 
 #### :warning: Warning: The board was reset due to an exception or panic. Inform developers!
 
@@ -52,6 +52,4 @@ This will output where the issue occured:
 `****0x40117056: transmit_can_frame_to_interface(CAN_frame const*, CAN_Interface) at /home/dala/Git/Battery-Emulator/Software/src/communication/can/comm_can.cpp:279****`
 
 This info can be used to debug from where the crash originated
-
-
 

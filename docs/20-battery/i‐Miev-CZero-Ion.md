@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Mitsubishi i-MiEV / Citroen C-Zero / Peugeot Ion battery
 
 There are 3 OEM battery combinations possible and some DIY aftermarket packs.
@@ -20,8 +17,8 @@ It would make sense to add in the future two BMU firmware dumps. One for the LEV
 Other cars build around the MiEV technology are the Minicab Miev, the Citroën Berlingo Electric and the Peugeot Partner Electric (from the MiEV time period).
 
 ## Word of caution when buying batteries ⚠️ 
-> [!IMPORTANT]  
-> The battery out of a triplet does not always contain the required parts needed for safe re-use of the battery. The early battery design (pre 2015), had the Battery Management Unit (BMU) located outside of the battery, under the rear left seat. The BMU tells the individual modules inside the battery when to perform cell balancing, and the BMU also calculates state of charge %, and measures how much energy is going in/out of the battery. So without the BMU, it is very hard to safely reuse the battery for stationary storage as-is.
+!!! info "IMPORTANT"
+    The battery out of a triplet does not always contain the required parts needed for safe re-use of the battery. The early battery design (pre 2015), had the Battery Management Unit (BMU) located outside of the battery, under the rear left seat. The BMU tells the individual modules inside the battery when to perform cell balancing, and the BMU also calculates state of charge %, and measures how much energy is going in/out of the battery. So without the BMU, it is very hard to safely reuse the battery for stationary storage as-is.
 
 If you are using a 2015 and below battery with external BMU, try to also source the BMU from the same vehicle to not have to search for one that is either for LEV50 or LEV50N.
 The service manual containing also information about the pinouts is available here: http://mmc-manuals.ru/Mitsubishi_i-MiEV/en
@@ -44,7 +41,7 @@ Handle precharge/contactors manually or use [GPIO control](../40-setup/20-softwa
 ## Software configuration
 For this battery type, use the option called "I-Miev / C-Zero / Ion Triplet" under the "Battery Protocol" setting
 
-![image](../images/i-miev-czero-ion-03.png){ width="641" height="146" }
+<img width="641" height="146" alt="image" src="../images/i-miev-czero-ion-03.png" />
 
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 

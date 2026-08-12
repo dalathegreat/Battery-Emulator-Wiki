@@ -1,16 +1,13 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Volkswagen MQB battery platform
 
-> [!IMPORTANT]
-> The MQB batteries do **not** have any precharge resistors built in. They need to see actual battery voltage on the high voltage terminals before the battery can turn on the contactors. Due to this requirement the MQB batteries are harder to re-use compared to most EV battery packs. To achieve this, a standalone lab PSU or high voltage isolated boost converter can be used to generate the high voltage needed to start the battery.
+!!! info "IMPORTANT"
+    The MQB batteries do **not** have any precharge resistors built in. They need to see actual battery voltage on the high voltage terminals before the battery can turn on the contactors. Due to this requirement the MQB batteries are harder to re-use compared to most EV battery packs. To achieve this, a standalone lab PSU or high voltage isolated boost converter can be used to generate the high voltage needed to start the battery.
 
 This platform shares a lot of similarities with the [Volkswagen MEB platform](MEB.md)
 
-![image](../images/mqb-01.png){ width="862" height="605" }
+<img width="862" height="605" alt="image" src="../images/mqb-01.png" />
 
-![image](../images/mqb-02.png){ width="627" height="328" }
+<img width="627" height="328" alt="image" src="../images/mqb-02.png" />
 
 ### Physical Dimensions
 
@@ -21,7 +18,7 @@ This platform shares a lot of similarities with the [Volkswagen MEB platform](ME
 
 ## Compatible batteries
 
-<details markdown="1">
+<details>
 <summary><strong>Vehicles using the MQB Evo 2024+ platform (Note only 2024+)</strong></summary>
 
 - Audi A3 Mk4 (2020–present)

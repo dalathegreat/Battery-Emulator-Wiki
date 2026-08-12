@@ -29,11 +29,11 @@ Emergency charging batteries via a generator, supported via the following standa
 ## What about safety? ⚠️ ℹ️
 Reusing old often crashed EV packs always comes with risks. The system performs a few safety functions for safer charging and discharging. Apart from this, the data sent to the Inverter is also processed on the inverter side, and depending on which inverter is used a few additional safety checks are performed there. Here is a list of all safety functionalities that are in the system. Note that almost all safety features rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be detectable via software. For this you need fuses, and periodic visual inspections. 
 
-> [!TIP]
-> Be sure to checkout the [installation guidelines](10-hardware/Installation-guidelines.md) section for how to install your battery
+!!! tip "TIP"
+    Be sure to checkout the [installation guidelines](10-hardware/Installation-guidelines.md) section for how to install your battery
 
-> [!CAUTION]
-> ***At the end of the day, you alone are responsible for the system.***
+!!! warning "CAUTION"
+    ***At the end of the day, you alone are responsible for the system.***
 
 Safety features run on (most) inverter(s):
 - Battery sends max total voltage allowed for charging. Incase this value is reached, inverter stops charging. (For instance 404V)
@@ -57,8 +57,8 @@ Safety features run on Battery-Emulator side:
 - High voltage wiring is unhooked during operation. This will trigger interlock messages, and the code enters FAULT state
 - Incase of a high voltage leak to battery casing (Protective earth), the code enters FAULT state (For instance LB_Failsafe_Status on Nissan LEAF packs)
 
-> [!IMPORTANT]  
-> Do note that all actual limits are battery/inverter specific, the values here are only used for example purposes. The amount of safeties will vary depending on your choice of battery.
+!!! info "IMPORTANT"
+    Do note that all actual limits are battery/inverter specific, the values here are only used for example purposes. The amount of safeties will vary depending on your choice of battery.
 
-> [!TIP]  
-> You can also add an [equipment stop button](20-software/Equipment-Stop.md) to the Battery-Emulator, to increase the amount of safety.
+!!! tip "TIP"
+    You can also add an [equipment stop button](20-software/Equipment-Stop.md) to the Battery-Emulator, to increase the amount of safety.

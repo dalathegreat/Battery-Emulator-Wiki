@@ -1,12 +1,9 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # BMW Gen3 & 4 PHV Platform - (330e 530e X5-45e)
 
 BMW uses a shared modular platform across various vehicles with a common BMS (SME).
 
-> [!IMPORTANT]  
-> Currently integration needs manual contactor control - We have Gen 3 logs, still looking for Gen4 (~2021+) can-logs from a BMW PHEV vehicle to build contactor control (K-CAN5)
+!!! info "IMPORTANT"
+    Currently integration needs manual contactor control - We have Gen 3 logs, still looking for Gen4 (~2021+) can-logs from a BMW PHEV vehicle to build contactor control (K-CAN5)
 
 # Pin Assignments at Plug Connector A332*1B
 

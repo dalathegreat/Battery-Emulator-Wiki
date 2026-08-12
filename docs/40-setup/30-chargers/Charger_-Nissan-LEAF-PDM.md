@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Supported PDMs 🏅 
 There are two different 2013+ LEAF charger (PDM) variants that work with the Battery-Emulator as a charger. One is 3.3kW, and the other is 6.6kW (both are only 1-phase chargers). There is a sticker on the PDM that signals how fast it can charge.
 ![Nissan_PDM](../../images/charger-nissan-leaf-pdm-01.jpg) ![PDM66](../../images/charger-nissan-leaf-pdm-02.jpg)
@@ -30,17 +27,15 @@ The PDM has a 36pin Yazaki connector that handles all low voltage signals.
 - Pin 30 - Connect to green wire on the Type1 port (For type 2 connect to the white wire - CP)
 
 here the complete pinout
-![](../../images/charger-nissan-leaf-pdm-14.png)
-
+<img src="../../images/charger-nissan-leaf-pdm-14.png" />
 
 ### 2014 PDM Pinout
 
-![](../../images/charger-nissan-leaf-pdm-15.png)
-
+<img src="../../images/charger-nissan-leaf-pdm-15.png" />
 
 ### 2013 PDM Pinout
 
-![](../../images/charger-nissan-leaf-pdm-16.png)
+<img src="../../images/charger-nissan-leaf-pdm-16.png" />
 
 ## Type 2 AC wiring
 ![type_2](../../images/charger-nissan-leaf-pdm-05.jpg) ![type2_socket](../../images/charger-nissan-leaf-pdm-06.jpg) ![type2_wires](../../images/charger-nissan-leaf-pdm-07.jpg)
@@ -63,7 +58,6 @@ Nissan LEAF waterpump pinout:
 - Yellow/black pin 2 - GND
 
 ![image](../../images/charger-nissan-leaf-pdm-09.png) ![Leaf water pump pinout](../../images/charger-nissan-leaf-pdm-10.jpg)
-
 
 ℹ️ The LEAF waterpump takes 8 seconds to start after supplying power to it.
 

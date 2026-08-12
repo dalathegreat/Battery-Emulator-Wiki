@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## General information
 Any high voltage battery compatible with the Pylontech defacto standard can now be used with the Battery-Emulator. Do note that the support is experimental, and should be considered as a starting point when refining support for your battery. There has been many revisions to the Pylon CAN standard over the years, so some batteries might behave differently than others, even though they both support the Pylon protocol
 
@@ -20,10 +17,9 @@ Dyness Tower
  - Dyness Tower T10 ✅
  - Dyness Tower T14 ✅
 
-
 configuration:
 
-![image](../images/pylon-hv-01.png){ width="545" height="86" }
+<img width="545" height="86" alt="image" src="../images/pylon-hv-01.png" />
 
 Currently the cell voltages might be off and the contactor did not work.
 
@@ -32,7 +28,7 @@ PylonTech Force H3
 ## Software configuration
 For this battery type, use the option called "Pylon compatible battery" under the "Battery Protocol" setting
 
-![image](../images/pylon-hv-02.png){ width="670" height="271" }
+<img width="670" height="271" alt="image" src="../images/pylon-hv-02.png" />
 
 Finally, remember to configure the voltage limits to match the Pylon battery you are using (e.g. 180-228V)
 

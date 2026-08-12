@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Afore Inverters
 - AF17K-THA 230V :ballot_box_with_check: (Works with "BYD Battery-Box Premium HVS over CAN Bus" or "Afore CAN" option)
    - Depending on software version, you might need to do an inverter firwmare update to get the BYD CAN option
@@ -15,9 +12,9 @@ The Afore inverter works via CAN. The LilyGo board can have both a CAN battery a
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-![image](../images/afore-01.png){ width="484" height="68" }
+<img width="484" height="68" alt="image" src="../images/afore-01.png" />
 
 ## Note on CAN ID with Nissan LEAF
-> [!IMPORTANT]
-> If you intend on using "Afore CAN" protocol with a 2018+ Nissan LEAF battery, the battery needs to be on a separate CAN bus. The LEAF is using the same CAN IDs as Afore does, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong
+!!! info "IMPORTANT"
+    If you intend on using "Afore CAN" protocol with a 2018+ Nissan LEAF battery, the battery needs to be on a separate CAN bus. The LEAF is using the same CAN IDs as Afore does, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong
 

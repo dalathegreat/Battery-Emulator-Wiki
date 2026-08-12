@@ -1,13 +1,10 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ### WIP :construction: 
 This page contains info on how to re-use the Kia Niro Hybrid batteries (Also applies to Hyundai Kona Hybrid & Kia Xceed)
 
 ## Software configuration
 For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Battery Protocol" setting
 
-![image](../images/battery-kia-niro-hybrid-06.png){ width="588" height="72" }
+<img width="588" height="72" alt="image" src="../images/battery-kia-niro-hybrid-06.png" />
 
 ## Specifications
 There are two variants of the hybrid battery, HEV and PHEV. Currently only HEV batteries have been tested, but PHEV might also work.
@@ -15,12 +12,10 @@ There are two variants of the hybrid battery, HEV and PHEV. Currently only HEV b
 
 * 8.9kWh, PHEV, 96 Cells, 360v nominal. The PHEV is split into two packs, both 4.45kWh 180V.
 
-
 ## Part numbers for batteries
 Here is a list of Kia / Hyundai part numbers. The Number G is used for Kia Niro HEV. Checkboxes are added to batteries confirmed working by users.
 
 - 37501 G5000, 37501 G2000 is Kia Niro HEV 1.56kWh ✅
-
 
 ## Pictures
 
@@ -38,21 +33,13 @@ On the 32-pin BMS connector we have the following pin out.
 ![afbeelding](../images/battery-kia-niro-hybrid-02.png)
 ![afbeelding](../images/battery-kia-niro-hybrid-03.png)
 
-
-
-
-
 The battery can be interfaced to the 32-pin BMS connector, via the external white BF11 connector.
 
-
 ![afbeelding](../images/battery-kia-niro-hybrid-04.png)
-
-
 
 Wires connected to a HEV battery:
 
 ![image](../images/battery-kia-niro-hybrid-05.png)
-
 
 Battery emulator software ( 13-3-2025 ) is able to read voltage, current etc. but we did not yet found normal way to close relais.
 

@@ -4,7 +4,6 @@ hide:
   - toc
 ---
 
-
 # Supported Emulator Hardware
 
 There are many hardware kits that can run the Battery-Emulator software. Cheap option is the "LilyGo T-2CAN" (2x CAN). For those that need more reliable and certifiable hardware, the "Stark CMR" is highly recommended. Amount of stars ⭐ signal how easy to use the hardware is for a newcomer:
@@ -19,12 +18,12 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 | Waveshare ESP32-S3-RS485-CAN  | [Wiki page](Waveshare-ESP32‐S3‐RS485‐CAN.md) | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐⭐
 | ESP32 Devkit V1 | [Wiki page](ESP32-DevKit-V1.md) | Build your own! For expert tinkerers | | ⭐
 
-> [!NOTE]  
-> There is no way to purchase a pre-programmed device. This is a hobbyist open source project. You will be responsible for loading the software and setting it up correctly for your components. There is however a [support Discord group](https://www.patreon.com/dala) available.
+!!! note "NOTE"
+    There is no way to purchase a pre-programmed device. This is a hobbyist open source project. You will be responsible for loading the software and setting it up correctly for your components. There is however a [support Discord group](https://www.patreon.com/dala) available.
 
 ## How do I configure the software for my battery/inverter?
 
-![image](../images/30-hardware-index-01.png)
+<img alt="image" src="../images/30-hardware-index-01.png" />
 
 All the changes to the software are done on the _Change Settings_ page, which can be accessed thru the Webserver. At the top of this webpage, you can select which battery, inverter protocol and what interface they are connected to. If you are unsure which protocol you need, check the specific page for the battery/inverter you are using linked here in the Wiki
 

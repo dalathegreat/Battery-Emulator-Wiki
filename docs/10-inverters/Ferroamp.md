@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Ferroamp inverters
 * FerroAmp EnergyHub
 
@@ -13,14 +10,12 @@
 ## Communication wiring
 The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues, or before removing the resistor. This is explained in [CAN-troubleshooting](../40-setup/index.md#can-wiring-troubleshooting)
 
-> [!NOTE]  
-> While the Ferroamp will work on the same CAN channel as an EV battery, it sometimes can cause "ESO fault code 2 - communication issues". If you are seeing this error, put the inverter on its own dedicated CAN channel.
-
+!!! note "NOTE"
+    While the Ferroamp will work on the same CAN channel as an EV battery, it sometimes can cause "ESO fault code 2 - communication issues". If you are seeing this error, put the inverter on its own dedicated CAN channel.
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
-
 
 ![Skarmbild_2024-07-10_211612](../images/ferroamp-01.png)
 
@@ -29,10 +24,10 @@ The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN batter
 ## Which protocol to use
 For this inverter type, use the option called "Ferroamp Pylon battery over CAN Bus" under the "Inverter Protocol" setting
 
-> [!IMPORTANT]  
-> The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed. If 0 is left as default values, the below options will be used
+!!! info "IMPORTANT"
+    The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed. If 0 is left as default values, the below options will be used
 
-![image](../images/ferroamp-02.png){ width="565" height="273" }
+<img width="565" height="273" alt="image" src="../images/ferroamp-02.png" />
 
 - TOTAL_CELL_AMOUNT 420 // Edit steps of 30, as how much your battery Wh is. 30 = 3552Wh, so 420 = 49728Wh*
 - MODULES_IN_SERIES 4

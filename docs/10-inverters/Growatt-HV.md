@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 ## Compatible Growatt inverters
 The current implementation "Growatt High Voltage protocol via CAN Bus" emulates a "HVC 60050-A1 BMS". This means the following inverters work:
 * Growatt SPH 10 10000TL3 BH-UP ✅
@@ -33,7 +30,7 @@ The Growatt HV inverter works via CAN. The LilyGo board can have both a CAN batt
 ## Which protocol to use
 For this inverter type, use the option called "Growatt High Voltage protocol via CAN Bus" under the "Inverter Protocol" setting
 
-![image](../images/growatt-hv-01.png){ width="491" height="66" }
+<img width="491" height="66" alt="image" src="../images/growatt-hv-01.png" />
 
 **If you have the Growatt WIT inverter, instead use the "Growatt WIT compatible battery via CAN" option!**
 

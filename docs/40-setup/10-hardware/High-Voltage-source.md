@@ -11,8 +11,8 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 
 One of the options is the HIA4V1 board original or modified for Lilygo or Stark CMR. 
 
-> [!CAUTION]
-> There are various HIA4V1 board version avaiable that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended
+!!! warning "CAUTION"
+    There are various HIA4V1 board version avaiable that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended
 
 # Option A: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
 The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Support for this was added in firmware v10.11.0
@@ -26,19 +26,17 @@ Parts needed:
 - Contactor Normally Closed
 - Fuseholder and DC-Fuses 10x38 2A for DC use
 
-![image](../../images/high-voltage-source-08.png)  
+<img alt="image" src="../../images/high-voltage-source-08.png" />  
 
 Example installation:
 
-![image](../../images/high-voltage-source-09.png)
-
+<img alt="image" src="../../images/high-voltage-source-09.png" />
 
 Jumper settings for the TPS55288EVM-045 board:
 - JP1: ON (device enable)
 - JP2: FB_INT (internal feedback selection)
 - JP3: OPEN
 - JP4: OPEN  
-
 
 # Option B: HIA4V1
 The HIA4V1 has been used successfully to precharge the MEB battery's inverter port. It can be found on aliexpress. Without modification it requires manually tuning the resistor (marked 104 in the picture below) to match the external voltage to the internal battery voltage. Given the thin traces on the board, it is probably a good idea to put a circuit breaker between the battery and this board.
@@ -69,8 +67,8 @@ Results while powering the board with 12V:
 ledcWrite(PRECHARGE_PIN, 0); to turn the output off.
 
 Note that these values depend on the current the HIA4V1 has to provide. 
-> [!CAUTION]
-It is absolutely necessary to bias HIA4V1 board with 4x 140k resistors in series across the HV output (4x to increase voltage handling capability), to prevent very high output voltage in no-load situations (which may damage connected equipment). I didn't do it and I destroyed one battery control unit like this :-(.
+!!! warning "CAUTION"
+    It is absolutely necessary to bias HIA4V1 board with 4x 140k resistors in series across the HV output (4x to increase voltage handling capability), to prevent very high output voltage in no-load situations (which may damage connected equipment). I didn't do it and I destroyed one battery control unit like this :-(.
 
 ## Modified HIA4V1 for control via FET board (possible for Lilygo and Stark CMR)
 
@@ -91,7 +89,7 @@ This method can also be used with the Lilygo HW if a seperate FET board is used,
 ToDO add link, for now google for: 15A 400W MOS FET Trigger Switch Drive Module PWM Regulator
 
 Wiring diagram:
-![image](../../images/high-voltage-source-10.png){ width="1262" height="709" }
+<img width="1262" height="709" alt="image" src="../../images/high-voltage-source-10.png" />
 
 ## Decoupling inverter from battery during precharge
 During precharge the inverter will see a high voltage on its inputs pins. The inverters we have tested on will use this a trigger to startup. This will put a load on this high voltage while the contactors of the battery are not yet closed. This load will disrupt the precharging sequence and will cause the precharge to fail.
@@ -109,7 +107,7 @@ The connection is added to the schematic above
 
 ## Overvoltage and reverse-polarity protection
 
-![image](../../images/high-voltage-source-11.png){ width="1001" height="292" }
+<img width="1001" height="292" alt="image" src="../../images/high-voltage-source-11.png" />
 
 You can connect three 5KP150A 150V TVS diodes in series to protect against overvoltage (these will clamp the voltage at around 470-480V). Unipolar ones will also conduct like diodes in the forward direction, which will protect against reverse polarity.
 
@@ -149,5 +147,4 @@ I measured the following:
 - With bias resistors installed powered with 12V **with** battery connected: 287V DC
 
 (The voltage indeed went up when the battery was connected, BMS powered, but not configured in BE.)
-
 

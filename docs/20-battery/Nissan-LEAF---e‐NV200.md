@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Nissan LEAF / e-NV200 battery
 
 ## Physical size
@@ -20,7 +17,7 @@ The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged dif
 ## Software configuration
 For this battery type, use the option called "Nissan LEAF battery" under the "Battery Protocol" setting
 
-![image](../images/nissan-leaf-e-nv200-21.png){ width="598" height="146" }
+<img width="598" height="146" alt="image" src="../images/nissan-leaf-e-nv200-21.png" />
 
 * If you are using the 2011-2012 24kWh battery, you can enable "Interlock required" in the software for extra safety. Then the software checks that high voltage connectors are plugged in before you can start.
    * If you use "Interlock required" on a 2013-2023 battery, both HV plugs need to be seated (80kW and 6kW heater).
@@ -29,8 +26,8 @@ For this battery type, use the option called "Nissan LEAF battery" under the "Ba
 ## Wiring diagram
 The following pictures show an example of hooking up a LEAF battery to a Fronius Gen24 inverter. The same diagram can be useful for planning other inverter combinations.
 
-> [!NOTE]  
-> The LEAF battery requires a 12V supply capable of delivering 1.5A
+!!! note "NOTE"
+    The LEAF battery requires a 12V supply capable of delivering 1.5A
 
 Remember to seat the service disconnect switch. Without this fitted, the battery will not output any voltage when contactors are closed.
 This is how the SDS is used [(Youtube)](https://www.youtube.com/watch?v=tbo2Qzdj-Rg).
@@ -57,7 +54,7 @@ Battery Emulator hardware can act on its own, and turn on/off the contactors/pre
 
 To enable the feature in the software, Enable the "Contactor control via GPIO" option on the Settings page
 
-![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
+<img width="505" height="42" alt="image" src="../images/nissan-leaf-e-nv200-22.png" />
 
 To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
 - (LilyGo) Precharge pin 25 - Precharge SSR + input
@@ -67,7 +64,7 @@ To keep things simple, it is recommended to use Solid State Relays (SSR). These 
 
 OPTIONAL: If you use SSR relays with the LilyGo, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM
 
-![image](../images/nissan-leaf-e-nv200-23.png){ width="624" height="118" }
+<img width="624" height="118" alt="image" src="../images/nissan-leaf-e-nv200-23.png" />
 
 ![bild](../images/nissan-leaf-e-nv200-07.png)
 
@@ -76,8 +73,8 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 ![bild](../images/nissan-leaf-e-nv200-08.png)
 
 ### Manual control 🖐️
-> [!WARNING]  
-> New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installls using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
+!!! warning "WARNING"
+    New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installls using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
 The Nissan LEAF BMS is not able to operate 24/7 under all conditions. Over time the SOC% will become less and less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
@@ -85,12 +82,11 @@ The Nissan LEAF BMS is not able to operate 24/7 under all conditions. Over time 
 See the [Periodic Reset page](../40-setup/10-hardware/Periodic-BMS-reset.md) for details.
 Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the "Skip reset for one period if balancing" option enabled.
 
-> [!NOTE]  
-> The LEAF battery is fully charged at 92-96% SOC. Use the Scaled SOC function to get a nicer looking 100% curve!
+!!! note "NOTE"
+    The LEAF battery is fully charged at 92-96% SOC. Use the Scaled SOC function to get a nicer looking 100% curve!
 
 ## Part numbers for Nissan LEAF batteries
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
-
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch (2011-2012) 2971C13NA0B |  [Ebay](https://www.ebay.com/sch/i.html?_nkw=fuse+2971C13NA0B)   |
@@ -164,10 +160,9 @@ The 2013-2023 batteries have an external high voltage heater port. The socket ca
 
 Here is a [3D printed SDS for 2013-2025 batteries](https://www.printables.com/model/1337831-nissan-leaf-ze1-service-disconnect-plug) (AZE0, ZE1)
 
-![3d_AZE0_ZE1_SDS](../images/nissan-leaf-e-nv200-24.jpeg){ width="900" height="675" }
+<img width="900" height="675" alt="3d_AZE0_ZE1_SDS" src="../images/nissan-leaf-e-nv200-24.jpeg" />
 
 The link contains the drawing of the copper contact part, you can cut yourself or ask a workshop to cut and silver-plate it.
-
 
 ## Examples of wiring installs
 Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
@@ -179,14 +174,13 @@ Here are some examples on how to wire up the high voltage output from the batter
 Phoenix 3049408 DIN rail connectors
 ![Phoenix 3049408 DIN rail connectors](../images/nissan-leaf-e-nv200-19.jpg)
 
-
 ## Notes on 30kWh battery
 The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the SOH% back to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
 
 Performing this clear can restore a few kWh of usable energy back. 
 
-> [!IMPORTANT]
-> The degradation reset only works on 2011-2017 batteries. Performing it on 2018+ 40/62kWh packs will have a negative effect, since it will restore the battery data too low. So only perform this reset on 24/30kWh packs!
+!!! info "IMPORTANT"
+    The degradation reset only works on 2011-2017 batteries. Performing it on 2018+ 40/62kWh packs will have a negative effect, since it will restore the battery data too low. So only perform this reset on 24/30kWh packs!
 
 ![image](../images/nissan-leaf-e-nv200-20.png)
 
@@ -219,7 +213,7 @@ To see some results, follow these steps after you do the reset (in normal ambien
 - Watch how the values of **Cell Voltage Delta** and **SOC (real)** change over time as approaching full and empty
 
 For example:
-![image](../images/nissan-leaf-e-nv200-25.png){ width="2200" height="1000" }
+<img width="2200" height="1000" alt="image" src="../images/nissan-leaf-e-nv200-25.png" />
 
 Try to find the widest time area of **Cell Voltage Delta** where the value changes least - that's the most comfortable and safe "zone" for the cells to operate. Look at the **SOH** graph in the same time period - that should give you the min and the max percentage of SOC rescaling you can set in Battery Emulator, to prevent the battery to go in the high cell voltage delta zone. Take into account the absolute minimum SOC value your inverter is willing to go until (eg. Fronius allows discharging to 5% only, doesn't go below), you can reduce min SOC rescale about by that amount. 
 

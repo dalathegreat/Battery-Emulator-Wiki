@@ -1,14 +1,14 @@
 # Why add CAN-FD
 Some batteries use CAN-FD insteaf of just CAN. Batteries like Kia EV6 are moving towards the faster and more flexible CAN-FD. The LilyGo hardware does not support CAN-FD protocol, but this can be added with an extra MCP2518FD chip via the GPIO pins, similar to the CAN add-on setup.
 
-> [!TIP]
-> The CAN-FD chip can also be used for normal CAN. Just enable the "Use CanFD as classic CAN" , and you can use the add-on chip with classic CAN batteries.
+!!! tip "TIP"
+    The CAN-FD chip can also be used for normal CAN. Just enable the "Use CanFD as classic CAN" , and you can use the add-on chip with classic CAN batteries.
 
 ### Hardware
 The hardware used is an inexpensive chip, "MCP2518FD Pro", which can be purchased [HERE](https://www.aliexpress.com/item/1005006433378885.html)
 
-> [!NOTE]
-> While the code techincally works with MCP2517FD chips, these chips have nasty hardware bugs and should be avoided. Please source MCP2518FD chips instead to ensure proper CAN-FD operation.
+!!! note "NOTE"
+    While the code techincally works with MCP2517FD chips, these chips have nasty hardware bugs and should be avoided. Please source MCP2518FD chips instead to ensure proper CAN-FD operation.
 
 ### Connecting it to LilyGo T-2CAN
 See the [T-2CAN expansion header](../../30-hardware/LilyGo-T‐2CAN.md#expansion-header)
@@ -34,7 +34,6 @@ The Lilygo also has a 3V3 to 5V boost switch-mode power supply (it is used for t
 
 ![image](../../images/can-fd-add-on-mcp2518fd-02.png)
 
-
 #### Alternative hardware
 [Another board](https://www.aliexpress.com/item/1005007349452566.html) built around the same "MCP2518FD Pro" chip has been shown to work once the oscillator is configured to `OSC_20MHz` - see details below
 
@@ -59,20 +58,18 @@ NB: Only one GND connector is technically required if the same ground is being u
 ### Software setup
 Then configure the component you want to use CANFD on, by selecting "CAN FD (MCP2518 add-on)" on the component that you intend to connect to the chip.
 
-![image](../../images/can-fd-add-on-mcp2518fd-07.png)
+<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-07.png" />
 
-
-> [!NOTE]
-> Remember to configure crystal according to your PCB!
+!!! note "NOTE"
+    Remember to configure crystal according to your PCB!
 
 Depending on your add-on board, there may be different oscillator crystals. On the "MCP2518FD Pro" board, it is 40MHz, while on some others, it is 20MHz. If you don’t have a 40MHz oscillator, you need to update `CAN-FD-addon crystal (Mhz):` from `40` to `20` in the settings page
 
-![image](../../images/can-fd-add-on-mcp2518fd-08.png)
+<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-08.png" />
 
 Example picture, board with 40.0Mhz crystal:
 
 ![image](../../images/can-fd-add-on-mcp2518fd-04.png)
-
 
 The default settings are 500kbit/s arbitration bit rate, and 2 Mbit/s data bit rate. Incase you have a battery that needs some other bit rate settings, this can be changed in the Software.ino file.
 
@@ -81,7 +78,7 @@ If you are unsure if the newly added add-on chip works, you can perform the foll
 
 Test settings, for looping back CAN with Schneider CAN to battery CAN
 
-![image](../../images/can-fd-add-on-mcp2518fd-09.png)
+<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-09.png" />
 
 Example where wires not connected: (Only TX, no RX messages)
 
@@ -90,7 +87,6 @@ Example where wires not connected: (Only TX, no RX messages)
 Example where wires connected (Everything works, TX and RX incoming on native)
 
 ![image](../../images/can-fd-add-on-mcp2518fd-06.png)
-
 
 ## Logging CAN-FD messages
 It is possible to log CAN messages via USB serial or Webserver, see the [CAN logging page](CAN-logging.md) for more info

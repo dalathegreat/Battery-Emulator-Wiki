@@ -11,7 +11,7 @@ There are two variants of the Geometry C battery
 ## Software configuration
 For this battery type, use the option called "Geely Geometry C" under the "Battery Protocol" setting
 
-![image](../images/geely-geometry-c-06.png){ width="591" height="113" }
+<img width="591" height="113" alt="image" src="../images/geely-geometry-c-06.png" />
 
 ### Wiring diagram
 

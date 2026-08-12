@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
-
 # Volvo SPA S60 90 V60 90 XC60 90 Hybrid batteries wiki
 
 Battery list with part numbers up to MY2022. This is the list of Volvo supported batteries not the list of BE supported batteries. For the moment none of those are supported.
@@ -11,14 +8,13 @@ So everything before MY2022 is assumed to be 96 cells batteries with capacity 10
 
 Testing is ongoing with the 18.83kWh (51 Ah) battery with serial number 32336936 and it's assumed that the other batteries of the same capacity should behave the same way. Some of the CAN communication is shared with full electric Volvo SPA platform but not all.
 
-> [!CAUTION]
-> If you want to use Battery-Emulator to read info, check cells, on a standalone battery before buying, comment out any sending of 0x140 messages in the VOLVO-SPA-BATTERY.cpp file and build a custom .bin file with this mod. Otherwise it will try to close contactors, and without the DC/DC converter it will permanently lock the contactors as welded. See further down for more info on DC/DC requirement
+!!! warning "CAUTION"
+    If you want to use Battery-Emulator to read info, check cells, on a standalone battery before buying, comment out any sending of 0x140 messages in the VOLVO-SPA-BATTERY.cpp file and build a custom .bin file with this mod. Otherwise it will try to close contactors, and without the DC/DC converter it will permanently lock the contactors as welded. See further down for more info on DC/DC requirement
 
 ## Software configuration
 For this battery type, use the option called "Volvo PHEV battery" under the "Battery Protocol" setting
 
-![image](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-06.png){ width="592" height="73" }
-
+<img width="592" height="73" alt="image" src="../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-06.png" />
 
 ## Battery specifications / Serial numbers
 The following SPA platform batteries are supported, checkbox on those confirmed by users to work
@@ -53,8 +49,8 @@ Additionnally you need to mimic the presence of the cooling valve and level sens
 
 ## Wiring diagram, High voltage :zap: 
 
-> [!CAUTION]
-> Battery can lock itself if started without load on HV side!
+!!! warning "CAUTION"
+    Battery can lock itself if started without load on HV side!
 
 In order to start the battery you need to have capacitance and current draw ready on HV lines. This can be achieved by connecting a DC-DC converter (which you can purchase from the link below) to the high-voltage output from the front motor. If you skip this step and try to start the battery directly, an irreversible fault code will trigger (Contactor welded). After this fault code is set, you won't be able to engage the contactors via the CAN bus anymore.
 
@@ -66,7 +62,6 @@ The DC/DC converter can also be used to charge a 12V lead acid battery, or left 
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
-
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch for 18.83kWh battery |  Volvo P/N 32299597   |

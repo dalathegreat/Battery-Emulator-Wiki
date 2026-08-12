@@ -17,7 +17,7 @@ Some 2024+ batteries seem to not respond to CAN. Investigation ongoing!
 
 2024+ can be identified with an additional "Pressure Sensor" near the HV/LV connector
 
-![image](../images/dacia-spring-renault-k-ze-21.png)
+<img alt="image" src="../images/dacia-spring-renault-k-ze-21.png" />
 
 ### General info
 
@@ -41,13 +41,12 @@ For this battery type, use the option called "CMFA platform, 27kWh battery" unde
 
 See [Fronius Gen24 settings](../images/dacia-spring-renault-k-ze-25.jpg)
 
-
 ## Battery module - BMS pin diagram. 
 BMS reads from each module the cells voltage + one GND and 2 temp sensors (one for each module). should be ~17Kohm range
 
-![image](../images/dacia-spring-renault-k-ze-22.png)
+<img alt="image" src="../images/dacia-spring-renault-k-ze-22.png" />
 
-![image](../images/dacia-spring-renault-k-ze-23.png)
+<img alt="image" src="../images/dacia-spring-renault-k-ze-23.png" />
 
 ## Wiring diagram, Low Voltage
 
@@ -73,7 +72,7 @@ Connect the battery to the Battery-Emulator according to this diagram:
 
 ![conexiuni](../images/dacia-spring-renault-k-ze-06.jpg)
 
-![schema_conectare](../images/dacia-spring-renault-k-ze-24.png)
+<img alt="schema_conectare" src="../images/dacia-spring-renault-k-ze-24.png" />
 
 12V power info: The preacharge+contactors consume 1.5A. The BMS itself uses 0.1A
 
@@ -91,7 +90,6 @@ The battery has a service disconnect switch:
 Note that there are two versions of the service disconnect switch. The 2021 model is different to 2022+. So, if you purchase a service disconnect switch, make sure you get the correct model year!
 
 ![image](../images/dacia-spring-renault-k-ze-09.png)
-
 
 The polarity of the High Voltage outputs can be seen here, Left is **positive**, Right is **negative**.
 
@@ -113,7 +111,6 @@ Spring keeps the HV voltage between 220V (0% SOC) and 296V (100% SOC)
 You can adjust SOC min percentage and SOC max percentage from the emulator settings to keep the battery voltage somewhere in the above voltage range. Like -5 / 85 with current build (june 2025).
 
 This battery also benefits from automated 30s daily resets, which can be automated with BMS power output. See the [Periodic Reset page](../40-setup/10-hardware/Periodic-BMS-reset.md) for details.
-
 
 ## Fuse sizing:
 
