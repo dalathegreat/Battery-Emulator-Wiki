@@ -1,6 +1,7 @@
-# ⚠️ Word of caution, CAN overvoltage ⚠️
-FoxESS inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE. 
-<br>Note: This does not impact the lilygo T-2CAN, it is galvanically isolated, Foxess cannot fry the T-2CAN!
+!!! info "⚠️ Word of caution, CAN overvoltage ⚠️"
+    FoxESS inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE. 
+    
+    Note: This does not impact the lilygo T-2CAN, it is galvanically isolated, Foxess cannot fry the T-2CAN!
 
 ![image](../images/foxess-h1-h3-ac1-kh-01.png)
 
@@ -8,11 +9,8 @@ Another way to tackle this is with the use of a CAN isolator between the inverte
 
 ![image](../images/foxess-h1-h3-ac1-kh-02.png)
 
-# Word of caution, isolated CAN
-
-!!! info "IMPORTANT"
-    This inverter does not handle a CAN connected EV battery on the same channel.
-If the inverter which likes to see only extended CAN frames sees standard automotive CAN frames, the inverter will enter a fault state.
+!!! info "Word of caution, isolated CAN"
+    This inverter does not handle a CAN connected EV battery on the same channel. If the inverter which likes to see only extended CAN frames sees standard automotive CAN frames, the inverter will enter a fault state.
 
 This can be solved in a few ways:
 

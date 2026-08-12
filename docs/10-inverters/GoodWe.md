@@ -1,11 +1,11 @@
 ## Compatible Goodwe inverters
-* ET/BT :heavy_check_mark: 
-* ET G2  :heavy_check_mark: 
-* EH/BH :heavy_check_mark: 
-* EH-Plus :heavy_check_mark: 
-* EHB :heavy_check_mark: 
-* A-ES :heavy_check_mark: 
-* A-BP :heavy_check_mark: 
+* ET/BT ✅ 
+* ET G2  ✅ 
+* EH/BH ✅ 
+* EH-Plus ✅ 
+* EHB ✅ 
+* A-ES ✅ 
+* A-BP ✅ 
 
 Note: Some Goodwe inverters require an activation code that must be purchased to enable battery mode. Activation code is expensive!
 
@@ -54,6 +54,7 @@ Good idea to watch the installation video from GoodWe's training services, on ho
 
 ## Starting and stopping the system
 When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode.
+
 ### Startup
 1. First start the GoodWe inverter via AC switch
 2. Turn ON the Solar DC safety disconnect switch
