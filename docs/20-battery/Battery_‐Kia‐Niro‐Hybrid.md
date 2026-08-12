@@ -7,7 +7,7 @@ This page contains info on how to re-use the Kia Niro Hybrid batteries (Also app
 ## Software configuration
 For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Battery Protocol" setting
 
-<img width="588" height="72" alt="image" src="https://github.com/user-attachments/assets/dae0acdf-a988-44f9-965e-d515980b5bf5" />
+<img width="588" height="72" alt="image" src="../images/battery-kia-niro-hybrid-06.png" />
 
 ## Specifications
 There are two variants of the hybrid battery, HEV and PHEV. Currently only HEV batteries have been tested, but PHEV might also work.
@@ -29,14 +29,14 @@ Accutype : Lithium-ion
 Accu voltage : 240 V
 Accu capaciteit : 1.56 kWh
 
-![image](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/aae915ca-7ed8-4174-9c26-f0c17183311e)
+![image](../images/battery-kia-niro-hybrid-01.png)
 
 ## Wiring diagram HEV ( confirmed for 1.56 Kwh version )
 
 On the 32-pin BMS connector we have the following pin out.
 
-![afbeelding](https://github.com/user-attachments/assets/bea2934c-9cc2-4e9b-a94b-bf9e6804aec8)
-![afbeelding](https://github.com/user-attachments/assets/c3e841b2-7517-47ec-abe8-f2042e59fbfe)
+![afbeelding](../images/battery-kia-niro-hybrid-02.png)
+![afbeelding](../images/battery-kia-niro-hybrid-03.png)
 
 
 
@@ -45,13 +45,13 @@ On the 32-pin BMS connector we have the following pin out.
 The battery can be interfaced to the 32-pin BMS connector, via the external white BF11 connector.
 
 
-![afbeelding](https://github.com/user-attachments/assets/02d07c81-f919-4731-9f3a-dfcf5aac3442)
+![afbeelding](../images/battery-kia-niro-hybrid-04.png)
 
 
 
 Wires connected to a HEV battery:
 
-![image](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/f0c9874a-5381-4f3b-8884-9c3e80e6e835)
+![image](../images/battery-kia-niro-hybrid-05.png)
 
 
 Battery emulator software ( 13-3-2025 ) is able to read voltage, current etc. but we did not yet found normal way to close relais.

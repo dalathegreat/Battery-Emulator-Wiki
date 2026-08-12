@@ -8,7 +8,7 @@ Following is a list of PHEV/EV Land Rover/Jaguar models that have lithium batter
    * 13.1 kWh Lithium ion (PHEV)
    * Software selection: Range Rover 13kWh PHEV battery (L494/405)
 
-<img width="590" height="67" alt="image" src="https://github.com/user-attachments/assets/e3ed6117-df5b-4121-8946-0d2abd775f4e" />
+<img width="590" height="67" alt="image" src="../images/land-rover-01.png" />
 
 * Discovery Sport 1/2 (L550)
 * Range Rover Evoque 2 (L551) [2019 – present]

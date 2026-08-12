@@ -13,6 +13,6 @@ Here is the inverter CAN definitions:
 ## Which protocol to use
 For this inverter type, use the option called "Growatt WIT compatible battery via CAN" under the "Inverter Protocol" setting
 
-<img width="490" height="63" alt="image" src="https://github.com/user-attachments/assets/86a278cc-986b-4696-a99f-9cd3573023bb" />
+<img width="490" height="63" alt="image" src="../images/growatt-wit-01.png" />
 
 

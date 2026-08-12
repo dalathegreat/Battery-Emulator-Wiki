@@ -1,11 +1,19 @@
-WIP
+## Current status
+
+The MG ZS is a MG Gen1 battery, and as such is supported by the "MG Gen1 (HS/ZS/MG5/MarvelR)" setting.
+
+So far, the [44.5kWh](https://github.com/dalathegreat/Battery-Emulator/discussions/2444) and [69.9kWh](https://github.com/dalathegreat/Battery-Emulator/discussions/2141) have been confirmed working.
+
+No LFP packs have been tested yet.
+
+There is overlap with some of the the MG5 packs, see [MG5](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-MG5-%E2%80%90-Marvel-R) for more information.
 
 ## Battery overview
 
-<img alt="image" src="https://github.com/user-attachments/assets/92095e37-c05f-4e19-ad85-dda4e4f31d53" />
+<img alt="image" src="../images/mg-zs-01.png" />
 
 
 
 ## Low voltage connector
 
-<img alt="image" src="https://github.com/user-attachments/assets/1be4cfa4-d798-4e30-975a-39075cc629df" />
+<img alt="image" src="../images/mg-zs-02.png" />

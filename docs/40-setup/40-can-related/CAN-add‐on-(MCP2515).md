@@ -18,7 +18,7 @@ The solution is to add a separate CAN channel, via an additional MCP2515. The ad
 ### Option 0: MCP2515 powered via 3.3V (no extra power connections needed)
 You can use this MCP2515 board from Seeed Studio - it operates directly on the lilygo 3.3V supply. https://www.seeedstudio.com/Seeed-Studio-CAN-Bus-Breakout-Board-for-XIAO-and-QT-Py-p-5702.html
 
-![image](https://github.com/user-attachments/assets/e4e01102-87f5-4562-9412-370a9d64623c)
+![image](../../images/can-add-on-mcp2515-01.png)
 
 
 These pins need to be connected between the LilyGo header and the MCP2515 board: (Warning! the print of the 2x3 connectors on the board itself is WRONG, it's mirrored! Use the added pindescription.)
@@ -41,7 +41,7 @@ Note on CAN termination: The board doesn't have a 120 ohm terminating resistor e
 
 If you want to avoid soldering and just use the MCP2515 module, supply the VCC pin on the MCP2515 module with 5V.
 
-![image](https://github.com/user-attachments/assets/00c6fdc3-497f-48d8-9e4a-68dd26843d15)
+![image](../../images/can-add-on-mcp2515-02.png)
 
 
 ### Option 2: MCP2515 powered via Lilygo VDD pin converted to 5V
@@ -65,8 +65,8 @@ After the chip swap is done, another MCP2515 module can be powered from the VDD 
 2.  Move resistor from RF to RD. Since it is a zero Ohm resistor you can remove the RF resistor and put a blob of solder or wire in RD. This will power the transceiver on the Lilygo with 5V.
 ⚠️ Do not power up the board before swapping the 3.3V transceiver for the 5V transceiver.
 
-![lilygo-schematic](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/5718629/483451a0-827f-46b6-9deb-1360956be7dd)
-![lilygo](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/5718629/4b91b1f3-b13c-49f9-b67e-cbf3ff60e732)
+![lilygo-schematic](../../images/can-add-on-mcp2515-03.png)
+![lilygo](../../images/can-add-on-mcp2515-04.png)
 
 ## Wiring diagram
 
@@ -82,22 +82,22 @@ These pins need to be connected between the LilyGo header and the MCP2515 board:
 | GND | | Any GND pin on LilyGo | |
 | VCC | | Any VDD pin on LilyGo if you performed chip swap. If no chip swapped, this pin needs 5V |
 
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/4742acc7-0f0c-47fe-83c9-e1a520b5a0de)
+![bild](../../images/can-add-on-mcp2515-05.png)
 
 ## ℹ️ Note on crystal
 The extra board has either an 8Mhz / 12Mhz or 16Mhz crystal. Be sure to set the correct value in USER_SETTINGS.h if needed. This line:
 `#define CRYSTAL_FREQUENCY_MHZ 8  //CAN_ADDON option, what is your MCP2515 add-on boards crystal frequency?` can be changed to suit the crystal located on your board
 
-![bild](https://github.com/user-attachments/assets/f22a8532-128c-45ca-a3f4-ece018d06908)
+![bild](../../images/can-add-on-mcp2515-06.png)
 
 ## Software configuration
 When using the MCP2515, make sure that the can_config inside USER_SETTINGS.cpp is defined correctly. Be sure to add the CAN_ADDON_MCP2515 to the component that is connected to the add-on-CAN 
 
-![image](https://github.com/user-attachments/assets/3f0c588f-b5d8-485e-a50b-90ad33a13d1e)
+![image](../../images/can-add-on-mcp2515-07.png)
 
 Also make sure the option #define CAN_ADDON is enabled in the USER_SETTINGS.h
 
-![image](https://github.com/user-attachments/assets/3728b865-f0cd-42b6-9ebe-608218a63511)
+![image](../../images/can-add-on-mcp2515-08.png)
 
 
 ## Troubleshooting steps
@@ -118,4 +118,4 @@ If you are unsure if the newly added add-on chip works, you can perform the foll
 ## End result
 End result, extra CAN channel added:
 
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/ba7ab43f-1db0-42d0-a2f6-20d82601652e)
+![bild](../../images/can-add-on-mcp2515-09.png)

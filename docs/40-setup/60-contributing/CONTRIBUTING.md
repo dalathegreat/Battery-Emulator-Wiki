@@ -65,8 +65,8 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 - Connect your Battery-Emulator hardware to your computer using a USB cable.
 - Select the right board type (Stark, LilyGo)
 - At the bottom left of VScode, click the Env to bring up a menu of boards. Select the board you are using
-<img width="396" height="95" alt="image" src="https://github.com/user-attachments/assets/23b73442-5016-4ff1-be78-13e3c41772d5" />
-<img width="679" height="177" alt="image" src="https://github.com/user-attachments/assets/2fad40a6-f388-4cd6-8e08-844602bb0442" />
+<img width="396" height="95" alt="image" src="../../images/contributing-01.png" />
+<img width="679" height="177" alt="image" src="../../images/contributing-02.png" />
 
 - Ensure the correct upload port is set in the platformio.ini file (it's often auto-detected, but you may need to set it manually. See Troubleshooting below).
 - Upload the code:
@@ -132,7 +132,7 @@ First, login to Github. If you don't have an account already, create one.
 
 Start by clicking on the "**Checks**" tab
 
-<img alt="image" src="https://github.com/user-attachments/assets/fc7783c1-ba61-440e-ab09-b53d2b49f1bb" />
+<img alt="image" src="../../images/contributing-03.png" />
 
 Then click the down arrow next to the "Compile Common Images" selection, and then click on the hardware you need the binaries for. Currently we build for these hardwares:
 - LilyGo T-CAN485
@@ -141,11 +141,11 @@ Then click the down arrow next to the "Compile Common Images" selection, and the
 - ESP32 Devkit
 - BECom
 
-<img alt="image" src="https://github.com/user-attachments/assets/e38f5c2c-098a-47d0-97be-10494b9ef5b2" />
+<img alt="image" src="../../images/contributing-04.png" />
 
 After selecting the hardware you need, click the "**Upload Artifact**", and there will be a download link. Download the file!
 
-<img alt="image" src="https://github.com/user-attachments/assets/68f10c73-772f-499b-a14c-6b84d11c0ef2" />
+<img alt="image" src="../../images/contributing-05.png" />
 
 After downloading the .zip file, extract the .bin file from it. Then [OTA Update](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update) your device with this .bin file!
 

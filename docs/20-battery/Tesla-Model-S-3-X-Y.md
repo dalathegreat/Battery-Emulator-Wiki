@@ -32,6 +32,7 @@ The Tesla Model 3/Y packs have many hardware/software revisions. Due to this it 
 * Model 3/Y: 2019 AWD - USA manufactured pack - Part number 1104423-00-M ✅ 
 * Model 3/Y: 2022 AWD - China manufactured pack - Part number 1700012-00-B ✅ 
 * Model 3/Y: 2024 RWD - China manufactured pack - Part number 1666969-55-F ✅ (NOTE: Requires DIGITAL_HVIL)
+* Model 3/Y: 2024 AWD - China manufactured pack - Part number 1700012-00-E ✅ (NOTE: Requires DIGITAL_HVIL)
 * Model 3/Y 2023 AWD - USA manufactured pack - part number 1234422-00-A ✅ NCA Chemistry 82Kwh
 * Model ? 2025 Structural battery - (P)2620021-99-F ✅ 92s9p
 * Model 3/Y 2025 RWD - LFP Part number 2084670-55-B ✅ (DIGITAL_HVIL)
@@ -39,7 +40,7 @@ The Tesla Model 3/Y packs have many hardware/software revisions. Due to this it 
 
 Note that 2024 and onwards might require setting the "Digital HVIL (2024+)" option in the Settings page to get contactor closing to work
 
-<img width="561" height="81" alt="image" src="https://github.com/user-attachments/assets/4ea80e09-23a6-4d67-a70a-df51f4083b55" />
+<img width="561" height="81" alt="image" src="../images/tesla-model-s-3-x-y-15.png" />
 
 Also note that Tesla Model S/X needs to be newer than 2020+ to work with the current code!
 
@@ -51,19 +52,19 @@ Tesla Service Mode User Guide [Here](https://service.tesla.com/docs/Public/Servi
 ### How do I test a battery before buying ?
 It is possible to test a battery quite easily before purchase. For this you need the X098 connector, some 60/120Ohm resistors, a LilyGo board, and a 12V battery. See [this video for a step by step on how to connect to a Tesla battery](https://youtu.be/Zikb94dxlTM?si=u05h9BuUjtZo3BW2&t=122) , and also check out the wiring instructions below. Note, you do not need to connect anything else than the X098 connector, and contactor closing is not required to get a readout.
 
-![I’m the first person in the world to do this! 2](https://github.com/user-attachments/assets/0ce14c63-3f7e-4604-bffb-de3b5d00237b)
+![I’m the first person in the world to do this! 2](../images/tesla-model-s-3-x-y-01.jpg)
 
 > [!TIP]
 > When you want to test only battery, do not use any inverter protocol at the same time. Only compile software for Tesla battery to make life easier
 
 Example, LilyGo board with 12V battery used to test a Tesla Model Y battery, which had sat for 2 years and turned out to have a nasty 500mV defect. So the person really avoided a costly mistake by testing the battery beforehand!
 
-![image](https://github.com/user-attachments/assets/5472a78a-e78b-40f4-b212-8053c00a4940)
+![image](../images/tesla-model-s-3-x-y-02.png)
 
 ## Software configuration
 For this battery type, use the option called "Tesla Model 3/Y", or "Tesla Model S/X" under the "Battery Protocol" setting
 
-<img width="543" height="386" alt="image" src="https://github.com/user-attachments/assets/ed56967b-ba80-4b57-b76f-e3638701ca6a" />
+<img width="543" height="386" alt="image" src="../images/tesla-model-s-3-x-y-16.png" />
 
 Configure all the options correctly, according to what pack size and from which country the donor car came from. This is very important to get right, otherwise fault codes will be active on the battery side.
 
@@ -76,7 +77,7 @@ Some Model 3/Y packs are LFP chemistry, and some are NCM/A chemistry.
 
 The code autodetects incase you have an LFP battery, but the detection method can take up to 5minutes. Incase you want to speed this up for additional safety, configure "Battery chemistry" as LFP. Why you might ask? Well in some rare circumstances, like say you restart everything when the battery sits at true 100% charge, it will be treated as a NCM battery for the first few minutes of boot. This might overcharge the battery, until it figures out it is an LFP pack and should use the more restricted voltage range.
 
-<img width="592" height="33" alt="image" src="https://github.com/user-attachments/assets/7c5e8fec-d371-4306-a19f-83cd45d30a23" />
+<img width="592" height="33" alt="image" src="../images/tesla-model-s-3-x-y-17.png" />
 
 
 ## Part numbers for Tesla Model 3 batteries
@@ -98,26 +99,26 @@ The battery runs a “pre charge” circuit before closing the contactors. This 
 
 ## High voltage wiring
 Here is a simplified picture for the high voltage wiring on the Tesla battery. Depending on if your battery has the Power Conversion System (PCS), or not, the wiring varies. PCS is needed for contactor closing precharge circuit. Without it, pack wont turn on via CAN.
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/cbbc8b2d-3761-45db-b3cf-d3b60cb57834)
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/6b7d9115-b94d-4dbb-82a0-402989a7aa13)
+![bild](../images/tesla-model-s-3-x-y-03.png)
+![bild](../images/tesla-model-s-3-x-y-04.png)
 
 ⚠️ Please note that the non-PCS version is much more dangerous if handled incorrectly. Manually pre-charging the circuit is very dangerous, since it requires redistributing 400V during the procedure ⚠️ If possible, try to opt for a battery that has the PCS intact, or add a PCS if your battery is missing one. Also note, that on non-PCS packs, you have to manually write an allowed discharge value, [like explained here](https://github.com/dalathegreat/Battery-Emulator/issues/429).
 
 The 650-1000uF (500V) capacitor can be installed inside the battery housing (aka penthouse) -OR- be wired to one of the HV connectors on the battery. The capacitor simulates the presence of a driverunit, without it the battery controller will not allow the internal battery contactors to close.
 
 This picture shows how to connect the capacitor. If you're using the Tesla HV connector connected outside the pack (recommended) then your load or inverter will be connected to that HV connector and you will only connect the capacitor to the bolts inside shown here.
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/2c6033e7-963a-4193-abd4-44aacc761eec)
+![bild](../images/tesla-model-s-3-x-y-05.png)
 
 If you are adding the capacitor to the outside of battery, connect it to the correct polarity (1=- , 2=+)
 
-<img alt="image" src="https://github.com/user-attachments/assets/c59627d0-6029-4899-8f0a-b52d1697f9d8" />
+<img alt="image" src="../images/tesla-model-s-3-x-y-18.png" />
 
 
 
 ## Low voltage wiring
 The X098 connector has a few connections itself, scroll down to see where the pins should go.
 If you want to run with the penthouse lid open, ground has to be connected to the two boltholes on each side of X098.
-![Tesla_X098](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/611165cc-d7ac-4df7-9aea-ca2648ebe4a7)
+![Tesla_X098](../images/tesla-model-s-3-x-y-06.png)
 
 The connector above will need the following connections...(apart the grounding of the holes if the lid is open)
 
@@ -126,11 +127,11 @@ The connector above will need the following connections...(apart the grounding o
 * Pin 9 - GND 
 * Pin 16 and 15 - To LilyGo CAN-H and CAN-L (Note, you might need to add 120Ohm resistor here, depending on CAN network structure)
 
-<img width="520" height="298" alt="Tesla X098 HVC" src="https://github.com/user-attachments/assets/4310e5fc-e0af-4e4c-a821-6bfe465eb66c" />
+<img width="520" height="298" alt="Tesla X098 HVC" src="../images/tesla-model-s-3-x-y-19.png" />
 
-<img width="1313" height="894" alt="Tesla X098" src="https://github.com/user-attachments/assets/25adade2-3809-4ce7-bf9b-de83cc835679" />
+<img width="1313" height="894" alt="Tesla X098" src="../images/tesla-model-s-3-x-y-20.png" />
 
-<img width="1301" height="923" alt="Tesla HV Battery and HVIL" src="https://github.com/user-attachments/assets/5ae7d972-89d7-4dbd-9819-d802c2823c1f" />
+<img width="1301" height="923" alt="Tesla HV Battery and HVIL" src="../images/tesla-model-s-3-x-y-21.png" />
 
 ### 12 Volt or 16 Volt?
 Tesla used a standard Lead Acid 12 Volt battery in most applications. Beginning in Mid-2021, Tesla began converting the low voltage battery system in its vehicles to utilize a 15.5V 6.9Ah Li-Ion battery. [ohmmu.com](https://support.ohmmu.com/battery-product-support/tesla-all-models-identifying-low-voltage-battery-system-12v-vs-15-5v) Has some information to know if your car has the standard LA or Li-Ion. In 2024+ a new 12.8V LFP battery was introduced. More information from Weber State University YouTube Channel [Tesla 16V](https://www.youtube.com/watch?v=8-MNFgashpQ), [Tesla Low Voltage Charging System](https://www.youtube.com/watch?v=M1ZEorMeuDo), [Tesla 12.8V LFP](https://www.youtube.com/watch?v=QJsy1ay6tXs)
@@ -140,7 +141,7 @@ Make sure to connect the 12V battery to the PCS (two M8 screws close to the X098
 
 ℹ️ The 12V requirement is quite large for the Tesla packs. Use a high power 14V source (large fully charged lead acid battery OR 30A lab power supply set to 12-16V). If the 12V supply is too weak, closing contactors wont be possible. The cables also need to be quite thick to avoid voltage drop. 1.5mm² is too small, the cables need to be 13mm² (6AWG) at minimum!
 
-<img width="895" height="750" alt="image" src="https://github.com/user-attachments/assets/78b05604-c32b-4835-9aac-ee5d76a8af6f" />
+<img width="895" height="750" alt="image" src="../images/tesla-model-s-3-x-y-22.png" />
 
 ## High voltage interlock circuit (HVIL)
 The Tesla battery contains pyro and glass fuses that can be broken if the battery comes from a crashed vehicle. Do not use the battery unattended with these fuses bypassed !
@@ -152,17 +153,17 @@ Remember, if you do anything temporary to make sure you install a proper fuse la
 The battery has many High Voltage InterLock (HVIL) checks on each high voltage connector. These HVILs need to be jumpered in case you are not using the original connectors, otherwise the battery wont start. There is a big plate covering the high voltage components, called the "penthouse".  If you have a complete battery pack, the only HVIL connectors that need to be jumped are those of the HV connectors that you are not using.
 
 Below is the HVIL for the AC connector, jumper location is shown (not the actual jumper itself).
-![Tesla_hvil_ac](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/6d76ad3c-6100-48d6-a933-114e2bea6db6)
+![Tesla_hvil_ac](../images/tesla-model-s-3-x-y-07.jpg)
 
 With the penthouse lid open, there are jumpers for the two HV-connectors. In this picture, the pyro fuse has been removed and replaced with a copper cable and a jumper. NOTE: Some packs cannot have pyro fuse jumpered, it needs to be a proper Pyro Fuse with a certain resistance! Also, if your battery is coming from a crashed vehicle you should absolutely expect the pyrofuse to be blown.
-![Tesla_hvils_and_pyro_fuse](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/7b081c40-206d-447f-8319-0d39088357b5)
+![Tesla_hvils_and_pyro_fuse](../images/tesla-model-s-3-x-y-08.jpg)
 
 ## HVIL Troubleshooting
 There seems to be many hardware and firmware revisions of the Tesla Model 3/Y battery. Not all batteries will allow for contactor closing easily. Incase you run into a battery that cannot close contactors, you might have to tweak some resistor values between pin 1 and 3 (try 60 and 120 ohms first). 
 
 It is recommended to turn on `Enable general logging via USB serial` OR `Enable general logging via Webserver` in the settings page get more info why HVIL is not allowing to close. Below are some messages you can encounter, along with troubleshooting tips:
 
-<img width="556" height="271" alt="image" src="https://github.com/user-attachments/assets/8600bc98-b779-496f-b536-ced7ffe52e88" />
+<img width="556" height="271" alt="image" src="../images/tesla-model-s-3-x-y-23.png" />
 
 
 | Symptom | Fix   |
@@ -179,20 +180,20 @@ It is recommended to turn on `Enable general logging via USB serial` OR `Enable 
 
 If the battery gets really stuck, removing the yellow connector here for a few minutes also helps:
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/3b1674be-fa61-45e2-958b-bed228bc335f)
+![bild](../images/tesla-model-s-3-x-y-09.png)
 
 
 
 If all else fails and you can not get HVIL loop to close, the last resort method is to solder 2 wires on the back of this PCB board:
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/31fd5fd6-4a6e-4397-92ad-6a149c6b5b23)
+![bild](../images/tesla-model-s-3-x-y-10.png)
 The downside of this is that you will never have any shutdown incase a high voltage cable gets unplugged while the system runs. Do not go for this method if possible!
 
 ## Penthouse components
 ** To gain access to the penthouse you will need a specialist socket (example of one listed above in parts table) **
 
-![](https://media.discordapp.net/attachments/1200783499377000468/1221863441439002694/20240324_174605.jpg?ex=66142001&is=6601ab01&hm=44ab13a565dd5ce400906f20ed9c8a502b5bdab282eedbc1714a7e172446c04e&=&format=webp&width=227&height=303)
+![](../images/tesla-model-s-3-x-y-11.jpg)
 
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/417673c6-d5a5-4f7f-b688-cd9b8dbb2ae1)
+![bild](../images/tesla-model-s-3-x-y-12.png)
 Connections info: https://electrek.co/2017/08/24/tesla-model-3-exclusive-battery-pack-architecture/
 
 | Number | Description |
@@ -217,9 +218,9 @@ Connections info: https://electrek.co/2017/08/24/tesla-model-3-exclusive-battery
 
 ## Complete wiring diagram
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/5746de77-736b-4543-8e30-060561200a80)
+![bild](../images/tesla-model-s-3-x-y-13.png)
 
-![image](https://github.com/user-attachments/assets/aa2efff9-a052-460d-90ff-9c6fbfecc912)
+![image](../images/tesla-model-s-3-x-y-14.png)
 
 ## Note on balancing :b: 
 Tesla batteries are very specific when they want to balance, and it is hard to get a battery to balance. NMC chemistry seems to be more stable long term, and millivolt deviations between cells are kept low even years in operation in stationary storage. LFP chemistry however get out of balance more easily. LFP also has a very specific need to be charged to 100% to calibrate SOC, and sit at this state to balance, which is unlikely to occur in stationary systems that are used 24/7.
@@ -238,7 +239,7 @@ Once you are done balancing, you can press the "Close Contactors" button, and "U
 > [!WARNING]  
 > During balancing with contactors open, 12V lead acid battery will NOT be charged. Make sure the lead acid battery has an external charger available while in this state
 
-<img width="902" height="289" alt="image" src="https://github.com/user-attachments/assets/7150edc6-0a3d-4ba6-b21f-cca4095ebad3" />
+<img width="902" height="289" alt="image" src="../images/tesla-model-s-3-x-y-24.png" />
 
 ### Periodic forced charge-balancing (Can potentially aid to balance LFP)
 
@@ -246,14 +247,14 @@ To help keep LFP batteries balanced outside of a Tesla vehicle, the emulator has
 
 When enabling the Manual LFP balancing , the forced top charge runs for the specified amount of time, set in Balancing max time. The balancing parameters, Balancing float power , Max battery voltage , Max cell voltage and Max cell voltage deviation can also be adjusted from here. During this time, the SOC% is faked towards the inverter, and we allow the charge W set by user. This will help the battery reach higher SOC needed to balance?
 
-<img width="414" height="382" alt="image" src="https://github.com/user-attachments/assets/66e289cb-55c6-4fa7-96c2-7c6c892d160f" />
+<img width="414" height="382" alt="image" src="../images/tesla-model-s-3-x-y-25.png" />
 
 ### Replacement BMS to balance
 There is an ongoing open source project called the CellKeeper that aims to replace the BMS inside the Tesla battery with a standalone controller. This would instantly solve the balancing issue. Note that this board is still in development, and as soon as it is ready this page will be updated.
 
 ## Example integration
 Check out this excellent summary from user "k" on the Discord server 🙌 
-[Tesla battery for solar storage - tips and resources.pdf](https://github.com/user-attachments/files/16316246/Tesla.battery.for.solar.storage.-.tips.and.resources.pdf)
+[Tesla battery for solar storage - tips and resources.pdf](https://github.com/user-attachments/files/16316246/Tesla.battery.for.solar.storage.-.tips.and.resources.pdf) **Be careful, this PDF shows a red wire going to the negative terminal of the 12V PCS input**
 
 Or this installation option, simpler wiring example, with reference to the Charge Port ECU: 
 [Battery installation.pdf](https://github.com/user-attachments/files/16918052/Battery.installation.pdf)

@@ -8,7 +8,7 @@
 ## Communication wiring
 The Hoymiles inverter works via CAN. 
 
-<img width="1039" height="747" alt="image" src="https://github.com/user-attachments/assets/bf506fcb-c04f-45ef-80f3-945599c17fb6" />
+<img width="1039" height="747" alt="image" src="../images/hoymiles-01.png" />
 
 * Use the BMS RJ45 port on the Hoymiles
     * Pin 4 CAN-H , and Pin 5 CAN-L. With default Ethernet cable color scheme, that's solid blue for CAN-H and blue-white for CAN-L. (See Hoymiles manual for further details)
@@ -20,7 +20,7 @@ Hoymiles's battery compatibility list claims compatibility with BYD HVS too, but
 
 Note that Hoymiles inverter talks classic CAN, not CAN-FD, which in the screenshot's just the name of the second CAN port in a Stark CMR.
 
-<img width="788" height="473" alt="image" src="https://github.com/user-attachments/assets/c2f52de5-eea3-49cc-ba7e-3324468ca222" />
+<img width="788" height="473" alt="image" src="../images/hoymiles-02.png" />
 
 TODO: Try with the default 'PYLONTECH' manufacturer name
 

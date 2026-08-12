@@ -17,4 +17,4 @@ The Growatt LV compatible inverters works via CAN. The LilyGo board can have bot
 ## Which protocol to use
 For this inverter type, use the option called "Growatt Low Voltage (48V) protocol via CAN" under the "Inverter Protocol" setting
 
-<img width="483" height="68" alt="image" src="https://github.com/user-attachments/assets/59dbc006-7e94-438b-906c-c110c01ec242" />
+<img width="483" height="68" alt="image" src="../images/growatt-lv-01.png" />

@@ -6,7 +6,7 @@ The earlier Tesla batteries use a radically different CAN structure compared to 
 
 When using a Legacy battery, make sure to select the "Tesla Model S/X 2012-2020" option
 
-<img width="517" height="118" alt="image" src="https://github.com/user-attachments/assets/5caed9ca-0415-483d-84b7-63019348c20d" />
+<img width="517" height="118" alt="image" src="../images/tesla-model-s-x-2012-2020-01.png" />
 
 
 ## High voltage connectors
@@ -15,20 +15,20 @@ The BMS expects a capacitance of 940 µF (1000 µF will also work) at the DC bus
 
 The Tesla Model S/X is equipped with an HV Rapid Mate connector. When using the original plug, connect terminal 1 to positive and terminal 2 to negative.
 
-The plug also features two pins; the smaller one is responsible for the HVIL continuity.
+The plug also features two pins; the smaller one is responsible for the HVIL continuity. The bigger one should be connected to battery frame. 
 From the battery side, the pinout is as follows:
 
-<img width="298" height="169" alt="images" src="https://github.com/user-attachments/assets/6e813f7d-066e-48d9-b0ea-d7a9436b48b6" />
+<img width="298" height="169" alt="images" src="../images/tesla-model-s-x-2012-2020-02.png" />
 
 ## Low voltage connectors
 
 Connector X035:
 
-<img width="451" height="347" alt="image" src="https://github.com/user-attachments/assets/97e450a5-5515-4f92-b25d-aeadde136cef" />
+<img width="451" height="347" alt="image" src="../images/tesla-model-s-x-2012-2020-03.png" />
 
 Connector X036:
 
-<img width="465" height="360" alt="image" src="https://github.com/user-attachments/assets/0741dd72-d8df-4492-9cdc-5e6d326f8f5d" />
+<img width="465" height="360" alt="image" src="../images/tesla-model-s-x-2012-2020-04.png" />
 
 
 Pinout X035:
@@ -67,4 +67,4 @@ The best way to balance the Model 3 pack is to set charge limit to 90% or higher
 ## Examples
 The first testing of a 85kWh battery with a Deye inverter
 
-<img src="https://github.com/user-attachments/assets/d0dfecb9-afae-40c6-b5c7-01f8d27ad5c0" />
+<img src="../images/tesla-model-s-x-2012-2020-05.png" />

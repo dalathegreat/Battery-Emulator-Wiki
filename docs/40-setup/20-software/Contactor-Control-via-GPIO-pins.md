@@ -23,7 +23,7 @@ For instance, 3x ASR-10DD can be used. ASR-M02DD is a din mounted version. If yo
 
 To enable the feature in the software, Enable the "Contactor Control via GPIO" option under Hardware Config, Save and reboot
 
-<img alt="image" src="https://github.com/user-attachments/assets/21b395fc-d040-4caf-8617-20c3fcbcd694" />
+<img alt="image" src="../../images/contactor-control-via-gpio-pins-04.png" />
 
 By default a 100 millisecond long precharge is performed. This value should be set to account for the resistance and capacitance of the inverter you use. 
 
@@ -38,14 +38,14 @@ To keep things simple, it is recommended to use Solid State Relays (SSR). These 
 - (LilyGo) Positive Contactor pin 32 - Positive SSR + input
 - (LilyGo) Negative Contactor pin 33 - Negative SSR + input
 - (LilyGo) GND - All 3x SSR - input
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/06e007b4-bc97-4f21-a37f-34016b46ac4a)
+![bild](../../images/nissan-leaf-e-nv200-07.png)
 
 (Easier with the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR), no SSR needed on this hardware since the outputs are rugged)
 
 ### Troubleshooting 👓 
 Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface. In this screenshot, battery is preventing startup:
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/6763e8c1-f03f-4570-b89e-25cdcaf0a736)
+![bild](../../images/nissan-leaf-e-nv200-08.png)
 
 > [!WARNING]
 > In case the whole Emulator goes into Fault state, the contactors will open, and latch. To get them to close again, you need to restart the entire Battery-Emulator (after having analysed the fault)
@@ -55,7 +55,7 @@ You can check the Event view in the webserver, to see if any critical Error has 
 #### Overloaded GPIO pins
 Incase the current draw on the GPIO pins is exceeded, for instance incase you use an unsupported SSR, the webserver will appear this way:
 
-![image](https://github.com/user-attachments/assets/b3adce27-c1bc-4a61-aed1-be53b9947207)
+![image](../../images/contactor-control-via-gpio-pins-03.png)
 
 Note the "X" on both contactors, even though the emulator is in active state and should have contactors engaged. If you see this, remove the wires and restart the emulator, to confirm that activation of the pins is possible. Then switch to a supported SSR.
 
@@ -64,7 +64,7 @@ Optional: It is also possible to reduce power consumption of keeping the big con
 
 To use the PWM function, enable the "PWM contactor control" option
 
-<img alt="image" src="https://github.com/user-attachments/assets/11313500-a108-494c-862c-cb7dc5efb88e" />
+<img alt="image" src="../../images/contactor-control-via-gpio-pins-05.png" />
 
 By default we use a Hold value of 250, which is suitable for Nissan LEAF contactors. Tweak this value to suit your contactors
 

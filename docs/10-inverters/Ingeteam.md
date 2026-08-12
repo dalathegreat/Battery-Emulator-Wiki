@@ -14,9 +14,9 @@ The Ingeteam inverter works via CAN. The LilyGo board can have both a CAN batter
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-<img width="484" height="68" alt="image" src="https://github.com/user-attachments/assets/a85dbc6b-0464-4176-bddd-21a719f9ea15" />
+<img width="484" height="68" alt="image" src="../images/afore-01.png" />
 
 ## Installation examples
 A completed integration using LEAF battery and an Ingeteam inverter:
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/e0b5654f-0140-4e12-b884-e1796807abf0)
+![bild](../images/ingeteam-01.png)
 

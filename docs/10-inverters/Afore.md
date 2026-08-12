@@ -15,7 +15,7 @@ The Afore inverter works via CAN. The LilyGo board can have both a CAN battery a
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-<img width="484" height="68" alt="image" src="https://github.com/user-attachments/assets/a85dbc6b-0464-4176-bddd-21a719f9ea15" />
+<img width="484" height="68" alt="image" src="../images/afore-01.png" />
 
 ## Note on CAN ID with Nissan LEAF
 > [!IMPORTANT]

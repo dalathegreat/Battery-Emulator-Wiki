@@ -4,7 +4,7 @@ The LilyGo T-CAN485 is what the Battery-Emulator originally started development 
 > [!TIP]
 > Only get this board if you need Modbus/RS485. For CAN components, the new [T-2CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN) board is easier for beginners.
 
-<img alt="image" src="https://github.com/user-attachments/assets/2c40dcc5-b2f3-4f32-80e9-8fa4c88c830a" />
+<img alt="image" src="../images/lilygo-t-can485-02.png" />
 
 > [!Warning]
 > This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
@@ -24,12 +24,12 @@ The board comes with 1x CAN channel, and 1x RS485 channel. Some integrations nee
 
 Example, LilyGo + MCP2515 board
 
-<img alt="image" src="https://github.com/user-attachments/assets/ef588bf5-1317-4ce5-bbad-8a204b7565c7" />
+<img alt="image" src="../images/lilygo-t-can485-03.png" />
 
 ### Expanding the board with more IO pins
 The SD card slot can be used to gain more pins. This can be useful on setups that need lots of inputs/outputs, for instance add-on CAN + contactor control and/or enable line inputs. To use the SD card slot, you will need a "SD Card breakout board"
 
-<img alt="image" src="https://github.com/user-attachments/assets/37a66543-d2c4-496e-bb81-4c2de2bb13af" />
+<img alt="image" src="../images/lilygo-t-can485-04.png" />
 
 By installing one of these breakout boards, you can then remap the src/devboard/hal/hw_lilygo.h file to suit your newfound pins
 
@@ -40,12 +40,12 @@ By installing one of these breakout boards, you can then remap the src/devboard/
 
 Completed product:
 
-<img alt="image" src="https://github.com/user-attachments/assets/2348977a-35b3-4e4f-bdcd-f4e14eabb14d" />
+<img alt="image" src="../images/lilygo-t-can485-05.png" />
 
 ### Expanding the board further
 To make the board even more professional (DIN mounting solution with CANFD and contactor drivers built in), you can get the [LilyGo T‐CAN485 & CAN‐FD Motherboard](https://github.com/dalathegreat/Battery-Emulator/wiki/LilyGo-T%E2%80%90CAN485-&-CAN%E2%80%90FD-Motherboard)
 
-<img alt="image" src="https://github.com/user-attachments/assets/7c28b695-1856-416e-b193-68efe09de966" />
+<img alt="image" src="../images/lilygo-t-can485-06.png" />
 
 
 ## Enhancements notes, things to know
@@ -65,4 +65,8 @@ Some report issues above 12 volts, other run boards fine at 14.4 volts. It is no
 If the controller is not outside (under 0C temperature), it is recommended to use a PSU like [DC1036P](https://www.aliexpress.com/w/wholesale-DC1036P.html) or Well DC-HALE36-WL (36W).
 If it is outside, in the cold, use a 12V source like [**HDR-60-12**](https://www.meanwell.com/Upload/PDF/HDR-60/HDR-60-SPEC.PDF) and a 12V AGM battery.
 
-![HDR-60-12](https://github.com/user-attachments/assets/bdd4f55c-c7f7-41de-b0db-974130046eda)
+![HDR-60-12](../images/lilygo-t-can485-01.jpg)
+
+### Boot button 
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](https://github.com/dalathegreat/Battery-Emulator/wiki/BOOT-button-functions)
+

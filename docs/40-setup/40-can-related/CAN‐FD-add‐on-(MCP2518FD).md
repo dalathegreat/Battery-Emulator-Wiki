@@ -15,7 +15,7 @@ See https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%
 
 ### Connecting it to LilyGo T-CAN485
 
-![lilygo-and-canfd](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/26c54d4e-2558-4dbf-b2ab-3f1112f54264)
+![lilygo-and-canfd](../../images/can-fd-add-on-mcp2518fd-01.jpg)
 
     MCP2518FD -> Lilygo
     ___________________
@@ -32,13 +32,13 @@ See https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%
 #### Alternative 5V source
 The Lilygo also has a 3V3 to 5V boost switch-mode power supply (it is used for the RS485 chip on the Lilygo). It does not have an overly convenient location for connecting, but it can be soldered to one side of C62 (side closest to C64). The Lilygo can then be powered with 12V, which can be more convenient than powering the Lilygo with 5V. See the red wire in the image below. Of course the 5V supply on the Lilygo must be enabled for this to work.
 
-![image](https://github.com/user-attachments/assets/e06fe2c0-33be-4e59-8320-165280c24f28)
+![image](../../images/can-fd-add-on-mcp2518fd-02.png)
 
 
 #### Alternative hardware
 [Another board](https://www.aliexpress.com/item/1005007349452566.html) built around the same "MCP2518FD Pro" chip has been shown to work once the oscillator is configured to `OSC_20MHz` - see details below
 
-![CAN_FD_Lilygo](https://github.com/user-attachments/assets/6a917a9d-e0cf-4429-b9b0-a4551e21c674)
+![CAN_FD_Lilygo](../../images/can-fd-add-on-mcp2518fd-03.jpg)
 
 The labelling on this board is slightly different:
 
@@ -59,7 +59,7 @@ NB: Only one GND connector is technically required if the same ground is being u
 ### Software setup
 Then configure the component you want to use CANFD on, by selecting "CAN FD (MCP2518 add-on)" on the component that you intend to connect to the chip.
 
-<img alt="image" src="https://github.com/user-attachments/assets/eb5eec51-ce6d-410c-9e07-6b89db208d42" />
+<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-07.png" />
 
 
 > [!NOTE]
@@ -67,11 +67,11 @@ Then configure the component you want to use CANFD on, by selecting "CAN FD (MCP
 
 Depending on your add-on board, there may be different oscillator crystals. On the "MCP2518FD Pro" board, it is 40MHz, while on some others, it is 20MHz. If you don’t have a 40MHz oscillator, you need to update `CAN-FD-addon crystal (Mhz):` from `40` to `20` in the settings page
 
-<img alt="image" src="https://github.com/user-attachments/assets/27d86751-2c23-422a-869f-68195b2a2538" />
+<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-08.png" />
 
 Example picture, board with 40.0Mhz crystal:
 
-![image](https://github.com/user-attachments/assets/2eb7e828-4838-4b95-b8d4-83862c618f44)
+![image](../../images/can-fd-add-on-mcp2518fd-04.png)
 
 
 The default settings are 500kbit/s arbitration bit rate, and 2 Mbit/s data bit rate. Incase you have a battery that needs some other bit rate settings, this can be changed in the Software.ino file.
@@ -81,15 +81,15 @@ If you are unsure if the newly added add-on chip works, you can perform the foll
 
 Test settings, for looping back CAN with Schneider CAN to battery CAN
 
-<img alt="image" src="https://github.com/user-attachments/assets/b609ef1d-10ba-41ea-85cd-9b61dd09d8bc" />
+<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-09.png" />
 
 Example where wires not connected: (Only TX, no RX messages)
 
-![image](https://github.com/user-attachments/assets/343bb195-806e-47b0-b450-3c0d342f9551)
+![image](../../images/can-fd-add-on-mcp2518fd-05.png)
 
 Example where wires connected (Everything works, TX and RX incoming on native)
 
-![image](https://github.com/user-attachments/assets/b079c6ba-6cd1-4ffd-9b7c-dcedd4064abc)
+![image](../../images/can-fd-add-on-mcp2518fd-06.png)
 
 
 ## Logging CAN-FD messages

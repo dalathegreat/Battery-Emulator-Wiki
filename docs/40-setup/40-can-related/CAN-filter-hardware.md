@@ -1,7 +1,7 @@
 ## What is a CAN filter?
 Since some inverters need to see only certain CAN messages on the bus, we can achieve this by adding a CAN-filter between the inverter and the rest of the CAN-bus. By doing this you can use the single CAN channel LilyGo board with an inverter that usually requires a dedicated CAN channel.
 
-![image](https://github.com/user-attachments/assets/3d34c254-4d06-4719-b479-a6973ab648af)
+![image](../../images/can-filter-hardware-01.png)
 
 
 ## How do I get the hardware?
@@ -19,11 +19,11 @@ Software for the CAN filter [can be found here](https://github.com/No-Signal/Can
 
 See this video: https://www.youtube.com/watch?v=LssrvVYLtp8
 
-Flash with BridgeFlasher.exe located in software folder. The compiled .srec files are ![located in the releases section](https://github.com/dalathegreat/Nissan-LEAF-Battery-Upgrade/releases)  . For ST LINK CLI, point the exe towards the "ST-LINK_CLI.exe" located in the "STM32 ST-LINK Utility" folder that appears after installing it. Incase the BridgeFlasher.exe doesn't run, make sure you have installed [vc++ 2015 x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) 
+Flash with BridgeFlasher.exe located in software folder. The compiled .srec files are [located in the releases section](https://github.com/dalathegreat/Nissan-LEAF-Battery-Upgrade/releases)  . For ST LINK CLI, point the exe towards the "ST-LINK_CLI.exe" located in the "STM32 ST-LINK Utility" folder that appears after installing it. Incase the BridgeFlasher.exe doesn't run, make sure you have installed [vc++ 2015 x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) 
 
 
 This is what the BridgeFlasher.exe should look like. Press Start to flash.
-![alt text](https://github.com/dalathegreat/Nissan-LEAF-Battery-Upgrade/blob/main/software/CANBRIDGE-2port/FlashingTool.jpg)
+![alt text](../../images/can-filter-hardware-02.jpg)
 
 Connect the ST Link V2 to the J1 ports on the PCB. It can be hard to connect dupont wires here, so I recommend getting needle pins. Pay close attention to the pin labels on the ST Link flasher, they can vary location depending on type.
 
@@ -35,7 +35,7 @@ Connect the ST Link V2 to the J1 ports on the PCB. It can be hard to connect dup
 | 2 SWDIO | J4 |
 | 6 SWCLK | J5 |
 
-![alt text](https://github.com/dalathegreat/Nissan-LEAF-Battery-Upgrade/blob/main/Software/CANBRIDGE-2port/FlashingInstr.jpg)
+![alt text](../../images/can-filter-hardware-03.jpg)
 
 ## Connecting the CAN Filter
 
@@ -50,4 +50,4 @@ The can filter is placed between the LilyGo and the inverter
 | +12V | 12V positive |
 | GND | 12V negative |
 
-![CanFilter](https://github.com/user-attachments/assets/47570867-6aea-4acc-91cd-89bea6ce244f)
+![CanFilter](../../images/can-filter-hardware-04.png)

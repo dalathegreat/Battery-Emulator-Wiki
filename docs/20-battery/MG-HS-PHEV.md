@@ -26,9 +26,11 @@ Battery voltage and current, min/max cell temperatures, and individual cell volt
 | Year |  Model | Battery capacity | Supported? | Notes |
 | :--------: | :---------: | :---------: | :----------: | :----------: |
 | 2018- | MG HS PHEV | 16.6kWh | ✅ | 
-| 2022- | MG HS PHEV (2nd Gen) | 24.7kWh | Untested | Same as [Roewe RX5](https://en.wikipedia.org/wiki/Roewe_RX5)
+| 2022- | MG HS PHEV (Gen2) | 24.7kWh | Untested | Same as [Roewe RX5](https://en.wikipedia.org/wiki/Roewe_RX5)
 
 Initial focus has been on getting the 16.6kWh battery working with Battery-Emulator (BE).
+
+The Gen2 batteries use a different architecture (similar to the MG4), so are unlikely to work with this integration.
 
 ## Prerequisites
 
@@ -40,31 +42,29 @@ You will need:
  - Battery Emulator hardware with a CAN channel
 
 ## Software configuration
-For this battery type, use the option called "MG HS PHEV 16.6kWh battery" under the "Battery Protocol" setting
-
-<img width="590" height="75" alt="image" src="https://github.com/user-attachments/assets/44fd103c-55ff-4b2e-b0c6-bd4a6d11bdd0" />
+For this battery type, use the option called "MG Gen1 (HS/ZS/MG5/MarvelR)" under the "Battery Protocol" setting
 
 ## Connections
 
 The MG HS PHEV battery has 3 separate HV connectors (Orange), and a Low Voltage signal connector (Green). There are also two coolant ports that can be used for thermal management, left is inlet, right is outlet (optional)
 
-![image](https://github.com/user-attachments/assets/cd617625-00ae-407e-b454-3f0df73e0a9a)
+![image](../images/mg-hs-phev-01.png)
 
 ### Low Voltage (LV)
 
-![image](https://github.com/user-attachments/assets/2de82d5f-213d-452a-8158-8dc6ca4b2257)
+![image](../images/mg-hs-phev-02.png)
 
-![mg_lv_diagram](https://github.com/user-attachments/assets/03649def-0438-4281-b37f-5543aec52934)
+![mg_lv_diagram](../images/mg-hs-phev-03.png)
 
 This is the LV connector plug: https://www.aliexpress.com/item/1005004815715620.html
 The one you need is the one with the black face.
 There's a non-wired version too for doing your own crimping but this looks easier to implement.
 
-![20250617_192645](https://github.com/user-attachments/assets/d4e6418f-37b9-4782-bdd7-2fc8629ef299)
+![20250617_192645](../images/mg-hs-phev-04.jpg)
 
 This is how Molex and MG label the terminals in the connector:
 
-<img width="897" height="691" alt="32 Pin Molex MG" src="https://github.com/user-attachments/assets/c861d665-c3be-4730-85f8-0cb66423f792" />
+<img width="897" height="691" alt="32 Pin Molex MG" src="../images/mg-hs-phev-05.png" />
 
 The battery needs a 12V-14V supply, and draws 600mA continuous with the contactors closed, and ~3A briefly when closing the contactors. It also needs a 12V signal to wake it up (via a 1kR resistor, or connected directly) as shown.
 
@@ -118,11 +118,11 @@ The isolation resistance measuring circuit does not have a DC connection to the 
 
 This can be done by removing the ground connection from the chassis to the contactor board, which is the dangling wire here (ignore the missing capacitor!):
 
-<img width="934" height="744" alt="image" src="https://github.com/user-attachments/assets/4ed66d77-8cbe-4d20-b64d-3453d7b0b702" />
+<img width="934" height="744" alt="image" src="../images/mg-hs-phev-06.png" />
 
 and reinstalling the screw without the wire, and then insulating the dangling wire with some heatshrink:
 
-<img width="1078" height="757" alt="Screenshot_20250712_120242" src="https://github.com/user-attachments/assets/b84a76d4-11cc-436a-ad3d-2a8735b451c2" />
+<img width="1078" height="757" alt="Screenshot_20250712_120242" src="../images/mg-hs-phev-07.png" />
 
 #### Step 2: Floating the BMS ground above the case ground
 
@@ -141,6 +141,6 @@ You will also need to use an isolated 12V power supply (a 2-pin power supply wit
 
 Here is a list of functions for those pins on the second generation model:
 
-<img width="433" height="731" alt="32 Pin Molex pins" src="https://github.com/user-attachments/assets/614483c8-d20d-4561-af03-816e2e74fbb5" />
+<img width="433" height="731" alt="32 Pin Molex pins" src="../images/mg-hs-phev-08.png" />
 
 Lots of useful information here: https://cardiagn.com/2022-2024-mg-ehs-hybrid-service-and-repair-manual-incl-wiring/

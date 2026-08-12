@@ -40,7 +40,7 @@ The pins to be used for the different breakout boards are defined in [hw_devkit.
 
 Set the following options in the top of the Arduino IDE, Tools section.
 
-![image](https://github.com/user-attachments/assets/84606550-c159-4a21-a868-35f11da77049)
+![image](../images/esp32-devkit-v1-01.png)
 
 Make sure that `HW_DEVKIT` is set in the `USER_SETTINGS.h` file.
 

@@ -26,11 +26,11 @@ Parts needed:
 - Contactor Normally Closed
 - Fuseholder and DC-Fuses 10x38 2A for DC use
 
-<img alt="image" src="https://github.com/user-attachments/assets/939952d4-aa99-4db0-88f1-238af4c45f69" />  
+<img alt="image" src="../../images/high-voltage-source-08.png" />  
 
 Example installation:
 
-<img alt="image" src="https://github.com/user-attachments/assets/829c5f4b-08c2-4e26-a7f6-eaa9e5d9522a" />
+<img alt="image" src="../../images/high-voltage-source-09.png" />
 
 
 Jumper settings for the TPS55288EVM-045 board:
@@ -43,9 +43,9 @@ Jumper settings for the TPS55288EVM-045 board:
 # Option B: HIA4V1
 The HIA4V1 has been used successfully to precharge the MEB battery's inverter port. It can be found on aliexpress. Without modification it requires manually tuning the resistor (marked 104 in the picture below) to match the external voltage to the internal battery voltage. Given the thin traces on the board, it is probably a good idea to put a circuit breaker between the battery and this board.
 
-![image](https://github.com/user-attachments/assets/b6f05eae-92d4-44cd-a668-91911b32e44e)
+![image](../../images/high-voltage-source-01.png)
 
-![image](https://github.com/user-attachments/assets/582fdc58-b5f0-4438-b2fb-e2dad54a54a1)
+![image](../../images/high-voltage-source-02.png)
 
 ## Modified HIA4V1 directly controlled via digital output ESP32 (for Lilygo and Stark CMR)
 
@@ -57,8 +57,8 @@ To do this:
 - Connect this wire via a 330 ohm resistor to a pin on the lilygo (eg. io25) or Stark CMR (eg. io19 GPIO header).
 - Solder a gnd wire to gnd pin of the connector on the underside of the board (if the low voltage gnd of the HIA4V1 is already shared with the lilygo, this step is not necessary). And connect this to the gnd of the lilygo or connect to GND of Stark CMR GPIO header
 
-![image](https://github.com/user-attachments/assets/d93ed573-9fe0-48fe-bb53-1e0afe9de697) 
-![image](https://github.com/user-attachments/assets/7299e5d0-cd37-4e06-870f-e70b5531ad86) 
+![image](../../images/high-voltage-source-03.png) 
+![image](../../images/high-voltage-source-04.png) 
 
 By using the ledcWriteTone(PRECHARGE_PIN, freq); function you can now tune the voltage. 
 
@@ -81,17 +81,17 @@ HIA4V1 modifications:
 * Clearly mark the polarity of the HV output to avoid confusion
 
 Frontside modifications - Components to be removed and output polarity marking:
-![image](https://github.com/user-attachments/assets/a3219612-31ce-462b-873c-d2bed5a781ab)
+![image](../../images/high-voltage-source-05.png)
 
 Backside modifications - Bridge from coil to power pin (A) and HV bias resistors (B)
-![image](https://github.com/user-attachments/assets/5b746ff4-c54d-413a-b2bc-4834146d8de7)
+![image](../../images/high-voltage-source-06.png)
 
 This method can also be used with the Lilygo HW if a seperate FET board is used, any MOS FET that works with 3V3 siganl will work.
 
 ToDO add link, for now google for: 15A 400W MOS FET Trigger Switch Drive Module PWM Regulator
 
 Wiring diagram:
-<img width="1262" height="709" alt="image" src="https://github.com/user-attachments/assets/5c32be5c-9cee-48e7-8e07-537b7a7d9523" />
+<img width="1262" height="709" alt="image" src="../../images/high-voltage-source-10.png" />
 
 ## Decoupling inverter from battery during precharge
 During precharge the inverter will see a high voltage on its inputs pins. The inverters we have tested on will use this a trigger to startup. This will put a load on this high voltage while the contactors of the battery are not yet closed. This load will disrupt the precharging sequence and will cause the precharge to fail.
@@ -101,11 +101,15 @@ We use a normally closed contact, because this does not require any power during
 Type used: SEV100ADXL (1NC contact and controlled via 12V)
 [Link to contactor](https://nl.aliexpress.com/item/1005004650010865.html?spm=a2g0o.detail.pcDetailTopMoreOtherSeller.1.2c18pc9apc9aDj&gps-id=pcDetailTopMoreOtherSeller&scm=1007.40050.354490.0&scm_id=1007.40050.354490.0&scm-url=1007.40050.354490.0&pvid=09f5a17f-9a78-4a39-b571-88f5f414ad8b&_t=gps-id:pcDetailTopMoreOtherSeller,scm-url:1007.40050.354490.0,pvid:09f5a17f-9a78-4a39-b571-88f5f414ad8b,tpp_buckets:668%232846%238114%231999&pdp_ext_f=%7B%22order%22%3A%2216%22%2C%22eval%22%3A%221%22%2C%22sceneId%22%3A%2230050%22%7D&pdp_npi=4%40dis%21EUR%2126.19%2126.19%21%21%2129.09%2129.09%21%402101ea7117488925298473608e3850%2112000041496624126%21rec%21NL%21164472360%21XZ&utparam-url=scene%3ApcDetailTopMoreOtherSeller%7Cquery_from%3A) or google for: Sayoon SEV100AD SEV100BD Hv Dc-relais 100A
 
+Alternative NC and NO contactors with complementing specs available through Digikey:
+NC - [Altran Magnetics AREV100NC-series](https://www.digikey.com/en/products/filter/contactors-electromechanical/969?s=N4IgTCBcDaIIICcCmA3AjABgwOQMIgF0BfIA)
+NO - [Altran Magnetics ALEV100-series](https://www.digikey.com/en/products/filter/contactors-electromechanical/969?s=N4IgTCBcDaIIIBkCiA1AjABgyAugXyA)
+
 The connection is added to the schematic above
 
 ## Overvoltage and reverse-polarity protection
 
-<img width="1001" height="292" alt="image" src="https://github.com/user-attachments/assets/3c1fe3c9-5fb1-4d82-b5ff-3a4572d617ac" />
+<img width="1001" height="292" alt="image" src="../../images/high-voltage-source-11.png" />
 
 You can connect three 5KP150A 150V TVS diodes in series to protect against overvoltage (these will clamp the voltage at around 470-480V). Unipolar ones will also conduct like diodes in the forward direction, which will protect against reverse polarity.
 
@@ -114,7 +118,7 @@ If using TVS diodes, fuse protection is very important (as these diodes have a p
 ## Software configuration (Lilygo or Stark CMR)
 Below the newest SW settings, details depend on your setup, but this is basis.
 
-![1000068581](https://github.com/user-attachments/assets/bcee2a3c-eb80-4f7e-86e2-0a53513d25e4)
+![1000068581](../../images/high-voltage-source-07.png)
 
 For the previous/older SW version:
 Make sure to enable the #define PRECHARGE_CONTROL option in the USER_SETTINGS.h file

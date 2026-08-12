@@ -33,7 +33,7 @@ The Growatt HV inverter works via CAN. The LilyGo board can have both a CAN batt
 ## Which protocol to use
 For this inverter type, use the option called "Growatt High Voltage protocol via CAN Bus" under the "Inverter Protocol" setting
 
-<img width="491" height="66" alt="image" src="https://github.com/user-attachments/assets/fb698e38-2087-4247-88c4-5eaf024fc8d7" />
+<img width="491" height="66" alt="image" src="../images/growatt-hv-01.png" />
 
 **If you have the Growatt WIT inverter, instead use the "Growatt WIT compatible battery via CAN" option!**
 

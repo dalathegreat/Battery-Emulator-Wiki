@@ -29,7 +29,7 @@ Double battery support is only available for highly stable battery types. The on
 - Bolt Ampera
 - [BMW i3](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-BMW-i3) ✅ (CAN contactors)
 - [BYD Atto 3](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-BYD-Atto-3) ✅ (CAN contactors)
-- [Nissan LEAF](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Nissan-LEAF---e%E2%80%90NV200) ✅ (GPIO contactors)
+- [Nissan LEAF](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Nissan-LEAF---e%E2%80%90NV200) ✅ (GPIO contactors built-in)
 - [CMFA Platform (Dacia Spring, Renault KZE](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Dacia-Spring-%E2%80%90-Renault-K%E2%80%90ZE) ✅ (GPIO contactors)
 - Stellantis CMP Smart Car ✅ (CAN contactors)
 - Stellantis ECMP ✅ (CAN contactors)
@@ -50,51 +50,44 @@ If you are using LilyGo:
 * The first battery connects to CAN on the LilyGo. 
 * The second battery connects to an add-on MCP2515 chip connected via GPIO. [See this page for more info on how to set up Dual CAN.](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
 
-![image](https://github.com/user-attachments/assets/bed487ed-a083-4195-bc95-37245bb97132)
+![image](../../images/double-battery-01.png)
 
 If you are using [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR):
 * The first battery connects to CAN
 * The second battery connects to CANFD
 
-![image](https://github.com/user-attachments/assets/c6b33738-4cb4-4c1a-8e7f-1a9e4da0925e)
+![image](../../images/double-battery-02.png)
 
 ### High voltage connection diagram
 :warning: Dealing with one EV battery pack can be dangerous. Using two batteries increases the risks associated with lithium batteries with 100%. Accidentally connecting together the DC side of two batteries at varying SOC% will cause massive amounts of current to be dumped between the packs. Always use fuses to limit the risk and avoid melting wires.
 
 There are two types of EV battery packs:
-- CAN activated contactors
 - Externally powered contactors 
-
-The easiest version to use is CAN controlled contactors (Tesla/Kia/Hyundai etc.), but since CAN controlled act on their own, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. 
+- CAN activated contactors
 
 Externally powered contactors behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough (<3V).
 
-#### CAN controller contactors
+When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. 
+
+#### CAN-controlled contactors
 Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
-<img width="785" height="306" alt="image" src="https://github.com/user-attachments/assets/aa7cc21f-4bdc-4a70-89da-0e0a4e572046" />
+<img width="785" height="306" alt="image" src="../../images/double-battery-03.png" />
 
 After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2 (Cont ext), if it falls within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses
 
-#### Externally controlled contactors
-To control the second battery from the software, install an extra relay in the cabinet.
+To control the second battery, you need to install an extra contactor in series with it. Secondary battery does not use precharge, thus you can switch both positive and negative at the same time. Consult the appropriate board hardware description for which GPIO pin controls this contactor.
 
-Wire second Battery positive and negative contactor control wires (together) to this extra external relay. ( Secondary battery does not use precharge!)
-
-On a Stark_CMR installation use GPIO pin 19, or on a Lilygo T-CAN485 installation use GPIO pin 15, and on Lilygo T-2CAN use IO5 as control signal for this extra external relay.
-
-Enable "Double-Battery Contactor control via GPIO:" in the Settings page
-
-When Battery #2 voltage matches Battery #1 the extra relay will engage and combine the two batteries into one large battery.
+Enable "Double-Battery Contactor control via GPIO:" in the Settings page. When Battery #2 voltage matches Battery #1 the extra relay will engage and combine the two batteries into one large battery.
 
 ### Taking Double Battery into use.
 Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, controlled via GPIO contactors
 
-<img alt="image" src="https://github.com/user-attachments/assets/460528ee-cb77-40a8-ab34-1d2296dead27" />
+<img alt="image" src="../../images/double-battery-04.png" />
 
 ### Example wiring diagram - Stark Box + 2x BMW i3 + Fronius Gen24
 
-<img alt="image" src="https://github.com/user-attachments/assets/eae1fe38-ad2f-4de7-ab56-57cb0606f9bb" />
+<img alt="image" src="../../images/double-battery-05.png" />
 
 
 

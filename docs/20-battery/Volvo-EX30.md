@@ -36,7 +36,7 @@ The following batteries are available for the EX30
 ## Note on crash lock :boom:
 Batteries that have been involved in a severe collision will be crash locked. You can unlock the battery by pressing the "Unlock crashed BMS" button in the More Battery Info weserver page. Remember that the pyrofuse most likely also is blown if the crash status is set.
 
-<img width="711" height="179" alt="image" src="https://github.com/user-attachments/assets/a76021b5-c93c-495d-b6a8-b3d74ee517de" />
+<img width="711" height="179" alt="image" src="../images/volvo-ex30-06.png" />
 
 Volvo EX30 batteries can be unlocked this way, but Zeekr SEA based batteries require a more involving security algoritm that is not yet implemented in the software.
 
@@ -51,19 +51,19 @@ EL = E400V18 '25- EX30 RWD
 
 69kWh NCM battery:
 
-![image](https://github.com/user-attachments/assets/135dcfc3-44e6-458f-a4c2-f5ec116ee77f)
+![image](../images/volvo-ex30-01.png)
 
 Contactors and fuses:
 
-![image](https://github.com/user-attachments/assets/7020fa03-e307-462e-b9fa-286075654363)
+![image](../images/volvo-ex30-02.png)
 
 BMS inside:
 
-![image](https://github.com/user-attachments/assets/12ac52f4-34e4-4f46-a71e-79a452138650)
+![image](../images/volvo-ex30-03.png)
 
 LV connector:
 
-![image](https://github.com/user-attachments/assets/b1b6149c-d179-4814-b37b-7c210b90b8c5)
+![image](../images/volvo-ex30-04.png)
 |  Pin |   Function   |  Connect |
 | :--------: | :---------: | :---------: |
 | 1 | KL30 | +12v |
@@ -88,8 +88,8 @@ LV connector:
 * Make sure that the correct (60ohm) termination resistance is present between CAN-H and CAN-L, there is no built in resistor in the battery. (you should most likely add a 120ohm resistor at the battery connector)
 * Also make sure to jumper the HVIL loop in the unused high voltage connectors. (make sure to isolate/block the access to the connectors as they will/could have over 400v accessible when the system is running)
 
-<img width="320" height="240" alt="image" src="https://github.com/user-attachments/assets/7854190a-9502-494f-b674-1ce6d76e1093" />
-<img width="320" height="240" alt="image" src="https://github.com/user-attachments/assets/ed7a1026-2af5-42c0-a69f-7daebbbcc2ee" />
+<img width="320" height="240" alt="image" src="../images/volvo-ex30-07.png" />
+<img width="320" height="240" alt="image" src="../images/volvo-ex30-08.png" />
 
 
 
@@ -109,7 +109,7 @@ DTCs are presented with 4 bytes, last byte of each code is status. (Permanent, I
 
 Codes might be divided between consecutive CAN frames, but just add them together like marked in the image below.
 
-![DTCs_2](https://github.com/user-attachments/assets/de469558-d555-48d2-8180-07c45466aace)
+![DTCs_2](../images/volvo-ex30-05.jpg)
 
 
 ## DTC explanation
@@ -130,9 +130,11 @@ Codes might be divided between consecutive CAN frames, but just add them togethe
 - 0EE900 - Battery Charger Coupler Temperature Sensor B Circuit Low
 - 0EEA00 - Battery Charger Coupler Temperature Sensor B Circuit High
 - 106800 - EV Battery Pack Coolant Level Low
+- 125200 - Lost Communication with Battery Charger Power Converter Module "A"
 - 127800 - EV Battery Voltage System Isolation Internal
 - 127900 - EV Battery Voltage System Isolation Front electrical machine
 - 920600 - Crash Occurred
+- 908787 - LIN Bus "A" Bus. Signal / Message Failures. Missing message
 - C06488 - CAN Bus Message Failures BECM going Bus off
 - C10000 - Lost Communication With Engine Control Module
 - C11000 - Lost Communication With Drive Motor Control Module A

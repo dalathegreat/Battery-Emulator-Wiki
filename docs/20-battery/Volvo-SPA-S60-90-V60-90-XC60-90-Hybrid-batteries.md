@@ -7,7 +7,7 @@ Battery list with part numbers up to MY2022. This is the list of Volvo supported
 
 So everything before MY2022 is assumed to be 96 cells batteries with capacity 10-12kWh (30-34 Ah) and then some break from MY2022 and beyond with 102 cells batteries with capacity 18.83kWh (51 Ah). Not sure if the way older 27 Ah are representative (mostly for older XC90)
 
-![WhatsApp_Image_2025-01-21_at_14 33 28](https://github.com/user-attachments/assets/26b4b7a5-e5fb-4dad-bde4-f1e4eacee08d)
+![WhatsApp_Image_2025-01-21_at_14 33 28](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-01.jpeg)
 
 Testing is ongoing with the 18.83kWh (51 Ah) battery with serial number 32336936 and it's assumed that the other batteries of the same capacity should behave the same way. Some of the CAN communication is shared with full electric Volvo SPA platform but not all.
 
@@ -17,7 +17,7 @@ Testing is ongoing with the 18.83kWh (51 Ah) battery with serial number 32336936
 ## Software configuration
 For this battery type, use the option called "Volvo PHEV battery" under the "Battery Protocol" setting
 
-<img width="592" height="73" alt="image" src="https://github.com/user-attachments/assets/35dad928-d920-4d5e-acec-f6180a09c2dc" />
+<img width="592" height="73" alt="image" src="../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-06.png" />
 
 
 ## Battery specifications / Serial numbers
@@ -31,7 +31,7 @@ The following SPA platform batteries are supported, checkbox on those confirmed 
        * Volvo P/N 32290825
        * Volvo P/N 32336936
 
-![Battery_location](https://github.com/user-attachments/assets/014efae9-7bfe-4eb4-ae58-58f64493dc1c)
+![Battery_location](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-02.png)
 
 ## Wiring diagram, low voltage
 Connect HVIL_2_IN and HVIL_2_OUT together with a cable. (this will close the HVIL loop in BECM)
@@ -43,13 +43,13 @@ Make sure the terminating resistors are correct. CAN networks should have two 12
 
 Attached below are pictures of the BECM pinout. Connect the highlighted red pins to the LilyGo and 12V supply like this:
 
-![Connector](https://github.com/user-attachments/assets/d1024dbb-32c2-4046-a887-14a3518509c9)
+![Connector](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-03.png)
 
 Additionnally you need to mimic the presence of the cooling valve and level sensor. Therefore the experimental approach was to:
 * Bridge PIN3 and PIN9 across a safe value resistor (to be determined, DTC removed with 10k resistor)
 * Insert a safe value resistor (to be determined, DTC removed with 10k resistor) between PIN8 and your BAT+ 
 
-![LV_receptacle](https://github.com/user-attachments/assets/8db50fdc-7e8b-46a0-be23-91624b61dd4a)
+![LV_receptacle](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-04.jpg)
 
 ## Wiring diagram, High voltage :zap: 
 
@@ -62,7 +62,7 @@ Connect the DC/DC converter to the high voltage output lines. Pay attention to t
 
 The DC/DC converter can also be used to charge a 12V lead acid battery, or left totally unused. The purpose of it is to mainly just enable contactors safely without triggering any fault codes.
 
-![Battery_on_wheels](https://github.com/user-attachments/assets/5899f502-4a4f-408f-9f87-0404b3e02df3)
+![Battery_on_wheels](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-05.jpg)
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!

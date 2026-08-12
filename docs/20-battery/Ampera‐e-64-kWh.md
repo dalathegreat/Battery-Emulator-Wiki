@@ -12,13 +12,13 @@ The 60-66kWh battery in the GM BEV2 platform can be found in the following vehic
 ## Software configuration
 For this battery type, use the option called "Chevrolet Bolt EV/Opel Ampera-E" under the "Battery Protocol" setting
 
-<img width="656" height="156" alt="image" src="https://github.com/user-attachments/assets/bdabd2b7-e76f-47d6-abb3-c2205705b160" />
+<img width="656" height="156" alt="image" src="../images/ampera-e-64-kwh-23.png" />
 
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 
 The battery uses 12V controlled contactors, so use `Contactor Control via GPIO` if you want Battery-Emulator to also control the contactors via GPIO
 
-<img width="514" height="49" alt="image" src="https://github.com/user-attachments/assets/7cc2dd92-0c19-4dfe-97f8-e5a74b855dee" />
+<img width="514" height="49" alt="image" src="../images/ampera-e-64-kwh-24.png" />
 
 One user reported using 3x this type of relay with the LilyGo hardware 
 https://nl.aliexpress.com/item/1005005622431177.html?spm=a2g0o.order_list.order_list_main.126.d91579d2FEesY4&gatewayAdapt=glo2nld
@@ -57,36 +57,36 @@ The following diagrams will help you to connect to the CAN buses on the Opel/Che
     the resistor on the Lilygo must be removed
 Example, development environment with contactor control via GPIO, and all 3x CAN buses connected together as one single bus
 
-![image](https://github.com/user-attachments/assets/6a2346d0-837f-47a7-946c-3925cf8d6d8f)
+![image](../images/ampera-e-64-kwh-01.png)
 
 
-![AC laden](https://github.com/user-attachments/assets/395ed2a6-af3b-4a25-9b1a-461fb95f7f39)
-![DC laden](https://github.com/user-attachments/assets/749eeaf7-9cc6-4c11-a8b3-3ec8cc63684c)
-![temperatuur regeling accu verwarming ](https://github.com/user-attachments/assets/57b218a0-c6cc-4ee2-a134-856f44f86c7c)
+![AC laden](../images/ampera-e-64-kwh-02.png)
+![DC laden](../images/ampera-e-64-kwh-03.png)
+![temperatuur regeling accu verwarming ](../images/ampera-e-64-kwh-04.png)
 
-![aansluitingen hoogspannings kabels ](https://github.com/user-attachments/assets/c1a3dd81-34a6-44f7-af43-0535cb41e57c)
-![activeren seriele gegevens ](https://github.com/user-attachments/assets/c4ac15b5-5e65-49e3-a087-2d056ca1be83)
-![activeren seriele gegevens canbus ](https://github.com/user-attachments/assets/fa36a9c4-f6fe-4292-99b5-b2324622052e)
-![blokkeerlus](https://github.com/user-attachments/assets/cf5db385-6801-4288-87d9-aaf27944f5a2)
-![bus hoogspanning beheer](https://github.com/user-attachments/assets/adb23647-387c-4f7d-90d9-3a4972b9663b)
-![canbus in schakelen ](https://github.com/user-attachments/assets/f1c24a8f-b8ec-40fa-b148-a41e4818ca91)
-![contactors hoogsanning regeling ](https://github.com/user-attachments/assets/1f4fdff4-e223-4172-96c9-23f7283a75d5)
-![contactors hoogspanning regeling](https://github.com/user-attachments/assets/93c92af1-0c91-477b-8bbe-c4b401ed51a0)
-![contactors negatief](https://github.com/user-attachments/assets/caf9f3ea-3d71-49b4-9ebc-823a6c22e853)
-![contactors positief](https://github.com/user-attachments/assets/350ee2fe-27a8-4603-bd9b-ab3f4a12c50b)
-![Hi speed 1](https://github.com/user-attachments/assets/3928259c-f96c-4ee4-8aa4-0918a6836008)
-![Hi speed 2](https://github.com/user-attachments/assets/a967d61d-b220-45e6-ae84-a97c8668127d)
-![voeding en massa HV accu 2 ](https://github.com/user-attachments/assets/52bcf277-b7e6-4239-b833-40336a79cefc)
-![voeding en massa HV accu](https://github.com/user-attachments/assets/8a9c1f2a-3f25-4a61-8b78-cea669f68e61)
+![aansluitingen hoogspannings kabels ](../images/ampera-e-64-kwh-05.png)
+![activeren seriele gegevens ](../images/ampera-e-64-kwh-06.png)
+![activeren seriele gegevens canbus ](../images/ampera-e-64-kwh-07.png)
+![blokkeerlus](../images/ampera-e-64-kwh-08.png)
+![bus hoogspanning beheer](../images/ampera-e-64-kwh-09.png)
+![canbus in schakelen ](../images/ampera-e-64-kwh-10.png)
+![contactors hoogsanning regeling ](../images/ampera-e-64-kwh-11.png)
+![contactors hoogspanning regeling](../images/ampera-e-64-kwh-12.png)
+![contactors negatief](../images/ampera-e-64-kwh-13.png)
+![contactors positief](../images/ampera-e-64-kwh-14.png)
+![Hi speed 1](../images/ampera-e-64-kwh-15.png)
+![Hi speed 2](../images/ampera-e-64-kwh-16.png)
+![voeding en massa HV accu 2 ](../images/ampera-e-64-kwh-17.png)
+![voeding en massa HV accu](../images/ampera-e-64-kwh-18.png)
 Stekker X 357 OEM 33472-1259 Service Connector 19333239
 * X357
-![x357](https://github.com/user-attachments/assets/f8606e24-79bf-44c7-be57-06f41eca5868)
-![x357 pen pos](https://github.com/user-attachments/assets/0cefb057-57d0-4745-a487-e8e244120611)
+![x357](../images/ampera-e-64-kwh-19.png)
+![x357 pen pos](../images/ampera-e-64-kwh-20.png)
 
 X358 
-![X358](https://github.com/user-attachments/assets/1d9b89e4-3cd3-4a90-88d1-94fd11e6ed30)
+![X358](../images/ampera-e-64-kwh-21.png)
 
-![X358 pin pos ](https://github.com/user-attachments/assets/71f28f61-b2d6-4017-abb8-97f3c2675204)
+![X358 pin pos ](../images/ampera-e-64-kwh-22.png)
 
  I had connectors but these fits also, one needs to modify by yourself 
 

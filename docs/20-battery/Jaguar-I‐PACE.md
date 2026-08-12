@@ -55,6 +55,6 @@ We made two videos about the reverse engineering:
 ## Software setup
 For this battery type, use the option called "Jaguar I-PACE" under the "Battery Protocol" setting
 
-<img width="591" height="73" alt="image" src="https://github.com/user-attachments/assets/642fb421-7b60-4736-8672-52a5d816d53d" />
+<img width="591" height="73" alt="image" src="../images/jaguar-i-pace-01.png" />
 
 Also remember to enable "Contactor control via GPIO" to control the contactors manually

@@ -13,6 +13,6 @@
 * [Seres E1](https://en.wikipedia.org/wiki/Fengon_Mini_EV) (2023–present), city car, [badge engineered](https://en.wikipedia.org/wiki/Rebadging) [Fengon Mini EV](https://en.wikipedia.org/wiki/Fengon_Mini_EV)
 
 ## LV connector
-<img width="1146" height="546" alt="image" src="https://github.com/user-attachments/assets/a57a57b0-b0e2-4d7a-a5c9-6375eeb75a4b" />
+<img width="1146" height="546" alt="image" src="../images/seres-3-01.png" />
 
 ## CAN logs wanted!

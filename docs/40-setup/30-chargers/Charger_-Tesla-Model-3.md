@@ -43,17 +43,17 @@ As the PCS (Power Conversion System, in the penthouse) might be handling a lot o
 # Photos
 
 Charge Port flap, with cable that goes to CP ECU.  This is useful for weather resistance.
-![Charge Port flap](https://github.com/user-attachments/assets/eba401c0-22bc-4770-8e0b-896569b66a91)
+![Charge Port flap](../../images/charger-tesla-model-3-01.jpg)
 Charge Port ECU.  Requires three cables to be connected
-![Charge Port ECU](https://github.com/user-attachments/assets/84c3ce74-c1d2-4329-bde3-6f64141cb52d)
+![Charge Port ECU](../../images/charger-tesla-model-3-02.jpg)
 Cable that goes from Charge Port to the CP ECU.  This is the bit you need to unwrap from the left rear wiring harness.
-![Charge Port cable](https://github.com/user-attachments/assets/3a3c9bc7-4d1c-452b-82a6-b31cf357b894)
+![Charge Port cable](../../images/charger-tesla-model-3-03.jpg)
 Charge Port.  Mine (Australian) is a CCS style.
-![Charge Port](https://github.com/user-attachments/assets/367e02bb-d38d-40b0-959b-8e6fc79cb530)
+![Charge Port](../../images/charger-tesla-model-3-04.jpg)
 My battery, mounted outside the shed.  Note the Charge port HV cable hanging down the right hand side.
-![My battery install](https://github.com/user-attachments/assets/2fddca00-3b75-4bfb-bd6c-acc384034cbd)
+![My battery install](../../images/charger-tesla-model-3-05.jpg)
 Penthouse diagram, note coolant pipes 3 and 9 connected to PCS 4.
-![tesla-model-3-battery-pack-3](https://github.com/user-attachments/assets/c7b19eda-f33e-4b8b-8210-cfee2d6d82ed)
+![tesla-model-3-battery-pack-3](../../images/charger-tesla-model-3-06.jpg)
 
 # Integration
 Not done yet.

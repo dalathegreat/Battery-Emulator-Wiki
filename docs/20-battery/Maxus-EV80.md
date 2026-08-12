@@ -6,21 +6,21 @@ Note! The EV80 battery does not contain any contactors or shunt. This means ther
 
 - Maxus EV80
 
-<img width="795" height="692" alt="image" src="https://github.com/user-attachments/assets/85aae160-206d-4e85-9531-3e557227295b" />
+<img width="795" height="692" alt="image" src="../images/maxus-ev80-01.png" />
 
 ## Battery overview
 
 ## Low voltage wiring
 The cables are labelled in Chinese
 
-<img width="1098" height="805" alt="image" src="https://github.com/user-attachments/assets/264b841e-327f-4860-9cc6-543090e032ae" />
+<img width="1098" height="805" alt="image" src="../images/maxus-ev80-02.png" />
 
-<img width="1095" height="588" alt="image" src="https://github.com/user-attachments/assets/f2aff619-b6f5-416b-8e3c-b615fac02015" />
+<img width="1095" height="588" alt="image" src="../images/maxus-ev80-03.png" />
 
 TODO: check for official cabling documentation on https://xyx.saicmaxus.com/overseaAfterSaleWeb/staticDownloads.html
 
 ## High voltage wiring
 Cable for heater?
 
-<img width="974" height="372" alt="image" src="https://github.com/user-attachments/assets/8fe3d85f-d52c-457b-9a3f-5adabc5bef55" />
+<img width="974" height="372" alt="image" src="../images/maxus-ev80-04.png" />
 

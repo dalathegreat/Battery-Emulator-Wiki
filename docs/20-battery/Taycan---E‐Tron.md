@@ -10,7 +10,7 @@
 - 79.2 kWh (71.0 kWh usable) liquid-cooled lithium-ion
 - 93.4 kWh (83.7 kWh usable) liquid-cooled lithium-ion "Performance Battery Plus"
 
-![IMG_5353](https://github.com/user-attachments/assets/c5405300-6f17-408c-9d5e-fb3c8136164b)
+![IMG_5353](../images/taycan-e-tron-01.jpeg)
 
 
 
@@ -32,13 +32,13 @@ Pin 19: CAN Low
 
 Only CAN Pins 16 and 19 are populated in both Audi Etron GT and Porsche Taycan Batteries so thats where I have taken the CAN data from
 
-![image](https://github.com/user-attachments/assets/0030c09a-2c00-4ed6-8d5d-68ec32fdb4e6)
+![image](../images/taycan-e-tron-02.png)
 
-![IMG_5352](https://github.com/user-attachments/assets/221fc61e-efb3-4afb-b32f-6071d1055dec)
-![IMG_5351](https://github.com/user-attachments/assets/ee67649f-970d-4c78-82c9-8dacd7b4835f)
-![IMG_5360](https://github.com/user-attachments/assets/51352279-1d79-4396-af42-e9d6791cd21d)
-![IMG_5357](https://github.com/user-attachments/assets/15df7a90-447f-4265-8f94-d28b75b02668)
-![IMG_5358](https://github.com/user-attachments/assets/716433e2-ae7c-4bd3-84c1-67e40268abb2)
+![IMG_5352](../images/taycan-e-tron-03.jpeg)
+![IMG_5351](../images/taycan-e-tron-04.jpeg)
+![IMG_5360](../images/taycan-e-tron-05.jpeg)
+![IMG_5357](../images/taycan-e-tron-06.jpeg)
+![IMG_5358](../images/taycan-e-tron-07.jpeg)
 
 ### Logs 
 
@@ -71,6 +71,6 @@ OBD Data from Carscanner App Toggling through menus and again ending with cell v
 LOG in CANFD standalone 30/05/2025
 [TaycanFDstanalone.log](https://github.com/user-attachments/files/20522032/TaycanFDstanalone.log)
 
-![Screenshot 2025-05-30 152852](https://github.com/user-attachments/assets/24066fb1-3698-4ca7-b2ed-6de378ab818d)
+![Screenshot 2025-05-30 152852](../images/taycan-e-tron-08.png)
 
  

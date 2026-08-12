@@ -11,15 +11,15 @@ The Nissan Ariya [battery](https://www.batterydesign.net/2022-nissan-ariya/) com
 - 63kWh - 96S 400V Architecture - 451kg 1456x384x2099mm
 - 87kWh - 96S 400V Architecture - 578kg 1456x384x2099mm
 
-![image](https://github.com/user-attachments/assets/4deb0393-bf63-4599-b5b4-bc1035b99d7d)
+![image](../images/nissan-ariya-01.png)
 
 
 ## Pinout BMS
 The Ariya battery uses the same 36-pin Yazaki connector as the Nissan LEAF, but it uses more pins:
 
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/42b159ce-0fa6-4fa2-bc50-96158ec9184c)
+![bild](../images/nissan-ariya-02.png)
 
-<img alt="image" src="https://github.com/user-attachments/assets/b20e376c-e785-4bbb-a4d5-8c6cd1537a7b" />
+<img alt="image" src="../images/nissan-ariya-04.png" />
 
 * Pin 34 CAN-H - Connect to LilyGo CAN-H
 * Pin 35 CAN-L - Connect to LilyGo CAN-L
@@ -45,7 +45,7 @@ If using QC-HV: (UNCLEAR HOW THIS WORKS)
 * Pin 25 QC state sig - Connect to ?
 
 You can use either QC-HV or the MAIN-HV connector. The QC-HV uses the same high voltage cable as the Nissan LEAF.
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/a69cf680-5071-4185-bc8b-c2c19ef14391)
+![bild](../images/nissan-ariya-03.png)
 
 
 

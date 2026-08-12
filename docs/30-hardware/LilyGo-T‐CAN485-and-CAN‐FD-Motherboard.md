@@ -32,8 +32,8 @@ This is work in progress **BETA** PCB design for a motherboard to hold both a li
 * Requires 20Mhz setting for CANFD (#define CANFD_ADDON_CRYSTAL_FREQUENCY_MHZ  ACAN2517FDSettings::OSC_20MHz)
 * LillyGo is a tight fit in the case!
 
-![image](https://github.com/user-attachments/assets/774bdaee-0981-4255-8790-a99413251d07)
-![image](https://github.com/user-attachments/assets/37a8e87e-83e2-48bd-833a-7b8a559c7724)
-![image](https://github.com/user-attachments/assets/1314498e-bea8-4d96-a4f3-2c991d22b25b)
+![image](../images/lilygo-t-can485-and-can-fd-motherboard-01.png)
+![image](../images/lilygo-t-can485-and-can-fd-motherboard-02.png)
+![image](../images/lilygo-t-can485-and-can-fd-motherboard-03.png)
 
 

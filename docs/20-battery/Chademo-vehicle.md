@@ -57,7 +57,7 @@ The 12V supply used needs to be able to handle 2A continuous load to engage the 
 * Connect Start/Stop switch to LilyGo GPIO - CHADEMO_PIN_7 (not connect to CHAdeMO connector)
 * Pin 2/10/4 should follow activation/deactivation sequence for CHAdeMO
 
-![image](https://github.com/user-attachments/assets/bdb729a0-ed2d-47ea-972a-d6f5037c9d2d)
+![image](../images/chademo-vehicle-01.png)
 
 ### Activation sequence (pre-charge in inverter)
 * Start is pressed, if the plug is connected, relay d1 is activated

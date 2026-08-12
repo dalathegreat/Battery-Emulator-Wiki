@@ -5,11 +5,11 @@
 FoxESS inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE. 
 <br>Note: This does not impact the lilygo T-2CAN, it is galvanically isolated, Foxess cannot fry the T-2CAN!
 
-![image](https://github.com/user-attachments/assets/6e4efc3d-6839-4834-a703-8adca89a8403)
+![image](../images/foxess-h1-h3-ac1-kh-01.png)
 
 Another way to tackle this is with the use of a CAN isolator between the inverter and the rest of the system. Examples found in the [lightning strike wiki](https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike#suggested-hardware)
 
-![image](https://github.com/user-attachments/assets/2ba857f6-d2aa-48e4-94c4-3314b7b7ff4e)
+![image](../images/foxess-h1-h3-ac1-kh-02.png)
 
 # Word of caution, isolated CAN
 
@@ -42,20 +42,53 @@ The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to th
 > [!IMPORTANT]  
 > Different versions of the Foxess have different pinouts. Check user manual to see which pins are CAN-H / CAN-L
 
-![image](https://github.com/user-attachments/assets/60c3b180-035d-4ebe-820c-83edeae1625e)
+![image](../images/foxess-h1-h3-ac1-kh-03.png)
 
 ## Which protocol to use
 For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting
 
-<img width="495" height="63" alt="image" src="https://github.com/user-attachments/assets/4ef7e184-0b84-4296-96b7-de925626be7d" />
+<img width="495" height="63" alt="image" src="../images/foxess-h1-h3-ac1-kh-07.png" />
+
+The default values allow for a 400V EV battery to be used. If you are using a low voltage battery, you can lower the "FoxESS module count", it works in steps of 1-8 , each step being 50V. So if you are using a 200V battery, set the module count to 4
+
+<img width="570" height="97" alt="image" src="../images/foxess-h1-h3-ac1-kh-08.png" />
+
+By default the battery will appear as a HV2600 battery. If you want to change this, the following enumerations have been successfully tested:
+
+- Fox ESS Battery Type Enum Lookup
+Reverse-engineered Fox ESS battery type enum list.
+
+Test conditions
+Values were tested by changing the battery type enum and observing:
+Battery name shown in Fox Cloud
+Battery icon
+
+CAN communication status
+Battery telemetry availability (SOC, voltage, charge/discharge)
+
+Test settings:
+Battery subtype: 131 used for all entries. 
+
+Module count: default value used
+
+![alt](url)
+<img width="652" height="4096" alt="11750" src="../images/foxess-h1-h3-ac1-kh-09.jpg" />
+
+
+
+Notes
+
+Last confirmed valid battery profile found: 134 (0x86) S28-H2.0
+Values above 134 tested as empty/no battery profiles.
+
 
 ## Note on smartmeter
 
 Note in the CHINT DDSU666 (single phase) meters with the fox. _I bought a generic meter off a UK electrical wholesaler initially as the FoxESS instructions didn’t say it had to be a Fox branded version. It read accurately on the meter, but gave rogue readings to the inverter so was inoperable. I just installed a FoxESS branded meter and it works perfectly out the box (settings 8n1, Ch01, 9600)_
 
-<img alt="image" src="https://github.com/user-attachments/assets/f611bdd0-c9ec-4614-8a76-3e16e6536bc7" />
+<img alt="image" src="../images/foxess-h1-h3-ac1-kh-10.png" />
 
-<img alt="image" src="https://github.com/user-attachments/assets/59e0dd1f-2c1a-4775-850c-a9fa5d67dc11" />
+<img alt="image" src="../images/foxess-h1-h3-ac1-kh-11.png" />
 
 
 ## Troubleshooting
@@ -70,15 +103,15 @@ Note in the CHINT DDSU666 (single phase) meters with the fox. _I bought a generi
 | Inverter reports "Bat Volt Fault" | Can happen when voltage sags under load. Common cause is miswired high voltage lines/precharge, pulling power thru precharge resistor instead of contactors. Especially likely wiring mistake to make on Renault setups. |
 
 ## Installation examples
-![alt](https://i.postimg.cc/yYzdDqbW/Whats-App-Image-2026-05-06-at-16-41-16.jpg)
+![alt](../images/foxess-h1-h3-ac1-kh-04.jpg)
 FOX H1-6.0-E and renault zoe 26 kwh
 Feel free to add your own images here!
 
 
 # Video Guide
 To aid installation Battery Man has produced a video series using the H3 Pro inverter which documents an install with Tesla LFP batteries and both the LilyGo and Stark CMR. There is a full playlist touching on different aspects
-![thumb for YT opt 7 FINAL](https://github.com/user-attachments/assets/2fdf5561-852d-453f-b5a5-23e1211fd5f1)
+![thumb for YT opt 7 FINAL](../images/foxess-h1-h3-ac1-kh-05.jpg)
 Installing inverter - https://youtu.be/9YnuPMdJaoI?si=odCptB7YAE56yFHq
-![THUMB HACK V3](https://github.com/user-attachments/assets/c9c16522-520f-46db-8cfb-8c3b4558bacd)
+![THUMB HACK V3](../images/foxess-h1-h3-ac1-kh-06.jpg)
 Work to add inverter integration - https://youtu.be/BYqYpsv5svQ?si=oxXq-E-KLXL0grea
 https://youtu.be/PYyTD87KQpo?si=jaSvQWiqEct-WYPS

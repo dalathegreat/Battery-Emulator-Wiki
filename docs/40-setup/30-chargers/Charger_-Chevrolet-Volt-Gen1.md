@@ -29,12 +29,12 @@ Note: 2015, 2015 Cadillac ELR hybrids used the same charger and may provide resu
 Related cables: 20972413 and 22889574
 
 ### Vehicle Placement
-![W](https://github.com/dalathegreat/Battery-Emulator/assets/940728/8d2bb482-83eb-4712-8ec4-92958fff5887=640x480)
+![W](../../images/charger-chevrolet-volt-gen1-01.png)
 
 ### Appearance
-![s-l1600](https://github.com/dalathegreat/Battery-Emulator/assets/940728/db38d1ef-0c4e-4f36-aefb-517df738277c)
-![s-l1600](https://github.com/dalathegreat/Battery-Emulator/assets/940728/8d320274-fbd8-443d-903e-16c6048337e9)
-![s-l1600](https://github.com/dalathegreat/Battery-Emulator/assets/940728/625d33e9-51fb-4721-acaa-6b1de17f3e38)
+![s-l1600](../../images/charger-chevrolet-volt-gen1-02.jpg)
+![s-l1600](../../images/charger-chevrolet-volt-gen1-03.jpg)
+![s-l1600](../../images/charger-chevrolet-volt-gen1-04.jpg)
 
 
 # Integration

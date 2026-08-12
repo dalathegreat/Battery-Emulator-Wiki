@@ -5,6 +5,11 @@ Here's a collection of 3d-printable parts that you can utilize in your build
 - LilyGo Vertical Din-rail case: (Printables: https://www.printables.com/model/1312677-lilygo-t-can485-dinrail-case)
 - LilyGo T_2CAN case: (https://www.thingiverse.com/thing:7172799)
 
+## BYD Vehicles
+- Front connector cover port: [Abdeckung HV Anschluss Motor vorn.step.zip](https://github.com/user-attachments/files/29167093/Abdeckung.HV.Anschluss.Motor.vorn.step.zip)
+- Front connector cover port O-ring version: [Verschlussdeckel Klimaleitung mit O-Ring 2,5mm.step.zip](https://github.com/user-attachments/files/29182999/Verschlussdeckel.Klimaleitung.mit.O-Ring.2.5mm.step.zip)
+
+
 ## Kia/Hyundai 39/64kWh
 - AUX HV cover [AUX HV COVER KIA HYUNDAI.zip](https://github.com/user-attachments/files/18517606/AUX.HV.COVER.KIA.HYUNDAI.zip)
 - low voltage plug to collect all cables to 20mm pipe [LV COVER KIA HYUNDAI.zip](https://github.com/user-attachments/files/18517605/LV.COVER.KIA.HYUNDAI.zip)

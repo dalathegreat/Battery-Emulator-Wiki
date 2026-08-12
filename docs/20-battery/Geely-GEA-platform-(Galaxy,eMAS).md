@@ -12,7 +12,7 @@ Vehicles using platform:
 - [Geely Galaxy A7 (P181)](https://en.wikipedia.org/wiki/Geely_Galaxy_A7) (2025–present)
 - [Geely Galaxy Starshine 7](https://en.wikipedia.org/wiki/Geely_Galaxy_Starshine_7) (to commence)
 
-<img alt="image" src="https://github.com/user-attachments/assets/a3db266a-c4d4-4078-8219-7a988bc66b09" />
+<img alt="image" src="../images/geely-gea-platform-galaxy-emas-01.png" />
 
 ## High Voltage connector
 TODO
@@ -20,7 +20,7 @@ TODO
 ## Low voltage connector
 The low voltage connector is the same as on the Geely SEA platform.
 
-<img alt="image" src="https://github.com/user-attachments/assets/24a31f03-91f8-40d5-9857-9a4a663996ad" />
+<img alt="image" src="../images/geely-gea-platform-galaxy-emas-02.png" />
 
 |  Product |  Purchase Link |
 | :--------: | :---------: |

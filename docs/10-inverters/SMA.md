@@ -50,11 +50,16 @@ If the inverter, which likes to see only BYD CAN frames, sees standard automotiv
 This can be solved in several ways:
 
 * You can use the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) hardware which has more CAN channels (Recommended option)
+* You can use the [LilyGO T-2CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN) hardware, which also has two isolated CAN channels (2nd recommended option)
 * You can [add an isolated MCP2515 CAN channel](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
 * You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
 * You can use a [CAN filter](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-filter-hardware) between inverter and the rest of the system
 
-Keep in mind that you will also need automated contactor control via GPIO, or a battery that has CAN controllable on/off contactors. This is due to a complicated pairing process when taking the battery in to use, when the inverter will command on/off the battery in order to succeed with pairing. **Due to this, the Stark CMR is highly recommended for first timers!**
+## Word of caution, controllable HV ⚠️
+
+Keep in mind that you will also need automated contactor control via GPIO, or a battery that has CAN controllable on/off contactors. If you have a CAN controlled integration that is not able to turn OFF contactors when commanded, you will need to add external contactors.
+
+This is due to a complicated pairing process when taking the battery in to use, when the inverter will command on/off the battery in order to succeed with pairing. **Due to this, the Stark CMR is highly recommended for first timers!**
 
 > [!IMPORTANT]
 > Grounding is extremely important for all inverters. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this may result in CAN errors.
@@ -84,7 +89,7 @@ The inverter needs to be able to control the closing of the contactors. This is 
 
   This stepdown can be achieved with a resistor divider
 
-  ![image](https://github.com/user-attachments/assets/20cf2d59-bac6-48bb-902e-a1cda7c16191)
+  ![image](../images/sma-01.png)
 
   The 1k resistor isn't technically needed but just in case there's a short it would limit the current into the LilyGo pin.
 
@@ -100,7 +105,7 @@ The inverter needs to be able to control the closing of the contactors. This is 
   ```
 
   This is how the connection for the SMA Tripower would look like.
-  <img width="839" alt="image" src="https://github.com/user-attachments/assets/3869b235-45d9-4b68-b064-e87a63a9fd40"/>
+  <img width="839" alt="image" src="../images/sma-07.png"/>
 
   SMA Hybrid Communication pin layout
   ```
@@ -150,34 +155,24 @@ The inverter needs to be able to control the closing of the contactors. This is 
 
   For this inverter type, use the option called `SMA SBS compatible BYD Battery-Box HVS` as "Inverter Protocol" setting
 
-  <img width="490" height="73" alt="image" src="https://github.com/user-attachments/assets/3d6dfb3d-6fef-4bec-9d87-b61ede4d45be"/>
-
-  <img width="434" height="43" alt="image" src="https://github.com/user-attachments/assets/41921be0-8880-4253-a833-7ca6997fa25f"/>
 </details>
 <details>
   <summary>Details for Sunny Boy Smart Energy</summary>
   
-  For this inverter type, use the option called `BYD Battery-Box HVS over SMA CAN` as "Inverter Protocol"
+  For this inverter type, use the option called `SMA compatible BYD Battery-Box HVS` as "Inverter Protocol"
 
-  <img width="490" height="73" alt="image" src="https://github.com/user-attachments/assets/3d6dfb3d-6fef-4bec-9d87-b61ede4d45be"/>
-
-  <img width="434" height="43" alt="image" src="https://github.com/user-attachments/assets/41921be0-8880-4253-a833-7ca6997fa25f"/>
 </details>
 <details>
   <summary>Details for Sunny Tripower Smart Energy</summary>
   
-  For this inverter type, use the option called `BYD Battery-Box HVS over SMA CAN` as "Inverter Protocol"
+  For this inverter type, use the option called `SMA compatible BYD Battery-Box HVS` as "Inverter Protocol"
 
-  <img width="486" height="63" alt="image" src="https://github.com/user-attachments/assets/b8085682-5d39-4235-9fdd-46d49920d395"/>
-  
-  <img width="434" height="43" alt="image" src="https://github.com/user-attachments/assets/41921be0-8880-4253-a833-7ca6997fa25f"/>
 </details>
 <details>
   <summary>Details for Sunny Island</summary>
   
   For this inverter type, use the option called a`SMA Low Voltage (48V) protocol via CAN` as "Inverter Protocol"
 
-  <img width="484" height="64" alt="image" src="https://github.com/user-attachments/assets/303f755c-a578-42f8-a3dc-b10a8fe6a0ea" />
 </details>
 
 ## Inverter setup
@@ -194,14 +189,14 @@ The SMA inverter is sensitive when you try to install the battery to the inverte
   Steps:
   1. Power on the SMA, and wait for the blue light to stay on continuously.
   1. Connect to the SMA web interface. The IP address of webserver is `192.168.12.3` when connecting directly to the SMA WiFi network (access point). This web interface will list the IP address of the SMA on your local network on the bottom of the page. Some inverters were delivered without onboard WIFI/WLAN so you can only access these via your LAN network address. On your local network, you can also reach the webpage via its hostname `smaxxxxxxxxxx.home` (where `xxxxxxxxxx` shall be replaced with the serial number of your device) or look up the IP address with an app like 'Net Analyzer'.
-  1. Log in to the SMA web interface as installer. To perform the battery configuration process you'll need the installer password (or generate PUK from SMA website).
+  1. Log in to the SMA web interface as installer. To perform the battery configuration process you'll need the installer password (or request the PUK on the SMA website).
   1. Start the installation assistant (https://smaxxxxxxxxxx.home/#/formwizard) or via top-right dropdown menu.
   1. Proceed with the SMA installation assistant till the 'battery configuration' step, but do not complete the battery config yet.
   1. Go to the battery config step in the installation assistant. Wait for the pairing to start. During pairing, make sure the `Inverter allows contactor closing` checkbox on the battery emulator webserver goes :heavy_check_mark: <br>
-  ![image](https://github.com/user-attachments/assets/ee3bb60e-e72f-400e-92d6-490c0502314c)
+  ![image](../images/sma-02.png)
   1. Let the pairing run until it completes. The assistant showing 100% may not mean that the pairing is completed. The battery should be recognised by the SMA. It can take up to 30 minutes for the pairing to complete.
   1. Once done, `BYD Battery-Box (4-8)` or 'Battery-Box Premium HVS' and a serial number are seen in the configuration assistant, like in the image below. The capacity is always 10200 Wh, as that is the capacity of the battery type being emulated. <br>
-  ![image](https://github.com/user-attachments/assets/8210128f-dc30-4bf3-a40d-603064c0a16b)
+  ![image](../images/sma-03.png)
   1. Sometimes the battery is recognized as `Other`. If the pairing fails, and the red light of the inverter turns on, it may be necessary to power down the SMA, and power it back on again, to complete the pairing.
   1. Once `BYD Battery-Box (4-8)` is seen, complete the battery functional test: charge/discharge the battery using the buttons in the installation assistant.
   1. Proceed with the next pages of the installation assistant to finalize the SMA configuration process.
@@ -215,7 +210,7 @@ The SMA inverter is sensitive when you try to install the battery to the inverte
   1. Disconnect SMA CAN-bus connection on the battery emulator side.
   1. Power on the SMA, and wait for the blue light to stay on continuously.
   1. Connect to the SMA web interface. The IP address of webserver is `192.168.12.3` when connecting directly to the SMA WiFi network (access point). This web interface will list the IP address of the SMA on your local network on the bottom of the page. On your local network, you can also reach the webpage via its hostname `smaxxxxxxxxxx.home` (where `xxxxxxxxxx` shall be replaced with the serial number of your device).
-  1. Log in to the SMA web interface as installer. To perform the battery configuration process you'll need the installer password (or buy PUK from SMA).
+  1. Log in to the SMA web interface as installer. To perform the battery configuration process you'll need the installer password (or request the PUK on the SMA website).
   1. Start the installation assistant (https://smaxxxxxxxxxx.home/#/formwizard).
   1. Proceed with the SMA instalation assistant till step 6 (do not go to battery config yet).
   1. Power on the battery emulator. Wait for the battery emulator to be fully booted. For pairing to succeed, the following conditions must be fulfilled:
@@ -225,7 +220,7 @@ The SMA inverter is sensitive when you try to install the battery to the inverte
     - The SMA is connected via CAN to the battery emulator, such that the SMA can send a pairing request, and the battery emulator can respond to this.
   1. Reconnect the SMA CAN-bus connection on the battery emulator side.
   1. Go to step 7 in the installation assistant. Wait for the pairing to start. During pairing, make sure the `Inverter allows contactor closing` checkbox on the battery emulator webserver goes :heavy_check_mark: <br>
-![image](https://github.com/user-attachments/assets/ee3bb60e-e72f-400e-92d6-490c0502314c)
+![image](../images/sma-02.png)
   1. Let the pairing run until it completes. The battery should be recognised by the SMA. It can take up to 30 minutes for the pairing to complete.
   1. The battery should be recognised as a `BYD Battery-Box Premium HVS battery`.
   1. Battery functional test: charge/discharge the battery using the buttons in the installation assistant.
@@ -251,7 +246,7 @@ Please feel free to add!
 
 ### SMA Sunny Boy Storage to battery emultator
 This is how the SBS should be connected to the lily/stark hardware
-![image](https://github.com/user-attachments/assets/8666857d-613c-466e-995c-fb793470cb9e)
+![image](../images/sma-05.png)
 
 ### SMA Sunny Tripower to Liligo and BMW i3
-![image](https://github.com/user-attachments/assets/96d7a08e-04c1-4799-8d1b-9140ef9c7c6a)
+![image](../images/sma-06.png)

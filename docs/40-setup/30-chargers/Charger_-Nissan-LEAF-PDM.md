@@ -3,7 +3,7 @@
 
 ## Supported PDMs 🏅 
 There are two different 2013+ LEAF charger (PDM) variants that work with the Battery-Emulator as a charger. One is 3.3kW, and the other is 6.6kW (both are only 1-phase chargers). There is a sticker on the PDM that signals how fast it can charge.
-![Nissan_PDM](https://github.com/user-attachments/assets/7ed74e15-2afb-4206-bea5-f970398ccb0d) ![PDM66](https://github.com/user-attachments/assets/f9d58156-b7b1-4e42-9418-c8030b98aac8)
+![Nissan_PDM](../../images/charger-nissan-leaf-pdm-01.jpg) ![PDM66](../../images/charger-nissan-leaf-pdm-02.jpg)
 
 The following LEAF PDMs are supported:
 - 2011 to 2012 ZE0 ❌  Not supported!
@@ -15,11 +15,11 @@ The PDM has a 36pin Yazaki connector that handles all low voltage signals.
 
 ***!!! BEAWARE !!! pinout mapping change depending on car production year***
 
-![pins](https://github.com/user-attachments/assets/8896625a-a2fa-4628-8c40-ab39baa0bfa6)
+![pins](../../images/charger-nissan-leaf-pdm-03.jpg)
 
 ### >= 2015 PDM pinout (need to verify that pinout is the same for > 2017 ZE1 models)
 
-![image](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/4822552d-eee6-48ca-9aa0-55c8af72c3f9)
+![image](../../images/charger-nissan-leaf-pdm-04.png)
 
 - Pin 9 - 12V
 - Pin 10 - Ground
@@ -30,20 +30,20 @@ The PDM has a 36pin Yazaki connector that handles all low voltage signals.
 - Pin 30 - Connect to green wire on the Type1 port (For type 2 connect to the white wire - CP)
 
 here the complete pinout
-<img src="https://github.com/user-attachments/assets/91a9b24d-1369-46bd-9822-aa5060cc3a4d" />
+<img src="../../images/charger-nissan-leaf-pdm-14.png" />
 
 
 ### 2014 PDM Pinout
 
-<img src="https://github.com/user-attachments/assets/36ba4c58-4aed-4ce7-bc64-bccd67c780b9" />
+<img src="../../images/charger-nissan-leaf-pdm-15.png" />
 
 
 ### 2013 PDM Pinout
 
-<img src="https://github.com/user-attachments/assets/78e39332-5356-4f21-82d7-c2323057cf18" />
+<img src="../../images/charger-nissan-leaf-pdm-16.png" />
 
 ## Type 2 AC wiring
-![type_2](https://github.com/user-attachments/assets/cffdf79a-fa16-49c6-a0b4-66cded3ef0c3) ![type2_socket](https://github.com/user-attachments/assets/2e0564f8-53c6-45a7-836e-229fa1ddeac3) ![type2_wires](https://github.com/user-attachments/assets/0c2158db-5ac6-4187-b1c8-d8e1574d1a10)
+![type_2](../../images/charger-nissan-leaf-pdm-05.jpg) ![type2_socket](../../images/charger-nissan-leaf-pdm-06.jpg) ![type2_wires](../../images/charger-nissan-leaf-pdm-07.jpg)
 
 ## High voltage wiring diagram ⚡ 
 The PDM has two high voltage connectors, battery and A/C compressor. Both can be used to connect to the battery. If you use the A/C compressor connector, the wires are quite thin so they are not recommended for 6.6kW charging, max 3.3kW
@@ -56,13 +56,13 @@ Tesla Model S uses the [same pump](https://s.click.aliexpress.com/e/_oCcqWTy) an
 
 The inlet is marked in this picture:
 
-![image](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/27e0b874-b0b4-407f-afbe-1a5d5256428b)
+![image](../../images/charger-nissan-leaf-pdm-08.png)
 
 Nissan LEAF waterpump pinout:
 - Brown pin 1 - 12V
 - Yellow/black pin 2 - GND
 
-![image](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/c2ee8390-c5c2-4df7-8a78-b284fb8d82a2) ![Leaf water pump pinout](https://github.com/user-attachments/assets/cd7e0156-28c8-4782-90c9-c9b3e04560b7)
+![image](../../images/charger-nissan-leaf-pdm-09.png) ![Leaf water pump pinout](../../images/charger-nissan-leaf-pdm-10.jpg)
 
 
 ℹ️ The LEAF waterpump takes 8 seconds to start after supplying power to it.
@@ -70,12 +70,12 @@ Nissan LEAF waterpump pinout:
 ### Charging 12V battery 🔋 
 The PDM will output 12V when running. You can use this to charge a 12V lead acid battery (or supply power to a water pump for cooling!). The 12V circuit can be loaded to 1.5kW max. Connect the positive and negative lead as shown in this picture:
 
-![image](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/9b8cd328-341f-44a3-a35a-d6c1fcb35d5a) ![12v](https://github.com/user-attachments/assets/7c88a787-193f-4362-a602-b746d9c4ab9f)
+![image](../../images/charger-nissan-leaf-pdm-11.png) ![12v](../../images/charger-nissan-leaf-pdm-12.jpg)
 
 ### Software setup 💻 
 Compiling the software for LEAF PDM support is done by enabling `NISSANLEAF_CHARGER` option in the `USER_SETTINGS.h` file. After uploading the software to the board, you will have a new view in the webserver. When charging is active you can monitor the power coming from the charger.
 
-![301633922-e3ff4a69-e536-4ff8-b651-d64d06f9a372](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/a5a0f92e-1b3f-431a-ab18-b994e3255aab)
+![301633922-e3ff4a69-e536-4ff8-b651-d64d06f9a372](../../images/charger-nissan-leaf-pdm-13.png)
 
 ### Using the charger 💪 
 To charge via the PDM, connect an EVSE to the Type1/2 port. This will activate the PDM, and it will start powertransfer into the battery. You can monitor the process via the webserver.

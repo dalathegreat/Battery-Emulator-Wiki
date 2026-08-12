@@ -14,7 +14,7 @@ There are 3x batteries available for the Kangoo:
 * 44kWh 2022+
    * Pinout unknown, NOT SUPPORTED YET since nobody has tested it
 
-<img width="393" height="91" alt="image" src="https://github.com/user-attachments/assets/78a9d568-298a-4753-8f80-f0ebb5d135e9" />
+<img width="393" height="91" alt="image" src="../images/renault-kangoo-01.png" />
 
 Physical size;
 * Weight 295 kg (22kWh)
@@ -25,7 +25,7 @@ Physical size;
 
 44kWh pack example:
 
-<img width="622" height="913" alt="image" src="https://github.com/user-attachments/assets/5fd325ec-165b-4337-8a4a-4498a51aadc1" />
+<img width="622" height="913" alt="image" src="../images/renault-kangoo-02.png" />
 
 
 ## Part numbers for Renault Kangoo batteries

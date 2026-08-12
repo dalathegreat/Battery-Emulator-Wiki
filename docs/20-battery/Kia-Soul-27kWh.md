@@ -21,7 +21,7 @@ Main connector (out of stock?): [KET Connector MG645649-5](https://www.amazon.co
 
 HV Cable part no. 91876E 4000
 
-![image](https://github.com/user-attachments/assets/d3453bd9-bd14-4245-a243-619f29e9f87e)
+![image](../images/kia-soul-27kwh-01.png)
 
 
 
@@ -54,11 +54,11 @@ Connect the following pins to 12V, GND and CAN;
 | 19 GND | To GND of 12V system |
 | 20 GND | To GND of 12V system |
 
-![image](https://github.com/user-attachments/assets/50a02788-ef0a-421b-b57f-8cd63248680f)
+![image](../images/kia-soul-27kwh-02.png)
 
 
 ### Pictures
 
-![soul2](https://github.com/user-attachments/assets/f397b5ba-48af-41de-81cc-ef36ae106871)
+![soul2](../images/kia-soul-27kwh-03.jpg)
 
-![image](https://github.com/user-attachments/assets/15783b5b-8bff-43e4-a896-248216db7dd7)
+![image](../images/kia-soul-27kwh-04.png)
