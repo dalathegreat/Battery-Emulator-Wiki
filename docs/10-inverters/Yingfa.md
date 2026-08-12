@@ -1,5 +1,3 @@
-# Yingfa inverter wiki page
-
 ## Types of compatible Yingfa inverter(s)
 * [YF5K-HES-1A](https://a.aliexpress.com/_EvdEBRw)
 
