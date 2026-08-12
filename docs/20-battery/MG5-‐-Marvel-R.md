@@ -1,4 +1,4 @@
-# Current status
+# MG5, Marvel R
 
 | Car | kWh | Chemistry | Battery type  | Part number | Status |
 |----------|----------|----------|--------|----------|---------|
