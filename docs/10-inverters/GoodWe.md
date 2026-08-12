@@ -48,7 +48,7 @@ Good idea to watch the installation video from GoodWe's training services, on ho
 11. Go to quick settings (password: goodwe2010)
 12. Select battery. Hopefully it recognizes battery without any user intervention. (HVM*2 works if using both battery inputs from same battery).
 
-<img width="448" height="909" alt="image" src="../images/goodwe-04.png" />
+![image](../images/goodwe-04.png){ width="448" height="909" }
 
 13. Suggest setting power limit (ampere limit) in Battery-Emulator Webserver at this point, if not already done. Take something low (5A?) until you feel confident the system works as intended.
 13. Set charging schedule. (app is very buggy here!)
@@ -103,8 +103,8 @@ There is a [Discord server for the integration](https://discord.gg/TaXyWXT).
 
 Some screenshots from the integration:
 
-<img width="541" alt="GoodWeConfigurationPane" src="../images/goodwe-05.png" />
-<img width="541" alt="GoodWeControlsPane" src="../images/goodwe-06.png" />
+![GoodWeConfigurationPane](../images/goodwe-05.png){ width="541" }
+![GoodWeControlsPane](../images/goodwe-06.png){ width="541" }
 
 ## Controls
 
@@ -133,10 +133,10 @@ These examples assume the **Depth of discharge (on-grid)** is set to a high valu
 - Switch operation mode to **eco_charge**
 - Wait 10 seconds and then switch the operation mode to **eco_charge** again, occasionally it doesn't stick the first time.
 
-<img width="540" alt="EcoModeSoC100" src="../images/goodwe-07.png" />
-<img width="543" alt="EcoModePower30" src="../images/goodwe-08.png" />
-<img width="544" alt="EcoCharge" src="../images/goodwe-09.png" />
-<img width="552" alt="Delay" src="../images/goodwe-10.png" />
+![EcoModeSoC100](../images/goodwe-07.png){ width="540" }
+![EcoModePower30](../images/goodwe-08.png){ width="543" }
+![EcoCharge](../images/goodwe-09.png){ width="544" }
+![Delay](../images/goodwe-10.png){ width="552" }
 
 ### Force discharge example
 

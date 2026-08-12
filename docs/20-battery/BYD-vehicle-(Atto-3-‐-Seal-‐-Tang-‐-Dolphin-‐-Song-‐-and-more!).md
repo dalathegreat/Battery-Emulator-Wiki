@@ -45,14 +45,14 @@ The battery chemistry is LFP (LiFePO4). The battery configuration is 126s1p, est
 ![](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-02.png)
  
 Viewed from the front, left is the low voltage connector, central is two refrigerant lines and right is the HV connector, with +ve on RHS.
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-05.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-05.png)
 
 The front connectors end of the battery also includes the contactor block. There is a well-hidden 800V/350A fuse near the positive contactor(coil:12VDC/contactor:250A) on the RHS of the block, along with a mini pre-charge contactor (coil:12VDC/contactor:10A) and a pre-charge resistor, which is underneath the HV connector. There is no Tesla-like pyro fuse that blows when airbags are deployed; the system just opens the contactors.
 
 ## Software configuration
 For this battery type, use the option called "BYD Atto 3/Seal/Dolphin" under the "Battery Protocol" setting
 
-<img width="599" height="115" alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-06.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-06.png){ width="599" height="115" }
 
 ## Video example
 Here is a great video made by "Flying Tools" showcasing how to connect the BYD Atto 3 battery
@@ -64,11 +64,10 @@ https://www.youtube.com/watch?v=YBYWBapnnyM
 ## LV Connector Type A
 The connection diagram is derived from reverse engineering the pins. The following pinout is valid for, but not limited to, PE4, PE5, PE6 and P48 battery. It can be identified easily by seeing that there are 4 rows of pins, and three thicker pins on the side
  
-<img width="489" height="205" alt="BYD_Atto_BK51_pinout" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-07.png"/>
-<img width="489" height="257" alt="BYD_Atto_BK51_wiring" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-08.png"/>
+![BYD_Atto_BK51_pinout](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-07.png){ width="489" height="205" }
+![BYD_Atto_BK51_wiring](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-08.png){ width="489" height="257" }
 
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-09.png" />
-<html><body>
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-09.png)
 
 ## LV Connector Type B
 This connector appears on newer battery types, such as the PA4. The software does NOT have full support for TypeB batteries yet. :x:
@@ -78,10 +77,10 @@ Pinout varies between different batteries despite the plug & socket being the sa
 
 | Battery | Plug Image | Wiring Diagram | Pinout |
 |---|---|---|---|
-| **PA4** | <img width="280" alt="PA4 plug" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-10.png" /> | — | Not yet documented |
-| **PC5B** (upside down compared to PA4) | <img width="280" alt="PC5B plug" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-11.png" /> | <img width="280" alt="PC5B wiring diagram" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-12.png" /> | [See below](#pc5b-pinout-from-manual) |
-| **VD6** | <img width="280" alt="VD6 plug" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-13.png" /> | <img width="280" alt="VD6 wiring diagram" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-14.png" /> | [See below](#vd6-pinout-from-manual) |
-| **VM7** | <img width="280" alt="VM7 plug" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-15.png" /> | — | Mostly unknown at the moment, derived from in car measurements and comparison to VD6 |
+| **PA4** | ![PA4 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-10.png){ width="280" } | — | Not yet documented |
+| **PC5B** (upside down compared to PA4) | ![PC5B plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-11.png){ width="280" } | ![PC5B wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-12.png){ width="280" } | [See below](#pc5b-pinout-from-manual) |
+| **VD6** | ![VD6 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-13.png){ width="280" } | ![VD6 wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-14.png){ width="280" } | [See below](#vd6-pinout-from-manual) |
+| **VM7** | ![VM7 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-15.png){ width="280" } | — | Mostly unknown at the moment, derived from in car measurements and comparison to VD6 |
 
 ### Pinout comparison
 
@@ -157,6 +156,7 @@ Contactors are commanded **open automatically** whenever:
 
 ## Parts list
 Here are some of the part numbers and purchase links, incase your battery came without them
+
 |  Part |  Product Link | Notes |
 | :--------: | :---------: | :---------: |
 | LV connector |  [AliExpress](https://a.aliexpress.com/_EugRLIo)   | 19pin 1192800MB 1192800FB BYD
@@ -170,30 +170,30 @@ Example, high voltage cable for P48 Pack # 1364774600
 
 Example, high voltage cable for PE5/PE6 Pack # EKEA2105300Y / 13568667-00
 
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-16.jpg" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-16.jpg)
 
 ### Note on reusing HV cable :zap: 
 If you are using the HV cable that came with the battery, and plan to cut off the ends to crimp on new terminals, be aware that the cables contain an outer shield layer. It is very important to properly insulate this, so you do not short high voltage to protective earth accidentally.
 
 When preparing the cable, special attention must be taken the cable's shielding:
 
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-17.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-17.png)
 
 First make sure to leave at least 8mm space:
 
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-18.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-18.png)
 
 Then apply hot glue or other insulation adhesive:
 
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-19.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-19.png)
 
 Final insulation layer applied:
 
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-20.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-20.png)
 
 It is recommended to check your handiwork, by performing an insulation test on the cable after completing the work
 
-<img alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-21.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-21.png)
 
 ## How do I know if I have a crashed&locked battery?
 If the contactors do not engage when sending CAN towards the battery, the pack is most likely locked.
@@ -211,7 +211,7 @@ All users will experience a phenomenon where the battery’s SOC appears to drif
 - Set the "Calibration target capacity:" option to the desired AH capacity (this value will be copied by default from the BMS and will effect your SOH (State Of Health) values!
 - Finally, press the "Calibrate SOC" button
 
-<img width="493" height="199" alt="image" src="../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-22.png" />
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-22.png){ width="493" height="199" }
 
 ### Automatic SOC calibration
 

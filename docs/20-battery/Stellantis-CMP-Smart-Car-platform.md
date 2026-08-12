@@ -23,32 +23,32 @@ The following vehicles are part of the CMP Smart Car platform according to Wikip
 
 
 44kWh battery
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-01.png" />
+![image](../images/stellantis-cmp-smart-car-platform-01.png)
 
 Inside is 2x 50S modules , total 100S
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-02.png" />
+![image](../images/stellantis-cmp-smart-car-platform-02.png)
 
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-03.png" />
+![image](../images/stellantis-cmp-smart-car-platform-03.png)
 
 ## Connectors
 From left to right, liquid cooling ports, HV connector, LV connector
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-04.png" />
+![image](../images/stellantis-cmp-smart-car-platform-04.png)
 
 ## HV connector
 The main HV connector is an APTIV 35561611 RCS1200 SW F0T7-144-23 connector
 
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-05.png" />
+![image](../images/stellantis-cmp-smart-car-platform-05.png)
 
 There is also another HV connector on the back used for the DC fast charging port. It has a separate HVIL loop.
 
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-06.png" />
+![image](../images/stellantis-cmp-smart-car-platform-06.png)
 
 ## Low voltage connector
 
 LFP low voltage connector - in stock on [Mouser](https://eu.mouser.com/ProductDetail/JST-Automotive/27ZRO-B-1A?qs=Li%252BoUPsLEnuUscRf1zwznw%3D%3D), in case you are not able to get the harness with the connector when you buy the battery.
 The connector has the pin numbering stamped on it.
 
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-07.png" />
+![image](../images/stellantis-cmp-smart-car-platform-07.png)
 
 - Connector: **27ZRO-B-1A**
 - Pins 0.3 to 0.5 mm$`^2`$: SZRO-A021T-M0.64 
@@ -79,7 +79,7 @@ WakeUpPin (WUP) can be used to make the battery survive a reset/reboot in the so
 ## Software configuration
 To use this battery, select the "Stellantis CMP Smart Car Battery" battery option
 
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-08.png" />
+![image](../images/stellantis-cmp-smart-car-platform-08.png)
 
 ## Troubleshooting
 - If the battery is crashed hard or detects a massive isolation leak, it will lock itself and display Battery Fault Level 5. Currently, we have no way to reset this!
@@ -87,5 +87,5 @@ To use this battery, select the "Stellantis CMP Smart Car Battery" battery optio
 - Here is the internal layout of contactors. 
 We engage Main Pos and Main Neg.
 
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-09.png" />
+![image](../images/stellantis-cmp-smart-car-platform-09.png)
 

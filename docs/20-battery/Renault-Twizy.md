@@ -6,7 +6,7 @@ Renault Twizy is a 48V battery. The software supports this battery, but document
 
 For this battery type, use the option called "Renault Twizy" under the "Battery Protocol" setting
 
-<img width="592" height="68" alt="image" src="../images/renault-twizy-01.png" />
+![image](../images/renault-twizy-01.png){ width="592" height="68" }
 
 ## Low voltage connector
 HELP WANTED

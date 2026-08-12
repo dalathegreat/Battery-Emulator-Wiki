@@ -13,7 +13,7 @@ Preface, the entire Battery-Emulator project sets out to achieve safe re-use of 
 ## Software configuration
 For this battery type, use the option called "DIY battery with Orion BMS (Victron setting)" under the "Battery Protocol" setting
 
-<img width="668" height="272" alt="image" src="../images/orion-bms-02.png" />
+![image](../images/orion-bms-02.png){ width="668" height="272" }
 
 Also remember to configure the designed voltage for your pack, and the chemistry/cellvoltage limits
 

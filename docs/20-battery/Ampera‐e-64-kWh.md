@@ -12,13 +12,13 @@ The 60-66kWh battery in the GM BEV2 platform can be found in the following vehic
 ## Software configuration
 For this battery type, use the option called "Chevrolet Bolt EV/Opel Ampera-E" under the "Battery Protocol" setting
 
-<img width="656" height="156" alt="image" src="../images/ampera-e-64-kwh-23.png" />
+![image](../images/ampera-e-64-kwh-23.png){ width="656" height="156" }
 
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 
 The battery uses 12V controlled contactors, so use `Contactor Control via GPIO` if you want Battery-Emulator to also control the contactors via GPIO
 
-<img width="514" height="49" alt="image" src="../images/ampera-e-64-kwh-24.png" />
+![image](../images/ampera-e-64-kwh-24.png){ width="514" height="49" }
 
 One user reported using 3x this type of relay with the LilyGo hardware 
 https://nl.aliexpress.com/item/1005005622431177.html?spm=a2g0o.order_list.order_list_main.126.d91579d2FEesY4&gatewayAdapt=glo2nld

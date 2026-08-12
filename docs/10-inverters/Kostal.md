@@ -23,7 +23,7 @@ Note that for some models the battery feature is optional, and needs to be activ
 ## Which protocol to use
 For this inverter type, use the option called "BYD battery via Kostal RS485" under the "Inverter Protocol" setting. Also set the "Inverter Interface" to the "RS485" option.
 
-<img width="488" height="66" alt="image" src="../images/kostal-02.png" />
+![image](../images/kostal-02.png){ width="488" height="66" }
 
 ## Communication wiring
 
@@ -57,7 +57,7 @@ It will just print whatever bytes are seen on the RS485 line to the USB serial.
 
 In terms of wiring, connect A/B/GND accordingly between inverter and LilyGo.  Power the LilyGo via USB-C (connect to a Laptop) and observe the serial monitor.
 
-<img width="1220" alt="Screenshot 2025-02-21 at 23 33 04" src="../images/kostal-03.png" />
-<img width="1223" alt="Screenshot 2025-02-21 at 23 33 23" src="../images/kostal-04.png" />
-<img width="1216" alt="Screenshot 2025-02-21 at 23 33 16" src="../images/kostal-05.png" />
+![Screenshot 2025-02-21 at 23 33 04](../images/kostal-03.png){ width="1220" }
+![Screenshot 2025-02-21 at 23 33 23](../images/kostal-04.png){ width="1223" }
+![Screenshot 2025-02-21 at 23 33 16](../images/kostal-05.png){ width="1216" }
 

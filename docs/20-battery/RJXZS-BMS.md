@@ -41,7 +41,7 @@ Settings are configured on the RJXZS BMS via the TOPBMS smartphone app. The most
 
 **Main settings description** [taken from RJXZS manual](https://github.com/user-attachments/files/19853501/4-192S.BMS.operation.manual.pdf)
 
-<img width="498" height="694" alt="image" src="../images/rjxzs-bms-09.png" />
+![image](../images/rjxzs-bms-09.png){ width="498" height="694" }
 
 
 > [!CAUTION]
@@ -66,7 +66,7 @@ Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emul
 
 For this battery type, use the option called "RJXZS BMS, DIY battery" under the "Battery Protocol" setting
 
-<img width="664" height="345" alt="image" src="../images/rjxzs-bms-10.png" />
+![image](../images/rjxzs-bms-10.png){ width="664" height="345" }
 
 Configure all the settings according to the specifications of the battery you have constructed, the general password to access settings is "0". CAN send ID and CAN receive ID should be 245 and 244 respectively, these settings are locked behind the password "770921".
 

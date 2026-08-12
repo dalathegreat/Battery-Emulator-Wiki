@@ -17,7 +17,7 @@ Testing is ongoing with the 18.83kWh (51 Ah) battery with serial number 32336936
 ## Software configuration
 For this battery type, use the option called "Volvo PHEV battery" under the "Battery Protocol" setting
 
-<img width="592" height="73" alt="image" src="../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-06.png" />
+![image](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-06.png){ width="592" height="73" }
 
 
 ## Battery specifications / Serial numbers
@@ -66,6 +66,7 @@ The DC/DC converter can also be used to charge a 12V lead acid battery, or left 
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch for 18.83kWh battery |  Volvo P/N 32299597   |

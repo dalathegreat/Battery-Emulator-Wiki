@@ -26,8 +26,8 @@ Batterie BMU/CMU Info
 ![image](../images/kia-ev6-09.png)
 ![image](../images/kia-ev6-10.png)
 ![image](../images/kia-ev6-11.png)
-<img alt="Zrzut_ekranu_2025-07-16_111425-1" src="../images/kia-ev6-12.png" />
-<img alt="Zrzut_ekranu_2025-07-16_111419" src="../images/kia-ev6-13.png" />
+![Zrzut_ekranu_2025-07-16_111425-1](../images/kia-ev6-12.png)
+![Zrzut_ekranu_2025-07-16_111419](../images/kia-ev6-13.png)
 
 
 Images etc.

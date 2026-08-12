@@ -46,7 +46,7 @@ When a reset runs (via MQTT, the HA button, or the 24h timer), the pin goes **LO
 
 By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer. Some batteries are OK with as short resets as 2 seconds. Here is the setting:
 
-<img width="363" height="95" alt="image" src="../../images/periodic-bms-reset-01.png" />
+![image](../../images/periodic-bms-reset-01.png){ width="363" height="95" }
 
 ## Taking it into use
 
@@ -59,7 +59,7 @@ Local triggering has the benefit of operating completely standalone, without any
 
 ### Local trigger on Battery Emulator
 
-<img width="721" height="170" alt="image" src="../../images/periodic-bms-reset-02.png" />
+![image](../../images/periodic-bms-reset-02.png){ width="721" height="170" }
 
 Enable the **"Periodic BMS reset"** option. This will reveal 3 options:
 
@@ -81,7 +81,7 @@ Battery Emulator's [MQTT](../20-software/MQTT.md#button-command-discovery) imple
 
 The `BMSRESET` command (and the auto-discovered "Reset BMS" Home Assistant button) is only acted upon when **Allow remote BMS reset via MQTT** (`REMBMSRESET`) is enabled. If it is disabled, the command is silently ignored. Note that the HA button is published regardless of this setting, so it can appear in Home Assistant but do nothing until the option is enabled.
 
-<img width="579" height="32" alt="image" src="../../images/periodic-bms-reset-03.png" />
+![image](../../images/periodic-bms-reset-03.png){ width="579" height="32" }
 
 With **Allow remote BMS reset via MQTT** option enabled, the GPIO pin will be toggled ON upon boot. It will be toggled OFF and back ON after the configured time when the command arrives. It doesn't send any battery protocol/CAN message. It performs a **hardware power-cycle of the BMS** by toggling the `BMS_POWER` GPIO pin, using the exact same routine as the built-in feature. 
 

@@ -8,9 +8,9 @@
 
 This platform shares a lot of similarities with the [Volkswagen MEB platform](MEB.md)
 
-<img width="862" height="605" alt="image" src="../images/mqb-01.png" />
+![image](../images/mqb-01.png){ width="862" height="605" }
 
-<img width="627" height="328" alt="image" src="../images/mqb-02.png" />
+![image](../images/mqb-02.png){ width="627" height="328" }
 
 ### Physical Dimensions
 
@@ -21,7 +21,7 @@ This platform shares a lot of similarities with the [Volkswagen MEB platform](ME
 
 ## Compatible batteries
 
-<details>
+<details markdown="1">
 <summary><strong>Vehicles using the MQB Evo 2024+ platform (Note only 2024+)</strong></summary>
 
 - Audi A3 Mk4 (2020–present)
