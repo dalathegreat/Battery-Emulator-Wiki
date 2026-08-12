@@ -28,7 +28,7 @@ Most Deye inverters have two ports for adding batteries. The smaller 25k and low
 
 When using the larger >30k inverters with two batteries, you will need one BE for each BMS port. This means you will have two totally independent BE systems, and the inverter treats them as separate batteries.
 
-When using the smaller <25k inverters with two batteries, you will need to join them together in parallel using the [Double-Battery support](https://github.com/dalathegreat/Battery-Emulator/wiki/Double-Battery). You will need one single BE unit with Double-CAN for this, and the Deye will see 1 single battery (even though you have 2 in parallel!)
+When using the smaller <25k inverters with two batteries, you will need to join them together in parallel using the [Double-Battery support](../40-setup/20-software/Double-Battery.md). You will need one single BE unit with Double-CAN for this, and the Deye will see 1 single battery (even though you have 2 in parallel!)
 
 ## Notes on geo-lock :world_map: 
 
@@ -40,7 +40,7 @@ Picture of remotely disabled unit in the US:
 ![image](../images/deye-01.png)
 
 ## Communication wiring
-The Deye inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki#can-wiring-troubleshooting)
+The Deye inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../40-setup/index.md#can-wiring-troubleshooting)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 
@@ -89,9 +89,9 @@ If you connected everything correctly, you will see data on the display:
 > [!NOTE]  
 > If you intend on using BYD-CAN with the BMW i3, the battery needs to be on a separate CAN bus. The BMW i3 is using the same CAN IDs as BYD do, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong. There are a few ways to solve this:
 
-* You can [add an isolated MCP2515 CAN channel](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
-* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
-* You can use the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) board
+* You can [add an isolated MCP2515 CAN channel](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md)
+* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)
+* You can use the [Stark CMR](../30-hardware/Stark-CMR.md) board
 * You can use the lilygo T-2can with 2 native can ports 
 
 ## Troubleshooting

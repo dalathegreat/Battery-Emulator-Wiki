@@ -1,4 +1,4 @@
-The dedicated button wired to `GPIO0` (typically labelled **BOOT** or **FLA** on boards that have it) has a special purpose: holding it down while powering up the board will enter it into bootloader mode, allowing you to [install the firmware](https://github.com/dalathegreat/Battery-Emulator/wiki/Software-installation) into the flash memory of the MCU.
+The dedicated button wired to `GPIO0` (typically labelled **BOOT** or **FLA** on boards that have it) has a special purpose: holding it down while powering up the board will enter it into bootloader mode, allowing you to [install the firmware](Software-installation.md) into the flash memory of the MCU.
 
 On the other hand, at runtime, after Battery Emulator has booted up, this button can be also used for maintenance tasks requiring physical presence at the location. There are three maintenance actions that are triggered by pressing and holding that button for different lengths of time. This gives you a way to recover access to the device, or reset it, using only the physical button — without needing the web interface, a serial connection, or a re-flash.
 

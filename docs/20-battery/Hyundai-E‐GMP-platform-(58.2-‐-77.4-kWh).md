@@ -70,10 +70,10 @@ For this battery type, use the option called "Kia/Hyundai EGMP platform" under t
 <img width="654" height="154" alt="image" src="../images/hyundai-e-gmp-platform-58-2-77-4-kwh-01.png" />
 
 ## Note on CAN-FD
-The 800V battery architecture uses CAN-FD, so incase you plan on integrating this battery, you will need to get the [CAN-FD chip add-on](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD)) , or even easier, get the Stark CMR hardware
+The 800V battery architecture uses CAN-FD, so incase you plan on integrating this battery, you will need to get the [CAN-FD chip add-on](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md) , or even easier, get the Stark CMR hardware
 
 ## Wiring diagram
-See [KIA EV6 Battery](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Kia-EV6)
+See [KIA EV6 Battery](Kia-EV6.md)
 
 ### More information about battery and it's internals
 https://www.batterydesign.net/2022-kia-ev6/

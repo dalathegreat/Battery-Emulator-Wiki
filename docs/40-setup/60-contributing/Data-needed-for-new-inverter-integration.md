@@ -12,7 +12,7 @@ The communication between the brand inverter and brand battery can be either CAN
 
 ### CAN based system
 If the system is CAN based, you will first have to get some hardware capable of reading the communication. Here are some examples, listed from least expensive to more expensive. Do note that more expensive tools will be easier to use, since the software provided with the tools are very user friendly. Also more expensive tools will have better timing and accuracy on timestamps.
-- LilyGo board (using [CAN logging](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-logging))💲
+- LilyGo board (using [CAN logging](../40-can-related/CAN-logging.md))💲
 - Arduino with CAN shield 💲
 - Raspberry PI with CAN shield 💲💲
 - USB2CAN Korlan 💲💲 [Recommended, link:](https://www.8devices.com/products/usb2can_korlan)
@@ -24,7 +24,7 @@ If the system is CAN based, you will first have to get some hardware capable of 
 If the system is modbus based, the difficulty grows a bit more. Here is a list of hardware that can be used,
 - USB RS485 reader from Ebay 💲
 - TODO: Add more options
-- LilyGo board, see example here https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-Kostal#traces-for-reverse-engineering
+- LilyGo board, see [example here](../../10-inverters/Kostal.md#traces-for-reverse-engineering)
 
 The following sniffer is recommended: https://github.com/alerighi/modbus-sniffer
 

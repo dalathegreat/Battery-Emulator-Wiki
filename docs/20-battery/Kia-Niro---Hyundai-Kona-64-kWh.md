@@ -28,9 +28,9 @@ Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Num
 - 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ This battery uses **CAN-FD**, Use `Kia 64kWh **FD** Battery` option in software!
 <img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-16.png" />
 
-- 37501 GI050 is Hyundai Ioniq 5 72kWh (For this battery see [EGMP](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Hyundai-E%E2%80%90GMP-platform-(58.2-%E2%80%90-77.4-kWh)))
-- 37501 CV050 is Kia EV6 78kWh (For this battery see [EGMP](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Hyundai-E%E2%80%90GMP-platform-(58.2-%E2%80%90-77.4-kWh)))
-- 37510 E4050 is [Kia Soul 27kWh](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Kia-Soul-27kWh) ❌ (not supported,pinout unclear)
+- 37501 GI050 is Hyundai Ioniq 5 72kWh (For this battery see [EGMP](Hyundai-E‐GMP-platform-(58.2-‐-77.4-kWh).md))
+- 37501 CV050 is Kia EV6 78kWh (For this battery see [EGMP](Hyundai-E‐GMP-platform-(58.2-‐-77.4-kWh).md))
+- 37510 E4050 is [Kia Soul 27kWh](Kia-Soul-27kWh.md) ❌ (not supported,pinout unclear)
 
 All Ioniq 28kWh packs use the following options
 <img alt="image" src="../images/kia-niro-hyundai-kona-64-kwh-17.png" />
@@ -169,7 +169,7 @@ There are STL files available to 3D print covers for the unused battery connecto
 ## Special notes on 37501-AO050 battery
 There is a 2022+ Hyundai Kona or Kia e-niro battery that uses CAN-FD, that comes with a AO050 part number sticker. It is CATL made, it consist in 24 modules(2.835 kwh) x 4 cells(3.7v), configured 96s1p(358v in total) 64.8kwh(68.4 in total)
 
-This battery has the part number 37501-AO050, and this battery requires a CAN-FD hardware interface. Easiest to get a [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR), but you can also add a [CANFD addon interface](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD)). To use this battery, enable the `Kia 64kWh FD battery` option in the software.
+This battery has the part number 37501-AO050, and this battery requires a CAN-FD hardware interface. Easiest to get a [Stark CMR](../30-hardware/Stark-CMR.md), but you can also add a [CANFD addon interface](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md). To use this battery, enable the `Kia 64kWh FD battery` option in the software.
 
 > [!IMPORTANT]
 > The contactor control for these FD batteries are not working, they open after a few seconds. To get around this, you need to force the contactors closed with 12V/GND. This can be automated with GPIO Controlled contactors

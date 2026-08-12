@@ -9,10 +9,10 @@ Some Inverters do not like to see automotive CAN frames on the CAN channel meant
 > This is a legacy option. Using double LilyGo's is extremely hard to troubleshoot, plus the fact that not all safety features will be active. Users have reported overcharged batteries from this setup. Due to this, it is recommended to instead use an add-on CAN channel, or a board with multiple CAN channels as standard (Stark, etc.)
 
 Better options
-* You can [add an isolated MCP2515 CAN channel](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
-* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
-* You can use the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) board
-* You can use a [CAN filter](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-filter-hardware) between inverter and the rest of the system 
+* You can [add an isolated MCP2515 CAN channel](../40-can-related/CAN-add‐on-(MCP2515).md)
+* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)
+* You can use the [Stark CMR](../../30-hardware/Stark-CMR.md) board
+* You can use a [CAN filter](../40-can-related/CAN-filter-hardware.md) between inverter and the rest of the system 
 
 ## How to connect it
 Use twisted pair wires between the RS485 pins on both LilyGo's

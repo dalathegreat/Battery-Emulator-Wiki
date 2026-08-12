@@ -10,7 +10,7 @@ For this inverter type, use the option called "Pylontech battery over CAN" under
 <img alt="image" src="../images/zcs-azzurro-01.png" />
 
 ## Communication wiring
-The ZCS Azurro inverter works via CAN. The Battery-Emulator board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor might need to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki#can-wiring-troubleshooting)
+The ZCS Azurro inverter works via CAN. The Battery-Emulator board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor might need to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../40-setup/index.md#can-wiring-troubleshooting)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 

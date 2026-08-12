@@ -1,5 +1,5 @@
 > [!TIP]
-> If you're considering using a Lilygo T-CAN485, you may find the [Lilygo T-2CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN) to be a better choice:
+> If you're considering using a Lilygo T-CAN485, you may find the [Lilygo T-2CAN](../../30-hardware/LilyGo-T‐2CAN.md) to be a better choice:
 > - It has two CAN interfaces already
 > - The interfaces are galvanically-isolated, so you don't need separate CAN isolators for troublesome inverters (like Solax)
 > - It has a wider input voltage range (up to 24V)
@@ -8,8 +8,8 @@
 # Why add another CAN channel?
 Some Inverters do not like to see automotive CAN frames on the CAN channel meant for stationary storage. When they see these messages, they enter a fault state. To get around this, we can add an additional MCP2515 chip to the LilyGo, to get an isolated secondary CAN bus.
 
-- Another options is to use [add on CAN-FD MCP2518](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD)) board 
-- Another option is to use [Stark CMR board](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR)
+- Another options is to use [add on CAN-FD MCP2518](CAN‐FD-add‐on-(MCP2518FD).md) board 
+- Another option is to use [Stark CMR board](../../30-hardware/Stark-CMR.md)
 
 ## How to add an MCP2515 chip?
 
@@ -113,7 +113,7 @@ If you are having problems with the MCP2515 add-on chip not detecting/sending an
    - Take a multimeter, and flip the both boards upside down. Then with everything OFF, measure continuity for each pin pad on the bottom between MCP-LilyGo. All pins should have good continuity. If you have high resistance, you might have a corroded pin somewhere.
 
 ## Testing that the interface works
-If you are unsure if the newly added add-on chip works, you can perform the following loopback test. Connect CAN-H and CAN-L to the native CAN channel with two wires, and set up the code to transmit messages via for instance the SCHNEIDER_CAN protocol. Remember to configure the .inverter CAN channel to CAN_ADDON_MCP2515. Once it is all set up, use the [CAN logging page](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-logging) to verify that you get incoming RX messages that match the TX.
+If you are unsure if the newly added add-on chip works, you can perform the following loopback test. Connect CAN-H and CAN-L to the native CAN channel with two wires, and set up the code to transmit messages via for instance the SCHNEIDER_CAN protocol. Remember to configure the .inverter CAN channel to CAN_ADDON_MCP2515. Once it is all set up, use the [CAN logging page](CAN-logging.md) to verify that you get incoming RX messages that match the TX.
 
 ## End result
 End result, extra CAN channel added:

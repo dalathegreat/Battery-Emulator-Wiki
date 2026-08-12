@@ -2,7 +2,7 @@
 > Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
 
 ## Compatible Growatt WIT inverters
-Note that the WIT inverters use a separate protocol (GROWATT_WIT) compared to the [smaller Growatt HV inverters](https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-Growatt-HV)
+Note that the WIT inverters use a separate protocol (GROWATT_WIT) compared to the [smaller Growatt HV inverters](Growatt-HV.md)
 * WIT 50-100K-HU/AU
 
 ## Inverter protocol specification

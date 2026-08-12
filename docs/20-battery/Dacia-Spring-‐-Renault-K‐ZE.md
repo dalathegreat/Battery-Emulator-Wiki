@@ -21,7 +21,7 @@ Some 2024+ batteries seem to not respond to CAN. Investigation ongoing!
 
 ### General info
 
-These batteries have 72 cells in series, which creates an operating voltage of approximately **216 to 302VDC**. Make sure [the inverter](https://github.com/dalathegreat/Battery-Emulator/wiki#supported-inverters-list) you are planning to use is compatible with this voltage range!
+These batteries have 72 cells in series, which creates an operating voltage of approximately **216 to 302VDC**. Make sure [the inverter](../10-inverters/index.md#supported-inverters-list) you are planning to use is compatible with this voltage range!
 
 ![image](../images/dacia-spring-renault-k-ze-01.png)
 
@@ -112,7 +112,7 @@ Do **NOT** use PWM contactor control.
 Spring keeps the HV voltage between 220V (0% SOC) and 296V (100% SOC)
 You can adjust SOC min percentage and SOC max percentage from the emulator settings to keep the battery voltage somewhere in the above voltage range. Like -5 / 85 with current build (june 2025).
 
-This battery also benefits from automated 30s daily resets, which can be automated with BMS power output. See the [Periodic Reset page](https://github.com/dalathegreat/Battery-Emulator/wiki/Periodic-BMS-reset) for details.
+This battery also benefits from automated 30s daily resets, which can be automated with BMS power output. See the [Periodic Reset page](../40-setup/10-hardware/Periodic-BMS-reset.md) for details.
 
 
 ## Fuse sizing:
@@ -120,8 +120,8 @@ This battery also benefits from automated 30s daily resets, which can be automat
 For fuse sizing, we use the max inverter power / 218V = max fuse size.
 ex, for a 5kW inverter: 5000W / 218V = 23A => use a [25A fuse](https://s.click.aliexpress.com/e/_onOPNy8)
 
-* [Fronius Gen24 6-12kW](https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-Fronius) accepts max 22A on the battery input, so you will be able to draw from this battery 4.7-6.6kW, depending on voltage (SoC)
-* [Fronius Gen24 3-5kW](https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-Fronius) accepts max 12.5A on the battery input.
+* [Fronius Gen24 6-12kW](../10-inverters/Fronius.md) accepts max 22A on the battery input, so you will be able to draw from this battery 4.7-6.6kW, depending on voltage (SoC)
+* [Fronius Gen24 3-5kW](../10-inverters/Fronius.md) accepts max 12.5A on the battery input.
 
 ## Completed builds:
 1. DIY wooden support, with space for the fuse underneath

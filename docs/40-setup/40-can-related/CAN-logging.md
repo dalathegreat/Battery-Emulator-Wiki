@@ -1,5 +1,5 @@
 ## CAN logging basics
-The board can operate as a CAN logger, skipping the need for purchasing an expensive tool. There are three ways to log CAN messages, via USB (more reliable), via [Webserver](https://github.com/dalathegreat/Battery-Emulator/wiki/Webserver-guide) (easiest), and via SD-CARD (requires LilyGo)
+The board can operate as a CAN logger, skipping the need for purchasing an expensive tool. There are three ways to log CAN messages, via USB (more reliable), via [Webserver](../20-software/Webserver-guide.md) (easiest), and via SD-CARD (requires LilyGo)
 
 ### Logging a live vehicle :warning: 
 If you intend to log CAN messages from a functional vehicle, remember to:
@@ -16,7 +16,7 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 > [!NOTE]  
 > Some mobile phone browsers can have issues displaying long data lists. If you see no data, try using a Desktop PC / Laptop
 
-Start by accessing the [Webserver](https://github.com/dalathegreat/Battery-Emulator/wiki/Webserver-guide)
+Start by accessing the [Webserver](../20-software/Webserver-guide.md)
 
 On the main page, there is a button named "CAN logger" .When opened, the system starts logging CAN messages. This is disabled by default to not disturb the system.
 

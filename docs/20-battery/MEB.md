@@ -122,7 +122,7 @@ For the 12 V supply a 30 W power supply has been found to work fine; the BMS dra
 
 Another requirement from the BMS: it evaluates the presence of voltage on the external terminals of the battery before closing the contactors. Under normal circumstances in the car, the main inverter starts generating the actual voltage (depending on battery model and SOC, 300–450 V) from the 12 V battery. The battery controller detects this external voltage; if it is close enough (within a few volts) and everything else is OK, the battery is switched on. This is to prevent arcing of the contactors — an alternative to a precharge resistor.
 
-The same approach is required when the battery is outside the car and you want to turn it on. You need an external voltage source that connects to the battery terminals (output to the motor inverter) and puts the same voltage as the battery on those terminals to within a few volts. Then it is only possible to switch on the battery by command via the CAN bus. For info on high voltage sources, see [this page](https://github.com/dalathegreat/Battery-Emulator/wiki/High-Voltage-source).
+The same approach is required when the battery is outside the car and you want to turn it on. You need an external voltage source that connects to the battery terminals (output to the motor inverter) and puts the same voltage as the battery on those terminals to within a few volts. Then it is only possible to switch on the battery by command via the CAN bus. For info on high voltage sources, see [this page](../40-setup/10-hardware/High-Voltage-source.md).
 
 You can check if your battery fulfills the required preconditions by opening the **More Battery Info** page. This is what a functional battery looks like, with the contactors ON:
 
@@ -131,7 +131,7 @@ You can check if your battery fulfills the required preconditions by opening the
 ### Hardware list
 
 - Lilygo TCAN / Stark CMR module — see the main wiki page
-- CAN-FD add-on board — see the [CAN-FD add-on wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
+- CAN-FD add-on board — see the [CAN-FD add-on wiki page](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)
 - A high voltage boost converter, e.g. the HIA4V1 (see above)
 - Low voltage connector + pins (see above)
 - 12 V power supply, e.g. Meanwell HDR-30 12 V

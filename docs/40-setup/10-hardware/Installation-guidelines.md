@@ -175,7 +175,7 @@ Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the 
 #### Optional stuff!
 
 > [!TIP]  
-> You can also add an [equipment stop button](https://github.com/dalathegreat/Battery-Emulator/wiki/Equipment-Stop) to the Battery-Emulator, to make it easier to stop the system
+> You can also add an [equipment stop button](../20-software/Equipment-Stop.md) to the Battery-Emulator, to make it easier to stop the system
 
 [IP67 1NO1NC Stop Switch](https://vi.aliexpress.com/item/1005008119829541.html)
 
@@ -190,7 +190,7 @@ The information below is general guidance
 > De-energize and isolate the system from all power sources (AC and DC) before performing any physical maintenance, and only qualified personnel should perform these tasks.
 
 ## Software update :cd: 
-Perform periodic [over the air software updates](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update) to the Battery-Emulator board. Pay extra attention to the [release notes](https://github.com/dalathegreat/Battery-Emulator/releases), and if you see an improvement concerning the components you are using, update the system. If you see changes concerning Safety, also update the system right away.
+Perform periodic [over the air software updates](../20-software/OTA-Update.md) to the Battery-Emulator board. Pay extra attention to the [release notes](https://github.com/dalathegreat/Battery-Emulator/releases), and if you see an improvement concerning the components you are using, update the system. If you see changes concerning Safety, also update the system right away.
 
 - Frequency: Check every 2-3 months if updates are available
 

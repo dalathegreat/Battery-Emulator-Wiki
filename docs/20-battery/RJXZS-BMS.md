@@ -58,10 +58,10 @@ Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emul
 
 - If you have a Modbus inverter, connect it to the RS485 port of the Battery-Emulator
 - If you have a CAN inverter, you need to connect it to a separate 500kbps CAN channel, since the BMS runs at 250kbps on the native CAN
-   - One option is to use [add on MCP2515](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515)) board
-   - Another options is to use [add on CAN-FD MCP2518](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD)) board 
-   - Third option is to use [Stark CMR board](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR)
-   - Fourth option is to use [Double LilyGo](https://github.com/dalathegreat/Battery-Emulator/wiki/Double-LilyGo) setup
+   - One option is to use [add on MCP2515](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md) board
+   - Another options is to use [add on CAN-FD MCP2518](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md) board 
+   - Third option is to use [Stark CMR board](../30-hardware/Stark-CMR.md)
+   - Fourth option is to use [Double LilyGo](../40-setup/20-software/Double-LilyGo.md) setup
 
 
 For this battery type, use the option called "RJXZS BMS, DIY battery" under the "Battery Protocol" setting
@@ -70,7 +70,7 @@ For this battery type, use the option called "RJXZS BMS, DIY battery" under the 
 
 Configure all the settings according to the specifications of the battery you have constructed, the general password to access settings is "0". CAN send ID and CAN receive ID should be 245 and 244 respectively, these settings are locked behind the password "770921".
 
-After uploading the code to the Battery-Emulator, you can check cellvoltages, SOC etc. via the [Webserver](https://github.com/dalathegreat/Battery-Emulator/wiki/Webserver-guide)
+After uploading the code to the Battery-Emulator, you can check cellvoltages, SOC etc. via the [Webserver](../40-setup/20-software/Webserver-guide.md)
 
 > [!IMPORTANT]
 > During first startup, RJXZS will report faults, thats why first thing you need to do is clear all events in bluetooth app by holding CLR button for a few seconds:

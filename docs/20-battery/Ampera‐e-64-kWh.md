@@ -95,7 +95,7 @@ X358
 Disconnect switch 24281696 24288304  24291219  or latest part number 24294004
 
 Cotactors must be connected with lilygo via the GPIO pins see:
-https://github.com/dalathegreat/Battery-Emulator/wiki/Contactor-Control-via-GPIO-pins
+[Contactor control via GPIO pins](../40-setup/20-software/Contactor-Control-via-GPIO-pins.md)
 
 Please note that the precharge contactor is placed in the negative line of battery. To make precharge work the positive contactor must close before precharge contactor. Workaround: Swap Positive and negative control-lines to relays.
 

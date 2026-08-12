@@ -289,7 +289,7 @@ template:
               payload: "PRESS"
 ```
 
-## [SET_LIMITS](https://github.com/dalathegreat/Battery-Emulator/wiki/MQTT#set_limits) user interface
+## [SET_LIMITS](MQTT.md#set_limits) user interface
 
 Use an input number helper to select the **limit timeout**, and create two MQTT number entities to select the desired current limits. Always set the desired timeout first, and change the current values after.
 

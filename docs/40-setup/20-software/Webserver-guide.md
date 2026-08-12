@@ -32,7 +32,7 @@ After connecting your laptop/phone to this network, you can open a webbrowser an
 If you don't plan to use the Access Point on a regular basis, disable it. Not only the system will be more secure, but it will also consume less energy plus the board will run 10 degrees cooler because the radio will not be transmitting continuously. Bonus: less radio interference. 
 
 > [!TIP]  
-> If you disabled the Access Point earlier and need to use it again without having access to the home network, you can [turn it back on with the BOOT button](https://github.com/dalathegreat/Battery-Emulator/wiki/BOOT-button-functions#start-wi-fi-access-point) on the board.
+> If you disabled the Access Point earlier and need to use it again without having access to the home network, you can [turn it back on with the BOOT button](BOOT-button-functions.md#start-wi-fi-access-point) on the board.
 
 > [!TIP]  
 > You can improve signal quality on the LilyGo board by adding an external Wifi antenna. You can easily salvage one from an old router. There is a SMD resistor that needs to be moved in order for the board to use the external antenna.
@@ -94,14 +94,14 @@ On some battery types (Nissan LEAF, Renault Zoe Gen2, more), we visualize the ba
 
 ## Perform OTA Update
 
-Via this page you can update the software. [See the page OTA Update for more info how](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update)
+Via this page you can update the software. [See the page OTA Update for more info how](OTA-Update.md)
 
 ## Reboot Emulator
 
 This button will restart the emulator. Can be useful to get out of a latched error message blocking operation (critical cell condition, etc.). Pressing the button will prompt you, "Are you sure you want to reboot?"
 
 > [!Note]  
-> Rebooting the Emulator might open contactors! If you have configured the hardware to control contactors via GPIO (see [Automatic Contactor Control](https://github.com/dalathegreat/Battery-Emulator/wiki/Contactor-Control-via-GPIO-pins)), they will absolutely open during a reboot! CAN controlled contactors have undefined behavior during reboot.
+> Rebooting the Emulator might open contactors! If you have configured the hardware to control contactors via GPIO (see [Automatic Contactor Control](Contactor-Control-via-GPIO-pins.md)), they will absolutely open during a reboot! CAN controlled contactors have undefined behavior during reboot.
 
 > [!Note]  
 > Rebooting the Emulator might put your inverter in a fault state. Some inverters take the reboot without any issues (Fronius Gen24), but others can properly lock themselves (SMA Tripower), and require a reset on the inverter side to get going again. 
@@ -217,4 +217,4 @@ Each line is tagged with a syslog **severity**: lines that originate from an eve
 
 #### CAN logging
 
-See the page about [CAN logging](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-logging) for more information about the CAN logging function.
+See the page about [CAN logging](../40-can-related/CAN-logging.md) for more information about the CAN logging function.

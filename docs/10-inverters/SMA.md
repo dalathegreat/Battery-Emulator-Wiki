@@ -49,11 +49,11 @@ If the inverter, which likes to see only BYD CAN frames, sees standard automotiv
 
 This can be solved in several ways:
 
-* You can use the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) hardware which has more CAN channels (Recommended option)
-* You can use the [LilyGO T-2CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN) hardware, which also has two isolated CAN channels (2nd recommended option)
-* You can [add an isolated MCP2515 CAN channel](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
-* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
-* You can use a [CAN filter](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-filter-hardware) between inverter and the rest of the system
+* You can use the [Stark CMR](../30-hardware/Stark-CMR.md) hardware which has more CAN channels (Recommended option)
+* You can use the [LilyGO T-2CAN](../30-hardware/LilyGo-T‐2CAN.md) hardware, which also has two isolated CAN channels (2nd recommended option)
+* You can [add an isolated MCP2515 CAN channel](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md)
+* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)
+* You can use a [CAN filter](../40-setup/40-can-related/CAN-filter-hardware.md) between inverter and the rest of the system
 
 ## Word of caution, controllable HV ⚠️
 

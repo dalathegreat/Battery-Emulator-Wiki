@@ -9,10 +9,10 @@ Start by familiarizing yourself with how contactor and precharge circuits work. 
 ## Automatic control 🤖
 The Battery-Emulator simulates an entire car to get EV batteries to turn themselves on. Some batteries have CAN controlled contactors (e.g. Tesla,Kia,Hyundai), but some require hardwired signals (e.g. LEAF, Zoe) to turn on contactors and the precharge sequence. Instead of having to wire manual on/off switches for these signals, you can have the emulator hardware perform this (feature called `CONTACTOR_CONTROL`). This will automatically handle precharge, contactor closing, and optional economization. 
 
-It will also automatically open contactors when a critical FAULT event is encountered, if the FAULT event sticks for longer than 10 seconds contactors are opened. To recover from a latched fault, rebooting the emulator is required. You can then check which event led to the unrecoverable contactor opening via the [Webserver events](https://github.com/dalathegreat/Battery-Emulator/wiki/Webserver-guide#events) view. This improves safety for batteries that require manual control over the contactors, compared to manual on/off switches that will stay in their set state when a critical FAULT occurs. So to summarize, if you have a battery that needs hardwired signals for contactors, this feature is highly recommended!
+It will also automatically open contactors when a critical FAULT event is encountered, if the FAULT event sticks for longer than 10 seconds contactors are opened. To recover from a latched fault, rebooting the emulator is required. You can then check which event led to the unrecoverable contactor opening via the [Webserver events](Webserver-guide.md#events) view. This improves safety for batteries that require manual control over the contactors, compared to manual on/off switches that will stay in their set state when a critical FAULT occurs. So to summarize, if you have a battery that needs hardwired signals for contactors, this feature is highly recommended!
 
 ### Hardware requirements
-This is done via the 3.3V digital output header that is located on the board. To use these, you need to solder a 2x6 row connector onto the board (Easier with the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR), no soldering needed there). After the row connector is fitted, you can connect cables between the pins, and the relays.
+This is done via the 3.3V digital output header that is located on the board. To use these, you need to solder a 2x6 row connector onto the board (Easier with the [Stark CMR](../../30-hardware/Stark-CMR.md), no soldering needed there). After the row connector is fitted, you can connect cables between the pins, and the relays.
 
 For instance, 3x ASR-10DD can be used. ASR-M02DD is a din mounted version. If you don't need SSR, and just want a relay, you can use a 4-channel-relay such as [this](https://www.aliexpress.com/item/1005007431826795.html?)
 
@@ -40,7 +40,7 @@ To keep things simple, it is recommended to use Solid State Relays (SSR). These 
 - (LilyGo) GND - All 3x SSR - input
 ![bild](../../images/nissan-leaf-e-nv200-07.png)
 
-(Easier with the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR), no SSR needed on this hardware since the outputs are rugged)
+(Easier with the [Stark CMR](../../30-hardware/Stark-CMR.md), no SSR needed on this hardware since the outputs are rugged)
 
 ### Troubleshooting 👓 
 Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface. In this screenshot, battery is preventing startup:

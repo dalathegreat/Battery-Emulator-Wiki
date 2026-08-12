@@ -2,8 +2,8 @@
 > Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
 
 ## Note on stationary storage :notebook: :zap: 
-1. To use the eCMP battery in stationary storage, the BMS needs to be isolated to keep contactors engaged. This requires opening the battery, exposing yourself to 400V. Only proceed with this battery if you are OK with High Voltage work. For the full procedure, see [this section of the wiki](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Stellantis-eCMP-(Citroen,-DS,-Opel,-Peugeot)#disabling-isolation-monitoring-via-hw-modification)
-2. Also note that CAN communication needs to be completely electrically isolated to keep contactors engaged. **This can easiest be achieved by using a "LilyGo T-2CAN" board, or adding a separate CAN Bus isolator,** links in the [Lightning strike wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike)
+1. To use the eCMP battery in stationary storage, the BMS needs to be isolated to keep contactors engaged. This requires opening the battery, exposing yourself to 400V. Only proceed with this battery if you are OK with High Voltage work. For the full procedure, see [this section of the wiki](Stellantis-eCMP-(Citroen,-DS,-Opel,-Peugeot).md#disabling-isolation-monitoring-via-hw-modification)
+2. Also note that CAN communication needs to be completely electrically isolated to keep contactors engaged. **This can easiest be achieved by using a "LilyGo T-2CAN" board, or adding a separate CAN Bus isolator,** links in the [Lightning strike wiki page](../40-setup/10-hardware/Lightning-strike.md)
 
 Failure to fulfill the two requirements will lead to contactors opening after 60 seconds of use (2 minutes on some packs), due to Isolation DTC being set inside the battery.
 
@@ -113,7 +113,7 @@ The following pinout has been reverse engineered on an ë-C4
 | 12 | pink | HVIL | (Connect to pin 11) [*](#HVIL)
 | 14 | light grey | GND | (Connect to GND for the 12V feed)
 
-This platform shares its low voltage connector with the [Stellantis SMP platform](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Stellantis-SMP-platform)
+This platform shares its low voltage connector with the [Stellantis SMP platform](Stellantis-SMP-platform.md)
 
 ### Part numbers and purchase links
 Did your battery not come with all the required cables/plugs? No worries, here are the part numbers and purchase links!
@@ -206,7 +206,7 @@ Alternatively, the same capacitors can be installed on the OUTSIDE of the batter
 
 
 #### Step 3, Insulate CAN bus from inverter
-CAN needs to be on separate GND plane compared to inverter. Use a CAN opto isolator, or a board that has isolation between CAN chips like for instance the LilyGo T-2CAN. You can also add a CAN Bus isolator, links in the [Lightning strike wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike)
+CAN needs to be on separate GND plane compared to inverter. Use a CAN opto isolator, or a board that has isolation between CAN chips like for instance the LilyGo T-2CAN. You can also add a CAN Bus isolator, links in the [Lightning strike wiki page](../40-setup/10-hardware/Lightning-strike.md)
 
 ### Unlocking the battery
 Under the "More Battery Info" page you can run collision unlock, contactor stuck unlock, and isolation error unlocking procedures. Remember to press the "Open contactors" button via the main page before running these requests, otherwise they wont work.

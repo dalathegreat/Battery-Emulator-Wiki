@@ -4,7 +4,7 @@
 Triple-Battery, much like Double-Battery, requires a dedicated CAN channel for each battery.
 
 At the moment the following 3-CAN boards are supported:
-- [LilyGo T-2CAN with MCP2518FD add-on](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN)
+- [LilyGo T-2CAN with MCP2518FD add-on](../../30-hardware/LilyGo-T‐2CAN.md)
   - Connect Battery1 to CAN-A
   - Connect Battery2 to CAN-B
   - Connect Battery3 to MCP2518FD

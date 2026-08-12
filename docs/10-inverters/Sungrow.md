@@ -96,7 +96,7 @@ Failing to ground properly will result in CAN errors.
 
 ### CAN Termination
 
-When the LilyGo board connects to both a CAN battery and CAN inverter on the same pins, and both ends have termination resistors, remove the terminating resistor from the board. See [CAN troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki#can-wiring-troubleshooting) for details.
+When the LilyGo board connects to both a CAN battery and CAN inverter on the same pins, and both ends have termination resistors, remove the terminating resistor from the board. See [CAN troubleshooting](../40-setup/index.md#can-wiring-troubleshooting) for details.
 
 ℹ️ To verify wiring: With inverter powered on and CAN wires connected only to the inverter, you should measure over 1V (e.g., 1.38V).
 
@@ -107,10 +107,10 @@ When the LilyGo board connects to both a CAN battery and CAN inverter on the sam
 
 For maximum safety and stability, use a dedicated CAN channel for the inverter. Options:
 
-- [Add an isolated MCP2515 CAN channel](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
-- [Add an isolated MCP2518 CAN-FD channel in classic CAN mode](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
-- Use [Stark CMR hardware](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR)
-- Use a [CAN filter](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-filter-hardware) between inverter and the rest of the system
+- [Add an isolated MCP2515 CAN channel](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md)
+- [Add an isolated MCP2518 CAN-FD channel in classic CAN mode](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)
+- Use [Stark CMR hardware](../30-hardware/Stark-CMR.md)
+- Use a [CAN filter](../40-setup/40-can-related/CAN-filter-hardware.md) between inverter and the rest of the system
 
 > [!NOTE]
 > Some Sungrow inverters (e.g., SH5.0RS with Leaf battery) have CAN communication issues when battery and inverter share the same LilyGo channel. A dedicated channel resolves this.

@@ -11,7 +11,7 @@
 * 1x or 2x [FerroAmp ESO (Energy Storage Optimizer) Module](https://ferroamp.com/wp-content/uploads/2022/05/ESO-Module_Datasheet_En.pdf), installed inside the Power Case.
 
 ## Communication wiring
-The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues, or before removing the resistor. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki#can-wiring-troubleshooting)
+The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues, or before removing the resistor. This is explained in [CAN-troubleshooting](../40-setup/index.md#can-wiring-troubleshooting)
 
 > [!NOTE]  
 > While the Ferroamp will work on the same CAN channel as an EV battery, it sometimes can cause "ESO fault code 2 - communication issues". If you are seeing this error, put the inverter on its own dedicated CAN channel.
@@ -45,5 +45,5 @@ For this inverter type, use the option called "Ferroamp Pylon battery over CAN B
 ## Troubleshooting
 Experiences with various troubles and solutions.
 1) Ensure ESO(s) and EnergyHub are updated to latest firmware. (Call FerroAmp support and confirm!)
-2) If you are getting "precharge" or "ESO fault 2 - communication" issues - try separating battery and inverter communication channels using MCP add on chip. Read more here: (https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
-3) If you bought a second hand ESO and you're having communications issues - it might be the CAN transciever that has taken a beating. (Seems not too uncommon on Ferroamp ESOs!) Read more here: (https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike)
+2) If you are getting "precharge" or "ESO fault 2 - communication" issues - try separating battery and inverter communication channels using MCP add on chip. Read more here: [CAN add-on (MCP2515)](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md)
+3) If you bought a second hand ESO and you're having communications issues - it might be the CAN transciever that has taken a beating. (Seems not too uncommon on Ferroamp ESOs!) Read more here: [Lightning strike](../40-setup/10-hardware/Lightning-strike.md)

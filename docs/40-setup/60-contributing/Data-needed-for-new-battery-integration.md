@@ -26,8 +26,7 @@ This data is typically matched to noted values "offline", such as reading the SO
 You will first have to get some hardware capable of reading the communication. Here are some examples, listed from least expensive to more expensive. Do note that more expensive tools will be easier to use, since the software provided with the tools are very user friendly. Also more expensive tools will have better timing and accuracy on timestamps.
 
 > [!Tip]  
-> You can use the Battery-Emulator to log CAN messages. See the Wiki page 
-https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-logging
+> You can use the Battery-Emulator to log CAN messages. See the [CAN logging page](../40-can-related/CAN-logging.md)
 
     LilyGo board (can log data in testing mode!)💲 
     USBCAN PCAN clone 💲 Recommended,link: https://www.aliexpress.us/item/1005006341852788.html 

@@ -62,7 +62,7 @@ Bonus: You can also use this handy automated test page for the Stark CMR: https:
 
 ## CAN grounding practices
 
-CAN networks are vulnerable to lightning strikes. [See the dedicated wiki page for this for more info](https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike) :cloud_with_lightning: 
+CAN networks are vulnerable to lightning strikes. [See the dedicated wiki page for this for more info](../10-hardware/Lightning-strike.md) :cloud_with_lightning: 
 
 > [!CAUTION]  
 > Grounding everything is especially important for certain inverters. If you fail to ground inverter or battery casing to protective earth (PE), there might be a voltage difference between the two components, which can fry the CAN communication chips on the Battery-Emulator. Always connect every component, and the communication shield wire to protective earth before turning the system on!
@@ -71,7 +71,7 @@ See this image for grounding:
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-03.png)
 
-Here is the best way to ensure that there are no paths for spikes in CAN voltage to fry chips on the boards (Important for [Solax](https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-Solax) and [Foxess](https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-FoxESS-H1-H3-AC1-KH), other inverters are more lenient on what power supply you use)
+Here is the best way to ensure that there are no paths for spikes in CAN voltage to fry chips on the boards (Important for [Solax](../../10-inverters/Solax.md) and [Foxess](../../10-inverters/FoxESS-H1-H3-AC1-KH.md), other inverters are more lenient on what power supply you use)
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-04.png)
 

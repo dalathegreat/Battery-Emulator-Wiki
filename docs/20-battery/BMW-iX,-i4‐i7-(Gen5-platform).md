@@ -42,9 +42,9 @@ For this battery type, use the option called "BMW iX and i4-7 platform" under th
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 
 ## Note on CAN-FD
-The Gen5 BMW battery architecture uses CAN-FD, so if you plan on integrating this battery, you will need to get the LilyGo T-2CAN, plus a [CAN-FD chip add-on](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD)).
+The Gen5 BMW battery architecture uses CAN-FD, so if you plan on integrating this battery, you will need to get the LilyGo T-2CAN, plus a [CAN-FD chip add-on](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md).
 
-Alternatively, if you want to make it even easier, get the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) hardware which has built in support for CAN-FD. This is the recommended path!
+Alternatively, if you want to make it even easier, get the [Stark CMR](../30-hardware/Stark-CMR.md) hardware which has built in support for CAN-FD. This is the recommended path!
 
 # Connectors
 The battery pack has several connectors on the outside and inside of the pack that are relevant for connecting this pack to the inverter and the battery emulator.

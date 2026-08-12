@@ -6,8 +6,8 @@ The Renault Zoe Gen2 has good support in the Battery-Emulator project. Note that
 
 ## Variants of the Zoe
 There are 4x batteries available for the Zoe, This page focuses on the Gen2 50/52kWh battery
-* [22kWh 2012-2019, Gen1](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Renault-Zoe-Gen1)
-* [41kWh 2016-2019, Gen1](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Renault-Zoe-Gen1)
+* [22kWh 2012-2019, Gen1](Renault-Zoe-Gen1.md)
+* [41kWh 2016-2019, Gen1](Renault-Zoe-Gen1.md)
 * 50kWh 2019-, Gen2
 * 52kWh 2020-, Gen2
 
