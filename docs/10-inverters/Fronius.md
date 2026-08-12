@@ -49,7 +49,7 @@ To use a Fronius inverter with a used EV battery, it needs to be setup for batte
 ![FroniusSetup](../images/fronius-03.png)
 
 #### Notes on Scaled SOC + Fronius min/max SOC
-In the Fronius settings it is possible to define "SOC minimum" and "SOC maximum". If you are using the [Rescale SOC](https://github.com/dalathegreat/Battery-Emulator/wiki/Webserver-guide#rescale-soc) functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to only have one of the systems restrict the SOC window, which simplifies any troubleshooting.
+In the Fronius settings it is possible to define "SOC minimum" and "SOC maximum". If you are using the [Rescale SOC](../40-setup/20-software/Webserver-guide.md#rescale-soc) functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to only have one of the systems restrict the SOC window, which simplifies any troubleshooting.
 
 Example of double-rescaling:
 
@@ -74,7 +74,7 @@ For this inverter type, use the option called "BYD 11kWh HVM battery over Modbus
 <img width="490" height="65" alt="image" src="../images/fronius-12.png" />
 
 > [!NOTE]  
-> If you intend to use the [Periodic Reset](https://github.com/dalathegreat/Battery-Emulator/wiki/Periodic-BMS-reset) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
+> If you intend to use the [Periodic Reset](../40-setup/10-hardware/Periodic-BMS-reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
 
 ## Starting and stopping the system
 When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode.

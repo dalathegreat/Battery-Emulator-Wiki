@@ -7,8 +7,8 @@ The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks 
 
 ### Batteries that benefit from Periodic Reset
 
-- [Nissan LEAF](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Nissan-LEAF---e%E2%80%90NV200)
-- [Dacia Spring / Renault K-ZE](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Dacia-Spring-%E2%80%90-Renault-K%E2%80%90ZE)
+- [Nissan LEAF](../../20-battery/Nissan-LEAF---e‐NV200.md)
+- [Dacia Spring / Renault K-ZE](../../20-battery/Dacia-Spring-‐-Renault-K‐ZE.md)
 - various Renault types
 
 ### GPIO behavior
@@ -77,7 +77,7 @@ The day starts when Battery Emulator is powered on and booted successfully. Afte
 
 ### Remote trigger through MQTT
 
-Battery Emulator's [MQTT](https://github.com/dalathegreat/Battery-Emulator/wiki/MQTT#button-command-discovery) implementation subscribes to the `BMSRESET` command topic to trigger a hardware power-cycle of the BMS. 
+Battery Emulator's [MQTT](../20-software/MQTT.md#button-command-discovery) implementation subscribes to the `BMSRESET` command topic to trigger a hardware power-cycle of the BMS. 
 
 The `BMSRESET` command (and the auto-discovered "Reset BMS" Home Assistant button) is only acted upon when **Allow remote BMS reset via MQTT** (`REMBMSRESET`) is enabled. If it is disabled, the command is silently ignored. Note that the HA button is published regardless of this setting, so it can appear in Home Assistant but do nothing until the option is enabled.
 

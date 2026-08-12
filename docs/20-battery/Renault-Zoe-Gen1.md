@@ -8,7 +8,7 @@ Zoe Generation 1 batteries have perfect support in the Battery-Emulator
 There are 3x batteries available for the Zoe, this page focuses on the Gen1 22/40kWh batteries
 * 22kWh 2012-2019, Gen1
 * 40kWh 2016-2019, Gen1
-* [52kWh 2019-, Gen2](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Renault-Zoe-Gen2)
+* [52kWh 2019-, Gen2](Renault-Zoe-Gen2.md)
 
 ## Zoe 41kWh pictures and pinout
 ![bild](../images/renault-zoe-gen1-01.png)

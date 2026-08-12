@@ -36,7 +36,7 @@ Connect the following wires to the LilyGo
 * C22-4 to 12V+ supply
 * C22-5 to GND for 12V
 
-Handle precharge/contactors manually or use [GPIO control](https://github.com/dalathegreat/Battery-Emulator/wiki/Contactor-Control-via-GPIO-pins)
+Handle precharge/contactors manually or use [GPIO control](../40-setup/20-software/Contactor-Control-via-GPIO-pins.md)
 * C22-7 Precharge
 * C22-3 Positive contactor
 * C22-6 Negative contactor

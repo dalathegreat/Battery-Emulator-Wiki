@@ -2,7 +2,7 @@
 The LilyGo T-CAN485 is what the Battery-Emulator originally started development with. It is a very cheap microcontroller, that runs the entire project easily. It has 1x CAN, 1x RS485, and GPIO pins for expansion.
 
 > [!TIP]
-> Only get this board if you need Modbus/RS485. For CAN components, the new [T-2CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN) board is easier for beginners.
+> Only get this board if you need Modbus/RS485. For CAN components, the new [T-2CAN](LilyGo-T‐2CAN.md) board is easier for beginners.
 
 <img alt="image" src="../images/lilygo-t-can485-02.png" />
 
@@ -19,8 +19,8 @@ https://github.com/Xinyuan-LilyGO/T-CAN485
 ## Expanding the board
 The board comes with 1x CAN channel, and 1x RS485 channel. Some integrations need more than 1 channel, in these cases the LilyGo can be extended with add-on CAN channels:
 
-- [CAN add‐on](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
-- [CAN-FD add on](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
+- [CAN add‐on](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md)
+- [CAN-FD add on](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)
 
 Example, LilyGo + MCP2515 board
 
@@ -43,7 +43,7 @@ Completed product:
 <img alt="image" src="../images/lilygo-t-can485-05.png" />
 
 ### Expanding the board further
-To make the board even more professional (DIN mounting solution with CANFD and contactor drivers built in), you can get the [LilyGo T‐CAN485 & CAN‐FD Motherboard](https://github.com/dalathegreat/Battery-Emulator/wiki/LilyGo-T%E2%80%90CAN485-&-CAN%E2%80%90FD-Motherboard)
+To make the board even more professional (DIN mounting solution with CANFD and contactor drivers built in), you can get the [LilyGo T‐CAN485 & CAN‐FD Motherboard](LilyGo-T‐CAN485-and-CAN‐FD-Motherboard.md)
 
 <img alt="image" src="../images/lilygo-t-can485-06.png" />
 
@@ -68,5 +68,5 @@ If it is outside, in the cold, use a 12V source like [**HDR-60-12**](https://www
 ![HDR-60-12](../images/lilygo-t-can485-01.jpg)
 
 ### Boot button 
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](https://github.com/dalathegreat/Battery-Emulator/wiki/BOOT-button-functions)
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../40-setup/20-software/BOOT-button-functions.md)
 

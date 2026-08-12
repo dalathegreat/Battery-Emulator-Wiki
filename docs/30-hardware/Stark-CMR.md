@@ -54,7 +54,7 @@ You're also welcome to contact [Johan](mailto:info@redispose.se) directly if you
 Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup
 
 ## Over the air (OTA) software updates
-When updating this board [OTA](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **Stark** hardware
+When updating this board [OTA](../40-setup/20-software/OTA-Update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **Stark** hardware
 
 `BE_vX.Y.Z_StarkCMR.ota.bin`
 
@@ -113,5 +113,5 @@ The next wiring diagram shows an example for wiring a Renault Zoe battery. This 
 ![image](../images/stark-cmr-01.png)
 
 ### Boot button 
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](https://github.com/dalathegreat/Battery-Emulator/wiki/BOOT-button-functions)
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../40-setup/20-software/BOOT-button-functions.md)
 

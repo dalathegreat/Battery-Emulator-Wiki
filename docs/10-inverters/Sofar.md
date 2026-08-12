@@ -9,10 +9,10 @@
 * HYD 15KTL
 * HYD 20KTL
 
-The inverters started out development with using "Pylontech battery over CAN bus", but you can also use the new [SOFAR_CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-Sofar#sofar-can) if you have multiple batteries. At the moment it is recommended to use Sofar CAN!
+The inverters started out development with using "Pylontech battery over CAN bus", but you can also use the new [SOFAR_CAN](Sofar.md#sofar-can) if you have multiple batteries. At the moment it is recommended to use Sofar CAN!
 
 ## Communication wiring
-The Sofar inverter works via CAN. You can have both a CAN battery and a CAN inverter connected on the same pins (when using Pylon protoocl). When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki#can-wiring-troubleshooting)
+The Sofar inverter works via CAN. You can have both a CAN battery and a CAN inverter connected on the same pins (when using Pylon protoocl). When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../40-setup/index.md#can-wiring-troubleshooting)
 
 Note, if you use Sofar CAN protocol instead, the inverter will need to be on a dedicated CAN channel!
 

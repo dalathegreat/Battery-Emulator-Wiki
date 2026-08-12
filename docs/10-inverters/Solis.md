@@ -27,7 +27,7 @@ Most Solis inverters support a wide battery voltage range. Nevertheless, you sho
 * S6-EH3P100K10-NV-YD-H ✅ (Use BYD-WHS inverter setting)
 
 ## Communication wiring
-The Solis inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-wiring-practices-and-troubleshooting)
+The Solis inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../40-setup/40-can-related/CAN-wiring-practices-and-troubleshooting.md)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 

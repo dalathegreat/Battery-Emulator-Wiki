@@ -82,7 +82,7 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 ## Periodic restart of BMS
 The Nissan LEAF BMS is not able to operate 24/7 under all conditions. Over time the SOC% will become less and less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
 
-See the [Periodic Reset page](https://github.com/dalathegreat/Battery-Emulator/wiki/Periodic-BMS-reset) for details.
+See the [Periodic Reset page](../40-setup/10-hardware/Periodic-BMS-reset.md) for details.
 Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the "Skip reset for one period if balancing" option enabled.
 
 > [!NOTE]  
@@ -207,7 +207,7 @@ After these steps, the SOH reset to 100% becomes persistent.
 ### Set your own, real limits
 Note that after you reset the SOH to 100%, the BMS will let charging and discharging the cells likely beyond the limits which are safe to use on long term, in respect to the longevity of the cells. In stationary usage the battery charges and discharges much slower, and in a different pattern than when it used to do in a car, so a SOH recalibration in the BMS will take very long to happen, to match reality. 
 
-It's recommended to [set up MQTT](https://github.com/dalathegreat/Battery-Emulator/wiki/MQTT#home-assistant-discovery) and a [home automation system](https://github.com/dalathegreat/Battery-Emulator/wiki/Home-Assistant#chart-examples) which lets you track cell voltages and delta on longer term, to be able to investigate the behaviour. 
+It's recommended to [set up MQTT](../40-setup/20-software/MQTT.md#home-assistant-discovery) and a [home automation system](../40-setup/20-software/Home-Assistant.md#chart-examples) which lets you track cell voltages and delta on longer term, to be able to investigate the behaviour. 
 
 To see some results, follow these steps after you do the reset (in normal ambient conditions, avoid extreme cold or hot periods):
 

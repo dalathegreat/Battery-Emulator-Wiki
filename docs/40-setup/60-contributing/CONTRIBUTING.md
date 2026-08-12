@@ -6,7 +6,7 @@ What can I do? 🦸
 **"Help - I want to contribute something, but I don't know what?"**
 
 You're in luck. There's various sources to contribute:
- - Improve the [Wiki documentation](https://github.com/dalathegreat/Battery-Emulator/wiki)
+ - Improve the [Wiki documentation](../../index.md)
    - Especially battery/inverter specific pages need updating. Attach pictures of batteries, wiring diagrams, helpful info etc. 
  - Have a look at the [issue tracker](https://github.com/dalathegreat/Battery-Emulator/issues), especially issues with labels:
    - [good first issue](https://github.com/dalathegreat/Battery-Emulator/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
@@ -81,7 +81,7 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 - Build the project for your hardware
 - Navigate to the folder (Stark used as example) : /Battery-Emulator/.pio/build/stark_330
 - Take the firmware.bin file
-- [OTA update](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update) the board with this file
+- [OTA update](../20-software/OTA-Update.md) the board with this file
 
 ### ⚠️ Troubleshooting & Tips
 
@@ -147,6 +147,6 @@ After selecting the hardware you need, click the "**Upload Artifact**", and ther
 
 <img alt="image" src="../../images/contributing-05.png" />
 
-After downloading the .zip file, extract the .bin file from it. Then [OTA Update](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update) your device with this .bin file!
+After downloading the .zip file, extract the .bin file from it. Then [OTA Update](../20-software/OTA-Update.md) your device with this .bin file!
 
 

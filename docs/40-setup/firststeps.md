@@ -10,7 +10,7 @@ title: Installation steps
 5. Configure any additional requirements to allow Battery Emulator to switch on your EV battery (also referred to as 'closing contactors')
 6. Enjoy a big cheap grid connected battery!
 
-For examples showing wiring, see each battery type's own Wiki page. For instance the [Nissan LEAF page](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Nissan-LEAF---e%E2%80%90NV200)
+For examples showing wiring, see each battery type's own Wiki page. For instance the [Nissan LEAF page](../20-battery/Nissan-LEAF---e‐NV200.md)
 
 ## How to install the software 💻
 

@@ -21,10 +21,10 @@ At the same time, EV manufacturers have been putting high capacity battery packs
 **Battery Emulator** enables EV battery packs to be repurposed for stationary storage. It acts as a translation layer between the EV battery and the home inverter. This makes it extremely cheap and easy to use large EV batteries in a true plug'n'play fashion!
 
 ## Quickstart guide 📜
-- Pick a [supported inverter](https://github.com/dalathegreat/Battery-Emulator/wiki#supported-inverters-list) (solar panels optional) :sun_with_face: 
-- Pick a [supported battery](https://github.com/dalathegreat/Battery-Emulator/wiki#supported-batteries-list) :battery: 
-- Order the Battery-Emulator [compatible hardware](https://github.com/dalathegreat/Battery-Emulator/wiki#where-do-i-get-the-hardware-needed) :robot: 
-- Follow the [installation guidelines](https://github.com/dalathegreat/Battery-Emulator/wiki/Installation-guidelines) section for how to install and commission your battery properly :notebook: 
+- Pick a [supported inverter](10-inverters/index.md#supported-inverters-list) (solar panels optional) :sun_with_face: 
+- Pick a [supported battery](20-battery/index.md#supported-batteries-list) :battery: 
+- Order the Battery-Emulator [compatible hardware](30-hardware/index.md) :robot: 
+- Follow the [installation guidelines](40-setup/10-hardware/Installation-guidelines.md) section for how to install and commission your battery properly :notebook: 
 
 !!! warning "CAUTION"
     Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.

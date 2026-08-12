@@ -32,7 +32,7 @@ Batterie BMU/CMU Info
 
 Images etc.
 
-Similar wiki: [E-GMP platform](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Hyundai-E%E2%80%90GMP-platform-(58.2-%E2%80%90-77.4-kWh))
+Similar wiki: [E-GMP platform](Hyundai-E‐GMP-platform-(58.2-‐-77.4-kWh).md)
 
 ***** Below find pin connection required ******
  1,2,12 - 12v / 

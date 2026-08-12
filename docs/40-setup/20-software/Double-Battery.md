@@ -6,7 +6,7 @@ Double Battery means running two battery packs at the same time. This doubles th
 
 Good info on running multiple packs and associated risks: https://www.orionbms.com/manuals/pdf/parallel_strings.pdf
 
-If you need more capacity than Double Battery provides, you can also go [Triple Battery](https://github.com/dalathegreat/Battery-Emulator/wiki/Triple-Battery)
+If you need more capacity than Double Battery provides, you can also go [Triple Battery](Triple-Battery.md)
 
 ### How does parallel operation work?
 The batteries get connected in parallel. This means the voltage stays the same, but the capacity doubles.
@@ -27,16 +27,16 @@ Double-Battery can be run on all inverters. The inverter will think that there i
 Double battery support is only available for highly stable battery types. The ones with checkmark have been confirmed working well.
 
 - Bolt Ampera
-- [BMW i3](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-BMW-i3) ✅ (CAN contactors)
-- [BYD Atto 3](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-BYD-Atto-3) ✅ (CAN contactors)
-- [Nissan LEAF](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Nissan-LEAF---e%E2%80%90NV200) ✅ (GPIO contactors built-in)
-- [CMFA Platform (Dacia Spring, Renault KZE](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Dacia-Spring-%E2%80%90-Renault-K%E2%80%90ZE) ✅ (GPIO contactors)
+- [BMW i3](../../20-battery/BMW-i3.md) ✅ (CAN contactors)
+- [BYD Atto 3](../../20-battery/BYD-vehicle-(Atto-3-‐-Seal-‐-Tang-‐-Dolphin-‐-Song-‐-and-more!).md) ✅ (CAN contactors)
+- [Nissan LEAF](../../20-battery/Nissan-LEAF---e‐NV200.md) ✅ (GPIO contactors built-in)
+- [CMFA Platform (Dacia Spring, Renault KZE](../../20-battery/Dacia-Spring-‐-Renault-K‐ZE.md) ✅ (GPIO contactors)
 - Stellantis CMP Smart Car ✅ (CAN contactors)
 - Stellantis ECMP ✅ (CAN contactors)
-- [Renault Zoe Gen1](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Renault-Zoe-Gen1) ✅ (GPIO contactors)
-- [Renault Zoe Gen2](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Renault-Zoe-Gen2) ✅ (GPIO contactors)
-- [Relion LV](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Relion-LV) ✅ (GPIO contactors)
-- [Kia-Hyundai 39/64 kWh](https://github.com/dalathegreat/Battery-Emulator/wiki/Battery:-Kia-Niro---Hyundai-Kona-64-kWh) ✅ (CAN contactors)
+- [Renault Zoe Gen1](../../20-battery/Renault-Zoe-Gen1.md) ✅ (GPIO contactors)
+- [Renault Zoe Gen2](../../20-battery/Renault-Zoe-Gen2.md) ✅ (GPIO contactors)
+- [Relion LV](../../20-battery/Relion-LV.md) ✅ (GPIO contactors)
+- [Kia-Hyundai 39/64 kWh](../../20-battery/Kia-Niro---Hyundai-Kona-64-kWh.md) ✅ (CAN contactors)
 - Pylon Battery
 - Santa Fe PHEV
 - Tesla 2020+ (Testing ongoing in PR) (CAN contactors)
@@ -44,15 +44,15 @@ If your batteries are not on this list, get in touch with a developer.
 
 #### CAN communication
 
-:information_source: If your inverter does not support seeing automotive CAN messages and need a separate channel, you need a CAN-Filter. https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-filter-hardware
+:information_source: If your inverter does not support seeing automotive CAN messages and need a separate channel, you need a [CAN-Filter](../40-can-related/CAN-filter-hardware.md).
 
 If you are using LilyGo:
 * The first battery connects to CAN on the LilyGo. 
-* The second battery connects to an add-on MCP2515 chip connected via GPIO. [See this page for more info on how to set up Dual CAN.](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
+* The second battery connects to an add-on MCP2515 chip connected via GPIO. [See this page for more info on how to set up Dual CAN.](../40-can-related/CAN-add‐on-(MCP2515).md)
 
 ![image](../../images/double-battery-01.png)
 
-If you are using [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR):
+If you are using [Stark CMR](../../30-hardware/Stark-CMR.md):
 * The first battery connects to CAN
 * The second battery connects to CANFD
 

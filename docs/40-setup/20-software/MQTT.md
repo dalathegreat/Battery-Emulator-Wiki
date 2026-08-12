@@ -12,7 +12,7 @@ The main purpose of this implementation is better integration with popular home 
   * [`<hostname>/info` (and `/info_2`, `/info_3`)](#hostnameinfo-and-info_2-info_3)
   * [`<hostname>/spec_data`](#hostnamespec_data)
   * [`<hostname>/events`](#hostnameevents)
-  * [`<hostname>/status` (availability / LWT)](#hostnamestatus-availability--lwt)
+  * [`<hostname>/status` (availability / LWT)](#hostnamestatus-availability-lwt)
 - [Home Assistant Discovery](#home-assistant-discovery)
   * [Sensor discovery](#sensor-discovery)
   * [Cell-voltage discovery](#cell-voltage-discovery)
@@ -154,7 +154,7 @@ This topic is referenced by the `availability` block of every Home Assistant dis
 
 # Home Assistant Discovery
 
-When [Home Assistant](https://github.com/dalathegreat/Battery-Emulator/wiki/Home-Assistant) auto-discovery is enabled, the device publishes retained configuration topics so entities are created automatically. Discovery topics are published under the hardcoded `homeassistant/...` prefix; the entity/object portion and the device identity are both derived from the device's hostname.
+When [Home Assistant](Home-Assistant.md) auto-discovery is enabled, the device publishes retained configuration topics so entities are created automatically. Discovery topics are published under the hardcoded `homeassistant/...` prefix; the entity/object portion and the device identity are both derived from the device's hostname.
 
 All discovery payloads share a common block:
 
@@ -276,7 +276,7 @@ The Battery-Emulator subscribes to `<hostname>/command/+`, e.g. `battery-emulato
 
 The currently supported commands are:
 
-- `BMSRESET` — Triggers a hardware power-cycle of the BMS. **Only acted upon if remote BMS reset is enabled** (see [Remote trigger through MQTT](https://github.com/dalathegreat/Battery-Emulator/wiki/Periodic-BMS-reset#remote-trigger-through-mqtt)); otherwise the message is ignored.
+- `BMSRESET` — Triggers a hardware power-cycle of the BMS. **Only acted upon if remote BMS reset is enabled** (see [Remote trigger through MQTT](../10-hardware/Periodic-BMS-reset.md#remote-trigger-through-mqtt)); otherwise the message is ignored.
 - `PAUSE` — Triggers the pause feature
 - `RESUME` — Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
 - `RESTART` — Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)

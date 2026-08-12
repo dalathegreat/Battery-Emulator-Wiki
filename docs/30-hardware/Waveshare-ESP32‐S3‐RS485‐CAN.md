@@ -46,6 +46,6 @@ The board has pads for a 20-pin 2.0mm-pitch pin header.
 <img width="551" height="449" alt="image" src="../images/waveshare-esp32-s3-rs485-can-04.png" />
 
 ### Boot button 
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](https://github.com/dalathegreat/Battery-Emulator/wiki/BOOT-button-functions)
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../40-setup/20-software/BOOT-button-functions.md)
 
 

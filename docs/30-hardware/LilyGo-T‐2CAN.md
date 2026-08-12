@@ -29,7 +29,7 @@ https://github.com/Xinyuan-LilyGO/T-2Can
 Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup
 
 ## Over the air (OTA) software updates
-When updating this board [OTA](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **T-2CAN** hardware
+When updating this board [OTA](../40-setup/20-software/OTA-Update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **T-2CAN** hardware
 
 `BE_vX.Y.Z_LilygoT-2CAN.ota.bin`
 
@@ -98,7 +98,7 @@ These signals are used as wake-up signals for some batteries.
 
 |  T-2CAN pin |  Signal | Function |
 | :--------: | :---------: | :---------: | 
-| IO01 | E-Stop | An input which performs an equipment-stop (sets the inverter current to zero). See [Equipment Stop](https://github.com/dalathegreat/Battery-Emulator/wiki/Equipment-Stop) for more information. |
+| IO01 | E-Stop | An input which performs an equipment-stop (sets the inverter current to zero). See [Equipment Stop](../40-setup/20-software/Equipment-Stop.md) for more information. |
 | IO02 | BMS Power | An active-high output to drive a contactor/relay to power the BMS. Allows BE to power cycle it periodically. |
 
 #### I2C Display
@@ -162,4 +162,4 @@ STL for 3D printing
 [Open Frame DIN] (https://www.thingiverse.com/thing:7278747)
 
 ### Boot button 
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](https://github.com/dalathegreat/Battery-Emulator/wiki/BOOT-button-functions)
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../40-setup/20-software/BOOT-button-functions.md)

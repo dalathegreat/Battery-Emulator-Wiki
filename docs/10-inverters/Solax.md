@@ -12,13 +12,13 @@ Solax inverters can have high voltage potential on the CAN chip. They can be 110
 
 ![image](../images/foxess-h1-h3-ac1-kh-01.png)
 
-An even better way to tackle this is with the use of a CAN isolator between the inverter and the rest of the system. Examples found in the [lightning strike wiki](https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike#suggested-hardware)
+An even better way to tackle this is with the use of a CAN isolator between the inverter and the rest of the system. Examples found in the [lightning strike wiki](../40-setup/10-hardware/Lightning-strike.md#suggested-hardware)
 
 ![image](../images/foxess-h1-h3-ac1-kh-02.png)
 
 Failure to implement any of the above solutions will lead to the VP231 CAN transceiver chip burning up! 🔥
 
-Alternatively, using hardware with built-in galvanic isolation (such as the [LilyGo T-2CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware%3A-LilyGo-T‐2CAN/)) should avoid this problem without imposing extra power supply requirements.
+Alternatively, using hardware with built-in galvanic isolation (such as the [LilyGo T-2CAN](../30-hardware/LilyGo-T‐2CAN.md)) should avoid this problem without imposing extra power supply requirements.
 
 # Word of caution, isolated CAN
 ⚠️ This inverter does not handle a CAN connected EV battery on the same channel.
@@ -26,11 +26,11 @@ If the inverter which likes to see only extended CAN frames sees standard automo
 
 This can be solved in three ways:
 
-* You can [add an isolated MCP2515 CAN channel](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515))
-* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD))
-* You can use the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) hardware
-* You can use the [LilyGo T-2CAN](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware%3A-LilyGo-T‐2CAN/) hardware
-* You can use a [CAN filter](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-filter-hardware) between inverter and the rest of the system 
+* You can [add an isolated MCP2515 CAN channel](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md)
+* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md)
+* You can use the [Stark CMR](../30-hardware/Stark-CMR.md) hardware
+* You can use the [LilyGo T-2CAN](../30-hardware/LilyGo-T‐2CAN.md) hardware
+* You can use a [CAN filter](../40-setup/40-can-related/CAN-filter-hardware.md) between inverter and the rest of the system 
 
 ℹ️ The inverter contains a 120 Ohm terminating resistor on CAN-H/L pins
 
@@ -223,7 +223,7 @@ BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wi
 |  Problem |  Possible fix |
 | :--------: | :---------: |
 | Inverter stuck in "Waiting..." | Check that high voltage is present on inverter terminals, and that polarity is right way. Also check that the precharge/positive-contactor control has not been accidentally swapped around. A telltale of this accidental swap is that the voltage reading on the inverter side will be jump +-50VDC all the time. |
-| Contactors close, then after a few seconds they open. With the battery on its own, without inverter connected, contactors stay on. | Solax controls contactor opening, this is not working good on CAN controlled packs. See the [Notes on CAN controlled contactors](https://github.com/dalathegreat/Battery-Emulator/wiki/Inverter:-Solax#notes-on-can-controlled-contactors) |
+| Contactors close, then after a few seconds they open. With the battery on its own, without inverter connected, contactors stay on. | Solax controls contactor opening, this is not working good on CAN controlled packs. See the [Notes on CAN controlled contactors](Solax.md#notes-on-can-controlled-contactors) |
 | Inverter screen showing "Bat Mismatch IE102" error | Configure "Reported battery type (in decimal):" to 81 in the webserver settings, OR update Battery-Emulator to latest version |
 
 

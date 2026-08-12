@@ -11,7 +11,7 @@ The hardware used is an inexpensive chip, "MCP2518FD Pro", which can be purchase
 > While the code techincally works with MCP2517FD chips, these chips have nasty hardware bugs and should be avoided. Please source MCP2518FD chips instead to ensure proper CAN-FD operation.
 
 ### Connecting it to LilyGo T-2CAN
-See https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN#expansion-header
+See the [T-2CAN expansion header](../../30-hardware/LilyGo-T‐2CAN.md#expansion-header)
 
 ### Connecting it to LilyGo T-CAN485
 
@@ -77,7 +77,7 @@ Example picture, board with 40.0Mhz crystal:
 The default settings are 500kbit/s arbitration bit rate, and 2 Mbit/s data bit rate. Incase you have a battery that needs some other bit rate settings, this can be changed in the Software.ino file.
 
 ## Testing that the interface works
-If you are unsure if the newly added add-on chip works, you can perform the following loopback test. Connect CAN-H and CAN-L to the native CAN channel with two wires, and set up the code to transmit messages via for instance the Schneider V2 protocol. Remember to enable Use CanFD as classic CAN , and also to configure the interfaces as shown below. Once it is all set up, use the [CAN logging page](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-logging) to verify that you get incoming RX messages that match the TX.
+If you are unsure if the newly added add-on chip works, you can perform the following loopback test. Connect CAN-H and CAN-L to the native CAN channel with two wires, and set up the code to transmit messages via for instance the Schneider V2 protocol. Remember to enable Use CanFD as classic CAN , and also to configure the interfaces as shown below. Once it is all set up, use the [CAN logging page](CAN-logging.md) to verify that you get incoming RX messages that match the TX.
 
 Test settings, for looping back CAN with Schneider CAN to battery CAN
 
@@ -93,4 +93,4 @@ Example where wires connected (Everything works, TX and RX incoming on native)
 
 
 ## Logging CAN-FD messages
-It is possible to log CAN messages via USB serial or Webserver, see the [CAN logging page](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-logging) for more info
+It is possible to log CAN messages via USB serial or Webserver, see the [CAN logging page](CAN-logging.md) for more info

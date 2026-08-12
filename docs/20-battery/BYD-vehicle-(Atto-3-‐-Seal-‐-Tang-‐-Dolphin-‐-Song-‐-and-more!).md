@@ -35,7 +35,7 @@ Confirmed working BYD Seal 60kWh battery example sticker:
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-01.png)
 
 > [!NOTE]  
-> If you intend to run two BYD batteries in [parallel](https://github.com/dalathegreat/Battery-Emulator/wiki/Double-Battery), make sure they are both the same model!
+> If you intend to run two BYD batteries in [parallel](../40-setup/20-software/Double-Battery.md), make sure they are both the same model!
 
 ### Example battery install, Atto 3 P48 battery
 
@@ -125,7 +125,7 @@ Pinout varies between different batteries despite the plug & socket being the sa
 High voltage connectors vary a bit between the different BYD variants. Due to this, it is best to try and source the high voltage cable from the same type of vehicle that the battery came from.
 
 ## Contactor Block Modification
-In the event of the battery being locked, the pre-charge and two contactors can be wired to manually switch on, or preferably to automatically activate via 3 SSRs with the GPIO pins on the Lilygo board (see https://github.com/dalathegreat/Battery-Emulator/wiki/Contactor-Control-via-GPIO-pins).
+In the event of the battery being locked, the pre-charge and two contactors can be wired to manually switch on, or preferably to automatically activate via 3 SSRs with the GPIO pins on the Lilygo board (see [Contactor control via GPIO pins](../40-setup/20-software/Contactor-Control-via-GPIO-pins.md)).
 When accessing the internals of the battery, wear the appropriate safety gloves and follow safe procedures to avoid shorting across HV terminals. To access the contactor block, first remove the top cover, which fortunately is not sealed down; ~ 76 screws and 2 central top bolts require removal. In the pictorial description that follows, details of the full removal of the contactor block is shown, to identify the various parts. With connection points identified, it is now not necessary to remove the block as these 12V connection points are accessible from the top of the block. This current protocol involved connecting 3 circuits individually to the precharge and two contactor relays. This was achieved merely by wiring in extra lines on top of existing wiring connector points. With hindsight, a more effective alternative is included in the discussion below (Unlocking a crashed battery).
 https://github.com/juancruz1953/Images/blob/main/Atto3ContactorBlockRewire.pdf
 

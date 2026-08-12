@@ -7,7 +7,7 @@ FoxESS inverters can have high voltage potential on the CAN chip. They can be 11
 
 ![image](../images/foxess-h1-h3-ac1-kh-01.png)
 
-Another way to tackle this is with the use of a CAN isolator between the inverter and the rest of the system. Examples found in the [lightning strike wiki](https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike#suggested-hardware)
+Another way to tackle this is with the use of a CAN isolator between the inverter and the rest of the system. Examples found in the [lightning strike wiki](../40-setup/10-hardware/Lightning-strike.md#suggested-hardware)
 
 ![image](../images/foxess-h1-h3-ac1-kh-02.png)
 
@@ -19,10 +19,10 @@ If the inverter which likes to see only extended CAN frames sees standard automo
 
 This can be solved in a few ways:
 
-   - One option is to use [add on MCP2515](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-add%E2%80%90on-(MCP2515)) board
-   - Another options is to use [add on CAN-FD MCP2518](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD)) board 
-   - Third option is to use [Stark CMR hardware](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR)
-   - Fourth option is to use a [CAN filter](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-filter-hardware) between inverter and the rest of the system 
+   - One option is to use [add on MCP2515](../40-setup/40-can-related/CAN-add‐on-(MCP2515).md) board
+   - Another options is to use [add on CAN-FD MCP2518](../40-setup/40-can-related/CAN‐FD-add‐on-(MCP2518FD).md) board 
+   - Third option is to use [Stark CMR hardware](../30-hardware/Stark-CMR.md)
+   - Fourth option is to use a [CAN filter](../40-setup/40-can-related/CAN-filter-hardware.md) between inverter and the rest of the system 
 
 ## Compatible FoxESS inverters
 * FoxESS H1
