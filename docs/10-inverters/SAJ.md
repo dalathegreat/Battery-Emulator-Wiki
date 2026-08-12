@@ -2,14 +2,16 @@
 
 ## Types of compatible SAJ inverters
 [H2 Hybrid](https://global.saj-electric.com/solarenergy-detail/63)
-   - 3~6K-S2 Ver.
-   - 5~10K-S3 Ver.
-   - 5~10K-T2 Ver.
-   - 15~20K-T2 Ver.
+
+   - 3~6K-S2 Ver. ✅
+   - 5~10K-S3 Ver. ✅
+   - 5~10K-T2 Ver. ✅
+   - 15~20K-T2 Ver. ✅
 
 SAJ H2-10K-T2 was the first SAJ inverter to be successfully used with Battery-Emulator
 
-SAJ H2-8K-T2 hybrid inverter also used with Battery Emulator
+SAJ H2-8K-T2 hybrid inverter also used with Battery Emulator:
+
 * Module Firmware : V1.214 (upgraded by SAJ to allow Modbus)
 * Display Board : V2.231 (upgraded by SAJ to allow AI mode)
 * Control Board : V4.139
@@ -24,17 +26,20 @@ For >255Ah batteries, the latest version contains a [bugfix](https://github.com/
 
 Specific settings are not needed regarding geometry of the battery
 
-For a 72-cell battery 280Ah LFP battery, this works for me
+For a 72-cell battery 280Ah LFP battery, this works for me:
+
 * TOTAL_CELL_AMOUNT = 72;
 * MODULES_IN_SERIES = 4;
 * CELLS_PER_MODULE = 18;
 * VOLTAGE_LEVEL = 230;
 * AH_CAPACITY = 280;
 
-This is the can_config part for the inverter
+This is the can_config part for the inverter:
+
 * .inverter = CAN_ADDON_MCP2515,
 
-The battery shows up in the Elekeeper APP with the following parameters as reported by the Battery Emulator
+The battery shows up in the Elekeeper APP with the following parameters as reported by the Battery Emulator:
+
 * Design Capacity
 * Actual Ah Remaining Capacity
 * Actual % Remaining Capacity
