@@ -58,14 +58,14 @@ NB: Only one GND connector is technically required if the same ground is being u
 ### Software setup
 Then configure the component you want to use CANFD on, by selecting "CAN FD (MCP2518 add-on)" on the component that you intend to connect to the chip.
 
-<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-07.png" />
+![image](../../images/can-fd-add-on-mcp2518fd-07.png)
 
 !!! note "NOTE"
     Remember to configure crystal according to your PCB!
 
 Depending on your add-on board, there may be different oscillator crystals. On the "MCP2518FD Pro" board, it is 40MHz, while on some others, it is 20MHz. If you don’t have a 40MHz oscillator, you need to update `CAN-FD-addon crystal (Mhz):` from `40` to `20` in the settings page
 
-<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-08.png" />
+![image](../../images/can-fd-add-on-mcp2518fd-08.png)
 
 Example picture, board with 40.0Mhz crystal:
 
@@ -78,7 +78,7 @@ If you are unsure if the newly added add-on chip works, you can perform the foll
 
 Test settings, for looping back CAN with Schneider CAN to battery CAN
 
-<img alt="image" src="../../images/can-fd-add-on-mcp2518fd-09.png" />
+![image](../../images/can-fd-add-on-mcp2518fd-09.png)
 
 Example where wires not connected: (Only TX, no RX messages)
 

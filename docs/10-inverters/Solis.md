@@ -33,7 +33,7 @@ The Solis inverter works via CAN. The LilyGo board can have both a CAN battery a
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-<img width="484" height="68" alt="image" src="../images/afore-01.png" />
+![image](../images/afore-01.png){ width="484" height="68" }
 
 In the Solis inverter settings, select the "BYD-HVS/HVM/HVL" option:
 
@@ -41,7 +41,7 @@ In the Solis inverter settings, select the "BYD-HVS/HVM/HVL" option:
 
 BYD_HVL option when looking directly at the inverter screen:
 
-<img width="1203" height="726" alt="image" src="../images/solis-05.png" />
+![image](../images/solis-05.png){ width="1203" height="726" }
 
 ## Startup example
 The sequence that seems to work most reliably is to get the battery up and running but still disconnected from the power supply to the inverter (I have a pair of inline DC 32A breakers for this). Once the battery is awake, go into the inverter menu and select BYD from the battery menu. Then select 'Battery Wakeup'. The alarm light on the inverter should now go out, and the lilygo will be pulsing green on its led. You can now flip the DC breakers to connect the battery power to the inverter. 

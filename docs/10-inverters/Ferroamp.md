@@ -27,7 +27,7 @@ For this inverter type, use the option called "Ferroamp Pylon battery over CAN B
 !!! info "IMPORTANT"
     The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed. If 0 is left as default values, the below options will be used
 
-<img width="565" height="273" alt="image" src="../images/ferroamp-02.png" />
+![image](../images/ferroamp-02.png){ width="565" height="273" }
 
 - TOTAL_CELL_AMOUNT 420 // Edit steps of 30, as how much your battery Wh is. 30 = 3552Wh, so 420 = 49728Wh*
 - MODULES_IN_SERIES 4

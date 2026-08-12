@@ -69,7 +69,7 @@ When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), si
 #### CAN-controlled contactors
 Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
-<img width="785" height="306" alt="image" src="../../images/double-battery-03.png" />
+![image](../../images/double-battery-03.png){ width="785" height="306" }
 
 After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2 (Cont ext), if it falls within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses
 
@@ -80,9 +80,9 @@ Enable "Double-Battery Contactor control via GPIO:" in the Settings page. When B
 ### Taking Double Battery into use.
 Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, controlled via GPIO contactors
 
-<img alt="image" src="../../images/double-battery-04.png" />
+![image](../../images/double-battery-04.png)
 
 ### Example wiring diagram - Stark Box + 2x BMW i3 + Fronius Gen24
 
-<img alt="image" src="../../images/double-battery-05.png" />
+![image](../../images/double-battery-05.png)
 

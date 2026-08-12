@@ -26,21 +26,21 @@ An indicator if the battery is not in lock state is the range indicator of the c
 
 Crashed BMW i3 battery being reset with an EoS tester:
 
-[<img src="../images/bmw-i3-01.png" width="300">](../images/bmw-i3-01.png)
+[![](../images/bmw-i3-01.png){ width="300" }](../images/bmw-i3-01.png)
 
 ## Software configuration
 For this battery type, use the option called "BMW i3" under the "Battery Protocol" setting
 
-<img width="487" height="90" alt="image" src="../images/bmw-i3-02.png" />
+![image](../images/bmw-i3-02.png){ width="487" height="90" }
 
 ## Connection diagram
 
 ### High voltage connector
 Right beside the HV connector there is a plug with 2 small pins, these need to be bridged either with the original plug, or shorted with a jumper for the battery to be able to turn on (Interlock detection)
 
-[<img src="../images/bmw-i3-03.png" width="300">](../images/bmw-i3-03.png)
+[![](../images/bmw-i3-03.png){ width="300" }](../images/bmw-i3-03.png)
 
-<img width="550" height="726" alt="image" src="../images/bmw-i3-04.png" />
+![image](../images/bmw-i3-04.png){ width="550" height="726" }
 
 ### High voltage connector (E196*1B)
 * Pin 1 = HV+
@@ -60,27 +60,27 @@ This can be done by cutting off the old connector and using a ferrule and crimpi
 An alternative for this is modifying the connector and use the current connector as ferrule so you don't have to buy or rent tools to achieve a non-stranded wire for the thermal block with size 35mm²
 
 Click on Details  ⬇
-<details>
+<details markdown="1">
 
-[<img src="../images/bmw-i3-05.jpg" width="200">](../images/bmw-i3-05.jpg)
-[<img src="../images/bmw-i3-06.jpg" width="200">](../images/bmw-i3-06.jpg)
-[<img src="../images/bmw-i3-07.jpg" width="200">](../images/bmw-i3-07.jpg)
-[<img src="../images/bmw-i3-08.jpg" width="200">](../images/bmw-i3-08.jpg)
-[<img src="../images/bmw-i3-09.jpg" width="200">](../images/bmw-i3-09.jpg)
-[<img src="../images/bmw-i3-10.jpg" width="200">](../images/bmw-i3-10.jpg)
-[<img src="../images/bmw-i3-11.jpg" width="200">](../images/bmw-i3-11.jpg)
-[<img src="../images/bmw-i3-12.jpg" width="200">](../images/bmw-i3-12.jpg)
-[<img src="../images/bmw-i3-13.jpg" width="200" height="267">](../images/bmw-i3-13.jpg)
+[![](../images/bmw-i3-05.jpg){ width="200" }](../images/bmw-i3-05.jpg)
+[![](../images/bmw-i3-06.jpg){ width="200" }](../images/bmw-i3-06.jpg)
+[![](../images/bmw-i3-07.jpg){ width="200" }](../images/bmw-i3-07.jpg)
+[![](../images/bmw-i3-08.jpg){ width="200" }](../images/bmw-i3-08.jpg)
+[![](../images/bmw-i3-09.jpg){ width="200" }](../images/bmw-i3-09.jpg)
+[![](../images/bmw-i3-10.jpg){ width="200" }](../images/bmw-i3-10.jpg)
+[![](../images/bmw-i3-11.jpg){ width="200" }](../images/bmw-i3-11.jpg)
+[![](../images/bmw-i3-12.jpg){ width="200" }](../images/bmw-i3-12.jpg)
+[![](../images/bmw-i3-13.jpg){ width="200" height="267" }](../images/bmw-i3-13.jpg)
 </details>
 
 ### Low voltage connector (A191*1B)
 The LV connector is located on the back of the battery pack, next to the A/C cooling port. A/C connector is not required for operation.
 
-[<img src="../images/bmw-i3-14.png" width="300">](../images/bmw-i3-14.png)
+[![](../images/bmw-i3-14.png){ width="300" }](../images/bmw-i3-14.png)
 
 It has the following pinout:
 
-[<img src="../images/bmw-i3-15.png" width="500">](../images/bmw-i3-15.png)
+[![](../images/bmw-i3-15.png){ width="500" }](../images/bmw-i3-15.png)
 
 Connect the wiring as follow:
 * Pin 1 30C - Connect to to 12V, 10A fuse optional
@@ -109,21 +109,21 @@ Since the LilyGo board has 3.3V logic on the GPIO pins, we need to use a solid s
 !!! warning "CAUTION"
     To avoid [welded contacts](#CAUTIONCONTACTORSWELDED) Ensure you have a 12V backup system to avoid unwanted contact closings under load in case of a blackout
 
-[<img src="../images/bmw-i3-16.png" width="700">](../images/bmw-i3-16.png)
+[![](../images/bmw-i3-16.png){ width="700" }](../images/bmw-i3-16.png)
 
 #### Example wiring diagram
 Below an example wiring diagram
 
-[<img src="../images/bmw-i3-17.png" width="700">](../images/bmw-i3-17.png)
+[![](../images/bmw-i3-17.png){ width="700" }](../images/bmw-i3-17.png)
 
 ##### Stark Box + i3 battery + Fronius Gen24
-<img alt="image" src="../images/bmw-i3-18.png" />
+![image](../images/bmw-i3-18.png)
 
 ##### Stark Box + 2x i3 battery + Fronius Gen24
-<img alt="image" src="../images/bmw-i3-19.png" />
+![image](../images/bmw-i3-19.png)
 
 ##### SMA Sunny Tripower to Liligo and BMW i3
-[<img alt="SMA i3" src="../images/sma-06.png" width="700">](../images/sma-06.png)
+[![SMA i3](../images/sma-06.png){ width="700" }](../images/sma-06.png)
 
 ## Parts list
 * BMW i3 battery
@@ -161,7 +161,7 @@ Capacitors are high voltage, so they need to be inside an IP enclosure to preven
 
 Example of capacitor integrated at point where wire gauge is reduced, inside exclosure:
 
-[<img src="../images/bmw-i3-21.png" width="300">](../images/bmw-i3-21.png)
+[![](../images/bmw-i3-21.png){ width="300" }](../images/bmw-i3-21.png)
 
 ### Note on Balancing :b: 
 The BMW i3 battery needs periodic cell-balancing to be able to operate at full capacity. To start this balancing procedure, charge the battery to 100%, and go to the "More Battery Info" page on the Webserver. There there is a button called "Start balancing". When balancing is started via this page, the battery will power off the wakeup(WUP) pin towards the battery, stop CAN communication, and the battery can then start to balance, just as it would in a car.
@@ -181,8 +181,8 @@ Perform this balancing as often as necessary to keep cell mV delta low. Failure 
 ## Example completed setup
 Fronius Gen24 with 2x BMW i3 batteries in [double battery mode](../40-setup/20-software/Double-Battery.md)
 
-[<img src="../images/bmw-i3-22.png" width="300">](../images/bmw-i3-22.png)
+[![](../images/bmw-i3-22.png){ width="300" }](../images/bmw-i3-22.png)
 
 i3 94Ah with Sofar inverter
 
-[<img src="../images/bmw-i3-23.png" width="300">](../images/bmw-i3-23.png)
+[![](../images/bmw-i3-23.png){ width="300" }](../images/bmw-i3-23.png)

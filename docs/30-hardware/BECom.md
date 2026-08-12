@@ -4,7 +4,7 @@ The BECom hardware is an open source hardware design created specifically for th
 ### Interfaces
 The board has IO for 2x CAN batteries, along with contactor control for each battery. It also features a CAN interface for the inverter, and a Modbus RS485 connector. The inverter comms (CAN and RS485) are electrically isolated
 
-<img alt="image" src="../images/becom-01.png" />
+![image](../images/becom-01.png)
 
 ## Hardware info
 The hardware has more details [on this Github page](https://github.com/rjsc/BECom)
@@ -15,7 +15,7 @@ TODO?
 !!! note "NOTE"
     This has an included Antenna that needs to be mounted for good Wifi performance. Failure to install this will lead to connectivity issues
 
-<img alt="image" src="../images/becom-02.png" />
+![image](../images/becom-02.png)
 
 ## Installing the software
 Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup

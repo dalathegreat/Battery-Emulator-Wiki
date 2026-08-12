@@ -15,13 +15,13 @@ You can download the latest release from [Github Releases](https://github.com/da
 
 After opening the release you want to update to, at the bottom of the page select the .bin file that matches your hardware
 
-<img alt="image" src="../../images/ota-update-03.png" />
+![image](../../images/ota-update-03.png)
 
 ### Performing the OTA update
 * Start by navigating to the web address (Note that IP will be different compared to direct / router connection)
 * At the bottom of the page, click the "Perform OTA update"
 
-<img alt="image" src="../../images/ota-update-04.png" />
+![image](../../images/ota-update-04.png)
 
 * On the ElegantOTA page, select the "Select file" option
 
@@ -38,7 +38,7 @@ After opening the release you want to update to, at the bottom of the page selec
 ## Troubleshooting
 If you see "Upload failed" or some other error code, you can try the following things
 
-<img width="572" height="373" alt="image" src="../../images/ota-update-05.png" />
+![image](../../images/ota-update-05.png){ width="572" height="373" }
 
 - Make sure you are sending the right .bin file for the correct hardware
 - Improve Wifi coverage if signal is weak, remove obstructions if needed

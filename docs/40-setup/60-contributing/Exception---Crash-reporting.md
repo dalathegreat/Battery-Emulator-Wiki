@@ -1,6 +1,6 @@
 ### What is a crash?
 
-<img width="435" height="269" alt="image" src="../../images/exception-crash-reporting-01.png" />
+![image](../../images/exception-crash-reporting-01.png){ width="435" height="269" }
 
 #### :warning: Warning: The board was reset due to an exception or panic. Inform developers!
 

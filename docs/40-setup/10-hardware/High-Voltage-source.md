@@ -26,11 +26,11 @@ Parts needed:
 - Contactor Normally Closed
 - Fuseholder and DC-Fuses 10x38 2A for DC use
 
-<img alt="image" src="../../images/high-voltage-source-08.png" />  
+![image](../../images/high-voltage-source-08.png)  
 
 Example installation:
 
-<img alt="image" src="../../images/high-voltage-source-09.png" />
+![image](../../images/high-voltage-source-09.png)
 
 Jumper settings for the TPS55288EVM-045 board:
 - JP1: ON (device enable)
@@ -89,7 +89,7 @@ This method can also be used with the Lilygo HW if a seperate FET board is used,
 ToDO add link, for now google for: 15A 400W MOS FET Trigger Switch Drive Module PWM Regulator
 
 Wiring diagram:
-<img width="1262" height="709" alt="image" src="../../images/high-voltage-source-10.png" />
+![image](../../images/high-voltage-source-10.png){ width="1262" height="709" }
 
 ## Decoupling inverter from battery during precharge
 During precharge the inverter will see a high voltage on its inputs pins. The inverters we have tested on will use this a trigger to startup. This will put a load on this high voltage while the contactors of the battery are not yet closed. This load will disrupt the precharging sequence and will cause the precharge to fail.
@@ -107,7 +107,7 @@ The connection is added to the schematic above
 
 ## Overvoltage and reverse-polarity protection
 
-<img width="1001" height="292" alt="image" src="../../images/high-voltage-source-11.png" />
+![image](../../images/high-voltage-source-11.png){ width="1001" height="292" }
 
 You can connect three 5KP150A 150V TVS diodes in series to protect against overvoltage (these will clamp the voltage at around 470-480V). Unipolar ones will also conduct like diodes in the forward direction, which will protect against reverse polarity.
 

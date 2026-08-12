@@ -17,15 +17,15 @@ www.emusbms.com
 
 Emus G1 BMS needs to be configured to emulate Deye_hv_can inverter protocol
 
-<img width="580" height="136" alt="image" src="../images/emus-g1-bms-01.png" />
+![image](../images/emus-g1-bms-01.png){ width="580" height="136" }
 
 Set CAN ID base to 0x19B5
 
-<img width="338" height="303" alt="image" src="../images/emus-g1-bms-02.png" />
+![image](../images/emus-g1-bms-02.png){ width="338" height="303" }
 
 Set Battery type to Pylon and baud rate to 250
 
-<img width="538" height="310" alt="image" src="../images/emus-g1-bms-03.png" />
+![image](../images/emus-g1-bms-03.png){ width="538" height="310" }
 
 Battery Emulator will show all needed information and also populate cellmonitor page with individual cell voltages and if they are balancing or not.
 

@@ -8,12 +8,12 @@ The Rivian R1T comes in three different battery sizes. A checkbox means that an 
 !!! warning "WARNING"
     If the battery pack is sourced from a crashed vehicle, the battery could be permanently locked. That means contactors will not turn on, and values will NOT update via CAN. Right now we have no way of unlocking a crashed battery, it requires assistance from Rivian. If the battery is not crashed, the contactors will turn on when the battery gets CAN data from the Battery-Emulator 
 
-<img alt="image" src="../images/rivian-r1t-01.png" />
+![image](../images/rivian-r1t-01.png)
 
 ## Software configuration
 For this battery type, use the option called "Rivian R1T large 135kWh battery" under the "Battery Protocol" setting
 
-<img alt="image" src="../images/rivian-r1t-02.png" />
+![image](../images/rivian-r1t-02.png)
 
 ## Pinout Low voltage
 
@@ -31,20 +31,20 @@ The battery LV connector part number is **PT00051975** , and can be sourced via 
 - Light blue wire DO NOT CONNECT TO ANYTHING
 - White whire DO NOT CONNECT TO ANYTHING
 
-<img alt="image" src="../images/rivian-r1t-03.png" />
+![image](../images/rivian-r1t-03.png)
 
 ## High voltage connectons
 The battery has a large amount of connectors available for tapping into the high voltage system. Some connections only have 3-4mm² wiring (OBC, EAC, DC/DC), others 95mm² internal wiring (FDU, DCFC). Due to this, it is recommended to use the largest connector if possible
 
 One alternative for **lower power connections**: This connector plugs into for instance the DC/DC port It can be sourced via Ebay, Part number **PT00001586-K**, wiring attached to it is fairly long.
 
-<img alt="image" src="../images/rivian-r1t-04.png" />
+![image](../images/rivian-r1t-04.png)
 
 Another alternative for **high power connections**: This connector plugs into the DCFC port and handles 500A peak. It can be found on Ebay by searching for "Rivian Charge port door cable"
 
-<img alt="image" src="../images/rivian-r1t-05.png" />
+![image](../images/rivian-r1t-05.png)
 
-<img alt="image" src="../images/rivian-r1t-06.png" />
+![image](../images/rivian-r1t-06.png)
 
 !!! note "NOTE"
     Low power connection handles max 30A, High power connection handles max 500A. Choose wisely according to your inverter need!

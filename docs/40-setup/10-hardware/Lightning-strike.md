@@ -74,5 +74,5 @@ Below are some products you can use to increase the resilience of your CAN/RS485
 
 Example of CAN isolator in use, and PE connections between elements:
 
-<img width="1350" height="787" alt="image" src="../../images/lightning-strike-02.png" />
+![image](../../images/lightning-strike-02.png){ width="1350" height="787" }
 
