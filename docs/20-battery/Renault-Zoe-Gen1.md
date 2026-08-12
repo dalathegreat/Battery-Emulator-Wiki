@@ -1,4 +1,4 @@
-# FAQ: Renault Zoe Battery Gen1
+# Renault Zoe Gen1
 Zoe Generation 1 batteries have perfect support in the Battery-Emulator
 
 ## Variants of the Zoe
