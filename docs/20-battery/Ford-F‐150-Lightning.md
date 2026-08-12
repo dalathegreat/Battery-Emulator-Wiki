@@ -5,7 +5,7 @@ The model years 2022-2025 came with the following batteries
 
 There are stickers on the battery that informs gross capacity
 
-<img width="1018" height="303" alt="image" src="../images/ford-f-150-lightning-01.png" />
+![image](../images/ford-f-150-lightning-01.png){ width="1018" height="303" }
 
 ### Physical Dimensions
 
@@ -28,18 +28,18 @@ Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
 
 ## Wiring, Low voltage connector
 
-<img alt="image" src="../images/ford-f-150-lightning-02.png" />
+![image](../images/ford-f-150-lightning-02.png)
 
 A replacement LV connector can be purchased from AliExpress. 
 https://www.aliexpress.com/item/1005008121256506.html
 
 Detailed LV connector C144 pin description
 
-<img width="450" alt="image" src="../images/ford-f-150-lightning-03.png" />
+![image](../images/ford-f-150-lightning-03.png){ width="450" }
 
-<img width="450" alt="image" src="../images/ford-f-150-lightning-04.png" />
+![image](../images/ford-f-150-lightning-04.png){ width="450" }
 
-[<img width="900" alt="MachE-2 SMA inverter setup" src="../images/ford-f-150-lightning-05.png" />](../images/ford-f-150-lightning-05.png)
+[![MachE-2 SMA inverter setup](../images/ford-f-150-lightning-05.png){ width="900" }](../images/ford-f-150-lightning-05.png)
 
 For communication only:
 Connect the following pins:

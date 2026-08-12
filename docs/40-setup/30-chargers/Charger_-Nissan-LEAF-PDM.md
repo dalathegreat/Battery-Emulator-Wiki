@@ -27,15 +27,15 @@ The PDM has a 36pin Yazaki connector that handles all low voltage signals.
 - Pin 30 - Connect to green wire on the Type1 port (For type 2 connect to the white wire - CP)
 
 here the complete pinout
-<img src="../../images/charger-nissan-leaf-pdm-14.png" />
+![](../../images/charger-nissan-leaf-pdm-14.png)
 
 ### 2014 PDM Pinout
 
-<img src="../../images/charger-nissan-leaf-pdm-15.png" />
+![](../../images/charger-nissan-leaf-pdm-15.png)
 
 ### 2013 PDM Pinout
 
-<img src="../../images/charger-nissan-leaf-pdm-16.png" />
+![](../../images/charger-nissan-leaf-pdm-16.png)
 
 ## Type 2 AC wiring
 ![type_2](../../images/charger-nissan-leaf-pdm-05.jpg) ![type2_socket](../../images/charger-nissan-leaf-pdm-06.jpg) ![type2_wires](../../images/charger-nissan-leaf-pdm-07.jpg)

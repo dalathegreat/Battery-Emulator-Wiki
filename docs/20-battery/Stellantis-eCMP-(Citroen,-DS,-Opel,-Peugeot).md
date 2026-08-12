@@ -18,7 +18,7 @@ The same Stellantis eCMP platform integration can be used for **some** Toyota/Ci
 #### V1 vs V2 VANs
 Only V1 VAN packs work, V2 does not. You can spot the V1 by looking at the small HV connector which has 4 screws. On the V2, this connector is larger and has two screws.
 
-<img alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-15.png" />
+![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-15.png)
 
 - Toyota Proace / Proace Verso Electric ✔️
 - Citroën e-Jumpy / e-SpaceTourer ✔️
@@ -75,16 +75,16 @@ For this battery type, use the option called "Stellantis ECMP battery" under the
 
 Example of jumpered HVIL on **unused** HV connector on the rear end of the battery:
 
-<img width="50%" alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-16.png" />
+![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-16.png){ width="50%" }
 
 Polarity on cable side for the VAN Pack:
 
-<img alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-17.png" />
+![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-17.png)
 
 !!! warning "CAUTION"
     **For the 50kWh CAR Packs this polarity is REVERSED!!!**
 
-    <img width="50%" alt="image" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-18.png" />
+    ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-18.png){ width="50%" }
 
 <a name="HVIL"></a>
 !!! tip "TIP"
@@ -138,7 +138,7 @@ Did your battery not come with all the required cables/plugs? No worries, here a
 
 LFP low voltage connector in stock on Mouser incase you are not able to get the harness with connector when you buy the battery. The connector has the pin numbering stamped on it.
 
-<img alt="image" src="../images/stellantis-cmp-smart-car-platform-07.png" />
+![image](../images/stellantis-cmp-smart-car-platform-07.png)
 
 - Connector: 27ZRO-B-1A
 - Pins 0.3 to 0.5 mm$`^2`$: SZRO-A021T-M0.64 
@@ -170,20 +170,20 @@ On this PCB inside the battery, place 2x Y capacitors 10nF between:
 
 In a (75kwh) Van pack it looks a bit different, there doesn't seem to be a BMS ground in the contactor enclosure. But! You can run a wire from the BMS ground through the pack (30cm distance) to meet up in the contactor box. The pcb in the contactor box also looks a bit different. The top yellow wire is B-, the bottom pink wire is B+:
 
-<img alt="WhatsApp Image 2026-04-18 at 22 06 23 (3)" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-20.jpeg" />
+![WhatsApp Image 2026-04-18 at 22 06 23 (3)](../images/stellantis-ecmp-citroen-ds-opel-peugeot-20.jpeg)
  
 In the BMS enclosure, the 2 bottom blue wires of the top plug are BMS ground: 
 
-<img alt="WhatsApp Image 2026-04-18 at 22 06 23 (2)" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-21.jpeg" />
+![WhatsApp Image 2026-04-18 at 22 06 23 (2)](../images/stellantis-ecmp-citroen-ds-opel-peugeot-21.jpeg)
  
 And an overview of the components in a Van Pack: 
 
-<img alt="WhatsApp Image 2026-04-18 at 22 06 23" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-22.jpeg" />
+![WhatsApp Image 2026-04-18 at 22 06 23](../images/stellantis-ecmp-citroen-ds-opel-peugeot-22.jpeg)
 (open the image in a new tab to see the details)
 <br><br>
 End result: 
 
-<img alt="WhatsApp Image 2026-04-18 at 22 06 23 (4)" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-23.jpeg" />
+![WhatsApp Image 2026-04-18 at 22 06 23 (4)](../images/stellantis-ecmp-citroen-ds-opel-peugeot-23.jpeg)
 <br><br>
 Alternatively, the same capacitors can be installed on the OUTSIDE of the battery, for a much safer install, not requiring dismantling the contactor box
 
@@ -223,6 +223,6 @@ For T2CAN you can get a MCP2518FD and set it up as classic CAN. The 2 onboard CA
 Currently you cant clear the 2nd battery error codes from BE, only the 1st battery.
 
 Schematics below. As always - take extra care when working with HV batteries
-<img alt="double-ecmp-battery-emulator" src="../images/stellantis-ecmp-citroen-ds-opel-peugeot-24.jpg" />
+![double-ecmp-battery-emulator](../images/stellantis-ecmp-citroen-ds-opel-peugeot-24.jpg)
 
 NOTE: When  

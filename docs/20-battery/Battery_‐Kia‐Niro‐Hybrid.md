@@ -4,7 +4,7 @@ This page contains info on how to re-use the Kia Niro Hybrid batteries (Also app
 ## Software configuration
 For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Battery Protocol" setting
 
-<img width="588" height="72" alt="image" src="../images/battery-kia-niro-hybrid-06.png" />
+![image](../images/battery-kia-niro-hybrid-06.png){ width="588" height="72" }
 
 ## Specifications
 There are two variants of the hybrid battery, HEV and PHEV. Currently only HEV batteries have been tested, but PHEV might also work.

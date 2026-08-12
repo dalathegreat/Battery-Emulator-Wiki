@@ -4,7 +4,7 @@ The LilyGo T-CAN485 is what the Battery-Emulator originally started development 
 !!! tip "TIP"
     Only get this board if you need Modbus/RS485. For CAN components, the new [T-2CAN](LilyGo-T‐2CAN.md) board is easier for beginners.
 
-<img alt="image" src="../images/lilygo-t-can485-02.png" />
+![image](../images/lilygo-t-can485-02.png)
 
 !!! warning "WARNING"
     This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
@@ -24,12 +24,12 @@ The board comes with 1x CAN channel, and 1x RS485 channel. Some integrations nee
 
 Example, LilyGo + MCP2515 board
 
-<img alt="image" src="../images/lilygo-t-can485-03.png" />
+![image](../images/lilygo-t-can485-03.png)
 
 ### Expanding the board with more IO pins
 The SD card slot can be used to gain more pins. This can be useful on setups that need lots of inputs/outputs, for instance add-on CAN + contactor control and/or enable line inputs. To use the SD card slot, you will need a "SD Card breakout board"
 
-<img alt="image" src="../images/lilygo-t-can485-04.png" />
+![image](../images/lilygo-t-can485-04.png)
 
 By installing one of these breakout boards, you can then remap the src/devboard/hal/hw_lilygo.h file to suit your newfound pins
 
@@ -40,12 +40,12 @@ By installing one of these breakout boards, you can then remap the src/devboard/
 
 Completed product:
 
-<img alt="image" src="../images/lilygo-t-can485-05.png" />
+![image](../images/lilygo-t-can485-05.png)
 
 ### Expanding the board further
 To make the board even more professional (DIN mounting solution with CANFD and contactor drivers built in), you can get the [LilyGo T‐CAN485 & CAN‐FD Motherboard](LilyGo-T‐CAN485-and-CAN‐FD-Motherboard.md)
 
-<img alt="image" src="../images/lilygo-t-can485-06.png" />
+![image](../images/lilygo-t-can485-06.png)
 
 ## Enhancements notes, things to know
 The chip has the tendacy to run quite hot. Some people book good results by adding a RAM or Raspberry Pi heatsinks on the chip, reducint the heat.

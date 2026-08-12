@@ -41,7 +41,7 @@ Use **"BYD Battery-Box Premium HVS over CAN Bus"** for inverters with BYD suppor
 
 Remember to enable "Long inverter CAN timeout" to avoid false positive CAN_INVERTER_MISSING events. The Sungrow is very slow to communicate via CAN, and we incorrectly detect it as missing without this fix
 
-<img width="572" height="215" alt="image" src="../images/sungrow-03.png" />
+![image](../images/sungrow-03.png){ width="572" height="215" }
 
 ### Sungrow SBRXXX Protocol
 
@@ -118,10 +118,10 @@ To limit grid export (feed-in), you need a Sungrow Smart Meter (e.g., DTSU666 in
 Configure via Winet-S local web interface, iSolarCloud app, or isolarcloud.com:
 
 **Winet-S local web interface:**
-<img width="1717" alt="Winet-S energy management parameters" src="../images/sungrow-04.png">
+![Winet-S energy management parameters](../images/sungrow-04.png){ width="1717" }
 
 **iSolarCloud.com:**
-<img width="1724" alt="iSolarCloud energy management parameters" src="../images/sungrow-05.png">
+![iSolarCloud energy management parameters](../images/sungrow-05.png){ width="1724" }
 
 !!! note "NOTE"
     iSolarCloud takes 10-15 minutes to update inverter settings.
@@ -167,7 +167,7 @@ I remembered reading something in an Australian Facebook group about how certain
 So I checked it — and sure enough, that was the issue!
 Once I corrected the schema setting, everything started working perfectly.So now it’s finally up and running — YES! 
 
-<img alt="image" src="../images/sungrow-06.png" />
+![image](../images/sungrow-06.png)
 
 ### Firmware Compatibility
 

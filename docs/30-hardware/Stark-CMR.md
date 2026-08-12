@@ -1,7 +1,7 @@
 ### What is this?
 The Stark CMR (SCMR) is the only commercially available and CE certified product specifically designed for the Battery Emulator project. It aims to make installs clean, easy, expandable and electrician friendly.<br>Get the SCMR and other related hardware via the official [web shop](https://shop.redispo.se/).
 
-<img src="../images/stark-cmr-02.jpg" width="400px" alt="SCMR02"><img src="../images/stark-cmr-03.jpg" width="400px" alt="SCMR01"><br>
+![SCMR02](../images/stark-cmr-02.jpg){ width="400px" }![SCMR01](../images/stark-cmr-03.jpg){ width="400px" }<br>
 
 ## Overview of features
 ### Power
@@ -61,7 +61,7 @@ When updating this board [OTA](../40-setup/20-software/OTA-Update.md), be sure t
 ## Interfaces
 The board comes with 2 CAN channels, the second one of them being capable of CAN-FD. The board also has an RS485 channel, which can be used for Modbus inverters or RS485 batteries.
 
-<img width="377" height="243" alt="image" src="../images/stark-cmr-04.png" />
+![image](../images/stark-cmr-04.png){ width="377" height="243" }
 
 The interfaces correspond to the following options in the Battery-Emulator software
 
@@ -88,24 +88,24 @@ For integrations that need double/triple battery support via CAN, or an addition
 - 5V to 5V
 - GND to GND
 
-<img width="458" height="291" alt="image" src="../images/stark-cmr-05.png" />
+![image](../images/stark-cmr-05.png){ width="458" height="291" }
 
 After connecting the board, you can enable the add-on CAN by configuring it as **MCP2518FD (GPIO add-on)** to component
 
 Example, Stark CMR used to control 3x separate Nissan LEAF batteries with one of them being on an add-on MCP2518FD board
 
-<img width="413" height="470" alt="image" src="../images/stark-cmr-06.png" />
+![image](../images/stark-cmr-06.png){ width="413" height="470" }
 
 ## Example connection diagram
 This is an example wiring diagram for connecting the Stark CRM, a Nissan Leaf battery pack, a Fronius inverter and an E-stop button (NC). This diagram shows _high side_ switching contactors which is found in most battery packs. I.e. +12V is "fed into" the battery on the dedicated pins to close the contactors.
 
-<img alt="68747470733a2f2f7265646973706f73652e73652f696d6167652f636174616c6f672f73636d725f776972696e675f6c6561665f66726f2e706e67" src="../images/stark-cmr-07.png" />
+![68747470733a2f2f7265646973706f73652e73652f696d6167652f636174616c6f672f73636d725f776972696e675f6c6561665f66726f2e706e67](../images/stark-cmr-07.png)
 
 _Notes: All connections marked GND on the SCMR are joined via the GND plane of the PCB. 5V is the suggested voltage level for the E-stop in this case but it will also work using 12V or 3.3V._
 
 The configuration for the above example would look like this:
 
-<img width="534" height="887" alt="491962914-521d84d1-ed0a-47f9-ba9c-b26f861f1497" src="../images/stark-cmr-08.png" />
+![491962914-521d84d1-ed0a-47f9-ba9c-b26f861f1497](../images/stark-cmr-08.png){ width="534" height="887" }
 
 The next wiring diagram shows an example for wiring a Renault Zoe battery. This differs from the previous example as the contactors use _low side_ switching, i.e. the contactors will be closed when the dedicated pins from the contactors on the battery are "shorted to ground". 
 ![image](../images/stark-cmr-01.png)

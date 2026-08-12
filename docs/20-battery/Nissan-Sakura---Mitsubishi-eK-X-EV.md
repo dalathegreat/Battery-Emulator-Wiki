@@ -10,7 +10,7 @@ This platform has a 20kWh batteryy
 | Pack Size (L × W × H) | <!-- e.g. 2400 × 1500 × 150 mm --> |
 | Weight | <!-- e.g. 540 kg --> |
 
-<img alt="image" src="../images/nissan-sakura-mitsubishi-ek-x-ev-01.png" />
+![image](../images/nissan-sakura-mitsubishi-ek-x-ev-01.png)
 
 ### Special considerations
 - Requires external GPIO contactor control
@@ -37,7 +37,7 @@ The Low Voltage connector is the same B36 connector used on the Nissan LEAF
 
 ## Wiring, High voltage connector
 
-<img alt="image" src="../images/nissan-sakura-mitsubishi-ek-x-ev-02.png" />
+![image](../images/nissan-sakura-mitsubishi-ek-x-ev-02.png)
 
 | Parameter | Value |
 |----------|-------|

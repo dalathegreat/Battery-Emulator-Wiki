@@ -15,7 +15,7 @@ The Ariya battery uses the same 36-pin Yazaki connector as the Nissan LEAF, but 
 
 ![bild](../images/nissan-ariya-02.png)
 
-<img alt="image" src="../images/nissan-ariya-04.png" />
+![image](../images/nissan-ariya-04.png)
 
 * Pin 34 CAN-H - Connect to LilyGo CAN-H
 * Pin 35 CAN-L - Connect to LilyGo CAN-L

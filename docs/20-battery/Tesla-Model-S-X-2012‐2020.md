@@ -3,7 +3,7 @@ The earlier Tesla batteries use a radically different CAN structure compared to 
 
 When using a Legacy battery, make sure to select the "Tesla Model S/X 2012-2020" option
 
-<img width="517" height="118" alt="image" src="../images/tesla-model-s-x-2012-2020-01.png" />
+![image](../images/tesla-model-s-x-2012-2020-01.png){ width="517" height="118" }
 
 ## High voltage connectors
 
@@ -14,17 +14,17 @@ The Tesla Model S/X is equipped with an HV Rapid Mate connector. When using the 
 The plug also features two pins; the smaller one is responsible for the HVIL continuity. The bigger one should be connected to battery frame. 
 From the battery side, the pinout is as follows:
 
-<img width="298" height="169" alt="images" src="../images/tesla-model-s-x-2012-2020-02.png" />
+![images](../images/tesla-model-s-x-2012-2020-02.png){ width="298" height="169" }
 
 ## Low voltage connectors
 
 Connector X035:
 
-<img width="451" height="347" alt="image" src="../images/tesla-model-s-x-2012-2020-03.png" />
+![image](../images/tesla-model-s-x-2012-2020-03.png){ width="451" height="347" }
 
 Connector X036:
 
-<img width="465" height="360" alt="image" src="../images/tesla-model-s-x-2012-2020-04.png" />
+![image](../images/tesla-model-s-x-2012-2020-04.png){ width="465" height="360" }
 
 Pinout X035:
 * 2 + 5: +12 V (10 A fuse)
@@ -60,4 +60,4 @@ The best way to balance the Model 3 pack is to set charge limit to 90% or higher
 ## Examples
 The first testing of a 85kWh battery with a Deye inverter
 
-<img src="../images/tesla-model-s-x-2012-2020-05.png" />
+![](../images/tesla-model-s-x-2012-2020-05.png)

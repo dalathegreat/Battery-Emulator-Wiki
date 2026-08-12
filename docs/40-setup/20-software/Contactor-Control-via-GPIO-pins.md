@@ -20,7 +20,7 @@ For instance, 3x ASR-10DD can be used. ASR-M02DD is a din mounted version. If yo
 
 To enable the feature in the software, Enable the "Contactor Control via GPIO" option under Hardware Config, Save and reboot
 
-<img alt="image" src="../../images/contactor-control-via-gpio-pins-04.png" />
+![image](../../images/contactor-control-via-gpio-pins-04.png)
 
 By default a 100 millisecond long precharge is performed. This value should be set to account for the resistance and capacitance of the inverter you use. 
 
@@ -61,7 +61,7 @@ Optional: It is also possible to reduce power consumption of keeping the big con
 
 To use the PWM function, enable the "PWM contactor control" option
 
-<img alt="image" src="../../images/contactor-control-via-gpio-pins-05.png" />
+![image](../../images/contactor-control-via-gpio-pins-05.png)
 
 By default we use a Hold value of 250, which is suitable for Nissan LEAF contactors. Tweak this value to suit your contactors
 

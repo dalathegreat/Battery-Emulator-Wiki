@@ -20,14 +20,14 @@ Note, if you use Sofar CAN protocol instead, the inverter will need to be on a d
 ## Which protocol to use
 For this inverter type, use the option called "Sofar BMS (Extended) via CAN" under the "Inverter Protocol" setting
 
-<img alt="image" src="../images/sofar-03.png" />
+![image](../images/sofar-03.png)
 
 !!! info "IMPORTANT"
     If you try to use Pylon: The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed.
 
 Note also that Sofar inverters need to have some special flags set in the Pylon. Send Group: 1 , Inverter Byteorder :heavy_check_mark: and 30k offset :heavy_check_mark:
 
-<img alt="image" src="../images/sofar-04.png" />
+![image](../images/sofar-04.png)
 
 Due to this, it is better to use Sofar CAN instead! But Pylon is viable if you want the inverter/battery to be able to share the CAN channel
 
@@ -36,7 +36,7 @@ Connect HV cables to battery terminals using OEM connectors. Highly advised to a
 
 !!! warning "CAUTION"
     Standard Staubli connectors don't fit SOFAR BAT ports, make sure to acquire proprietary SOFAR connectors
-    <img alt="image" src="../images/sofar-05.png" />
+    ![image](../images/sofar-05.png)
 
 ![bild](../images/sofar-01.png)
 
@@ -52,7 +52,7 @@ In "Advanced Settings/Battery Parameters" choose `Pylontech` as battery type and
 ### Sofar CAN
 If you use Sofar CAN, select the "General" option
 
-<img alt="image" src="../images/sofar-06.png" />
+![image](../images/sofar-06.png)
 
 ## Sofar CAN
 This inverter can also use the dedicated "Sofar BMS (Extended) via CAN" protocol. The bonus of this protocol, is that it supports multiple batteries, using separate IDs for each battery. 
@@ -64,9 +64,9 @@ On the battery emulator side, have one battery configured as 0, and the next 1, 
 
 ( remenber the inverter itself has also an address on the CAN bus , default 01. )
 
-<img alt="image" src="../images/sofar-03.png" />
+![image](../images/sofar-03.png)
 
-<img width="933" height="697" alt="image" src="../images/sofar-08.png" />
+![image](../images/sofar-08.png){ width="933" height="697" }
 
 See the attached .zip file for more info on this protocol
 [SofarDocuments.zip](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/files/13260240/SofarDocuments.zip)

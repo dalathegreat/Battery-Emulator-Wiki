@@ -1,6 +1,6 @@
 ## Software setup
 
-<img width="512" height="156" alt="image" src="../images/think-city-05.png" />
+![image](../images/think-city-05.png){ width="512" height="156" }
 
 Set the software to use the Think city battery, and either use Molten salt or NCM depending on what battery you have
 

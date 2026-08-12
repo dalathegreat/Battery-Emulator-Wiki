@@ -31,7 +31,7 @@ Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
 
 Low Voltage connectors:
 
-<img width="810" height="621" alt="image" src="../images/smart-eq-fortwo-forfour-01.png" />
+![image](../images/smart-eq-fortwo-forfour-01.png){ width="810" height="621" }
 
 Diagram:
 - Yellow-Green: CAN-H and CAN-L

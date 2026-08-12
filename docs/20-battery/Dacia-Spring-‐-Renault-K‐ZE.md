@@ -17,7 +17,7 @@ Some 2024+ batteries seem to not respond to CAN. Investigation ongoing!
 
 2024+ can be identified with an additional "Pressure Sensor" near the HV/LV connector
 
-<img alt="image" src="../images/dacia-spring-renault-k-ze-21.png" />
+![image](../images/dacia-spring-renault-k-ze-21.png)
 
 ### General info
 
@@ -44,9 +44,9 @@ See [Fronius Gen24 settings](../images/dacia-spring-renault-k-ze-25.jpg)
 ## Battery module - BMS pin diagram. 
 BMS reads from each module the cells voltage + one GND and 2 temp sensors (one for each module). should be ~17Kohm range
 
-<img alt="image" src="../images/dacia-spring-renault-k-ze-22.png" />
+![image](../images/dacia-spring-renault-k-ze-22.png)
 
-<img alt="image" src="../images/dacia-spring-renault-k-ze-23.png" />
+![image](../images/dacia-spring-renault-k-ze-23.png)
 
 ## Wiring diagram, Low Voltage
 
@@ -72,7 +72,7 @@ Connect the battery to the Battery-Emulator according to this diagram:
 
 ![conexiuni](../images/dacia-spring-renault-k-ze-06.jpg)
 
-<img alt="schema_conectare" src="../images/dacia-spring-renault-k-ze-24.png" />
+![schema_conectare](../images/dacia-spring-renault-k-ze-24.png)
 
 12V power info: The preacharge+contactors consume 1.5A. The BMS itself uses 0.1A
 
