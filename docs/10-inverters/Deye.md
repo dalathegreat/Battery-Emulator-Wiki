@@ -19,7 +19,7 @@ Deye only listens to two things when it comes to stopping charge.
 That is the only time Deye inverters stop charging/discharging. Due to this we recommend reaching out to Deye and demand improved firmware on the Inverter side. It is simply not fully safe to operate a Deye inverter
 
 Be sure to enable the "Deye avoid over/undercharge fix: " option in the meantime
-<img width="660" height="210" alt="image" src="https://github.com/user-attachments/assets/bdb2e446-c059-4685-ad2a-d0d51de7238f" />
+<img width="660" height="210" alt="image" src="../images/deye-06.png" />
 
 This will force SOC% to either fully charged (100%), fully discharged (0%) incase we need to stop. It looks odd on the inverter side, but it is the only way we can stop Deye inverters at the moment. You have been warned about Deye's lackluster software!
 
@@ -37,7 +37,7 @@ When using the smaller <25k inverters with two batteries, you will need to join 
 
 Picture of remotely disabled unit in the US:
 
-![image](https://github.com/user-attachments/assets/8f350790-5f0e-4a90-bc0f-7f1fc40a01b8)
+![image](../images/deye-01.png)
 
 ## Communication wiring
 The Deye inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki#can-wiring-troubleshooting)
@@ -49,7 +49,7 @@ The Deye inverter works via CAN. The LilyGo board can have both a CAN battery an
 ## Which protocol to use
 For this inverter type, the recommended option is the "BYD Battery-Box Premium HVS over CAN Bus" m which is found under the "Inverter Protocol" setting. Also be sure to enable the "Deye avoid over/undercharge fix:" checkbox, otherwise the Deye inverter can over/undercharge the battery.
 
-<img alt="image" src="https://github.com/user-attachments/assets/b8c597c4-6e61-402a-945e-87dd77740155" />
+<img alt="image" src="../images/deye-07.png" />
 
 > [!WARNING]
 > Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
@@ -58,31 +58,31 @@ For this inverter type, the recommended option is the "BYD Battery-Box Premium H
 The Deye inverters can rely on charge voltage instead of only SOC%. Battery charge voltage defaults to the value set in the integration. This is the theoretical max the battery can take. This becomes the charge target for Deye. To make things safer, you can enable "Manual Charge Voltage Limits", and set the max voltage to your liking. Note that this will reduce the capacity you can extract from the battery, and on integrations that rely on getting fully charged in order to balance/calibrate, you will also disrupt it.
 . To enable this feature, go to the Settings page on BE, and enable manual voltage control and set charge voltage max and min discharge voltage.
 
-<img width="410" height="202" alt="image" src="https://github.com/user-attachments/assets/30f75bf4-ed88-4435-a9f1-561dfe94d7e2" />
+<img width="410" height="202" alt="image" src="../images/deye-08.png" />
 
 #### Note on Pylon
 Not recommended, but it is also possible to use the Pylon HV protocol. For this to work, 30k offset and inverterd byteorder is required. Set manufacturer to "Deye". Most users should go for the BYD protocol instead, since it is simpler to setup.
 
-<img width="795" height="472" alt="image" src="https://github.com/user-attachments/assets/32725756-7834-4ef9-908e-4a050692e93c" />
+<img width="795" height="472" alt="image" src="../images/deye-09.png" />
 
 ## Connecting the low voltage wiring
 
 * Use the BMS1 (or BMS2) port on the Deye
     * Pin 4 CAN-H , and Pin 5 CAN-L (See Deye manual for RJ45 pinout)
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/25502f2c-4df9-4b06-b011-456dd22a63bc)
+![bild](../images/deye-02.png)
 
 Set the Deye to Lithium Mode, 01
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/99f0c18d-4c8b-4e25-9c3a-b7958bf6d3c8)
+![bild](../images/deye-03.png)
 
 If you connected everything correctly, you will see data on the display:
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/a1f7d4a4-dd8d-4107-8e03-bfd86afd8d68)
+![bild](../images/deye-04.png)
 
 
 ## Installation examples
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/8db4bdcc-679a-4cc8-94b7-669189b3a414)
+![bild](../images/deye-05.png)
 
 ## Special notes on usage with BMW i3
 

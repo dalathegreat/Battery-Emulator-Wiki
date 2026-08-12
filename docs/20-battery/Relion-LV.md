@@ -9,6 +9,6 @@ The Relion LV protocol supports 48V batteries.
 
 For this battery type, use the option called "Relion LV protocol via 250kbps CAN" under the "Battery Protocol" setting
 
-<img width="593" height="106" alt="image" src="https://github.com/user-attachments/assets/7d8f7cbb-b0c8-41df-8cb8-8184ece07ad8" />
+<img width="593" height="106" alt="image" src="../images/relion-lv-01.png" />
 
 Note, the 250kbps mode only works on **NATIVE CAN** interfaces

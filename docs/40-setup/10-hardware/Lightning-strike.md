@@ -5,11 +5,12 @@
 
 ## How Lightning Strikes Damage Systems
 
-Even lightning strikes that occur a kilometer away can produce electromagnetic surges or ground potential rises that affect electrical and electronic systems. These indirect effects can cause significant damage, particularly to communication interfaces and sensitive electronic components.
+Even lightning strikes that occur a kilometer away can produce electromagnetic surges or ground potential rises of tens of thousands of Volts for very short times, that affect electrical and electronic systems. These indirect effects can cause significant damage, particularly to communication interfaces and sensitive electronic components.
 
 * **CAN Transceivers:** The transceiver chips that handle communication on the CAN bus are especially vulnerable to surge damage, which can result in communication errors or permanent failure. Inverters usually have rugged designs, but automotive BMS were never intended to be tied to the ground this way, so similar protection is often lacking.
-* **Signal Wires:** Long runs of signal cables can act as antennas, picking up electromagnetic pulses (EMPs) from nearby lightning strikes, which may induce damaging voltages into the system.
 * **Modbus Inputs:** Just like CAN transceivers, Modbus communication ports can take damage from surge voltages, leading to miscommunication or failure in the system's data exchange.
+* **Signal Wires:** Long runs of signal cables can act as antennas, picking up electromagnetic pulses (EMPs) from nearby lightning strikes, which may induce damaging voltages into the system.
+* **Separate PE connections:** Earth points can quickly come to different potentials during thunderstorms. When lightning hits the ground nearby, if PE connection is not common, the interconnected equipment may see tens of thousands of Volts between their grounds for a moment, just enough to instantly damage the components.
 
 ## How to troubleshoot a damaged system
 
@@ -40,7 +41,7 @@ CAN transceivers are often the first to fail due to surges caused by lightning. 
 If you suspect damage, you may need to replace the transceiver ICs or even the entire BMS.
 
 Below is an example of a damaged CAN transceiver, caused by direct lightning strike to equipment.
-![image](https://github.com/user-attachments/assets/12b9704a-7df3-4e11-bd24-60d91680325c)
+![image](../../images/lightning-strike-01.png)
 
 
 3. Check Modbus Communication Ports
@@ -59,7 +60,7 @@ Bad protective earth grounding or improper surge protection increases the vulner
 While it’s impossible to completely eliminate the risk of lightning damage, you can take steps to protect your system from electrical surges:
 
 1. Disconnect During Storms: When thunderstorms are imminent, power down the solar inverter, battery, and unplug communication wires.
-2. Proper PE Grounding: Ensure that all components are properly grounded, and that there is a solid ground connection to divert surges safely away from sensitive equipment. Both Inverter, Battery and communication wire shield should have a good connection to PE
+2. Proper PE Grounding: Ensure that all components are properly grounded, and that there is a solid, **common** PE (earth) connection to divert surges safely away from sensitive equipment. Both Inverter, Battery and communication wire shield should have a good connection to PE. If there's a big distance between the elements of the installation, you can use local PE rods, but you also have to connect them together with strong wire to ensure that PE potential differences cannot develop between them when lightning of a thunderstorm hits the ground nearby.
 3. Opto-coupler circuits. You can fit CAN opto couplers to the system to get an air-gap between the components. If you have components you have used successfully for this, feel free to add info to this wiki!
 
 ### Suggested hardware
@@ -72,7 +73,8 @@ Below are some products you can use to increase the resilience of your CAN/RS485
 | PHOENIX CONTACT CAN Repeater IXXAT |  [Ebay](https://www.ebay.co.uk/sch/i.html?_from=R40&_trksid=p2332490.m570.l1313&_nkw=PHOENIX+CONTACT+CAN+Repeater+IXXAT&_sacat=0)   |
 | Phoenix contact  PSI-REP-DNET CAN - Repeater | [Datasheet](https://www.phoenixcontact.com/en-pc/products/repeater-psi-rep-dnet-can-2313423)
 
-Example CAN isolator in use:
+Example of CAN isolator in use, and PE connections between elements:
 
-<img alt="image" src="https://github.com/user-attachments/assets/803da193-8c8a-49a8-b9ca-38cadd919b1d" />
+<img width="1350" height="787" alt="image" src="../../images/lightning-strike-02.png" />
+
 

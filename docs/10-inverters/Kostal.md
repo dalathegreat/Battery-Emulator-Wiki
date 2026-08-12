@@ -18,12 +18,12 @@ A checkmark (✅) indicates that an user has reported back successfully using th
 
 Note that for some models the battery feature is optional, and needs to be activated via an activation code (or "PLENTICOIN") that needs to be purchased first.  This code must be entered either via the onscreen menu or the web interface. On older firmware versions this was possible with the regular user login, on newer firmware versions this requires a service code. The same applies for the battery configuration screen. More details: https://www.kostal-solar-electric.com/Guideline_PLENTICORE-BYD/
 
-![image](https://github.com/user-attachments/assets/ac0a8dfe-8b48-4c6c-aded-c154839fe218)
+![image](../images/kostal-01.png)
 
 ## Which protocol to use
 For this inverter type, use the option called "BYD battery via Kostal RS485" under the "Inverter Protocol" setting. Also set the "Inverter Interface" to the "RS485" option.
 
-<img width="488" height="66" alt="image" src="https://github.com/user-attachments/assets/7553fd7d-5445-4114-9370-70e54dc6f860" />
+<img width="488" height="66" alt="image" src="../images/kostal-02.png" />
 
 ## Communication wiring
 
@@ -57,7 +57,7 @@ It will just print whatever bytes are seen on the RS485 line to the USB serial.
 
 In terms of wiring, connect A/B/GND accordingly between inverter and LilyGo.  Power the LilyGo via USB-C (connect to a Laptop) and observe the serial monitor.
 
-<img width="1220" alt="Screenshot 2025-02-21 at 23 33 04" src="https://github.com/user-attachments/assets/e52eb47b-f136-469d-80e9-ba7d44091b44" />
-<img width="1223" alt="Screenshot 2025-02-21 at 23 33 23" src="https://github.com/user-attachments/assets/22efea20-3cdb-4603-924e-2c23ed21d4a3" />
-<img width="1216" alt="Screenshot 2025-02-21 at 23 33 16" src="https://github.com/user-attachments/assets/b8d1d0be-17ff-4b8b-8404-076c43a5590e" />
+<img width="1220" alt="Screenshot 2025-02-21 at 23 33 04" src="../images/kostal-03.png" />
+<img width="1223" alt="Screenshot 2025-02-21 at 23 33 23" src="../images/kostal-04.png" />
+<img width="1216" alt="Screenshot 2025-02-21 at 23 33 16" src="../images/kostal-05.png" />
 

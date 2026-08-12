@@ -13,7 +13,9 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 | :--------: | :---------: | :---------: | :----------: | :----------: |
 | LilyGo T-CAN485 |  [Wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%90CAN485)   | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐
 | Stark CMR Module | [Wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) | Professional HW, CE certified, Massive I/O | 2 (+ 1 add-on) | ⭐⭐⭐
+| 3LB | [KiCAD Design Files](https://github.com/malcolmputer/3lb) | Open source triple-CAN (fully isolated) | 3 (+ ? add-on) | ⚠️
 | LilyGo T-2CAN | [Wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN) | Cheap! Dual isolated CAN | 2 (+ 1 add-on) | ⭐⭐⭐
+| LilyGo T-2CANFD | [Wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-LilyGo-T%E2%80%902CAN) | Cheap! Isolated CAN & Isolated CAN-FD | 2 (+ 1 add-on) | ⭐⭐⭐
 | Waveshare ESP32-S3-RS485-CAN  | [Wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Waveshare-ESP32%E2%80%90S3%E2%80%90RS485%E2%80%90CAN) | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐⭐
 | ESP32 Devkit V1 | [Wiki page](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-ESP32-DevKit-V1) | Build your own! For expert tinkerers | | ⭐
 
@@ -22,7 +24,7 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 
 ## How do I configure the software for my battery/inverter?
 
-<img alt="image" src="https://github.com/user-attachments/assets/41ca33b3-5eb7-4847-9de5-3a5b2b74147c" />
+<img alt="image" src="../images/30-hardware-index-01.png" />
 
 All the changes to the software are done on the _Change Settings_ page, which can be accessed thru the Webserver. At the top of this webpage, you can select which battery, inverter protocol and what interface they are connected to. If you are unsure which protocol you need, check the specific page for the battery/inverter you are using linked here in the Wiki
 

@@ -30,21 +30,21 @@ An indicator if the battery is not in lock state is the range indicator of the c
 
 Crashed BMW i3 battery being reset with an EoS tester:
 
-[<img src="https://github.com/user-attachments/assets/781376d0-bf34-4a67-aebb-283b9179f42e" width="300">](https://github.com/user-attachments/assets/781376d0-bf34-4a67-aebb-283b9179f42e)
+[<img src="../images/bmw-i3-01.png" width="300">](../images/bmw-i3-01.png)
 
 ## Software configuration
 For this battery type, use the option called "BMW i3" under the "Battery Protocol" setting
 
-<img width="487" height="90" alt="image" src="https://github.com/user-attachments/assets/682d4deb-03f6-4123-832a-cc110b61363c" />
+<img width="487" height="90" alt="image" src="../images/bmw-i3-02.png" />
 
 ## Connection diagram
 
 ### High voltage connector
 Right beside the HV connector there is a plug with 2 small pins, these need to be bridged either with the original plug, or shorted with a jumper for the battery to be able to turn on (Interlock detection)
 
-[<img src="https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/c2928a1c-2760-4727-9bf5-b3f24eda46cb" width="300">](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/c2928a1c-2760-4727-9bf5-b3f24eda46cb)
+[<img src="../images/bmw-i3-03.png" width="300">](../images/bmw-i3-03.png)
 
-<img width="550" height="726" alt="image" src="https://github.com/user-attachments/assets/d526d1e6-23a8-4f32-8e03-7e9954b41762" />
+<img width="550" height="726" alt="image" src="../images/bmw-i3-04.png" />
 
 
 ### High voltage connector (E196*1B)
@@ -67,25 +67,25 @@ An alternative for this is modifying the connector and use the current connector
 Click on Details  ⬇
 <details>
 
-[<img src="https://github.com/user-attachments/assets/6bb38ac4-f915-4f51-bd37-9041cbbdd993" width="200">](https://github.com/user-attachments/assets/6bb38ac4-f915-4f51-bd37-9041cbbdd993)
-[<img src="https://github.com/user-attachments/assets/e96e9231-138e-442d-a2c7-7c5d831a6891" width="200">](https://github.com/user-attachments/assets/e96e9231-138e-442d-a2c7-7c5d831a6891)
-[<img src="https://github.com/user-attachments/assets/36675922-fd47-4a0e-914e-438ea75e747b" width="200">](https://github.com/user-attachments/assets/36675922-fd47-4a0e-914e-438ea75e747b)
-[<img src="https://github.com/user-attachments/assets/75e13c01-18ba-4430-b2c2-8c7e8cd3b159" width="200">](https://github.com/user-attachments/assets/75e13c01-18ba-4430-b2c2-8c7e8cd3b159)
-[<img src="https://github.com/user-attachments/assets/b1a65071-efc1-4809-8109-f7be20be528d" width="200">](https://github.com/user-attachments/assets/b1a65071-efc1-4809-8109-f7be20be528d)
-[<img src="https://github.com/user-attachments/assets/bd6218e7-b816-48a3-8ba8-f2322fc27cee" width="200">](https://github.com/user-attachments/assets/bd6218e7-b816-48a3-8ba8-f2322fc27cee)
-[<img src="https://github.com/user-attachments/assets/12e7941b-ccbc-4dc0-8ee6-30355c0500b5" width="200">](https://github.com/user-attachments/assets/12e7941b-ccbc-4dc0-8ee6-30355c0500b5)
-[<img src="https://github.com/user-attachments/assets/f704a520-e5e2-460f-90a0-b67b572802db" width="200">](https://github.com/user-attachments/assets/f704a520-e5e2-460f-90a0-b67b572802db)
-[<img src="https://github.com/user-attachments/assets/f553e41a-94f6-45b9-a009-3dd03d2d7eb9" width="200" height="267">](https://github.com/user-attachments/assets/f553e41a-94f6-45b9-a009-3dd03d2d7eb9)
+[<img src="../images/bmw-i3-05.jpg" width="200">](../images/bmw-i3-05.jpg)
+[<img src="../images/bmw-i3-06.jpg" width="200">](../images/bmw-i3-06.jpg)
+[<img src="../images/bmw-i3-07.jpg" width="200">](../images/bmw-i3-07.jpg)
+[<img src="../images/bmw-i3-08.jpg" width="200">](../images/bmw-i3-08.jpg)
+[<img src="../images/bmw-i3-09.jpg" width="200">](../images/bmw-i3-09.jpg)
+[<img src="../images/bmw-i3-10.jpg" width="200">](../images/bmw-i3-10.jpg)
+[<img src="../images/bmw-i3-11.jpg" width="200">](../images/bmw-i3-11.jpg)
+[<img src="../images/bmw-i3-12.jpg" width="200">](../images/bmw-i3-12.jpg)
+[<img src="../images/bmw-i3-13.jpg" width="200" height="267">](../images/bmw-i3-13.jpg)
 </details>
 
 ### Low voltage connector (A191*1B)
 The LV connector is located on the back of the battery pack, next to the A/C cooling port. A/C connector is not required for operation.
 
-[<img src="https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/90265223-54e6-487e-94c3-c848789b5771" width="300">](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/90265223-54e6-487e-94c3-c848789b5771)
+[<img src="../images/bmw-i3-14.png" width="300">](../images/bmw-i3-14.png)
 
 It has the following pinout:
 
-[<img src="https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/41648295-7018-4fe5-9174-8906b3aee616" width="500">](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/41648295-7018-4fe5-9174-8906b3aee616)
+[<img src="../images/bmw-i3-15.png" width="500">](../images/bmw-i3-15.png)
 
 Connect the wiring as follow:
 * Pin 1 30C - Connect to to 12V, 10A fuse optional
@@ -115,21 +115,21 @@ Since the LilyGo board has 3.3V logic on the GPIO pins, we need to use a solid s
 > [!CAUTION] 
 > To avoid [welded contacts](#CAUTIONCONTACTORSWELDED) Ensure you have a 12V backup system to avoid unwanted contact closings under load in case of a blackout
 
-[<img src="https://github.com/user-attachments/assets/454434ec-770f-4733-af2b-d6012c8ecfb5" width="700">](https://github.com/user-attachments/assets/454434ec-770f-4733-af2b-d6012c8ecfb5)
+[<img src="../images/bmw-i3-16.png" width="700">](../images/bmw-i3-16.png)
 
 #### Example wiring diagram
 Below an example wiring diagram
 
-[<img src="https://github.com/user-attachments/assets/ff994eb1-e15a-4bbb-9c80-261a2de44d4a" width="700">](https://github.com/user-attachments/assets/ff994eb1-e15a-4bbb-9c80-261a2de44d4a)
+[<img src="../images/bmw-i3-17.png" width="700">](../images/bmw-i3-17.png)
 
 ##### Stark Box + i3 battery + Fronius Gen24
-<img alt="image" src="https://github.com/user-attachments/assets/b1f533fc-8bfc-4cdd-85c8-a035c94ec5d3" />
+<img alt="image" src="../images/bmw-i3-18.png" />
 
 ##### Stark Box + 2x i3 battery + Fronius Gen24
-<img alt="image" src="https://github.com/user-attachments/assets/0a2d3dee-e920-4d75-95e9-1329e4691c00" />
+<img alt="image" src="../images/bmw-i3-19.png" />
 
 ##### SMA Sunny Tripower to Liligo and BMW i3
-[<img alt="SMA i3" src="https://github.com/user-attachments/assets/96d7a08e-04c1-4799-8d1b-9140ef9c7c6a" width="700">](https://github.com/user-attachments/assets/96d7a08e-04c1-4799-8d1b-9140ef9c7c6a)
+[<img alt="SMA i3" src="../images/sma-06.png" width="700">](../images/sma-06.png)
 
 ## Parts list
 * BMW i3 battery
@@ -167,7 +167,7 @@ Capacitors are high voltage, so they need to be inside an IP enclosure to preven
 
 Example of capacitor integrated at point where wire gauge is reduced, inside exclosure:
 
-[<img src="https://github.com/user-attachments/assets/c1b0c422-e0db-43bb-825e-ee71174ca28f" width="300">](https://github.com/user-attachments/assets/c1b0c422-e0db-43bb-825e-ee71174ca28f)
+[<img src="../images/bmw-i3-21.png" width="300">](../images/bmw-i3-21.png)
 
 ### Note on Balancing :b: 
 The BMW i3 battery needs periodic cell-balancing to be able to operate at full capacity. To start this balancing procedure, charge the battery to 100%, and go to the "More Battery Info" page on the Webserver. There there is a button called "Start balancing". When balancing is started via this page, the battery will power off the wakeup(WUP) pin towards the battery, stop CAN communication, and the battery can then start to balance, just as it would in a car.
@@ -181,14 +181,14 @@ Perform this balancing as often as necessary to keep cell mV delta low. Failure 
 ## Troubleshooting tips
 | Problem | Suggested fix |
 | :-----: | :---: |
-| Contactors not closing | Check that the capacitor is seated between HV+ and HV-. Check that negative and positive are not accidentally shorted together |
+| Contactors not closing | Check that the capacitor is seated between HV+ and HV-. Check that negative and positive are not accidentally shorted together. Worst case scenario HV fuse inside battery is blown and requires replacing |
 | Event "Error: Battery interlock loop broken. Check that high voltage / low voltage connectors are seated"  | Check that both interlocks are OK. 1. The High Voltage needs to have the two small HVIL wires joined together near the orange connector. 2. The Low Voltage connector also needs to have pin 6 and 12 connected via a 33 Ohm resistor. If you are doing the pins yourself, make sure they are seated all the way. |
 
 ## Example completed setup
 Fronius Gen24 with 2x BMW i3 batteries in [double battery mode](https://github.com/dalathegreat/Battery-Emulator/wiki/Double-Battery)
 
-[<img src="https://github.com/user-attachments/assets/605dd84c-bf70-4ab2-a039-ff2856c0cfbd" width="300">](https://github.com/user-attachments/assets/605dd84c-bf70-4ab2-a039-ff2856c0cfbd)
+[<img src="../images/bmw-i3-22.png" width="300">](../images/bmw-i3-22.png)
 
 i3 94Ah with Sofar inverter
 
-[<img src="https://github.com/user-attachments/assets/e53c5d88-26cf-4075-a647-d3b5e78fda7a" width="300">](https://github.com/user-attachments/assets/e53c5d88-26cf-4075-a647-d3b5e78fda7a)
+[<img src="../images/bmw-i3-23.png" width="300">](../images/bmw-i3-23.png)

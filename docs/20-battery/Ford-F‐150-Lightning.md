@@ -8,13 +8,13 @@ The model years 2022-2025 came with the following batteries
 
 There are stickers on the battery that informs gross capacity
 
-<img width="1018" height="303" alt="image" src="https://github.com/user-attachments/assets/1bbadf7f-5592-4210-ae8a-04579b18c643" />
+<img width="1018" height="303" alt="image" src="../images/ford-f-150-lightning-01.png" />
 
 ### Physical Dimensions
 
 | Parameter | Value |
 |----------|-------|
-| Pack Size (L × W × H) | <!-- e.g. 2400 × 1500 × 150 mm --> |
+| Pack Size (L × W × H) | 38"wide 105"long  12.5" high  back half(52") portion  6.5" front half  portion with the exception  of where the bms is. That part is 8" high. |
 | Weight | <!-- e.g. 540 kg --> |
 
 > **Battery holder frame design:** <!-- Link to frame design if available -->
@@ -31,18 +31,18 @@ Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
 
 ## Wiring, Low voltage connector
 
-<img alt="image" src="https://github.com/user-attachments/assets/02e0e14c-9cdb-40f9-8985-2713b82f1f70" />
+<img alt="image" src="../images/ford-f-150-lightning-02.png" />
 
 A replacement LV connector can be purchased from AliExpress. 
 https://www.aliexpress.com/item/1005008121256506.html
 
 Detailed LV connector C144 pin description
 
-<img width="450" alt="image" src="https://github.com/user-attachments/assets/ac6e2c64-678c-4310-9651-18acdffaf2c0" />
+<img width="450" alt="image" src="../images/ford-f-150-lightning-03.png" />
 
-<img width="450" alt="image" src="https://github.com/user-attachments/assets/df23902c-92b0-49ae-a159-34fbd98cba8a" />
+<img width="450" alt="image" src="../images/ford-f-150-lightning-04.png" />
 
-[<img width="900" alt="MachE-2 SMA inverter setup" src="https://github.com/user-attachments/assets/1f7fc5c2-b6e8-434a-ae73-afe1f3cc7d83" />](https://github.com/user-attachments/assets/1f7fc5c2-b6e8-434a-ae73-afe1f3cc7d83)
+[<img width="900" alt="MachE-2 SMA inverter setup" src="../images/ford-f-150-lightning-05.png" />](../images/ford-f-150-lightning-05.png)
 
 
 For communication only:

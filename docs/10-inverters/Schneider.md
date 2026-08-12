@@ -7,9 +7,9 @@
 ## Communication wiring
 The Schneider inverter works via CAN. The CAN connection is done at the Gateway
 
-![image](https://github.com/user-attachments/assets/06483be2-bd7e-4b18-88d9-b7f9a15393c2)
+![image](../images/schneider-01.png)
 
-![image](https://github.com/user-attachments/assets/38fffb7d-52c2-4784-81fa-e0e7c8ee162a)
+![image](../images/schneider-02.png)
 
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
@@ -19,6 +19,6 @@ The Schneider inverter works via CAN. The CAN connection is done at the Gateway
 ## Which protocol to use
 For this inverter type, use the option called "Schneider V2 SE BMS CAN" under the "Inverter Protocol" setting
 
-<img width="493" height="71" alt="image" src="https://github.com/user-attachments/assets/169f796f-2cd7-440b-b942-3906049db6d9" />
+<img width="493" height="71" alt="image" src="../images/schneider-03.png" />
 
 ## Installation examples

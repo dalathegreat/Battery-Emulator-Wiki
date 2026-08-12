@@ -3,11 +3,10 @@
 <table >
   <tr>
     <td style="text-align: center;" width="175">
-      <img width="165" height="126" src="https://github.com/user-attachments/assets/ce241f65-9ae7-435b-b516-cdae80f5e34f"/>
+      <img width="165" height="126" src="../../images/equipment-stop-01.png"/>
     </td>
     <td style="padding-left: 20px;">
-      <p"><b>Equipment Stop</b>, is a critical safety feature implemented in various systems, including the battery emulator project. Its primary purpose is to halt all operations immediately in case of an emergency or potentially hazardous situation.
-The <b>Equipment Stop</b> feature is designed to enhance safety by immediately halting all operations. When activated, it opens battery contactors controlled by the emulator, interrupting high-voltage connections to prevent potential hazards. Additionally it signals pause, effectively ceasing any ongoing charging or discharging processes by setting the maximum charge and discharge values to zero.</p>
+<p><b>Equipment Stop</b> is a critical safety feature that immediately pauses all operations and sets maximum charge and discharge values to zero. Once current reaches zero, the battery contactors are opened immediately — interrupting all high-voltage connections. If current does not reach zero, the contactors are opened unconditionally after 7 seconds regardless.</p>
     </td>
   </tr>
 </table>
@@ -45,7 +44,7 @@ _- VDC pin - Switch NC_<br>
 <table >
   <tr>
     <td style="text-align: center;" width="175">
-      <img src="https://github.com/user-attachments/assets/4d372469-8f85-4732-970b-94dc68f77818"/>
+      <img src="../../images/equipment-stop-02.png"/>
     </td>
     <td style="padding-left: 20px;">
       <p>In our system, we use external pull resistors to ensure stable and reliable readings from the equipment stop button. Specifically, we use a 2kΩ resistor between the switch and VCC (3.3V) and a 10kΩ resistor between the GPIO pin and GND. This configuration creates a pull-down circuit, which stabilizes the signal and prevents floating values when the button is not pressed.</p>
@@ -62,24 +61,17 @@ _- VDC pin - Switch NC_<br>
 
 ### How (software)
 
-- **Step 1**: Enable EQUIPMENT_STOP_BUTTON in USER_SETTINGS.h
+#### Enable equipment stop
 
-To enable the Equipment Stop Button functionality, ensure the following line is uncommented in your USER_SETTINGS.h file:
+To enable the Equipment Stop Button functionality, go to the Webserver, Settings page and scroll down to the Hardware configuration.
 
-![image](https://github.com/user-attachments/assets/b0a7eb2d-6206-442e-996c-24efd7b0f792)
+<img width="522" height="43" alt="image" src="../../images/equipment-stop-03.png" />
 
-This activates the functionality for an external button to stop the equipment.
-
-- **Step 2**: Set the Switch Behavior in USER_SETTINGS.cpp
-
-Next, configure the switch behavior in USER_SETTINGS.cpp. You need to set the STOP_BUTTON_BEHAVIOR variable to either LATCHING_SWITCH or MOMENTARY_SWITCH, depending on your desired button action.
-
-![image](https://github.com/user-attachments/assets/57c18a8f-03e9-44b4-9801-8972c5f19c37)
+Set the Switch Behavior to either latching or momentary, depending on the type of button you are using.
 
 LATCHING_SWITCH: A normally closed (NC) latching switch. When the switch is pressed, it activates the equipment stop and keeps the stop active as long as the physical switch remains in the pressed position. The stop will only deactivate when the switch is manually returned to its normal (closed) state.
 
 MOMENTARY_SWITCH: A normally closed (NC) push switch. A short press activates the equipment stop. To deactivate, press and hold the button for 15 seconds. This mode keeps the stop state persistent between reboots.
-
 
 <b>Internal Debounce Module</b>
 

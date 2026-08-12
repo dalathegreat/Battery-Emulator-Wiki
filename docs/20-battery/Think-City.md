@@ -3,7 +3,7 @@
 
 ## Software setup
 
-<img width="512" height="156" alt="image" src="https://github.com/user-attachments/assets/6bf9ce4d-02e8-4d38-9c13-a7c98cb11348" />
+<img width="512" height="156" alt="image" src="../images/think-city-05.png" />
 
 Set the software to use the Think city battery, and either use Molten salt or NCM depending on what battery you have
 
@@ -16,13 +16,13 @@ _To use the Think-Battery in stationary storage, the BMS needs to be isolated to
 _(instead of make a "floating BMS" I made a "floating Battery"). Since then, my Think-Battery / SMA SBS2.5 system has been running continuously all day._
 
 
-![Image](https://github.com/user-attachments/assets/85dc2e0f-93ee-4d2f-bf90-f8ab071dd5f9)
+![Image](../images/think-city-01.jpg)
 
-![Image](https://github.com/user-attachments/assets/dbd7d93e-5abd-4cc1-b25d-f64ba3e5f745)
+![Image](../images/think-city-02.jpg)
 
 > [!CAUTION]
 > The battery box is not grounded! For battery function testing only! Or for complete and safe isolation of the battery box to prevent contact by people and animals.
-![Data_ENER1-A306_Think-Battery](https://github.com/user-attachments/assets/1e012f9c-c407-4eec-9195-7cf2f696f496)
-![ENER1-A306_Batt](https://github.com/user-attachments/assets/258fef6e-6548-48d4-8cfe-80058b58c99e)
+![Data_ENER1-A306_Think-Battery](../images/think-city-03.jpg)
+![ENER1-A306_Batt](../images/think-city-04.jpg)
 
 

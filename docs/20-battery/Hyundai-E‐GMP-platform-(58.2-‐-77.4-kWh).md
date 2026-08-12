@@ -67,7 +67,7 @@ Shared between the following models -
 ## Software configuration
 For this battery type, use the option called "Kia/Hyundai EGMP platform" under the "Battery Protocol" setting
 
-<img width="654" height="154" alt="image" src="https://github.com/user-attachments/assets/ccf7b077-02bc-44e7-b422-8b2fa83d3982" />
+<img width="654" height="154" alt="image" src="../images/hyundai-e-gmp-platform-58-2-77-4-kwh-01.png" />
 
 ## Note on CAN-FD
 The 800V battery architecture uses CAN-FD, so incase you plan on integrating this battery, you will need to get the [CAN-FD chip add-on](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN%E2%80%90FD-add%E2%80%90on-(MCP2518FD)) , or even easier, get the Stark CMR hardware

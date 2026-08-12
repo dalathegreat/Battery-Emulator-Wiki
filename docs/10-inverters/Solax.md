@@ -10,11 +10,11 @@
 # ⚠️ Word of caution, CAN overvoltage ⚠️
 Solax inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE.
 
-![image](https://github.com/user-attachments/assets/6e4efc3d-6839-4834-a703-8adca89a8403)
+![image](../images/foxess-h1-h3-ac1-kh-01.png)
 
 An even better way to tackle this is with the use of a CAN isolator between the inverter and the rest of the system. Examples found in the [lightning strike wiki](https://github.com/dalathegreat/Battery-Emulator/wiki/Lightning-strike#suggested-hardware)
 
-![image](https://github.com/user-attachments/assets/2ba857f6-d2aa-48e4-94c4-3314b7b7ff4e)
+![image](../images/foxess-h1-h3-ac1-kh-02.png)
 
 Failure to implement any of the above solutions will lead to the VP231 CAN transceiver chip burning up! 🔥
 
@@ -39,7 +39,7 @@ This can be solved in three ways:
 ## Which protocol to use
 For this inverter type, use the option called "SolaX Triple Power LFP over CAN bus" under the "Inverter Protocol" setting
 
-<img width="569" height="160" alt="image" src="https://github.com/user-attachments/assets/4b5a3db7-bd5b-447a-81f5-e6e2da420cbe" />
+<img width="569" height="160" alt="image" src="../images/solax-04.png" />
 
 > [!WARNING]
 > Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
@@ -50,7 +50,7 @@ For this inverter type, use the option called "SolaX Triple Power LFP over CAN b
 1. Start with checking that your battery contactors are closing, and that high voltage is present on the inverter input pins. 
 2. If the inverter has voltage, but is still throwing the BattVoltFault error, "Reported module count" and the "Reported battery type" option
 
-<img width="556" height="69" alt="image" src="https://github.com/user-attachments/assets/668d9452-4933-4232-915c-50605571f7a9" />
+<img width="556" height="69" alt="image" src="../images/solax-05.png" />
 
 ## Battery type information (pre-2026)
 
@@ -67,7 +67,7 @@ Feel free to experiment, and post what settings worked for your voltage range. T
 
 Also note, if you are using Custom batteries, remember to configure the max/min design voltage marked in red here. Solax will listen to these limits on Pylon/RJXZS/Orion/DIY packs
 
-<img width="551" height="289" alt="image" src="https://github.com/user-attachments/assets/dce6cf7e-086e-4da9-aa72-4e2a864d983d" />
+<img width="551" height="289" alt="image" src="../images/solax-06.png" />
 
 ## Battery type information (2026)
 
@@ -148,7 +148,7 @@ TPCU011(HR522): 171
 
 To get around this issue for instance on Tesla batteries, enable the "Inverter should ignore contactors" checkbox
 
-<img width="430" height="30" alt="image" src="https://github.com/user-attachments/assets/014235d2-de37-4f7c-b1d5-44537c77ec4c" />
+<img width="430" height="30" alt="image" src="../images/solax-07.png" />
 
 This will make Battery Emulator ignore requests from the inverter to open contactors, and always report to the inverter that the contactors are closed (regardless of their actual state), preventing the inverter from waiting for the contactors to open.
 
@@ -216,7 +216,7 @@ https://secondlifestorage.com/index.php?threads/help-with-older-solax-x1-g4-firm
 ## Connection diagram
 BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wires to the Battery-Emulator
 
-![image](https://github.com/user-attachments/assets/03ea1820-8988-4d1d-a401-8b3b79f59b6c)
+![image](../images/solax-03.png)
 
 ## Troubleshooting tips 
 

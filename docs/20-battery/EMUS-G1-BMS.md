@@ -17,15 +17,22 @@ www.emusbms.com
 
 Emus G1 BMS needs to be configured to emulate Deye_hv_can inverter protocol
 
-<img width="580" height="136" alt="image" src="https://github.com/user-attachments/assets/472fc81d-afee-4a5b-ac65-17e7bcd8ad47" />
+<img width="580" height="136" alt="image" src="../images/emus-g1-bms-01.png" />
 
 Set CAN ID base to 0x19B5
 
-<img width="338" height="303" alt="image" src="https://github.com/user-attachments/assets/739966f2-a41d-453c-ba8b-8d26f312b2c5" />
+<img width="338" height="303" alt="image" src="../images/emus-g1-bms-02.png" />
 
 Set Battery type to Pylon and baud rate to 250
 
-<img width="538" height="310" alt="image" src="https://github.com/user-attachments/assets/359543a1-dae9-4bc7-9801-a7ebf884be59" />
+<img width="538" height="310" alt="image" src="../images/emus-g1-bms-03.png" />
 
 Battery Emulator will show all needed information and also populate cellmonitor page with individual cell voltages and if they are balancing or not.
+
+Contactor control.
+The EMUS system when powered on, will automatically close battery contactors if it is plugged in to a CAN line. This can sometime be a problem if you do not want the battery live to the inverter.
+
+The EMUS system has a 12v 'ignition switch' input to control the contactors from an external source. This can be connected through a relay from the Lilygo/Stark contactor control outputs on its GPIO. By switching 12v using a relay, you can then have the battery emulator/ inverter control the contactors. The EMUS system will still prevent the contactors opening if it is in a fault state to prevent damage to the battery.
+
+It is also highly recommended to use a separate CAN line for the inverter, so use a Stark or Lilygo T 2-CAN.
 

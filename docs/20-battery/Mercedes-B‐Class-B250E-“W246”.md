@@ -11,7 +11,7 @@ For this battery type, use the option called "Tesla Model S/X 2012-2020" under t
 ### Low Voltage wiring
 The battery is referred to as N82 in the wiring diagrams.
 
-![image](https://github.com/user-attachments/assets/8a1c94eb-2c69-49e8-afd6-76989515027f)
+![image](../images/mercedes-b-class-b250e-w246-01.png)
 
 | Battery Connector |  Connect to
 | :--------: | :---------: 
@@ -37,4 +37,4 @@ The battery is referred to as N82 in the wiring diagrams.
 ### Example integrations
 Example of this battery type used in a stationary storage install
 
-![image](https://github.com/user-attachments/assets/ec5b5b84-db0e-4b41-babf-43df4e904d6d)
+![image](../images/mercedes-b-class-b250e-w246-02.png)

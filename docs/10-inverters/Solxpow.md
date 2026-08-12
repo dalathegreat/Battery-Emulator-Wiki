@@ -14,7 +14,7 @@
 ## Which protocol to use
 For this inverter type, use the option called "Solxpow compatible battery" under the "Inverter Protocol" setting
 
-<img width="573" height="221" alt="image" src="https://github.com/user-attachments/assets/c27c393f-343c-42cf-8954-d6b6eeaa9c89" />
+<img width="573" height="221" alt="image" src="../images/solxpow-01.png" />
 
 ## Reverse engineering info
 The Solxpow inverters use a slightly modified version of the Pylontech HV protocol

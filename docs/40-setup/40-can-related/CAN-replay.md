@@ -5,7 +5,7 @@ The Battery-Emulator can replay CAN and CAN-FD log files, making it a powerful r
 ### How to use the CAN replay feature
 Access the feature via the Webserver, and click the "CAN Replay" button.
 
-![image](https://github.com/user-attachments/assets/c37ce50e-02f9-4653-9417-418ad57a6778)
+![image](../../images/can-replay-01.png)
 
 This opens the Replay page. Via this page you can:
 
@@ -13,7 +13,7 @@ This opens the Replay page. Via this page you can:
 - Upload the .txt CANdump log file you want to replay
 - Start/Stop/Loop the log
 
-![image](https://github.com/user-attachments/assets/2246a6bb-31d1-4b2a-8ab4-f53a31bd0a55)
+![image](../../images/can-replay-02.png)
 
 > [!IMPORTANT]  
 > The log file needs to be a .txt CANdump format (same format the CAN logging feature uses)

@@ -28,7 +28,7 @@ The service manual containing also information about the pinouts is available he
 
 ## Connection diagram
 Here is a connection diagram of a 201#? battery:
-![bild](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/26695010/af512548-b3f0-490b-9d8e-0d2e21e9098f)
+![bild](../images/i-miev-czero-ion-01.png)
 Connect the following wires to the LilyGo
 
 * C26-10 CAN L - To LilyGo CAN L
@@ -44,14 +44,14 @@ Handle precharge/contactors manually or use [GPIO control](https://github.com/da
 ## Software configuration
 For this battery type, use the option called "I-Miev / C-Zero / Ion Triplet" under the "Battery Protocol" setting
 
-<img width="641" height="146" alt="image" src="https://github.com/user-attachments/assets/fcf3a0df-c661-479b-85b2-88fcc7b55b39" />
+<img width="641" height="146" alt="image" src="../images/i-miev-czero-ion-03.png" />
 
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 
 ## Example installation
 From left, Solax X3 hybrid 15d inverter, in the middle LilyGo with dual can solution, on the right on the floor i-miev battery and the grey box contains 12V 4Ah battery relays to drive contactors and mitsubishi BMU (Battery is pre 2016, so external BMU mandatory).
 
-![image](https://github.com/user-attachments/assets/eb2b710d-e4c2-4e38-a59f-4c837c621289)
+![image](../images/i-miev-czero-ion-02.png)
 
 ## Further reading
 Checkout this repository for more information on the triplet battery: https://github.com/dadantech/czero-ev-battery

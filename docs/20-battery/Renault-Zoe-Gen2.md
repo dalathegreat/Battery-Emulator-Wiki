@@ -12,21 +12,21 @@ There are 4x batteries available for the Zoe, This page focuses on the Gen2 50/5
 * 52kWh 2020-, Gen2
 
 Stickers signaling that the battery is the Gen2 50/52kWh battery
-![test](https://github.com/user-attachments/assets/f5eeef97-0cc7-42e1-8659-e2bbb07c94c7)
+![test](../images/renault-zoe-gen2-01.jpg)
 
 ## Software configuration
 For this battery type, use the option called "Renault Zoe Gen2 50kWh" under the "Battery Protocol" setting
 
-<img width="593" height="73" alt="image" src="https://github.com/user-attachments/assets/986663b5-f444-4608-8f01-fe87f9bd5158" />
+<img width="593" height="73" alt="image" src="../images/renault-zoe-gen2-15.png" />
 
 ## Zoe Gen2 pictures and pinout
 Credit goes to ljames28 for the excellent repo: https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information
 
 Beware that the plug for previous generations battery fits the Gen2 version but the pinout is different so it will not work.
 Allso note plug pinout is seen from the rear of the plug where the wires come out. If you cannot source a plug and are comfortable opening the battery, theres a handy industry std connector just on the inside, but the colors of wires change. (white visible below)
-![image](https://github.com/user-attachments/assets/4465c968-0313-43d3-891f-a9bffd249863)
-![connections](https://github.com/user-attachments/assets/1d5aa171-3da0-4ca1-b13e-3038e2d1f7e9)
-![image](https://github.com/user-attachments/assets/ad6e4e05-2c7d-46c1-ace9-fc0b728329da)
+![image](../images/renault-zoe-gen2-02.png)
+![connections](../images/renault-zoe-gen2-03.png)
+![image](../images/renault-zoe-gen2-04.png)
 
 
 
@@ -37,19 +37,19 @@ Connect the pins from the battery to the Battery-Emulator, according to this dia
 
 Example Wiring Diagram: LilyGo T-CAN485 + Zoe Gen2 + optional equipment stop button
 
-![image](https://github.com/user-attachments/assets/17f5e4e6-7fc5-422d-af9a-fc431361af3b)
+![image](../images/renault-zoe-gen2-05.png)
 
 Example Wiring Diagram: LilyGo T-CAN485 + Zoe Gen2 + optional equipment stop button + CAN Filter (as required for some invertors)
 
-![image](https://github.com/user-attachments/assets/d17cd1da-b9cd-4cea-9581-ad978865f9a5)
+![image](../images/renault-zoe-gen2-06.png)
 
 Example Wiring Diagram: LilyGo T-2CAN + Zoe Gen2 + optional equipment stop button
 
-![image](https://github.com/user-attachments/assets/9808b678-1221-40a4-8ffb-9ea98a73be90)
+![image](../images/renault-zoe-gen2-07.png)
 
 Example Wiring Diagram: Stark CMR + Zoe Gen2
 
-<img width="1064" height="764" alt="image" src="https://github.com/user-attachments/assets/d1f5507c-12c8-42d3-8015-d8de2acc90d9" />
+<img width="1064" height="764" alt="image" src="../images/renault-zoe-gen2-16.png" />
 
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Example Wiring Diagram: Stark CMR + Zoe Gen2
 > [!WARNING]
 > It is very important to not mix up the wiring between precharge/positive-contactor. Running all the power thru the precharge will result in it blowing up 
 
-<img alt="image" src="https://github.com/user-attachments/assets/5cf336f2-baeb-4acf-a227-158504104e61" />
+<img alt="image" src="../images/renault-zoe-gen2-17.png" />
 
 
 ## Part list
@@ -77,11 +77,11 @@ Incase your battery is missing parts, here is a list of the spare part numbers a
 * Also part no. 993B1 5333R is for the sticker on top of the safety fuse not the safety fuse itself.
 
 **The correct part number can be found by looking at the area as shown below.**
-![image](https://github.com/user-attachments/assets/4103cdc2-95fb-45fe-b297-93526f919a5f)
+![image](../images/renault-zoe-gen2-08.png)
 
 
 My 52kwh battery came with following part:
-![image](https://github.com/user-attachments/assets/9c11de1b-dcbd-4f60-93d7-3c9ff1a3eebe)
+![image](../images/renault-zoe-gen2-09.png)
 
 Renault Zoe Gen 2 safety switch has continuity between terminals 1-2 and 3-4, as shown above. (Renault Zoe Gen 1 has continuity between terminal 1-4 and 2-3, there is also a fuse inside which Gen2 switch does not have).
 
@@ -101,11 +101,11 @@ If one of these are missing, the Event HVIL Failure (EVENT_HVIL_FAILURE) will be
 ### How do I perform this reset?
 Under the Webserver for the Battery-Emulator, select the "More Battery Info" page, and then press the "Perform NVROL reset" button, and "OK"
 
-![image](https://github.com/user-attachments/assets/e5b74fa7-24c7-476e-b6b4-0710748b6dfc)
+![image](../images/renault-zoe-gen2-10.png)
 
-![image](https://github.com/user-attachments/assets/a10a748d-3d4d-4988-a705-c5ec04269239)
+![image](../images/renault-zoe-gen2-11.png)
 
-![image](https://github.com/user-attachments/assets/d5833052-91cb-4b7a-96fc-91f28241642b)
+![image](../images/renault-zoe-gen2-12.png)
 
 ### Example procedure off NVROL to balance battery :b: 
 Zoe gen2 52kWh. First balancing started at last. Procedure that worked on my setup sequentially:
@@ -125,12 +125,12 @@ Zoe gen2 52kWh. First balancing started at last. Procedure that worked on my set
 ## Example integration
 Wallmounted Zoe 41kWh battery:
 
-![image](https://github.com/user-attachments/assets/b0ae3208-20d0-49ce-bdd9-02c55e61906b)
+![image](../images/renault-zoe-gen2-13.png)
 
-![image](https://github.com/user-attachments/assets/e76f45c0-2298-4718-acf3-5234c18a0eb4)
+![image](../images/renault-zoe-gen2-14.png)
 
 ## Troubleshooting
 The Zoe2 pack has fuses that can be blown. Telltale sign of this being blown is that the voltage was dropping below what was read by BE, so the voltage was read via CAN as 358 but actual voltage measuring was 310-320v
 
-<img alt="image" src="https://github.com/user-attachments/assets/a433d927-9877-4a1f-ba64-a7b1e05acfb6" />
+<img alt="image" src="../images/renault-zoe-gen2-18.png" />
 

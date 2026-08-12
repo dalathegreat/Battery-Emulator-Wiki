@@ -29,15 +29,15 @@ Here is a list of all different BMW iX batteries, and their specifications / vol
 | Total weight                                        | 649 kg | 521 kg | 436 kg | | 518 kg | 500.9 kg | 564.5 kg | | |
 | Cooling system                                      | Coolant | Coolant | Coolant | Coolant | Coolant | Coolant | Coolant | Coolant | Coolant |
 
-SE11 battery being transported on a trailer
-
-<img alt="image" src="https://github.com/user-attachments/assets/a5e87534-044c-489e-a761-210db6ac2065" />
-
+<p align="center">
+  <img src="../images/bmw-ix-i4-i7-gen5-platform-03.png" alt="SE11" width="600"><br>
+  <em>SE11 battery being transported on a trailer</em>
+</p>
 
 ## Software configuration
-For this battery type, use the option called "BMW iX and i4-7 platform" under the "Battery Protocol" setting
+For this battery type, use the option called "BMW iX and i4-7 platform" under the "Battery Protocol" setting.
 
-<img width="654" height="152" alt="image" src="https://github.com/user-attachments/assets/63b01717-62f4-4cc1-b03d-dd45246823b4" />
+<img width="654" height="152" alt="image" src="../images/bmw-ix-i4-i7-gen5-platform-04.png" />
 
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 
@@ -46,73 +46,135 @@ The Gen5 BMW battery architecture uses CAN-FD, so if you plan on integrating thi
 
 Alternatively, if you want to make it even easier, get the [Stark CMR](https://github.com/dalathegreat/Battery-Emulator/wiki/Hardware:-Stark-CMR) hardware which has built in support for CAN-FD. This is the recommended path!
 
-# Pin Assignments at Plug Connector A332*1B
+# Connectors
+The battery pack has several connectors on the outside and inside of the pack that are relevant for connecting this pack to the inverter and the battery emulator.
 
-A332*1B is the external low voltage connection. Connector is a Hirschmann 805-587-545 16way 1.2 SealStar FA Connector. Some packs have the LV connection at the front of the pack and appear to use a back to back connector instead.
+## Connectors on the outside of the pack
+### LV connector
+The low-voltage connector on the outside of the pack is a Hirschmann 805-587-545 16way 1.2 SealStar FA Connector. This is where the battery emulator is connected to in terms of power supply, interlock and CAN communication.
 
 If you are having trouble sourcing the Hirschmann connector, a cheap alternative can be found on Aliexpress. [Purchase Link](https://nl.aliexpress.com/item/1005005722083920.html) . IMPORTANT SIDE NOTE: its available in 2 different types. The difference is the locating pin. Be sure to order the one with the locating pin on the 8-16 side, and not on the 1-9 side.
 
-<img width="588" height="395" alt="image" src="https://github.com/user-attachments/assets/86b6118d-5d22-4e34-bec4-0d5ff918a76f" />
+<p align="center">
+  <img src="../images/bmw-ix-i4-i7-gen5-platform-05.png" alt="Hirschmann 805-587-545"><br>
+  <em>Hirschmann connector with locating pin on the 8-16 side</em>
+</p>
 
+Some packs have the LV connection at the front of the pack and appear to use a back to back connector instead.
 
+| Pack type | Location of connector |
+| --------- | --------------------- |
+| SE16      | Bottom, front         |
+| SE26      | Bottom, rear left     |
+| SE27      | Bottom, rear left     |
 
-| Pin | Type | Description / Signal Type               | Connection / Measuring Information               |
-|-----|------|----------------------------------------|-------------------------------------------------|
-| 1   | E    | Supply, terminal 30                    | Fuse F242 Power distribution box, rear           |
-| 2   | M    | Ground                                 | Ground point                                    |
-| 3   | E    | Terminal 30c signal                    | High-voltage safety connector                    |
-| 4   | E/A  | Wake-up signal                         | Body Domain Controller                           |
-| 5   | --   | not used                               |                                                 |
-| 6   | --   | not used                               |                                                 |
-| 7   | E/A  | High-voltage interlock loop signal (loop these two via 33ohm resistor)     | High-voltage safety connector                    |
-| 8   | E/A  | High-voltage interlock loop signal (loop these two via 33ohm resistor)    | High-voltage safety connector                    |
-| 9   | E    | Crash signal                           | Crash safety module         |
-| 10  | --   | not used                               |                                                 |
-| 11  | E/A  | CAN-FD Low  |                            |
-| 12  | E/A  | CAN-FD High                 |                |
-| 13  | E/A  | not used   |(possibly alternate pins for CAN-FD on some variants)                            |
-| 14  | E/A  | not used                  |(possibly alternate pins for CAN-FD on some variants)               |
-| 15  | A    | Activation                             | Coolant shutoff valve 2                          |
-| 16  | M    | Ground                                 | Coolant shutoff valve 2                          |
+The connector is referred to as A332*1B. The following connections must be made.
 
-
-
-
-# HV Connectors
-
-| Count                                      | Connector                                         | Cable/Cap                                         |
-|-----------------------------------------------------|----------------------------------------------|----------------------------------------------|
-|1 |DC charge connector |Protective Cap Hv Battery 889520 - BMW (12-90-9-796-829)
-|1 or 2 |main connectors | Rosenberger HVS420 - Protective Cap for HV Battery 889520 - BMW (12-90-9-796-829)
-|1 |CCU/AC Connector (100A fused)|  Hirschman HPS40-2 - Suitable cable is 5A2DB59-03
-
-# HV Connector Blank - 3D Printed
-
-Here are some 3d printable covers for the large rear connector, smaller front connector and internal blanking covers for BMU (If you disconnect the additional HV outputs internally)
-https://www.thingiverse.com/thing:6845382/files
-
-# Pin Assignments on BMS Internal Connector
-
-![image](https://github.com/user-attachments/assets/c0a52557-87e9-4dda-a5e3-21fc9e01ca04)
-
-# Pin Assignments on contactor connector (Inside BMS)
-
-![image](https://github.com/user-attachments/assets/766296e9-1509-488d-abde-d4a849110c91)
-
-# Example Wiring Diagram
-Since the integration has not figured out how to close contactors,we let the Battery-Emulator take control over the contactors instead.
-
-This diagram assumes using manual contactor control (you will have to make up a 4 pin passthrough inside the battery from the SME/BMU to the spare pins on the external case). Pinout for the contactor connector is above. You can combine all 3 negative contactor connections, leaving the other 3 spare pins for the individual positives. 2WD and 4WD can vary for CANFD pinout - so check!
+| Pin | Mandatory/Optional | Description                            | Connection  Information                     |
+|-----|--------------------|----------------------------------------|---------------------------------------------|
+| 1   | M                  | Supply, terminal 30                    | 12V                                         |
+| 2   | M                  | Ground                                 | GND                                         |
+| 3   | M                  | Terminal 30c signal                    | 12V                                         |
+| 4   | M                  | Wake-up signal                         | 12V                                         |
+| 5   | -                  | not used                               |                                             |
+| 6   | -                  | not used                               |                                             |
+| 7   | M                  | High-voltage interlock loop signal     | Connect to pin 8 via 33 Ohm resistor            |
+| 8   | M                  | High-voltage interlock loop signal.    | Connect to pin 7 via 33 Ohm resistor            |
+| 9   | -                  | Crash signal                           |                                             |
+| 10  | -                  | not used                               |                                             |
+| 11  | M                  | CAN-FD Low                             | Connect to battery emulator                 |
+| 12  | M                  | CAN-FD High                            | Connect to battery emulator                 |
+| 13  | -                  | not used                               |                                             |
+| 14  | -                  | not used                               |                                             |
+| 15  | O                  | Coolant shutoff valve Activation       | Connect to pin 16 via 12 Ohm or 16 Ohm resistor |
+| 16  | O                  | Coolant shutoff valve Ground           | Coolant to pin 15 via 12 Ohm or 16 Ohm resistor |
 
 > [!IMPORTANT]
 > You need a high current capable 12V supply. If you are powering the BMS via the Stark CMR, you need to power it via the 7A capable Precharge circuit, see the Stark Wiki for more info
 
-![example wiring](https://github.com/user-attachments/assets/341cbda5-2fc5-46bf-a674-2aa203236b29)
+### HV connector
+
+There are several high-voltage connectors on the outside of the pack. We only use the auxiliary connector to connect the to the inverter. The other connectors shall be protected by covers.
+
+The auxiliary connector is referred to as the CCU (Combined Charging Unit) connector. The connector type is Hirschman HPS40-2, and a suitable cable is for instance 5A2DB59-03. Please check the color coding (most likely black) inside the connector of the pack and the color coding of the cable used. The color should match. The battery pack should have a fuse (100A). Some cables also have a fuse inside them, others do not. Both cable types can be used. By cutting the cable you will have two 6 mm2 wires that can be connected to the HV terminals of the inverter.
+
+#### HV connector cover
+
+On [Thingiverse](https://www.thingiverse.com/thing:6845382/files) you can download some 3D printable covers for the large rear connector, smaller front connector and internal blanking covers for BMU (If you disconnect the additional HV outputs internally).
+
+<details>
+  <summary>Additional information about HV connectors</summary>
+  For sake of completeness, all HV connector information is listed here.
+
+| Number of connectors | Connector                                        | Cable/Cap                                                                         |
+|----------------------|--------------------------------------------------|-----------------------------------------------------------------------------------|
+| 1                    | DC charge connector                              | Protective Cap Hv Battery 889520 - BMW (12-90-9-796-829)                          |
+| 1 or 2               | Main connectors                                  | Rosenberger HVS420 - Protective Cap for HV Battery 889520 - BMW (12-90-9-796-829) |
+| 1                    | CCU/AC Connector (100A fused)                    | Hirschman HPS40-2 - Suitable cable is 5A2DB59-03                                  |
+
+</details>
+
+## Connectors on the inside of the pack
+To control the contactors via manual contactor control, some connections have to be made on the inside of the pack.
+
+These connections need to be made to the contactors inside the SME (BMW's name for the battery management system). The SME is usually located at the rear left of the battery pack. To create the connections you need to take off the lid of the battery pack, disconnect the high-voltage and low-voltage cabling from the SME, disconnect the cooling hoses to the SME, and take the SME out of the pack. Afterwards you need to remove the top lid of the SME. A connection needs to be established to the pre-charge contactor, main negative contactor and main positive contactor in the SME. Each contactor needs a supply voltage and a ground, therefore 6 connections need to be made. These connections can be established in multiple ways.
+
+<details>
+  <summary>To the connector inside the SME via a PCB</summary>
+
+  The cleanest solution, without cutting wires, is to connect to the black, white, blue, green, grey and purple cables inside the SME via a custom PCB. The PCB needs to contain the Molex 560020-1030 surface mounted PCB connector, to receive the existing cable. The 3 grounds can be shared between the contactors, which leaves 4 connections to be made between the battery emulator and the custom PCB: precharge contactor supply, main negative contactor supply, main positive contactor supply and ground.
+</details>
+
+<details>
+  <summary>To the cables insdie the SME by cutting or soldering to the wires</summary>
+
+  Alternatively, the connections can be made by cutting or soldering to the 6 cables. The 3 grounds can be shared between the contactors. If you decide to combine the 3 grounds, you are left with 4 cables to be connected to the battery emulator.
+</details>
+
+<p align="center">
+  <img src="../images/bmw-ix-i4-i7-gen5-platform-06.png" alt="internal SME connector"><br>
+  <em>Pinout of internal SME connector: Precharge and Pos Main and Neg Main need to be controlled by the battery emulator</em>
+</p>
+
+The cables from the SME need to be connected to the battery emulator, such that the battery emulator is able to control the contactors. Therefore you first need to route the cables outside the SME, for instance by creating a small hole in the lid of the SME. Afterwards these cables need to be routed to the outside of the pack.
+
+### Passing the contactor cabling to the outside of the pack
+
+The cables to control the contactors can be passed to the outside of the pack in multiple ways.
+
+<details>
+  <summary>Free-standing A332*1B connector</summary>
+
+Some packs (e.g. SE26, SE27) have a free-standing A332*1B connector, of which some of the non-used pins can be used to pass the cables to the outside of the pack. This is shown in the image below.
+
+![example wiring](../images/bmw-ix-i4-i7-gen5-platform-01.png)
+
+</details>
+
+<details>
+  <summary>Integrated A332*1B connector</summary>
+
+Some packs (e.g. SE16) have an integrated A332*1B connector, which cannot be used to pass the cables to the outside of the pack. The cables must be passed through the opening between the lid of the pack and the housing of the pack, or via a hole drilled through the housing of the pack. Please keep water ingress in mind when passing the cable to the outside of the pack in this manner.
+
+</details>
+
+<details>
+  <summary>Additional information</summary>
+  For the sake of completeness, information is also provided regarding the external connectors on the outside of the SME.
+
+  ### Pinout of external SME connectors
+
+  ![image](../images/bmw-ix-i4-i7-gen5-platform-02.png)
+</details>
+
 
 ## Note on Diagnostic trouble codes (DTC)
 You can read active DTCs via the More Battery Info page. Note that some code will always be active, plus if your battery has been crashed in the past there will be more codes.
 
-Example, working setup with balancing confirmed, on a crashed pack. These DTCs still active
+<p align="center">
+  <img src="../images/bmw-ix-i4-i7-gen5-platform-07.png" alt="known DTCs"><br>
+  <em>Example of the DTCs present on a working setup using an SE26. Balancing is working with these DTCs active.</em>
+</p>
 
-<img alt="image" src="https://github.com/user-attachments/assets/234fceae-4204-4b25-b1d4-d31c3dd57e86" />
-
+## Note on Balancing
+Balancing has not been confirmed by all users. Currently this topic is still under investigation. Please do not assume that your pack will support balancing without verifying this first.

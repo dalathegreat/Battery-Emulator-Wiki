@@ -28,12 +28,12 @@ You can download the latest official version from RJXZS at: https://www.rjxzstec
 On some phones to run app you need to turn on GPS positioning and allow app to use that feature:
 
 
-![image](https://github.com/user-attachments/assets/f7a0390a-a263-4eae-a371-ba800ee1ffcd)
+![image](../images/rjxzs-bms-01.png)
 
 
 Settings are configured on the RJXZS BMS via the TOPBMS smartphone app. The most important settings are capacity (AH), cells in series, low voltage cutoff, and charge end voltage.
 
-![image](https://github.com/user-attachments/assets/ceef8e37-ab23-4fbe-97ba-eeb79211d7a6)
+![image](../images/rjxzs-bms-02.png)
 
 - Remember to calibrate AH. Without this, the SOC% will be 0 all the time. The best way is to charge battery to its maximum and set Battery used capacity in Top BMS APP to 0 Ah. 
    - To figure out how many AH your battery holds, you can calculate it with ((kWh * 1000) / nominalV). For instance a 30kWh LEAF battery would be ((30 * 1000)/370V) = 81AH
@@ -41,7 +41,7 @@ Settings are configured on the RJXZS BMS via the TOPBMS smartphone app. The most
 
 **Main settings description** [taken from RJXZS manual](https://github.com/user-attachments/files/19853501/4-192S.BMS.operation.manual.pdf)
 
-<img width="498" height="694" alt="image" src="https://github.com/user-attachments/assets/43dd8563-89b2-4cef-850d-1e85ac80ad77" />
+<img width="498" height="694" alt="image" src="../images/rjxzs-bms-09.png" />
 
 
 > [!CAUTION]
@@ -54,7 +54,7 @@ Settings are configured on the RJXZS BMS via the TOPBMS smartphone app. The most
 
 Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emulator
 
-![image](https://github.com/user-attachments/assets/3c2e7fe3-aa99-430b-9100-2d871cf0c80d)
+![image](../images/rjxzs-bms-03.png)
 
 - If you have a Modbus inverter, connect it to the RS485 port of the Battery-Emulator
 - If you have a CAN inverter, you need to connect it to a separate 500kbps CAN channel, since the BMS runs at 250kbps on the native CAN
@@ -66,7 +66,7 @@ Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emul
 
 For this battery type, use the option called "RJXZS BMS, DIY battery" under the "Battery Protocol" setting
 
-<img width="664" height="345" alt="image" src="https://github.com/user-attachments/assets/0a1fe790-2efb-4d39-a0fe-c915f453b899" />
+<img width="664" height="345" alt="image" src="../images/rjxzs-bms-10.png" />
 
 Configure all the settings according to the specifications of the battery you have constructed, the general password to access settings is "0". CAN send ID and CAN receive ID should be 245 and 244 respectively, these settings are locked behind the password "770921".
 
@@ -75,22 +75,22 @@ After uploading the code to the Battery-Emulator, you can check cellvoltages, SO
 > [!IMPORTANT]
 > During first startup, RJXZS will report faults, thats why first thing you need to do is clear all events in bluetooth app by holding CLR button for a few seconds:
 >
->![image](https://github.com/user-attachments/assets/15fdf801-aa48-4a5a-978c-81be7e82733b)
+>![image](../images/rjxzs-bms-04.png)
 >
 >All events which are stored inside RJXZS BMS are marked very well in battery emulator Event List:
 >
->![image](https://github.com/user-attachments/assets/466d0a01-0b92-4b4b-ba28-e9d3a8a7660e)
+>![image](../images/rjxzs-bms-05.png)
 
 
 Example of value monitoring, and cellvoltage monitoring of a 70S battery
 
-![image](https://github.com/user-attachments/assets/69f44221-e610-4cc5-8ba5-832129f95183)
+![image](../images/rjxzs-bms-06.png)
 
 
 ## Example integrations
 Feel free to add your own pictures here!
 
-![image](https://github.com/user-attachments/assets/f2a011f3-6571-4a51-9576-f583905c95aa)
+![image](../images/rjxzs-bms-07.png)
 
-![image](https://github.com/user-attachments/assets/b8846aaf-9c25-4171-ba3b-1451a6a5ec7b)
+![image](../images/rjxzs-bms-08.png)
 

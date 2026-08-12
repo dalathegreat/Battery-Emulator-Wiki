@@ -10,6 +10,8 @@
 * A-ES :heavy_check_mark: 
 * A-BP :heavy_check_mark: 
 
+Note: Some Goodwe inverters require an activation code that must be purchased to enable battery mode. Activation code is expensive!
+
 There are probably more compatible GoodWe inverters, feel free to add confirmed working ones to the list!
 
 > [!IMPORTANT]
@@ -21,7 +23,7 @@ There are probably more compatible GoodWe inverters, feel free to add confirmed 
 ## Note on double battery ports
 Some Goodwe inverters have dual battery ports. You can connect two independant Battery-Emulator systems to the same inverter this way. Check the operating manual of your Goodwe inverter for more info.
 
-![image](https://github.com/user-attachments/assets/504df9b9-b9fa-4a0e-a03e-7244965a9e8c)
+![image](../images/goodwe-01.png)
 
 ## Communication wiring
 The GoodWe inverter works via CAN. The Battery-Emulator board can have both a CAN battery and a CAN inverter connected on the same pins.
@@ -46,12 +48,12 @@ Good idea to watch the installation video from GoodWe's training services, on ho
 11. Go to quick settings (password: goodwe2010)
 12. Select battery. Hopefully it recognizes battery without any user intervention. (HVM*2 works if using both battery inputs from same battery).
 
-<img width="448" height="909" alt="image" src="https://github.com/user-attachments/assets/c5c2edce-1f0b-4a63-8356-e6a1083bcd48" />
+<img width="448" height="909" alt="image" src="../images/goodwe-04.png" />
 
 13. Suggest setting power limit (ampere limit) in Battery-Emulator Webserver at this point, if not already done. Take something low (5A?) until you feel confident the system works as intended.
 13. Set charging schedule. (app is very buggy here!)
 
-![afbeelding_2023-11-25_153042647](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/556314b2-6b31-4b6b-b32f-239547f1fc48)
+![afbeelding_2023-11-25_153042647](../images/goodwe-02.png)
 
 ## Starting and stopping the system
 When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode.
@@ -76,7 +78,7 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-![GoodWe Settings](https://github.com/user-attachments/assets/a7cb7668-0fd7-44ca-aac0-6402d05d78b0)
+![GoodWe Settings](../images/goodwe-03.jpg)
 
 
 ## Troubleshooting tips 
@@ -101,8 +103,8 @@ There is a [Discord server for the integration](https://discord.gg/TaXyWXT).
 
 Some screenshots from the integration:
 
-<img width="541" alt="GoodWeConfigurationPane" src="https://github.com/user-attachments/assets/d28ddbb7-549c-4cbd-8b27-56ff8274277d" />
-<img width="541" alt="GoodWeControlsPane" src="https://github.com/user-attachments/assets/e136712c-1464-4656-ac32-448f14efcfcb" />
+<img width="541" alt="GoodWeConfigurationPane" src="../images/goodwe-05.png" />
+<img width="541" alt="GoodWeControlsPane" src="../images/goodwe-06.png" />
 
 ## Controls
 
@@ -131,10 +133,10 @@ These examples assume the **Depth of discharge (on-grid)** is set to a high valu
 - Switch operation mode to **eco_charge**
 - Wait 10 seconds and then switch the operation mode to **eco_charge** again, occasionally it doesn't stick the first time.
 
-<img width="540" alt="EcoModeSoC100" src="https://github.com/user-attachments/assets/7f07ba46-2fdd-413a-802d-cc4e400fdff9" />
-<img width="543" alt="EcoModePower30" src="https://github.com/user-attachments/assets/4958192c-3d8c-4533-9cb7-d7486ea9e659" />
-<img width="544" alt="EcoCharge" src="https://github.com/user-attachments/assets/4423debd-74ca-427a-87e2-39eb1b9d714f" />
-<img width="552" alt="Delay" src="https://github.com/user-attachments/assets/63123d76-5dda-43ff-ae6b-a83807c18222" />
+<img width="540" alt="EcoModeSoC100" src="../images/goodwe-07.png" />
+<img width="543" alt="EcoModePower30" src="../images/goodwe-08.png" />
+<img width="544" alt="EcoCharge" src="../images/goodwe-09.png" />
+<img width="552" alt="Delay" src="../images/goodwe-10.png" />
 
 ### Force discharge example
 

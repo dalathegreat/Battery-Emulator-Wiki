@@ -44,7 +44,10 @@
 
 Use **"BYD Battery-Box Premium HVS over CAN Bus"** for inverters with BYD support.
 
-<img width="484" alt="BYD CAN protocol selection" src="https://github.com/user-attachments/assets/a85dbc6b-0464-4176-bddd-21a719f9ea15" />
+Remember to enable "Long inverter CAN timeout" to avoid false positive CAN_INVERTER_MISSING events. The Sungrow is very slow to communicate via CAN, and we incorrectly detect it as missing without this fix
+
+<img width="572" height="215" alt="image" src="../images/sungrow-03.png" />
+
 
 ### Sungrow SBRXXX Protocol
 
@@ -76,12 +79,12 @@ See the [SBR battery datasheet](https://info-support.sungrowpower.com/applicatio
 
 Sungrow inverters have the wiring diagram on the side of the unit. Check your specific model. Example for SHxxRS inverters:
 
-![SHxxRS wiring diagram](https://github.com/user-attachments/assets/10559cad-8eda-4e8e-a661-1f467bddc2ac)
+![SHxxRS wiring diagram](../images/sungrow-01.png)
 
 > [!NOTE]
 > Sungrow inverters have an inbuilt fuse on the battery terminals. Check the [data spec sheet](https://aus.sungrowpower.com/upload/file/20210816/SH3.0_3.6_4.0_5.0_6.0RS-UEN-Ver11-20210629.pdf) for details.
 
-![Fuse location](https://github.com/user-attachments/assets/57f27e41-27ce-480f-aafe-d7e82b6dcb61)
+![Fuse location](../images/sungrow-02.png)
 
 ### Grounding
 
@@ -121,10 +124,10 @@ To limit grid export (feed-in), you need a Sungrow Smart Meter (e.g., DTSU666 in
 Configure via Winet-S local web interface, iSolarCloud app, or isolarcloud.com:
 
 **Winet-S local web interface:**
-<img width="1717" alt="Winet-S energy management parameters" src="https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/5539972/c067d9cf-bfa0-4b42-8e67-1f65db3fdac5">
+<img width="1717" alt="Winet-S energy management parameters" src="../images/sungrow-04.png">
 
 **iSolarCloud.com:**
-<img width="1724" alt="iSolarCloud energy management parameters" src="https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/assets/5539972/84b4265e-d53f-4357-b793-32b2b2a7d762">
+<img width="1724" alt="iSolarCloud energy management parameters" src="../images/sungrow-05.png">
 
 > [!NOTE]
 > iSolarCloud takes 10-15 minutes to update inverter settings.
@@ -170,7 +173,7 @@ I remembered reading something in an Australian Facebook group about how certain
 So I checked it — and sure enough, that was the issue!
 Once I corrected the schema setting, everything started working perfectly.So now it’s finally up and running — YES! 
 
-<img alt="image" src="https://github.com/user-attachments/assets/981bd48c-7377-419f-8ab4-31dcf7fbe414" />
+<img alt="image" src="../images/sungrow-06.png" />
 
 ### Firmware Compatibility
 

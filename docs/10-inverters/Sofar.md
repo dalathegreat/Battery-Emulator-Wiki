@@ -23,14 +23,14 @@ Note, if you use Sofar CAN protocol instead, the inverter will need to be on a d
 ## Which protocol to use
 For this inverter type, use the option called "Sofar BMS (Extended) via CAN" under the "Inverter Protocol" setting
 
-<img alt="image" src="https://github.com/user-attachments/assets/bdf5d609-1927-4191-9f4d-f856fd4ea7d5" />
+<img alt="image" src="../images/sofar-03.png" />
 
 > [!IMPORTANT]  
 > If you try to use Pylon: The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed.
 
 Note also that Sofar inverters need to have some special flags set in the Pylon. Send Group: 1 , Inverter Byteorder :heavy_check_mark: and 30k offset :heavy_check_mark:
 
-<img alt="image" src="https://github.com/user-attachments/assets/3b059b6d-1332-44a7-b4d6-7f37596d6c20" />
+<img alt="image" src="../images/sofar-04.png" />
 
 Due to this, it is better to use Sofar CAN instead! But Pylon is viable if you want the inverter/battery to be able to share the CAN channel
 
@@ -39,15 +39,15 @@ Connect HV cables to battery terminals using OEM connectors. Highly advised to a
 
 > [!CAUTION]
 > Standard Staubli connectors don't fit SOFAR BAT ports, make sure to acquire proprietary SOFAR connectors
-> <img alt="image" src="https://github.com/user-attachments/assets/bb70343b-0c03-4ef5-82b1-859f01139191" />
+> <img alt="image" src="../images/sofar-05.png" />
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/b61a8d96-45d5-4652-8091-a850a6b734d4)
+![bild](../images/sofar-01.png)
 
 Connect CAN H and CAN L from Lilygo to socket no.8.
 CAN-H  -  PIN 7
 CAN-L  -  PIN 8
 
-![bild](https://github.com/dalathegreat/Battery-Emulator/assets/26695010/b66669e6-5180-49df-ae7c-eb27ab23d479)
+![bild](../images/sofar-02.png)
 
 ## Inverter Configuration
 In "Advanced Settings/Battery Parameters" choose `Pylontech` as battery type and set `01` as battery address (00 is default), save your settings. Check all fuses and everything else twice, then turn on Lilygo, and voila!
@@ -55,7 +55,7 @@ In "Advanced Settings/Battery Parameters" choose `Pylontech` as battery type and
 ### Sofar CAN
 If you use Sofar CAN, select the "General" option
 
-<img alt="image" src="https://github.com/user-attachments/assets/57725b59-e536-4eee-81d4-6c85b86e8651" />
+<img alt="image" src="../images/sofar-06.png" />
 
 
 ## Sofar CAN
@@ -68,9 +68,9 @@ On the battery emulator side, have one battery configured as 0, and the next 1, 
 
 ( remenber the inverter itself has also an address on the CAN bus , default 01. )
 
-<img alt="image" src="https://github.com/user-attachments/assets/bdf5d609-1927-4191-9f4d-f856fd4ea7d5" />
+<img alt="image" src="../images/sofar-03.png" />
 
-<img width="933" height="697" alt="image" src="https://github.com/user-attachments/assets/8d27f20d-f4a3-4235-8214-a9cddbe46093" />
+<img width="933" height="697" alt="image" src="../images/sofar-08.png" />
 
 
 See the attached .zip file for more info on this protocol

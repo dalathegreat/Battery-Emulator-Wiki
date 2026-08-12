@@ -22,7 +22,7 @@ The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN batter
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 
-![Skarmbild_2024-07-10_211612](https://github.com/user-attachments/assets/52a67f68-7b96-431f-933b-4065ee3eff7a)
+![Skarmbild_2024-07-10_211612](../images/ferroamp-01.png)
 
 [PD10008_ESS-Power-Case-Installation-Manual_A02b.pdf](https://github.com/user-attachments/files/16394301/PD10008_ESS-Power-Case-Installation-Manual_A02b.pdf)
 
@@ -32,7 +32,7 @@ For this inverter type, use the option called "Ferroamp Pylon battery over CAN B
 > [!IMPORTANT]  
 > The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed. If 0 is left as default values, the below options will be used
 
-<img width="565" height="273" alt="image" src="https://github.com/user-attachments/assets/45385065-27bf-4585-b1b7-0aaa5d33a7b4" />
+<img width="565" height="273" alt="image" src="../images/ferroamp-02.png" />
 
 - TOTAL_CELL_AMOUNT 420 // Edit steps of 30, as how much your battery Wh is. 30 = 3552Wh, so 420 = 49728Wh*
 - MODULES_IN_SERIES 4

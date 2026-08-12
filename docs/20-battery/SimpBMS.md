@@ -28,6 +28,6 @@ Also be aware to enter the settings and setup correctly for you pack. The settin
 ## Software configuration
 For this battery type, use the option called "SIMPBMS battery" under the "Battery Protocol" setting
 
-<img width="666" height="266" alt="image" src="https://github.com/user-attachments/assets/8d5cd421-155b-4d41-b93f-f327063b5118" />
+<img width="666" height="266" alt="image" src="../images/simpbms-01.png" />
 
 Also remember to configure all cellvoltage limits and pack design voltage limits according to your battery build

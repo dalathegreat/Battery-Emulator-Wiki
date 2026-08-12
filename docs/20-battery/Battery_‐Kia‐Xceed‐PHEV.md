@@ -47,15 +47,15 @@ Max Continuous Current | ±250A
 <hr>
 <h2>Photos</h2>
 <h3>BF21 Connector (Sub Pack, 24-pin)</h3>
-<p><img src="https://github.com/user-attachments/assets/24538c8f-e214-43d1-bcdd-2befb9111b11" alt="BF21 connector"></p>
+<p><img src="../images/battery-kia-xceed-phev-01.png" alt="BF21 connector"></p>
 <p><em>BF21 — 24-pin connector on the Sub Pack. Top row: pins 1–12, bottom row: pins 13–24.</em></p>
 <hr>
 <h3>Battery Packs — Overview</h3>
-<p><img src="https://github.com/user-attachments/assets/a5bc3d6f-42fd-43c4-b1b6-c3ec7566897a" alt="Battery packs overview"></p>
+<p><img src="../images/battery-kia-xceed-phev-02.jpg" alt="Battery packs overview"></p>
 <p><em>Top: Main Pack (black enclosure, underside view). Bottom: Sub Pack (silver/aluminium enclosure) with orange HV interconnect harness and BMS visible.</em></p>
 <hr>
 <h3>Battery Packs — HV &amp; Signal Connectors</h3>
-<p><img src="https://github.com/user-attachments/assets/cfd2486b-040b-4377-8468-e19e732db902" alt="Battery packs connectors detail"></p>
+<p><img src="../images/battery-kia-xceed-phev-03.jpg" alt="Battery packs connectors detail"></p>
 <p><em>Detail of the inter-pack connection point showing the orange HV connector (always live), the orange safety plug, and the low-voltage signal harness (BF21/BF11 and BB12).</em></p>
 <hr>
 <h2>Safety</h2>
@@ -71,3 +71,7 @@ Max Continuous Current | ±250A
 </ul></body></html><!--EndFragment-->
 </body>
 </html>
+
+<p>Here are some useful tools I created. My pack developed a P1B25 fault before finished integration so I have abandoned the project and ordered a different pack.
+[Kia 8.9kWh PHEV.zip] (https://github.com/user-attachments/files/30602101/Kia.8.9kWh.PHEV.zip) <p>
+

@@ -7,4 +7,4 @@ Please add info!
 ## Which protocol to use
 For this inverter type, use the option called "Sol-Ark LV protocol over CAN bus" under the "Inverter Protocol" setting
 
-<img width="481" height="62" alt="image" src="https://github.com/user-attachments/assets/5fcccfae-847d-435e-aacf-7f8551a6c15d" />
+<img width="481" height="62" alt="image" src="../images/sol-ark-lv-01.png" />

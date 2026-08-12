@@ -19,6 +19,7 @@ Most Solis inverters support a wide battery voltage range. Nevertheless, you sho
 * S6-EH1P(3.8-11.4)K-H-US ✅
 * S6-EH3P(3-10)K-H-AU ✅
 * S6-EH3P20K-H ✅
+* S6-EH3P50K-H ✅
 * S6-EH3P29.9 K-H ✅ 
 * S6-EH3P(3-10)K-H-EU ✅ 
 * S6-EH3P(3-10)K2-H (testers wanted, please report back!)
@@ -26,7 +27,7 @@ Most Solis inverters support a wide battery voltage range. Nevertheless, you sho
 * S6-EH3P100K10-NV-YD-H ✅ (Use BYD-WHS inverter setting)
 
 ## Communication wiring
-The Solis inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki#can-wiring-troubleshooting)
+The Solis inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](https://github.com/dalathegreat/Battery-Emulator/wiki/CAN-wiring-practices-and-troubleshooting)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 
@@ -36,15 +37,15 @@ The Solis inverter works via CAN. The LilyGo board can have both a CAN battery a
 ## Which protocol to use
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
-<img width="484" height="68" alt="image" src="https://github.com/user-attachments/assets/a85dbc6b-0464-4176-bddd-21a719f9ea15" />
+<img width="484" height="68" alt="image" src="../images/afore-01.png" />
 
 In the Solis inverter settings, select the "BYD-HVS/HVM/HVL" option:
 
-![image](https://github.com/user-attachments/assets/eabba9d2-6982-45d2-a939-f2d5b3f3aaad)
+![image](../images/solis-01.png)
 
 BYD_HVL option when looking directly at the inverter screen:
 
-<img width="1203" height="726" alt="image" src="https://github.com/user-attachments/assets/ef990223-5d3d-494b-8ea3-9d4153688ef7" />
+<img width="1203" height="726" alt="image" src="../images/solis-05.png" />
 
 
 
@@ -55,12 +56,12 @@ The sequence that seems to work most reliably is to get the battery up and runni
 
 - If you see BatName-FAIL, please contact Solis local service center by email to obtain the latest firmware version. This will fix the issue
 
-![image](https://github.com/user-attachments/assets/604ac5e0-96ad-4690-b3cc-c97a3d9e46ff)
+![image](../images/solis-02.png)
 
 
 ## Installation examples
 
-![image](https://github.com/user-attachments/assets/5d48cb09-8140-4c02-8439-ed77ef6b1800)
+![image](../images/solis-03.png)
 
 ## Tips for connectivity
 

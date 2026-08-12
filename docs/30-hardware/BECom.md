@@ -5,10 +5,10 @@ The BECom hardware is an open source hardware design created specifically for th
 The board has IO for 2x CAN batteries, along with contactor control for each battery. It also features a CAN interface for the inverter, and a Modbus RS485 connector. The inverter comms (CAN and RS485) are electrically isolated
 
 
-<img alt="image" src="https://github.com/user-attachments/assets/b7a9c762-9cdd-45a6-8421-fef5d28dd56a" />
+<img alt="image" src="../images/becom-01.png" />
 
 ## Hardware info
-The hardware has more details on this Github page** TODO WHERE IS LINK?**
+The hardware has more details [on this Github page](https://github.com/rjsc/BECom)
 
 ## Purchase link
 TODO?
@@ -16,12 +16,15 @@ TODO?
 > [!NOTE]
 > This has an included Antenna that needs to be mounted for good Wifi performance. Failure to install this will lead to connectivity issues
 
-<img alt="image" src="https://github.com/user-attachments/assets/562b4238-4003-49ac-9356-255d5345f3e0" />
+<img alt="image" src="../images/becom-02.png" />
 
 ## Installing the software
 Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup
 
 ## Over the air (OTA) software updates
-When updating this board [OTA](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **T-2CAN** hardware
+When updating this board [OTA](https://github.com/dalathegreat/Battery-Emulator/wiki/OTA-Update), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **BECom** hardware
 
 `BE_vX.Y.Z_BECom.ota.bin`
+
+### Boot button 
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](https://github.com/dalathegreat/Battery-Emulator/wiki/BOOT-button-functions)

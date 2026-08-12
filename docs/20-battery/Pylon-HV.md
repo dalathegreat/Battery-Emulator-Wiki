@@ -23,7 +23,7 @@ Dyness Tower
 
 configuration:
 
-<img width="545" height="86" alt="image" src="https://github.com/user-attachments/assets/d82e231e-9372-449d-8c2e-c9c22745ec77" />
+<img width="545" height="86" alt="image" src="../images/pylon-hv-01.png" />
 
 Currently the cell voltages might be off and the contactor did not work.
 
@@ -32,7 +32,7 @@ PylonTech Force H3
 ## Software configuration
 For this battery type, use the option called "Pylon compatible battery" under the "Battery Protocol" setting
 
-<img width="670" height="271" alt="image" src="https://github.com/user-attachments/assets/396556c8-d4f6-4dd4-bd1c-c3a74b1b2111" />
+<img width="670" height="271" alt="image" src="../images/pylon-hv-02.png" />
 
 Finally, remember to configure the voltage limits to match the Pylon battery you are using (e.g. 180-228V)
 

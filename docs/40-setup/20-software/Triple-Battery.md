@@ -26,7 +26,7 @@ For batteries that require externally controlled contactors, you can automate th
 - Battery2 - Double-Battery Contactor control via GPIO: ✅
 - Battery3 - Triple-Battery Contactor control via GPIO: ✅
 
-<img width="580" height="155" alt="image" src="https://github.com/user-attachments/assets/07319292-1602-45b7-b256-f3b9bd33d3d8" />
+<img width="580" height="155" alt="image" src="../../images/triple-battery-01.png" />
 
 This will start with connecting battery1, then once voltages match, battery2 and battery3 joins the DC link when voltages are close enough to first battery
 
