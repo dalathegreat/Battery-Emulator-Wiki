@@ -3,7 +3,7 @@ site_description: Documentation (Wiki) for Battery Emulator
 site_url: https://dalathegreat.github.io/Battery-Emulator-Wiki
 repo_name: 'dalathegreat/Battery-Emulator'
 repo_url: 'https://github.com/dalathegreat/Battery-Emulator'
-edit_uri: 'https://github.com/dalathegreat/Battery-Emulator-Wiki/blob/master/docs/'
+edit_uri: 'https://github.com/dalathegreat/Battery-Emulator-Wiki/blob/main/docs/'
 docs_dir: docs
 theme:
   name: material
