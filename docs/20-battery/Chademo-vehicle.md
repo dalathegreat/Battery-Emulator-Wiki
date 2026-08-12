@@ -1,4 +1,4 @@
-# Disclaimer and Safety notes 
+# CHAdeMO vehicles
 
 !!! warning "WARNING"
     The entire Battery-Emulator project focuses on re-using EV batteries for stationary storage. The following support page for CHAdeMO connection to the in-vehicle battery is only to be used for emergencies, where the grid is down and you need backup power. It is not intended for daily usage, the following info is ONLY for emergency situations!
@@ -7,10 +7,6 @@
     🔥 The CHAdeMO connection requires a genuine CHAdeMO cable. This is to prevent electrical shock to the person plugging in the vehicle. Using 3d-printed parts where you are close to 500VDC is potentially lethal 💀 Do not use anything other than a genuine connector! Genuine connectors known to work will be listed in the wiring and parts detail below.
 
 Be mindful that there is inherent risk to the rest of the vehicle and that you assume responsibility for that risk. Do not attempt on a vehicle you do not own. Be aware that some Nissan Leaf vehicles have experienced contactor welding when using other V2X equipment like Setec inverters; it is a possibility here even despite our best efforts to avoid such issues.
-
-***
-
-# Overview
 
 ## Supported CHAdeMO vehicles
 Generally: CHAdeMO vehicles v1.0 and forward are OK for V2X. 
@@ -89,14 +85,11 @@ Supported sensors:
 
 While the current sensor is not mandatory for all inverter protocols, it increases safety to have one connected.
 
-## Software setup
-Enable the option `CHADEMO_BATTERY` in the USER_SETTINGS.h
-
-# Lessons learned Leaf ZE0/Gen24
+## Lessons learnt Leaf ZE0/Gen24
 
 Here follows some information that was gathered during an integration of a ZE0, a Gen24 and a battery emulator in an RPi.
 
-## Setup
+### Setup
 * Nissan Leaf ZE0
 * Fronius Gen24-6kW
 * RPi with canhat + rs485, running battery emulator in python
@@ -106,26 +99,26 @@ Here follows some information that was gathered during an integration of a ZE0, 
 * Current sensor (INA260) for connector lock
 * A few resistors, optocoupler etc
 
-## CHAdeMO
+### CHAdeMO
 In the protocol for 0.9, the charger sends values for voltage and current to the EV. If the EV detects a deviation, it will signal this back to the charger using fault bits.
 Testing shows that at least for currents up to ~16A (Gen24 6kW), the ZE0 doesn't use own measurements for deviation checks, but trusts the values that it receives from the charger.
 So, all in can, if the charger says it can do max 22A, and the ZE0 requests 20A, the charger can send 10A and the ZE0 will accept that. Even though the actual current is 0A. An example where the ZE0 does throw a fault back is when 19A is requested and 1A is reported back.
 
-## Inverter slow start
+### Inverter slow start
 When a charge session starts, the EV expects that the power can be ramped up quickly. Most inverters are slow starters, so if the reported output current back to the car is taken directly from the measured one, the EV will detect a current deviation and signal a fault. By faking the reported current, the fault can be avoided. It should be noted that this puts one of safety mechanisms out of play.
 
-## SoC deduction
+### SoC deduction
 Normally SoC can be deduced from can messages, by dividing "charging_rate" with "constant_of_charging_rate_indication". On the ZE0 in the tests, this deduced SoC is about 10% higher than the SoC reported on EV-CAN (LeafSpy etc). So, in this case, if charging to 80% (real SoC) was expected, the charger had to stop when it got 90% as deduced SoC. 
 
-## Connector lock
+### Connector lock
 During initial testing, a 3d-printed connector was used, without any lock. In can, there is signalling from the charger that tells the EV if the connector is locked or not. At this stage, it had to be faked as locked to enable charge/discharge.
 Later, with a "stock connector", the lock was present, and could be integrated. On this connector two cables facilitated both lock and sensing that the car was connected. A relay controlled the lock (12V ~0.3A), and an I2C current/voltage sensor (INA260) was used to detect if the EV was connected, in both locked and unlocked states.
  
-## ZE0 charging only
+### ZE0 charging only
 If a more controlled behavior is wanted, the charger should output a current that is close to the requested. This implies that the inverter power has to be controlled from the charger. In the RPi integration, such a controller was in place. But due to the inverter being slow at startup, at least for the first minutes the reported current has to be faked.
 
-## ZE0 V2X
+### ZE0 V2X
 As long as the reported (charging) current is faked, tests show that it's possible to do both charging and discharging. However, no long term testing has been performed yet.
 
-# Sources used
+## Sources used
 - [Lars Rengersen, Chademo fast charging](https://www.evcreate.com/chademo-fast-charging-in-diy/)
