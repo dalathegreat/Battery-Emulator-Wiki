@@ -68,7 +68,6 @@ Battery subtype: 131 used for all entries.
 
 Module count: default value used
 
-![alt](url)
 ![11750](../images/foxess-h1-h3-ac1-kh-09.jpg){ width="652" height="4096" }
 
 Notes

@@ -87,6 +87,7 @@ Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most f
 
 ## Part numbers for Nissan LEAF batteries
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch (2011-2012) 2971C13NA0B |  [Ebay](https://www.ebay.com/sch/i.html?_nkw=fuse+2971C13NA0B)   |

@@ -62,6 +62,7 @@ The DC/DC converter can also be used to charge a 12V lead acid battery, or left 
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Service disconnect switch for 18.83kWh battery |  Volvo P/N 32299597   |
