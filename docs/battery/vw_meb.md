@@ -1,5 +1,5 @@
 ---
-title: "Volkswagen MEB"
+title: "VW/Audi/Škoda/Cupra MEB"
 ---
 
 # Volkswagen MEB battery platform
