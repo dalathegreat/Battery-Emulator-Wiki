@@ -1,5 +1,5 @@
 ---
-title: "BYD Compatibility"
+title: "BYD Vehicle Batteries"
 ---
 
 The code supports a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working
