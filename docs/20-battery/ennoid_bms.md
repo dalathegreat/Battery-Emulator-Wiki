@@ -1,5 +1,0 @@
----
-title: "Ennoid BMS"
----
-
-## WIP

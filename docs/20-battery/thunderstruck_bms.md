@@ -1,5 +1,0 @@
----
-title: "Thunderstruck BMS"
----
-
-WIP

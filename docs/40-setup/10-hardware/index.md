@@ -1,5 +1,0 @@
----
-title: "Hardware"
-hide:
-  - toc
----
