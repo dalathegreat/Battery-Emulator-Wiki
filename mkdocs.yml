@@ -84,5 +84,5 @@ plugins:
   - awesome-nav
   - redirects:
       redirect_maps:
-          'bmsreset.md': '40-setup/10-hardware/Periodic-BMS-reset.md#taking-it-into-use'
+          'bmsreset.md': '40-setup/10-hardware/periodic_bms_reset.md#taking-it-into-use'
 

@@ -1,5 +1,5 @@
 ---
-title: Supported chargers
+title: "Supported chargers"
 hide:
   - toc
 ---

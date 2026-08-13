@@ -1,5 +1,5 @@
 ---
-title: CAN tips
+title: "CAN tips"
 hide:
   - toc
 ---
