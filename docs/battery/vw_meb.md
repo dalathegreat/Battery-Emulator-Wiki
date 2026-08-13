@@ -1,5 +1,5 @@
 ---
-title: "Volkswagen MEB battery platform"
+title: "Volkswagen MEB"
 ---
 
 # Volkswagen MEB battery platform
