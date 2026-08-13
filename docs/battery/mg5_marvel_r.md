@@ -31,6 +31,7 @@ While for the 52.5 kWh battery they are farther way, not on the EDM:
 ![image](../images/mg5-marvel-r-04.png){ width="1054" height="595" }
 
 #### Main Service Disconnect
+
 Make sure the MSD is fitted. Without this, the battery will be disabled.
 
 Example, missing MSD:

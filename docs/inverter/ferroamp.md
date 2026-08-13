@@ -3,9 +3,11 @@ title: "Ferroamp"
 ---
 
 ## Compatible Ferroamp inverters
+
 * FerroAmp EnergyHub
 
 ## Bill of Material of FerroAmp components
+
 * 1x [FerroAmp EnergyHub](https://ferroamp.com/en/products/energyhub/)
 * 1x [FerroAmp DC Distribution](https://support.ferroamp.com/en/support/solutions/articles/47001258010-how-should-i-think-when-choosing-dc-distribution-)
 * 1x [FerroAmp Power Case](https://ferroamp.com/wp-content/uploads/2022/05/PD10008_ESS-Power-Case-Installation-Manual_En_A02.pdf)
@@ -43,6 +45,7 @@ For this inverter type, use the option called "Ferroamp Pylon battery over CAN B
 
 ## Troubleshooting
 Experiences with various troubles and solutions.
+
 1) Ensure ESO(s) and EnergyHub are updated to latest firmware. (Call FerroAmp support and confirm!)
 2) If you are getting "precharge" or "ESO fault 2 - communication" issues - try separating battery and inverter communication channels using MCP add on chip. Read more here: [CAN add-on (MCP2515)](../setup/can_related/can_add_on_mcp2515.md)
 3) If you bought a second hand ESO and you're having communications issues - it might be the CAN transciever that has taken a beating. (Seems not too uncommon on Ferroamp ESOs!) Read more here: [Lightning strike](../setup/hardware/lightning_strike.md)

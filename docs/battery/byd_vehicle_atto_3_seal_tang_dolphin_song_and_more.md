@@ -1,8 +1,7 @@
 ---
-title: "Compatible BYD batteries"
+title: "BYD Compatibility"
 ---
 
-# Compatible BYD batteries
 The code supports a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working
 
 To get contactor closing to function, start BYD battery first, and Battery-Emulator afterwards. If you start Battery-Emulator before the battery, it wont close contactors before you restart the emulator. Also make sure no FAULT events are active when trying to start, this will open contactors.
@@ -219,7 +218,8 @@ Rather than running the manual *Calibrate SOC* procedure periodically, Battery-E
 can **recalibrate SOC to 100% automatically** whenever it detects the pack is genuinely
 full — correcting the BMS's gradual coulomb-count drift on its own.
 
-> Requires firmware **[10.10.1]+**. (on by default).
+!!! tip "TIP"
+    Requires firmware **[10.10.1]+**. (shipped by default).
 
 #### What it does
 When enabled, BE watches for the pack sitting at a true, settled top-of-charge and then
@@ -246,6 +246,7 @@ charge — it simply won't fire, and you can still calibrate manually.
 
 #### Configuration
 On the **More Battery Info** page:
+
 - **Auto-calibrate SOC to 100% when full** — the on/off toggle.
 - **Auto-calibrate trigger drift (%)** — how far below 100 % SOC must drift before an automatic
   recalibration is allowed (higher = less frequent corrections).
@@ -254,6 +255,7 @@ On the **More Battery Info** page:
   calibration has or hasn't happened.
 
 #### Notes
+
 - It is deliberately conservative: it requires a genuine, *sustained* full charge **and**
   real drift **and** the cooldown, so it won't spam writes to the BMS.
 - It writes to the BMS exactly like the manual procedure, so the same persistence and
@@ -279,7 +281,8 @@ One user reported success by manually sending the CAN log file while the battery
 
 [resetLockedBYD_v1.txt](https://github.com/user-attachments/files/20038227/resetLockedBYD_v1.txt)
 
-User 1: About the power cycle and how I did it..
+User 1: About the power cycle and how I did it:
+
 - Battery-Emulator compiled with only TEST_FAKE_BATTERY and no inverter selected
 - Started with no power to either 12V constant or 12V ignition. I have separate switches for them though.
 - So first Battery-Emulator hardware is powered on.
@@ -291,6 +294,7 @@ User 1: About the power cycle and how I did it..
 - Wait a few seconds and then switch off 12V constant.
 
 User 2 success story:
+
 - I have B+ and the 2 ignition wires on seperate switches.
 - I turn on B+ first then ignition.
 - Software was setup for BYD ATTO 3, v8.13.0

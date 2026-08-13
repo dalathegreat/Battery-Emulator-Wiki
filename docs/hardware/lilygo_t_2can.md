@@ -3,6 +3,7 @@ title: "LilyGo T‐2CAN"
 ---
 
 ## Hardware basics
+
 The LilyGo T-2CAN is a dual CAN board, excellent for integrations that require separate CAN controllers. It is very easy to use this board on multi-CAN systems compared to the LilyGo T‐CAN485. The CAN interfaces are both galvanically isolated, making it safe to use with inverters such as Solax.
 
 **There are two versions of the T-2CAN:**
@@ -18,9 +19,11 @@ Since they are the same price, the T-2CAN FD is generally recommended.
 ![image](../images/lilygo-t-2can-02.png)
 
 ## Purchase link
+
 The hardware can be bought via sites like AliExpress, or the official [LilyGo store](https://lilygo.cc/products/t-2can)
 
 ## Hardware info
+
 The hardware has more details on LilyGo's Github page
 https://github.com/Xinyuan-LilyGO/T-2Can
 
@@ -30,14 +33,17 @@ https://github.com/Xinyuan-LilyGO/T-2Can
 ![image](../images/lilygo-t-2can-03.png)
 
 ## Installing the software
+
 Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup
 
 ## Over the air (OTA) software updates
+
 When updating this board [OTA](../setup/software/ota_update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **T-2CAN** hardware
 
 `BE_vX.Y.Z_LilygoT-2CAN.ota.bin`
 
 ## Interfaces
+
 The board comes with 2 CAN channels. One is labelled CAN-A , and the other one is CAN-B
 
 ![image](../images/lilygo-t-2can-04.png)
@@ -55,7 +61,7 @@ Example configuration, Nissan LEAF battery connected to CAN-B , and a Deye inver
 
 ![image](../images/lilygo-t-2can-05.png)
 
-## <a name="add-ons"></a>Add-ons
+## Add-ons
 
 The T-2CAN has two SH-1.0mm connectors with two GPIOs each, and unpopulated solder pads for power and 21 more GPIOs. This allows you to add some modules without soldering, and even more by making connections to the solder pads underneath.
 
@@ -142,6 +148,7 @@ You can attach a WS2812B LED to the board, connecting to IO35, 5V and GND. It ma
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
 
 ### Screen support
+
 The T-2CAN board can have a 128x64 SSD1306/SSD1309 I2C OLED display attached to it, that will display battery status, events and WiFi info.
 
 Currently only on Lilygo T-2CAN, using the second QWIIC connector (SDA=GPIO1, SCL=GPIO2).
@@ -149,6 +156,7 @@ Currently only on Lilygo T-2CAN, using the second QWIIC connector (SDA=GPIO1, SC
 ![image](../images/lilygo-t-2can-17.png)
 
 #### Screen parts needed 
+
 The screens are available in several sizes. Some are monochrome, others are two-tone (each pixel can only show one color, but different regions are different colors). The same 4-pin SH-1.0mm 'QWIIC' cable from LilyGo can be used, also available from AliExpress. Pay close attention to the pin connections, since the color code is not consistent between cables.
 
 |  Product |  Purchase Link |
@@ -166,4 +174,5 @@ STL for 3D printing
 [Open Frame DIN] (https://www.thingiverse.com/thing:7278747)
 
 ### Boot button 
+
 The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../setup/software/boot_button_functions.md)

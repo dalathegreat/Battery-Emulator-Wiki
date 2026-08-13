@@ -33,6 +33,7 @@ The BMS SoC drifts over time, we're still work on how to get it to reset once ma
 Both locked packs (using external contactor control and coulomb-counting) and non-locked packs (using BMS contactor control and SoC) are currently being tested, we've successfully replaced a locked BMU with an unlocked one from a catastrophically damaged pack, so this is worth keeping in mind as an option.
 
 ## Software configuration
+
 For this battery type, use the option called "MG4 battery" under the "Battery config" setting
 
 ![be](../images/mg4-01.jpg)

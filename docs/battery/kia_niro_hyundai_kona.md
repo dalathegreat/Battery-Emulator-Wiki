@@ -1,5 +1,5 @@
 ---
-title: "Kia e-Niro 64 kWh / Hyundai Kona Electric 64 kWh"
+title: "Kia e-Niro/Hyundai Kona 64 kWh"
 ---
 
 # Kia e-Niro 64 kWh / Hyundai Kona Electric 64 kWh
@@ -19,21 +19,23 @@ This was done under program Recall 200 - https://static.nhtsa.gov/odi/rcl/2021/R
 So can it be that the battery donor car is from 2020 or 2021 but has received the new battery, good to check then the battery label production date.
 
 ## Specifications
+
 * 64kWh, 98s, 352v nominal, 180Ah (Approx size 147cm w x 197cm l x 33cm) ~450kg
    * Note: 64kWh, 96S 358V, 68kWh net ( **37501-AO050** ) 2022+ uses CAN-FD! See part numbers for more info
 * 39kWh, 90s, 324v nominal, 120Ah (Approx size 147cm w x 197cm l x 33cm) ~350kg
 
 ## Part numbers for batteries
+
 Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Number Q is used for Niro. ✅ means that someone has succesfully used the pack with the Battery-Emulator
 
 - 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ This battery uses **CAN-FD**, Use `Kia 64kWh **FD** Battery` option in software!
 ![image](../images/kia-niro-hyundai-kona-64-kwh-16.png)
-
 - 37501 GI050 is Hyundai Ioniq 5 72kWh (For this battery see [EGMP](hyundai_e_gmp_platform_58_2_77_4_kwh.md))
 - 37501 CV050 is Kia EV6 78kWh (For this battery see [EGMP](hyundai_e_gmp_platform_58_2_77_4_kwh.md))
-- 37510 E4050 is [Kia Soul 27kWh](kia_soul_27kwh.md) ❌ (not supported,pinout unclear)
+- 37510 E4050 is [Kia Soul 27kWh](kia_soul.md)
 
 All Ioniq 28kWh packs use the following options
+
 ![image](../images/kia-niro-hyundai-kona-64-kwh-17.png)
 
 - 37501 G7200 is Hyundai Ioniq 28kWh

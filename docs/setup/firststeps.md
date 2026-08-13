@@ -16,7 +16,7 @@ For examples showing wiring, see each battery type's own Wiki page. For instance
 
 Start by watching this [quickstart guide](https://www.youtube.com/watch?v=sR3t7j0R9Z0)
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/sR3t7j0R9Z0/0.jpg)](https://www.youtube.com/watch?v=sR3t7j0R9Z0)
+[![video](https://img.youtube.com/vi/sR3t7j0R9Z0/0.jpg)](https://www.youtube.com/watch?v=sR3t7j0R9Z0)
 
 1. Open the [webinstaller page](https://dalathegreat.github.io/BE-Web-Installer/)
 2. Follow the instructions on that page to install the software
@@ -26,7 +26,9 @@ Start by watching this [quickstart guide](https://www.youtube.com/watch?v=sR3t7j
 6. Connect your battery and inverter to the board and you are done! 🔋⚡
 
 ## Dependencies 📖
+
 This code uses the following excellent libraries: 
+
 - [adafruit/Adafruit_NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel) LGPL-3.0 license
 - [ayushsharma82/ElegantOTA](https://github.com/ayushsharma82/ElegantOTA) AGPL-3.0 license 
 - [bblanchon/ArduinoJson](https://github.com/bblanchon/ArduinoJson) MIT-License
@@ -37,6 +39,7 @@ This code uses the following excellent libraries:
 - [pierremolinaro/acan2517FD](https://github.com/pierremolinaro/acan2517FD) MIT-License
 
 It is also based on the information found in the following excellent repositories/websites:
+
 - https://gitlab.com/pelle8/inverter_resources //new url
 - https://github.com/burra/byd_battery
 - https://github.com/flodorn/TeslaBMSV2

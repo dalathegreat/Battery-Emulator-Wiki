@@ -1,9 +1,11 @@
 ---
-title: "Template COPY ME"
+title: "zz Template COPY ME"
 ---
 
 ## Compatible batteries
+
 For this platform...
+
 - Model year, energy amoung
 
 ### Physical Dimensions
@@ -16,6 +18,7 @@ For this platform...
 > **Battery holder frame design:** <!-- Link to frame design if available -->
 
 ### Special considerations
+
 - Requires external voltage to start?
 - Risk being permantently crashlocked?
 - Needs to be opened and modified internally to work?
@@ -32,6 +35,7 @@ Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
 | <!-- e.g. HV Connector --> | <!-- e.g. TE 123456 --> | [eBay](#) / [AliExpress](#) |
 
 ## Wiring, Low voltage connector
+
 Post picture of LV connector
 Add diagram of LV connections needed
 

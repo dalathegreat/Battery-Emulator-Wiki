@@ -48,6 +48,7 @@ BYD_HVL option when looking directly at the inverter screen:
 ![image](../images/solis-05.png){ width="1203" height="726" }
 
 ## Startup example
+
 The sequence that seems to work most reliably is to get the battery up and running but still disconnected from the power supply to the inverter (I have a pair of inline DC 32A breakers for this). Once the battery is awake, go into the inverter menu and select BYD from the battery menu. Then select 'Battery Wakeup'. The alarm light on the inverter should now go out, and the lilygo will be pulsing green on its led. You can now flip the DC breakers to connect the battery power to the inverter. 
 
 ## Troubleshooting

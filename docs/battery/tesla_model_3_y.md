@@ -1,9 +1,7 @@
 ---
-title: "Wiring up a Tesla Model S/3/X/Y battery"
+title: "Tesla Model 3/Y"
 ---
 
-# Wiring up a Tesla Model S/3/X/Y battery
-## Safety warning 💀 ⚡ 
 !!! warning "WARNING"
     Re-using the Tesla batteries might require opening the Penthouse to verify that fuses have not blown. To do this safely, the correct personal protective equipment (PPE) is required. The pyrofuse for instance contains a small explosive charge to be able to disconnect the high voltage quickly. When handling the inside of a Tesla battery, please make sure you check your local electrical legislation requirements. This is a good starting point when it comes to PPE:
 
@@ -16,6 +14,7 @@ It is a good idea to store the battery away from your house but still protected 
 
 ## Which packs work?
 The Tesla Model 3/Y packs have many hardware/software revisions. Due to this it can be hard to know if a certain battery is compatible (or requires extra work with pre-charge / HVIL). Here is a list of packs we have used successfully:
+
 * Model 3Y: 2019 RWD ✅ 
 * Model 3/Y: 2020-2021 AWD ✅ 
 * Model 3/Y: 1666968-00-C ✅ 
@@ -51,6 +50,7 @@ Tesla Model Y Electrical Reference can be found [Here](https://service.tesla.com
 Tesla Service Mode User Guide [Here](https://service.tesla.com/docs/Public/ServiceMode/service_mode_user_guide.pdf).
 
 ### How do I test a battery before buying ?
+
 It is possible to test a battery quite easily before purchase. For this you need the X098 connector, some 60/120Ohm resistors, a LilyGo board, and a 12V battery. See [this video for a step by step on how to connect to a Tesla battery](https://youtu.be/Zikb94dxlTM?si=u05h9BuUjtZo3BW2&t=122) , and also check out the wiring instructions below. Note, you do not need to connect anything else than the X098 connector, and contactor closing is not required to get a readout.
 
 ![I’m the first person in the world to do this! 2](../images/tesla-model-s-3-x-y-01.jpg)
@@ -72,6 +72,7 @@ Configure all the options correctly, according to what pack size and from which 
 Manual charging/discharge power also needs to be set, due to not being able to use the values sent by the BMS yet. It is important to set these values to the same Power size as your inverter, for instance 6000 W if you have a 6kW inverter. 
 
 ### Note on LFP chemistry
+
 All Model S/X packs are NCM/A chemistry
 
 Some Model 3/Y packs are LFP chemistry, and some are NCM/A chemistry.
@@ -81,6 +82,7 @@ The code autodetects incase you have an LFP battery, but the detection method ca
 ![image](../images/tesla-model-s-3-x-y-17.png){ width="592" height="33" }
 
 ## Part numbers for Tesla Model 3 batteries
+
 Incase your battery is missing some wires/fuses, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
 
 |  Product | Part # | Purchase Link |
@@ -91,15 +93,19 @@ Incase your battery is missing some wires/fuses, here are the OEM part numbers a
 | Penthouse socket | Torx Socket 10EPR | https://www.fcpeuro.com/products/epr-torx-plus-socket-set-1-4-drive-5-piece-cta-manufacturing-5064 or https://vi.aliexpress.com/item/1005006015748803.html  |
 
 ## Replace the Pyrofuse
+
 The Pyrofuse is located inside penthouse cover. It blows if the car’s airbags go off, so it’s likely you’ll need to replace it. Whilst it is possible to bypass it (using a DC circuit breaker and 2 Ohm resistor across the monitoring pins) this is not recommended as the Pyro fuse self-monitors load and can trip on its own (even though the car central computer isn’t running) so it’s best to use a proper pyro fuse and retain the original safety functionality that it provides. This is probably the most dangerous part of the process. Refer to the safety section and ensure you’re wearing PPE
 and take care not to short anything with your tools. I used a plastic case around the fuse so the screws didn’t drop or touch the side. Socket was either half-inch or 13mm. After removing the fuse, always check the voltage potentials before putting in a new Pyrofuse. Check ground to each
 of the Pyrofuse connections, and also between them. Voltage between them is usually 100-180 volts but starts sagging slowly as soon as you connect the multi meter. It’s normal although a bit unintuitive. (The battery gets split into 2 halves when the pyro blows).
 
 ## Pre-charge capacitor
+
 The battery runs a “pre charge” circuit before closing the contactors. This is done to avoid sending full power out to the drive unit instantaneously. Effectively the “pre charge” procedure involves ramping up the voltage from 0 to 350v in a relatively short space of time (approx. 1s). The battery needs to see a response from a capacitor charging otherwise it detects an issue and faults. Therefore, it is necessary to install a capacitor to simulate a motor connected, in order to complete the pre-charge procedure and close the contactors. The capacitor is installed directly across the main High Voltage cables. It can be done inside the penthouse but it’s preferable to do it outside the battery (to leave the battery unmodified) and inside an electrical box so that if the capacitor blows it doesn’t make a mess.
 
 ## High voltage wiring
+
 Here is a simplified picture for the high voltage wiring on the Tesla battery. Depending on if your battery has the Power Conversion System (PCS), or not, the wiring varies. PCS is needed for contactor closing precharge circuit. Without it, pack wont turn on via CAN.
+
 ![bild](../images/tesla-model-s-3-x-y-03.png)
 ![bild](../images/tesla-model-s-3-x-y-04.png)
 
@@ -115,6 +121,7 @@ If you are adding the capacitor to the outside of battery, connect it to the cor
 ![image](../images/tesla-model-s-3-x-y-18.png)
 
 ## Low voltage wiring
+
 The X098 connector has a few connections itself, scroll down to see where the pins should go.
 If you want to run with the penthouse lid open, ground has to be connected to the two boltholes on each side of X098.
 ![Tesla_X098](../images/tesla-model-s-3-x-y-06.png)
@@ -143,6 +150,7 @@ Make sure to connect the 12V battery to the PCS (two M8 screws close to the X098
 ![image](../images/tesla-model-s-3-x-y-22.png){ width="895" height="750" }
 
 ## High voltage interlock circuit (HVIL)
+
 The Tesla battery contains pyro and glass fuses that can be broken if the battery comes from a crashed vehicle. Do not use the battery unattended with these fuses bypassed !
 
 For testing purposes, temporary copper cables can be used to replace glass fuses, but you should ideally use a replacement pyro fuse as you can't simply replace that fuse with wire.  The reason is that there are 2 small pins below the pyro fuse that expect to see around 2 Ohms of resistance from the Pyro fuse so simply putting wire across where the pyro fuse would usually be be will not work.  You will need to put a resistor across the 2 pins below where the pyro fuse would normally sit, but this is definitely not recommended and you should ideally just buy a replacement pyro fuse instead of doing anything temporary.
@@ -158,6 +166,7 @@ With the penthouse lid open, there are jumpers for the two HV-connectors. In thi
 ![Tesla_hvils_and_pyro_fuse](../images/tesla-model-s-3-x-y-08.jpg)
 
 ## HVIL Troubleshooting
+
 There seems to be many hardware and firmware revisions of the Tesla Model 3/Y battery. Not all batteries will allow for contactor closing easily. Incase you run into a battery that cannot close contactors, you might have to tweak some resistor values between pin 1 and 3 (try 60 and 120 ohms first). 
 
 It is recommended to turn on `Enable general logging via USB serial` OR `Enable general logging via Webserver` in the settings page get more info why HVIL is not allowing to close. Below are some messages you can encounter, along with troubleshooting tips:
@@ -217,6 +226,7 @@ Connections info: https://electrek.co/2017/08/24/tesla-model-3-exclusive-battery
 ![image](../images/tesla-model-s-3-x-y-14.png)
 
 ## Note on balancing :b: 
+
 Tesla batteries are very specific when they want to balance, and it is hard to get a battery to balance. NMC chemistry seems to be more stable long term, and millivolt deviations between cells are kept low even years in operation in stationary storage. LFP chemistry however get out of balance more easily. LFP also has a very specific need to be charged to 100% to calibrate SOC, and sit at this state to balance, which is unlikely to occur in stationary systems that are used 24/7.
 
 ### Current theory on balancing conditions
@@ -244,9 +254,11 @@ When enabling the Manual LFP balancing , the forced top charge runs for the spec
 ![image](../images/tesla-model-s-3-x-y-25.png){ width="414" height="382" }
 
 ### Replacement BMS to balance
+
 There is an ongoing open source project called the CellKeeper that aims to replace the BMS inside the Tesla battery with a standalone controller. This would instantly solve the balancing issue. Note that this board is still in development, and as soon as it is ready this page will be updated.
 
 ## Example integration
+
 Check out this excellent summary from user "k" on the Discord server 🙌 
 [Tesla battery for solar storage - tips and resources.pdf](https://github.com/user-attachments/files/16316246/Tesla.battery.for.solar.storage.-.tips.and.resources.pdf) **Be careful, this PDF shows a red wire going to the negative terminal of the 12V PCS input**
 

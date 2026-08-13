@@ -2,9 +2,8 @@
 title: "Maxus eD3"
 ---
 
-## Battery general info
-Maxus eDeliver 3.
-There are different battery models:
+Maxus eDeliver 3. There are different battery models:
+
 - 35kWh / 52.5kWh NCM by UABC "United Auto Battery System Co.,Ltd" (model year 2020, 2021)
 - 50,2 kWh LFP by CATL "Contemporary Amperex Technology Co., Limited" (model year 2022+)
 
@@ -33,6 +32,7 @@ The battery has an interlock on Connector B that needs to be shorted
 
 ### How do I connect the battery to the Battery-Emulator?
 TODO
+
 - Connector B: Pin 3 to Pin 2 to satisfy interlock detection
 
 ## High voltage wiring

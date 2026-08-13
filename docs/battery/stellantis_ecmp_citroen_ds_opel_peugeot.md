@@ -3,6 +3,7 @@ title: "Stellantis eCMP (Citroen, DS, Opel, Peugeot)"
 ---
 
 ## Note on stationary storage :notebook: :zap: 
+
 1. To use the eCMP battery in stationary storage, the BMS needs to be isolated to keep contactors engaged. This requires opening the battery, exposing yourself to 400V. Only proceed with this battery if you are OK with High Voltage work. For the full procedure, see [this section of the wiki](stellantis_ecmp_citroen_ds_opel_peugeot.md#disabling-isolation-monitoring-via-hw-modification)
 2. Also note that CAN communication needs to be completely electrically isolated to keep contactors engaged. **This can easiest be achieved by using a "LilyGo T-2CAN" board, or adding a separate CAN Bus isolator,** links in the [Lightning strike wiki page](../setup/hardware/lightning_strike.md)
 
@@ -32,17 +33,18 @@ Only V1 VAN packs work, V2 does not. You can spot the V1 by looking at the small
 - Maybe more, feel free to add
 
 ### Supported 44kWh & 82kWh "STLA medium" platform batteries
+
 Work in progress, values not valid yet
+
 - Peugeot e-3008 III (e-P64, 2024–present)  ❓ 
 - Peugeot e-5008 III (e-P67, 2024–present)  ❓ 
 - Opel Grandland II (2024–present)  ❓ 
 
 ### Battery dimensions
-The 50kWh car battery weighs approximately 350kg
 
+The 50kWh car battery weighs approximately 350kg
 The 50kWh VAN battery weighs approximately 382kg
 The 75kWh VAN battery weighs approximately 534kg
-
 The 50kWh battery (108 2x cells) has an operating voltage between 356 and 448 VDC (108 double cells x 3.3 - 4.15V)
 
 The eCMP platform comes in three different physical sizes, A, B and C type:
@@ -99,7 +101,7 @@ Polarity on cable side for the VAN Pack:
 ### Wiring pinout
 The following pinout has been reverse engineered on an ë-C4
 
-|  |  |  |  |
+| Pin | color | Signal | Note |
 | --- | --- | --- | --- |
 | 1 | green | CAN H | (Connect to Battery Emulator CAN H)
 | 2 | white | CAN L | (Connect to Battery Emulator CAN L)
@@ -117,6 +119,7 @@ This platform shares its low voltage connector with the [Stellantis SMP platform
 Did your battery not come with all the required cables/plugs? No worries, here are the part numbers and purchase links!
 
 #### High voltage connectors
+
 - https://a.aliexpress.com/_EImj7ZG
 
 - J9D3-14N236
@@ -136,6 +139,7 @@ Did your battery not come with all the required cables/plugs? No worries, here a
 ![5Q0971015](../images/stellantis-ecmp-citroen-ds-opel-peugeot-07.jpeg)
 
 #### Class-Y Capacitors 10NF 400V:
+
 - Aliexpress: https://a.aliexpress.com/_EH7Rw0k
 
 #### Low voltage connector
@@ -165,6 +169,7 @@ To perform this, open up the battery and locate the BMS. Isolate the part circle
 #### Step 2, Install capacitors
 
 On this PCB inside the battery, place 2x Y capacitors 10nF between:
+
 - BAT+ and GND
 - BAT- and GND
 
@@ -211,18 +216,22 @@ If you have this red screen, check if you did connect the main contactors box (t
 Also you might have stored errors in BMS. When trying to clear the codes you MUST press multiple times the buttons (the commands are not always executed successfully so you need to press them more than once). Then reboot BE and do a hard reset (cut 12V then turn on again)
 
 ### Reverse engineering info
+
 Can Logs can be found here: https://drive.google.com/drive/folders/1S-Nf0dN5nZi71HhXIoM3GTydEk_VHHuM?usp=drive_link
 
 ### Troubleshooting tips
+
 - Try feeding the battery from separate 12V supply than your BE device. A 12V lead-acid battery is fine for troubleshooting.
 
 ### Double battery operation :battery: :battery: 
 ECMP integration supports running two packs in parallel
 For double ECMP batteries you need:
+
 - 2 separate AC/DC PSU or another way to isolate the GND from the 2 BMS
 - 2 HV DC contactors for the 2nd battery to join the 1st one (as long as the DC voltage difference is 2V or lower)
 - an additional CAN communication for BE in order to talk to the 2nd battery
 - an additional fuse for the 2nd battery
+
 For T2CAN you can get a MCP2518FD and set it up as classic CAN. The 2 onboard CAN connectors will be used for the 2 battery pacs:  native (CANB) for 1st battery, CANA for 2nd battery and the additional MCP2518FD for the inverter
 Currently you cant clear the 2nd battery error codes from BE, only the 1st battery.
 

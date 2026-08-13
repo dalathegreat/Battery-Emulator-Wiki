@@ -1,5 +1,5 @@
 ---
-title: "Stellantis SMP platform"
+title: "Stellantis SMP"
 ---
 
 ### WIP

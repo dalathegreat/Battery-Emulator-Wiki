@@ -87,6 +87,7 @@ It has the following pinout:
 [![](../images/bmw-i3-15.png){ width="500" }](../images/bmw-i3-15.png)
 
 Connect the wiring as follow:
+
 * Pin 1 30C - Connect to to 12V, 10A fuse optional
 * Pin 9 15WUP-Signal (Green/GreenRed) - Connect to 12V, 5A fuse optional. Control this pin with ASR-10DD relay or a Pololu Power Switch controlled by PIN 25 in the LilyGo.
 * Pin 7 (Red) - Connect to to 12V, 5A fuse optional
@@ -101,6 +102,7 @@ Connect the wiring as follow:
 #### 15WUP-Signal
 
 The GPIO that controls the WUP signal depends on your BE hardware:
+
 - LilyGo T-CAN485: GPIO 25 (For double bat GPIO 32 is used for secondary BMW i3 battery)
 - Stark CMR: GPIO 25 (For double bat GPIO 32 is used for secondary BMW i3 battery)
 - LilyGo T-2CAN: GPIO 40 (For double bat GPIO 38 is used for secondary BMW i3 battery) 
@@ -130,6 +132,7 @@ Below an example wiring diagram
 [![SMA i3](../images/sma-06.png){ width="700" }](../images/sma-06.png)
 
 ## Parts list
+
 * BMW i3 battery
    * 60Ah
        * 61252353679 / 140116 / 7625051 / ​2353644 / ​728838
@@ -177,6 +180,7 @@ Perform this balancing as often as necessary to keep cell mV delta low. Failure 
     If you intend on using BYD-CAN with the BMW i3, the battery needs to be on a separate CAN bus. The BMW i3 is using the same CAN IDs as BYD do, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong
 
 ## Troubleshooting tips
+
 | Problem | Suggested fix |
 | :-----: | :---: |
 | Contactors not closing | Check that the capacitor is seated between HV+ and HV-. Check that negative and positive are not accidentally shorted together. Worst case scenario HV fuse inside battery is blown and requires replacing |

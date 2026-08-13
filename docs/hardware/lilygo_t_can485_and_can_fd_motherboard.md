@@ -1,5 +1,5 @@
 ---
-title: "LilyGo T‐CAN485 and CAN‐FD Motherboard"
+title: "LilyGo T‐CAN485 + CAN‐FD"
 ---
 
 ## LilyGo T-CAN485 & CAN-FD Motherboard
@@ -7,6 +7,9 @@ title: "LilyGo T‐CAN485 and CAN‐FD Motherboard"
 This is work in progress **BETA** PCB design for a motherboard to hold both a lillygo T-CAN485, a CAN FD board and a smart highside power switch for contactors. Requires a small amount of SMD soldering. You will need to desolder the output connectors on the lillygo + can FD board.
 
 * Current version 1.1
+
+!!! warning "WARNING"
+    This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
 
 ## Overview of features
 
@@ -17,6 +20,7 @@ This is work in progress **BETA** PCB design for a motherboard to hold both a li
 * Requires both 12V (contactors) and 5V input
 
 ## BOM
+
 * 1x PCB [Link](https://oshwlab.com/cloudy62/batemudaughterboard)  - Please make your own checks before manufacturing
 * 1x 83mm DIN Rail case with terminals AK-DR-105A [Link](https://www.aliexpress.com/item/1005006067012648.html)
 * 1x SPI To CANFD MCP2518FD Module (must be this style) [Link](https://www.aliexpress.com/item/1005007349452566.html)

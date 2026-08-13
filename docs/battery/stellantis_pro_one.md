@@ -7,6 +7,7 @@ title: "Stellantis Pro One"
 110kWh - 90S - min ~270V max ~380V 
 
 The following vehicles are supported
+
 - E-Ducato 110kWh
 - ProMaster 110kWh
 - Proace Max 110kWh

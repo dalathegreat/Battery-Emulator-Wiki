@@ -30,6 +30,7 @@ Images etc.
 Similar wiki: [E-GMP platform](hyundai_e_gmp_platform_58_2_77_4_kwh.md)
 
 ***** Below find pin connection required ******
+
  1,2,12 - 12v / 
  3+14 - shunt / 
  7+8 - resistor / 

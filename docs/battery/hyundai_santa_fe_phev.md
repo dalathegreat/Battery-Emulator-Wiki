@@ -1,8 +1,7 @@
 ---
-title: "Hyundai Santa Fe PHEV battery"
+title: "Hyundai Santa Fe PHEV"
 ---
 
-# Hyundai Santa Fe PHEV battery
 Information on re-using the 13.8 kWh lithium-ion polymer battery out of a 2018-Present Hyundai Santa Fe **PHEV** vehicle
 
 ℹ️ The pack is separated in two packs, be sure to get both pieces!

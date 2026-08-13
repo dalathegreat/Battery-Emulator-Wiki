@@ -1,5 +1,5 @@
 ---
-title: "Geely GEA platform (Galaxy,eMAS)"
+title: "Geely GEA platform (Galaxy, eMAS)"
 ---
 
 ## Platform overview

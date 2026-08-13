@@ -2,8 +2,7 @@
 title: "Growatt ARK BMS High voltage"
 ---
 
-## Read this first
-Preface, the entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By Connecting batteries with inverters they were not intented for by the manufacturer there's a risk to be considered. As with all things custom, there are higher risks of human error. This page covers emulating High Voltage protocols.
+The entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By Connecting batteries with inverters they were not intented for by the manufacturer there's a risk to be considered. As with all things custom, there are higher risks of human error. This page covers emulating High Voltage protocols.
 Take extra precaution when working on a custom DIY HV battery, you have been warned.
 
 ## Caution

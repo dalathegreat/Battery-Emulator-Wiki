@@ -7,6 +7,7 @@ The Renault Zoe Gen2 has good support in the Battery-Emulator project. Note that
 
 ## Variants of the Zoe
 There are 4x batteries available for the Zoe, This page focuses on the Gen2 50/52kWh battery
+
 * [22kWh 2012-2019, Gen1](renault_zoe_gen1.md)
 * [41kWh 2016-2019, Gen1](renault_zoe_gen1.md)
 * 50kWh 2019-, Gen2
@@ -25,6 +26,7 @@ Credit goes to ljames28 for the excellent repo: https://github.com/ljames28/Rena
 
 Beware that the plug for previous generations battery fits the Gen2 version but the pinout is different so it will not work.
 Allso note plug pinout is seen from the rear of the plug where the wires come out. If you cannot source a plug and are comfortable opening the battery, theres a handy industry std connector just on the inside, but the colors of wires change. (white visible below)
+
 ![image](../images/renault-zoe-gen2-02.png)
 ![connections](../images/renault-zoe-gen2-03.png)
 ![image](../images/renault-zoe-gen2-04.png)
@@ -104,6 +106,7 @@ Under the Webserver for the Battery-Emulator, select the "More Battery Info" pag
 
 ### Example procedure off NVROL to balance battery :b: 
 Zoe gen2 52kWh. First balancing started at last. Procedure that worked on my setup sequentially:
+
 - Nvrol reset performed
 - 30-ish seconds wait
 - Verify temporization active from More Battery Info page

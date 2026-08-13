@@ -28,17 +28,22 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 All the changes to the software are done on the _Change Settings_ page, which can be accessed thru the Webserver. At the top of this webpage, you can select which battery, inverter protocol and what interface they are connected to. If you are unsure which protocol you need, check the specific page for the battery/inverter you are using linked here in the Wiki
 
 ## How do I know what battery/inverter interface to use
+
 This depends which hardware you are using for the Battery-Emulator. For instance Stark CMR uses "Native CAN" for CAN1, and "Native CAN FD" for CAN2. See the Wiki page for the hardware you are using for more info
 
 ## Status LED
+
 The board has a built in LED that is used to signal current status. With this feature, it is easy to at a glance catch what info the board is getting. It will show the current colors:
+
 * Pulses 🟢 if all is well and BMS is active
 * Pulses 🟡 if battery has entered a warning state
 * Solid 🔴 if battery goes into a fault state
+* Pulses ⚪ when the BOOT button has [been long pressed for various tasks](../setup/software/boot_button_functions.md)
 
 By visiting the "Events" page in the Webserver, you can see which specific warnings/faults are active
 
 ## Connectivity
+
 The board has wifi, and supports running a [Webserver that you can connect to for real time values](../setup/software/webserver_guide.md), [Over The Air updates](../setup/software/ota_update.md) (OTA), cellmonitoring, changing settings and more. See the [Webserver](../setup/software/webserver_guide.md) page for more info on how to use the system
 
 For those into home automation, the code also supports [MQTT](../setup/software/mqtt.md) 

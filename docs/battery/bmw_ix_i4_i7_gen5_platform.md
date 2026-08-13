@@ -103,9 +103,8 @@ The auxiliary connector is referred to as the CCU (Combined Charging Unit) conne
 
 On [Thingiverse](https://www.thingiverse.com/thing:6845382/files) you can download some 3D printable covers for the large rear connector, smaller front connector and internal blanking covers for BMU (If you disconnect the additional HV outputs internally).
 
-<details markdown="1">
-<summary>Additional information about HV connectors</summary>
-For sake of completeness, all HV connector information is listed here.
+
+#### Additional information about HV connectors
 
 | Number of connectors | Connector                                        | Cable/Cap                                                                         |
 |----------------------|--------------------------------------------------|-----------------------------------------------------------------------------------|
@@ -113,24 +112,16 @@ For sake of completeness, all HV connector information is listed here.
 | 1 or 2               | Main connectors                                  | Rosenberger HVS420 - Protective Cap for HV Battery 889520 - BMW (12-90-9-796-829) |
 | 1                    | CCU/AC Connector (100A fused)                    | Hirschman HPS40-2 - Suitable cable is 5A2DB59-03                                  |
 
-</details>
-
 ## Connectors on the inside of the pack
 To control the contactors via manual contactor control, some connections have to be made on the inside of the pack.
 
 These connections need to be made to the contactors inside the SME (BMW's name for the battery management system). The SME is usually located at the rear left of the battery pack. To create the connections you need to take off the lid of the battery pack, disconnect the high-voltage and low-voltage cabling from the SME, disconnect the cooling hoses to the SME, and take the SME out of the pack. Afterwards you need to remove the top lid of the SME. A connection needs to be established to the pre-charge contactor, main negative contactor and main positive contactor in the SME. Each contactor needs a supply voltage and a ground, therefore 6 connections need to be made. These connections can be established in multiple ways.
 
-<details markdown="1">
-<summary>To the connector inside the SME via a PCB</summary>
+!!! tip "To the connector inside the SME via a PCB"
+    The cleanest solution, without cutting wires, is to connect to the black, white, blue, green, grey and purple cables inside the SME via a custom PCB. The PCB needs to contain the Molex 560020-1030 surface mounted PCB connector, to receive the existing cable. The 3 grounds can be shared between the contactors, which leaves 4 connections to be made between the battery emulator and the custom PCB: precharge contactor supply, main negative contactor supply, main positive contactor supply and ground.
 
-The cleanest solution, without cutting wires, is to connect to the black, white, blue, green, grey and purple cables inside the SME via a custom PCB. The PCB needs to contain the Molex 560020-1030 surface mounted PCB connector, to receive the existing cable. The 3 grounds can be shared between the contactors, which leaves 4 connections to be made between the battery emulator and the custom PCB: precharge contactor supply, main negative contactor supply, main positive contactor supply and ground.
-</details>
-
-<details markdown="1">
-<summary>To the cables insdie the SME by cutting or soldering to the wires</summary>
-
-Alternatively, the connections can be made by cutting or soldering to the 6 cables. The 3 grounds can be shared between the contactors. If you decide to combine the 3 grounds, you are left with 4 cables to be connected to the battery emulator.
-</details>
+!!! tip "To the cables insdie the SME by cutting or soldering to the wires"
+    Alternatively, the connections can be made by cutting or soldering to the 6 cables. The 3 grounds can be shared between the contactors. If you decide to combine the 3 grounds, you are left with 4 cables to be connected to the battery emulator.
 
 <p align="center" markdown="1">
   ![internal SME connector](../images/bmw-ix-i4-i7-gen5-platform-06.png)<br>
@@ -143,30 +134,18 @@ The cables from the SME need to be connected to the battery emulator, such that 
 
 The cables to control the contactors can be passed to the outside of the pack in multiple ways.
 
-<details markdown="1">
-<summary>Free-standing A332*1B connector</summary>
+#### Free-standing A332*1B connector
 
 Some packs (e.g. SE26, SE27) have a free-standing A332*1B connector, of which some of the non-used pins can be used to pass the cables to the outside of the pack. This is shown in the image below.
 
 ![example wiring](../images/bmw-ix-i4-i7-gen5-platform-01.png)
 
-</details>
+!!! tip "Integrated A332*1B connector"
+    Some packs (e.g. SE16) have an integrated A332*1B connector, which cannot be used to pass the cables to the outside of the pack. The cables must be passed through the opening between the lid of the pack and the housing of the pack, or via a hole drilled through the housing of the pack. Please keep water ingress in mind when passing the cable to the outside of the pack in this manner.
 
-<details markdown="1">
-<summary>Integrated A332*1B connector</summary>
-
-Some packs (e.g. SE16) have an integrated A332*1B connector, which cannot be used to pass the cables to the outside of the pack. The cables must be passed through the opening between the lid of the pack and the housing of the pack, or via a hole drilled through the housing of the pack. Please keep water ingress in mind when passing the cable to the outside of the pack in this manner.
-
-</details>
-
-<details markdown="1">
-<summary>Additional information</summary>
-For the sake of completeness, information is also provided regarding the external connectors on the outside of the SME.
-
-### Pinout of external SME connectors
+#### Pinout of external SME connectors
 
 ![image](../images/bmw-ix-i4-i7-gen5-platform-02.png)
-</details>
 
 ## Note on Diagnostic trouble codes (DTC)
 You can read active DTCs via the More Battery Info page. Note that some code will always be active, plus if your battery has been crashed in the past there will be more codes.

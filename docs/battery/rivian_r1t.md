@@ -4,6 +4,7 @@ title: "Rivian R1T"
 
 ## General battery info
 The Rivian R1T comes in three different battery sizes. A checkbox means that an user has successfully used this battery.
+
 - Gen1 105 kWh, x kg Lifepo4
 - Gen1 135 kWh, x kg Samsung NCM ✅
 - Gen1 149 kWh, x kg Samsung NCM

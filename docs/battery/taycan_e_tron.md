@@ -3,6 +3,7 @@ title: "Taycan E‐Tron"
 ---
 
 ### Volkswagen Group MSB platform
+
 - [Porsche Taycan](https://en.wikipedia.org/wiki/Porsche_Taycan) (J1 Performance; 2019–present)
 - [Audi e-tron GT](https://en.wikipedia.org/wiki/Audi_e-tron_GT) (J1 Performance; 2020–present)
 

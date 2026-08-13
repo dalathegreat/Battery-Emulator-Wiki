@@ -1,16 +1,17 @@
 ---
-title: "Stellantis CMP Smart Car platform"
+title: "Stellantis CMP Smart Car"
 ---
 
-### Supported CMP Smart Car batteries
 The Smart Car platform comes with:
+
 - 29kWh LFP battery
 - 44kWh LFP battery, 140Ah, 100S, 150x115x30cm dimensions, 350kg
 
 !!! warning "CAUTION"
     If the battery is crashed hard, or detects a massive isolation leak, it will lock itself and display Battery Fault Level 5. Currently we have no way to reset this!
 
-The following vehicles are part of the CMP Smart Car platform according to Wikipedia
+The following vehicles are part of the CMP Smart Car platform according to Wikipedia:
+
 - Citroën C3 (CC21) (2022–present, Asia, South Africa, Latin America)[21]
 - Citroën C3 Aircross (CC24) (2023–present, Asia, South Africa, Latin America)[22]
 - Citroën C3/e-C3 IV (2024–present, Europe)[23]
@@ -57,7 +58,7 @@ The connector has the pin numbering stamped on it.
 
 ### Wiring pinout
 
-|  |  |  |
+| Pin | Signal | Note |
 | --- | --- | --- |
 | 1 | CAN H | (Connect to Battery Emulator CAN H)
 | 2 | CAN L | (Connect to Battery Emulator CAN L)
@@ -82,6 +83,7 @@ To use this battery, select the "Stellantis CMP Smart Car Battery" battery optio
 ![image](../images/stellantis-cmp-smart-car-platform-08.png)
 
 ## Troubleshooting
+
 - If the battery is crashed hard or detects a massive isolation leak, it will lock itself and display Battery Fault Level 5. Currently, we have no way to reset this!
 
 - Here is the internal layout of contactors. 
