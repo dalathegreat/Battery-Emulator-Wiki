@@ -13,10 +13,12 @@ Preface, the entire Battery-Emulator project sets out to achieve safe re-use of 
 The Battery-Emulator has support for the 4-192S RJXZS BMS. With this BMS you can construct your own high voltage battery, and connect the BMS via CAN to the Battery-Emulator. This allows you to use a DIY battery (instead of an EV battery) with any normal Battery-Emulator supported inverter.
 
 ### Where do I get the hardware?
+
 - https://www.aliexpress.com/i/1005005915643384.html
 - contact [sales@rjxzstech.com](mailto:sales@rjxzstech.com)
 
 ### Where do I get the User Manual?
+
 User Manual can be found here: 
 [4-192S BMS operation manual.pdf](https://github.com/user-attachments/files/19853501/4-192S.BMS.operation.manual.pdf)
 

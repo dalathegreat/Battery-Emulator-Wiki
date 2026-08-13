@@ -37,7 +37,6 @@ The low voltage connector has three CAN channels. The following pins are require
 ![image](../images/fisker-ocean-05.png)
 
 #### DTCs
-Descriptions soon integrated to software directly
 
 * U120088;ACANBusOffFlt - Bus off;0xd20088 
 * U025582;ACANComFlt - Alive / Sequence Incorrect / Not Updated;0xc25582

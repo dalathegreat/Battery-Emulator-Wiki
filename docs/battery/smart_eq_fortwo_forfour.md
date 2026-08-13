@@ -3,6 +3,7 @@ title: "Smart EQ Fortwo Forfour"
 ---
 
 ## Compatible batteries
+
 For this platform...
 - Model year, energy amoung
 
@@ -16,6 +17,7 @@ For this platform...
 > **Battery holder frame design:** <!-- Link to frame design if available -->
 
 ### Special considerations
+
 - Requires external voltage to start?
 - Risk being permantently crashlocked?
 - Needs to be opened and modified internally to work?
@@ -38,6 +40,7 @@ Low Voltage connectors:
 ![image](../images/smart-eq-fortwo-forfour-01.png){ width="810" height="621" }
 
 Diagram:
+
 - Yellow-Green: CAN-H and CAN-L
 - Yellow-Red pair: 12V in
 - White pair: GND

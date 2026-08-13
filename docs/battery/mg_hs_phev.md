@@ -38,6 +38,7 @@ The Gen2 batteries use a different architecture (similar to the MG4), so are unl
 ## Prerequisites
 
 You will need:
+
  - A battery (with the MSD included)
  - A 12-14V power supply, ideally isolated (2-pin plug), capable of 3A output
  - HV connector and cable assembly (from scrapper)

@@ -3,6 +3,7 @@ title: "Sofar"
 ---
 
 ## Compatible Sofar inverters
+
 * HYD 5KTL
 * HYD 6KTL
 * HYD 8KTL

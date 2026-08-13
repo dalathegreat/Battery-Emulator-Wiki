@@ -54,7 +54,7 @@ Detailed LV connector C144 pin description
 [![MachE-2 SMA inverter setup](../images/ford-f-150-lightning-05.png){ width="900" }](../images/ford-f-150-lightning-05.png)
 
 For communication only:
-Connect the following pins:
+
 - Pin 1 to 12V constant (BMS+)
 - Pin 6 to 12V constant
 - Pin 26 to GND for 12V
@@ -62,7 +62,7 @@ Connect the following pins:
 - Pin 16 or 22 to CAN-H on Battery-Emulator
 
 For communication AND contactors:
-Connect the following pins:
+
 - Pin 1 to 12V constant (BMS+)
 - Pin 3 - 24 30ohm resistor (Coolant temperature sensor set to 25c)
 - Pin 5 to 12V constant

@@ -7,11 +7,13 @@ Zoe Generation 1 batteries have perfect support in the Battery-Emulator
 
 ## Variants of the Zoe
 There are 3x batteries available for the Zoe, this page focuses on the Gen1 22/40kWh batteries
+
 * 22kWh 2012-2019, Gen1
 * 40kWh 2016-2019, Gen1
 * [52kWh 2019-, Gen2](renault_zoe_gen2.md)
 
 ## Zoe 41kWh pictures and pinout
+
 ![bild](../images/renault-zoe-gen1-01.png)
 ![ZOE_Gen1_battery_dimensions](../images/renault-zoe-gen1-02.jpg)
 ![image](../images/renault-zoe-gen1-03.png)
@@ -41,6 +43,7 @@ Renault ZOE Gen 1 fuse has to have continiuity between two external sides (posit
 There are also two other fuses inside the pack. There is a fuse under the cover for the contactors and a fuse at the join of the two halves of the pack at the opposite end from the connectors. If the fuse in the middle of the pack blows, this shows as a cell imbalance with cell 48 being somewhere around 0v. Replacing the fuse restores operation.
 
 ## Part numbers for Renault Zoe 23/41kWh batteries
+
 |  Product |  Purchase Link |
 | :--------: | :---------: |
 | Battery communication connector, Yazaki 7282-8854-30 |  [AliExpress](https://de.aliexpress.com/item/4000174903780.html)  OR [Aliexpress wired](https://www.aliexpress.com/item/1005006870591288.html) - You need the Female plug|
@@ -70,6 +73,7 @@ The Zoe Gen1 batteries appear to start top-balancing at around 93% SOC. Due to t
 You can observe cell-mV-delta at high SOC to confirm when balancing is active, unfortunately the Zoe Gen1 battery does not send which specific cells are being balanced, so there is no visualization in the Cellmonitor page.
 
 ## Troubleshooting
+
 - If the inverter does not want to use the battery with more than a few watts of power, check your precharge wiring. You might be pulling all the power thru the precharge resistor instead of contactor. Classic mistake to swap these two around!
 - If the cell number 48 is low, your internal battery fuse most likely has blown. Then you need to open up the battery and replace the fuse.
 

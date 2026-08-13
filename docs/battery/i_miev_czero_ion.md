@@ -1,8 +1,6 @@
 ---
-title: "Mitsubishi i-MiEV / Citroen C-Zero / Peugeot Ion battery"
+title: "Mitsubishi i-MiEV / Citroen C-Zero / Peugeot Ion"
 ---
-
-# Mitsubishi i-MiEV / Citroen C-Zero / Peugeot Ion battery
 
 There are 3 OEM battery combinations possible and some DIY aftermarket packs.
 The first generation packs have 88 Yuasa LEV50 cells. If the car you are getting the battery from is year 2012 or older, then the chances are high you would get a LEV50 one. You do not want such a battery pack. The cells inside have known high degradation. Also do not age well.
@@ -30,7 +28,8 @@ The service manual containing also information about the pinouts is available he
 ## Connection diagram
 Here is a connection diagram of a 201#? battery:
 ![bild](../images/i-miev-czero-ion-01.png)
-Connect the following wires to the LilyGo
+
+Connect the following wires:
 
 * C26-10 CAN L - To LilyGo CAN L
 * C26-5 CAN H - To LilyGo CAN H
@@ -38,6 +37,7 @@ Connect the following wires to the LilyGo
 * C22-5 to GND for 12V
 
 Handle precharge/contactors manually or use [GPIO control](../setup/software/contactor_control_via_gpio_pins.md)
+
 * C22-7 Precharge
 * C22-3 Positive contactor
 * C22-6 Negative contactor

@@ -3,6 +3,7 @@ title: "Deye"
 ---
 
 ## Compatible Deye inverters
+
 * Deye SUN 5-25K-SG01HP3-EU-AM2 ✅ 
 * Deye SUN 29.9-50K SG01HP3-EU-BM3 ✅
 * Deye SUN 8/10/12/15K-SG01HP2-US-AM2 ✅️ 
@@ -14,12 +15,14 @@ Most likely way more Deye inverters work, since they are all BYD / Pylon compati
 This inverter will skip any 0W requests, so incase we overvoltage cells, and request stop charge, **Deye will happily continue charging** This is due to poor programming on Deye side, they simply do not follow the CAN message 0x110 (Discharge current max byte 4-5) & (Charge current max byte 6&7)
 
 Deye only listens to two things when it comes to stopping charge.
+
 - 0%, 100% SOC reached
 - Pack voltage limit reached
 
 That is the only time Deye inverters stop charging/discharging. Due to this we recommend reaching out to Deye and demand improved firmware on the Inverter side. It is simply not fully safe to operate a Deye inverter
 
 Be sure to enable the "Deye avoid over/undercharge fix: " option in the meantime
+
 ![image](../images/deye-06.png){ width="660" height="210" }
 
 This will force SOC% to either fully charged (100%), fully discharged (0%) incase we need to stop. It looks odd on the inverter side, but it is the only way we can stop Deye inverters at the moment. You have been warned about Deye's lackluster software!

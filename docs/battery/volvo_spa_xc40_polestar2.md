@@ -1,16 +1,18 @@
 ---
-title: "Volvo XC40, C40 / Polestar 2 (SPA platform) battery wiki"
+title: "Volvo SPA (XC40, C40 / Polestar 2)"
 ---
 
-# Volvo XC40, C40 / Polestar 2 (SPA platform) battery wiki
+# Volvo SPA XC40, C40 / Polestar 2
 
 !!! warning "CAUTION"
     Battery can lock itself permanently if started without DC-DC converter on HV side! You have been warned, please read the Wiki carefully!
 
 ### Measurements
+
 148x176cm and about 500kg
 
-## Battery specifications / Serial numbers
+## Battery specifications
+
 The following SPA platform batteries are supported, checkbox on those confirmed by users to work
 
 * Volvo XC40 2021-present

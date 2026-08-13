@@ -1,9 +1,10 @@
 ---
-title: "Tesla Model S X 2012‐2020"
+title: "Tesla Model S/X 2012-2020"
 ---
 
-## Legacy Tesla Model S/X (2012-2020)
-The earlier Tesla batteries use a radically different CAN structure compared to the 2020+ S/3/X/Y platform, so we have separate integrations for each platform.
+## Tesla Model S/X 2012-2020 Legacy
+
+The earlier Tesla batteries use a radically different CAN structure compared to the 2021+ S/3/X/Y platform, so we have separate integrations for each platform.
 
 When using a Legacy battery, make sure to select the "Tesla Model S/X 2012-2020" option
 
@@ -31,11 +32,13 @@ Connector X036:
 ![image](../images/tesla-model-s-x-2012-2020-04.png){ width="465" height="360" }
 
 Pinout X035:
+
 * 2 + 5: +12 V (10 A fuse)
 * 8 + 12: GND
 * 10: HVIL in
 
 Pinout X036:
+
 * 2 + 5: +12 V (10 A fuse)
 * 8 + 12: GND
 * 9: PT_CAN-
@@ -43,6 +46,7 @@ Pinout X036:
 * 11: HVIL out
 
 Digikey links:
+
 * X035: https://www.digikey.be/nl/products/detail/molex/0334721201/1756779
 * X036: https://www.digikey.be/nl/products/detail/molex/0334721202/3838609
 * 18-20AWG pins (CANbus + HVIL): https://www.digikey.be/nl/products/detail/molex/0330122002/2421383
@@ -62,6 +66,7 @@ Note that Batman can also do balancing when the HVBMS is asleep :).
 The best way to balance the Model 3 pack is to set charge limit to 90% or higher and let the vehicle sit idle for hours (plugged in or not). 24 hours of balancing can reduce imbalance by 1mV
 
 ## Examples
+
 The first testing of a 85kWh battery with a Deye inverter
 
 ![](../images/tesla-model-s-x-2012-2020-05.png)

@@ -3,10 +3,12 @@ title: "Renault Kangoo"
 ---
 
 ## FAQ: Renault Kangoo Battery
+
 Renault Zoe support is still being developed. The Kangoo shares a fair share of CAN data with the Renault Zoe and Renault Fluence
 
 ## Variants of the Kangoo
 There are 3x batteries available for the Kangoo:
+
 * 22kWh 2011-2016
    * Can be used with the `Renault Kangoo` setting
    * NOTE: Sometimes SOC does not update on these packs, this can be solved by switching to the "Use Estimated SOC" option
@@ -18,6 +20,7 @@ There are 3x batteries available for the Kangoo:
 ![image](../images/renault-kangoo-01.png){ width="393" height="91" }
 
 Physical size;
+
 * Weight 295 kg (22kWh)
 * Weight 260 kg (33kWh)
 * Dimensions 1214 x 802 x 290mm

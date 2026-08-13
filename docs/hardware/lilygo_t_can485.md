@@ -3,6 +3,7 @@ title: "LilyGo T‐CAN485"
 ---
 
 ## Hardware basics
+
 The LilyGo T-CAN485 is what the Battery-Emulator originally started development with. It is a very cheap microcontroller, that runs the entire project easily. It has 1x CAN, 1x RS485, and GPIO pins for expansion.
 
 !!! tip "TIP"
@@ -14,13 +15,16 @@ The LilyGo T-CAN485 is what the Battery-Emulator originally started development 
     This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
 
 ## Purchase link
+
 The hardware can be bought via sites like [AliExpress](https://www.aliexpress.com/item/1005003624034092.html)
 
 ## Hardware info
+
 The hardware has more details on LilyGo's Github page
 https://github.com/Xinyuan-LilyGO/T-CAN485
 
 ## Expanding the board
+
 The board comes with 1x CAN channel, and 1x RS485 channel. Some integrations need more than 1 channel, in these cases the LilyGo can be extended with add-on CAN channels:
 
 - [CAN add‐on](../setup/can_related/can_add_on_mcp2515.md)
@@ -31,6 +35,7 @@ Example, LilyGo + MCP2515 board
 ![image](../images/lilygo-t-can485-03.png)
 
 ### Expanding the board with more IO pins
+
 The SD card slot can be used to gain more pins. This can be useful on setups that need lots of inputs/outputs, for instance add-on CAN + contactor control and/or enable line inputs. To use the SD card slot, you will need a "SD Card breakout board"
 
 ![image](../images/lilygo-t-can485-04.png)
@@ -47,11 +52,13 @@ Completed product:
 ![image](../images/lilygo-t-can485-05.png)
 
 ### Expanding the board further
+
 To make the board even more professional (DIN mounting solution with CANFD and contactor drivers built in), you can get the [LilyGo T‐CAN485 & CAN‐FD Motherboard](lilygo_t_can485_and_can_fd_motherboard.md)
 
 ![image](../images/lilygo-t-can485-06.png)
 
 ## Enhancements notes, things to know
+
 The chip has the tendacy to run quite hot. Some people book good results by adding a RAM or Raspberry Pi heatsinks on the chip, reducint the heat.
 Above 80 degrees the BE screen turns yellow as a warning, and above 95 degrees damage is possible.
 Take this into consideration when building enclosures for it.

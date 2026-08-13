@@ -1,8 +1,6 @@
 ---
-title: "Kia Soul 27kWh"
+title: "Kia Soul"
 ---
-
-### Battery specifications
 
 ## Work in progress integration :construction: 
 

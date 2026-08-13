@@ -3,12 +3,14 @@ title: "Solax"
 ---
 
 ## Compatible Solax inverters
+
 * Solax X3 (all revisions)
 * Solax X3 Ultra (all revisions)
 * Solax X1 (all revisions)
 * Solax X1 VAST (all revisions)
 
 # ⚠️ Word of caution, CAN overvoltage ⚠️
+
 Solax inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE.
 
 ![image](../images/foxess-h1-h3-ac1-kh-01.png)
@@ -22,6 +24,7 @@ Failure to implement any of the above solutions will lead to the VP231 CAN trans
 Alternatively, using hardware with built-in galvanic isolation (such as the [LilyGo T-2CAN](../hardware/lilygo_t_2can.md)) should avoid this problem without imposing extra power supply requirements.
 
 # Word of caution, isolated CAN
+
 ⚠️ This inverter does not handle a CAN connected EV battery on the same channel.
 If the inverter which likes to see only extended CAN frames sees standard automotive CAN frames, the inverter will enter a fault state.
 
@@ -94,6 +97,7 @@ Battery type | Num modules | Min voltage | Nom voltage | Max voltage
 (note that the enforced min/max limits will be wider than the range shown here - choose a setting where the maximum is high enough for your battery).
 
 List of battery names and type codes (decimal):
+
 ```
 BAK: 81
 T58 V1: 82
@@ -163,16 +167,14 @@ Additional: When experiencing a "waiting" status when all other settings are goo
 Some interesting findings based on dynamically changing some of the CAN values for testing:
 
 - The Inverter does obey the Contactor flag from the BMS (1875 byte 2) and if this is not 1 it will sit in waiting and not go into "Checking" phase and if inverter already active it will go back to "waiting" if you send 0 instead of 1 and internal contactors click (presumably open). So this could be a good initial alarm control to have less wear on the battery contactors.
-
 - The battery kind can be changed during normal operation and this will cause a BattVoltFault - presumably due to different voltage ranges.
-
 - Seems each battery kind has a different hardcoded voltage range as with 7 as number of packs only works with 0x83 (TP201)
-
 - Adjusting the number of packs during normal operation (from 7>6 for example) causes a BattVoltFault so seems this is being monitored constantly and not just on BMS initialisation (checking phase)
 
 For a pack with actual voltage of 337v (21% soc) and using different Battery Kinds (1877, Byte 4)
 
 Previously known Kinds:
+
 - 0x50 (Blank) 6 works works - 7 does not ("About" menu has no info)
 - 0x51 (BAK) 6 works
 - 0x52 (REPT) 6 packs works - 5 + 7 do not
@@ -186,10 +188,13 @@ Previously known Kinds:
 - Yype 97(dec) is TP013
 
 New Kinds Tested:
+
 - 0x00 NA - 6 works, 0/5/7 does not
 - 0x5B (TP007) 6 works 4>5 and 7>9 do not (4 was the no of packs I recorded in logs from real setup with 2 x triple batteries which reported voltage min/max of 180>262v and actual voltage of 238v at 97% SoC)
 
 Other battery Kind ranges I checked just to see if they showed in the about menu - didnt try no of packs (sorry numbers below in Dec not HEX):
+
+```
 0-10 N/A
 85-93: TP001>TP009
 94>99: TP010 > TP015
@@ -197,20 +202,18 @@ Other battery Kind ranges I checked just to see if they showed in the about menu
 129 - REP-T58-P1
 130>139: TP201>TP210
 140>160 NA
+```
 
 - BTW, according to SOLAX documentation the RP-T58-P1 modules (these are the older, first generation modules) can be UP TO 4pcs! That's why the setting Battery type 129 can be only up to 4 MODULE COUNT.
-
 - It doesn't seem to matter too much what voltage min/max you send on frame 1872 - if the real voltage or even voltage sent on 1873 is outside of these ranges it does not impact operation worryingly. Clearly the limits on battery kind are overriding this.
-
 - With battery at actual voltage at 342v inverter senses this at 336v (6v lower I dont know why). Min/Max set to 300v/399v:
 - if I send <150v it goes back to waiting (not battvoltfault)
 - if I send 151v/245v works fine
 - If you send no voltage on frame 1872 then it just stays in "Waiting" mode
-
 - Like others said before you dont seem to need the announce 0100a001 frame or even respond to the 1871 frame the inverter sends every 1000ms. I am sending all frames every 900ms at a non-synced interval and it plays fine.
 
-all credits to the guys from this thread: 
-https://secondlifestorage.com/index.php?threads/help-with-older-solax-x1-g4-firmware-ie07-batvoltfault.12493/
+All credits to the guys from [this thread](https://secondlifestorage.com/index.php?threads/help-with-older-solax-x1-g4-firmware-ie07-batvoltfault.12493/).
+
 
 ## Connection diagram
 BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wires to the Battery-Emulator

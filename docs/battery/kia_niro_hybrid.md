@@ -1,5 +1,5 @@
 ---
-title: "Battery ‐Kia‐Niro‐Hybrid"
+title: "Kia Niro Hybrid"
 ---
 
 ### WIP :construction: 
@@ -47,7 +47,7 @@ Wires connected to a HEV battery:
 
 Battery emulator software ( 13-3-2025 ) is able to read voltage, current etc. but we did not yet found normal way to close relais.
 
-i removed relais module from battery and use it directly connected to inverter battery "input".
+I removed relais module from battery and use it directly connected to inverter battery "input".
 Also BMS will run into a stall after maybe 30 seconds a current is flowing. ( voltage reading will still work )
 We build a simple rule into the battery code to stop charging when voltage is above 245v for now as workarround.
 overall some manual handling is needed at this point. 

@@ -2,8 +2,6 @@
 title: "CHAdeMO vehicles"
 ---
 
-# CHAdeMO vehicles
-
 !!! warning "WARNING"
     The entire Battery-Emulator project focuses on re-using EV batteries for stationary storage. The following support page for CHAdeMO connection to the in-vehicle battery is only to be used for emergencies, where the grid is down and you need backup power. It is not intended for daily usage, the following info is ONLY for emergency situations!
 
@@ -24,6 +22,7 @@ Generally: CHAdeMO vehicles v1.0 and forward are OK for V2X.
 
 ## Notes on software implementation
 Dala 2025: I have updated the Wiki. There are some things we need to change with the Chademo integration:
+
 - Remove Contactor_control. The vehicle will do precharge when starting.
 - This will free up some GPIO on the board
 - Add the GPIO logic for d1, d2, and charging sequence signal
@@ -31,6 +30,7 @@ Dala 2025: I have updated the Wiki. There are some things we need to change with
 - Implement a start/stop button. This is required for easy use.
 
 ## Required major components
+
  - CHAdeMO plug,
  - Isabellenhütte IVT shunt (IVT-Modular or IVT-S),
  - 3 x DC contactors (Precharge, Positive, Negative),
@@ -56,6 +56,7 @@ The 12V supply used needs to be able to handle 2A continuous load to engage the 
 ![image](../images/chademo-vehicle-01.png)
 
 ### Activation sequence (pre-charge in inverter)
+
 * Start is pressed, if the plug is connected, relay d1 is activated
 * With d1 activated, the EV starts sending messages on can
 * EV will send "vehicle charging enable" in can, and indicate the same with signal "k"
@@ -65,6 +66,7 @@ The 12V supply used needs to be able to handle 2A continuous load to engage the 
 * BE sends "charger stop control"=0 and "station status"=1 in can
 
 ### Deactivation sequence, stop from BE
+
 * Stop is pressed
 * BE signals "charger stop control" in can
 * BE waits until current is low, then signals "station status" as disabled in can
@@ -75,6 +77,7 @@ The 12V supply used needs to be able to handle 2A continuous load to engage the 
 * BE waits a few seconds and then disables d1
 
 ### Deactivation sequence, stop from EV
+
 * EV signals that session should stop, by using "vehicle charging enable" in can, and with signal "k"
 * When BE detects the signals, it signals "charger stop control" in can
 * See "Deactivation sequence, stop from BE", step 3 and forward
@@ -94,6 +97,7 @@ While the current sensor is not mandatory for all inverter protocols, it increas
 Here follows some information that was gathered during an integration of a ZE0, a Gen24 and a battery emulator in an RPi.
 
 ### Setup
+
 * Nissan Leaf ZE0
 * Fronius Gen24-6kW
 * RPi with canhat + rs485, running battery emulator in python

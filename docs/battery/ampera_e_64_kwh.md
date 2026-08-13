@@ -21,8 +21,8 @@ The battery uses 12V controlled contactors, so use `Contactor Control via GPIO` 
 
 ![image](../images/ampera-e-64-kwh-24.png){ width="514" height="49" }
 
-One user reported using 3x this type of relay with the LilyGo hardware 
-https://nl.aliexpress.com/item/1005005622431177.html?spm=a2g0o.order_list.order_list_main.126.d91579d2FEesY4&gatewayAdapt=glo2nld
+One user reported using 3xf [this type of relay](https://nl.aliexpress.com/item/1005005622431177.html?spm=a2g0o.order_list.order_list_main.126.d91579d2FEesY4&gatewayAdapt=glo2nld) with the LilyGo hardware. 
+
 
 ## Wiring diagrams
 Connect the low voltage wiring like this:
@@ -38,6 +38,7 @@ X358 connector (black)
 - Pin 10 to ground
 
 X357 connector (gray)
+
 - Pin 1 fused with 10A (+12V)
 - Pin 2 we wake up the sensors (+12V)
 - Pin 3 & 4 relevant CAN H/L (?)
@@ -55,6 +56,7 @@ The following diagrams will help you to connect to the CAN buses on the Opel/Che
 !!! note "NOTE"
     These batteries have multiple CAN buses that needs to be jumpered together to form one large CAN bus
     the resistor on the Lilygo must be removed
+    
 Example, development environment with contactor control via GPIO, and all 3x CAN buses connected together as one single bus
 
 ![image](../images/ampera-e-64-kwh-01.png)
@@ -87,14 +89,11 @@ X358
 
 ![X358 pin pos ](../images/ampera-e-64-kwh-22.png)
 
- I had connectors but these fits also, one needs to modify by yourself 
-
- https://nl.aliexpress.com/item/1005008320223516.html?spm=a2g0o.detail.similar_items.1.3023vs3wvs3wW0&utparam-url=scene%3Aimage_search%7Cquery_from%3Adetail_bigimg&algo_pvid=8f883bc9-24d0-4568-842b-10652fe911a8&algo_exp_id=8f883bc9-24d0-4568-842b-10652fe911a8&pdp_ext_f=%7B%22order%22%3A%2216%22%7D&pdp_npi=4%40dis%21EUR%213.12%213.00%21%21%2125.47%2124.53%21%402103892f17530145939331841e26a9%2112000044596715592%21sea%21NL%21828630060%21X
+I had connectors but [these fit also](https://nl.aliexpress.com/item/1005008320223516.html?spm=a2g0o.detail.similar_items.1.3023vs3wvs3wW0&utparam-url=scene%3Aimage_search%7Cquery_from%3Adetail_bigimg&algo_pvid=8f883bc9-24d0-4568-842b-10652fe911a8&algo_exp_id=8f883bc9-24d0-4568-842b-10652fe911a8&pdp_ext_f=%7B%22order%22%3A%2216%22%7D&pdp_npi=4%40dis%21EUR%213.12%213.00%21%21%2125.47%2124.53%21%402103892f17530145939331841e26a9%2112000044596715592%21sea%21NL%21828630060%21X), one needs to modify by yourself 
 
 Disconnect switch 24281696 24288304  24291219  or latest part number 24294004
 
-Cotactors must be connected with lilygo via the GPIO pins see:
-[Contactor control via GPIO pins](../setup/software/contactor_control_via_gpio_pins.md)
+Cotactors must be connected with the emulator via the GPIO pins: [Contactor control via GPIO pins](../setup/software/contactor_control_via_gpio_pins.md)
 
 Please note that the precharge contactor is placed in the negative line of battery. To make precharge work the positive contactor must close before precharge contactor. Workaround: Swap Positive and negative control-lines to relays.
 

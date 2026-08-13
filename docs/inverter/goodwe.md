@@ -3,6 +3,7 @@ title: "GoodWe"
 ---
 
 ## Compatible Goodwe inverters
+
 * ET/BT ✅ 
 * ET G2  ✅ 
 * EH/BH ✅ 
@@ -60,6 +61,7 @@ Good idea to watch the installation video from GoodWe's training services, on ho
 When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode.
 
 ### Startup
+
 1. First start the GoodWe inverter via AC switch
 2. Turn ON the Solar DC safety disconnect switch
 3. Turn ON the Battery DC safety disconnect switch
@@ -68,6 +70,7 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 6. Then either handle precharge/contactor closing manually or let the Battery-Emulator hardware handle it automatically
 
 ### Shutdown
+
 1. If relevant; set power limit (ampere) for charge and discharge to 0 in Battery-Emulator Webserver.
 2. Turn off the Battery BMS, cut the 12V supply to it.
 3. Wait 60 seconds
@@ -78,6 +81,7 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 7. Turn off the Battery DC safety disconnect switch
 
 ## Which protocol to use
+
 For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
 
 ![GoodWe Settings](../images/goodwe-03.jpg)
@@ -112,11 +116,13 @@ Some screenshots from the integration:
 This is an attempt to explain what the different exposed values mean, written by a member of Dala's Discord and slightly edited:
 
 ### Controls
+
 - **Fast Charging Power** tells the system how much percentage of the configured max charging amps are being used (100% of 10A for example)
 - **Fast Charging SoC** tells the system till what percentage the battery should be charged (80% for example)
 - **Fast Charging Switch** tells the inverter to charge the battery, this overrides any other setting/mode (like eco discharge mode)
 
 ### Configuration
+
 - **Depth of discharge (on-grid)**, this is the percentage of discharge when the mode is set to Eco discharge mode or General mode, 80% will discharge the battery till 20%, 95% will discharge it to 5% etc.
 - **Eco mode power** tells the system what percentage of power is used for charging/discharging. 50% will be 5A if 10A is the max charge/discharge etc.
 - **Eco mode SoC** tells the inverter till what percentage the battery should be charged in Eco (Eco charge mode). 80% to save battery life or 100% if you already use scaled SoC in Battery Emulator.

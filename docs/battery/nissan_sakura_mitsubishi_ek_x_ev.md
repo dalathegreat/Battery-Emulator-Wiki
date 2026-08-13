@@ -1,11 +1,12 @@
 ---
-title: "Nissan Sakura Mitsubishi eK X EV"
+title: "Nissan Sakura Mitsubishi eK X"
 ---
 
 ## Compatible batteries
+
 This platform has a 20kWh batteryy
 - Nissan Sakura 2022–present
-- Mitsubishi eK X EV
+- Mitsubishi eK X
 
 ### Physical Dimensions
 
@@ -17,6 +18,7 @@ This platform has a 20kWh batteryy
 ![image](../images/nissan-sakura-mitsubishi-ek-x-ev-01.png)
 
 ### Special considerations
+
 - Requires external GPIO contactor control
 
 ## Software configuration

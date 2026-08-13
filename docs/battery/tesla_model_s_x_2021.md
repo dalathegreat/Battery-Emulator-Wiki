@@ -1,16 +1,10 @@
 ---
-title: "Working with Tesla Model S/X 2021+ Battery"
+title: "Tesla Model S/X 2021+"
 ---
 
-# Working with Tesla Model S/X 2021+ Battery
+## Tesla Model S/X 2021+
 
-## Safety warning 💀 ⚡ 
-!!! warning "WARNING"
-    The current version of the Battery Emulator firmware does not support working with these batteries, but there is a version undergoing testing, which will soon be available for broader audience testing
-
-***
-
-Working with the Tesla Model S and X 2021+ battery differs in some ways from Tesla 3 and Y batteries. However, the basic connection principle remains similar. Therefore, we recommend starting by reading the [guide for connecting Tesla 3/Y batteries](tesla_model_s_3_x_y.md) to understand the general approach.
+Working with the Tesla Model S and X 2021+ battery differs in some ways from Tesla 3 and Y batteries. However, the basic connection principle remains similar. Therefore, we recommend starting by reading the [guide for connecting Tesla 3/Y batteries](tesla_model_3_y.md) to understand the general approach.
 This article will focus on the differences in the battery and connection process for the S/X models.
 
 ## Battery Architecture
@@ -52,7 +46,7 @@ General connection scheme to Battery Emulator:
 
 ![scheme-min](../images/tesla-model-s-x-08.png){ width="2376" }
 
-Precharge capacitors are still required, as nothing changes compared to connecting M3/Y batteries [see the article on connecting M3/Y](tesla_model_s_3_x_y.md).
+Precharge capacitors are still required, as nothing changes compared to connecting M3/Y batteries [see the article on connecting M3/Y](tesla_model_3_y.md).
 
 In cars, these batteries typically work together with 16V li-ion batteries in the vehicle's onboard network.
 However, the batteries I tested with the Battery Emulator used 12V batteries. The charging voltage does not exceed 14.25V, which is the same as in the M3/Y. 

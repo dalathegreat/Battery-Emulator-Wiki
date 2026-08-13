@@ -1,8 +1,9 @@
 ---
-title: "SEA Platform (Volvo EX30 + others) battery wiki"
+title: "Volvo SEA (EX30 + others)"
 ---
 
-# SEA Platform (Volvo EX30 + others) battery wiki
+# SEA Platform (Volvo EX30 + others)
+
 The Geely SEA platform is [used on the following vehicles](https://en.wikipedia.org/wiki/Sustainable_Experience_Architecture) , batteries that have been successfully tested with Battery-Emulator are marked with a ✅ , feel free to expand this list!
 
 SEA1/PMA1
@@ -24,7 +25,9 @@ SEA2/PMA2
 - Zeekr X (BX1E) (2023–present)
 
 ## Volvo EX30 Battery specifications / Serial numbers
+
 The following batteries are available for the EX30
+
 * 55kWh LFP
    * 51kWh net, 120S
    * Nominal voltage 392V, Max voltage 438V
@@ -35,6 +38,7 @@ The following batteries are available for the EX30
    * 390kg , 1837.6(L) × 1450(W) × 150(H)
 
 ## Note on crash lock :boom:
+
 Batteries that have been involved in a severe collision will be crash locked. You can unlock the battery by pressing the "Unlock crashed BMS" button in the More Battery Info weserver page. Remember that the pyrofuse most likely also is blown if the crash status is set.
 
 ![image](../images/volvo-ex30-06.png){ width="711" height="179" }
@@ -42,6 +46,7 @@ Batteries that have been involved in a severe collision will be crash locked. Yo
 Volvo EX30 batteries can be unlocked this way, but Zeekr SEA based batteries require a more involving security algoritm that is not yet implemented in the software.
 
 ## Note on recall :fire: 
+
 If you are planning to use a 69kWh NMC pack from an EX30, be aware that there is a recall on ~3000 vehicles related to risk of battery fires at high SOC. Try to avoid using one of these affected batteries.
 
 Affected VINs seem to all be:
@@ -99,6 +104,7 @@ LV connector:
 | High voltage connector |  ???   |
 
 ## Reading DTCs
+
 1. To read the DTCs you have to open another browser tab with the CAN-logger view.
 2. Enter filter 1588, press OK. Then press "Stop & Back to main page" (the filter setting will persist), reopen CAN logger and it should be cleared and the filter is active. 
 3. Press "More battery info" in the other tab and press read DTC.
@@ -111,6 +117,7 @@ Codes might be divided between consecutive CAN frames, but just add them togethe
 ![DTCs_2](../images/volvo-ex30-05.jpg)
 
 ## DTC explanation
+
 - 065868 - Actuator Supply Voltage A Circuit Low
 - 0A0A00 - High Voltage System Interlock Circuit
 - 0A2900 - Battery Power Off Circuit High

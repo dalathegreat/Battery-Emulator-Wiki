@@ -6,6 +6,7 @@ title: "Kostal"
 Kostal uses a proprietary RS485 protocol. The protocol uses the RS485 pins on the Battery-Emulator hardware and has been mostly decoded. The integration is mostly stable.
 
 ## Compatible Kostal inverters 
+
 A checkmark (✅) indicates that an user has reported back successfully using the Battery-Emulator.
 
 * PLENTICORE plus 3.0 / 4.2 / 5.5 / 7.0 / 8.5 / 10 ✅

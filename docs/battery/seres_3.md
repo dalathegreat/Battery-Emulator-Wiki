@@ -8,6 +8,7 @@ title: "Seres 3"
 53.61 kWh 
 
 ## Seres Models
+
 * [Seres 7/M7](https://en.wikipedia.org/wiki/AITO_M7#Seres_7) (2024–present), mid-size SUV, rebadged [AITO M7](https://en.wikipedia.org/wiki/AITO_M7)
 * [Seres M5](https://en.wikipedia.org/wiki/AITO_M5) (2024–present), compact SUV, rebadged [AITO M5](https://en.wikipedia.org/wiki/AITO_M5)
 * [Seres SF5/A5/5](https://en.wikipedia.org/wiki/Seres_SF5) (2019–present), compact SUV

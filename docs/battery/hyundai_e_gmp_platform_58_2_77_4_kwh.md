@@ -1,9 +1,11 @@
 ---
-title: "Hyundai E-GMP (Electric Global Modular Platform)"
+title: "Hyundai E-GMP"
 ---
 
 # Hyundai E-GMP (Electric Global Modular Platform)
-Shared between the following models - 
+
+Shared between the following models
+
 * [Genesis GV60 (JW)](https://en.wikipedia.org/wiki/Genesis_GV60) (2021–present)
 * [Hyundai Ioniq 5 (NE)](https://en.wikipedia.org/wiki/Hyundai_Ioniq_5) (2021–present)
 * [Kia EV6 (CV)](https://en.wikipedia.org/wiki/Kia_EV6) (2021–present)
@@ -12,13 +14,16 @@ Shared between the following models -
 * [Kia EV5 (OV)](https://en.wikipedia.org/wiki/Kia_EV5) (2023–present)
 
 ## 800V battery specifications
+
 * Manufacturer - SK Innovation
 * Chemistry - Lithium nickel manganese cobalt oxides (NCM)
 * Format - Pouch
 * Weight 
   * 10.5kg / module
   * 0.8625kg / cell
+
 ### 58.2kWh battery
+
 * weight approx. 369 kg
 * 144s2p, 24 modules of 6 groups
 * nominal voltage 144*3.66=527 V
@@ -30,9 +35,11 @@ Shared between the following models -
   * 37501-GI150 is Ioniq 5, 2022 to 2023
 
 ### 63.0kWh battery
+
 * 144s2p
 
 ### 72.6kWh battery
+
 * weight approx. 450kg
 * 180s2p, 30 modules of 6 groups
 * nominal voltage 180*3.66=659 V
@@ -41,6 +48,7 @@ Shared between the following models -
 * Cell type NCM811
 
 ### 77.4kWh battery 
+
 * weight 
   * pack 477 kg
   * cells 331 kg
@@ -61,6 +69,7 @@ Shared between the following models -
   * 37501-KL450 is Ioniq 6
 
 ### 84.0 kWh battery
+
 * 192s2p
 * Applications
   * 37501-NI050 is Ioniq 5 N

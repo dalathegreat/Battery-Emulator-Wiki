@@ -1,8 +1,8 @@
 ---
-title: "Volvo SPA S60 90 V60 90 XC60 90 Hybrid batteries wiki"
+title: "Volvo SPA (S60 90 V60 90 XC60 90)"
 ---
 
-# Volvo SPA S60 90 V60 90 XC60 90 Hybrid batteries wiki
+# Volvo SPA S60 90 V60 90 XC60 90 Hybrid 
 
 Battery list with part numbers up to MY2022. This is the list of Volvo supported batteries not the list of BE supported batteries. For the moment none of those are supported.
 
@@ -16,11 +16,12 @@ Testing is ongoing with the 18.83kWh (51 Ah) battery with serial number 32336936
     If you want to use Battery-Emulator to read info, check cells, on a standalone battery before buying, comment out any sending of 0x140 messages in the VOLVO-SPA-BATTERY.cpp file and build a custom .bin file with this mod. Otherwise it will try to close contactors, and without the DC/DC converter it will permanently lock the contactors as welded. See further down for more info on DC/DC requirement
 
 ## Software configuration
+
 For this battery type, use the option called "Volvo PHEV battery" under the "Battery Protocol" setting
 
 ![image](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-06.png){ width="592" height="73" }
 
-## Battery specifications / Serial numbers
+## Battery specifications
 The following SPA platform batteries are supported, checkbox on those confirmed by users to work
 
 * Volvo hybrid SPA 2017-2022
@@ -34,6 +35,7 @@ The following SPA platform batteries are supported, checkbox on those confirmed 
 ![Battery_location](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-02.png)
 
 ## Wiring diagram, low voltage
+
 Connect HVIL_2_IN and HVIL_2_OUT together with a cable. (this will close the HVIL loop in BECM)
 Connect HVIL_3_IN and HVIL_3_OUT together with a cable. (this will close the HVIL loop in BECM)
 Connect the MSD to close HVIL1. (this will close the HVIL loop in BECM)
@@ -46,6 +48,7 @@ Attached below are pictures of the BECM pinout. Connect the highlighted red pins
 ![Connector](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-03.png)
 
 Additionnally you need to mimic the presence of the cooling valve and level sensor. Therefore the experimental approach was to:
+
 * Bridge PIN3 and PIN9 across a safe value resistor (to be determined, DTC removed with 10k resistor)
 * Insert a safe value resistor (to be determined, DTC removed with 10k resistor) between PIN8 and your BAT+ 
 

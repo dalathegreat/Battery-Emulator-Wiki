@@ -19,10 +19,10 @@ SAJ H2-8K-T2 hybrid inverter also used with Battery Emulator:
 * Control Board : V4.139
 
 ## Inverter protocol
+
 The SAJ inverter uses the Pylon CAN protocol (Pylon-SC0500)
 
 ## Settings on the Battery Emulator side 
-`#define PYLON_CAN`
 
 For >255Ah batteries, the latest version contains a [bugfix](https://github.com/dalathegreat/Battery-Emulator/pull/1192) for the 732x frames to the inverter
 
@@ -50,6 +50,7 @@ The battery shows up in the Elekeeper APP with the following parameters as repor
 * Number of Modules
 
 When going deeper into the Elekeeper APP (change battery settings) via BT or cloud
+
 * Zero voltage displayed for the 4 modules
 * Modules appear as 16 cell instead of declared 18 cell
 * The inverter only looks at low and high SOC% disconnect values implement on inverter side, no effect by changing the battery threshold settings on webinterface of BE

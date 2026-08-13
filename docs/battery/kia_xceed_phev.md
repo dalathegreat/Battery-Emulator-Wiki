@@ -1,10 +1,10 @@
 ---
-title: "Battery ‐Kia‐Xceed‐PHEV"
+title: "Kia Xceed PHEV"
 ---
 
-<h1>Kia Xceed (8.9 kWh) Battery</h1>
-<h2>Overview</h2>
-<p>The Kia Xceed (and Hyundai equivalent) uses a <strong>dual-pack 8.9 kWh high-voltage battery system</strong>, consisting of a <strong>Main Pack</strong> and a <strong>Sub Pack</strong>, each rated at approximately <strong>4.45 kWh at 180V nominal</strong>.</p>
+## ia Xceed (8.9 kWh) Battery
+
+The Kia Xceed (and Hyundai equivalent) uses a <strong>dual-pack 8.9 kWh high-voltage battery system</strong>, consisting of a <strong>Main Pack</strong> and a <strong>Sub Pack</strong>, each rated at approximately <strong>4.45 kWh at 180V nominal</strong>.</p>
 
 Parameter | Value
 -- | --
@@ -23,9 +23,9 @@ Max Discharge Power | 59 kW (at 55% SOC)
 Max Charge Power | 43 kW (at 55% SOC)
 Max Continuous Current | ±250A
 
-<blockquote>
-<p>⚠️ Pins 19 and 22 are linked as part of the service plug (safety interlock) circuit. Breaking this link disables HV output.</p>
-</blockquote>
+
+⚠️ Pins 19 and 22 are linked as part of the service plug (safety interlock) circuit. Breaking this link disables HV output.
+
 <hr>
 <h3>BB12 — BMS Data (12-pin)</h3>
 <ul>

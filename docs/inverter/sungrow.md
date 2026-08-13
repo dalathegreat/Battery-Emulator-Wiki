@@ -2,27 +2,6 @@
 title: "Sungrow"
 ---
 
-## Contents
-- [Compatible Inverters](#compatible-inverters)
-- [Protocol Selection](#protocol-selection)
-  - [BYD CAN Protocol](#byd-can-protocol)
-  - [Sungrow SBRXXX Protocol](#sungrow-sbrxxx-protocol)
-- [Hardware Setup](#hardware-setup)
-  - [CAN Wiring](#can-wiring)
-  - [Grounding](#grounding)
-  - [CAN Termination](#can-termination)
-  - [Dedicated CAN Channel (Recommended)](#dedicated-can-channel-recommended)
-- [Inverter Configuration](#inverter-configuration)
-  - [Self-Consumption Mode](#self-consumption-mode)
-- [Operation](#operation)
-  - [Startup Timing](#startup-timing)
-  - [Nissan Leaf Battery Procedure](#nissan-leaf-battery-procedure)
-- [Troubleshooting](#troubleshooting)
-  - [Firmware Compatibility](#firmware-compatibility)
-  - [Factory Reset WiNet-S Modul](#factory-reset-winet-s-modul)
-  - [Error Codes 714, 703, "Inverter_missing"](#error-codes-714-703-inverter_missing)
-  - [Tested Configurations](#tested-configurations)
-
 ## Compatible Inverters
 
 | Model | BYD CAN | Sungrow SBRXXX CAN | Notes |
@@ -142,9 +121,10 @@ The Sungrow inverter is sensitive to startup timing. If the inverter shows "batt
 
 Once synchronized, they will communicate reliably.
 
-### Nissan Leaf Battery Procedure
+### Example Battery Procedure with Nissan Leaf
 
 #### Startup
+
 1. Start the Sungrow inverter via AC switch
 2. Turn on the Solar DC switch
 3. Turn on the Battery DC switch
@@ -153,6 +133,7 @@ Once synchronized, they will communicate reliably.
 6. Handle precharge/contactor closing (manually or automatically via LilyGo)
 
 #### Shutdown
+
 1. Turn off the Leaf BMS (cut 12V supply). Wait 60 seconds.
 2. LilyGo status LED will turn red. Inverter will stop using the battery within 30 seconds.
 3. After 30 seconds, turn off contactors (if not handled automatically)
@@ -192,9 +173,11 @@ If you experience these errors (common on SH10RT(AU)):
 ### Tested Configurations
 
 **BYD CAN Protocol:**
+
 - Battery Emulator firmware: 8.0
 
 **Sungrow SBRXXX Protocol:**
+
 - Battery Emulator firmware: 9.1.4
 - Inverter: SH10RS (AU)
 - LCD (ARM) firmware: SUNSTONE-H_01011.02.55
@@ -203,4 +186,5 @@ If you experience these errors (common on SH10RT(AU)):
 - AFCI firmware: AFCI_06002.10.11
 
 **Hardware configuration example:**
+
 RJXZS BMS → CAN NATIVE (LilyGo) → Battery Emulator → MCP2515 CAN module (J1 header jumped) → Inverter PIN5 and PIN7

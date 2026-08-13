@@ -1,8 +1,6 @@
 ---
-title: "Nissan LEAF / e-NV200 battery"
+title: "Nissan LEAF / e-NV200"
 ---
-
-# Nissan LEAF / e-NV200 battery
 
 ## Physical size
 The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh battery however is 40mm taller.
@@ -61,6 +59,7 @@ To enable the feature in the software, Enable the "Contactor control via GPIO" o
 ![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
 
 To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
+
 - (LilyGo) Precharge pin 25 - Precharge SSR + input
 - (LilyGo) Positive Contactor pin 32 - Positive SSR + input
 - (LilyGo) Negative Contactor pin 33 - Negative SSR + input

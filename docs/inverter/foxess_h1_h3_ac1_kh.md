@@ -24,6 +24,7 @@ This can be solved in a few ways:
    - Fourth option is to use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system 
 
 ## Compatible FoxESS inverters
+
 * FoxESS H1
    * Use `FoxESS compatible HV2600/ECS4100` primarily.
    * Can also use `SolaX Triple Power LFP over CAN bus` protocol, but some values will be wrong
@@ -36,6 +37,7 @@ This can be solved in a few ways:
 * FoxESS KP
    * Uses `FoxESS compatible HV2600/ECS4100` protocol
 ## Communication wiring
+
 The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to the Battery-Emulator
 
 !!! info "IMPORTANT"
@@ -44,6 +46,7 @@ The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to th
 ![image](../images/foxess-h1-h3-ac1-kh-03.png)
 
 ## Which protocol to use
+
 For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting
 
 ![image](../images/foxess-h1-h3-ac1-kh-07.png){ width="495" height="63" }
@@ -54,7 +57,7 @@ The default values allow for a 400V EV battery to be used. If you are using a lo
 
 By default the battery will appear as a HV2600 battery. If you want to change this, the following enumerations have been successfully tested:
 
-- Fox ESS Battery Type Enum Lookup
+Fox ESS Battery Type Enum Lookup
 Reverse-engineered Fox ESS battery type enum list.
 
 Test conditions
