@@ -1,5 +1,5 @@
 ---
-title: Hardware
+title: "Hardware"
 hide:
   - toc
 ---

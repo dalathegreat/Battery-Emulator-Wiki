@@ -1,5 +1,5 @@
 ---
-title: Welcome
+title: "Welcome"
 description: This revolutionary software enables EV battery packs to be easily reused for stationary storage in combination with solar inverters 
 hide:
   - navigation
@@ -24,7 +24,7 @@ At the same time, EV manufacturers have been putting high capacity battery packs
 - Pick a [supported inverter](10-inverters/index.md#supported-inverters-list) (solar panels optional) :sun_with_face: 
 - Pick a [supported battery](20-battery/index.md#supported-batteries-list) :battery: 
 - Order the Battery-Emulator [compatible hardware](30-hardware/index.md) :robot: 
-- Follow the [installation guidelines](40-setup/10-hardware/Installation-guidelines.md) section for how to install and commission your battery properly :notebook: 
+- Follow the [installation guidelines](40-setup/10-hardware/installation_guidelines.md) section for how to install and commission your battery properly :notebook: 
 
 !!! warning "CAUTION"
     Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.

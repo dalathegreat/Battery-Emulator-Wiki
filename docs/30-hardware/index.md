@@ -1,5 +1,5 @@
 ---
-title: Emulator Hardware
+title: "Emulator Hardware"
 hide:
   - toc
 ---
@@ -10,13 +10,13 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 
 |  Product |  Product Link | Notes | CAN interfaces | Newcomer friendly |
 | :--------: | :---------: | :---------: | :----------: | :----------: |
-| LilyGo T-CAN485 |  [Wiki page](LilyGo-T‐CAN485.md)   | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐
-| Stark CMR Module | [Wiki page](Stark-CMR.md) | Professional HW, CE certified, Massive I/O | 2 (+ 1 add-on) | ⭐⭐⭐
+| LilyGo T-CAN485 |  [Wiki page](lilygo_t_can485.md)   | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐
+| Stark CMR Module | [Wiki page](stark_cmr.md) | Professional HW, CE certified, Massive I/O | 2 (+ 1 add-on) | ⭐⭐⭐
 | 3LB | [KiCAD Design Files](https://github.com/malcolmputer/3lb) | Open source triple-CAN (fully isolated) | 3 (+ ? add-on) | ⚠️
-| LilyGo T-2CAN | [Wiki page](LilyGo-T‐2CAN.md) | Cheap! Dual isolated CAN | 2 (+ 1 add-on) | ⭐⭐⭐
-| LilyGo T-2CANFD | [Wiki page](LilyGo-T‐2CAN.md) | Cheap! Isolated CAN & Isolated CAN-FD | 2 (+ 1 add-on) | ⭐⭐⭐
-| Waveshare ESP32-S3-RS485-CAN  | [Wiki page](Waveshare-ESP32‐S3‐RS485‐CAN.md) | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐⭐
-| ESP32 Devkit V1 | [Wiki page](ESP32-DevKit-V1.md) | Build your own! For expert tinkerers | | ⭐
+| LilyGo T-2CAN | [Wiki page](lilygo_t_2can.md) | Cheap! Dual isolated CAN | 2 (+ 1 add-on) | ⭐⭐⭐
+| LilyGo T-2CANFD | [Wiki page](lilygo_t_2can.md) | Cheap! Isolated CAN & Isolated CAN-FD | 2 (+ 1 add-on) | ⭐⭐⭐
+| Waveshare ESP32-S3-RS485-CAN  | [Wiki page](waveshare_esp32_s3_rs485_can.md) | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐⭐
+| ESP32 Devkit V1 | [Wiki page](esp32_devkit_v1.md) | Build your own! For expert tinkerers | | ⭐
 
 !!! note "NOTE"
     There is no way to purchase a pre-programmed device. This is a hobbyist open source project. You will be responsible for loading the software and setting it up correctly for your components. There is however a [support Discord group](https://www.patreon.com/dala) available.
@@ -39,6 +39,6 @@ The board has a built in LED that is used to signal current status. With this fe
 By visiting the "Events" page in the Webserver, you can see which specific warnings/faults are active
 
 ## Connectivity
-The board has wifi, and supports running a [Webserver that you can connect to for real time values](../40-setup/20-software/Webserver-guide.md), [Over The Air updates](../40-setup/20-software/OTA-Update.md) (OTA), cellmonitoring, changing settings and more. See the [Webserver](../40-setup/20-software/Webserver-guide.md) page for more info on how to use the system
+The board has wifi, and supports running a [Webserver that you can connect to for real time values](../40-setup/20-software/webserver_guide.md), [Over The Air updates](../40-setup/20-software/ota_update.md) (OTA), cellmonitoring, changing settings and more. See the [Webserver](../40-setup/20-software/webserver_guide.md) page for more info on how to use the system
 
-For those into home automation, the code also supports [MQTT](../40-setup/20-software/MQTT.md) 
+For those into home automation, the code also supports [MQTT](../40-setup/20-software/mqtt.md) 

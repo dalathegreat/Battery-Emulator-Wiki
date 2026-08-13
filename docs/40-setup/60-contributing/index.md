@@ -1,5 +1,5 @@
 ---
-title: Contributing to project
+title: "Contributing to project"
 hide:
   - toc
 ---
