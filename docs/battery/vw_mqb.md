@@ -1,5 +1,5 @@
 ---
-title: "Volkswagen MQB battery platform"
+title: "VW/Audi/Škoda/Cupra MQB"
 ---
 
 # Volkswagen MQB battery platform
@@ -7,7 +7,7 @@ title: "Volkswagen MQB battery platform"
 !!! info "IMPORTANT"
     The MQB batteries do **not** have any precharge resistors built in. They need to see actual battery voltage on the high voltage terminals before the battery can turn on the contactors. Due to this requirement the MQB batteries are harder to re-use compared to most EV battery packs. To achieve this, a standalone lab PSU or high voltage isolated boost converter can be used to generate the high voltage needed to start the battery.
 
-This platform shares a lot of similarities with the [Volkswagen MEB platform](meb.md)
+This platform shares a lot of similarities with the [Volkswagen MEB platform](vW_meb.md)
 
 ![image](../images/mqb-01.png){ width="862" height="605" }
 
