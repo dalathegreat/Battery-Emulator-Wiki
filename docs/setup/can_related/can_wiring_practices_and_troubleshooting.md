@@ -75,7 +75,7 @@ See this image for grounding:
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-03.png)
 
-Here is the best way to ensure that there are no paths for spikes in CAN voltage to fry chips on the boards (Important for [Solax](../../inverters/solax.md) and [Foxess](../../inverters/foxess_h1_h3_ac1_kh.md), other inverters are more lenient on what power supply you use)
+Here is the best way to ensure that there are no paths for spikes in CAN voltage to fry chips on the boards (Important for [Solax](../../inverter/solax.md) and [Foxess](../../inverter/foxess_h1_h3_ac1_kh.md), other inverters are more lenient on what power supply you use)
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-04.png)
 

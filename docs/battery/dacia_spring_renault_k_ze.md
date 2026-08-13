@@ -25,7 +25,7 @@ Some 2024+ batteries seem to not respond to CAN. Investigation ongoing!
 
 ### General info
 
-These batteries have 72 cells in series, which creates an operating voltage of approximately **216 to 302VDC**. Make sure [the inverter](../inverters/index.md#supported-inverters-list) you are planning to use is compatible with this voltage range!
+These batteries have 72 cells in series, which creates an operating voltage of approximately **216 to 302VDC**. Make sure [the inverter](../inverter/index.md#supported-inverters-list) you are planning to use is compatible with this voltage range!
 
 ![image](../images/dacia-spring-renault-k-ze-01.png)
 
@@ -121,8 +121,8 @@ This battery also benefits from automated 30s daily resets, which can be automat
 For fuse sizing, we use the max inverter power / 218V = max fuse size.
 ex, for a 5kW inverter: 5000W / 218V = 23A => use a [25A fuse](https://s.click.aliexpress.com/e/_onOPNy8)
 
-* [Fronius Gen24 6-12kW](../inverters/fronius.md) accepts max 22A on the battery input, so you will be able to draw from this battery 4.7-6.6kW, depending on voltage (SoC)
-* [Fronius Gen24 3-5kW](../inverters/fronius.md) accepts max 12.5A on the battery input.
+* [Fronius Gen24 6-12kW](../inverter/fronius.md) accepts max 22A on the battery input, so you will be able to draw from this battery 4.7-6.6kW, depending on voltage (SoC)
+* [Fronius Gen24 3-5kW](../inverter/fronius.md) accepts max 12.5A on the battery input.
 
 ## Completed builds:
 1. DIY wooden support, with space for the fuse underneath

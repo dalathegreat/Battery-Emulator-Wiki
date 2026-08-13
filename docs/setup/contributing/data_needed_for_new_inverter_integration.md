@@ -24,7 +24,7 @@ If the system is CAN based, you will first have to get some hardware capable of 
 If the system is modbus based, the difficulty grows a bit more. Here is a list of hardware that can be used,
 - USB RS485 reader from Ebay 💲
 - TODO: Add more options
-- LilyGo board, see [example here](../../inverters/kostal.md#traces-for-reverse-engineering)
+- LilyGo board, see [example here](../../inverter/kostal.md#traces-for-reverse-engineering)
 
 The following sniffer is recommended: https://github.com/alerighi/modbus-sniffer
 
