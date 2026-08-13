@@ -143,24 +143,25 @@ Below an example wiring diagram
        * 61129346573
        * 61126809274
        * 761978102
-* BMW HVIL bridge
-       * 12527630408
-* BMW Connector
+* BMW CAN Connector
        * 61139165781 (also known as 9165781).
        * Note: equivalent part from Kostal is # 9411204.
        * [Pigtail, easy: Link to Aliexpress](https://a.aliexpress.com/_EIWvMyk)
        * [Pin your own: Link to Alibaba, You can order a sample instead of multiple connectors](https://www.alibaba.com/product-detail/12-Pin-9165781-01-76616-9_1601400196256.html)
            * This includes MQS bushing contacts, no wires attached
        * Search suggestion "12 Pin 9165781-01/76616-9"
-* 8x BMW Bushing contact MQS with cable
-       * 61130030859 / 61130005197 (they are all the same color though, recommend to mark them)
-       * Or get a free wiring harness from your scrap dealer and reuse the cables
 * HV Capacitor 470µF or higher and more than 500V.
        * Consider a capacitor with screw connection to avoid the need of soldering iron
 * 33Ω resistor, ¼ watt or similar is fine.
 * 12V power supply (When Grid-backup is not available)
        * with UPS to avoid [welded contacts](#CAUTIONCONTACTORSWELDED))
            * E.G: Mean Well DRC-40A with a 12v 1.2ah battery
+* BMW HVIL bridge (can be use a piece of copper wire)
+       * 12527630408
+* 8x BMW Bushing contact MQS with cable for CAN connector (optional)
+       * 61130030859 / 61130005197 (they are all the same color though, recommend to mark them)
+       * Or get a free wiring harness from your scrap dealer and reuse the cables
+
 
 ### Note on capacitor
 Capacitors are high voltage, so they need to be inside an IP enclosure to prevent anyone from touching or water getting onto it and shorting it out. Most either mount the capacitor next to the battery, or next to the inverter, at either end of the HV bus. The most popular solution is to install fuses and the capacitor right at the start where HV comes out of the battery, sort of an add-on box that gets mounted on the original HV cable coming out of the battery. This is also a good place to step down the batteries thick DC cabling (35mm² in case of the i3), down to a more manageable 10mm². [To avoid the need for 35mm² crimping tools you could consider this solution](#HVCableMod)
