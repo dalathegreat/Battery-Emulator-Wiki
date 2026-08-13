@@ -1,8 +1,10 @@
 ---
-title: "Mercedes B‐Class B250E “W246”"
+title: "Mercedes B250E"
 ---
 
 ### WIP
+
+## Mercedes B‐Class B250E “W246”
 
 ### Battery info
 The Mercedes B-Class B250E “W246” uses a 36 kWh lithium-ion battery manufactured by Tesla Motors. It shares many similarities with early Tesla batteries.
