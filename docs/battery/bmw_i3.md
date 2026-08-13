@@ -16,8 +16,7 @@ All i3 batteries have the following length/width/height 1660mm x 964mm x 174mm
 ## Word of caution when buying i3 batteries ⚠️
 
 !!! info "IMPORTANT"
-    The BMS (SME) inside the i3 battery will store crash data. If the battery comes from a really hard crash that triggered enough airbags, there is a possibility that the SME has entered a locked state, and will never engage the contactors. The only way to unlock the battery is with an expensive BMW tool called "EoS Tester" that costs 10k€. 
-Update: According to a user you can swap the SME board with one from eBay or other places online and it will work with battery emulator, though not with a BMW i3 since it will need to be EoS tested.
+    The BMS (SME) inside the i3 battery will store crash data. If the battery comes from a really hard crash that triggered enough airbags, there is a possibility that the SME has entered a locked state, and will never engage the contactors. The only way to unlock the battery is with an expensive BMW tool called "EoS Tester" that costs 10k€. **Update:** According to a user you can swap the SME board with one from eBay or other places online and it will work with battery emulator, though not with a BMW i3 since it will need to be EoS tested.
 
 <a name="CAUTIONCONTACTORSWELDED"></a>
 !!! warning "CAUTION"
@@ -141,27 +140,27 @@ Below an example wiring diagram
    * 120Ah
        * 2412116 / 2412117 / 7933745 / 7933746 / 7933747
 * BMW HV cable
-   * 61129346573
-   * 61126809274
-   * 761978102
+       * 61129346573
+       * 61126809274
+       * 761978102
 * BMW HVIL bridge
-   * 12527630408
+       * 12527630408
 * BMW Connector
-   * 61139165781 (also known as 9165781).
-   * Note: equivalent part from Kostal is # 9411204.
-   * [Pigtail, easy: Link to Aliexpress](https://a.aliexpress.com/_EIWvMyk)
-   * [Pin your own: Link to Alibaba, You can order a sample instead of multiple connectors](https://www.alibaba.com/product-detail/12-Pin-9165781-01-76616-9_1601400196256.html)
-       * This includes MQS bushing contacts, no wires attached
-   * Search suggestion "12 Pin 9165781-01/76616-9"
+       * 61139165781 (also known as 9165781).
+       * Note: equivalent part from Kostal is # 9411204.
+       * [Pigtail, easy: Link to Aliexpress](https://a.aliexpress.com/_EIWvMyk)
+       * [Pin your own: Link to Alibaba, You can order a sample instead of multiple connectors](https://www.alibaba.com/product-detail/12-Pin-9165781-01-76616-9_1601400196256.html)
+           * This includes MQS bushing contacts, no wires attached
+       * Search suggestion "12 Pin 9165781-01/76616-9"
 * 8x BMW Bushing contact MQS with cable
-   * 61130030859 / 61130005197 (they are all the same color though, recommend to mark them)
-   * Or get a free wiring harness from your scrap dealer and reuse the cables
+       * 61130030859 / 61130005197 (they are all the same color though, recommend to mark them)
+       * Or get a free wiring harness from your scrap dealer and reuse the cables
 * HV Capacitor 470µF or higher and more than 500V.
-   * Consider a capacitor with screw connection to avoid the need of soldering iron
+       * Consider a capacitor with screw connection to avoid the need of soldering iron
 * 33Ω resistor, ¼ watt or similar is fine.
 * 12V power supply (When Grid-backup is not available)
-   * with UPS to avoid [welded contacts](#CAUTIONCONTACTORSWELDED))
-       * E.G: Mean Well DRC-40A with a 12v 1.2ah battery
+       * with UPS to avoid [welded contacts](#CAUTIONCONTACTORSWELDED))
+           * E.G: Mean Well DRC-40A with a 12v 1.2ah battery
 
 ### Note on capacitor
 Capacitors are high voltage, so they need to be inside an IP enclosure to prevent anyone from touching or water getting onto it and shorting it out. Most either mount the capacitor next to the battery, or next to the inverter, at either end of the HV bus. The most popular solution is to install fuses and the capacitor right at the start where HV comes out of the battery, sort of an add-on box that gets mounted on the original HV cable coming out of the battery. This is also a good place to step down the batteries thick DC cabling (35mm² in case of the i3), down to a more manageable 10mm². [To avoid the need for 35mm² crimping tools you could consider this solution](#HVCableMod)
