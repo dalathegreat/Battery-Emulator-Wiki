@@ -1,0 +1,10 @@
+ignore:
+  - index.md
+nav:
+  - firststeps.md
+  - "*.md"
+  - hardware
+  - software
+  - chargers
+  - can_related
+  - contributing

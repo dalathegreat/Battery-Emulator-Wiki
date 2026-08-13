@@ -1,4 +1,8 @@
 use_index_title: true
 nav:
-  - "*"
+  - "*.md"
+  - inverters
+  - battery
+  - hardware
+  - setup
 #  - Web Installer: https://dalathegreat.github.io/BE-Web-Installer/ "target=_blank"

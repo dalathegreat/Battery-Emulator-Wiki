@@ -1,0 +1,5 @@
+---
+title: "Hardware"
+hide:
+  - toc
+---

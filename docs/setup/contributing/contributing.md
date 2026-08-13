@@ -1,0 +1,155 @@
+---
+title: "CONTRIBUTING"
+---
+
+### Contributing to the Battery-Emulator project
+
+What can I do? 🦸
+--------------
+
+**"Help - I want to contribute something, but I don't know what?"**
+
+You're in luck. There's various sources to contribute:
+ - Improve the [Wiki documentation](../../index.md)
+   - Especially battery/inverter specific pages need updating. Attach pictures of batteries, wiring diagrams, helpful info etc. 
+ - Have a look at the [issue tracker](https://github.com/dalathegreat/Battery-Emulator/issues), especially issues with labels:
+   - [good first issue](https://github.com/dalathegreat/Battery-Emulator/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
+ - Use your favorite text editor to find `TODO` comments in the code
+ - Ask us!
+   - [Discussion page](https://github.com/dalathegreat/Battery-Emulator/discussions)
+   - [Discord server](https://www.patreon.com/dala) 
+
+## Notes on embedded system 🕙
+The Battery-Emulator is a real-time control system, which performs lots of time critical operations. Some operations, like contactor control, need to complete within 10 milliseconds periodically. Even a drift for the 10ms task towards 13ms can cause contactors to open! The resources of the ESP32 microcontroller is limited, so keeping track of CPU and memory usage is essential. Keep this in mind when coding for the system! Performance profiling the system can be done by enabling the "Enable performance profiling:" option in the webserver.
+
+### Notes on CPU architecture and hardware 🤖
+The project supports **only** ESP32 boards. By default we support a handful of easy to source boards. You can even add your own board by modifying the Hardware Abstraction Layer (HAL) file, and essentially port the emulator to any ESP32 variant.
+
+The code utilizes the dual cores that the ESP32 offers. The critical task loop (CAN/Modbus/RS485/Safeties) runs one core 0, and the optional communication loop (Wifi/MQTT/ESPNow/Webserver) runs on core 1. This way even while the communication loop gets loaded heavily, the critical operations can continue and still meet the realtime timing requirements.
+
+The project started out in 2022 with supporting the "LilyGo T-CAN485", which is a quite flash limited ESP32 CPU with only 4MB of flash. Newer hardware options have 8MB or even 16MB of flash. There are hundreds of older boards in operation that still requires support, so the project aims to still provide updates for these flash limited devices. Not all new features can fit onto the 4MB board, so the SMALL_FLASH_DEVICE build flag is used to remove certain parts of the program for the oldest hardware. This way the oldest boards can still get important safety updates, while new future battery integrations are reserved to only running on the more modern hardware with larger flash (Stark CMR v2 / LilyGO T-2CAN / Waveshare ESP32 etc.)
+
+#### Why are you not supporting architecture X ❔
+_Why are you not supporting Raspberry Pi / STM32 / X86 / ARM_ etc. This question gets from time to time. The reason is that the project is very popular (over 2500 installs done at start of 2026), and we already have great hardware options on ESP32. The development team is equipped with all compatible ESP32 boards, and can assist with any issues that are board particular. Expanding the hardware selection to other hardware architecture platforms would introduce a very high support load on the developers, spreading them thin. Maintaining a fork of the software to run on other architectures would also be extremely time consuming. There has been some Raspberry Pi offshoots, but these have died since after the port, the upstream changes from this repository has never made it back to the fork. So whoever ports the software would need to almost fulltime take in patches, or build a development pipeline that can keep up with the rapid development here. This is free open source software, anyone is free to fork and develop whatever they want, but officially this project will only support ESP32, and support from developers will only be given to ESP32 users.
+
+## Setting up the compilation environment (VScode + PlatformIO) 💻
+
+This project uses the PlatformIO extension within Visual Studio Code for development and uploading. It handles all the complex toolchains and library management for you.
+### 1. Installing VSCode
+- Download the stable build of Visual Studio Code for your operating system (Windows, macOS, or Linux) from the official website: https://code.visualstudio.com/
+- Run the installer and follow the setup instructions.
+- (Recommended) Launch VSCode after installation.
+
+### 2. Installing the PlatformIO IDE Plugin
+
+PlatformIO is an extension that adds all the necessary functionality to VSCode.
+   - Inside VSCode, open the Extensions view by:
+      - Clicking the Extensions icon in the Activity Bar on the left side.
+      - Or using the keyboard shortcut: Ctrl+Shift+X (Windows/Linux) or Cmd+Shift+X (macOS).
+   - In the extensions search bar, type: PlatformIO IDE.
+   - Find the extension published by PlatformIO and click the Install button.
+- Wait for the installation to complete. This may take a few minutes as PlatformIO downloads and installs its core tools in the background. VSCode might require a reload once finished.
+
+### 3. Opening the Project and Building
+- Clone the repository to your local machine using Git.
+- In VSCode:
+   - Go to File > Open Folder...
+   - Navigate to and select the root folder of the cloned project (the folder containing the platformio.ini file).
+   - Click Open.
+- PlatformIO will automatically recognize the project structure and begin indexing the code. You'll see the PlatformIO icon (a grey alien) appear in the Activity Bar on the left.
+
+- To verify everything is set up correctly, build/compile the project:
+   - Click the PlatformIO icon in the Activity Bar to open the PIO Home screen.
+   - Go to Quick Access > PIO > Build.
+      - Alternatively, you can use the checkmark icon in the blue status bar at the bottom of the VSCode window, or the keyboard shortcut Ctrl+Alt+B (Windows/Linux) / Cmd+Alt+B (macOS).
+   - The build process will start. You can monitor the output in the integrated terminal. A successful build will end with ===== [SUCCESS] Took X.XX seconds =====.
+
+### 4. OptionA: Uploading Code to Board via USB
+
+- Connect your Battery-Emulator hardware to your computer using a USB cable.
+- Select the right board type (Stark, LilyGo)
+- At the bottom left of VScode, click the Env to bring up a menu of boards. Select the board you are using
+![image](../../images/contributing-01.png){ width="396" height="95" }
+![image](../../images/contributing-02.png){ width="679" height="177" }
+
+- Ensure the correct upload port is set in the platformio.ini file (it's often auto-detected, but you may need to set it manually. See Troubleshooting below).
+- Upload the code:
+   - Click the PlatformIO icon in the Activity Bar.
+   - Go to Quick Access > PIO > Upload.
+   - Alternatively, use the right-arrow icon (→) in the blue status bar at the bottom of the VSCode window, or the keyboard shortcut Ctrl+Alt+U (Windows/Linux) / Cmd+Alt+U (macOS).
+- The upload process will begin. The board may reset automatically. A successful upload will end with ===== [SUCCESS] Took X.XX seconds =====.
+
+### 4. OptionB: Uploading Code via OTA
+
+- If you already have Battery-Emulator installed on the board, you can OTA update the board with the built file
+- Build the project for your hardware
+- Navigate to the folder (Stark used as example) : /Battery-Emulator/.pio/build/stark_330
+- Take the firmware.bin file
+- [OTA update](../software/ota_update.md) the board with this file
+
+### ⚠️ Troubleshooting & Tips
+
+#### "Upload port not found" or wrong port errors:
+
+- Find the correct port:
+    - Windows: Check Device Manager under "Ports (COM & LPT)". It's usually COM3, COM4, etc.
+    - macOS/Linux: Run ls /dev/tty.* or ls /dev/ttyUSB* in a terminal. It's often /dev/tty.usbserial-XXX or /dev/ttyUSB0.
+- Add the line upload_port = COM4 (replace COM4 with your port) to your platformio.ini file in the [env:...] section.
+
+## Code formatting 📜
+The project enforces a specific code formatting in the workflows. To get your code formatted properly, it is easiest to use a pre-commit hook before pushing the code to a pull request.
+
+Before you begin, make sure you have installed Python on the system!
+To install the pre-commit, open the repository via Git Bash/CMD, and run
+```
+pip install pre-commit
+```
+And then run 
+```
+pre-commit install
+```
+Then you can run the autoformat any time with the command
+```
+pre-commit
+```
+Or force it to check all files with
+```
+pre-commit run --all-files
+```
+
+## Local Unit test run 🧪
+The Unit tests run gtest. Here is how to install this on Debian/Ubuntu and run it locally
+```
+sudo apt-get install libgtest-dev
+sudo apt-get install cmake
+```
+Navigate to Battery-Emulator/test folder
+```
+sudo cmake CMakeLists.txt
+sudo make
+```
+
+## Downloading a pull request build to test locally 🛜
+If you want to help test a new feature that is only available in an open pull request, you can download the precompiled binaries from the build system. 
+
+First, login to Github. If you don't have an account already, create one.
+
+Start by clicking on the "**Checks**" tab
+
+![image](../../images/contributing-03.png)
+
+Then click the down arrow next to the "Compile Common Images" selection, and then click on the hardware you need the binaries for. Currently we build for these hardwares:
+- LilyGo T-CAN485
+- Stark CMR
+- LilyGo T-2CAN
+- ESP32 Devkit
+- BECom
+
+![image](../../images/contributing-04.png)
+
+After selecting the hardware you need, click the "**Upload Artifact**", and there will be a download link. Download the file!
+
+![image](../../images/contributing-05.png)
+
+After downloading the .zip file, extract the .bin file from it. Then [OTA Update](../software/ota_update.md) your device with this .bin file!
+
