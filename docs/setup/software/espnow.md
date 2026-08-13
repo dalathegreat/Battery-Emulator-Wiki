@@ -2,7 +2,7 @@
 title: "ESPNow"
 ---
 
-## Some ESPNow background
+## Some background
 
 ESP-NOW is a low-latency wireless protocol by Espressif that allows direct device-to-device communication without a router. It works on the data-link layer, bypassing higher OSI layers, which results in fast response times and minimal overhead. It supports ESP8266, ESP32, ESP32-S, and ESP32-C series chips and can coexist with Wi-Fi and Bluetooth LE.
 It’s ideal for smart home devices, remote controls, and sensor networks, supporting one-to-one, one-to-many, and many-to-many communication.
@@ -15,12 +15,14 @@ It’s ideal for smart home devices, remote controls, and sensor networks, suppo
 * Supports callbacks for send/receive events
 * Payload up to 250 bytes in ESP-NOW v1, raised to 1470 bytes in ESP-NOW v2 (ESP-IDF 5.4+)
 
+Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration
+
 !!! note "NOTE" 
     Enabling ESPNow increases the temperature of the ESP chip, as it shares the radio interface with Wi-Fi. Without ESP-NOW, the Wi-Fi client connection lets the modem duty-cycle down to the network's DTIM interval. The moment ESP-NOW is active, the connectionless path needs the PHY/RX chain powered continuously — Espressif's own FAQ states that once the device enters modem-sleep it can't service ESP-NOW. So you flip from a low duty-cycle radio to a ~100%-on radio, and the PA/PHY idle current is what generates heat with ESPNow enabled. It's the radio staying lit.
 
 ## **ESPNow in Battery Emulator context**
 
-Any ESP32 device nearby can display Battery Emulator data without any physical connection to the Battery Emulator. The emulator broadcasts (or unicasts) its full telemetry set: emulator-wide state, per-battery values for all three batteries, unquantized cell voltages and balancing bits, and the recent event log.
+Any ESP32 device nearby can display Battery Emulator data without any physical connection to the Battery Emulator. The emulator broadcasts (or unicasts) its full telemetry set: emulator-wide state, per-battery values for all three batteries, cell voltages and balancing bits, and the recent event log.
 
 ### Enabling it
 
@@ -267,12 +269,12 @@ Link state (`BATTERY_DETECTED`, `CAN_ALIVE`, `CAN_ERROR_COUNTER`, `REAL_BMS_STAT
 | `LimitingFactor` | 0 None, 1 Inverter, 2 UserSetting, 3 Battery |
 | `led_mode_enum` | 0 CLASSIC, 1 FLOW, 2 HEARTBEAT (plus GRB variants on T-2CAN) |
 
-### Compatibility rules for future changes
 
-* Never reuse or change the meaning of an allocated key. Retire it instead.
-* Never change the unit or scaling of an allocated key. Allocate a new key.
-* New keys, new type classes and new frame types may be added freely.
-* Bump `ESPNOW_PROTOCOL_VERSION` only for a change that violates the above.
+!!! warning "Compatibility rules for future changes"
+    * Never reuse or change the meaning of an allocated key. Retire it instead.
+    * Never change the unit or scaling of an allocated key. Allocate a new key.
+    * New keys, new type classes and new frame types may be added freely.
+    * Bump `ESPNOW_PROTOCOL_VERSION` only for a change that violates the above.
 
 ## **Examples of implementation**
 
