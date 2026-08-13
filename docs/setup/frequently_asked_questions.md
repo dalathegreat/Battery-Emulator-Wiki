@@ -8,7 +8,7 @@ If you have a question about this project, the answer may be here. If not, add i
 This project is still in development and is currently at the proof of concept stage. This is a sensible suggestion, it just hasn't happened yet. Feel free to spec and build one, then open a PR to add to the repo!
 
 ## Which inverters are supported?
-See [this page](../inverters/index.md#supported-inverters-list)
+See [this page](../inverter/index.md#supported-inverters-list)
 
 ## Could I use this project to use my Leaf battery without removing it from the car?
 While technically you could potentially make this work over the CHAdeMO connector, finding a suitable connector is prohibitively expensive. For the price of a Chademo connector alone, you can purchase ~10kWh of stationary storage! The [scope of this project](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/issues/7) is battery reuse outside of a vehicle.

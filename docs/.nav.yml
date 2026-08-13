@@ -1,7 +1,7 @@
 use_index_title: true
 nav:
   - "*.md"
-  - inverters
+  - inverter
   - battery
   - hardware
   - setup

@@ -7,7 +7,7 @@ hide:
 # Setup
 
 ## How do I get started?
-- Pick a [supported solar inverter](../inverters/index.md#supported-inverters-list) (solar panels optional) 🌞 
+- Pick a [supported solar inverter](../inverter/index.md#supported-inverters-list) (solar panels optional) 🌞 
 - Pick a [supported battery](../battery/index.md#supported-batteries-list) 🔋 
 - Order the Battery-Emulator [compatible hardware](../hardware/index.md) 🤖 
 - Follow the [installation guidelines](hardware/installation_guidelines.md) section for how to install and commission your battery properly 📓 
