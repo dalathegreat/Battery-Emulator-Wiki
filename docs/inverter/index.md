@@ -13,8 +13,8 @@ The following solar inverters have support. Remember to double check that the vo
 - ⭐⭐⭐ Very well supported inverter. Multiple success stories. Beginner friendly.
 - 🔌 The inverter can also function entirely offgrid
 
-| Vendor | Product Name | phases | Supported | Precharge Required | Voltage min (V) | Voltage max (V) | Notes | |
-| :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------: | :-----------------------------------------: | :------------------: | :---------------: | :---------------: | :----------------------------------------------------------------------: | --- |
+| Vendor | Product Name | AC Phases | Support level | Precharge required | Voltage min (V) | Voltage max (V) | Notes | |
+| :------------: | :-------------------: | :-------: | :-------------: | :------------------: | :---------------: | :---------------: | :-------------------------: | --- |
 | [Afore](afore.md) | [Afore AF17K-THA 230V](https://www.aforenergy.com/product/three-phase-hybrid-storage-inverter-3-17-kw-delta-voltage-series/) | 3 | ( ⭐⭐ ) |  | 150 | 800 | Good option for Norway IT | |
 | Canadian Solar | CSI-TE & CSI-HE & CSI-BHE Series | | ⚠️ |  |  |  | Untested, works with HVS / HVM | |
 | [Bluesun](bluesun.md) | [BSE8KH3/10KH3/12KH3/15KH3](https://ensun.sk/storage/bse8_10_12_15kh3_en_v220413.pdf) | 3 | ( ⭐⭐ ) |  | 125 | 600 | | |
