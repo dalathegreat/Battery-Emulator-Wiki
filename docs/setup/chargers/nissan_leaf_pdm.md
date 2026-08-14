@@ -7,6 +7,7 @@ There are two different 2013+ LEAF charger (PDM) variants that work with the Bat
 ![Nissan_PDM](../../images/charger-nissan-leaf-pdm-01.jpg) ![PDM66](../../images/charger-nissan-leaf-pdm-02.jpg)
 
 The following LEAF PDMs are supported:
+
 - 2011 to 2012 ZE0 ❌  Not supported!
 - 2013 to 2017 AZE0 ✅ 
 - 2018 to 2024 ZE1 ✅ 
@@ -45,7 +46,7 @@ here the complete pinout
 ![type_2](../../images/charger-nissan-leaf-pdm-05.jpg) ![type2_socket](../../images/charger-nissan-leaf-pdm-06.jpg) ![type2_wires](../../images/charger-nissan-leaf-pdm-07.jpg)
 
 ## High voltage wiring diagram ⚡ 
-The PDM has two high voltage connectors, battery and A/C compressor. Both can be used to connect to the battery. If you use the A/C compressor connector, the wires are quite thin so they are not recommended for 6.6kW charging, max 3.3kW
+The PDM has two high voltage connectors, battery and A/C compressor. Both can be used to connect to the battery. If you use the A/C compressor connector, the wires are quite thin so they are not recommended for 6.6kW charging, max 3.3kW.
 
 The PDM also has the AC input Type1/Type2 connector that needs to be connected to the charging port. You have to use the actual charging port, so the CP/PP logic is interpreted by the PDM. You cannot wire in AC directly to the connector.
 
@@ -58,6 +59,7 @@ The inlet is marked in this picture:
 ![image](../../images/charger-nissan-leaf-pdm-08.png)
 
 Nissan LEAF waterpump pinout:
+
 - Brown pin 1 - 12V
 - Yellow/black pin 2 - GND
 

@@ -38,7 +38,7 @@ Related cables: 20972413 and 22889574
 ![s-l1600](../../images/charger-chevrolet-volt-gen1-04.jpg)
 
 # Integration
-Integration with T-CAN485 is straightforward.
+Integration with the Battery-Emulator hardware is straightforward.
 
 The charger is controlled and monitored solely via CAN. High and Low signals are available via the 12 wire pigtail to the right of the 12V aux charger output. No modification of termination resistor is necessary.
 

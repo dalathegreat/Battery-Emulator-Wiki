@@ -26,7 +26,7 @@ So can it be that the battery donor car is from 2020 or 2021 but has received th
 
 ## Part numbers for batteries
 
-Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Number Q is used for Niro. ✅ means that someone has succesfully used the pack with the Battery-Emulator
+Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Number Q is used for Niro. ✅ means that someone has succesfully used the pack with the Battery-Emulator.
 
 - 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ This battery uses **CAN-FD**, Use `Kia 64kWh **FD** Battery` option in software!
 ![image](../images/kia-niro-hyundai-kona-64-kwh-16.png)
@@ -86,11 +86,11 @@ Incase your battery is missing some wires/disconnect switches, here are the OEM 
 
 ⚠️ The CAN communication has no error checking. This means it is prone to corruption if it sits close to a high voltage line. Use shielded twisted pair cables for CAN-H and CAN-L , and connect the shield to protective earth in one end of the circuit. 
 
-Attached below are pictures of the BMS pinouts. Connect the pins to the LilyGo and 12V supply like this:
+Attached below are pictures of the BMS pinouts. Connect the pins to the Battery-Emulator hardware and 12V supply like this:
 
 * Pin 1/2 to 12V
-* Pin 10 to LilyGo CAN - H (connect resistor 120 Ohm across 10 CAN - H and 11 CAN - L)
-* Pin 11 to LilyGo CAN - L
+* Pin 10 to CAN-H on the board (connect resistor 120 Ohm across 10 CAN - H and 11 CAN - L)
+* Pin 11 to CAN-L on the board
 * Pin 12 to 12V (Ignition)
 * Pin 3 and 14 connect together (interlock loop)
 * Pin 33 to 12V GND
@@ -145,7 +145,7 @@ The two cables side by side
 ## HVIL
 The battery packs has interlock monitoring on all high voltage connections. To get the contactors to engage, the battery needs to see that all plugs have been seated. If you dont have the original plugs, these are the HVIL connectors that need to be connected together to make the battery think the connectors are seated:
 
-Low voltage side: Pin 3 and 14 must be connected on data plug
+Low voltage side: Pin 3 and 14 must be connected on data plug.
 
 These two pins on the high voltage plug:
 
@@ -171,12 +171,12 @@ There is a 2022+ Hyundai Kona or Kia e-niro battery that uses CAN-FD, that comes
 This battery has the part number 37501-AO050, and this battery requires a CAN-FD hardware interface. Easiest to get a [Stark CMR](../hardware/stark_cmr.md), but you can also add a [CANFD addon interface](../setup/can_related/can_fd_add_on_mcp2518fd.md). To use this battery, enable the `Kia 64kWh FD battery` option in the software.
 
 !!! info "IMPORTANT"
-    The contactor control for these FD batteries are not working, they open after a few seconds. To get around this, you need to force the contactors closed with 12V/GND. This can be automated with GPIO Controlled contactors
+    The contactor control for these FD batteries are not working, they open after a few seconds. To get around this, you need to force the contactors closed with 12V/GND. This can be automated with GPIO Controlled contactors.
 
 ![image](../images/kia-niro-hyundai-kona-64-kwh-14.png)
 
 ### Manual contactor control on the 37501-AO050 FD battery
-To setup manual contactor control, open the battery lid, and locate the contactor assembly box
+To setup manual contactor control, open the battery lid, and locate the contactor assembly box.
 
 ![image](../images/kia-niro-hyundai-kona-64-kwh-22.png)
 

@@ -15,10 +15,10 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 ## CAN logging via Webserver
 
 !!! note "NOTE"
-    CAN logging via Webserver does not store all messages due to limited RAM. If you need to log absolutely everything, do it via USB or to SD-CARD
+    CAN logging via Webserver does not store all messages due to limited RAM. If you need to log absolutely everything, do it via USB or to SD-CARD.
 
 !!! note "NOTE"
-    Some mobile phone browsers can have issues displaying long data lists. If you see no data, try using a Desktop PC / Laptop
+    Some mobile phone browsers can have issues displaying long data lists. If you see no data, try using a Desktop PC / Laptop.
 
 Start by accessing the [Webserver](../software/webserver_guide.md)
 
@@ -30,7 +30,7 @@ Refresh the page to get an updated list of incoming (RX) and sent (TX) CAN messa
 
 ![image](../../images/can-logging-02.png)
 
-Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible CANdump format, for further analysis
+Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible CANdump format, for further analysis.
 
 ## USB CAN logging
 

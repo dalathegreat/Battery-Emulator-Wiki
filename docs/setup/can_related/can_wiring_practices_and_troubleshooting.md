@@ -30,6 +30,7 @@ The number of transmit or receive errors has crossed the warning threshold. This
 ## CAN troubleshooting
 
 If you get events like  BATTERY_MISSING or INVERTER_MISSING, you need to check the CAN wiring. Here are some basic tips:
+
 * Make sure the Webserver settings is configured correctly, with the right CAN configuration. Example, make sure the Battery is configured to use the correct CAN interface if you see BATTERY_MISSING, for instance if you use LilyGo T-2CAN and connect the battery to CAN-A, configure that port under the Battery Interface.
 * Make sure you have flashed the correct software onto your Battery-Emulator board (T-CAN485 instead of T-2CAN is a classic mistake)
 * Make sure all CAN devices are turned ON. Verify that the device you are troubleshooting is getting 12V, and that the device is consuming power (typically a few 100mA)
@@ -38,15 +39,17 @@ If you get events like  BATTERY_MISSING or INVERTER_MISSING, you need to check t
 * Make sure the terminating resistors are correct. CAN networks should have two 120 Ohm resistors in each end of the network. With everything OFF, you can measure resistance between CAN-H and CAN-L. The result should be 60 Ohm. If it shows 120 Ohm, one resistor is missing at an end. If it shows 40 Ohm, you have too many terminating resistors.
 * On the LilyGo, the termination resistor can be removed like shown here:
 ![RemoveThisWhenUsingCANinverter](../../images/can-wiring-practices-and-troubleshooting-01.png)
+
 * On the Stark CMR board, the terminating resistor can be turned on/off via the switches on the PCB
 ![image](../../images/can-wiring-practices-and-troubleshooting-02.png)
+
 * Make sure the cable you are using is a twisted pair cable. This is important for signal quality.
 * Make sure the cable you are using is shielded. One side of the shield should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This improves signal quality
 * Try a different powersupply for the board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see CAN_TX_FAILURE occasionally your powersupply might be noisy
 * If you are using a board like T-2CAN, it requires 12V to activate the CAN chips, simply powering it via USB is not enough!
 
 ### Loopback testing
-To verify that the CAN channels on the Battery-Emulator hardware you have are working properly, you can perform a loopback test. This can be done by connecting two CAN channels together
+To verify that the CAN channels on the Battery-Emulator hardware you have are working properly, you can perform a loopback test. This can be done by connecting two CAN channels together.
 
 Example, loopback test on Stark CMR to verify that both hardware channels are OK
 ![image](../../images/can-wiring-practices-and-troubleshooting-06.png)

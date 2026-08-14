@@ -6,12 +6,13 @@ title: "Kia Niro Hybrid"
 This page contains info on how to re-use the Kia Niro Hybrid batteries (Also applies to Hyundai Kona Hybrid & Kia Xceed)
 
 ## Software configuration
-For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Battery Protocol" setting
+For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Battery Protocol" setting.
 
 ![image](../images/battery-kia-niro-hybrid-06.png){ width="588" height="72" }
 
 ## Specifications
 There are two variants of the hybrid battery, HEV and PHEV. Currently only HEV batteries have been tested, but PHEV might also work.
+
 * 1.56kWh, HEV, 64 Cellss, 168-235VDC ( Nominal 240V ) , weight 33kg
 
 * 8.9kWh, PHEV, 96 Cells, 360v nominal. The PHEV is split into two packs, both 4.45kWh 180V.

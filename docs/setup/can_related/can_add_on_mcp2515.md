@@ -4,20 +4,21 @@ title: "CAN add‐on (MCP2515)"
 
 !!! tip "TIP"
     If you're considering using a Lilygo T-CAN485, you may find the [Lilygo T-2CAN](../../hardware/lilygo_t_2can.md) to be a better choice:
+
     - It has two CAN interfaces already
     - The interfaces are galvanically-isolated, so you don't need separate CAN isolators for troublesome inverters (like Solax)
     - It has a wider input voltage range (up to 24V)
     - Can add-on RS485 if needed, which is simpler than soldering a MCP2515
 
 # Why add another CAN channel?
-Some Inverters do not like to see automotive CAN frames on the CAN channel meant for stationary storage. When they see these messages, they enter a fault state. To get around this, we can add an additional MCP2515 chip to the LilyGo, to get an isolated secondary CAN bus.
+Some Inverters do not like to see automotive CAN frames on the CAN channel meant for stationary storage. When they see these messages, they enter a fault state. To get around this, we can add an additional MCP2515 chip to the Battery-Emulator hardware, to get an isolated secondary CAN bus.
 
 - Another options is to use [add on CAN-FD MCP2518](can_fd_add_on_mcp2518fd.md) board 
 - Another option is to use [Stark CMR board](../../hardware/stark_cmr.md)
 
 ## How to add an MCP2515 chip?
 
-The solution is to add a separate CAN channel, via an additional MCP2515. The additional MCP2515 can be connected to the Lilygo in multiple ways.
+The solution is to add a separate CAN channel, via an additional MCP2515. The additional MCP2515 can be connected to the board in multiple ways. The wiring below is given for the LilyGo T-CAN485 as an example, other boards work the same way with their own pin names.
 
 ### Option 0: MCP2515 powered via 3.3V (no extra power connections needed)
 You can use this MCP2515 board from Seeed Studio - it operates directly on the lilygo 3.3V supply. https://www.seeedstudio.com/Seeed-Studio-CAN-Bus-Breakout-Board-for-XIAO-and-QT-Py-p-5702.html
@@ -55,6 +56,7 @@ The Lilygo has a 3.3V CAN transceiver (SN65HVD231). The Lilygo also has a level 
 Therefore, it is viable to change the voltage from 3.3V to 5V and solder the 5V CAN transceiver from an MCP2515 module onto the Lilygo board. This requires basic SMD reworking skills.
 
 This solution eliminates the need:
+
 - for an intermediary level shifter board to 5V
 - to pick up 5V from a component pad on the Lilygo
 - for an external supply of 5V.
@@ -87,16 +89,16 @@ These pins need to be connected between the LilyGo header and the MCP2515 board:
 
 ## ℹ️ Note on crystal
 The extra board has either an 8Mhz / 12Mhz or 16Mhz crystal. Be sure to set the correct value in USER_SETTINGS.h if needed. This line:
-`#define CRYSTAL_FREQUENCY_MHZ 8  //CAN_ADDON option, what is your MCP2515 add-on boards crystal frequency?` can be changed to suit the crystal located on your board
+`#define CRYSTAL_FREQUENCY_MHZ 8  //CAN_ADDON option, what is your MCP2515 add-on boards crystal frequency?` can be changed to suit the crystal located on your board.
 
 ![bild](../../images/can-add-on-mcp2515-06.png)
 
 ## Software configuration
-When using the MCP2515, make sure that the can_config inside USER_SETTINGS.cpp is defined correctly. Be sure to add the CAN_ADDON_MCP2515 to the component that is connected to the add-on-CAN 
+When using the MCP2515, make sure that the can_config inside USER_SETTINGS.cpp is defined correctly. Be sure to add the CAN_ADDON_MCP2515 to the component that is connected to the add-on-CAN. 
 
 ![image](../../images/can-add-on-mcp2515-07.png)
 
-Also make sure the option #define CAN_ADDON is enabled in the USER_SETTINGS.h
+Also make sure the option #define CAN_ADDON is enabled in the USER_SETTINGS.h.
 
 ![image](../../images/can-add-on-mcp2515-08.png)
 

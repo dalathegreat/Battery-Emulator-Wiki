@@ -11,7 +11,7 @@ BMW uses a shared modular platform across various vehicles with a common BMS (SM
 
 Unlike i3, Gen5 now uses CAN-FD on the external side, and ISO-SPI between SME > Cell modules.
 
-Here is a list of all different BMW iX batteries, and their specifications / voltage ranges
+Here is a list of all different BMW iX batteries, and their specifications / voltage ranges.
 
 | Technical data | SE10 | SE11 | SE12 | SE13 | SE16 | SE26 | SE27 | SE30 | SE50 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -91,7 +91,7 @@ The connector is referred to as A332*1B. The following connections must be made.
 | 16  | O                  | Coolant shutoff valve Ground           | Coolant to pin 15 via 12 Ohm or 16 Ohm resistor |
 
 !!! info "IMPORTANT"
-    You need a high current capable 12V supply. If you are powering the BMS via the Stark CMR, you need to power it via the 7A capable Precharge circuit, see the Stark Wiki for more info
+    You need a high current capable 12V supply. If you are powering the BMS via the Stark CMR, you need to power it via the 7A capable Precharge circuit, see the Stark Wiki for more info.
 
 ### HV connector
 

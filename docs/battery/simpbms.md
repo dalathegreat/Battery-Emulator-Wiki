@@ -5,7 +5,7 @@ title: "SimpBMS"
 The entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Cell balancing wire taps, shunts, busbar connections, BMS integration, temperature monitoring, fuses, contactors, interlocks, etc. all will have to be implemented by yourself instead of using a pre-made product. As with all things custom, there are higher risks of human error. This page covers emulating High Voltage protocols, so while most tinkerers might be familiar with 48V DIY batteries, building a 96S 400VDC battery is an entirely different beast that can be lethal. Take extra precaution when working on a custom DIY HV battery, you have been warned.
 
 !!! warning "CAUTION"
-    If you are unsure of your technical knowhow, avoid building a high voltage battery from scratch
+    If you are unsure of your technical knowhow, avoid building a high voltage battery from scratch.
 
 ## Custom DIY battery with SimpBMS
 
@@ -24,8 +24,8 @@ https://evshop.eu/en/bms/280-simp-bms-battery-management-system.html still seem 
 Also be aware to enter the settings and setup correctly for you pack. The setting _pack end of charge current_ should be set to 0 when used for static storage or else the BMS will report the value as the allowed charge current even when full.
 
 ## Software configuration
-For this battery type, use the option called "SIMPBMS battery" under the "Battery Protocol" setting
+For this battery type, use the option called "SIMPBMS battery" under the "Battery Protocol" setting.
 
 ![image](../images/simpbms-01.png){ width="666" height="266" }
 
-Also remember to configure all cellvoltage limits and pack design voltage limits according to your battery build
+Also remember to configure all cellvoltage limits and pack design voltage limits according to your battery build.

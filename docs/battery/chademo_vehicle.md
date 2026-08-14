@@ -44,13 +44,13 @@ Dala 2025: I have updated the Wiki. There are some things we need to change with
 
 The 12V supply used needs to be able to handle 2A continuous load to engage the Chademo contactors in the vehicle.
 
-* Connect pin 8 (CAN-H) to LilyGo CAN_H
-* Connect pin 9 (CAN-L) to LilyGo CAN_L
+* Connect pin 8 (CAN-H) to CAN_H on the board
+* Connect pin 9 (CAN-L) to CAN_L on the board
 * Connect pin 5 (HV-) to inverter -
 * Connect pin 6 (HV+) to inverter +
 * Connect pin 1 (Protective conductor) to Protection Ground and Ground (for 12V supply)
 * Connect pin 7 (Connector proximity detection) to Ground (for 12V supply)
-* Connect Start/Stop switch to LilyGo GPIO - CHADEMO_PIN_7 (not connect to CHAdeMO connector)
+* Connect Start/Stop switch to the GPIO pin CHADEMO_PIN_7 on the board (not connect to CHAdeMO connector)
 * Pin 2/10/4 should follow activation/deactivation sequence for CHAdeMO
 
 ![image](../images/chademo-vehicle-01.png)
@@ -88,6 +88,7 @@ Even though the vehicle will contain a measuring circuit that checks how much cu
 This sensor gets attached to the Chademo high voltage wiring (either + or -), and connected via CAN to the Battery-Emulator. You can use the same CAN channel as the Chademo CAN, or use an isolated CAN bus for this sensor.
 
 Supported sensors:
+
 - Isabellenhütte IVT shunt (IVT-Modular or IVT-S) [Can be purchased for instance here](https://www.evcreate.com/shop/charging/ivt-current-sensor/)
 
 While the current sensor is not mandatory for all inverter protocols, it increases safety to have one connected.

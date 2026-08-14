@@ -34,7 +34,7 @@ Both locked packs (using external contactor control and coulomb-counting) and no
 
 ## Software configuration
 
-For this battery type, use the option called "MG4 battery" under the "Battery config" setting
+For this battery type, use the option called "MG4 battery" under the "Battery config" setting.
 
 ![be](../images/mg4-01.jpg)
 

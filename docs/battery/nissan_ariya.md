@@ -8,7 +8,7 @@ title: "Nissan Ariya"
 
 ⚠️ CAN LOGS WANTED FOR THIS BATTERY! ⚠️ 
 
-The Nissan Ariya [battery](https://www.batterydesign.net/2022-nissan-ariya/) comes in two variants
+The Nissan Ariya [battery](https://www.batterydesign.net/2022-nissan-ariya/) comes in two variants.
 
 - 63kWh - 96S 400V Architecture - 451kg 1456x384x2099mm
 - 87kWh - 96S 400V Architecture - 578kg 1456x384x2099mm
@@ -22,8 +22,8 @@ The Ariya battery uses the same 36-pin Yazaki connector as the Nissan LEAF, but 
 
 ![image](../images/nissan-ariya-04.png)
 
-* Pin 34 CAN-H - Connect to LilyGo CAN-H
-* Pin 35 CAN-L - Connect to LilyGo CAN-L
+* Pin 34 CAN-H - Connect to CAN-H on the board
+* Pin 35 CAN-L - Connect to CAN-L on the board
 * Pin 6 Ground - Connect to Ground
 * Pin 13 Ground - Connect to Ground
 * Pin 15 Ground - Connect to Ground
@@ -62,18 +62,20 @@ Using switches and manual timing, it is possible to turn on the precharge(A), ne
 
 ### Automatic control 🤖
 
-The LilyGo hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the board. To use these, you need to solder a 2x6 row connector onto the board. After the row connector is fitted, you can connect a flat ribbon cable between the pins, and the relays.
+The Battery-Emulator hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the board. On the LilyGo T-CAN485 for instance, you need to solder a 2x6 row connector onto the board to use these. After the row connector is fitted, you can connect a flat ribbon cable between the pins, and the relays.
 
-To enable the feature in the software, uncomment the following line in the `USER_SETTINGS.h` file
+To enable the feature in the software, uncomment the following line in the `USER_SETTINGS.h` file.
 
 `#define CONTACTOR_CONTROL     //Enable this line to have pins 25,32,33 handle automatic precharge/contactor+/contactor- closing sequence`
 
 To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
 
-- (LilyGo) Precharge pin 25 - Precharge SSR -> Pin 33 Precharge Sig on B36 connector on battery
-- (LilyGo) Positive Contactor pin 32 - Positive SSR -> Pin 19 Main relay 1 Sig on B36 connector on battery
-- (LilyGo) Negative Contactor pin 33 - Negative SSR -> Pin 26 Main relay 2 Sig on B36 connector on battery
-- (LilyGo) GND - All 3x SSR - input
+The pin numbers below are the ones used on the LilyGo T-CAN485, check the HAL definitions of your own board if you use a different one:
+
+- Precharge pin 25 - Precharge SSR -> Pin 33 Precharge Sig on B36 connector on battery
+- Positive Contactor pin 32 - Positive SSR -> Pin 19 Main relay 1 Sig on B36 connector on battery
+- Negative Contactor pin 33 - Negative SSR -> Pin 26 Main relay 2 Sig on B36 connector on battery
+- GND - All 3x SSR - input
 
 - Detailed circuit picture will be placed here
 

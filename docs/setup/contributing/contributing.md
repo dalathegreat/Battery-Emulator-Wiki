@@ -10,6 +10,7 @@ What can I do? 🦸
 **"Help - I want to contribute something, but I don't know what?"**
 
 You're in luck. There's various sources to contribute:
+
  - Improve the [Wiki documentation](../../index.md)
    - Especially battery/inverter specific pages need updating. Attach pictures of batteries, wiring diagrams, helpful info etc. 
  - Have a look at the [issue tracker](https://github.com/dalathegreat/Battery-Emulator/issues), especially issues with labels:
@@ -43,6 +44,7 @@ This project uses the PlatformIO extension within Visual Studio Code for develop
 ### 2. Installing the PlatformIO IDE Plugin
 
 PlatformIO is an extension that adds all the necessary functionality to VSCode.
+
    - Inside VSCode, open the Extensions view by:
       - Clicking the Extensions icon in the Activity Bar on the left side.
       - Or using the keyboard shortcut: Ctrl+Shift+X (Windows/Linux) or Cmd+Shift+X (macOS).
@@ -100,7 +102,7 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 The project enforces a specific code formatting in the workflows. To get your code formatted properly, it is easiest to use a pre-commit hook before pushing the code to a pull request.
 
 Before you begin, make sure you have installed Python on the system!
-To install the pre-commit, open the repository via Git Bash/CMD, and run
+To install the pre-commit, open the repository via Git Bash/CMD, and run.
 ```
 pip install pre-commit
 ```
@@ -108,7 +110,7 @@ And then run
 ```
 pre-commit install
 ```
-Then you can run the autoformat any time with the command
+Then you can run the autoformat any time with the command.
 ```
 pre-commit
 ```
@@ -118,7 +120,7 @@ pre-commit run --all-files
 ```
 
 ## Local Unit test run 🧪
-The Unit tests run gtest. Here is how to install this on Debian/Ubuntu and run it locally
+The Unit tests run gtest. Here is how to install this on Debian/Ubuntu and run it locally.
 ```
 sudo apt-get install libgtest-dev
 sudo apt-get install cmake
@@ -139,6 +141,7 @@ Start by clicking on the "**Checks**" tab
 ![image](../../images/contributing-03.png)
 
 Then click the down arrow next to the "Compile Common Images" selection, and then click on the hardware you need the binaries for. Currently we build for these hardwares:
+
 - LilyGo T-CAN485
 - Stark CMR
 - LilyGo T-2CAN

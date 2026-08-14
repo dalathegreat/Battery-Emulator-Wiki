@@ -2,7 +2,7 @@
 title: "Hyundai Santa Fe PHEV"
 ---
 
-Information on re-using the 13.8 kWh lithium-ion polymer battery out of a 2018-Present Hyundai Santa Fe **PHEV** vehicle
+Information on re-using the 13.8 kWh lithium-ion polymer battery out of a 2018-Present Hyundai Santa Fe **PHEV** vehicle.
 
 ℹ️ The pack is separated in two packs, be sure to get both pieces!
 
@@ -15,8 +15,8 @@ Information on re-using the 13.8 kWh lithium-ion polymer battery out of a 2018-P
 
 Connect the following:
 
-- P/H-CAN High -To LilyGo CAN-H
-- P/H-CAN Low - To LilyGo CAN-L
+- P/H-CAN High - To CAN-H on the board
+- P/H-CAN Low - To CAN-L on the board
 - Pin 1 & 2 - To 12V supply
 - Pin 3 & 14 - Short together by installing the Service Plug
 - Pin 33 & 32 - To GND for 12V supply
@@ -25,7 +25,7 @@ Connect the following:
 ![bild](../images/hyundai-santa-fe-phev-03.png)
 
 ## Software configuration
-For this battery type, use the option called "Santa Fe PHEV" under the "Battery Protocol" setting
+For this battery type, use the option called "Santa Fe PHEV" under the "Battery Protocol" setting.
 
 ![image](../images/hyundai-santa-fe-phev-04.png){ width="603" height="74" }
 

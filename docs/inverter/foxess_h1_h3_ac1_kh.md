@@ -38,16 +38,16 @@ This can be solved in a few ways:
    * Uses `FoxESS compatible HV2600/ECS4100` protocol
 ## Communication wiring
 
-The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to the Battery-Emulator
+The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to the Battery-Emulator.
 
 !!! info "IMPORTANT"
-    Different versions of the Foxess have different pinouts. Check user manual to see which pins are CAN-H / CAN-L
+    Different versions of the Foxess have different pinouts. Check user manual to see which pins are CAN-H / CAN-L.
 
 ![image](../images/foxess-h1-h3-ac1-kh-03.png)
 
 ## Which protocol to use
 
-For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting
+For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting.
 
 ![image](../images/foxess-h1-h3-ac1-kh-07.png){ width="495" height="63" }
 
@@ -105,7 +105,7 @@ FOX H1-6.0-E and renault zoe 26 kwh
 Feel free to add your own images here!
 
 # Video Guide
-To aid installation Battery Man has produced a video series using the H3 Pro inverter which documents an install with Tesla LFP batteries and both the LilyGo and Stark CMR. There is a full playlist touching on different aspects
+To aid installation Battery Man has produced a video series using the H3 Pro inverter which documents an install with Tesla LFP batteries and both the LilyGo and Stark CMR. There is a full playlist touching on different aspects.
 ![thumb for YT opt 7 FINAL](../images/foxess-h1-h3-ac1-kh-05.jpg)
 Installing inverter - https://youtu.be/9YnuPMdJaoI?si=odCptB7YAE56yFHq
 ![THUMB HACK V3](../images/foxess-h1-h3-ac1-kh-06.jpg)

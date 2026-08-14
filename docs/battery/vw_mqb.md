@@ -54,5 +54,5 @@ This platform shares a lot of similarities with the [Volkswagen MEB platform](vW
 </details>
 
 ## Software configuration
-For this battery type, use the option called "VW Group MQB Evo 2024+ via CAN-FD" under the "Battery Protocol" section
+For this battery type, use the option called "VW Group MQB Evo 2024+ via CAN-FD" under the "Battery Protocol" section.
 

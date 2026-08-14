@@ -77,11 +77,11 @@ You're also welcome to contact [Johan](mailto:info@redispose.se) directly if you
 
 ## Installing the software
 
-Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup
+Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup.
 
 ## Over the air (OTA) software updates
 
-When updating this board [OTA](../setup/software/ota_update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **Stark** hardware
+When updating this board [OTA](../setup/software/ota_update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **Stark** hardware.
 
 `BE_vX.Y.Z_StarkCMR.ota.bin`
 
@@ -121,7 +121,7 @@ For integrations that need double/triple battery support via CAN, or an addition
 
 ![image](../images/stark-cmr-05.png){ width="458" height="291" }
 
-After connecting the board, you can enable the add-on CAN by configuring it as **MCP2518FD (GPIO add-on)** to component
+After connecting the board, you can enable the add-on CAN by configuring it as **MCP2518FD (GPIO add-on)** to component.
 
 Example, Stark CMR used to control 3x separate Nissan LEAF batteries with one of them being on an add-on MCP2518FD board
 

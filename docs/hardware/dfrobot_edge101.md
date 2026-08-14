@@ -3,7 +3,7 @@ title: "DFRobot Edge101"
 ---
 
 ## Hardware basics
-The DFRobot Edge101 is a rugged board, with the following features
+The DFRobot Edge101 is a rugged board, with the following features.
 
 - Isolated CAN
 - Isolated RS485

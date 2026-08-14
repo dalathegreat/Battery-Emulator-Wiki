@@ -4,7 +4,7 @@ title: "Renault Kangoo"
 
 ## FAQ: Renault Kangoo Battery
 
-Renault Zoe support is still being developed. The Kangoo shares a fair share of CAN data with the Renault Zoe and Renault Fluence
+Renault Zoe support is still being developed. The Kangoo shares a fair share of CAN data with the Renault Zoe and Renault Fluence.
 
 ## Variants of the Kangoo
 There are 3x batteries available for the Kangoo:
@@ -38,7 +38,7 @@ Physical size;
 | Battery communication connector, Yazaki 7282-8854-30 |  [AliExpress](https://de.aliexpress.com/item/4000174903780.html)   |
 | High voltage connector 80kW 297A6-5SH1A OR 297A22581R |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A65SH1A&_sacat=0)   |
 
-There are 2 external Low voltage Connectors for the 33kWh battery pack
+There are 2 external Low voltage Connectors for the 33kWh battery pack.
 
 Grey Yazaki x
 

@@ -10,7 +10,7 @@ title: "SAJ"
    - 5~10K-T2 Ver. ✅
    - 15~20K-T2 Ver. ✅
 
-SAJ H2-10K-T2 was the first SAJ inverter to be successfully used with Battery-Emulator
+SAJ H2-10K-T2 was the first SAJ inverter to be successfully used with Battery-Emulator.
 
 SAJ H2-8K-T2 hybrid inverter also used with Battery Emulator:
 
@@ -24,9 +24,9 @@ The SAJ inverter uses the Pylon CAN protocol (Pylon-SC0500)
 
 ## Settings on the Battery Emulator side 
 
-For >255Ah batteries, the latest version contains a [bugfix](https://github.com/dalathegreat/Battery-Emulator/pull/1192) for the 732x frames to the inverter
+For >255Ah batteries, the latest version contains a [bugfix](https://github.com/dalathegreat/Battery-Emulator/pull/1192) for the 732x frames to the inverter.
 
-Specific settings are not needed regarding geometry of the battery
+Specific settings are not needed regarding geometry of the battery.
 
 For a 72-cell battery 280Ah LFP battery, this works for me:
 
@@ -49,7 +49,7 @@ The battery shows up in the Elekeeper APP with the following parameters as repor
 * Temperature
 * Number of Modules
 
-When going deeper into the Elekeeper APP (change battery settings) via BT or cloud
+When going deeper into the Elekeeper APP (change battery settings) via BT or cloud.
 
 * Zero voltage displayed for the 4 modules
 * Modules appear as 16 cell instead of declared 18 cell

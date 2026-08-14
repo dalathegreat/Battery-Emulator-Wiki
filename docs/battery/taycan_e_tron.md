@@ -41,9 +41,9 @@ Only CAN Pins 16 and 19 are populated in both Audi Etron GT and Porsche Taycan B
 
 ### Logs 
 
-New logs 22/05/2025 (93.4 kWh Performance Battery Plus) (2021 Porsche Taycan Turbo S) below taken VIA serial using Putty assigned to the relevant COM port assigned to the Lilygo
+New logs 22/05/2025 (93.4 kWh Performance Battery Plus) (2021 Porsche Taycan Turbo S) below taken VIA serial using Putty assigned to the relevant COM port assigned to the Lilygo.
 
-Individual logs for each listed item and one complete log start to finish at 67% SOC on vehicle display
+Individual logs for each listed item and one complete log start to finish at 67% SOC on vehicle display.
 
 [idle_door_openPINS16+19.log](https://github.com/user-attachments/files/20383569/idle_door_openPINS16%2B19.log)
 

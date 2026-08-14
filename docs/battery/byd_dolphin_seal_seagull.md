@@ -5,7 +5,7 @@ title: "BYD Dolphin Seal Seagull"
 ### WIP
 
 ### Wiring diagrams
-Here are some different Dolphin generation diagrams. There are many variants of these packs
+Here are some different Dolphin generation diagrams. There are many variants of these packs.
 
 Dolphin variant 1 & 3 (Same as BYD Atto 3)
 ![image](../images/byd-dolphin-seal-seagull-01.png)

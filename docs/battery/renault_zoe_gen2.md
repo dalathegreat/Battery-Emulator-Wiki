@@ -3,10 +3,10 @@ title: "Renault Zoe Gen2"
 ---
 
 # Renault Zoe Gen2
-The Renault Zoe Gen2 has good support in the Battery-Emulator project. Note that confused packs need NVROL reset, more info on that further down in this Wiki
+The Renault Zoe Gen2 has good support in the Battery-Emulator project. Note that confused packs need NVROL reset, more info on that further down in this Wiki.
 
 ## Variants of the Zoe
-There are 4x batteries available for the Zoe, This page focuses on the Gen2 50/52kWh battery
+There are 4x batteries available for the Zoe, This page focuses on the Gen2 50/52kWh battery.
 
 * [22kWh 2012-2019, Gen1](renault_zoe_gen1.md)
 * [41kWh 2016-2019, Gen1](renault_zoe_gen1.md)
@@ -17,7 +17,7 @@ Stickers signaling that the battery is the Gen2 50/52kWh battery
 ![test](../images/renault-zoe-gen2-01.jpg)
 
 ## Software configuration
-For this battery type, use the option called "Renault Zoe Gen2 50kWh" under the "Battery Protocol" setting
+For this battery type, use the option called "Renault Zoe Gen2 50kWh" under the "Battery Protocol" setting.
 
 ![image](../images/renault-zoe-gen2-15.png){ width="593" height="73" }
 
@@ -53,15 +53,15 @@ Example Wiring Diagram: Stark CMR + Zoe Gen2
 ![image](../images/renault-zoe-gen2-16.png){ width="1064" height="764" }
 
 !!! note "NOTE"
-    This Zoe battery contains GND switched precharge relay and positive contactor. There is no negative contactor to control
+    This Zoe battery contains GND switched precharge relay and positive contactor. There is no negative contactor to control.
 
 !!! warning "WARNING"
-    It is very important to not mix up the wiring between precharge/positive-contactor. Running all the power thru the precharge will result in it blowing up 
+    It is very important to not mix up the wiring between precharge/positive-contactor. Running all the power thru the precharge will result in it blowing up. 
 
 ![image](../images/renault-zoe-gen2-17.png)
 
 ## Part list
-Incase your battery is missing parts, here is a list of the spare part numbers along with purchase links
+Incase your battery is missing parts, here is a list of the spare part numbers along with purchase links.
 
 ## Part numbers for Renault Zoe Gen2 batteries
 
@@ -72,6 +72,7 @@ Incase your battery is missing parts, here is a list of the spare part numbers a
 | *Safety switch/fuse OEM Part no. 297C 126 45R | Renault UK quoted £43.89+VAT   |
 
 *Please note not all safety switches are the same there is at least 2 versions, using the incorrect one could result in blown fuses or worse.
+
 * Also part no. 993B1 5333R is for the sticker on top of the safety fuse not the safety fuse itself.
 
 **The correct part number can be found by looking at the area as shown below.**
@@ -88,7 +89,7 @@ The battery has two HVIL circuits that need to be shorted together to get the ba
 - Service disconnect needs to be fitted (Note, get the correct one!)
 - High voltage connector needs to be fitted
 
-If one of these are missing, the Event HVIL Failure (EVENT_HVIL_FAILURE) will be triggered. To recover from this mode, power everything down, fit both connectors, and power back up. Note that there are multiple versions of the service disconnect switch for Renault batteries, so get the one specifically for the Zoe Gen2
+If one of these are missing, the Event HVIL Failure (EVENT_HVIL_FAILURE) will be triggered. To recover from this mode, power everything down, fit both connectors, and power back up. Note that there are multiple versions of the service disconnect switch for Renault batteries, so get the one specifically for the Zoe Gen2.
 
 ## NVROL reset
 
@@ -118,7 +119,7 @@ Zoe gen2 52kWh. First balancing started at last. Procedure that worked on my set
 - Balancing started immediately, visible from Cellmonitor page
 
 !!! note "NOTE"
-    The reset requires a 30 seconds sleep after completion. To sleep properly, all CAN communication is halted. If the Battery is connected to the same CAN channel as an inverter, this inverter will prevent the sleep cycle. So in order to properly do the NVROL-sleep, a dedicated CAN channel for the Zoe battery is required
+    The reset requires a 30 seconds sleep after completion. To sleep properly, all CAN communication is halted. If the Battery is connected to the same CAN channel as an inverter, this inverter will prevent the sleep cycle. So in order to properly do the NVROL-sleep, a dedicated CAN channel for the Zoe battery is required.
 
 ## Example integration
 Wallmounted Zoe 41kWh battery:
@@ -128,7 +129,7 @@ Wallmounted Zoe 41kWh battery:
 ![image](../images/renault-zoe-gen2-14.png)
 
 ## Troubleshooting
-The Zoe2 pack has fuses that can be blown. Telltale sign of this being blown is that the voltage was dropping below what was read by BE, so the voltage was read via CAN as 358 but actual voltage measuring was 310-320v
+The Zoe2 pack has fuses that can be blown. Telltale sign of this being blown is that the voltage was dropping below what was read by BE, so the voltage was read via CAN as 358 but actual voltage measuring was 310-320v.
 
 ![image](../images/renault-zoe-gen2-18.png)
 

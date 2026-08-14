@@ -10,7 +10,7 @@ title: "Stellantis eCMP (Citroen, DS, Opel, Peugeot)"
 Failure to fulfill the two requirements will lead to contactors opening after 60 seconds of use (2 minutes on some packs), due to Isolation DTC being set inside the battery.
 
 ### Supported Stellantis e-CMP batteries
-The following eCMP ( Peugeot, Citroën, DS, Opel/Vauxhall ) batteries are currently supported
+The following eCMP ( Peugeot, Citroën, DS, Opel/Vauxhall ) batteries are currently supported.
 
 - Citroen ë-C4 (2020-) ✔️
 - DS DS3 (2020-) ❓ 
@@ -34,7 +34,7 @@ Only V1 VAN packs work, V2 does not. You can spot the V1 by looking at the small
 
 ### Supported 44kWh & 82kWh "STLA medium" platform batteries
 
-Work in progress, values not valid yet
+Work in progress, values not valid yet.
 
 - Peugeot e-3008 III (e-P64, 2024–present)  ❓ 
 - Peugeot e-5008 III (e-P67, 2024–present)  ❓ 
@@ -58,7 +58,7 @@ The eCMP platform comes in three different physical sizes, A, B and C type:
 ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-01.png)
 
 ## Software configuration
-For this battery type, use the option called "Stellantis ECMP battery" under the "Battery Protocol" setting
+For this battery type, use the option called "Stellantis ECMP battery" under the "Battery Protocol" setting.
 
 ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-02.png)
 
@@ -69,7 +69,7 @@ For this battery type, use the option called "Stellantis ECMP battery" under the
 
     Depending on which battery you get, there will be multiple pins to jumper.
 
-    If you fail to jumper all HVIL pins, an event will be raised, and under the More Batter info page you will see a low IN reading
+    If you fail to jumper all HVIL pins, an event will be raised, and under the More Batter info page you will see a low IN reading.
 
     HVIL circuit open (bad)<br>
     HVIL IN Voltage: 2mV<br>
@@ -99,7 +99,7 @@ Polarity on cable side for the VAN Pack:
     ![image](../images/stellantis-ecmp-citroen-ds-opel-peugeot-03.png)
 
 ### Wiring pinout
-The following pinout has been reverse engineered on an ë-C4
+The following pinout has been reverse engineered on an ë-C4.
 
 | Pin | color | Signal | Note |
 | --- | --- | --- | --- |
@@ -160,7 +160,7 @@ The eCMP BMS performs real time insulation monitoring. When installing the batte
 
 #### Step 1, isolating BMS by floating it
 
-To get around this issue, we need to disable the insulation monitoring on the BMS. The only known way at this stage is to open up the battery, and insulate the BMS grounding points. This effectively disables the isolation monitoring from interfering with the contactors
+To get around this issue, we need to disable the insulation monitoring on the BMS. The only known way at this stage is to open up the battery, and insulate the BMS grounding points. This effectively disables the isolation monitoring from interfering with the contactors.
 
 To perform this, open up the battery and locate the BMS. Isolate the part circled in red.
 
@@ -194,7 +194,7 @@ End result:
 
 ![WhatsApp Image 2026-04-18 at 22 06 23 (4)](../images/stellantis-ecmp-citroen-ds-opel-peugeot-23.jpeg)
 <br><br>
-Alternatively, the same capacitors can be installed on the OUTSIDE of the battery, for a much safer install, not requiring dismantling the contactor box
+Alternatively, the same capacitors can be installed on the OUTSIDE of the battery, for a much safer install, not requiring dismantling the contactor box.
 
 ![capacitors](../images/stellantis-ecmp-citroen-ds-opel-peugeot-11.jpg)
 
@@ -235,7 +235,7 @@ For double ECMP batteries you need:
 For T2CAN you can get a MCP2518FD and set it up as classic CAN. The 2 onboard CAN connectors will be used for the 2 battery pacs:  native (CANB) for 1st battery, CANA for 2nd battery and the additional MCP2518FD for the inverter
 Currently you cant clear the 2nd battery error codes from BE, only the 1st battery.
 
-Schematics below. As always - take extra care when working with HV batteries
+Schematics below. As always - take extra care when working with HV batteries.
 ![double-ecmp-battery-emulator](../images/stellantis-ecmp-citroen-ds-opel-peugeot-24.jpg)
 
 NOTE: When  

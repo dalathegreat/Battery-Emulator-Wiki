@@ -3,7 +3,7 @@ title: "Why add CAN-FD"
 ---
 
 # Why add CAN-FD
-Some batteries use CAN-FD insteaf of just CAN. Batteries like Kia EV6 are moving towards the faster and more flexible CAN-FD. The LilyGo hardware does not support CAN-FD protocol, but this can be added with an extra MCP2518FD chip via the GPIO pins, similar to the CAN add-on setup.
+Some batteries use CAN-FD insteaf of just CAN. Batteries like Kia EV6 are moving towards the faster and more flexible CAN-FD. Most boards, for instance the LilyGo T-CAN485 and T-2CAN, do not support the CAN-FD protocol, but this can be added with an extra MCP2518FD chip via the GPIO pins, similar to the CAN add-on setup.
 
 !!! tip "TIP"
     The CAN-FD chip can also be used for normal CAN. Just enable the "Use CanFD as classic CAN" , and you can use the add-on chip with classic CAN batteries.
@@ -31,7 +31,7 @@ See the [T-2CAN expansion header](../../hardware/lilygo_t_2can.md#expansion-head
     GND (next to 3V3) -> Any GND pin on LilyGo
     3V3  -> VDD on LilyGo
     GND (next to 5V) -> Any GND pin on LilyGo (+ to GND on external 5V source)
-    5V   -> 5V source, can be same as feeds LilyGo via the input pins
+    5V   -> 5V source, can be same as feeds LilyGo via the input pins.
 
 #### Alternative 5V source
 The Lilygo also has a 3V3 to 5V boost switch-mode power supply (it is used for the RS485 chip on the Lilygo). It does not have an overly convenient location for connecting, but it can be soldered to one side of C62 (side closest to C64). The Lilygo can then be powered with 12V, which can be more convenient than powering the Lilygo with 5V. See the red wire in the image below. Of course the 5V supply on the Lilygo must be enabled for this to work.
@@ -55,7 +55,7 @@ The labelling on this board is slightly different:
     GND (next to 3V3) -> Any GND pin on LilyGo
     3V3 -> VDD on LilyGo
     GND (next to 5V) -> Any GND pin on LilyGo (+ to GND on external 5V source)
-    5V -> 5V source, can be same as feeds LilyGo via the input pins
+    5V -> 5V source, can be same as feeds LilyGo via the input pins.
 
 NB: Only one GND connector is technically required if the same ground is being used for the LilyGo
 
@@ -67,7 +67,7 @@ Then configure the component you want to use CANFD on, by selecting "CAN FD (MCP
 !!! note "NOTE"
     Remember to configure crystal according to your PCB!
 
-Depending on your add-on board, there may be different oscillator crystals. On the "MCP2518FD Pro" board, it is 40MHz, while on some others, it is 20MHz. If you don’t have a 40MHz oscillator, you need to update `CAN-FD-addon crystal (Mhz):` from `40` to `20` in the settings page
+Depending on your add-on board, there may be different oscillator crystals. On the "MCP2518FD Pro" board, it is 40MHz, while on some others, it is 20MHz. If you don’t have a 40MHz oscillator, you need to update `CAN-FD-addon crystal (Mhz):` from `40` to `20` in the settings page.
 
 ![image](../../images/can-fd-add-on-mcp2518fd-08.png)
 
@@ -80,7 +80,7 @@ The default settings are 500kbit/s arbitration bit rate, and 2 Mbit/s data bit r
 ## Testing that the interface works
 If you are unsure if the newly added add-on chip works, you can perform the following loopback test. Connect CAN-H and CAN-L to the native CAN channel with two wires, and set up the code to transmit messages via for instance the Schneider V2 protocol. Remember to enable Use CanFD as classic CAN , and also to configure the interfaces as shown below. Once it is all set up, use the [CAN logging page](can_logging.md) to verify that you get incoming RX messages that match the TX.
 
-Test settings, for looping back CAN with Schneider CAN to battery CAN
+Test settings, for looping back CAN with Schneider CAN to battery CAN.
 
 ![image](../../images/can-fd-add-on-mcp2518fd-09.png)
 
@@ -93,4 +93,4 @@ Example where wires connected (Everything works, TX and RX incoming on native)
 ![image](../../images/can-fd-add-on-mcp2518fd-06.png)
 
 ## Logging CAN-FD messages
-It is possible to log CAN messages via USB serial or Webserver, see the [CAN logging page](can_logging.md) for more info
+It is possible to log CAN messages via USB serial or Webserver, see the [CAN logging page](can_logging.md) for more info.

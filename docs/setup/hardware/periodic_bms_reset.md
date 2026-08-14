@@ -23,7 +23,7 @@ The `BMS_POWER` pin is only configured as an output and driven **HIGH** at boot 
 - *Remote BMS reset via MQTT allowed* is enabled, **or**
 - the board forces it on (only the Stark CMR board does this).
 
-If none of these apply, the initialization block is skipped entirely — the pin is never set as an output and therefore stays low/floating. This is why the pin is not driven high unless one of these options is enabled, and this is why when you don't use this feature, you will have to power your BMS directly
+If none of these apply, the initialization block is skipped entirely — the pin is never set as an output and therefore stays low/floating. This is why the pin is not driven high unless one of these options is enabled, and this is why when you don't use this feature, you will have to power your BMS directly.
 
 Both options behave identically with respect to the pin: enabling **"Periodic BMS reset every 24h"** or **"Remote BMS reset via MQTT allowed"** alone is enough to drive the pin HIGH at boot, exactly like the periodic option. 
 

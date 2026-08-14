@@ -4,7 +4,7 @@ title: "Stellantis SmallWide 4x4"
 
 ### Supported Stellantis SmallWide 4x4 batteries
 
-The following vehicles are part of the SmallWide 4x4 platform according to Wikipedia
+The following vehicles are part of the SmallWide 4x4 platform according to Wikipedia.
 
 Small Wide 4×4
 
@@ -19,7 +19,7 @@ Small Wide 4×4 LWB
 - [Dodge Hornet](https://en.wikipedia.org/wiki/Dodge_Hornet) (2022–2026)
 - [Ram Rampage](https://en.wikipedia.org/wiki/Ram_Rampage) (2023–present)
 
-Batteries with a :heavy_check_mark: are confirmed working
+Batteries with a :heavy_check_mark: are confirmed working.
 
 ## LV wiring
 TODO

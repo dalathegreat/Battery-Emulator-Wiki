@@ -14,13 +14,13 @@ title: "Solxpow"
 * Feel free to add more known working inverters to the list!
 
 ## Which protocol to use
-For this inverter type, use the option called "Solxpow compatible battery" under the "Inverter Protocol" setting
+For this inverter type, use the option called "Solxpow compatible battery" under the "Inverter Protocol" setting.
 
 ![image](../images/solxpow-01.png){ width="573" height="221" }
 
 ## Reverse engineering info
 
-The Solxpow inverters use a slightly modified version of the Pylontech HV protocol
+The Solxpow inverters use a slightly modified version of the Pylontech HV protocol.
 
 [Default HV_1 CANBUS Protocol of High Voltage system V00.01.pdf](https://github.com/user-attachments/files/19342628/Default.HV_1.CANBUS.Protocol.of.High.Voltage.system.V00.01.pdf)
 

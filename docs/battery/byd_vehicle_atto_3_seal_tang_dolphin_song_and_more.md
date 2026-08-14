@@ -2,7 +2,7 @@
 title: "BYD Vehicle Batteries"
 ---
 
-The code supports a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working
+The code supports a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working.
 
 To get contactor closing to function, start BYD battery first, and Battery-Emulator afterwards. If you start Battery-Emulator before the battery, it wont close contactors before you restart the emulator. Also make sure no FAULT events are active when trying to start, this will open contactors.
 
@@ -49,19 +49,19 @@ Viewed from the front, left is the low voltage connector, central is two refrige
 The front connectors end of the battery also includes the contactor block. There is a well-hidden 800V/350A fuse near the positive contactor(coil:12VDC/contactor:250A) on the RHS of the block, along with a mini pre-charge contactor (coil:12VDC/contactor:10A) and a pre-charge resistor, which is underneath the HV connector. There is no Tesla-like pyro fuse that blows when airbags are deployed; the system just opens the contactors.
 
 ## Software configuration
-For this battery type, use the option called "BYD Atto 3/Seal/Dolphin" under the "Battery Protocol" setting
+For this battery type, use the option called "BYD Atto 3/Seal/Dolphin" under the "Battery Protocol" setting.
 
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-06.png){ width="599" height="115" }
 
 ## Video example
-Here is a great video made by "Flying Tools" showcasing how to connect the BYD Atto 3 battery
+Here is a great video made by "Flying Tools" showcasing how to connect the BYD Atto 3 battery.
 
 https://www.youtube.com/watch?v=YBYWBapnnyM
 
 ## Battery specifications
 
 ## LV Connector Type A
-The connection diagram is derived from reverse engineering the pins. The following pinout is valid for, but not limited to, PE4, PE5, PE6 and P48 battery. It can be identified easily by seeing that there are 4 rows of pins, and three thicker pins on the side
+The connection diagram is derived from reverse engineering the pins. The following pinout is valid for, but not limited to, PE4, PE5, PE6 and P48 battery. It can be identified easily by seeing that there are 4 rows of pins, and three thicker pins on the side.
  
 ![BYD_Atto_BK51_pinout](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-07.png){ width="489" height="205" }
 ![BYD_Atto_BK51_wiring](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-08.png){ width="489" height="257" }
@@ -142,6 +142,7 @@ the battery or fit any relays.**
   *[confirm exact button labels]*
 ### Safety interlocks
 Contactors are commanded **open automatically** whenever:
+
 - the equipment-stop is active,
 - the inverter withdraws permission to close (e.g. Solax / SMA not yet ready), or
 - the system enters a **FAULT** state — including loss of CAN communication with the
@@ -190,7 +191,7 @@ Final insulation layer applied:
 
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-20.png)
 
-It is recommended to check your handiwork, by performing an insulation test on the cable after completing the work
+It is recommended to check your handiwork, by performing an insulation test on the cable after completing the work.
 
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-21.png)
 
@@ -265,7 +266,7 @@ On the **More Battery Info** page:
 There are two methods to try and unlock the battery. The methods are via More Battery Info page (easy), and alternatively via CAN Replay (harder)
 
 !!! info "IMPORTANT"
-    To be able to unlock, you need separate control over B+ and IGN pin going towards battery (The two 12V pins on the battery). These need to be powered on/off in a specific sequence
+    To be able to unlock, you need separate control over B+ and IGN pin going towards battery (The two 12V pins on the battery). These need to be powered on/off in a specific sequence.
 
 - Pin 4 12v+ BMS
 - Pin 5 12v+ ignition

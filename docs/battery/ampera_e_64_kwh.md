@@ -3,21 +3,21 @@ title: "Ampera‐e 64 kWh"
 ---
 
 ## GM BEV2 platform
-The 60-66kWh battery in the GM BEV2 platform can be found in the following vehicles
+The 60-66kWh battery in the GM BEV2 platform can be found in the following vehicles.
 
 * Opel Ampera-E (2017-2021)
 * Chevrolet Bolt (2016-2023)
 
-2020+ models are 64 KWh, earlier are 57 kWh
+2020+ models are 64 KWh, earlier are 57 kWh.
 
 ## Software configuration
-For this battery type, use the option called "Chevrolet Bolt EV/Opel Ampera-E" under the "Battery Protocol" setting
+For this battery type, use the option called "Chevrolet Bolt EV/Opel Ampera-E" under the "Battery Protocol" setting.
 
 ![image](../images/ampera-e-64-kwh-23.png){ width="656" height="156" }
 
 Also remember to configure the allowed charging power, since we do not read this value via CAN.
 
-The battery uses 12V controlled contactors, so use `Contactor Control via GPIO` if you want Battery-Emulator to also control the contactors via GPIO
+The battery uses 12V controlled contactors, so use `Contactor Control via GPIO` if you want Battery-Emulator to also control the contactors via GPIO.
 
 ![image](../images/ampera-e-64-kwh-24.png){ width="514" height="49" }
 
@@ -55,7 +55,7 @@ The following diagrams will help you to connect to the CAN buses on the Opel/Che
 
 !!! note "NOTE"
     These batteries have multiple CAN buses that needs to be jumpered together to form one large CAN bus
-    the resistor on the Lilygo must be removed
+    the resistor on the board must be removed.
     
 Example, development environment with contactor control via GPIO, and all 3x CAN buses connected together as one single bus
 
@@ -80,6 +80,7 @@ Example, development environment with contactor control via GPIO, and all 3x CAN
 ![voeding en massa HV accu 2 ](../images/ampera-e-64-kwh-17.png)
 ![voeding en massa HV accu](../images/ampera-e-64-kwh-18.png)
 Stekker X 357 OEM 33472-1259 Service Connector 19333239
+
 * X357
 ![x357](../images/ampera-e-64-kwh-19.png)
 ![x357 pen pos](../images/ampera-e-64-kwh-20.png)
@@ -89,7 +90,7 @@ X358
 
 ![X358 pin pos ](../images/ampera-e-64-kwh-22.png)
 
-I had connectors but [these fit also](https://nl.aliexpress.com/item/1005008320223516.html?spm=a2g0o.detail.similar_items.1.3023vs3wvs3wW0&utparam-url=scene%3Aimage_search%7Cquery_from%3Adetail_bigimg&algo_pvid=8f883bc9-24d0-4568-842b-10652fe911a8&algo_exp_id=8f883bc9-24d0-4568-842b-10652fe911a8&pdp_ext_f=%7B%22order%22%3A%2216%22%7D&pdp_npi=4%40dis%21EUR%213.12%213.00%21%21%2125.47%2124.53%21%402103892f17530145939331841e26a9%2112000044596715592%21sea%21NL%21828630060%21X), one needs to modify by yourself 
+I had connectors but [these fit also](https://nl.aliexpress.com/item/1005008320223516.html?spm=a2g0o.detail.similar_items.1.3023vs3wvs3wW0&utparam-url=scene%3Aimage_search%7Cquery_from%3Adetail_bigimg&algo_pvid=8f883bc9-24d0-4568-842b-10652fe911a8&algo_exp_id=8f883bc9-24d0-4568-842b-10652fe911a8&pdp_ext_f=%7B%22order%22%3A%2216%22%7D&pdp_npi=4%40dis%21EUR%213.12%213.00%21%21%2125.47%2124.53%21%402103892f17530145939331841e26a9%2112000044596715592%21sea%21NL%21828630060%21X), one needs to modify by yourself. 
 
 Disconnect switch 24281696 24288304  24291219  or latest part number 24294004
 

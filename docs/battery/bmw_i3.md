@@ -6,7 +6,7 @@ title: "BMW i3 60/94/120AH"
 
 ## Supported BMW batteries
 
-All i3 batteries have the following length/width/height 1660mm x 964mm x 174mm
+All i3 batteries have the following length/width/height 1660mm x 964mm x 174mm.
 
 - BMW i3 60 Ah, 18.2 kWh, 233kg, 2013+
 - BMW i3 94 Ah, 27.2 kWh, 256kg, 2017+
@@ -20,7 +20,7 @@ All i3 batteries have the following length/width/height 1660mm x 964mm x 174mm
 
 <a name="CAUTIONCONTACTORSWELDED"></a>
 !!! warning "CAUTION"
-    When shutting down a working i3 battery system, no load can be present on the HV system. First shut down inverter before shutting off the battery, OR use the PAUSE button in the Webserver to ensure that 0A of current before shutting down the battery. The i3 has extremely sensitive welding detection. If there is over a few A of current during opening of contactors, it will set the "Contactors Welded" state and lock the battery permanently
+    When shutting down a working i3 battery system, no load can be present on the HV system. First shut down inverter before shutting off the battery, OR use the PAUSE button in the Webserver to ensure that 0A of current before shutting down the battery. The i3 has extremely sensitive welding detection. If there is over a few A of current during opening of contactors, it will set the "Contactors Welded" state and lock the battery permanently.
 
 The EoS tester can be rented from some places, a great i3 expert is available in CZ, https://www.i3upgrade.cz/
 Another alternative when dealing with a locked battery, is to open up the battery and bypass the contactors. Nobody has reported if this works yet (feel free to edit this wiki!), worst case you could also replace the i3 BMS with an [RJXZS](rjxzs_bms.md)
@@ -32,7 +32,7 @@ Crashed BMW i3 battery being reset with an EoS tester:
 [![](../images/bmw-i3-01.png){ width="300" }](../images/bmw-i3-01.png)
 
 ## Software configuration
-For this battery type, use the option called "BMW i3" under the "Battery Protocol" setting
+For this battery type, use the option called "BMW i3" under the "Battery Protocol" setting.
 
 ![image](../images/bmw-i3-02.png){ width="487" height="90" }
 
@@ -88,11 +88,11 @@ It has the following pinout:
 Connect the wiring as follow:
 
 * Pin 1 30C - Connect to to 12V, 10A fuse optional
-* Pin 9 15WUP-Signal (Green/GreenRed) - Connect to 12V, 5A fuse optional. Control this pin with ASR-10DD relay or a Pololu Power Switch controlled by PIN 25 in the LilyGo.
+* Pin 9 15WUP-Signal (Green/GreenRed) - Connect to 12V, 5A fuse optional. Control this pin with ASR-10DD relay or a Pololu Power Switch controlled by the WUP GPIO pin of your board (see the list below).
 * Pin 7 (Red) - Connect to to 12V, 5A fuse optional
 * Pin 2 Ground (BrownBlack) - Connect to Ground
-* Pin 4 CAN-H (WhiteYellow) - Connect to LilyGo CAN-H - twist with CAN-L cable and put a 120Ω resistor across to CAN-L.
-* PIN 10 CAN-L (WhiteBlue) - Connect to LilyGo CAN-L
+* Pin 4 CAN-H (WhiteYellow) - Connect to CAN-H on the board - twist with CAN-L cable and put a 120Ω resistor across to CAN-L.
+* PIN 10 CAN-L (WhiteBlue) - Connect to CAN-L on the board
 * Pin 6 I_LOCK (BlueRed) (connect to Pin 12 with a 33Ω resistor in between)
 * Pin 12 I_LOCK (BlueRed) (connect to Pin 6 with a 33Ω resistor in between)
 * Pin 3 Refrigerant valve (NOT USED)
@@ -109,10 +109,10 @@ The GPIO that controls the WUP signal depends on your BE hardware:
 
 The wakeup signal needs to be actuated by the Battery-Emulator, and as soon as messages start to come through from the battery we reply. This ensures a reliable startup. Same goes for rebooting/shutting down the battery. The Battery-Emulator sets WUP to low incase we need to command the BMS off.
 
-Since the LilyGo board has 3.3V logic on the GPIO pins, we need to use a solid state relay in order to boost the 3.3V -> 12V. Example connection using 1x ASR-10DD solid state relay:
+Since the board has 3.3V logic on the GPIO pins, we need to use a solid state relay in order to boost the 3.3V -> 12V. Example connection using 1x ASR-10DD solid state relay:
 
 !!! warning "CAUTION"
-    To avoid [welded contacts](#CAUTIONCONTACTORSWELDED) Ensure you have a 12V backup system to avoid unwanted contact closings under load in case of a blackout
+    To avoid [welded contacts](#CAUTIONCONTACTORSWELDED) Ensure you have a 12V backup system to avoid unwanted contact closings under load in case of a blackout.
 
 [![](../images/bmw-i3-16.png){ width="700" }](../images/bmw-i3-16.png)
 
@@ -177,7 +177,7 @@ Perform this balancing as often as necessary to keep cell mV delta low. Failure 
 
 ## Important info when used with BYD CAN inverter
 !!! note "NOTE"
-    If you intend on using BYD-CAN with the BMW i3, the battery needs to be on a separate CAN bus. The BMW i3 is using the same CAN IDs as BYD do, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong
+    If you intend on using BYD-CAN with the BMW i3, the battery needs to be on a separate CAN bus. The BMW i3 is using the same CAN IDs as BYD do, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong.
 
 ## Troubleshooting tips
 

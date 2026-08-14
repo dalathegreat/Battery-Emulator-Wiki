@@ -12,7 +12,7 @@ The LilyGo T-CAN485 is what the Battery-Emulator originally started development 
 ![image](../images/lilygo-t-can485-02.png)
 
 !!! warning "WARNING"
-    This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
+    This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations.
 
 ## Purchase link
 
@@ -40,7 +40,7 @@ The SD card slot can be used to gain more pins. This can be useful on setups tha
 
 ![image](../images/lilygo-t-can485-04.png)
 
-By installing one of these breakout boards, you can then remap the src/devboard/hal/hw_lilygo.h file to suit your newfound pins
+By installing one of these breakout boards, you can then remap the src/devboard/hal/hw_lilygo.h file to suit your newfound pins.
 
 - GPIO_NUM_2 corresponds to DAT0  (SD_MISO)
 - GPIO_NUM_13 corresponds to DAT3 (SD_CS)

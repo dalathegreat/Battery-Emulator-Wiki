@@ -17,7 +17,7 @@ Remove and keep the CP flap.  Possibly (if you are up for it) cut the sheet meta
 
 Keep all the coolant hoses you can from the HV battery, and maybe the radiator and pump and fan and coolant??  I suspect cooling will be required if you are using the AC charger to full (11kW single phase) capacity.
 
-Keep the 16 volt auxiliary battery - you can use it with all the rest of the Tesla parts, but will require a DC-DC converter to connect it to the Lilygo (I used a cheap 12-24v DC in, 5v DC out converter).
+Keep the 16 volt auxiliary battery - you can use it with all the rest of the Tesla parts, but will require a DC-DC converter to connect it to the Battery-Emulator hardware (I used a cheap 12-24v DC in, 5v DC out converter).
 
 # cabling
 

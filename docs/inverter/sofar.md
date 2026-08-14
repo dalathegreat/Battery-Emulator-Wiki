@@ -23,7 +23,7 @@ Note, if you use Sofar CAN protocol instead, the inverter will need to be on a d
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 ## Which protocol to use
-For this inverter type, use the option called "Sofar BMS (Extended) via CAN" under the "Inverter Protocol" setting
+For this inverter type, use the option called "Sofar BMS (Extended) via CAN" under the "Inverter Protocol" setting.
 
 ![image](../images/sofar-03.png)
 
@@ -34,25 +34,25 @@ Note also that Sofar inverters need to have some special flags set in the Pylon.
 
 ![image](../images/sofar-04.png)
 
-Due to this, it is better to use Sofar CAN instead! But Pylon is viable if you want the inverter/battery to be able to share the CAN channel
+Due to this, it is better to use Sofar CAN instead! But Pylon is viable if you want the inverter/battery to be able to share the CAN channel.
 
 ## Inverter Wiring
 Connect HV cables to battery terminals using OEM connectors. Highly advised to add ~32A DC fuse between.
 
 !!! warning "CAUTION"
-    Standard Staubli connectors don't fit SOFAR BAT ports, make sure to acquire proprietary SOFAR connectors
+    Standard Staubli connectors don't fit SOFAR BAT ports, make sure to acquire proprietary SOFAR connectors.
     ![image](../images/sofar-05.png)
 
 ![bild](../images/sofar-01.png)
 
-Connect CAN H and CAN L from Lilygo to socket no.8.
+Connect CAN-H and CAN-L from the Battery-Emulator hardware to socket no.8.
 CAN-H  -  PIN 7
 CAN-L  -  PIN 8
 
 ![bild](../images/sofar-02.png)
 
 ## Inverter Configuration
-In "Advanced Settings/Battery Parameters" choose `Pylontech` as battery type and set `01` as battery address (00 is default), save your settings. Check all fuses and everything else twice, then turn on Lilygo, and voila!
+In "Advanced Settings/Battery Parameters" choose `Pylontech` as battery type and set `01` as battery address (00 is default), save your settings. Check all fuses and everything else twice, then turn on the Battery-Emulator hardware, and voila!
 
 ### Sofar CAN
 If you use Sofar CAN, select the "General" option

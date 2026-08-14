@@ -17,10 +17,10 @@ Note: Some Goodwe inverters require an activation code that must be purchased to
 There are probably more compatible GoodWe inverters, feel free to add confirmed working ones to the list!
 
 !!! info "IMPORTANT"
-    The software version "ARM No. 17(449)" is currently preventing battery use. It is recommended to not update GoodWe inverters until we find out why this is. Contact Goodwe support to assist with rollback
+    The software version "ARM No. 17(449)" is currently preventing battery use. It is recommended to not update GoodWe inverters until we find out why this is. Contact Goodwe support to assist with rollback.
 
 !!! warning "WARNING"
-    An important point is to be prepared for potential issues if you have an RCD (residual current device) on the inverter's AC side while also using solar panels. In this case, you may need to replace the RCD with the 300mA version recommended in the manual, as a 30mA version might trip during the inverter's self-check process
+    An important point is to be prepared for potential issues if you have an RCD (residual current device) on the inverter's AC side while also using solar panels. In this case, you may need to replace the RCD with the 300mA version recommended in the manual, as a 30mA version might trip during the inverter's self-check process.
 
 ## Note on double battery ports
 Some Goodwe inverters have dual battery ports. You can connect two independant Battery-Emulator systems to the same inverter this way. Check the operating manual of your Goodwe inverter for more info.
@@ -38,7 +38,7 @@ The GoodWe inverter works via CAN. The Battery-Emulator board can have both a CA
 Good idea to watch the installation video from GoodWe's training services, on how to install a BYD battery: https://www.youtube.com/watch?v=RLzMI-2JOB0
 
 1. Follow the GoodWe inverter installation manual up to the point when you plug the comms and battery connector terminals in
-2. Unsolder (If needed!) the canbus terminating resistor on the Lilygo board (as per above)
+2. Unsolder (If needed!) the canbus terminating resistor on the board (as per above)
 3. Connect both the inverter canbus and battery canbus to the board
 4. Double check your code to make sure the contactors will isolate under the required fault conditions
 5. Plug in the battery connector (make sure the terminals are not live)
@@ -82,7 +82,7 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 
 ## Which protocol to use
 
-For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
+For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting.
 
 ![GoodWe Settings](../images/goodwe-03.jpg)
 
@@ -96,7 +96,7 @@ For this inverter type, use the option called "BYD Battery-Box Premium HVS over 
 | No CAN comm with inverter | Make sure the software on the inverter is not too new. One user reported "After upgrade ARM No. 17(449) and restart communication with BE is abnormal". Another user reported "I have GW25K-ET operating smoothly with firmware version 111117 since October 2025. I intentionally refrained from updating since Octber 2025". It is recommended to downgrade inverter firmware incase you have CAN issues and not able to use battery  |
 
 ## Reading values from the inverter
-There is an excellent repository [available here](https://github.com/marcelblijleven/goodwe) for sniffing data from Goodwe inverters on the network
+There is an excellent repository [available here](https://github.com/marcelblijleven/goodwe) for sniffing data from Goodwe inverters on the network.
 
 # Controlling the inverter via Home Assistant
 

@@ -17,7 +17,7 @@ There are also a few Chinese EVs that also share the same CMFA-EV battery platfo
 ### Note on model year
 Some 2024+ batteries seem to not respond to CAN. Investigation ongoing!
 
-2024+ can be identified with an additional "Pressure Sensor" near the HV/LV connector
+2024+ can be identified with an additional "Pressure Sensor" near the HV/LV connector.
 
 ![image](../images/dacia-spring-renault-k-ze-21.png)
 
@@ -31,7 +31,7 @@ These batteries have 72 cells in series, which creates an operating voltage of a
 In order to read the informations from the BMS, you need:
 
 - [LiLyGo T-CAN485](https://s.click.aliexpress.com/e/_oDPdyMg) with Battery Emulator installed and configured for this battery and NO inverter.
-- 12V source for LilyGo and battery (it can be a Gel battery, UPS, 12V adapter etc)
+- 12V source for the board and battery (it can be a Gel battery, UPS, 12V adapter etc)
 - Low Voltage battery Connector with those wires connected: 12V, GND, CAN-L and CAN-H (see the [connections](../images/dacia-spring-renault-k-ze-24.png))
 
 ### Shopping list
@@ -45,7 +45,7 @@ For this battery type, use the option called "CMFA platform, 27kWh battery" unde
 See [Fronius Gen24 settings](../images/dacia-spring-renault-k-ze-25.jpg)
 
 ## Battery module - BMS pin diagram. 
-BMS reads from each module the cells voltage + one GND and 2 temp sensors (one for each module). should be ~17Kohm range
+BMS reads from each module the cells voltage + one GND and 2 temp sensors (one for each module). should be ~17Kohm range.
 
 ![image](../images/dacia-spring-renault-k-ze-22.png)
 
@@ -106,7 +106,7 @@ The optional [ferrule](https://www.aliexpress.com/item/1005007192861678.html) fo
 ![HV_box](../images/dacia-spring-renault-k-ze-12.jpg)
 
 ## Configuring the software
-Enable the `CMFA platform, 27 kWh battery` option in the software
+Enable the `CMFA platform, 27 kWh battery` option in the software.
 
 Do **NOT** use PWM contactor control.
 

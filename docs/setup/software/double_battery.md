@@ -48,12 +48,14 @@ If your batteries are not on this list, get in touch with a developer.
 :information_source: If your inverter does not support seeing automotive CAN messages and need a separate channel, you need a [CAN-Filter](../can_related/can_filter_hardware.md).
 
 If you are using LilyGo:
+
 * The first battery connects to CAN on the LilyGo. 
 * The second battery connects to an add-on MCP2515 chip connected via GPIO. [See this page for more info on how to set up Dual CAN.](../can_related/can_add_on_mcp2515.md)
 
 ![image](../../images/double-battery-01.png)
 
 If you are using [Stark CMR](../../hardware/stark_cmr.md):
+
 * The first battery connects to CAN
 * The second battery connects to CANFD
 
@@ -63,6 +65,7 @@ If you are using [Stark CMR](../../hardware/stark_cmr.md):
 :warning: Dealing with one EV battery pack can be dangerous. Using two batteries increases the risks associated with lithium batteries with 100%. Accidentally connecting together the DC side of two batteries at varying SOC% will cause massive amounts of current to be dumped between the packs. Always use fuses to limit the risk and avoid melting wires.
 
 There are two types of EV battery packs:
+
 - Externally powered contactors 
 - CAN activated contactors
 
@@ -75,7 +78,7 @@ Connect the high voltage lines like in this diagram. Remember to place fuses bot
 
 ![image](../../images/double-battery-03.png){ width="785" height="306" }
 
-After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2 (Cont ext), if it falls within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses
+After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2 (Cont ext), if it falls within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
 
 To control the second battery, you need to install an extra contactor in series with it. Secondary battery does not use precharge, thus you can switch both positive and negative at the same time. Consult the appropriate board hardware description for which GPIO pin controls this contactor.
 

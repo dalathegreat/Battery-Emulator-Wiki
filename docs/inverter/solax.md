@@ -36,12 +36,12 @@ This can be solved in three ways:
 * You can use the [LilyGo T-2CAN](../hardware/lilygo_t_2can.md) hardware
 * You can use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system 
 
-ℹ️ The inverter contains a 120 Ohm terminating resistor on CAN-H/L pins
+ℹ️ The inverter contains a 120 Ohm terminating resistor on CAN-H/L pins.
 
 ℹ️ Grounding is extremely important for Solax inverters. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 ## Which protocol to use
-For this inverter type, use the option called "SolaX Triple Power LFP over CAN bus" under the "Inverter Protocol" setting
+For this inverter type, use the option called "SolaX Triple Power LFP over CAN bus" under the "Inverter Protocol" setting.
 
 ![image](../images/solax-04.png){ width="569" height="160" }
 
@@ -49,7 +49,7 @@ For this inverter type, use the option called "SolaX Triple Power LFP over CAN b
     Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
 
 !!! info "IMPORTANT"
-    If you see a **BattVoltFault** fault code on the inverter, you might need to edit the CAN data content. This can happen if you use a 60S battery instead of 96S battery. Follow the steps below
+    If you see a **BattVoltFault** fault code on the inverter, you might need to edit the CAN data content. This can happen if you use a 60S battery instead of 96S battery. Follow the steps below.
 
 1. Start with checking that your battery contactors are closing, and that high voltage is present on the inverter input pins. 
 2. If the inverter has voltage, but is still throwing the BattVoltFault error, "Reported module count" and the "Reported battery type" option
@@ -58,7 +58,7 @@ For this inverter type, use the option called "SolaX Triple Power LFP over CAN b
 
 ## Battery type information (pre-2026)
 
-Change the settings to suit your voltage range
+Change the settings to suit your voltage range.
 
 |  139S [400-584V] |  108S [325-455V] |  98S [295-412V] |  96S (default) [290-404V] | 75S [225-315V] | 56S [170-235V] |
 | :--------: | :--------: | :--------: | :--------: | :---------: | :---------: |
@@ -69,7 +69,7 @@ Note, if you are using a custom DIY battery, make sure to define the max voltage
 
 Feel free to experiment, and post what settings worked for your voltage range. The default values are OK for a 300-400V 96S battery.
 
-Also note, if you are using Custom batteries, remember to configure the max/min design voltage marked in red here. Solax will listen to these limits on Pylon/RJXZS/Orion/DIY packs
+Also note, if you are using Custom batteries, remember to configure the max/min design voltage marked in red here. Solax will listen to these limits on Pylon/RJXZS/Orion/DIY packs.
 
 ![image](../images/solax-06.png){ width="551" height="289" }
 
@@ -151,7 +151,7 @@ TPCU011(HR522): 171
 !!! info "IMPORTANT"
     Solax is one of the few protocols that demands contactors to open from time to time. This works great with GPIO controlled contactors, but on battery packs that are only controllable via CAN (Like Tesla), this does not play nice. Tesla batteries like to treat contactor opening requests as a really bad thing, and require 12V removal to get going again.
 
-To get around this issue for instance on Tesla batteries, enable the "Inverter should ignore contactors" checkbox
+To get around this issue for instance on Tesla batteries, enable the "Inverter should ignore contactors" checkbox.
 
 ![image](../images/solax-07.png){ width="430" height="30" }
 
@@ -216,7 +216,7 @@ All credits to the guys from [this thread](https://secondlifestorage.com/index.p
 
 
 ## Connection diagram
-BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wires to the Battery-Emulator
+BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wires to the Battery-Emulator.
 
 ![image](../images/solax-03.png)
 

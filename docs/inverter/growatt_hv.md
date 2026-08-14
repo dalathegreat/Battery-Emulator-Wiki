@@ -9,7 +9,7 @@ The current implementation "Growatt High Voltage protocol via CAN Bus" emulates 
 * Growatt SPH 10 10000TL3 BH-UP ✅
 * Growatt SPA 4000-10000TL3 BH-UP :question:
 
-We can also emulate a WIT battery when selecting the "Growatt WIT compatible battery via CAN" option. This enables support for the following inverters
+We can also emulate a WIT battery when selecting the "Growatt WIT compatible battery via CAN" option. This enables support for the following inverters.
 
 * Growatt WIT 50XHU ✅
 * Growatt WIT 100HU ✅
@@ -30,14 +30,14 @@ This can be solved in 4 different ways:
 * Growatt MIN TL-XH (This inverter does not have the DC-DC converter between internal DC-bus and battery connectors, also the RS485 protocol is not modbus and Growatt support does not release the internal protocol.)
 
 ## Communication wiring
-The Growatt HV inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
+The Growatt HV inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 ## Which protocol to use
-For this inverter type, use the option called "Growatt High Voltage protocol via CAN Bus" under the "Inverter Protocol" setting
+For this inverter type, use the option called "Growatt High Voltage protocol via CAN Bus" under the "Inverter Protocol" setting.
 
 ![image](../images/growatt-hv-01.png){ width="491" height="66" }
 

@@ -31,8 +31,8 @@ Here is a connection diagram of a 201#? battery:
 
 Connect the following wires:
 
-* C26-10 CAN L - To LilyGo CAN L
-* C26-5 CAN H - To LilyGo CAN H
+* C26-10 CAN L - To CAN-L on the board
+* C26-5 CAN H - To CAN-H on the board
 * C22-4 to 12V+ supply
 * C22-5 to GND for 12V
 
@@ -43,7 +43,7 @@ Handle precharge/contactors manually or use [GPIO control](../setup/software/con
 * C22-6 Negative contactor
 
 ## Software configuration
-For this battery type, use the option called "I-Miev / C-Zero / Ion Triplet" under the "Battery Protocol" setting
+For this battery type, use the option called "I-Miev / C-Zero / Ion Triplet" under the "Battery Protocol" setting.
 
 ![image](../images/i-miev-czero-ion-03.png){ width="641" height="146" }
 

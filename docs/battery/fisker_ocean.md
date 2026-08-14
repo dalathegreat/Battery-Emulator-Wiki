@@ -4,7 +4,7 @@ title: "Fisker Ocean"
 
 # Fisker Ocean
 
-The Fisker Ocean was produced between 2022-2024, and came with three battery variants
+The Fisker Ocean was produced between 2022-2024, and came with three battery variants.
 
 - 73kWH  LFP
 - 113kWh NMC

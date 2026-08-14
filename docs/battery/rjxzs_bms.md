@@ -7,7 +7,7 @@ title: "RJXZS BMS"
 Preface, the entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Cell balancing wire taps, shunts, busbar connections, BMS integration, temperature monitoring, fuses, contactors, interlocks, etc. all will have to be implemented by yourself instead of using a pre-made product. As with all things custom, there are higher risks of human error. This page covers emulating High Voltage protocols, so while most tinkerers might be familiar with 48V DIY batteries, building a 96S 400VDC battery is an entirely different beast that can be lethal. Take extra precaution when working on a custom DIY HV battery, you have been warned.
 
 !!! warning "CAUTION"
-    If you are unsure of your technical knowhow, avoid building a high voltage battery from scratch
+    If you are unsure of your technical knowhow, avoid building a high voltage battery from scratch.
 
 ## Custom DIY battery with RJXZS BMS
 The Battery-Emulator has support for the 4-192S RJXZS BMS. With this BMS you can construct your own high voltage battery, and connect the BMS via CAN to the Battery-Emulator. This allows you to use a DIY battery (instead of an EV battery) with any normal Battery-Emulator supported inverter.
@@ -45,14 +45,14 @@ Settings are configured on the RJXZS BMS via the TOPBMS smartphone app. The most
 ![image](../images/rjxzs-bms-09.png){ width="498" height="694" }
 
 !!! warning "CAUTION"
-    Failure to set correct voltage cutoff according to your battery chemistry can lead to catastrophic damage. For instance an Lifepo4 cell should charge max to 3.5V. Overcharging LFP cells to >4V will cause permanent damage and/or battery fire
+    Failure to set correct voltage cutoff according to your battery chemistry can lead to catastrophic damage. For instance an Lifepo4 cell should charge max to 3.5V. Overcharging LFP cells to >4V will cause permanent damage and/or battery fire.
 
 ## Setting up the Battery-Emulator integration
 
 !!! info "IMPORTANT"
     The RJXZS BMS runs at 250kbps CAN speed. Due to this it cannot be connected to same CAN bus as solar inverters. This BMS needs to be connected to the Native CAN (Built in CAN on LilyGo, CAN1 on Stark)
 
-Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emulator
+Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emulator.
 
 ![image](../images/rjxzs-bms-03.png)
 
@@ -63,7 +63,7 @@ Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emul
    - Third option is to use [Stark CMR board](../hardware/stark_cmr.md)
    - Fourth option is to use [Double LilyGo](../setup/software/double_lilygo.md) setup
 
-For this battery type, use the option called "RJXZS BMS, DIY battery" under the "Battery Protocol" setting
+For this battery type, use the option called "RJXZS BMS, DIY battery" under the "Battery Protocol" setting.
 
 ![image](../images/rjxzs-bms-10.png){ width="664" height="345" }
 

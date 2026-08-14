@@ -36,7 +36,7 @@ From left to right, liquid cooling ports, HV connector, LV connector
 ![image](../images/stellantis-cmp-smart-car-platform-04.png)
 
 ## HV connector
-The main HV connector is an APTIV 35561611 RCS1200 SW F0T7-144-23 connector
+The main HV connector is an APTIV 35561611 RCS1200 SW F0T7-144-23 connector.
 
 ![image](../images/stellantis-cmp-smart-car-platform-05.png)
 
@@ -78,7 +78,7 @@ The connector has the pin numbering stamped on it.
 WakeUpPin (WUP) can be used to make the battery survive a reset/reboot in the software. If you connect all 4x 12V pins to the WUP pin via a relay/SSR, you can perform graceful reboots without needing to cycle 12V to the battery to get it to work after a reboot/OTA.
 
 ## Software configuration
-To use this battery, select the "Stellantis CMP Smart Car Battery" battery option
+To use this battery, select the "Stellantis CMP Smart Car Battery" battery option.
 
 ![image](../images/stellantis-cmp-smart-car-platform-08.png)
 

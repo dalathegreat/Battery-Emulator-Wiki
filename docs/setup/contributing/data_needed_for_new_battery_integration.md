@@ -13,6 +13,7 @@ If you want to integrate a battery, this page will help you figure out what you 
 Unless the communication protocol is already reverse engineered and available, it is usually far easier to start an integration with logs from a working vehicle. Usually, this capture will need to be completed from the powertrain bus (attached to the battery). The OBD port is most often behind a gateway that does not pass through the frames needed by the battery. Therefore, it is required to break into the harness at some point to get access to this CAN bus.
 
 The minimum battery CAN communication logs needed to integrate a new battery are:
+
 - CAN logs from a working vehicle
   - Vehicle idle
   - Vehicle startup
@@ -28,7 +29,7 @@ You will first have to get some hardware capable of reading the communication. H
 !!! tip "TIP"
     You can use the Battery-Emulator to log CAN messages. See the [CAN logging page](../can_related/can_logging.md)
 
-    LilyGo board (can log data in testing mode!)💲 
+    Battery-Emulator hardware, for instance a LilyGo board (can log data in testing mode!)💲 
     USBCAN PCAN clone 💲 Recommended,link: https://www.aliexpress.us/item/1005006341852788.html 
     Raspberry PI with CAN shield 💲💲
     USB2CAN Korlan 💲💲 Recommended, link: https://www.8devices.com/products/usb2can_korlan 
@@ -39,11 +40,11 @@ You will first have to get some hardware capable of reading the communication. H
 # Reading standalone battery
 Take pictures of HV and LV connectors on the battery. Figure out the pinout with manuals found online, or behind paywalls. Add this info to wiki page for the new battery. If the wiki page for your battery does not exist yet, create a new page.
 
-Start battery by applying 12V to it, and CAN H-L pins to a CAN reader / LilyGo. Note, on some batteries you might need to satisfy interlock or airbag / crash signals before they startup.
+Start battery by applying 12V to it, and CAN H-L pins to a CAN reader / Battery-Emulator hardware. Note, on some batteries you might need to satisfy interlock or airbag / crash signals before they startup.
 
 Get a CAN log of the battery in standalone operation. An example from start to finish can be seen here: https://github.com/dalathegreat/Nissan-Leaf-Battery-to-OBD2
 
-# Taking CAN logs with the Battery-Emulator (LilyGo hardware)
+# Taking CAN logs with the Battery-Emulator (LilyGo hardware as an example)
 
 The CAN-logging is available when using the `TEST_FAKE_BATTERY` mode. This enables easy CAN logging without expensive CAN reading hardware. When you are using this test mode, all the received CAN messages will get timestamp, ID, DLC, and data fields printed out via the Arduino IDE Serial. This can then be exported to a .txt file for later analysis. Example format:
 
@@ -62,7 +63,7 @@ The CAN-logging is available when using the `TEST_FAKE_BATTERY` mode. This enabl
 # Reverse engineering values
 Say you want to locate voltage from a CAN log. Read the physical value with a multimeter (370.0V), and try to find a CAN message that contains this value (0xE74)
 
-Same with for instance temperature. If the pack is located in a 20*C environment, look for a value that has a typical -40 offset. Example, 0x3C would be decimal 60 (-40 offset) = 20*C
+Same with for instance temperature. If the pack is located in a 20*C environment, look for a value that has a typical -40 offset. Example, 0x3C would be decimal 60 (-40 offset) = 20*C.
 
 Reverse engineering values is the most time consuming part of the new integration. Be prepared to spend weeks on this!
 
@@ -72,6 +73,7 @@ This table lists the typical values used. The more values available, the better.
 directly received from the battery, the better.
 
 The **Source(s)** column describes the possible origins of the value.
+
 - **Battery**: The value is extracted from battery communication
 - **Manual configuration**: The value is known based on battery make/model, inverter make/model, etc
 - **Estimation**: The value can be estimated based on various battery information

@@ -55,7 +55,7 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 !!! warning "WARNING"
     In case the whole Emulator goes into Fault state, the contactors will open, and latch. To get them to close again, you need to restart the entire Battery-Emulator (after having analysed the fault)
 
-You can check the Event view in the webserver, to see if any critical Error has been encountered
+You can check the Event view in the webserver, to see if any critical Error has been encountered.
 
 #### Overloaded GPIO pins
 Incase the current draw on the GPIO pins is exceeded, for instance incase you use an unsupported SSR, the webserver will appear this way:

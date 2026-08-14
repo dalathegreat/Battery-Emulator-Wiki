@@ -19,10 +19,10 @@ Battery is manufactured by CATL
 ![1000043711](../images/omoda-03.jpg){ width="615" height="615" }
 
 ## Software configuration
-For this battery type, use the option called "xyz" under the "Battery Protocol" section
+For this battery type, use the option called "xyz" under the "Battery Protocol" section.
 
 ## Part numbers 
-Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
+Part numbers for connectors/cables, along with purchase links to ebay/aliexpress.
 
 | Component | Part Number | Purchase Link |
 |-----------|-------------|---------------|
@@ -35,9 +35,9 @@ LV Connector is a Amphenol-TPI HC Series (HC18B-S32 2516 326024)
 ![1000043655](../images/omoda-04.jpg){ width="614" height="614" }
 
 This has the ability 6 Power Pins (13A max) + 26 Signals (5A max)
-The rear is protected in a (EDPM KR 06) boot that is cable tied closed 
+The rear is protected in a (EDPM KR 06) boot that is cable tied closed. 
 
-The connection on the battery has following Pins
+The connection on the battery has following Pins.
 
 | Pin| Output           | Colour         | Notes
 |----|------------------|----------------|----------
@@ -90,7 +90,7 @@ Cable B is 2000mm in length.
 
 ![IMG_20260611_162235](../images/omoda-08.jpg){ width="826" height="904" }
 
-The Connections on the battery for each plug are clearly marked on Aluminium casting 
+The Connections on the battery for each plug are clearly marked on Aluminium casting. 
 ![1000043715](../images/omoda-09.jpg){ width="765" height="345" }
 
 | Parameter | Value |

@@ -5,6 +5,7 @@ title: "Smart EQ Fortwo Forfour"
 ## Compatible batteries
 
 For this platform...
+
 - Model year, energy amoung
 
 ### Physical Dimensions
@@ -24,10 +25,10 @@ For this platform...
 - More?
 
 ## Software configuration
-For this battery type, use the option called "xyz" under the "Battery Protocol" section
+For this battery type, use the option called "xyz" under the "Battery Protocol" section.
 
 ## Part numbers 
-Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
+Part numbers for connectors/cables, along with purchase links to ebay/aliexpress.
 
 | Component | Part Number | Purchase Link |
 |-----------|-------------|---------------|

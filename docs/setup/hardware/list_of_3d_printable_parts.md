@@ -3,7 +3,7 @@ title: "List of 3d‐printable parts"
 ---
 
 ## 3d-printable parts
-Here's a collection of 3d-printable parts that you can utilize in your build
+Here's a collection of 3d-printable parts that you can utilize in your build.
 
 - LilyGo DIN rail: [Thingiverse - DIN Rail enclosure for Lilygo T-CAN-485 Module](https://www.thingiverse.com/thing:6788996)
 - LilyGo Vertical Din-rail case: (Printables: https://www.printables.com/model/1312677-lilygo-t-can485-dinrail-case)

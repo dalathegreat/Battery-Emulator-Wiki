@@ -15,7 +15,7 @@ Maxus eDeliver 3. There are different battery models:
 
 ![image](../images/maxus-ed3-03.png){ width="1333" height="697" }
 
-Left to right,  Low voltage connector, service disconnect switch, high voltage connector
+Left to right,  Low voltage connector, service disconnect switch, high voltage connector.
 
 ## Low voltage wiring
 
@@ -27,7 +27,7 @@ Service manual wiring attached, (PT CAN = PowerTrain CAN):
 Other BMS connections
 ![image](../images/maxus-ed3-05.png){ width="1542" height="645" }
 
-The battery has an interlock on Connector B that needs to be shorted
+The battery has an interlock on Connector B that needs to be shorted.
 ![image](../images/maxus-ed3-06.png){ width="583" height="518" }
 
 ### How do I connect the battery to the Battery-Emulator?

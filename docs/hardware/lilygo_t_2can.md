@@ -28,23 +28,23 @@ The hardware has more details on LilyGo's Github page
 https://github.com/Xinyuan-LilyGO/T-2Can
 
 !!! note "NOTE"
-    This has an included Antenna that needs to be mounted for good Wifi performance. Failure to install this will lead to connectivity issues
+    This has an included Antenna that needs to be mounted for good Wifi performance. Failure to install this will lead to connectivity issues.
 
 ![image](../images/lilygo-t-2can-03.png)
 
 ## Installing the software
 
-Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup
+Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?tab=readme-ov-file#how-to-install-the-software-) to install the Battery-Emulator software onto the board for the initial setup.
 
 ## Over the air (OTA) software updates
 
-When updating this board [OTA](../setup/software/ota_update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **T-2CAN** hardware
+When updating this board [OTA](../setup/software/ota_update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **T-2CAN** hardware.
 
 `BE_vX.Y.Z_LilygoT-2CAN.ota.bin`
 
 ## Interfaces
 
-The board comes with 2 CAN channels. One is labelled CAN-A , and the other one is CAN-B
+The board comes with 2 CAN channels. One is labelled CAN-A , and the other one is CAN-B.
 
 ![image](../images/lilygo-t-2can-04.png)
 

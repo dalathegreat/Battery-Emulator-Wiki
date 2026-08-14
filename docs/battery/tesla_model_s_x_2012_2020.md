@@ -6,7 +6,7 @@ title: "Tesla Model S/X 2012-2020"
 
 The earlier Tesla batteries use a radically different CAN structure compared to the 2021+ S/3/X/Y platform, so we have separate integrations for each platform.
 
-When using a Legacy battery, make sure to select the "Tesla Model S/X 2012-2020" option
+When using a Legacy battery, make sure to select the "Tesla Model S/X 2012-2020" option.
 
 ![image](../images/tesla-model-s-x-2012-2020-01.png){ width="517" height="118" }
 
@@ -56,14 +56,14 @@ Digikey links:
 
 Note that the capacity of a pack is limited by the brick with the lowest capacity. When that brick is charging, it will gain voltage faster than other bricks. The HVBMS will stop charge when any brick reaches its ceiling voltage (~4.2V). If one brick has a significantly lower capacity that others, the pack will be limited by that brick which will get to 4.2V faster than the other ones. We refer to the brick with the lowest capacity as: minCAC. 
 
-Another limitation could come from bricks being imbalanced, or some bricks with a voltage higher/lower than others. This would limit ability to charge the pack as the brick with a higher voltage than others would reach the ceiling voltage early. Same idea when discharging, the brick with the lowest voltage would hit the floor voltage early which would cause the HVBMS to open contactors from low power
+Another limitation could come from bricks being imbalanced, or some bricks with a voltage higher/lower than others. This would limit ability to charge the pack as the brick with a higher voltage than others would reach the ceiling voltage early. Same idea when discharging, the brick with the lowest voltage would hit the floor voltage early which would cause the HVBMS to open contactors from low power.
 
 To mitigate this imbalance, Batman has some bleed resistor that can be placed and removed in parallel of each brick via a FET relay. Batman can put that resistor across the brick with the highest voltage which would slightly discharge that brick and bring it back to the level of the other bricks. Batman closes a FET which puts that resistor
 across the brick. The HVBMS will order Batman to put that bleed resistor across the brick with the highest voltage when Delta V is > 5mv MinBrickV > 4.0v (~85% SOC) && HVBMS State == STAND BY.
 
 Note that Batman can also do balancing when the HVBMS is asleep :).
 
-The best way to balance the Model 3 pack is to set charge limit to 90% or higher and let the vehicle sit idle for hours (plugged in or not). 24 hours of balancing can reduce imbalance by 1mV
+The best way to balance the Model 3 pack is to set charge limit to 90% or higher and let the vehicle sit idle for hours (plugged in or not). 24 hours of balancing can reduce imbalance by 1mV.
 
 ## Examples
 

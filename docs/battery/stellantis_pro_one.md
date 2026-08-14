@@ -18,7 +18,7 @@ The following vehicles are supported
 ## Connectors
 
 ## HV connector
-The battery needs to see capacitance on the HV lines in order to engage contactors. Two 470uF capacitors in parallel is confirmed working
+The battery needs to see capacitance on the HV lines in order to engage contactors. Two 470uF capacitors in parallel is confirmed working.
 
 HV connector (175 A max). This is the easiest one to source and use, while the others are much harder to find. (Has HVIL that needs to be seated!)
 
@@ -51,5 +51,5 @@ https://nl.aliexpress.com/item/1005005787269820.html?spm=a2g0o.order_list.order_
 - Pin 24 and 25 interlock together
 
 ## Software configuration
-To use this battery, select the "Stellantis Pro One 110kWh (E-Ducato/ProMaster/Proace)" battery option
+To use this battery, select the "Stellantis Pro One 110kWh (E-Ducato/ProMaster/Proace)" battery option.
 

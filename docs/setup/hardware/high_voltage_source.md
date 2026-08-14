@@ -16,10 +16,10 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 One of the options is the HIA4V1 board original or modified for Lilygo or Stark CMR. 
 
 !!! warning "CAUTION"
-    There are various HIA4V1 board version avaiable that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended
+    There are various HIA4V1 board version avaiable that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
 
 # Option A: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
-The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Support for this was added in firmware v10.11.0
+The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Support for this was added in firmware v10.11.0.
 
 ## Wiring diagram
 Parts needed:
@@ -37,6 +37,7 @@ Example installation:
 ![image](../../images/high-voltage-source-09.png)
 
 Jumper settings for the TPS55288EVM-045 board:
+
 - JP1: ON (device enable)
 - JP2: FB_INT (internal feedback selection)
 - JP3: OPEN
@@ -54,6 +55,7 @@ The HIA4V1 has been used successfully to precharge the MEB battery's inverter po
 The HIA4V1 contains a 555 based oscillator, with the output connected to a MOSFET. This MOSFET is 3v3 compatible, which means we can directly control it from an ESP32 based board like the lilygo.
 
 To do this:
+
 - first remove the 620 ohm smd resistor (marked 621) from the board. Easiest way to do this is put some solder on top of the resistor such that it covers both ends, melting the solder of both ends and thus releasing the resistor.  
 - In place of the above resistor, on the pad closest to the MOSFET, solder a small wire.
 - Connect this wire via a 330 ohm resistor to a pin on the lilygo (eg. io25) or Stark CMR (eg. io19 GPIO header).
@@ -65,6 +67,7 @@ To do this:
 By using the ledcWriteTone(PRECHARGE_PIN, freq); function you can now tune the voltage. 
 
 Results while powering the board with 12V:
+
 - 23kHz : 370V
 - 28kHz : 390V
 
@@ -77,6 +80,7 @@ Note that these values depend on the current the HIA4V1 has to provide.
 ## Modified HIA4V1 for control via FET board (possible for Lilygo and Stark CMR)
 
 HIA4V1 modifications:
+
 * Remove 6 (marked) components on the primary side of the transformer
 * Bridge the primary side of the coil to the power pin (A)
 * Add the output bias resistors 4x 140k (or equivalent) on the HV output pins, protected with shrinksleve (B)
@@ -107,7 +111,7 @@ Alternative NC and NO contactors with complementing specs available through Digi
 NC - [Altran Magnetics AREV100NC-series](https://www.digikey.com/en/products/filter/contactors-electromechanical/969?s=N4IgTCBcDaIIICcCmA3AjABgwOQMIgF0BfIA)
 NO - [Altran Magnetics ALEV100-series](https://www.digikey.com/en/products/filter/contactors-electromechanical/969?s=N4IgTCBcDaIIIBkCiA1AjABgyAugXyA)
 
-The connection is added to the schematic above
+The connection is added to the schematic above.
 
 ## Overvoltage and reverse-polarity protection
 
@@ -127,7 +131,7 @@ Make sure to enable the #define PRECHARGE_CONTROL option in the USER_SETTINGS.h 
 https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/USER_SETTINGS.h
 
 Generic:
-The precharge code itself is located in the folder Software/src/communication/precharge_control/precharge_control.cpp
+The precharge code itself is located in the folder Software/src/communication/precharge_control/precharge_control.cpp.
 
 https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/src/communication/precharge_control/precharge_control.cpp
 
@@ -141,12 +145,14 @@ https://github.com/dalathegreat/Battery-Emulator/tree/main/Software/src/devboard
 As of release 10.2.0 and above there is a testmode to drive the HIA4V1. This allows you generate a voltage and check polarity.
 
 To activate the testmode configure to software:
+
 - Ensure **NO** battery is configured
 - Select the option "External precharge via HIA4V1"
 - "Precharge, maximum ms before fault" defines the time this testmode will run
 
 After startup/reboot this will enable the PWM for the duration set and allow you to check the polarity is as expected and measure the voltage.
 I measured the following:
+
 - With bias resistors installed powered with 12V **without** battery connected: 247V DC
 - With bias resistors installed powered with 12V **with** battery connected: 287V DC
 

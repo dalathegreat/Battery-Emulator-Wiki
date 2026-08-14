@@ -14,7 +14,7 @@ title: "Ferroamp"
 * 1x or 2x [FerroAmp ESO (Energy Storage Optimizer) Module](https://ferroamp.com/wp-content/uploads/2022/05/ESO-Module_Datasheet_En.pdf), installed inside the Power Case.
 
 ## Communication wiring
-The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues, or before removing the resistor. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
+The Ferroamp inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues, or before removing the resistor. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
 
 !!! note "NOTE"
     While the Ferroamp will work on the same CAN channel as an EV battery, it sometimes can cause "ESO fault code 2 - communication issues". If you are seeing this error, put the inverter on its own dedicated CAN channel.
@@ -28,10 +28,10 @@ The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN batter
 [PD10008_ESS-Power-Case-Installation-Manual_A02b.pdf](https://github.com/user-attachments/files/16394301/PD10008_ESS-Power-Case-Installation-Manual_A02b.pdf)
 
 ## Which protocol to use
-For this inverter type, use the option called "Ferroamp Pylon battery over CAN Bus" under the "Inverter Protocol" setting
+For this inverter type, use the option called "Ferroamp Pylon battery over CAN Bus" under the "Inverter Protocol" setting.
 
 !!! info "IMPORTANT"
-    The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed. If 0 is left as default values, the below options will be used
+    The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed. If 0 is left as default values, the below options will be used.
 
 ![image](../images/ferroamp-02.png){ width="565" height="273" }
 
@@ -46,6 +46,6 @@ For this inverter type, use the option called "Ferroamp Pylon battery over CAN B
 ## Troubleshooting
 Experiences with various troubles and solutions.
 
-1) Ensure ESO(s) and EnergyHub are updated to latest firmware. (Call FerroAmp support and confirm!)
-2) If you are getting "precharge" or "ESO fault 2 - communication" issues - try separating battery and inverter communication channels using MCP add on chip. Read more here: [CAN add-on (MCP2515)](../setup/can_related/can_add_on_mcp2515.md)
-3) If you bought a second hand ESO and you're having communications issues - it might be the CAN transciever that has taken a beating. (Seems not too uncommon on Ferroamp ESOs!) Read more here: [Lightning strike](../setup/hardware/lightning_strike.md)
+1. Ensure ESO(s) and EnergyHub are updated to latest firmware. (Call FerroAmp support and confirm!)
+2. If you are getting "precharge" or "ESO fault 2 - communication" issues - try separating battery and inverter communication channels using MCP add on chip. Read more here: [CAN add-on (MCP2515)](../setup/can_related/can_add_on_mcp2515.md)
+3. If you bought a second hand ESO and you're having communications issues - it might be the CAN transciever that has taken a beating. (Seems not too uncommon on Ferroamp ESOs!) Read more here: [Lightning strike](../setup/hardware/lightning_strike.md)
