@@ -12,6 +12,7 @@ For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Bat
 
 ## Specifications
 There are two variants of the hybrid battery, HEV and PHEV. Currently only HEV batteries have been tested, but PHEV might also work.
+
 * 1.56kWh, HEV, 64 Cellss, 168-235VDC ( Nominal 240V ) , weight 33kg
 
 * 8.9kWh, PHEV, 96 Cells, 360v nominal. The PHEV is split into two packs, both 4.45kWh 180V.

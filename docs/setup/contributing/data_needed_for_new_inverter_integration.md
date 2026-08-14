@@ -12,6 +12,7 @@ The communication between the brand inverter and brand battery can be either CAN
 
 ### CAN based system
 If the system is CAN based, you will first have to get some hardware capable of reading the communication. Here are some examples, listed from least expensive to more expensive. Do note that more expensive tools will be easier to use, since the software provided with the tools are very user friendly. Also more expensive tools will have better timing and accuracy on timestamps.
+
 - LilyGo board (using [CAN logging](../can_related/can_logging.md))💲
 - Arduino with CAN shield 💲
 - Raspberry PI with CAN shield 💲💲
@@ -22,6 +23,7 @@ If the system is CAN based, you will first have to get some hardware capable of 
 
 ### Modbus/RS485 based systems
 If the system is modbus based, the difficulty grows a bit more. Here is a list of hardware that can be used,
+
 - USB RS485 reader from Ebay 💲
 - TODO: Add more options
 - LilyGo board, see [example here](../../inverter/kostal.md#traces-for-reverse-engineering)
@@ -46,6 +48,7 @@ When logging, keep track of the parameters. SOC% start to stop, Temperatures, ch
 Great! Feel free to share them on the Discord / Github issues page. Then it is time to reverse engineer the data. Once the logs are present, others without the brand battery can join in to help
 
 For instance, here looking for a Hot battery, vs a Cold battery in two CAN logs
+
 - 0x245, 0x01 0x00 0x02 0x19 **0x38** 0x25 0x90 0xF6
 - 0x245, 0x01 0x00 0x02 0x19 **0x36** 0x25 0x90 0xF8
 

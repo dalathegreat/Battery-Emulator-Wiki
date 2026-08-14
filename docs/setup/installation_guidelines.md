@@ -12,6 +12,7 @@ This section will guide you towards making a safer installation of the battery. 
 The most important decision to make is battery placement. Any used EV pack should always be operated in an area where a potential fire would not be of risk for human life. Almost all salvage batteries come from crashed vehicles, with an unknown history. While the Battery-Emulator and your solar inverter performs several safety checks, note that almost all checks rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be easily detectable via software.
 
 Due to all this, it is recommended to only install batteries in the following places:
+
 * Outside
 * Detached garage
 * Tool-shed

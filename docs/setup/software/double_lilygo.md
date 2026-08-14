@@ -13,6 +13,7 @@ Some Inverters do not like to see automotive CAN frames on the CAN channel meant
     This is a legacy option. Using double LilyGo's is extremely hard to troubleshoot, plus the fact that not all safety features will be active. Users have reported overcharged batteries from this setup. Due to this, it is recommended to instead use an add-on CAN channel, or a board with multiple CAN channels as standard (Stark, etc.)
 
 Better options
+
 * You can [add an isolated MCP2515 CAN channel](../can_related/can_add_on_mcp2515.md)
 * You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../can_related/can_fd_add_on_mcp2518fd.md)
 * You can use the [Stark CMR](../../hardware/stark_cmr.md) board

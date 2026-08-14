@@ -72,6 +72,7 @@ Incase your battery is missing parts, here is a list of the spare part numbers a
 | *Safety switch/fuse OEM Part no. 297C 126 45R | Renault UK quoted £43.89+VAT   |
 
 *Please note not all safety switches are the same there is at least 2 versions, using the incorrect one could result in blown fuses or worse.
+
 * Also part no. 993B1 5333R is for the sticker on top of the safety fuse not the safety fuse itself.
 
 **The correct part number can be found by looking at the area as shown below.**

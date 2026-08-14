@@ -142,6 +142,7 @@ the battery or fit any relays.**
   *[confirm exact button labels]*
 ### Safety interlocks
 Contactors are commanded **open automatically** whenever:
+
 - the equipment-stop is active,
 - the inverter withdraws permission to close (e.g. Solax / SMA not yet ready), or
 - the system enters a **FAULT** state — including loss of CAN communication with the

@@ -7,6 +7,7 @@ There are two different 2013+ LEAF charger (PDM) variants that work with the Bat
 ![Nissan_PDM](../../images/charger-nissan-leaf-pdm-01.jpg) ![PDM66](../../images/charger-nissan-leaf-pdm-02.jpg)
 
 The following LEAF PDMs are supported:
+
 - 2011 to 2012 ZE0 ❌  Not supported!
 - 2013 to 2017 AZE0 ✅ 
 - 2018 to 2024 ZE1 ✅ 
@@ -58,6 +59,7 @@ The inlet is marked in this picture:
 ![image](../../images/charger-nissan-leaf-pdm-08.png)
 
 Nissan LEAF waterpump pinout:
+
 - Brown pin 1 - 12V
 - Yellow/black pin 2 - GND
 

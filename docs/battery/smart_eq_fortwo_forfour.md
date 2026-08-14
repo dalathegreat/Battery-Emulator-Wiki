@@ -5,6 +5,7 @@ title: "Smart EQ Fortwo Forfour"
 ## Compatible batteries
 
 For this platform...
+
 - Model year, energy amoung
 
 ### Physical Dimensions

@@ -37,6 +37,7 @@ Example installation:
 ![image](../../images/high-voltage-source-09.png)
 
 Jumper settings for the TPS55288EVM-045 board:
+
 - JP1: ON (device enable)
 - JP2: FB_INT (internal feedback selection)
 - JP3: OPEN
@@ -54,6 +55,7 @@ The HIA4V1 has been used successfully to precharge the MEB battery's inverter po
 The HIA4V1 contains a 555 based oscillator, with the output connected to a MOSFET. This MOSFET is 3v3 compatible, which means we can directly control it from an ESP32 based board like the lilygo.
 
 To do this:
+
 - first remove the 620 ohm smd resistor (marked 621) from the board. Easiest way to do this is put some solder on top of the resistor such that it covers both ends, melting the solder of both ends and thus releasing the resistor.  
 - In place of the above resistor, on the pad closest to the MOSFET, solder a small wire.
 - Connect this wire via a 330 ohm resistor to a pin on the lilygo (eg. io25) or Stark CMR (eg. io19 GPIO header).
@@ -65,6 +67,7 @@ To do this:
 By using the ledcWriteTone(PRECHARGE_PIN, freq); function you can now tune the voltage. 
 
 Results while powering the board with 12V:
+
 - 23kHz : 370V
 - 28kHz : 390V
 
@@ -77,6 +80,7 @@ Note that these values depend on the current the HIA4V1 has to provide.
 ## Modified HIA4V1 for control via FET board (possible for Lilygo and Stark CMR)
 
 HIA4V1 modifications:
+
 * Remove 6 (marked) components on the primary side of the transformer
 * Bridge the primary side of the coil to the power pin (A)
 * Add the output bias resistors 4x 140k (or equivalent) on the HV output pins, protected with shrinksleve (B)
@@ -141,12 +145,14 @@ https://github.com/dalathegreat/Battery-Emulator/tree/main/Software/src/devboard
 As of release 10.2.0 and above there is a testmode to drive the HIA4V1. This allows you generate a voltage and check polarity.
 
 To activate the testmode configure to software:
+
 - Ensure **NO** battery is configured
 - Select the option "External precharge via HIA4V1"
 - "Precharge, maximum ms before fault" defines the time this testmode will run
 
 After startup/reboot this will enable the PWM for the duration set and allow you to check the polarity is as expected and measure the voltage.
 I measured the following:
+
 - With bias resistors installed powered with 12V **without** battery connected: 247V DC
 - With bias resistors installed powered with 12V **with** battery connected: 287V DC
 

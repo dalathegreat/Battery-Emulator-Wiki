@@ -7,6 +7,7 @@ Over-the-Air (OTA) update is a mechanism that allows firmware updates to be depl
 
 ### Prerequisites
 Before being able to use OTA update, ensure you have the following prerequisites:
+
 * A Wifi connection established to the board
    * Either a direct connection to the board (192.168.4.1 IP after connecting to the BatteryEmulator network (default password 123456789)
    * OR a connection via a router (see [quickstart video](https://youtu.be/sR3t7j0R9Z0) for how to connect Battery-Emulator hardware directly to your home network)

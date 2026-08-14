@@ -366,6 +366,7 @@ Good luck, and have fun with your beautiful battery! 🔋
 > TODO: add contactor part numbers.
 
 **Pyro fuse:** replace pyro fuse options
+
 - New pyro fuse _(TODO: add type number)_
 - Normal fuse, like _(TODO: add type number)_ and a 2.5 Ω resistor to the BMS connection (can replace the external fuse)
 - Jumper bridge (DIY) and a 2.5 Ω resistor to the BMS connection (external fuse still required)

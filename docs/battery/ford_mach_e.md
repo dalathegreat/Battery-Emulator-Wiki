@@ -210,18 +210,22 @@ The following DTCs have been decoded
 
 #### Status codes
 Status (-2F):
+
  - DTC Present at Time of Request
  - Malfunction Indicator Lamp is Off for this DTC
 
 Status (-AF):
+
  - DTC Present at Time of Request
  - Malfunction Indicator Lamp is On for this DTC
 
 Status (-2C):
+
  - DTC Maturing - Intermittent at Time of Request
  - Malfunction Indicator Lamp is Off for this DTC
 
 Status (-28):
+
  - Previously Set DTC - Not Present at Time of Request
  - Malfunction Indicator Lamp is Off for this DTC
 

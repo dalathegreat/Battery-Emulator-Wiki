@@ -4,6 +4,7 @@ title: "CAN add‐on (MCP2515)"
 
 !!! tip "TIP"
     If you're considering using a Lilygo T-CAN485, you may find the [Lilygo T-2CAN](../../hardware/lilygo_t_2can.md) to be a better choice:
+
     - It has two CAN interfaces already
     - The interfaces are galvanically-isolated, so you don't need separate CAN isolators for troublesome inverters (like Solax)
     - It has a wider input voltage range (up to 24V)
@@ -55,6 +56,7 @@ The Lilygo has a 3.3V CAN transceiver (SN65HVD231). The Lilygo also has a level 
 Therefore, it is viable to change the voltage from 3.3V to 5V and solder the 5V CAN transceiver from an MCP2515 module onto the Lilygo board. This requires basic SMD reworking skills.
 
 This solution eliminates the need:
+
 - for an intermediary level shifter board to 5V
 - to pick up 5V from a component pad on the Lilygo
 - for an external supply of 5V.

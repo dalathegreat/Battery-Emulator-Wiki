@@ -13,6 +13,7 @@ If you want to integrate a battery, this page will help you figure out what you 
 Unless the communication protocol is already reverse engineered and available, it is usually far easier to start an integration with logs from a working vehicle. Usually, this capture will need to be completed from the powertrain bus (attached to the battery). The OBD port is most often behind a gateway that does not pass through the frames needed by the battery. Therefore, it is required to break into the harness at some point to get access to this CAN bus.
 
 The minimum battery CAN communication logs needed to integrate a new battery are:
+
 - CAN logs from a working vehicle
   - Vehicle idle
   - Vehicle startup
@@ -72,6 +73,7 @@ This table lists the typical values used. The more values available, the better.
 directly received from the battery, the better.
 
 The **Source(s)** column describes the possible origins of the value.
+
 - **Battery**: The value is extracted from battery communication
 - **Manual configuration**: The value is known based on battery make/model, inverter make/model, etc
 - **Estimation**: The value can be estimated based on various battery information

@@ -52,6 +52,7 @@ Make sure the terminating resistors are correct. CAN networks should have two 12
 You can connect a 120ohm resistor between pin 44 and 45 to terminate the bus in the BECM end.
 
 Attached below are pictures of the BMS pinout. Connect the pins to the LilyGo and 12V supply like this:
+
 * Pin 42 to LilyGo CAN - H
 * Pin 43 to LilyGo CAN - L
 * Pin 44 - 120ohm termination resistor - Pin 45

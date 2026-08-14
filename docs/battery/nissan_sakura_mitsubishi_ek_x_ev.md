@@ -5,6 +5,7 @@ title: "Nissan Sakura Mitsubishi eK X"
 ## Compatible batteries
 
 This platform has a 20kWh batteryy
+
 - Nissan Sakura 2022–present
 - Mitsubishi eK X
 

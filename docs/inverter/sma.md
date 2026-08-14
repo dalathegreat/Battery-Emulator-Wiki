@@ -91,6 +91,7 @@ The 1k resistor isn't technically needed but just in case there's a short it wou
 ### Details for Sunny Boy Smart Energy & Sunny Tripower Smart Energy
 
 Pin layout Custom PCB in the example below: 
+
 ```
 1. 12V Enable line SMA Tripower
 2. Ground SMA Tripower
@@ -102,6 +103,7 @@ This is how the connection for the SMA Tripower would look like.
 ![image](../images/sma-07.png){ width="839" }
 
 SMA Hybrid Communication pin layout
+
 ```
 1. CAN-H
 2. 12V enable line 
@@ -227,6 +229,7 @@ Steps:
 ## Battery emulator software update
 
 Updating the battery emulator software requires (at least in 1 case) to disconnect the SMA CAN-bus to reboot.
+
 1. Disconnect SMA CAN-bus
 2. Update battery emulator
 3. Wait for reboot

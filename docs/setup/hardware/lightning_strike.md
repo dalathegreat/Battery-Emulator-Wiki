@@ -19,6 +19,7 @@ Even lightning strikes that occur a kilometer away can produce electromagnetic s
 ## How to troubleshoot a damaged system
 
 If your system has been exposed to a nearby lightning strike, or if it’s showing erratic behavior following a storm, there are a few key steps you can take to diagnose where the damage has occured.
+
 1. Measure CAN Bus Termination Resistance
 
 The CAN bus should have a termination resistance of 120Ω between CAN High and CAN Low wires at each end of the bus. Here's how to check it:

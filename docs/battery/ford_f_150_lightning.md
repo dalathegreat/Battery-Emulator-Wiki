@@ -4,6 +4,7 @@ title: "Ford F‐150 Lightning"
 
 ## Compatible batteries
 The model years 2022-2025 came with the following batteries
+
 - 107kWh gross (98kWh net usable) 
 - 143kWh gross (131kWh net usable)
 

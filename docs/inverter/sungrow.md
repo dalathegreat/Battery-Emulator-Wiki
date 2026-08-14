@@ -66,6 +66,7 @@ Sungrow inverters have the wiring diagram on the side of the unit. Check your sp
 ### Grounding
 
 ⚠️ Grounding is critical. Ensure:
+
 - Battery case is connected to protective earth (PE)
 - CAN twisted pair shield is connected to PE
 

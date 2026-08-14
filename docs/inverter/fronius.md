@@ -122,6 +122,7 @@ If you see "No Battery Detected" in the Fronius apps;
 ![bild](../images/fronius-09.png)
 
 Then verify the following
+
 - Make sure High Voltage is present on inverter battery input. Also make sure the DC isolator switch on the front of the Fronius is turned ON
 
 ![image](../images/fronius-10.png)

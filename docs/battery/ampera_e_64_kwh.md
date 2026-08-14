@@ -80,6 +80,7 @@ Example, development environment with contactor control via GPIO, and all 3x CAN
 ![voeding en massa HV accu 2 ](../images/ampera-e-64-kwh-17.png)
 ![voeding en massa HV accu](../images/ampera-e-64-kwh-18.png)
 Stekker X 357 OEM 33472-1259 Service Connector 19333239
+
 * X357
 ![x357](../images/ampera-e-64-kwh-19.png)
 ![x357 pen pos](../images/ampera-e-64-kwh-20.png)
