@@ -1,5 +1,5 @@
 ---
-title: "Orion BMS"
+title: "Orion"
 ---
 
 ## Custom DIY battery with Orion BMS

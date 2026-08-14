@@ -1,5 +1,5 @@
 ---
-title: "Batrium BMS"
+title: "Batrium"
 ---
 
 Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emulator. Refer to the "How to Wire Up and

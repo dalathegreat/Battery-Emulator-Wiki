@@ -1,5 +1,5 @@
 ---
-title: "Ennoid BMS"
+title: "Ennoid"
 ---
 
 ## WIP

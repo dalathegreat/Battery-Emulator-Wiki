@@ -1,5 +1,5 @@
 ---
-title: "Daly SmartBMS"
+title: "Daly Smart"
 ---
 
 The Daly SmartBMS is a series of 4S up to 48S battery management systems allowing to build 12V to 180V DIY batteries.
