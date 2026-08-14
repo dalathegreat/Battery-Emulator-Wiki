@@ -113,7 +113,6 @@ A [Google spreadsheets](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsr
 ![image](../images/nissan-leaf-e-nv200-09.png)
 
 **Incompatible cables**
-
 When searching on eBay you may come across other cables in the Zoe which use a connector that is similar in appearance but is much smaller:
 
 * Zoe HV Wiring Harness - PN: 240419193R
@@ -151,20 +150,14 @@ made of PVC (Y), with regularly stranded conductor (A)
 * FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R)
 made of PVC (Y), with irregularly stranded conductor (B)
 
-## 3D printable parts
-
 ### Alternative HV connectors 
 Original part number for Nissan Leaf battery is 297A65SH1A but a cheaper alternative for battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as Leaf battery. 297A22581R is the part numbers for both car.
 
 The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/dam/tti-europe/manufacturers/aptiv/doc/aptiv-hv-rcs-800-automotive-connectors-datasheet-specifications.pdf).
 
+## 3D printable parts
+
 ### Socket covers
-If you are mounting the battery indoors, you can also 3d-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is a link to Pelle_C's excellent 3d-printable connector: [gitlab/pelle8](https://gitlab.com/pelle8/3d)
-
-![rcs800_32A](../images/nissan-leaf-e-nv200-13.jpeg)
-
-![rcs800_leaf](../images/nissan-leaf-e-nv200-14.jpeg)
-
 The 2013-2023 batteries have an external high voltage heater port. The socket can be covered with [3D printed backoff](https://www.printables.com/model/1756569-nissan-leaf-battery-ptc-connector-cover). It can also be plugged with silicone, but beware that certain types of silicone are conductive while uncured. Allow the silicone to cure for 24 hours before engaging contactors in such a case.
 
 ![heater-port-cover](../images/nissan-leaf-e-nv200-15.png)
@@ -178,12 +171,18 @@ There's also [a fixation ring for the data connector socket](https://www.printab
 ![data-con-ring](../images/nissan-leaf-data-socket-fix.png)
 
 
-### Alternative Service Disconnect Switch
-
+### Service Disconnect Switch
 Here is a [3D printed SDS for 2013-2023 batteries](https://www.printables.com/model/1337831-nissan-leaf-ze1-service-disconnect-plug) (AZE0, ZE1)
 ![3d_AZE0_ZE1_SDS](../images/nissan-leaf-e-nv200-24.jpeg){ width="900" height="675" }
 
 The link contains the drawing of the copper contact part, you can cut yourself and/or ask a workshop to cut and silver-plate it.
+
+### HV Connector
+If you are mounting the battery indoors, you can also 3d-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is a link to Pelle_C's excellent 3d-printable connector: [gitlab/pelle8](https://gitlab.com/pelle8/3d)
+
+![rcs800_32A](../images/nissan-leaf-e-nv200-13.jpeg)
+
+![rcs800_leaf](../images/nissan-leaf-e-nv200-14.jpeg)
 
 ## Examples of wiring installs
 Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
