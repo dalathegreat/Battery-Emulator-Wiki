@@ -1,0 +1,69 @@
+name: Normalize PR images
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**.md'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: pr-images-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  normalize:
+    # Skip our own follow-up pushes and PRs from deleted forks
+    if: >-
+      github.event.pull_request.head.repo.full_name != '' &&
+      github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      # The script is always taken from the base branch, never from the PR.
+      - name: Check out normalizer script (base branch)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: .normalizer
+          sparse-checkout: |
+            .github/scripts
+          sparse-checkout-cone-mode: false
+
+      - name: Check out PR head
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          path: pr
+          fetch-depth: 0
+          persist-credentials: true
+          # PRs from forks need a PAT with push access to the fork
+          # ("Allow edits by maintainers" must be enabled on the PR).
+          # Falls back to GITHUB_TOKEN for same-repo branches.
+          token: ${{ secrets.PR_IMAGES_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install --quiet Pillow requests
+
+      - name: Normalize images
+        working-directory: pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_REPO: ${{ github.repository }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          # Tunables
+          MAX_WIDTH: '1200'
+          IMAGES_DIR: 'docs/images'
+          SKIP_HOSTS: 'img.shields.io,shields.io,badgen.net,camo.githubusercontent.com'
+        run: python ../.normalizer/.github/scripts/normalize_pr_images.py
