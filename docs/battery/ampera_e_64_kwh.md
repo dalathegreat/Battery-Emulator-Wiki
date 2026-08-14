@@ -61,29 +61,29 @@ Example, development environment with contactor control via GPIO, and all 3x CAN
 
 ![image](../images/ampera-e-64-kwh-01.png)
 
-![AC laden](../images/ampera-e-64-kwh-02.png)
-![DC laden](../images/ampera-e-64-kwh-03.png)
-![temperatuur regeling accu verwarming ](../images/ampera-e-64-kwh-04.png)
+![AC charging](../images/ampera-e-64-kwh-02.png)
+![DC charging](../images/ampera-e-64-kwh-03.png)
+![Battery heating temperature control](../images/ampera-e-64-kwh-04.png)
 
-![aansluitingen hoogspannings kabels ](../images/ampera-e-64-kwh-05.png)
-![activeren seriele gegevens ](../images/ampera-e-64-kwh-06.png)
-![activeren seriele gegevens canbus ](../images/ampera-e-64-kwh-07.png)
-![blokkeerlus](../images/ampera-e-64-kwh-08.png)
-![bus hoogspanning beheer](../images/ampera-e-64-kwh-09.png)
-![canbus in schakelen ](../images/ampera-e-64-kwh-10.png)
-![contactors hoogsanning regeling ](../images/ampera-e-64-kwh-11.png)
-![contactors hoogspanning regeling](../images/ampera-e-64-kwh-12.png)
-![contactors negatief](../images/ampera-e-64-kwh-13.png)
-![contactors positief](../images/ampera-e-64-kwh-14.png)
+![High voltage cable connections](../images/ampera-e-64-kwh-05.png)
+![Activating serial data](../images/ampera-e-64-kwh-06.png)
+![Activating serial data over CAN bus](../images/ampera-e-64-kwh-07.png)
+![Interlock loop](../images/ampera-e-64-kwh-08.png)
+![High voltage bus management](../images/ampera-e-64-kwh-09.png)
+![Switching on the CAN bus](../images/ampera-e-64-kwh-10.png)
+![Contactor high voltage control 1](../images/ampera-e-64-kwh-11.png)
+![Contactor high voltage control 2](../images/ampera-e-64-kwh-12.png)
+![Negative contactor](../images/ampera-e-64-kwh-13.png)
+![Positive contactor](../images/ampera-e-64-kwh-14.png)
 ![Hi speed 1](../images/ampera-e-64-kwh-15.png)
 ![Hi speed 2](../images/ampera-e-64-kwh-16.png)
-![voeding en massa HV accu 2 ](../images/ampera-e-64-kwh-17.png)
-![voeding en massa HV accu](../images/ampera-e-64-kwh-18.png)
-Stekker X 357 OEM 33472-1259 Service Connector 19333239
+![HV battery supply and ground 2](../images/ampera-e-64-kwh-17.png)
+![HV battery supply and ground](../images/ampera-e-64-kwh-18.png)
+Connector X357 OEM 33472-1259 Service Connector 19333239
 
 * X357
 ![x357](../images/ampera-e-64-kwh-19.png)
-![x357 pen pos](../images/ampera-e-64-kwh-20.png)
+![X357 pin positions](../images/ampera-e-64-kwh-20.png)
 
 X358 
 ![X358](../images/ampera-e-64-kwh-21.png)

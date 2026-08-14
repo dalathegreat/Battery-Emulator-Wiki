@@ -55,7 +55,7 @@ Good idea to watch the installation video from GoodWe's training services, on ho
 13. Suggest setting power limit (ampere limit) in Battery-Emulator Webserver at this point, if not already done. Take something low (5A?) until you feel confident the system works as intended.
 13. Set charging schedule. (app is very buggy here!)
 
-![afbeelding_2023-11-25_153042647](../images/goodwe-02.png)
+![image](../images/goodwe-02.png)
 
 ## Starting and stopping the system
 When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode.
