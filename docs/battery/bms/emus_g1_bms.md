@@ -14,15 +14,15 @@ This allows you to use a DIY battery (instead of an EV battery) with any normal 
 
 Emus G1 BMS needs to be configured to emulate Deye_hv_can inverter protocol.
 
-![image](../images/emus-g1-bms-01.png){ width="580" height="136" }
+![image](../../images/emus-g1-bms-01.png){ width="580" height="136" }
 
 Set CAN ID base to 0x19B5
 
-![image](../images/emus-g1-bms-02.png){ width="338" height="303" }
+![image](../../images/emus-g1-bms-02.png){ width="338" height="303" }
 
 Set Battery type to Pylon and baud rate to 250
 
-![image](../images/emus-g1-bms-03.png){ width="538" height="310" }
+![image](../../images/emus-g1-bms-03.png){ width="538" height="310" }
 
 Battery Emulator will show all needed information and also populate cellmonitor page with individual cell voltages and if they are balancing or not.
 
