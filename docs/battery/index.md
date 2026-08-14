@@ -96,6 +96,10 @@ DIY LV battery:
 * [DALY BMS](bms/daly_smartbms.md) ✅
 
 [FoxESS HV2600 batteries](foxess_hv2600.md) ✅
+
 [Pylon HV batteries (Dyness Tower)](pylon_hv.md) ✅
-[CHAdeMO vehicles](chademo_vehicle.md) ⚠️ (Experimental support for emergencies)
+
+[CHAdeMO vehicles](chademo_vehicle.md) ⚠️ (Experimental support)
+
+[CCS bidirectional charging](ccs_bidirectional_charging.md) ⚠️ (Experimental support)
 
