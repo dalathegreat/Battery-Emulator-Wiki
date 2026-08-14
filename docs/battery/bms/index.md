@@ -1,8 +1,10 @@
 ---
-title: "Read this first"
+title: "BMS"
 hide:
   - toc
 ---
+
+## Read this first
 
 Battery-Emulator has support for DIY battery packs with self-installed BMS modules.
 
