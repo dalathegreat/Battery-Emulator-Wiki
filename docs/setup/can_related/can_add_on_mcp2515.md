@@ -25,7 +25,7 @@ You can use this MCP2515 board from Seeed Studio - it operates directly on the l
 
 ![image](../../images/can-add-on-mcp2515-01.png)
 
-These pins need to be connected between the LilyGo header and the MCP2515 board: (Warning! the print of the 2x3 connectors on the board itself is WRONG, it's mirrored! Use the added pindescription.)
+These pins need to be connected between the LilyGo header and the MCP2515 board: (Warning! the print of the 2x3 connectors on the board itself is WRONG, it's mirrored! Use the added pin description.)
 
 | Pin on 3.3V MCP2515 board | MCP2515 board comment | Pin on Lilygo |
 | - | - | - |

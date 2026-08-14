@@ -39,11 +39,11 @@ The following batteries are available for the EX30
 
 ## Note on crash lock :boom:
 
-Batteries that have been involved in a severe collision will be crash locked. You can unlock the battery by pressing the "Unlock crashed BMS" button in the More Battery Info weserver page. Remember that the pyrofuse most likely also is blown if the crash status is set.
+Batteries that have been involved in a severe collision will be crash locked. You can unlock the battery by pressing the "Unlock crashed BMS" button in the More Battery Info webserver page. Remember that the pyrofuse most likely also is blown if the crash status is set.
 
 ![image](../images/volvo-ex30-06.png){ width="711" height="179" }
 
-Volvo EX30 batteries can be unlocked this way, but Zeekr SEA based batteries require a more involving security algoritm that is not yet implemented in the software.
+Volvo EX30 batteries can be unlocked this way, but Zeekr SEA based batteries require a more involved security algorithm that is not yet implemented in the software.
 
 ## Note on recall :fire: 
 

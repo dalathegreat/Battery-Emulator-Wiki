@@ -159,7 +159,7 @@ Once I corrected the schema setting, everything started working perfectly.So now
 
 User report: SH10RT firmware upgrade from SAPPHIRE-H 03011.95.01 to .95.07 caused data loss. Downgrading to 95.01 restored functionality.
 
-### Factory Reset WiNet-S Modul
+### Factory Reset WiNet-S Module
 
 To factory reset a Sungrow WiNet-S module, press and hold the small button on the dongle for over 30 seconds until the RUN indicator blinks fast. This restores default settings, resets the password to the default ("pw8888"), and clears Wi-Fi configurations.
 

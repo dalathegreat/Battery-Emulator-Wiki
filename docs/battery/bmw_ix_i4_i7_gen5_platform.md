@@ -120,7 +120,7 @@ These connections need to be made to the contactors inside the SME (BMW's name f
 !!! tip "To the connector inside the SME via a PCB"
     The cleanest solution, without cutting wires, is to connect to the black, white, blue, green, grey and purple cables inside the SME via a custom PCB. The PCB needs to contain the Molex 560020-1030 surface mounted PCB connector, to receive the existing cable. The 3 grounds can be shared between the contactors, which leaves 4 connections to be made between the battery emulator and the custom PCB: precharge contactor supply, main negative contactor supply, main positive contactor supply and ground.
 
-!!! tip "To the cables insdie the SME by cutting or soldering to the wires"
+!!! tip "To the cables inside the SME by cutting or soldering to the wires"
     Alternatively, the connections can be made by cutting or soldering to the 6 cables. The 3 grounds can be shared between the contactors. If you decide to combine the 3 grounds, you are left with 4 cables to be connected to the battery emulator.
 
 <p align="center" markdown="1">

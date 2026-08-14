@@ -26,7 +26,7 @@ This is work in progress **BETA** PCB design for a motherboard to hold both a li
 * 1x SPI To CANFD MCP2518FD Module (must be this style) [Link](https://www.aliexpress.com/item/1005007349452566.html)
 * 1x 6A round PCB fuse
 * 2x 2x6 2.54mm pin header sockets (Lilygo and Can data header)
-* 1x 1x2 2.54mm pin header socket (lilgo power header)
+* 1x 1x2 2.54mm pin header socket (LilyGo power header)
 * 9x 1 way 2.54mm pin header sockets (singles as they don't quite match the spacing, might be better options)
 * 4x 1206 4k7 SMD resistors
 * 2x [Optional] 1206 120ohm resistors (if you need to add termination on either can-bus) Both boards also have can jumpers

@@ -67,7 +67,7 @@ To run two separate batteries on two different DC terminals first you have to en
 
 On the battery emulator side, have one battery configured as 0, and the next 1, etc. **You will need multiple Battery-Emulator hardwares with 2 CAN ports** to use this feature, one per battery.
 
-( remenber the inverter itself has also an address on the CAN bus , default 01. )
+( remember the inverter itself has also an address on the CAN bus , default 01. )
 
 ![image](../images/sofar-03.png)
 

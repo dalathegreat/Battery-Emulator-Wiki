@@ -47,7 +47,7 @@ Attached below are pictures of the BECM pinout. Connect the highlighted red pins
 
 ![Connector](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-03.png)
 
-Additionnally you need to mimic the presence of the cooling valve and level sensor. Therefore the experimental approach was to:
+Additionally you need to mimic the presence of the cooling valve and level sensor. Therefore the experimental approach was to:
 
 * Bridge PIN3 and PIN9 across a safe value resistor (to be determined, DTC removed with 10k resistor)
 * Insert a safe value resistor (to be determined, DTC removed with 10k resistor) between PIN8 and your BAT+ 

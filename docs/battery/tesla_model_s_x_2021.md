@@ -53,4 +53,4 @@ However, the batteries I tested with the Battery Emulator used 12V batteries. Th
 This is controlled by the PCS. It’s possible that certain CAN frames control the onboard voltage. More advanced reverse engineers can provide more information here.
 
 !!! warning "CAUTION"
-    In any case, you must follow safety precautions, as you are working in a high-voltage environment, so proceed at your own risk. Be cearful!
+    In any case, you must follow safety precautions, as you are working in a high-voltage environment, so proceed at your own risk. Be careful!

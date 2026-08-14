@@ -160,7 +160,7 @@ Here are some of the part numbers and purchase links, incase your battery came w
 |  Part |  Product Link | Notes |
 | :--------: | :---------: | :---------: |
 | LV connector |  [AliExpress](https://a.aliexpress.com/_EugRLIo)   | 19pin 1192800MB 1192800FB BYD
-| LV connecor Pre-wired  | [aliexpress](https://a.aliexpress.com/_EHMKS3i) | ----
+| LV connector Pre-wired  | [aliexpress](https://a.aliexpress.com/_EHMKS3i) | ----
 | HV cable | ---- | OEM numbers: 1364774600 & SC2EM215300A or SC2EM-2105300
 | HV cable PE5/PE6 | ---- | OEM numbers: EKEA2105300Y / 13568667-00
 
@@ -270,7 +270,7 @@ There are two methods to try and unlock the battery. The methods are via More Ba
 
 - Pin 4 12v+ BMS
 - Pin 5 12v+ ignition
-- Also make sure 12V supply has atleast 12.8V and 2A available before starting the unlock procedure
+- Also make sure 12V supply has at least 12.8V and 2A available before starting the unlock procedure
 
 ### More Battery Info Unlock
 There is a button in the "More Battery Info" page in the webserver, that when pressed will attempt to unlock the crashed battery.
@@ -296,7 +296,7 @@ User 1: About the power cycle and how I did it:
 
 User 2 success story:
 
-- I have B+ and the 2 ignition wires on seperate switches.
+- I have B+ and the 2 ignition wires on separate switches.
 - I turn on B+ first then ignition.
 - Software was setup for BYD ATTO 3, v8.13.0
 - Then I ran unlock procedure via "More Battery Info" page

@@ -59,10 +59,10 @@ To make the board even more professional (DIN mounting solution with CANFD and c
 
 ## Enhancements notes, things to know
 
-The chip has the tendacy to run quite hot. Some people book good results by adding a RAM or Raspberry Pi heatsinks on the chip, reducint the heat.
+The chip has the tendency to run quite hot. Some people book good results by adding a RAM or Raspberry Pi heatsinks on the chip, reducing the heat.
 Above 80 degrees the BE screen turns yellow as a warning, and above 95 degrees damage is possible.
 Take this into consideration when building enclosures for it.
-If the situation is crifical (hot and direct sun), you can use a [Peltier element with fan](https://s.click.aliexpress.com/e/_c4LFUPAt).
+If the situation is critical (hot and direct sun), you can use a [Peltier element with fan](https://s.click.aliexpress.com/e/_c4LFUPAt).
 
 There are several enclosure designs that can be 3D printed, so it can be mounted on a DIN rail.
 [thingiverse](https://www.thingiverse.com/thing:6788996)

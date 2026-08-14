@@ -34,7 +34,7 @@ connector X096 (on the CP ECU) needs to have the following connections.  The con
 
 # Cooling
 
-As the PCS (Power Conversion System, in the penthouse) might be handling a lot of kW (up to 11kW) it might need cooling.  Ports 3 and 9 (in the imageof the penthouse below) connect to PCS, and we might need to connect a cooling system to these ports - a pump, a radiator, maybe a fan; all powered from the Tesla 16v battery via a relay or switch (triggering mechanism yet to be decided).
+As the PCS (Power Conversion System, in the penthouse) might be handling a lot of kW (up to 11kW) it might need cooling.  Ports 3 and 9 (in the image of the penthouse below) connect to PCS, and we might need to connect a cooling system to these ports - a pump, a radiator, maybe a fan; all powered from the Tesla 16v battery via a relay or switch (triggering mechanism yet to be decided).
 
 # Specs
 * Maximum power: 11000w

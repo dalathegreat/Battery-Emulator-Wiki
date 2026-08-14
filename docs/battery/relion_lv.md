@@ -6,7 +6,7 @@ title: "Relion LV"
 
 - [RB48V200](https://www.relionbattery.com/products/lithium/rb48v200)
 
-## Software configureation
+## Software configuration
 
 The Relion LV protocol supports 48V batteries.
 

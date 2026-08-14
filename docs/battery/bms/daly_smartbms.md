@@ -9,7 +9,7 @@ But also directly via CAN to Growatt SPH LV and HV inverters.
 ### Where do I get the hardware?
 
 - BMS from e.g. [Aliexpress](https://s.click.aliexpress.com/e/_c3AjMTZN), make sure to buy the **"smart"** version (i.e. it has RS485)
-- Cells from Aliexpress, Scrapeyards, ...
+- Cells from AliExpress, scrapyards, ...
 
 ## Battery Emulator Configuration
 For this battery type, use the option called "DALY RS485" under the "Battery Protocol" setting. Also make sure to configure the interface to RS485.

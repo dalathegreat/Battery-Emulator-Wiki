@@ -6,7 +6,7 @@ title: "Options for high voltage precharge"
 
 ### Why
 
-The MEB battery, but also CCS charge ports require an external high (precharge) voltage to be applied before contactors are closed. This should not be confused witi the other Precharge terms used;
+The MEB battery, but also CCS charge ports require an external high (precharge) voltage to be applied before contactors are closed. This should not be confused with the other Precharge terms used;
 
 - Precharge: Precharge resistor inside battery
 - **External HV source**: No precharge resistor inside battery, external hardware needed to provide high voltage to wake battery :arrow_backward:  This is the one this Wiki page handles 
@@ -16,7 +16,7 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 One of the options is the HIA4V1 board original or modified for Lilygo or Stark CMR. 
 
 !!! warning "CAUTION"
-    There are various HIA4V1 board version avaiable that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
+    There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
 
 # Option A: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
 The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Support for this was added in firmware v10.11.0.
@@ -83,7 +83,7 @@ HIA4V1 modifications:
 
 * Remove 6 (marked) components on the primary side of the transformer
 * Bridge the primary side of the coil to the power pin (A)
-* Add the output bias resistors 4x 140k (or equivalent) on the HV output pins, protected with shrinksleve (B)
+* Add the output bias resistors 4x 140k (or equivalent) on the HV output pins, protected with shrink sleeve (B)
 * Clearly mark the polarity of the HV output to avoid confusion
 
 Frontside modifications - Components to be removed and output polarity marking:
@@ -92,7 +92,7 @@ Frontside modifications - Components to be removed and output polarity marking:
 Backside modifications - Bridge from coil to power pin (A) and HV bias resistors (B)
 ![image](../../images/high-voltage-source-06.png)
 
-This method can also be used with the Lilygo HW if a seperate FET board is used, any MOS FET that works with 3V3 siganl will work.
+This method can also be used with the Lilygo HW if a separate FET board is used, any MOS FET that works with a 3V3 signal will work.
 
 ToDO add link, for now google for: 15A 400W MOS FET Trigger Switch Drive Module PWM Regulator
 
@@ -101,7 +101,7 @@ Wiring diagram:
 
 ## Decoupling inverter from battery during precharge
 During precharge the inverter will see a high voltage on its inputs pins. The inverters we have tested on will use this a trigger to startup. This will put a load on this high voltage while the contactors of the battery are not yet closed. This load will disrupt the precharging sequence and will cause the precharge to fail.
-In order to prevent this we decouple the positive input from the inverter while precharging. This is done via a normaly closed (NC) high voltage contact. When the precharge sequence is active, this contact will be opened, decoupling the battery and precharge circuit from the inverter.
+In order to prevent this we decouple the positive input from the inverter while precharging. This is done via a normally closed (NC) high voltage contact. When the precharge sequence is active, this contact will be opened, decoupling the battery and precharge circuit from the inverter.
 We use a normally closed contact, because this does not require any power during normal operation.
 
 Type used: SEV100ADXL (1NC contact and controlled via 12V)

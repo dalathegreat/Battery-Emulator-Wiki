@@ -67,4 +67,4 @@ Perform the same detective work for the following parameters.
 - +Any other relevant parameters
 
 ## Creating the integration
-One the mandatory info has been found for the inverter communuication, it can be integrated to the software. Create an inverter.cpp and .h header, see the other inverter protocols for how the structure should look like. If in doubt, contact the developers!
+Once the mandatory info has been found for the inverter communication, it can be integrated to the software. Create an inverter.cpp and .h header, see the other inverter protocols for how the structure should look like. If in doubt, contact the developers!

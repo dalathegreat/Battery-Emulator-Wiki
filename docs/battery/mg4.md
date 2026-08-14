@@ -58,7 +58,7 @@ This is the Low voltage connector plug: [aliexpress](https://www.aliexpress.com/
 
 The one you need is the female.
 
-There's are non-wired versions avaialable too for doing your own crimping but this looks easier to implement.
+There are non-wired versions available too for doing your own crimping but this looks easier to implement.
 
 ![alilvplug](../images/mg4-10.png){ width="344" height="348" }
 

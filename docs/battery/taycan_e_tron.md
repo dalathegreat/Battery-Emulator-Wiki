@@ -29,7 +29,7 @@ Pin 18: Temp Sensor Ground (return)
 Pin 16: CAN High
 Pin 19: CAN Low
 
-Only CAN Pins 16 and 19 are populated in both Audi Etron GT and Porsche Taycan Batteries so thats where I have taken the CAN data from
+Only CAN Pins 16 and 19 are populated in both Audi Etron GT and Porsche Taycan Batteries so that is where I have taken the CAN data from
 
 ![image](../images/taycan-e-tron-02.png)
 

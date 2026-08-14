@@ -26,7 +26,7 @@ So can it be that the battery donor car is from 2020 or 2021 but has received th
 
 ## Part numbers for batteries
 
-Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Number Q is used for Niro. ✅ means that someone has succesfully used the pack with the Battery-Emulator.
+Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Number Q is used for Niro. ✅ means that someone has successfully used the pack with the Battery-Emulator.
 
 - 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ This battery uses **CAN-FD**, Use `Kia 64kWh **FD** Battery` option in software!
 ![image](../images/kia-niro-hyundai-kona-64-kwh-16.png)
@@ -64,9 +64,9 @@ All the following options use
 - 37501 Q4452 is Kia Niro 64kWh
 
 Remark;
-It is possible the BMS in the battery needs a 12v powercycle for 10 ~ 20 sec , after that or at the same time boot the Lilly and contractors are closed and HIGH VOLTAGE !! is active on the battery pins.
+It is possible the BMS in the battery needs a 12V power cycle for 10 ~ 20 sec , after that or at the same time boot the Lilly and contractors are closed and HIGH VOLTAGE !! is active on the battery pins.
 
-This also applies when a emergency knob/button is installed in the interlock lus. when lus is interupted the whole battery systems needs a 12v powercycle to be active again.
+This also applies when an emergency knob/button is installed in the interlock loop. When the loop is interrupted, the whole battery system needs a 12V power cycle to be active again.
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
@@ -205,12 +205,12 @@ If you see Battery Voltage being reported as 6553.5V, it means that the battery 
    - Another user reported corrosion on one of the balance lead plugs
    - Whatever the case, opening the battery and investigating is required if cellvoltages are missing
 
-## Notes on waterdamage :droplet: 
+## Notes on water damage :droplet: 
 
 !!! warning "WARNING"
     These batteries are not waterproof. Water can easily enter thru the service disconnect switch. Store and operate in a dry area!
 
-Attached pictures from packs that did not detect all cells. Root cause was water damage, causing fuses and PCB traces to blow up. Placing batteries vertically can make water sloosh around and short out. You have been warned!
+Attached pictures from packs that did not detect all cells. Root cause was water damage, causing fuses and PCB traces to blow up. Placing batteries vertically can make water slosh around and short out. You have been warned!
 
 ![image](../images/kia-niro-hyundai-kona-64-kwh-15.png)
 
@@ -219,7 +219,7 @@ Attached pictures from packs that did not detect all cells. Root cause was water
 More battery info:
 Cells: 98S						= Total amount of cells of battery build
 12V voltage: 11.9					= State of 12V battery input, actual value (minimum 12V!)
-Waterleakage: 160					= Don’t know
+Water leakage: 160					= Don’t know
 Temperature, water inlet: 17				= Temperature on inlet side of water cooling.
 Temperature, power relay: 26				= Temperature of power relays of battery.
 Batterymanagement mode: 1				= Don’t know.
