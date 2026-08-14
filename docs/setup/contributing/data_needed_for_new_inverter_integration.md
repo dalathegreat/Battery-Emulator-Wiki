@@ -68,3 +68,5 @@ Perform the same detective work for the following parameters.
 
 ## Creating the integration
 Once the mandatory info has been found for the inverter communication, it can be integrated to the software. Create an inverter.cpp and .h header, see the other inverter protocols for how the structure should look like. If in doubt, contact the developers!
+
+<img width="1408" height="811" alt="kép" src="https://github.com/user-attachments/assets/4d44671c-f923-457e-9abb-96dc78e38f90" />
