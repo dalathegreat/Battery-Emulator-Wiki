@@ -16,7 +16,9 @@ on:
         required: true
 
 permissions:
-  contents: read
+  # write is required to push the image commit back to the PR branch;
+  # only sufficient when the PR branch lives in this repository.
+  contents: write
   pull-requests: write
   issues: write
 
