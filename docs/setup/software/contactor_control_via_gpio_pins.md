@@ -1,11 +1,11 @@
 ---
-title: "Contactor Control via GPIO pins"
+title: "Contactor Control via GPIO"
 ---
 
 !!! warning "CAUTION"
-    Contactors can weld themselves together if handled improperly, which may result in high voltage being present on connectors even when the system is powered down. Always assume high voltage is present on any high voltage wiring. To ensure safety, unplug the wiring from the battery or remove safety disconnect switches before working on the system. Then measure with a multimeter to confirm the system is off
+    Contactors can weld themselves together if handled improperly, which may result in high voltage being present on connectors even when the system is powered down. Always assume high voltage is present on any high voltage wiring. To ensure safety, unplug the wiring from the battery or remove safety disconnect switches before working on the system. Then measure with a multimeter to confirm the system is off.
 
-Start by familiarizing yourself with how contactor and precharge circuits work. [Here is a good whitepaper](https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf) that explains how precharging works in great detail
+Start by familiarizing yourself with how contactor and precharge circuits work. [Here is a good whitepaper](https://www.sensata.com/sites/default/files/a/sensata-how-to-design-precharge-circuits-evs-whitepaper.pdf) that explains how precharging works in great detail.
 
 ## Automatic control 🤖
 The Battery-Emulator simulates an entire car to get EV batteries to turn themselves on. Some batteries have CAN controlled contactors (e.g. Tesla,Kia,Hyundai), but some require hardwired signals (e.g. LEAF, Zoe) to turn on contactors and the precharge sequence. Instead of having to wire manual on/off switches for these signals, you can have the emulator hardware perform this (feature called `CONTACTOR_CONTROL`). This will automatically handle precharge, contactor closing, and optional economization. 
@@ -22,7 +22,7 @@ For instance, 3x ASR-10DD can be used. ASR-M02DD is a din mounted version. If yo
 
 ### Software setup
 
-To enable the feature in the software, Enable the "Contactor Control via GPIO" option under Hardware Config, Save and reboot
+To enable the feature in the software, Enable the "Contactor Control via GPIO" option under Hardware Config, Save and reboot.
 
 ![image](../../images/contactor-control-via-gpio-pins-04.png)
 
@@ -34,16 +34,20 @@ There is also an option to use "Use Normally Closed logic:" This is for very rar
     Normally EVs perform a much more robust precharge, measuring motor inverter voltage and basing precharge duration based on this info, but since we dont have this info available a simple timer is used. Not optimal, but better than nothing!
 
 ### Example wiring diagram 🗺️ 
-To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
-- (LilyGo) Precharge pin 25 - Precharge SSR + input
-- (LilyGo) Positive Contactor pin 32 - Positive SSR + input
-- (LilyGo) Negative Contactor pin 33 - Negative SSR + input
-- (LilyGo) GND - All 3x SSR - input
+To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. 
+
+This schematic shows a wiring example with LilyGo T‐CAN485:
+
+- Precharge pin 25 - Precharge SSR + input
+- Positive Contactor pin 32 - Positive SSR + input
+- Negative Contactor pin 33 - Negative SSR + input
+- GND - All 3x SSR - input
+
 ![bild](../../images/nissan-leaf-e-nv200-07.png)
 
-(Easier with the [Stark CMR](../../hardware/stark_cmr.md), no SSR needed on this hardware since the outputs are rugged)
+[Stark CMR](../../hardware/stark_cmr.md), doesn't need an SSR since its outputs are rugged.
 
-### Troubleshooting 👓 
+### Troubleshooting
 Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface. In this screenshot, battery is preventing startup:
 
 ![bild](../../images/nissan-leaf-e-nv200-08.png)
@@ -60,16 +64,19 @@ Incase the current draw on the GPIO pins is exceeded, for instance incase you us
 
 Note the "X" on both contactors, even though the emulator is in active state and should have contactors engaged. If you see this, remove the wires and restart the emulator, to confirm that activation of the pins is possible. Then switch to a supported SSR.
 
-### PWM control for lower power draw 🧊 
+## PWM control for lower power draw 🧊 
 Optional: It is also possible to reduce power consumption of keeping the big contactors engaged via PWM control. This requires Solid State Relays (SSR). The PWM signal will very quickly turn on/off the SSR, and still keep the contactor engaged. Do be careful, and test this properly before using it. It is very much depending on what SSR and battery contactor combination you use. 
 
 To use the PWM function, enable the "PWM contactor control" option
 
 ![image](../../images/contactor-control-via-gpio-pins-05.png)
 
-By default we use a Hold value of 250, which is suitable for Nissan LEAF contactors. Tweak this value to suit your contactors
+By default we use a Hold value of 250, which is suitable for Nissan LEAF contactors. Tweak this value to suit your contactors.
 
-## Benefits of PWM
+### Benefits of PWM
 * Less load on the 12V supply
 * Better for offgrid solutions where every Watt counts
 * Less heat inside battery is good for summer
+
+!!! note "NOTE"
+    PWM can only be used with electromechanical contactors. It's not applied to the BMS power control pin, despite that's also usually wired using a SSR.
