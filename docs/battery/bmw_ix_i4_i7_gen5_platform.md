@@ -1,5 +1,5 @@
 ---
-title: "BMW iX, i4‐i7 (Gen5 platform)"
+title: "BMW iX, i4‐i7 (Gen5)"
 ---
 
 !!! warning "WARNING"
