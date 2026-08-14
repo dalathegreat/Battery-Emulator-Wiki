@@ -81,6 +81,19 @@ RE_HTML_IMAGE = re.compile(
     r"<img\b[^>]*?\bsrc\s*=\s*(?P<q>[\"'])(?P<url>.*?)(?P=q)[^>]*?>",
     re.IGNORECASE | re.DOTALL,
 )
+# alt="..." inside an <img> tag
+RE_HTML_ALT = re.compile(
+    r"\balt\s*=\s*(?P<q>[\"'])(?P<alt>.*?)(?P=q)", re.IGNORECASE | re.DOTALL
+)
+# Tags that commonly wrap an image and would stop Markdown from rendering
+# inside them, so they are removed along with the <img>.
+RE_OPEN_WRAP = re.compile(r"<(?:p|div|center)\b[^>]*>\s*$", re.IGNORECASE)
+RE_CLOSE_WRAP = re.compile(r"^\s*</(?:p|div|center)\s*>", re.IGNORECASE)
+RE_OPEN_ANCHOR = re.compile(
+    r"<a\b[^>]*?\bhref\s*=\s*([\"'])(?P<href>.*?)\1[^>]*>\s*$",
+    re.IGNORECASE | re.DOTALL,
+)
+RE_CLOSE_ANCHOR = re.compile(r"^\s*</a\s*>", re.IGNORECASE)
 # [label]: url  (reference definitions)
 RE_REF_DEF = re.compile(
     r"^(?P<lead>[ \t]{0,3}\[(?P<label>[^\]]+)\]:[ \t]*)(?P<url>\S+)",
@@ -103,6 +116,18 @@ PIL_EXT = {
     "BMP": ".bmp",
     "TIFF": ".tiff",
 }
+
+
+@dataclass
+class Ref:
+    """One image reference found in a Markdown file."""
+
+    start: int
+    end: int
+    url: str
+    kind: str  # markdown | html | reference | bare
+    alt: str = ""
+    href: str | None = None
 
 
 @dataclass
@@ -263,33 +288,63 @@ def relative_link(target: Path, md_file: str) -> str:
 # --------------------------------------------------------------------------
 
 
-def collect_urls(text: str) -> list[tuple[int, int, str, str]]:
-    """Collect (start, end, url, kind) spans of external image references."""
-    spans: list[tuple[int, int, str, str]] = []
+def expand_wrappers(text: str, start: int, end: int) -> tuple[int, int, str | None]:
+    """Grow a span over <a>, <p>, <div> and <center> tags that tightly wrap it.
+
+    Markdown is not rendered inside a raw HTML block, so these have to be
+    removed rather than left around the new Markdown image. An anchor's href
+    is returned so the click-through can be preserved as a Markdown link.
+    """
+    href: str | None = None
+    while True:
+        open_anchor = RE_OPEN_ANCHOR.search(text[:start])
+        close_anchor = RE_CLOSE_ANCHOR.match(text[end:])
+        if href is None and open_anchor and close_anchor:
+            href = open_anchor.group("href").strip()
+            start, end = open_anchor.start(), end + close_anchor.end()
+            continue
+        open_wrap = RE_OPEN_WRAP.search(text[:start])
+        close_wrap = RE_CLOSE_WRAP.match(text[end:])
+        if open_wrap and close_wrap:
+            start, end = open_wrap.start(), end + close_wrap.end()
+            continue
+        return start, end, href
+
+
+def collect_urls(text: str) -> list[Ref]:
+    """Collect spans of external image references, in document order."""
+    spans: list[Ref] = []
 
     def add(match: re.Match, kind: str) -> None:
         url = match.group("url").strip()
         if is_external(url) and looks_like_image(url):
-            spans.append((match.start("url"), match.end("url"), url, kind))
+            spans.append(Ref(match.start("url"), match.end("url"), url, kind))
 
     for match in RE_MD_IMAGE.finditer(text):
         add(match, "markdown")
     for match in RE_HTML_IMAGE.finditer(text):
-        add(match, "html")
+        # The whole tag is replaced by Markdown syntax, so width, height and
+        # every other attribute are dropped along with it.
+        url = match.group("url").strip()
+        if is_external(url) and looks_like_image(url):
+            alt_match = RE_HTML_ALT.search(match.group(0))
+            alt = alt_match.group("alt").strip() if alt_match else ""
+            start, end, href = expand_wrappers(text, match.start(), match.end())
+            spans.append(Ref(start, end, url, "html", alt, href))
     for match in RE_REF_DEF.finditer(text):
         add(match, "reference")
     for match in RE_BARE_ATTACHMENT.finditer(text):
-        spans.append((match.start(), match.end(), match.group(0), "bare"))
+        spans.append(Ref(match.start(), match.end(), match.group(0), "bare"))
 
     # Drop overlaps — a bare URL already covered by a markdown or HTML tag
     # keeps the richer match, which is added first and wins on a stable sort.
-    spans.sort(key=lambda item: (item[0], -item[1]))
-    result: list[tuple[int, int, str, str]] = []
+    spans.sort(key=lambda ref: (ref.start, -ref.end))
+    result: list[Ref] = []
     last_end = -1
-    for span in spans:
-        if span[0] >= last_end:
-            result.append(span)
-            last_end = span[1]
+    for ref in spans:
+        if ref.start >= last_end:
+            result.append(ref)
+            last_end = ref.end
     return result
 
 
@@ -337,22 +392,41 @@ def process_markdown(md_file: str, state: State) -> bool:
     cursor = 0
     changed = False
 
-    for start, end, url, kind in spans:
+    for ref in spans:
         try:
-            target = fetch_and_store(url, md_file, state)
+            target = fetch_and_store(ref.url, md_file, state)
         except Exception as error:  # noqa: BLE001 - reported in the PR comment
-            log(f"  !! {url}: {error}")
-            state.failures.append((md_file, url, str(error)))
+            log(f"  !! {ref.url}: {error}")
+            state.failures.append((md_file, ref.url, str(error)))
             continue
 
         link = relative_link(Path(target), md_file)
-        # Only a standalone URL needs image syntax added around it; every
-        # other kind is already inside a link or tag.
-        replacement = f"![]({link})" if kind == "bare" else link
+        if ref.kind == "html":
+            # The <img> tag and any wrapper are replaced wholesale, which
+            # drops width, height, align and the rest.
+            replacement = f"![{ref.alt.replace(']', '')}]({link})"
+            href = ref.href
+            if href and href != ref.url:
+                # A different link target is a click-through worth keeping;
+                # normalize it too when it is itself an external image.
+                if is_external(href) and looks_like_image(href):
+                    try:
+                        href = relative_link(
+                            Path(fetch_and_store(href, md_file, state)), md_file
+                        )
+                    except Exception as error:  # noqa: BLE001
+                        state.failures.append((md_file, href, str(error)))
+                replacement = f"[{replacement}]({href})"
+        elif ref.kind == "bare":
+            replacement = f"![]({link})"
+        else:
+            # Markdown images and reference definitions already have their
+            # own syntax; only the URL is swapped.
+            replacement = link
 
-        pieces.append(text[cursor:start])
+        pieces.append(text[cursor:ref.start])
         pieces.append(replacement)
-        cursor = end
+        cursor = ref.end
         changed = True
 
     if not changed:
