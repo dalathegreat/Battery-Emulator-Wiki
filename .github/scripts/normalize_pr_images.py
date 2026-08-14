@@ -466,11 +466,31 @@ def main() -> int:
             commit_and_push()
         except RuntimeError as error:
             log(f"Push failed: {error}")
+            cross_repo = HEAD_REPO != BASE_REPO
+            using_pat = PUSH_TOKEN != TOKEN
+            if cross_repo and not using_pat:
+                cause = (
+                    f"This PR's branch lives in `{HEAD_REPO}`, and the default "
+                    f"`GITHUB_TOKEN` cannot push to another repository. A "
+                    f"`PR_IMAGES_TOKEN` secret holding a PAT with push access to "
+                    f"that fork is required."
+                )
+            elif cross_repo:
+                cause = (
+                    f"Pushing to `{HEAD_REPO}` was rejected. Check that **Allow "
+                    f"edits by maintainers** is enabled on this PR, and that "
+                    f"`PR_IMAGES_TOKEN` belongs to an account with push access "
+                    f"to that fork."
+                )
+            else:
+                cause = (
+                    "Pushing to this branch was rejected. Check the workflow's "
+                    "`contents: write` permission and any branch protection rules."
+                )
             upsert_comment(
                 f"{COMMENT_MARKER}\n### 🖼️ Images could not be normalized\n\n"
                 f"{len(state.changes)} external image(s) were found, but the changes "
-                f"could not be pushed to this branch.\n\n"
-                f"Enable **Allow edits by maintainers** on this PR, or move the images "
+                f"could not be pushed.\n\n{cause}\n\nAlternatively, move the images "
                 f"to `{IMAGES_DIR}/` manually.\n\n<details><summary>Details</summary>\n\n"
                 f"```\n{error}\n```\n\n</details>"
             )
