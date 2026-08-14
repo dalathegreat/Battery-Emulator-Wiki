@@ -197,6 +197,75 @@ A few implementation details are worth knowing if you are debugging a flaky brok
 - **A failed publish is logged once per outage.** The first failure of an outage produces a `... MQTT msg could not be sent` line; the message is not repeated every cycle until a complete publish cycle has succeeded again.
 - The MQTT client id is `BatteryEmulatorClient-<hostname>`.
 
+## Subscriptions
+
+The Battery-Emulator subscribes to `<hostname>/command/+`, e.g. `battery-emulator-a1b2/command/+` (subscription QoS 1).
+
+The currently supported commands are:
+
+- `BMSRESET` — Triggers a hardware power-cycle of the BMS. **Only acted upon if remote BMS reset is enabled** (see [Remote trigger through MQTT](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt)); otherwise the message is ignored.
+- `PAUSE` — Triggers the pause feature
+- `RESUME` — Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
+- `RESTART` — Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)
+- `STOP` — Triggers the equipment stop (opens contactors); see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume)
+- `SET_LIMITS` — Sets a temporary charge and/or discharge limit
+
+For example: `battery-emulator-a1b2/command/PAUSE`
+
+### Opening and closing contactors (`STOP` and `PAUSE` vs. `RESUME`)
+
+The auto-discovered button labelled **"Open Contactors"** is the `STOP` command. There is **no separate "Close Contactors" command or button** — closing the contactors is exposed through MQTT as the `RESUME` command (the auto-discovered "Resume charge/discharge" button). The naming is asymmetric, which is why it can look as though closing is missing: `STOP` is named after its contactor effect, while its inverse `RESUME` is named after its pause effect.
+
+Under the hood, `STOP` latches an equipment-stop state, and `RESUME` clears it:
+
+- `STOP` sets the equipment-stop flag, which forces the contactor state machine open and prevents it from re-closing.
+- `RESUME` clears the equipment-stop flag, which allows the contactor state machine to run through precharge and close again.
+
+So the effective mapping is:
+
+| Command | Effect on contactors | HA button label |
+| ------- | -------------------- | --------------- |
+| `STOP`   | Opens (sets equipment stop) | Open Contactors |
+| `RESUME` | Closes (clears equipment stop) | Resume charge/discharge |
+
+Two things to keep in mind:
+
+- `RESUME` *allows* the contactors to close; it does not *force* them closed. They only actually close if the inverter also permits closing and the normal preconditions are met (battery detected, past the post-boot startup delay, no faults). If the inverter is what is holding the contactors open, `RESUME` will not override that.
+- `RESUME` does double duty — it both ends a `PAUSE` and clears an equipment stop. There is no command that closes the contactors without also resuming charge/discharge, just as `STOP` cannot open them without also pausing.
+
+### SET_LIMITS
+
+Sets a **temporary** charge and/or discharge current limit for `timeout` seconds. While the limit is active it overrides the manual (user-set) limit in settings.
+
+Limits are set as deciampere, i.e. `300` = 30.0 A.
+
+| Parameter      | Data type | Default       |
+| -------------- | --------- | ------------- |
+| `max_charge`    | number    | disable limit |
+| `max_discharge` | number    | disable limit |
+| `timeout`       | seconds   | 30            |
+
+If `max_charge` or `max_discharge` is omitted (or not an integer), the corresponding limit is disabled. If `timeout` is omitted, it defaults to 30 seconds.
+
+Example payload (max charge 30 A, max discharge 40 A, timeout 60 seconds), published to `battery-emulator-a1b2/command/SET_LIMITS`:
+
+```json
+{
+  "max_charge": 300,
+  "max_discharge": 400,
+  "timeout": 60
+}
+```
+
+#### How the limit is applied and expires
+
+- **Temporary by design.** The main loop checks every cycle whether `now > (timestamp_of_last_command + timeout)`. Once that is true, the remote limit flags are cleared and the remote values are zeroed, so the limit must be **re-sent before each timeout** to stay in effect.
+- **Not persisted.** The remote limit is never written to flash, so it is also cleared by a reboot. After power-on no remote limit is active until a new `SET_LIMITS` is received.
+- **Reverts to the manual/BMS limit, not to "unrestricted".** When the remote limit expires, the allowed current falls back to the manual (user-set) limit, or to the BMS/inverter-derived limit if no manual limit applies.
+- **Overrides rather than combines with the manual limit.** While a remote limit is active, the manual user limit is bypassed — the remote value is used instead. The remote limit can therefore sit *above* your manual limit during the active window. It still only ever *lowers* the BMS/inverter-derived allowed current (it caps, it cannot raise the battery's own limit).
+
+To cancel a limit quickly, send a new message with a short timeout (for instance `1` second).
+
 ## Home Assistant Discovery
 
 When [Home Assistant](home_assistant.md) auto-discovery is enabled, the device publishes retained configuration topics so entities are created automatically. Discovery topics are published under the configurable **Home Assistant auto discovery topic** (default `homeassistant`); the entity/object portion and the device identity are both derived from the device's hostname.
@@ -333,75 +402,6 @@ Topic: `<discovery topic>/button/<hostname>/<command>/config`
 | Resume charge/discharge | `RESUME` | `mdi:battery-sync-outline` | Resumes from the paused state |
 | Reboot Emulator | `RESTART` | `mdi:restart` | Restarts the Battery-Emulator (diagnostic entity) |
 | Open Contactors | `STOP` | `mdi:battery-remove-outline` | Triggers the stop feature |
-
-## Subscriptions
-
-The Battery-Emulator subscribes to `<hostname>/command/+`, e.g. `battery-emulator-a1b2/command/+` (subscription QoS 1).
-
-The currently supported commands are:
-
-- `BMSRESET` — Triggers a hardware power-cycle of the BMS. **Only acted upon if remote BMS reset is enabled** (see [Remote trigger through MQTT](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt)); otherwise the message is ignored.
-- `PAUSE` — Triggers the pause feature
-- `RESUME` — Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
-- `RESTART` — Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)
-- `STOP` — Triggers the equipment stop (opens contactors); see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume)
-- `SET_LIMITS` — Sets a temporary charge and/or discharge limit
-
-For example: `battery-emulator-a1b2/command/PAUSE`
-
-### Opening and closing contactors (`STOP` and `PAUSE` vs. `RESUME`)
-
-The auto-discovered button labelled **"Open Contactors"** is the `STOP` command. There is **no separate "Close Contactors" command or button** — closing the contactors is exposed through MQTT as the `RESUME` command (the auto-discovered "Resume charge/discharge" button). The naming is asymmetric, which is why it can look as though closing is missing: `STOP` is named after its contactor effect, while its inverse `RESUME` is named after its pause effect.
-
-Under the hood, `STOP` latches an equipment-stop state, and `RESUME` clears it:
-
-- `STOP` sets the equipment-stop flag, which forces the contactor state machine open and prevents it from re-closing.
-- `RESUME` clears the equipment-stop flag, which allows the contactor state machine to run through precharge and close again.
-
-So the effective mapping is:
-
-| Command | Effect on contactors | HA button label |
-| ------- | -------------------- | --------------- |
-| `STOP`   | Opens (sets equipment stop) | Open Contactors |
-| `RESUME` | Closes (clears equipment stop) | Resume charge/discharge |
-
-Two things to keep in mind:
-
-- `RESUME` *allows* the contactors to close; it does not *force* them closed. They only actually close if the inverter also permits closing and the normal preconditions are met (battery detected, past the post-boot startup delay, no faults). If the inverter is what is holding the contactors open, `RESUME` will not override that.
-- `RESUME` does double duty — it both ends a `PAUSE` and clears an equipment stop. There is no command that closes the contactors without also resuming charge/discharge, just as `STOP` cannot open them without also pausing.
-
-### SET_LIMITS
-
-Sets a **temporary** charge and/or discharge current limit for `timeout` seconds. While the limit is active it overrides the manual (user-set) limit in settings.
-
-Limits are set as deciampere, i.e. `300` = 30.0 A.
-
-| Parameter      | Data type | Default       |
-| -------------- | --------- | ------------- |
-| `max_charge`    | number    | disable limit |
-| `max_discharge` | number    | disable limit |
-| `timeout`       | seconds   | 30            |
-
-If `max_charge` or `max_discharge` is omitted (or not an integer), the corresponding limit is disabled. If `timeout` is omitted, it defaults to 30 seconds.
-
-Example payload (max charge 30 A, max discharge 40 A, timeout 60 seconds), published to `battery-emulator-a1b2/command/SET_LIMITS`:
-
-```json
-{
-  "max_charge": 300,
-  "max_discharge": 400,
-  "timeout": 60
-}
-```
-
-#### How the limit is applied and expires
-
-- **Temporary by design.** The main loop checks every cycle whether `now > (timestamp_of_last_command + timeout)`. Once that is true, the remote limit flags are cleared and the remote values are zeroed, so the limit must be **re-sent before each timeout** to stay in effect.
-- **Not persisted.** The remote limit is never written to flash, so it is also cleared by a reboot. After power-on no remote limit is active until a new `SET_LIMITS` is received.
-- **Reverts to the manual/BMS limit, not to "unrestricted".** When the remote limit expires, the allowed current falls back to the manual (user-set) limit, or to the BMS/inverter-derived limit if no manual limit applies.
-- **Overrides rather than combines with the manual limit.** While a remote limit is active, the manual user limit is bypassed — the remote value is used instead. The remote limit can therefore sit *above* your manual limit during the active window. It still only ever *lowers* the BMS/inverter-derived allowed current (it caps, it cannot raise the battery's own limit).
-
-To cancel a limit quickly, send a new message with a short timeout (for instance `1` second).
 
 ## Running multiple Battery Emulators on one broker
 
