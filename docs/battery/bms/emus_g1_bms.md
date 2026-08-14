@@ -1,5 +1,5 @@
 ---
-title: "EMUS G1 BMS"
+title: "EMUS G1"
 ---
 
 The Battery-Emulator has support for the EMus G1 BMS. 
@@ -8,7 +8,7 @@ This allows you to use a DIY battery (instead of an EV battery) with any normal 
 
 ## Where do I get the hardware?
 
-www.emusbms.com
+[emusbms.com](https://emusbms.com/)
 
 ## Setup
 
