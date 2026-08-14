@@ -5,46 +5,88 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - '**.md'
+  # Manual re-run from inside the PR: comment "/normalize-images"
+  issue_comment:
+    types: [created]
+  # Manual re-run from the Actions tab
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Pull request number'
+        required: true
 
 permissions:
   contents: read
   pull-requests: write
+  issues: write
 
 concurrency:
-  group: pr-images-${{ github.event.pull_request.number }}
+  group: pr-images-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr }}
   cancel-in-progress: true
 
 jobs:
   normalize:
-    # Skip our own follow-up pushes and PRs from deleted forks
     if: >-
-      github.event.pull_request.head.repo.full_name != '' &&
-      github.actor != 'github-actions[bot]'
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request_target' && github.actor != 'github-actions[bot]') ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       startsWith(github.event.comment.body, '/normalize-images') &&
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
     runs-on: ubuntu-latest
 
     steps:
+      - name: Acknowledge the command
+        if: github.event_name == 'issue_comment'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X POST \
+            "repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions" \
+            -f content=eyes
+
+      - name: Resolve the pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          case "${{ github.event_name }}" in
+            pull_request_target) NUM="${{ github.event.pull_request.number }}" ;;
+            issue_comment)       NUM="${{ github.event.issue.number }}" ;;
+            workflow_dispatch)   NUM="${{ inputs.pr }}" ;;
+          esac
+          gh api "repos/${{ github.repository }}/pulls/${NUM}" > pr.json
+          {
+            echo "number=${NUM}"
+            echo "repo=$(jq -r .head.repo.full_name pr.json)"
+            echo "ref=$(jq -r .head.ref pr.json)"
+            echo "sha=$(jq -r .head.sha pr.json)"
+            echo "base_sha=$(jq -r .base.sha pr.json)"
+          } >> "$GITHUB_OUTPUT"
+          rm pr.json
+
       # The script is always taken from the base branch, never from the PR.
       - name: Check out normalizer script (base branch)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ steps.pr.outputs.base_sha }}
           path: .normalizer
+          persist-credentials: false
           sparse-checkout: |
             .github/scripts
           sparse-checkout-cone-mode: false
 
+      # PR content is treated strictly as data: nothing from it is executed,
+      # and no credentials are written into this working tree.
       - name: Check out PR head
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ steps.pr.outputs.repo }}
+          ref: ${{ steps.pr.outputs.sha }}
           path: pr
           fetch-depth: 0
-          persist-credentials: true
-          # PRs from forks need a PAT with push access to the fork
-          # ("Allow edits by maintainers" must be enabled on the PR).
-          # Falls back to GITHUB_TOKEN for same-repo branches.
-          token: ${{ secrets.PR_IMAGES_TOKEN || secrets.GITHUB_TOKEN }}
+          persist-credentials: false
+          allow-unsafe-pr-checkout: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -58,10 +100,13 @@ jobs:
         working-directory: pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          # PRs from forks need a PAT with push access to the fork
+          # ("Allow edits by maintainers" must be enabled on the PR).
+          PUSH_TOKEN: ${{ secrets.PR_IMAGES_TOKEN || secrets.GITHUB_TOKEN }}
           BASE_REPO: ${{ github.repository }}
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          HEAD_REPO: ${{ steps.pr.outputs.repo }}
+          HEAD_REF: ${{ steps.pr.outputs.ref }}
           # Tunables
           MAX_WIDTH: '1200'
           IMAGES_DIR: 'docs/images'

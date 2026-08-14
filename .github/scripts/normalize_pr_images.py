@@ -37,7 +37,11 @@ API = "https://api.github.com"
 TOKEN = os.environ["GITHUB_TOKEN"]
 BASE_REPO = os.environ["BASE_REPO"]
 PR_NUMBER = os.environ["PR_NUMBER"]
+HEAD_REPO = os.environ["HEAD_REPO"]
 HEAD_REF = os.environ["HEAD_REF"]
+# Credentials are not persisted in the checked-out tree, so the push URL
+# carries the token explicitly.
+PUSH_TOKEN = os.environ.get("PUSH_TOKEN") or TOKEN
 
 MAX_WIDTH = int(os.environ.get("MAX_WIDTH", "1200"))
 IMAGES_DIR = Path(os.environ.get("IMAGES_DIR", "docs/images"))
@@ -435,7 +439,12 @@ def commit_and_push() -> None:
         log("Nothing staged.")
         return
     run("git", "commit", "-m", "docs: move external images to docs/images and relink")
-    run("git", "push", "origin", f"HEAD:refs/heads/{HEAD_REF}")
+    remote = f"https://x-access-token:{PUSH_TOKEN}@github.com/{HEAD_REPO}.git"
+    try:
+        run("git", "push", remote, f"HEAD:refs/heads/{HEAD_REF}")
+    except RuntimeError as error:
+        # Never leak the token through an error message
+        raise RuntimeError(str(error).replace(PUSH_TOKEN, "***")) from None
 
 
 def main() -> int:
