@@ -156,9 +156,9 @@ The battery case **needs** to be connected to protective earth (PE). This is req
 !!! warning "CAUTION"
     **Failure to connect battery case to protective earth can lead to dangerous situations where high voltage leaks are not detected**
 
-Example, Nissan LEAF battery case connected to PE
+Example, Nissan LEAF battery case and all other metallic parts connected to PE:
 
-![image](../../images/installation-guidelines-09.png)
+![kép](../images/installation-guidelines-15.png)
 
 ### Loss of isolation :zap: 
 If either HV+ or HV- touches protective earth while the system is running, the solar inverter will detect this and throw an loss of isolation / insulation resistance too low error message, and stop operation. Troubleshooting this can be tricky, and requires extreme caution since high voltage can be present in protective earth.
