@@ -123,7 +123,7 @@ See below for more information.
 ### Expansion header
 
 The underside of the board has pads for a 26-pin 2.54mm-pitch pin header.
-![image](../images/lilygo-t-2can-12.png)
+<img width="100%" alt="image" src="https://github.com/user-attachments/assets/683275d6-87f9-4d68-a78b-a7e103b8de2b" />
 
 Note that the configurable port setting overrides these pin assignments - for example, if you choose WUP1/WUP2 for the configurable port, these pins will be on the top QWIIC connector, and not the underside expansion header.
 
