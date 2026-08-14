@@ -74,14 +74,14 @@ Failing to ground properly will result in CAN errors.
 
 ### CAN Termination
 
-When the LilyGo board connects to both a CAN battery and CAN inverter on the same pins, and both ends have termination resistors, remove the terminating resistor from the board. See [CAN troubleshooting](../setup/index.md#can-wiring-troubleshooting) for details.
+When a board with a single CAN channel, such as the LilyGo T-CAN485, connects to both a CAN battery and CAN inverter on the same pins, and both ends have termination resistors, remove the terminating resistor from the board. See [CAN troubleshooting](../setup/index.md#can-wiring-troubleshooting) for details.
 
 ℹ️ To verify wiring: With inverter powered on and CAN wires connected only to the inverter, you should measure over 1V (e.g., 1.38V).
 
 ### Dedicated CAN Channel (Recommended)
 
 !!! warning "CAUTION"
-    **Safety Warning:** If using a single CAN channel and the LilyGo board disconnects while the system is running (wire break or hardware failure), the inverter will continue charging/discharging the battery. The Sungrow inverter interprets automotive CAN messages as the system being alive, which can lead to dangerous over/under-charge conditions.
+    **Safety Warning:** If using a single CAN channel and the Battery-Emulator hardware disconnects while the system is running (wire break or hardware failure), the inverter will continue charging/discharging the battery. The Sungrow inverter interprets automotive CAN messages as the system being alive, which can lead to dangerous over/under-charge conditions.
 
 For maximum safety and stability, use a dedicated CAN channel for the inverter. Options:
 
@@ -91,7 +91,7 @@ For maximum safety and stability, use a dedicated CAN channel for the inverter. 
 - Use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system
 
 !!! note "NOTE"
-    Some Sungrow inverters (e.g., SH5.0RS with Leaf battery) have CAN communication issues when battery and inverter share the same LilyGo channel. A dedicated channel resolves this.
+    Some Sungrow inverters (e.g., SH5.0RS with Leaf battery) have CAN communication issues when battery and inverter share the same CAN channel. A dedicated channel resolves this.
 
 ## Inverter Configuration
 
@@ -130,13 +130,13 @@ Once synchronized, they will communicate reliably.
 2. Turn on the Solar DC switch
 3. Turn on the Battery DC switch
 4. Start the Leaf battery BMS with 12V
-5. Start the LilyGo hardware with 5V
-6. Handle precharge/contactor closing (manually or automatically via LilyGo)
+5. Start the Battery-Emulator hardware with 5V
+6. Handle precharge/contactor closing (manually or automatically via the Battery-Emulator)
 
 #### Shutdown
 
 1. Turn off the Leaf BMS (cut 12V supply). Wait 60 seconds.
-2. LilyGo status LED will turn red. Inverter will stop using the battery within 30 seconds.
+2. The status LED on the board will turn red. Inverter will stop using the battery within 30 seconds.
 3. After 30 seconds, turn off contactors (if not handled automatically)
 4. Turn off the Sungrow inverter via AC switch
 5. Turn off the Battery DC switch

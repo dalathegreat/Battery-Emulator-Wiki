@@ -31,8 +31,8 @@ Here is a connection diagram of a 201#? battery:
 
 Connect the following wires:
 
-* C26-10 CAN L - To LilyGo CAN L
-* C26-5 CAN H - To LilyGo CAN H
+* C26-10 CAN L - To CAN-L on the board
+* C26-5 CAN H - To CAN-H on the board
 * C22-4 to 12V+ supply
 * C22-5 to GND for 12V
 

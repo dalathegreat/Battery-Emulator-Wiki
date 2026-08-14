@@ -51,10 +51,10 @@ The BECM has no built in 120ohm resistor. (BECM = Battery Energy Control Module)
 Make sure the terminating resistors are correct. CAN networks should have two 120 Ohm resistors in each end of the network. With everything OFF, you can measure resistance between CAN-H and CAN-L. The result should be 60 Ohm.
 You can connect a 120ohm resistor between pin 44 and 45 to terminate the bus in the BECM end.
 
-Attached below are pictures of the BMS pinout. Connect the pins to the LilyGo and 12V supply like this:
+Attached below are pictures of the BMS pinout. Connect the pins to the Battery-Emulator hardware and 12V supply like this:
 
-* Pin 42 to LilyGo CAN - H
-* Pin 43 to LilyGo CAN - L
+* Pin 42 to CAN-H on the board
+* Pin 43 to CAN-L on the board
 * Pin 44 - 120ohm termination resistor - Pin 45
 * Pin 24 & 33 to +12V 
 * Pin 47 This wire needs to be connected to the battery casing for isolation measurement
@@ -116,7 +116,7 @@ Use a heat gun to warm up the glued seal between the cover and the bay. Use a le
 ![image](../images/volvo-xc40-polestar-2-09.jpeg)
 
 ### No CAN comm issue
-When 12V power is applied to the battery and the LilyGo board, there is occasionally an issue where the CAN bus and the transceiver in the BMS control unit do not "wake up," making communication impossible. So far, I’ve found only one solution to this problem — adding an external MCP2515 module and configuring it for communication with the BMS. In this setup, everything works smoothly and without any issues, ensuring reliable data transmission over the CAN bus.
+When 12V power is applied to the battery and the Battery-Emulator hardware, there is occasionally an issue where the CAN bus and the transceiver in the BMS control unit do not "wake up," making communication impossible. So far, I’ve found only one solution to this problem — adding an external MCP2515 module and configuring it for communication with the BMS. In this setup, everything works smoothly and without any issues, ensuring reliable data transmission over the CAN bus.
 
 Another thing to test if issue with comm is to leave pin 24 (+12V) disconnected during the first startup of BECM.
 

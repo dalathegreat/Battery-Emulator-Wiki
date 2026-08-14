@@ -14,7 +14,7 @@ title: "Ferroamp"
 * 1x or 2x [FerroAmp ESO (Energy Storage Optimizer) Module](https://ferroamp.com/wp-content/uploads/2022/05/ESO-Module_Datasheet_En.pdf), installed inside the Power Case.
 
 ## Communication wiring
-The Ferroamp inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues, or before removing the resistor. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
+The Ferroamp inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues, or before removing the resistor. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
 
 !!! note "NOTE"
     While the Ferroamp will work on the same CAN channel as an EV battery, it sometimes can cause "ESO fault code 2 - communication issues". If you are seeing this error, put the inverter on its own dedicated CAN channel.

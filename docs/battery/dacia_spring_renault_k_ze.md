@@ -31,7 +31,7 @@ These batteries have 72 cells in series, which creates an operating voltage of a
 In order to read the informations from the BMS, you need:
 
 - [LiLyGo T-CAN485](https://s.click.aliexpress.com/e/_oDPdyMg) with Battery Emulator installed and configured for this battery and NO inverter.
-- 12V source for LilyGo and battery (it can be a Gel battery, UPS, 12V adapter etc)
+- 12V source for the board and battery (it can be a Gel battery, UPS, 12V adapter etc)
 - Low Voltage battery Connector with those wires connected: 12V, GND, CAN-L and CAN-H (see the [connections](../images/dacia-spring-renault-k-ze-24.png))
 
 ### Shopping list

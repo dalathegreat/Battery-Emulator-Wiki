@@ -88,11 +88,11 @@ It has the following pinout:
 Connect the wiring as follow:
 
 * Pin 1 30C - Connect to to 12V, 10A fuse optional
-* Pin 9 15WUP-Signal (Green/GreenRed) - Connect to 12V, 5A fuse optional. Control this pin with ASR-10DD relay or a Pololu Power Switch controlled by PIN 25 in the LilyGo.
+* Pin 9 15WUP-Signal (Green/GreenRed) - Connect to 12V, 5A fuse optional. Control this pin with ASR-10DD relay or a Pololu Power Switch controlled by the WUP GPIO pin of your board (see the list below).
 * Pin 7 (Red) - Connect to to 12V, 5A fuse optional
 * Pin 2 Ground (BrownBlack) - Connect to Ground
-* Pin 4 CAN-H (WhiteYellow) - Connect to LilyGo CAN-H - twist with CAN-L cable and put a 120Ω resistor across to CAN-L.
-* PIN 10 CAN-L (WhiteBlue) - Connect to LilyGo CAN-L
+* Pin 4 CAN-H (WhiteYellow) - Connect to CAN-H on the board - twist with CAN-L cable and put a 120Ω resistor across to CAN-L.
+* PIN 10 CAN-L (WhiteBlue) - Connect to CAN-L on the board
 * Pin 6 I_LOCK (BlueRed) (connect to Pin 12 with a 33Ω resistor in between)
 * Pin 12 I_LOCK (BlueRed) (connect to Pin 6 with a 33Ω resistor in between)
 * Pin 3 Refrigerant valve (NOT USED)
@@ -109,7 +109,7 @@ The GPIO that controls the WUP signal depends on your BE hardware:
 
 The wakeup signal needs to be actuated by the Battery-Emulator, and as soon as messages start to come through from the battery we reply. This ensures a reliable startup. Same goes for rebooting/shutting down the battery. The Battery-Emulator sets WUP to low incase we need to command the BMS off.
 
-Since the LilyGo board has 3.3V logic on the GPIO pins, we need to use a solid state relay in order to boost the 3.3V -> 12V. Example connection using 1x ASR-10DD solid state relay:
+Since the board has 3.3V logic on the GPIO pins, we need to use a solid state relay in order to boost the 3.3V -> 12V. Example connection using 1x ASR-10DD solid state relay:
 
 !!! warning "CAUTION"
     To avoid [welded contacts](#CAUTIONCONTACTORSWELDED) Ensure you have a 12V backup system to avoid unwanted contact closings under load in case of a blackout.

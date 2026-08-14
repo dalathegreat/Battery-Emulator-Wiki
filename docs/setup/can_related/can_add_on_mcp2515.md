@@ -11,14 +11,14 @@ title: "CAN add‐on (MCP2515)"
     - Can add-on RS485 if needed, which is simpler than soldering a MCP2515
 
 # Why add another CAN channel?
-Some Inverters do not like to see automotive CAN frames on the CAN channel meant for stationary storage. When they see these messages, they enter a fault state. To get around this, we can add an additional MCP2515 chip to the LilyGo, to get an isolated secondary CAN bus.
+Some Inverters do not like to see automotive CAN frames on the CAN channel meant for stationary storage. When they see these messages, they enter a fault state. To get around this, we can add an additional MCP2515 chip to the Battery-Emulator hardware, to get an isolated secondary CAN bus.
 
 - Another options is to use [add on CAN-FD MCP2518](can_fd_add_on_mcp2518fd.md) board 
 - Another option is to use [Stark CMR board](../../hardware/stark_cmr.md)
 
 ## How to add an MCP2515 chip?
 
-The solution is to add a separate CAN channel, via an additional MCP2515. The additional MCP2515 can be connected to the Lilygo in multiple ways.
+The solution is to add a separate CAN channel, via an additional MCP2515. The additional MCP2515 can be connected to the board in multiple ways. The wiring below is given for the LilyGo T-CAN485 as an example, other boards work the same way with their own pin names.
 
 ### Option 0: MCP2515 powered via 3.3V (no extra power connections needed)
 You can use this MCP2515 board from Seeed Studio - it operates directly on the lilygo 3.3V supply. https://www.seeedstudio.com/Seeed-Studio-CAN-Bus-Breakout-Board-for-XIAO-and-QT-Py-p-5702.html

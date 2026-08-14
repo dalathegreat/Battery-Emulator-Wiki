@@ -38,7 +38,7 @@ The GoodWe inverter works via CAN. The Battery-Emulator board can have both a CA
 Good idea to watch the installation video from GoodWe's training services, on how to install a BYD battery: https://www.youtube.com/watch?v=RLzMI-2JOB0
 
 1. Follow the GoodWe inverter installation manual up to the point when you plug the comms and battery connector terminals in
-2. Unsolder (If needed!) the canbus terminating resistor on the Lilygo board (as per above)
+2. Unsolder (If needed!) the canbus terminating resistor on the board (as per above)
 3. Connect both the inverter canbus and battery canbus to the board
 4. Double check your code to make sure the contactors will isolate under the required fault conditions
 5. Plug in the battery connector (make sure the terminals are not live)

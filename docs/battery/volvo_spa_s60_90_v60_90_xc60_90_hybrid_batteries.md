@@ -43,7 +43,7 @@ Connect the MSD to close HVIL1. (this will close the HVIL loop in BECM)
 The BECM has no built in 120ohm resistor. (BECM = Battery Energy Control Module) 
 Make sure the terminating resistors are correct. CAN networks should have two 120 Ohm resistors in each end of the network. With everything OFF, you can measure resistance between CAN-H and CAN-L. The result should be 60 Ohm.
 
-Attached below are pictures of the BECM pinout. Connect the highlighted red pins to the LilyGo and 12V supply like this:
+Attached below are pictures of the BECM pinout. Connect the highlighted red pins to the Battery-Emulator hardware and 12V supply like this:
 
 ![Connector](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-03.png)
 

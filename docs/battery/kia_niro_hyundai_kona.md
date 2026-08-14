@@ -86,11 +86,11 @@ Incase your battery is missing some wires/disconnect switches, here are the OEM 
 
 ⚠️ The CAN communication has no error checking. This means it is prone to corruption if it sits close to a high voltage line. Use shielded twisted pair cables for CAN-H and CAN-L , and connect the shield to protective earth in one end of the circuit. 
 
-Attached below are pictures of the BMS pinouts. Connect the pins to the LilyGo and 12V supply like this:
+Attached below are pictures of the BMS pinouts. Connect the pins to the Battery-Emulator hardware and 12V supply like this:
 
 * Pin 1/2 to 12V
-* Pin 10 to LilyGo CAN - H (connect resistor 120 Ohm across 10 CAN - H and 11 CAN - L)
-* Pin 11 to LilyGo CAN - L
+* Pin 10 to CAN-H on the board (connect resistor 120 Ohm across 10 CAN - H and 11 CAN - L)
+* Pin 11 to CAN-L on the board
 * Pin 12 to 12V (Ignition)
 * Pin 3 and 14 connect together (interlock loop)
 * Pin 33 to 12V GND

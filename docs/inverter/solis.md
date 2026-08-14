@@ -28,7 +28,7 @@ Most Solis inverters support a wide battery voltage range. Nevertheless, you sho
 * S6-EH3P100K10-NV-YD-H ✅ (Use BYD-WHS inverter setting)
 
 ## Communication wiring
-The Solis inverter works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
+The Solis inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 
@@ -49,7 +49,7 @@ BYD_HVL option when looking directly at the inverter screen:
 
 ## Startup example
 
-The sequence that seems to work most reliably is to get the battery up and running but still disconnected from the power supply to the inverter (I have a pair of inline DC 32A breakers for this). Once the battery is awake, go into the inverter menu and select BYD from the battery menu. Then select 'Battery Wakeup'. The alarm light on the inverter should now go out, and the lilygo will be pulsing green on its led. You can now flip the DC breakers to connect the battery power to the inverter. 
+The sequence that seems to work most reliably is to get the battery up and running but still disconnected from the power supply to the inverter (I have a pair of inline DC 32A breakers for this). Once the battery is awake, go into the inverter menu and select BYD from the battery menu. Then select 'Battery Wakeup'. The alarm light on the inverter should now go out, and the board will be pulsing green on its LED. You can now flip the DC breakers to connect the battery power to the inverter. 
 
 ## Troubleshooting
 

@@ -51,7 +51,7 @@ Tesla Service Mode User Guide [Here](https://service.tesla.com/docs/Public/Servi
 
 ### How do I test a battery before buying ?
 
-It is possible to test a battery quite easily before purchase. For this you need the X098 connector, some 60/120Ohm resistors, a LilyGo board, and a 12V battery. See [this video for a step by step on how to connect to a Tesla battery](https://youtu.be/Zikb94dxlTM?si=u05h9BuUjtZo3BW2&t=122) , and also check out the wiring instructions below. Note, you do not need to connect anything else than the X098 connector, and contactor closing is not required to get a readout.
+It is possible to test a battery quite easily before purchase. For this you need the X098 connector, some 60/120Ohm resistors, a board running Battery-Emulator (a LilyGo for instance), and a 12V battery. See [this video for a step by step on how to connect to a Tesla battery](https://youtu.be/Zikb94dxlTM?si=u05h9BuUjtZo3BW2&t=122) , and also check out the wiring instructions below. Note, you do not need to connect anything else than the X098 connector, and contactor closing is not required to get a readout.
 
 ![I’m the first person in the world to do this! 2](../images/tesla-model-s-3-x-y-01.jpg)
 
@@ -131,7 +131,7 @@ The connector above will need the following connections...(apart the grounding o
 * Pin 1 and 3 - 60  Ohm resistor between these pins on RWD(68also works), 120 Ohm on AWD packs
 * Pin 8 and 18 - To +12V
 * Pin 9 - GND 
-* Pin 16 and 15 - To LilyGo CAN-H and CAN-L (Note, you might need to add 120Ohm resistor here, depending on CAN network structure)
+* Pin 16 and 15 - To CAN-H and CAN-L on the board (Note, you might need to add 120Ohm resistor here, depending on CAN network structure)
 
 ![Tesla X098 HVC](../images/tesla-model-s-3-x-y-19.png){ width="520" height="298" }
 
@@ -182,7 +182,7 @@ It is recommended to turn on `Enable general logging via USB serial` OR `Enable 
 | HVIL connectors are OK but battery still does not pass “Check high voltage connectors and interlock circuit!” | Penthouse lid open? Pyro fuse defect. Replace pyro fuse |
 | "STATUS: Contactor: CLOSING" and low 12V "Low Voltage: 9V" | You dont get past the precharge state. Check that 12V cables to PCS are thick enough (2.5mm2), and that the 12V power supply is strong enough to close the contactors. Lead acid battery recommended. |
 | “pyro squib is not connected!” | Pyro fuse defective, replace pyro fuse OR reseat pyro fuse (I had a good pyro fuse but reseating it cleared the error) |
-| Your battery seems to be working and your contactors close, but at some point something happens and you can hear your pack contactors opening and closing every 30 - 60 seconds.   When you look on the Lilygo console it shows that Negative contactor open and Positive contactor is closed, then after 30 - 60 seconds you hear the contactors clunk and now it's showing the opposite, Negative contactor is closed and Positive is Open and it continues over and over” | Only solution for this issue so far is to remove the x098 cable from the pack and also remove the power cables from the PCS which are attached to the outside of the pack.    Anything left plugged in seems to supply power to the logic boards inside the Penthouse and won't allow it to reset.   This will remove 12v power to the whole pack as well as CANBUS connection.  Leave pack unplugged for at least a minute (sometimes longer is needed) and then plug the x098 connector and bolt PCS 12V cables back onto the pack and reset your Lilygo and the pack should close both contactors as expected again.   |
+| Your battery seems to be working and your contactors close, but at some point something happens and you can hear your pack contactors opening and closing every 30 - 60 seconds.   When you look on the Battery-Emulator console it shows that Negative contactor open and Positive contactor is closed, then after 30 - 60 seconds you hear the contactors clunk and now it's showing the opposite, Negative contactor is closed and Positive is Open and it continues over and over” | Only solution for this issue so far is to remove the x098 cable from the pack and also remove the power cables from the PCS which are attached to the outside of the pack.    Anything left plugged in seems to supply power to the logic boards inside the Penthouse and won't allow it to reset.   This will remove 12v power to the whole pack as well as CANBUS connection.  Leave pack unplugged for at least a minute (sometimes longer is needed) and then plug the x098 connector and bolt PCS 12V cables back onto the pack and reset your Battery-Emulator hardware and the pack should close both contactors as expected again.   |
 | When testing the battery all the cell voltages load correctly and the other data is read correctly as well, but pack voltage shows 1V. | This indicates that the pyrofuse is blown and needs to be replaced. After replacing the pyrofuse, the pack voltage should show the correct value.  |
 
 If the battery gets really stuck, removing the yellow connector here for a few minutes also helps:

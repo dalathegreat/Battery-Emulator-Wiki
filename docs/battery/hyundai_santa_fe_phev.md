@@ -15,8 +15,8 @@ Information on re-using the 13.8 kWh lithium-ion polymer battery out of a 2018-P
 
 Connect the following:
 
-- P/H-CAN High -To LilyGo CAN-H
-- P/H-CAN Low - To LilyGo CAN-L
+- P/H-CAN High - To CAN-H on the board
+- P/H-CAN Low - To CAN-L on the board
 - Pin 1 & 2 - To 12V supply
 - Pin 3 & 14 - Short together by installing the Service Plug
 - Pin 33 & 32 - To GND for 12V supply

@@ -45,14 +45,14 @@ Connect HV cables to battery terminals using OEM connectors. Highly advised to a
 
 ![bild](../images/sofar-01.png)
 
-Connect CAN H and CAN L from Lilygo to socket no.8.
+Connect CAN-H and CAN-L from the Battery-Emulator hardware to socket no.8.
 CAN-H  -  PIN 7
 CAN-L  -  PIN 8
 
 ![bild](../images/sofar-02.png)
 
 ## Inverter Configuration
-In "Advanced Settings/Battery Parameters" choose `Pylontech` as battery type and set `01` as battery address (00 is default), save your settings. Check all fuses and everything else twice, then turn on Lilygo, and voila!
+In "Advanced Settings/Battery Parameters" choose `Pylontech` as battery type and set `01` as battery address (00 is default), save your settings. Check all fuses and everything else twice, then turn on the Battery-Emulator hardware, and voila!
 
 ### Sofar CAN
 If you use Sofar CAN, select the "General" option

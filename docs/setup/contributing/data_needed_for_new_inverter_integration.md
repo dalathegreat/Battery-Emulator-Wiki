@@ -13,7 +13,7 @@ The communication between the brand inverter and brand battery can be either CAN
 ### CAN based system
 If the system is CAN based, you will first have to get some hardware capable of reading the communication. Here are some examples, listed from least expensive to more expensive. Do note that more expensive tools will be easier to use, since the software provided with the tools are very user friendly. Also more expensive tools will have better timing and accuracy on timestamps.
 
-- LilyGo board (using [CAN logging](../can_related/can_logging.md))💲
+- Battery-Emulator hardware, for instance a LilyGo board (using [CAN logging](../can_related/can_logging.md))💲
 - Arduino with CAN shield 💲
 - Raspberry PI with CAN shield 💲💲
 - USB2CAN Korlan 💲💲 [Recommended, link:](https://www.8devices.com/products/usb2can_korlan)

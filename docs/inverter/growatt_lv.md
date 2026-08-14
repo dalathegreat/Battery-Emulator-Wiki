@@ -12,7 +12,7 @@ TODO
 
 ## Communication wiring
 
-The Growatt LV compatible inverters works via CAN. The LilyGo board can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
+The Growatt LV compatible inverters works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 

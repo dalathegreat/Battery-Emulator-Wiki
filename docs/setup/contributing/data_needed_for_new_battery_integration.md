@@ -29,7 +29,7 @@ You will first have to get some hardware capable of reading the communication. H
 !!! tip "TIP"
     You can use the Battery-Emulator to log CAN messages. See the [CAN logging page](../can_related/can_logging.md)
 
-    LilyGo board (can log data in testing mode!)💲 
+    Battery-Emulator hardware, for instance a LilyGo board (can log data in testing mode!)💲 
     USBCAN PCAN clone 💲 Recommended,link: https://www.aliexpress.us/item/1005006341852788.html 
     Raspberry PI with CAN shield 💲💲
     USB2CAN Korlan 💲💲 Recommended, link: https://www.8devices.com/products/usb2can_korlan 
@@ -40,11 +40,11 @@ You will first have to get some hardware capable of reading the communication. H
 # Reading standalone battery
 Take pictures of HV and LV connectors on the battery. Figure out the pinout with manuals found online, or behind paywalls. Add this info to wiki page for the new battery. If the wiki page for your battery does not exist yet, create a new page.
 
-Start battery by applying 12V to it, and CAN H-L pins to a CAN reader / LilyGo. Note, on some batteries you might need to satisfy interlock or airbag / crash signals before they startup.
+Start battery by applying 12V to it, and CAN H-L pins to a CAN reader / Battery-Emulator hardware. Note, on some batteries you might need to satisfy interlock or airbag / crash signals before they startup.
 
 Get a CAN log of the battery in standalone operation. An example from start to finish can be seen here: https://github.com/dalathegreat/Nissan-Leaf-Battery-to-OBD2
 
-# Taking CAN logs with the Battery-Emulator (LilyGo hardware)
+# Taking CAN logs with the Battery-Emulator (LilyGo hardware as an example)
 
 The CAN-logging is available when using the `TEST_FAKE_BATTERY` mode. This enables easy CAN logging without expensive CAN reading hardware. When you are using this test mode, all the received CAN messages will get timestamp, ID, DLC, and data fields printed out via the Arduino IDE Serial. This can then be exported to a .txt file for later analysis. Example format:
 

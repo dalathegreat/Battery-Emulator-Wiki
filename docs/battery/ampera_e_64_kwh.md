@@ -55,7 +55,7 @@ The following diagrams will help you to connect to the CAN buses on the Opel/Che
 
 !!! note "NOTE"
     These batteries have multiple CAN buses that needs to be jumpered together to form one large CAN bus
-    the resistor on the Lilygo must be removed.
+    the resistor on the board must be removed.
     
 Example, development environment with contactor control via GPIO, and all 3x CAN buses connected together as one single bus
 

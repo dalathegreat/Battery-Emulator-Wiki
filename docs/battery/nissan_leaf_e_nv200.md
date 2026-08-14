@@ -60,12 +60,14 @@ To enable the feature in the software, Enable the "Contactor control via GPIO" o
 
 To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
 
-- (LilyGo) Precharge pin 25 - Precharge SSR + input
-- (LilyGo) Positive Contactor pin 32 - Positive SSR + input
-- (LilyGo) Negative Contactor pin 33 - Negative SSR + input
-- (LilyGo) GND - All 3x SSR - input
+The pin numbers below are the ones used on the LilyGo T-CAN485, check the HAL definitions of your own board if you use a different one:
 
-OPTIONAL: If you use SSR relays with the LilyGo, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM.
+- Precharge pin 25 - Precharge SSR + input
+- Positive Contactor pin 32 - Positive SSR + input
+- Negative Contactor pin 33 - Negative SSR + input
+- GND - All 3x SSR - input
+
+OPTIONAL: If you use SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM.
 
 ![image](../images/nissan-leaf-e-nv200-23.png){ width="624" height="118" }
 

@@ -3,7 +3,7 @@ title: "CAN filter hardware"
 ---
 
 ## What is a CAN filter?
-Since some inverters need to see only certain CAN messages on the bus, we can achieve this by adding a CAN-filter between the inverter and the rest of the CAN-bus. By doing this you can use the single CAN channel LilyGo board with an inverter that usually requires a dedicated CAN channel.
+Since some inverters need to see only certain CAN messages on the bus, we can achieve this by adding a CAN-filter between the inverter and the rest of the CAN-bus. By doing this you can use a board with a single CAN channel, such as the LilyGo T-CAN485, with an inverter that usually requires a dedicated CAN channel.
 
 ![image](../../images/can-filter-hardware-01.png)
 
@@ -41,12 +41,12 @@ Connect the ST Link V2 to the J1 ports on the PCB. It can be hard to connect dup
 
 ## Connecting the CAN Filter
 
-The can filter is placed between the LilyGo and the inverter.
+The can filter is placed between the Battery-Emulator hardware and the inverter.
 
 | CAN Filter Pin | Connection |
 | :--------: | :---------: |
-| CAN-1L | LilyGo CAN_L |
-| CAN-1H | LilyGo CAN_H |
+| CAN-1L | Battery-Emulator CAN_L |
+| CAN-1H | Battery-Emulator CAN_H |
 | CAN-2L | Inverter CAN L |
 | CAN-2H | Inverter CAN H |
 | +12V | 12V positive |

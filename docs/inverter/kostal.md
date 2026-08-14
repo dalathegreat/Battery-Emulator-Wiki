@@ -29,7 +29,7 @@ For this inverter type, use the option called "BYD battery via Kostal RS485" und
 
 ## Communication wiring
 
-The Kostal inverter works via RS485. Connect pins A, B and GND from the Kostal connector X601 to the corresponding points of the lilygo RS485 connector. Setup the Kostal inverter to use the BYD battery option.
+The Kostal inverter works via RS485. Connect pins A, B and GND from the Kostal connector X601 to the corresponding points of the RS485 connector on the Battery-Emulator hardware. Setup the Kostal inverter to use the BYD battery option.
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 
@@ -54,7 +54,7 @@ Use this tree of the battery emulator on a LilyGo: https://github.com/lewurm/Bat
 Compile with Arduino ide ESP32 firmware 3.1.3.
 It will just print whatever bytes are seen on the RS485 line to the USB serial.
 
-In terms of wiring, connect A/B/GND accordingly between inverter and LilyGo.  Power the LilyGo via USB-C (connect to a Laptop) and observe the serial monitor.
+In terms of wiring, connect A/B/GND accordingly between inverter and the Battery-Emulator hardware.  Power the board via USB-C (connect to a Laptop) and observe the serial monitor.
 
 ![Screenshot 2025-02-21 at 23 33 04](../images/kostal-03.png){ width="1220" }
 ![Screenshot 2025-02-21 at 23 33 23](../images/kostal-04.png){ width="1223" }

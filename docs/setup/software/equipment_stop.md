@@ -26,7 +26,7 @@ title: "Equipment Stop"
 Equipment stop can be added via a Normally Closed (NC) latching switch. This is how most equipment/emergency stop buttons work.
 
 #### LilyGo board
-Connect the Equipment stop button to the GPIO pins on the LilyGo.
+Connect the Equipment stop button to the GPIO pins on the board.
 
 - GPIO Pin35 - Switch NC
 - Any VDD pin - Switch NC

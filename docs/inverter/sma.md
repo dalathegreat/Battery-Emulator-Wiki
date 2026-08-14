@@ -70,7 +70,7 @@ If you have the Stark CMR, you can wire the 12V enable line directly to SIGNAL I
 
 ### Other hardware
 
-The Enable line is connected to GPIO 5 on the LilyGo board. Due to the signal being 12V, we need to step it down to 3.3V that the Battery-Emulator uses on its GPIO pins.
+The Enable line is connected to a GPIO pin on the Battery-Emulator hardware, GPIO 5 on the LilyGo T-CAN485 for instance. Due to the signal being 12V, we need to step it down to 3.3V that the Battery-Emulator uses on its GPIO pins.
 
 !!! note "NOTE"
       In some cases GPIO5 is already occupied by the battery (for example with a BMW i3 battery or using an MCP2515 CAN addon board). An error will be thrown while compiling the battery emulator. SMA enable pin has to be re-assigned in the Battery Emulator code from GPIO5 to e.g. GPIO33
@@ -86,7 +86,7 @@ This stepdown can be achieved with a resistor divider
 
 ![image](../images/sma-01.png)
 
-The 1k resistor isn't technically needed but just in case there's a short it would limit the current into the LilyGo pin.
+The 1k resistor isn't technically needed but just in case there's a short it would limit the current into the GPIO pin.
 
 ### Details for Sunny Boy Smart Energy & Sunny Tripower Smart Energy
 
@@ -95,7 +95,7 @@ Pin layout Custom PCB in the example below:
 ```
 1. 12V Enable line SMA Tripower
 2. Ground SMA Tripower
-3. Ground Lilygo
+3. Ground of the Battery-Emulator hardware
 4. GPIO 05 or 33 (or a different pin that you configure) (Default is GPIO 05)
 ```
 
@@ -249,7 +249,7 @@ Please feel free to add!
 
 ### SMA Sunny Boy Storage to battery emultator
 
-This is how the SBS should be connected to the lily/stark hardware.
+This is how the SBS should be connected to the Battery-Emulator hardware.
 ![image](../images/sma-05.png)
 
 ### SMA Sunny Tripower to Liligo and BMW i3
