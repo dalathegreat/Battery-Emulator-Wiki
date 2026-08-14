@@ -11,7 +11,7 @@ title: "SMA"
 * Sunny Boy Storage 6.0 (SBS6.0-10) :heavy_check_mark:
 
 !!! note "NOTE"
-      The inverter contains a 120 Ohm terminating resistor on CAN-L/H pins. The SBS2.5-1VL-10 inverter has a slightly different protocol than the other SBS inverters
+      The inverter contains a 120 Ohm terminating resistor on CAN-L/H pins. The SBS2.5-1VL-10 inverter has a slightly different protocol than the other SBS inverters.
 
 ### Sunny Boy Smart Energy
 
@@ -147,7 +147,7 @@ A known working solution to restart the inverter is:
 <details markdown="1">
 <summary>Details for Sunny Boy Storage</summary>
 
-For this inverter type, use the option called `SMA SBS compatible BYD Battery-Box HVS` as "Inverter Protocol" setting
+For this inverter type, use the option called `SMA SBS compatible BYD Battery-Box HVS` as "Inverter Protocol" setting.
 
 </details>
 <details markdown="1">
@@ -249,7 +249,7 @@ Please feel free to add!
 
 ### SMA Sunny Boy Storage to battery emultator
 
-This is how the SBS should be connected to the lily/stark hardware
+This is how the SBS should be connected to the lily/stark hardware.
 ![image](../images/sma-05.png)
 
 ### SMA Sunny Tripower to Liligo and BMW i3

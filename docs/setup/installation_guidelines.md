@@ -172,7 +172,7 @@ Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the 
 #### Optional stuff!
 
 !!! tip "TIP"
-    You can also add an [equipment stop button](../software/equipment_stop.md) to the Battery-Emulator, to make it easier to stop the system
+    You can also add an [equipment stop button](../software/equipment_stop.md) to the Battery-Emulator, to make it easier to stop the system.
 
 [IP67 1NO1NC Stop Switch](https://vi.aliexpress.com/item/1005008119829541.html)
 
@@ -181,7 +181,7 @@ Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the 
 # Periodic maintenance :wrench: 
 While EV batteries are designed to be low-maintenance, periodic checks are crucial for ensuring long-term reliability, maximizing performance, and guaranteeing safety. A proactive maintenance schedule can prevent costly failures and identify potential issues before they become serious hazards.
 
-The information below is general guidance
+The information below is general guidance.
 
 !!! warning "CAUTION"
     De-energize and isolate the system from all power sources (AC and DC) before performing any physical maintenance, and only qualified personnel should perform these tasks.

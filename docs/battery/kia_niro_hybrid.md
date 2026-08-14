@@ -6,7 +6,7 @@ title: "Kia Niro Hybrid"
 This page contains info on how to re-use the Kia Niro Hybrid batteries (Also applies to Hyundai Kona Hybrid & Kia Xceed)
 
 ## Software configuration
-For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Battery Protocol" setting
+For this battery type, use the option called "Kia/Hyundai Hybrid" under the "Battery Protocol" setting.
 
 ![image](../images/battery-kia-niro-hybrid-06.png){ width="588" height="72" }
 

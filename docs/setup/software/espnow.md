@@ -15,7 +15,7 @@ It’s ideal for smart home devices, remote controls, and sensor networks, suppo
 * Supports callbacks for send/receive events
 * Payload up to 250 bytes in ESP-NOW v1, raised to 1470 bytes in ESP-NOW v2 (ESP-IDF 5.4+)
 
-Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration
+Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
 
 !!! note "NOTE" 
     Enabling ESPNow increases the temperature of the ESP chip, as it shares the radio interface with Wi-Fi. Without ESP-NOW, the Wi-Fi client connection lets the modem duty-cycle down to the network's DTIM interval. The moment ESP-NOW is active, the connectionless path needs the PHY/RX chain powered continuously — Espressif's own FAQ states that once the device enters modem-sleep it can't service ESP-NOW. So you flip from a low duty-cycle radio to a ~100%-on radio, and the PA/PHY idle current is what generates heat with ESPNow enabled. It's the radio staying lit.

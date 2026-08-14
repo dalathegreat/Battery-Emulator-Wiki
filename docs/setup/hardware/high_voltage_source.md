@@ -16,10 +16,10 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 One of the options is the HIA4V1 board original or modified for Lilygo or Stark CMR. 
 
 !!! warning "CAUTION"
-    There are various HIA4V1 board version avaiable that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended
+    There are various HIA4V1 board version avaiable that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
 
 # Option A: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
-The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Support for this was added in firmware v10.11.0
+The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Support for this was added in firmware v10.11.0.
 
 ## Wiring diagram
 Parts needed:
@@ -111,7 +111,7 @@ Alternative NC and NO contactors with complementing specs available through Digi
 NC - [Altran Magnetics AREV100NC-series](https://www.digikey.com/en/products/filter/contactors-electromechanical/969?s=N4IgTCBcDaIIICcCmA3AjABgwOQMIgF0BfIA)
 NO - [Altran Magnetics ALEV100-series](https://www.digikey.com/en/products/filter/contactors-electromechanical/969?s=N4IgTCBcDaIIIBkCiA1AjABgyAugXyA)
 
-The connection is added to the schematic above
+The connection is added to the schematic above.
 
 ## Overvoltage and reverse-polarity protection
 
@@ -131,7 +131,7 @@ Make sure to enable the #define PRECHARGE_CONTROL option in the USER_SETTINGS.h 
 https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/USER_SETTINGS.h
 
 Generic:
-The precharge code itself is located in the folder Software/src/communication/precharge_control/precharge_control.cpp
+The precharge code itself is located in the folder Software/src/communication/precharge_control/precharge_control.cpp.
 
 https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/src/communication/precharge_control/precharge_control.cpp
 

@@ -4,7 +4,7 @@ title: "Nissan Sakura Mitsubishi eK X"
 
 ## Compatible batteries
 
-This platform has a 20kWh batteryy
+This platform has a 20kWh batteryy.
 
 - Nissan Sakura 2022–present
 - Mitsubishi eK X
@@ -23,17 +23,17 @@ This platform has a 20kWh batteryy
 - Requires external GPIO contactor control
 
 ## Software configuration
-For this battery type, use the option called "Nissan LEAF" under the "Battery Protocol" section
+For this battery type, use the option called "Nissan LEAF" under the "Battery Protocol" section.
 
 ## Part numbers 
-The LV connectors are the samme as on Nissan LEAF
+The LV connectors are the samme as on Nissan LEAF.
 
 | Component | Part Number | Purchase Link |
 |-----------|-------------|---------------|
 | <!-- e.g. HV Connector --> | <!-- e.g. TE 123456 --> | [eBay](#) / [AliExpress](#) |
 
 ## Wiring, Low voltage connector
-The Low Voltage connector is the same B36 connector used on the Nissan LEAF
+The Low Voltage connector is the same B36 connector used on the Nissan LEAF.
 
 | Parameter | Value |
 |----------|-------|

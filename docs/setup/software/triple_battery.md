@@ -19,7 +19,7 @@ Coming soon hardware:
 - BECom
 
 ## Supported integrations
-The following batteries have support for Triple operation
+The following batteries have support for Triple operation.
 
 - Nissan LEAF/eNV200 24/30/40/62kWh ✅
 
@@ -32,6 +32,6 @@ For batteries that require externally controlled contactors, you can automate th
 
 ![image](../../images/triple-battery-01.png){ width="580" height="155" }
 
-This will start with connecting battery1, then once voltages match, battery2 and battery3 joins the DC link when voltages are close enough to first battery
+This will start with connecting battery1, then once voltages match, battery2 and battery3 joins the DC link when voltages are close enough to first battery.
 
-See the HAL pin defitions for your hardware, to see which pin actuates the extra contactor set
+See the HAL pin defitions for your hardware, to see which pin actuates the extra contactor set.

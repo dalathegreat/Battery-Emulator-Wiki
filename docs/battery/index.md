@@ -14,7 +14,7 @@ Be sure to checkout the [installation guidelines](../setup/hardware/installation
 
 If the battery has a 🅱️ symbol, cell balancing has been confirmed working (Important for longterm operation)
 
-If the battery has a 2️⃣ or 3️⃣ symbol, double- or triple battery is supported
+If the battery has a 2️⃣ or 3️⃣ symbol, double- or triple battery is supported.
 
 |           Car (Manufacturer)            |                                    Product Name                                    |  Capacity (kWh)   | Supported status |                 Support level                 |        Balancing (🅱️)         | Parallel Packs (2️⃣/3️⃣) | Voltage min / max (V) |                      Notes                       |
 |:---------------------------------------:|:----------------------------------------------------------------------------------:|:-----------------:|:----------------:|:---------------------------------------------:|:------------------------------:|:------------------------:|:---------------------:|:------------------------------------------------:|

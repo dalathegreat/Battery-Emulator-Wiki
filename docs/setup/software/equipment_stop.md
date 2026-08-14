@@ -16,7 +16,7 @@ title: "Equipment Stop"
 </table>
 
 !!! warning "CAUTION"
-    Equipment stop should not be confused with Emergency stop. Equipment performs a graceful stop (which can fail), while an emergency stop button cuts power to the system. If you need more safety than an equipment stop button can offer, consider wiring an emergency stop button instead
+    Equipment stop should not be confused with Emergency stop. Equipment performs a graceful stop (which can fail), while an emergency stop button cuts power to the system. If you need more safety than an equipment stop button can offer, consider wiring an emergency stop button instead.
 
 [IP67 1NO1NC Stop Switch](https://vi.aliexpress.com/item/1005008119829541.html)
 
@@ -26,13 +26,13 @@ title: "Equipment Stop"
 Equipment stop can be added via a Normally Closed (NC) latching switch. This is how most equipment/emergency stop buttons work.
 
 #### LilyGo board
-Connect the Equipment stop button to the GPIO pins on the LilyGo
+Connect the Equipment stop button to the GPIO pins on the LilyGo.
 
 - GPIO Pin35 - Switch NC
 - Any VDD pin - Switch NC
 
 !!! note "NOTE"
-    There are not many free GPIO pins on the LilyGo board. The Pin35 might already be in use if you use some other optional functionality. If a collision happens, you can check the `Battery-Emulator/Software/src/devboard/hal/hw_lilygo.h` for free pins and remap
+    There are not many free GPIO pins on the LilyGo board. The Pin35 might already be in use if you use some other optional functionality. If a collision happens, you can check the `Battery-Emulator/Software/src/devboard/hal/hw_lilygo.h` for free pins and remap.
 
 #### Stark CMR
 

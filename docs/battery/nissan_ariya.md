@@ -8,7 +8,7 @@ title: "Nissan Ariya"
 
 ⚠️ CAN LOGS WANTED FOR THIS BATTERY! ⚠️ 
 
-The Nissan Ariya [battery](https://www.batterydesign.net/2022-nissan-ariya/) comes in two variants
+The Nissan Ariya [battery](https://www.batterydesign.net/2022-nissan-ariya/) comes in two variants.
 
 - 63kWh - 96S 400V Architecture - 451kg 1456x384x2099mm
 - 87kWh - 96S 400V Architecture - 578kg 1456x384x2099mm
@@ -64,7 +64,7 @@ Using switches and manual timing, it is possible to turn on the precharge(A), ne
 
 The LilyGo hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the board. To use these, you need to solder a 2x6 row connector onto the board. After the row connector is fitted, you can connect a flat ribbon cable between the pins, and the relays.
 
-To enable the feature in the software, uncomment the following line in the `USER_SETTINGS.h` file
+To enable the feature in the software, uncomment the following line in the `USER_SETTINGS.h` file.
 
 `#define CONTACTOR_CONTROL     //Enable this line to have pins 25,32,33 handle automatic precharge/contactor+/contactor- closing sequence`
 

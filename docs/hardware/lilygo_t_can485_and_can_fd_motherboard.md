@@ -9,7 +9,7 @@ This is work in progress **BETA** PCB design for a motherboard to hold both a li
 * Current version 1.1
 
 !!! warning "WARNING"
-    This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations
+    This board has limited memory. Starting from 2027, it might not get new integrations added to it. All other hardware choices are better suited for those seeking new feature development and new integrations.
 
 ## Overview of features
 

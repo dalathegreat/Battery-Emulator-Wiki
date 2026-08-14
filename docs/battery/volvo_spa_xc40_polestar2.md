@@ -13,7 +13,7 @@ title: "Volvo SPA (XC40, C40 / Polestar 2)"
 
 ## Battery specifications
 
-The following SPA platform batteries are supported, checkbox on those confirmed by users to work
+The following SPA platform batteries are supported, checkbox on those confirmed by users to work.
 
 * Volvo XC40 2021-present
    * 64 kWh (usable), 69 kWh (gross) ✅
@@ -27,7 +27,7 @@ The following SPA platform batteries are supported, checkbox on those confirmed 
 ![bild](../images/volvo-xc40-polestar-2-01.png)
 
 ## Software configuration
-For this battery type, use the option called "Volvo / Polestar 69/78kWh SPA battery" under the "Battery Protocol" setting
+For this battery type, use the option called "Volvo / Polestar 69/78kWh SPA battery" under the "Battery Protocol" setting.
 
 ![image](../images/volvo-xc40-polestar-2-11.png){ width="592" height="72" }
 
@@ -38,10 +38,10 @@ Make sure the contactor assembly (Left picture, silver box) is included with the
 ![image](../images/volvo-xc40-polestar-2-02.png)
 
 !!! note "NOTE"
-    It is OK to buy a battery from an airbag crashed vehicle. It is possible to clear that fault code via the "More Battery Info" page
+    It is OK to buy a battery from an airbag crashed vehicle. It is possible to clear that fault code via the "More Battery Info" page.
 
 !!! warning "CAUTION"
-    If you want to use Battery-Emulator to read info, check cells, on a standalone battery before buying, comment out any sending of 0x140 messages in the VOLVO-SPA-BATTERY.cpp file. Otherwise it will try to close contactors, and without the DC/DC converter it will permanently lock the contactors as welded. See further down for more info on DC/DC requirement
+    If you want to use Battery-Emulator to read info, check cells, on a standalone battery before buying, comment out any sending of 0x140 messages in the VOLVO-SPA-BATTERY.cpp file. Otherwise it will try to close contactors, and without the DC/DC converter it will permanently lock the contactors as welded. See further down for more info on DC/DC requirement.
 
 ## Wiring diagram, low voltage
 Connect HVIL2_EXT_IN and HVIL2_EXT_OUT together with a cable. (this will close the HVIL loop in BECM.)
@@ -82,7 +82,7 @@ Test wires attached:
 
 In order to start the battery you need to have capacitance and current draw ready on HV lines. This can be achieved by connecting a DC-DC converter (which you can purchase from the link below) to the high-voltage output from the front motor. If you skip this step and try to start the battery directly, an irreversible fault code will trigger (Contactor welded). After this fault code is set, you won't be able to engage the contactors via the CAN bus anymore.
 
-Connect the DC/DC converter to the high voltage output lines shown above. Pay attention to the polarity to avoid damaging the DC/DC converter
+Connect the DC/DC converter to the high voltage output lines shown above. Pay attention to the polarity to avoid damaging the DC/DC converter.
 
 The DC/DC converter can also be used to charge a 12V lead acid battery, or left totally unused. The purpose of it is to mainly just enable contactors safely without triggering any fault codes.
 
@@ -123,7 +123,7 @@ Another thing to test if issue with comm is to leave pin 24 (+12V) disconnected 
 ![image](../images/volvo-xc40-polestar-2-10.png)
 
 ## Reading DTCs
-To read Diagnostic Trouble Codes, go to the More Battery Info page and press Read DTC
+To read Diagnostic Trouble Codes, go to the More Battery Info page and press Read DTC.
 
 ![image](../images/volvo-xc40-polestar-2-12.png){ width="543" height="432" }
 
@@ -131,11 +131,11 @@ To read Diagnostic Trouble Codes, go to the More Battery Info page and press Rea
 
 If the BMS is permanently locked, replacing the BMS is the easiest solution.
 
-There is a chance that reflashing the BMS can help, but the success rate is low. Some .hex files available on Discord
+There is a chance that reflashing the BMS can help, but the success rate is low. Some .hex files available on Discord.
 
 ![image](../images/volvo-xc40-polestar-2-13.png)
 
-Miniwiggler v3 dap attached to BMS board via PCI-e from old motherboard to avoid soldering
+Miniwiggler v3 dap attached to BMS board via PCI-e from old motherboard to avoid soldering.
 
 ![image](../images/volvo-xc40-polestar-2-14.png)
 

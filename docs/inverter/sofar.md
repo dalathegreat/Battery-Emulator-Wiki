@@ -23,7 +23,7 @@ Note, if you use Sofar CAN protocol instead, the inverter will need to be on a d
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 ## Which protocol to use
-For this inverter type, use the option called "Sofar BMS (Extended) via CAN" under the "Inverter Protocol" setting
+For this inverter type, use the option called "Sofar BMS (Extended) via CAN" under the "Inverter Protocol" setting.
 
 ![image](../images/sofar-03.png)
 
@@ -34,13 +34,13 @@ Note also that Sofar inverters need to have some special flags set in the Pylon.
 
 ![image](../images/sofar-04.png)
 
-Due to this, it is better to use Sofar CAN instead! But Pylon is viable if you want the inverter/battery to be able to share the CAN channel
+Due to this, it is better to use Sofar CAN instead! But Pylon is viable if you want the inverter/battery to be able to share the CAN channel.
 
 ## Inverter Wiring
 Connect HV cables to battery terminals using OEM connectors. Highly advised to add ~32A DC fuse between.
 
 !!! warning "CAUTION"
-    Standard Staubli connectors don't fit SOFAR BAT ports, make sure to acquire proprietary SOFAR connectors
+    Standard Staubli connectors don't fit SOFAR BAT ports, make sure to acquire proprietary SOFAR connectors.
     ![image](../images/sofar-05.png)
 
 ![bild](../images/sofar-01.png)

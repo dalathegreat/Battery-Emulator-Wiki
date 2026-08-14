@@ -31,7 +31,7 @@ The CAN bus should have a termination resistance of 120Ω between CAN High and C
    - Disconnect each device, and if they contain a termination resistor, it should read 120Ω when measuring.
 
 !!! tip "TIP"
-    Not all CAN devices contain a terminating resistor. So be sure to confirm this before stating it broken
+    Not all CAN devices contain a terminating resistor. So be sure to confirm this before stating it broken.
 
 2. Inspect CAN Transceivers
 
@@ -68,7 +68,7 @@ While it’s impossible to completely eliminate the risk of lightning damage, yo
 3. Opto-coupler circuits. You can fit CAN opto couplers to the system to get an air-gap between the components. If you have components you have used successfully for this, feel free to add info to this wiki!
 
 ### Suggested hardware
-Below are some products you can use to increase the resilience of your CAN/RS485 network
+Below are some products you can use to increase the resilience of your CAN/RS485 network.
 
 |  Product |  Purchase Link |
 | :--------: | :---------: |

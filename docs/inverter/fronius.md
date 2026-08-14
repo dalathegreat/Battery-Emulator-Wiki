@@ -12,13 +12,13 @@ The code works with the following Fronius inverters:
 * Fronius Symo Hybrid 3.0/4.0/5.0-3-S ✅ (ℹ️ Legacy product, no longer available for purchase)
 * Fronius Verto Plus (all sizes) ✅
 
-On this date (23.04.2025) Fronius deployed a new software version that momentarily broke compatibility with Battery-Emulator 
+On this date (23.04.2025) Fronius deployed a new software version that momentarily broke compatibility with Battery-Emulator. 
 
 - Installed: ROW 1.35.8-1 (Working ✅ ) Works with BE versions below 8.11.0
 - New: ROW 1.36.5-1 (Breaks ❌ ) Works with BE versions above 8.12.0
 - Newest firmware (1.41.11-1) works with the current BE version. (as of 2026-08-12)
 
-It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator
+It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator.
 
 ## Hardware limitation :zap:
 
@@ -94,7 +94,7 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 
 ### Shutdown
 
-Important to note when shutting down is to not open any DC breakers/isolators under load! Doing so can cause DC arcs and prematurely wear them out, and in worst case start a fire
+Important to note when shutting down is to not open any DC breakers/isolators under load! Doing so can cause DC arcs and prematurely wear them out, and in worst case start a fire.
 
 1. Signal to the inverter that battery is not available, with any of the following options:
    a. Press PAUSE in the Webserver (best option)
@@ -141,7 +141,7 @@ It means that the Modbus connection is down. Verify that:
 - Wires are seated correctly in the Fronius connector. It is very easy to miss that the wires are not pushed in all the way.
 - Try a different powersupply for the Battery Emulator board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see strange modbus errors, your powersupply might be noisy
 
-Make sure the Battery-Emulator has a good modbus connection to the Inverter
+Make sure the Battery-Emulator has a good modbus connection to the Inverter.
 
  - Use shielded wires for a stable connection
  - If you see "ModbusServerRTU.cpp  [ 252] serve: RTU receive: E5 - Packet length error" in the USB output of the board, it is an indication that wiring is not perfect and occasionally get corrupted
@@ -160,7 +160,7 @@ A quick solution is to enable the "450V maxvoltage cap" setting. This fakes it s
     This setting should not be used with Fronius Symo 3-phase inverters. These inverters are OK with battery voltages up to 700VDC
 
 ## Advanced control of energy (Spot price, scheduled charge/discharge etc.)
-Once you have your battery connected to the Fronius, it is possible to add additional hardware into the mix for advanced control of how energy should flow in the system. This is useful for those with spot-price electricity, or a nightly tarriff. Below are some examples you can utilize to control the Fronius Gen24 directly via Modbus TCP
+Once you have your battery connected to the Fronius, it is possible to add additional hardware into the mix for advanced control of how energy should flow in the system. This is useful for those with spot-price electricity, or a nightly tarriff. Below are some examples you can utilize to control the Fronius Gen24 directly via Modbus TCP.
 
 - You can setup forced nightly charging via the webinterface of the Gen24 (Requires connecting to the inverter directly, not available via SolarWeb). This is very useful if you have a cheap night-tarriff, and want to charge the battery during the night and use the energy during the day
 - [Arska-node](https://github.com/Netgalleria/arska-node/) reads Nordpool electricity prices (from EntsoE/Elering) and renewal energy forecast (solar from Open Meteo, solar/wind from Finnish FMI) as well as local real-time net power consumption/sales (smart meter HAN P1-port -tested in FI, Shelly 3EM). Based on this and time based data (+ optional ds18b20) the system updates variables (https://github.com/Netgalleria/arska-node/wiki/Channels#variables) which are used in channel rules deciding whether the channel should be up/down/charging/discharging. Arska has also basic load management functionality (limits loads if consumption exceeds given limits). So far users have used the system mainly to optimise self-consumption of PV production and for scheduling flexible consumption at the cheapest time and selling any surplus when the price is high. Arska has controlled (through GPIO, Shelly and Tasmota relays) water boilers and (underfloor) heating. According to the developer, version 1.3 controls the Fronius GEN24 charging/discharging parameters (nWRte, OutWRte, StorCtl_Mod) based on given channel rules.
@@ -205,5 +205,5 @@ All normal earthing requirements when running in 'off-grid' must still be follow
 
 Fronius is designed to work with 22kWh BYD batteries, and the protocol has a max value of 65535 Wh (unsigned 16bit value) for reporting Wh towards inverter. That means we have to restrict reported Wh number towards the inverter, for example when using a 75kWh Tesla battery, it will show up as max 60kWh in Fronius portal.
 
-Note that this is just a REPORTED value, you can still use the full capacity of the battery. For instance, a 400kWh battery will show up as  60kWh, but the inverter will still use the full 400kWh
+Note that this is just a REPORTED value, you can still use the full capacity of the battery. For instance, a 400kWh battery will show up as  60kWh, but the inverter will still use the full 400kWh.
 

@@ -102,7 +102,7 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 The project enforces a specific code formatting in the workflows. To get your code formatted properly, it is easiest to use a pre-commit hook before pushing the code to a pull request.
 
 Before you begin, make sure you have installed Python on the system!
-To install the pre-commit, open the repository via Git Bash/CMD, and run
+To install the pre-commit, open the repository via Git Bash/CMD, and run.
 ```
 pip install pre-commit
 ```
@@ -110,7 +110,7 @@ And then run
 ```
 pre-commit install
 ```
-Then you can run the autoformat any time with the command
+Then you can run the autoformat any time with the command.
 ```
 pre-commit
 ```
@@ -120,7 +120,7 @@ pre-commit run --all-files
 ```
 
 ## Local Unit test run 🧪
-The Unit tests run gtest. Here is how to install this on Debian/Ubuntu and run it locally
+The Unit tests run gtest. Here is how to install this on Debian/Ubuntu and run it locally.
 ```
 sudo apt-get install libgtest-dev
 sudo apt-get install cmake

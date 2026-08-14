@@ -33,7 +33,7 @@ At the same time, EV manufacturers have been putting high capacity battery packs
 Reusing old often crashed EV packs always comes with risks. The system performs a few safety functions for safer charging and discharging. Apart from this, the data sent to the Inverter is also processed on the inverter side, and depending on which inverter is used a few additional safety checks are performed there. Here is a list of all safety functionalities that are in the system. Note that almost all safety features rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be detectable via software. For this you need fuses, and periodic visual inspections. 
 
 !!! tip "TIP"
-    Be sure to checkout the [installation guidelines](setup/installation_guidelines.md) section for how to install your battery
+    Be sure to checkout the [installation guidelines](setup/installation_guidelines.md) section for how to install your battery.
 
 !!! warning "CAUTION"
     ***At the end of the day, you alone are responsible for the system.***

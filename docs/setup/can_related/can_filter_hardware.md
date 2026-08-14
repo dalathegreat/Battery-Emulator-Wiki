@@ -41,7 +41,7 @@ Connect the ST Link V2 to the J1 ports on the PCB. It can be hard to connect dup
 
 ## Connecting the CAN Filter
 
-The can filter is placed between the LilyGo and the inverter
+The can filter is placed between the LilyGo and the inverter.
 
 | CAN Filter Pin | Connection |
 | :--------: | :---------: |

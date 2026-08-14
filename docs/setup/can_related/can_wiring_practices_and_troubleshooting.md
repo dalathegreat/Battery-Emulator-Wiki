@@ -49,7 +49,7 @@ If you get events like  BATTERY_MISSING or INVERTER_MISSING, you need to check t
 * If you are using a board like T-2CAN, it requires 12V to activate the CAN chips, simply powering it via USB is not enough!
 
 ### Loopback testing
-To verify that the CAN channels on the Battery-Emulator hardware you have are working properly, you can perform a loopback test. This can be done by connecting two CAN channels together
+To verify that the CAN channels on the Battery-Emulator hardware you have are working properly, you can perform a loopback test. This can be done by connecting two CAN channels together.
 
 Example, loopback test on Stark CMR to verify that both hardware channels are OK
 ![image](../../images/can-wiring-practices-and-troubleshooting-06.png)

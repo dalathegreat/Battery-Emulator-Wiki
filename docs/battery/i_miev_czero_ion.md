@@ -43,7 +43,7 @@ Handle precharge/contactors manually or use [GPIO control](../setup/software/con
 * C22-6 Negative contactor
 
 ## Software configuration
-For this battery type, use the option called "I-Miev / C-Zero / Ion Triplet" under the "Battery Protocol" setting
+For this battery type, use the option called "I-Miev / C-Zero / Ion Triplet" under the "Battery Protocol" setting.
 
 ![image](../images/i-miev-czero-ion-03.png){ width="641" height="146" }
 

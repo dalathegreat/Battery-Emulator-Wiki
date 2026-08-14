@@ -9,10 +9,10 @@ title: "Mercedes B250E"
 ### Battery info
 The Mercedes B-Class B250E “W246” uses a 36 kWh lithium-ion battery manufactured by Tesla Motors. It shares many similarities with early Tesla batteries.
 
-The battery is 84s, with an operating voltage range between ~250-350VDC
+The battery is 84s, with an operating voltage range between ~250-350VDC.
 
 ## Software configuration
-For this battery type, use the option called "Tesla Model S/X 2012-2020" under the "Battery Protocol" section
+For this battery type, use the option called "Tesla Model S/X 2012-2020" under the "Battery Protocol" section.
 
 ### Low Voltage wiring
 The battery is referred to as N82 in the wiring diagrams.

@@ -7,7 +7,7 @@ title: "Shunt BMW SBOX"
 Preface, the entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Take extra precaution when working on a custom DIY HV battery, you have been warned.
 
 ## BMW S-BOX
-The BMW S-BOX is a safety box that includes precharge contactors as well as voltage and current probes and fuse. S-BOX can be used eg. on DIY HV Battery and with CHAdeMo vehicles 
+The BMW S-BOX is a safety box that includes precharge contactors as well as voltage and current probes and fuse. S-BOX can be used eg. on DIY HV Battery and with CHAdeMo vehicles. 
 
 |  Part Number |  Supported | Precharge resistor | Negative/Positive Relays | Precharge relay | Fuse |  Notes |
 | :--------: | :---------: | :---------: | :---------: | :---------: | :---------: |:---------: |

@@ -2,7 +2,7 @@
 title: "Pylon HV"
 ---
 
-Any high voltage battery compatible with the Pylontech defacto standard can now be used with the Battery-Emulator. Do note that the support is experimental, and should be considered as a starting point when refining support for your battery. There has been many revisions to the Pylon CAN standard over the years, so some batteries might behave differently than others, even though they both support the Pylon protocol
+Any high voltage battery compatible with the Pylontech defacto standard can now be used with the Battery-Emulator. Do note that the support is experimental, and should be considered as a starting point when refining support for your battery. There has been many revisions to the Pylon CAN standard over the years, so some batteries might behave differently than others, even though they both support the Pylon protocol.
 
 ## Who is the Pylon-Battery support for?
 * Incase you bought an expensive home battery, and want it to show up as a BYD/SMA/SOLAX/SOFAR/Dyness compatible battery for use with another inverter, this is for you!
@@ -32,7 +32,7 @@ Currently the cell voltages might be off and the contactor did not work.
 PylonTech Force H3
 
 ## Software configuration
-For this battery type, use the option called "Pylon compatible battery" under the "Battery Protocol" setting
+For this battery type, use the option called "Pylon compatible battery" under the "Battery Protocol" setting.
 
 ![image](../images/pylon-hv-02.png){ width="670" height="271" }
 

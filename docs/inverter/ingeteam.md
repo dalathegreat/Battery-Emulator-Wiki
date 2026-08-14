@@ -15,7 +15,7 @@ The Ingeteam inverter works via CAN. The LilyGo board can have both a CAN batter
 ℹ️ Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 ## Which protocol to use
-For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting
+For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting.
 
 ![image](../images/afore-01.png){ width="484" height="68" }
 

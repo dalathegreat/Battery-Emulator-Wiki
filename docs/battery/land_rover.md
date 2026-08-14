@@ -5,7 +5,7 @@ title: "Land Rover"
 ### Work in progress integration :construction: 
 
 ## Land Rover battery variants
-Following is a list of PHEV/EV Land Rover/Jaguar models that have lithium batteries that can be used by the Battery-Emulator
+Following is a list of PHEV/EV Land Rover/Jaguar models that have lithium batteries that can be used by the Battery-Emulator.
 
 * Range Rover (L405) [2012–2021]
 * Range Rover Sport (L494) [2013–2022]

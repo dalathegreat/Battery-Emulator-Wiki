@@ -3,10 +3,10 @@ title: "Renault Zoe Gen1"
 ---
 
 # Renault Zoe Gen1
-Zoe Generation 1 batteries have perfect support in the Battery-Emulator
+Zoe Generation 1 batteries have perfect support in the Battery-Emulator.
 
 ## Variants of the Zoe
-There are 3x batteries available for the Zoe, this page focuses on the Gen1 22/40kWh batteries
+There are 3x batteries available for the Zoe, this page focuses on the Gen1 22/40kWh batteries.
 
 * 22kWh 2012-2019, Gen1
 * 40kWh 2016-2019, Gen1
@@ -26,14 +26,14 @@ Example, Zoe battery being tested with a Stark CMR and Lead acid battery before 
 ![image](../images/renault-zoe-gen1-04.png)
 
 ## Software configuration
-For this battery type, use the option called "Renault Zoe Gen1 22/40kWh" under the "Battery Protocol" setting
+For this battery type, use the option called "Renault Zoe Gen1 22/40kWh" under the "Battery Protocol" setting.
 
 ![image](../images/renault-zoe-gen1-11.png){ width="591" height="79" }
 
-Note that you can also enable "Contactor Control via GPIO" to automate the closing/opening of contactors
+Note that you can also enable "Contactor Control via GPIO" to automate the closing/opening of contactors.
 
 ## Safety fuse/switch
-Note the battery fuse. Do not confuse it with the version from the 52kWh battery, using the incorrect one could result in blown fuses or worse. Use OEM fuse, part no: 297C13111R for 22kWh. 297C12645R for 40kWh
+Note the battery fuse. Do not confuse it with the version from the 52kWh battery, using the incorrect one could result in blown fuses or worse. Use OEM fuse, part no: 297C13111R for 22kWh. 297C12645R for 40kWh.
 
 ![image](../images/renault-zoe-gen1-05.png)
 

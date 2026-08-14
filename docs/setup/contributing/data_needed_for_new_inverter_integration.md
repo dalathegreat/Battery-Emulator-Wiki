@@ -45,9 +45,9 @@ Once the hardware is ready, take logs of each of these events.
 When logging, keep track of the parameters. SOC% start to stop, Temperatures, charging power, discharge power etc. The more physical reference points you note down while taking the logs, the easier it will be to decipher them.
 
 ## I have the logs!
-Great! Feel free to share them on the Discord / Github issues page. Then it is time to reverse engineer the data. Once the logs are present, others without the brand battery can join in to help
+Great! Feel free to share them on the Discord / Github issues page. Then it is time to reverse engineer the data. Once the logs are present, others without the brand battery can join in to help.
 
-For instance, here looking for a Hot battery, vs a Cold battery in two CAN logs
+For instance, here looking for a Hot battery, vs a Cold battery in two CAN logs.
 
 - 0x245, 0x01 0x00 0x02 0x19 **0x38** 0x25 0x90 0xF6
 - 0x245, 0x01 0x00 0x02 0x19 **0x36** 0x25 0x90 0xF8

@@ -63,7 +63,7 @@ The CAN-logging is available when using the `TEST_FAKE_BATTERY` mode. This enabl
 # Reverse engineering values
 Say you want to locate voltage from a CAN log. Read the physical value with a multimeter (370.0V), and try to find a CAN message that contains this value (0xE74)
 
-Same with for instance temperature. If the pack is located in a 20*C environment, look for a value that has a typical -40 offset. Example, 0x3C would be decimal 60 (-40 offset) = 20*C
+Same with for instance temperature. If the pack is located in a 20*C environment, look for a value that has a typical -40 offset. Example, 0x3C would be decimal 60 (-40 offset) = 20*C.
 
 Reverse engineering values is the most time consuming part of the new integration. Be prepared to spend weeks on this!
 

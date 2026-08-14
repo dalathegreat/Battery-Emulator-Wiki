@@ -46,7 +46,7 @@ here the complete pinout
 ![type_2](../../images/charger-nissan-leaf-pdm-05.jpg) ![type2_socket](../../images/charger-nissan-leaf-pdm-06.jpg) ![type2_wires](../../images/charger-nissan-leaf-pdm-07.jpg)
 
 ## High voltage wiring diagram ⚡ 
-The PDM has two high voltage connectors, battery and A/C compressor. Both can be used to connect to the battery. If you use the A/C compressor connector, the wires are quite thin so they are not recommended for 6.6kW charging, max 3.3kW
+The PDM has two high voltage connectors, battery and A/C compressor. Both can be used to connect to the battery. If you use the A/C compressor connector, the wires are quite thin so they are not recommended for 6.6kW charging, max 3.3kW.
 
 The PDM also has the AC input Type1/Type2 connector that needs to be connected to the charging port. You have to use the actual charging port, so the CP/PP logic is interpreted by the PDM. You cannot wire in AC directly to the connector.
 

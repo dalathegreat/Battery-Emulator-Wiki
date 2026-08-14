@@ -5,7 +5,7 @@ title: "Daly SmartBMS"
 The entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Cell balancing wire taps, shunts, busbar connections, BMS integration, temperature monitoring, fuses, contactors, interlocks, etc. all will have to be implemented by yourself instead of using a pre-made product. As with all things custom, there are higher risks of human error. Take extra precaution when working on a custom DIY battery, you have been warned.
 
 !!! warning "CAUTION"
-    If you are unsure of your technical knowhow, avoid building a battery from scratch
+    If you are unsure of your technical knowhow, avoid building a battery from scratch.
 
 ## Custom DIY battery with Daly SmartBMS
 The Daly SmartBMS is a series of 4S up to 48S battery management systems allowing to build 12V to 180V DIY batteries.
@@ -43,7 +43,7 @@ You can configure the integrated BMS safety levels (min, max volts, temperatures
 Connect Battery Emulator to the RS485 connector of the BMS. If your DALY BMS does not have the CAN/RS485 port you probably have a cheaper non-smart BMS. The battery emulator integration currently only works with the "SmartBMS" variant.
 ![photo_2025-02-14_18-21-28](../images/daly-smartbms-02.jpg)
 
-Make sure the RS485 connection works by inspecting the values displayed on the battery emulator webinterface
+Make sure the RS485 connection works by inspecting the values displayed on the battery emulator webinterface.
 ![photo_2025-02-14_18-21-15](../images/daly-smartbms-03.jpg)
 
 Next connect your inverter (via CAN). Best not to connect power cables just yet, but first ensure communication works fine.

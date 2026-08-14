@@ -46,7 +46,7 @@ You will need:
  - Battery Emulator hardware with a CAN channel
 
 ## Software configuration
-For this battery type, use the option called "MG Gen1 (HS/ZS/MG5/MarvelR)" under the "Battery Protocol" setting
+For this battery type, use the option called "MG Gen1 (HS/ZS/MG5/MarvelR)" under the "Battery Protocol" setting.
 
 ## Connections
 

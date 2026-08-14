@@ -10,7 +10,7 @@ If you are unsure of your technical knowhow, avoid working on a high voltage bat
 
 ## 
 The Battery-Emulator has support for the Growatt Ark  BMS and the ARK- 2.5H-A1 battery modules  
-A complete system can consist of 1 BMS and 1 to 10 modules with a total voltage of 51 to 512 Vdc
+A complete system can consist of 1 BMS and 1 to 10 modules with a total voltage of 51 to 512 Vdc.
 
 ## Setup
 

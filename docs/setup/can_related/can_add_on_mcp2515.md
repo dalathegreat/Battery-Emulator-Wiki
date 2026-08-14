@@ -89,16 +89,16 @@ These pins need to be connected between the LilyGo header and the MCP2515 board:
 
 ## ℹ️ Note on crystal
 The extra board has either an 8Mhz / 12Mhz or 16Mhz crystal. Be sure to set the correct value in USER_SETTINGS.h if needed. This line:
-`#define CRYSTAL_FREQUENCY_MHZ 8  //CAN_ADDON option, what is your MCP2515 add-on boards crystal frequency?` can be changed to suit the crystal located on your board
+`#define CRYSTAL_FREQUENCY_MHZ 8  //CAN_ADDON option, what is your MCP2515 add-on boards crystal frequency?` can be changed to suit the crystal located on your board.
 
 ![bild](../../images/can-add-on-mcp2515-06.png)
 
 ## Software configuration
-When using the MCP2515, make sure that the can_config inside USER_SETTINGS.cpp is defined correctly. Be sure to add the CAN_ADDON_MCP2515 to the component that is connected to the add-on-CAN 
+When using the MCP2515, make sure that the can_config inside USER_SETTINGS.cpp is defined correctly. Be sure to add the CAN_ADDON_MCP2515 to the component that is connected to the add-on-CAN. 
 
 ![image](../../images/can-add-on-mcp2515-07.png)
 
-Also make sure the option #define CAN_ADDON is enabled in the USER_SETTINGS.h
+Also make sure the option #define CAN_ADDON is enabled in the USER_SETTINGS.h.
 
 ![image](../../images/can-add-on-mcp2515-08.png)
 

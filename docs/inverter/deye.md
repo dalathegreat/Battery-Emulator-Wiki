@@ -19,9 +19,9 @@ Deye only listens to two things when it comes to stopping charge.
 - 0%, 100% SOC reached
 - Pack voltage limit reached
 
-That is the only time Deye inverters stop charging/discharging. Due to this we recommend reaching out to Deye and demand improved firmware on the Inverter side. It is simply not fully safe to operate a Deye inverter
+That is the only time Deye inverters stop charging/discharging. Due to this we recommend reaching out to Deye and demand improved firmware on the Inverter side. It is simply not fully safe to operate a Deye inverter.
 
-Be sure to enable the "Deye avoid over/undercharge fix: " option in the meantime
+Be sure to enable the "Deye avoid over/undercharge fix: " option in the meantime.
 
 ![image](../images/deye-06.png){ width="660" height="210" }
 

@@ -25,10 +25,10 @@ For this platform...
 - More?
 
 ## Software configuration
-For this battery type, use the option called "xyz" under the "Battery Protocol" section
+For this battery type, use the option called "xyz" under the "Battery Protocol" section.
 
 ## Part numbers 
-Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
+Part numbers for connectors/cables, along with purchase links to ebay/aliexpress.
 
 | Component | Part Number | Purchase Link |
 |-----------|-------------|---------------|
@@ -37,7 +37,7 @@ Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
 ## Wiring, Low voltage connector
 
 Post picture of LV connector
-Add diagram of LV connections needed
+Add diagram of LV connections needed.
 
 | Parameter | Value |
 |----------|-------|

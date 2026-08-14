@@ -5,7 +5,7 @@ title: "Ford Mach‐E"
 ## Ford Mach-E / E-Transit wiki
 
 ## Battery specifications
-A checkbox indicates that the battery has been tested and confirmed working
+A checkbox indicates that the battery has been tested and confirmed working.
 
 - Mach-E Model years 2020-2022
    - 75.7 kWh
@@ -43,7 +43,7 @@ Warning - If BE powers down with contactors closed the contactors remain closed.
 A replacement LV connector can be purchased from AliExpress. 
 https://www.aliexpress.com/item/1005008121256506.html
 
-Detailed LV connector C144 pin description
+Detailed LV connector C144 pin description.
 
 [C144.pdf](https://github.com/user-attachments/files/22634843/C144.pdf)
 
@@ -176,14 +176,14 @@ To confirm NMC balancing, record DID `0x4818`, individual cell voltages, highest
 
 If the battery 12 V is powered up with an interlock not connected when you try to get the contactors to close they will not. 
 
-This requires the DTC error clearing and then contactors will immediately close. DTC clear can be accessed from the More Battery Info page
+This requires the DTC error clearing and then contactors will immediately close. DTC clear can be accessed from the More Battery Info page.
 
 ![image](../images/ford-mach-e-12.png){ width="376" height="81" }
 
 DTC Reading is still under development
 
 ### DTC descriptions
-The following DTCs have been decoded
+The following DTCs have been decoded.
 
 - B11D5 - Restraints Event - Vehicle Disabled
 - U0100 - Lost Communication With ECM/PCM A

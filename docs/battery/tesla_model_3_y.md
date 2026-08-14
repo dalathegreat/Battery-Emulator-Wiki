@@ -38,7 +38,7 @@ The Tesla Model 3/Y packs have many hardware/software revisions. Due to this it 
 * Model 3/Y 2025 RWD - LFP Part number 2084670-55-B ✅ (DIGITAL_HVIL)
 * ? (feel free to add specs of your known working packs) 
 
-Note that 2024 and onwards might require setting the "Digital HVIL (2024+)" option in the Settings page to get contactor closing to work
+Note that 2024 and onwards might require setting the "Digital HVIL (2024+)" option in the Settings page to get contactor closing to work.
 
 ![image](../images/tesla-model-s-3-x-y-15.png){ width="561" height="81" }
 
@@ -56,14 +56,14 @@ It is possible to test a battery quite easily before purchase. For this you need
 ![I’m the first person in the world to do this! 2](../images/tesla-model-s-3-x-y-01.jpg)
 
 !!! tip "TIP"
-    When you want to test only battery, do not use any inverter protocol at the same time. Only compile software for Tesla battery to make life easier
+    When you want to test only battery, do not use any inverter protocol at the same time. Only compile software for Tesla battery to make life easier.
 
 Example, LilyGo board with 12V battery used to test a Tesla Model Y battery, which had sat for 2 years and turned out to have a nasty 500mV defect. So the person really avoided a costly mistake by testing the battery beforehand!
 
 ![image](../images/tesla-model-s-3-x-y-02.png)
 
 ## Software configuration
-For this battery type, use the option called "Tesla Model 3/Y", or "Tesla Model S/X" under the "Battery Protocol" setting
+For this battery type, use the option called "Tesla Model 3/Y", or "Tesla Model S/X" under the "Battery Protocol" setting.
 
 ![image](../images/tesla-model-s-3-x-y-16.png){ width="543" height="386" }
 
@@ -73,7 +73,7 @@ Manual charging/discharge power also needs to be set, due to not being able to u
 
 ### Note on LFP chemistry
 
-All Model S/X packs are NCM/A chemistry
+All Model S/X packs are NCM/A chemistry.
 
 Some Model 3/Y packs are LFP chemistry, and some are NCM/A chemistry.
 
@@ -238,10 +238,10 @@ Tesla batteries are intended to fully charge, and then enter a balancing phase a
 
 Tesla batteries will balance ~2mV per 24h or balancing.
 
-Once you are done balancing, you can press the "Close Contactors" button, and "Unpause" to resume operation
+Once you are done balancing, you can press the "Close Contactors" button, and "Unpause" to resume operation.
 
 !!! warning "WARNING"
-    During balancing with contactors open, 12V lead acid battery will NOT be charged. Make sure the lead acid battery has an external charger available while in this state
+    During balancing with contactors open, 12V lead acid battery will NOT be charged. Make sure the lead acid battery has an external charger available while in this state.
 
 ![image](../images/tesla-model-s-3-x-y-24.png){ width="902" height="289" }
 

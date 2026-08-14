@@ -5,7 +5,7 @@ title: "ESP32 DevKit V1"
 ## ESP32 DevKit V1 hardware compatible with Battery-Emulator
 
 !!! warning "WARNING"
-    The Devkit is for advanced users that are OK with troubleshooting wiring and complex software setups. For easy use of Battery-Emulator, consider using LilyGo or Stark CMR
+    The Devkit is for advanced users that are OK with troubleshooting wiring and complex software setups. For easy use of Battery-Emulator, consider using LilyGo or Stark CMR.
 
 The ESP32 DevKit V1 hardware can be used with Battery-Emulator, and has the following advantages:
 

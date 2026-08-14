@@ -17,7 +17,7 @@ To have the Battery-Emulator accessible in your home network, you need to enter 
 !!! note "NOTE"
     SSID can max be 63 chars, and password needs to be atleast 8 chars long. Only 2.4Ghz networks are supported, 5Ghz will NOT work! 
 
-When the board boots, it will attempt to connect to the wifi network you specified. Your router will give it a unique IP, so next up is figuring out what the actual address is. There are a few options you can do
+When the board boots, it will attempt to connect to the wifi network you specified. Your router will give it a unique IP, so next up is figuring out what the actual address is. There are a few options you can do.
 
 - Connect temporarily to the Battery-Emulator's Access Point, navigate to 192.168.4.1 via a webbrowser, and read out the IP address it got
 
@@ -26,7 +26,7 @@ When the board boots, it will attempt to connect to the wifi network you specifi
 - Connect via USB and read out the serial print via a serial terminal. When the board boots, it will post which IP address it got assigned to. If you only see ????? in the terminal, change the baud rate from 9600 to 115200.
 - Check your router info. Incase your home router has a login page (typically 192.168.1.1), you can via this see what devices are connected to your home network. The board will show up as `battery-emulator-a1b2` in your DHCP leases table.
 
-Once the IP of the board has been determined, open a webbrowser on a device that is connected to the same home network, and type in the IP. This will open the Webserver user interface
+Once the IP of the board has been determined, open a webbrowser on a device that is connected to the same home network, and type in the IP. This will open the Webserver user interface.
 
 ### B: Connect to the Wi-Fi access point (AP)
 By default, there is an AP broadcasted by the board, with the SSID `battery-emulator-a1b2` (containing the last two bytes of its MAC address). The default password is `123456789`. You have to change it in the webserver to improve cyber-security: when the AP is running with the factory-default password, it is automatically disabled after 5 minutes (raising a corresponding event). If a custom AP password has been set, it stays enabled indefinitely. Limiting the default-password AP to a short provisioning window mitigates the attack vector while keeping first-time setup and recovery access fully functional.
@@ -55,7 +55,7 @@ Using the webserver you can see what part is limiting the charge/discharge. It w
 
 ![image](../../images/webserver-guide-05.png)
 
-Note, if no power is being put in/out of the battery, the text will simply say Battery Idle
+Note, if no power is being put in/out of the battery, the text will simply say Battery Idle.
 
 Above this text you can also see the Amperages allowed by the Emulator. You can see when the charge/discharge amperage values are limited by the battery itself (BMS), or by the user configurable settings (Manual)
 
@@ -69,7 +69,7 @@ This page contains information about events that have occured while the system h
 Each event also has a description field with more info. The events are grouped into three categories:
 
 ### Info ℹ️ 
-Info events contain useful information like when battery has been charged full, completely discharged, reset reason etc. Having info events present does not warranty any user action
+Info events contain useful information like when battery has been charged full, completely discharged, reset reason etc. Having info events present does not warranty any user action.
 
 ### Warning 🟡 
 Warning events contain info that users might want to act upon. The system will try to mitigate certain warnings, like incase the battery is reaching too high voltage, the system will raise a warning event and prevent further charging (only discharging will be possible). Warning events should be analyzed when spotted. The front page of the webserver, plus the LED on the board will also turn yellow when a warning event is active.
