@@ -7,8 +7,8 @@ The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh b
 
 - 24kWh (2011–2012, ZE0) = 277kg (601lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
 - 30kWh (2013–2017, AZE0) = 294kg (648lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
-- 40kWh (2018–2025, ZE1) = 303kg (668lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
-- 62kWh (2018–2025, ZE1) = 410kg (903lb) 1547.0 (L) × 1188.0 (W) × 304.0 (H) mm
+- 40kWh (2018–2023, ZE1) = 303kg (668lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
+- 62kWh (2018–2023, ZE1) = 410kg (903lb) 1547.0 (L) × 1188.0 (W) × 304.0 (H) mm
 
 ![Leaf 24/30/40kWh pack](../images/nissan-leaf-e-nv200-01.png)
 
@@ -149,26 +149,32 @@ made of PVC (Y), with regularly stranded conductor (A)
 * FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R)
 made of PVC (Y), with irregularly stranded conductor (B)
 
-## Alternative HV connectors 
+## 3D printable parts
+
+### Alternative HV connectors 
 Original part number for Nissan Leaf battery is 297A65SH1A but a cheaper alternative for battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as Leaf battery. 297A22581R is the part numbers for both car.
 
 The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/dam/tti-europe/manufacturers/aptiv/doc/aptiv-hv-rcs-800-automotive-connectors-datasheet-specifications.pdf).
 
+### Socket covers
 If you are mounting the battery indoors, you can also 3d-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is a link to Pelle_C's excellent 3d-printable connector: [gitlab/pelle8](https://gitlab.com/pelle8/3d)
 ![rcs800_32A](../images/nissan-leaf-e-nv200-13.jpeg)
 ![rcs800_leaf](../images/nissan-leaf-e-nv200-14.jpeg)
 
 The 2013-2023 batteries have an external high voltage heater port. The socket can be covered with [3D printed backoff](https://www.printables.com/model/1756569-nissan-leaf-battery-ptc-connector-cover). It can also be plugged with silicone, but beware that certain types of silicone are conductive while uncured. Allow the silicone to cure for 24 hours before engaging contactors in such a case.
-
 ![bild](../images/nissan-leaf-e-nv200-15.png)
 
-## Alternative Service Disconnect Switch
+[This is a dust and water spill protection cover](https://www.printables.com/model/1810318-nissan-leaf-ze0aze0ze1-data-connector-protection-c) for the data connector of of Nissan Leaf 2011-2023 batteries. It slides on top of the connector, and uses two cable glands (a PG9 and a PG13.5) to access separately the CAN and a contactor control / BMS power cables:
+![datac-con-cover](../images/nissan-leaf-data-connector-cover.png)
 
-Here is a [3D printed SDS for 2013-2025 batteries](https://www.printables.com/model/1337831-nissan-leaf-ze1-service-disconnect-plug) (AZE0, ZE1)
+There's also [a fixation ring for the data connector socket](https://www.printables.com/model/1810328-nissan-leaf-ze0aze0ze1-data-connector-fixation-rin). It slides in the knot at the base of the socket. Use it to prevent the socket to fall into the battery - this can occur when the workers who originally dismounted the battery pack from the car were not careful enough when they disconnected the factory plug, and made the socket loose. This ring is a quick fix you can apply without having to open up the battery penthouse.
 
+### Alternative Service Disconnect Switch
+
+Here is a [3D printed SDS for 2013-2023 batteries](https://www.printables.com/model/1337831-nissan-leaf-ze1-service-disconnect-plug) (AZE0, ZE1)
 ![3d_AZE0_ZE1_SDS](../images/nissan-leaf-e-nv200-24.jpeg){ width="900" height="675" }
 
-The link contains the drawing of the copper contact part, you can cut yourself or ask a workshop to cut and silver-plate it.
+The link contains the drawing of the copper contact part, you can cut yourself and/or ask a workshop to cut and silver-plate it.
 
 ## Examples of wiring installs
 Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
