@@ -54,7 +54,7 @@ The MG4 battery has an HV connector (Orange), and a 12 pin Low Voltage signal co
 
 ![MG4_LV](../images/mg4-09.png){ width="545" height="382" }
 
-This is the Low voltage connector plug: https://www.aliexpress.com/item/1005004677986133.html
+This is the Low voltage connector plug: [aliexpress](https://www.aliexpress.com/item/1005004677986133.html)
 
 The one you need is the female.
 

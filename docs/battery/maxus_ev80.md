@@ -17,7 +17,7 @@ The cables are labelled in Chinese
 
 ![image](../images/maxus-ev80-03.png){ width="1095" height="588" }
 
-TODO: check for official cabling documentation on https://xyx.saicmaxus.com/overseaAfterSaleWeb/staticDownloads.html
+TODO: check for official cabling documentation on [saicmaxus](https://xyx.saicmaxus.com/overseaAfterSaleWeb/staticDownloads.html)
 
 ## High voltage wiring
 Cable for heater?

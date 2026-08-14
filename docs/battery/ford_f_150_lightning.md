@@ -36,7 +36,7 @@ Part numbers for connectors/cables, along with purchase links to ebay/aliexpress
 ![image](../images/ford-f-150-lightning-02.png)
 
 A replacement LV connector can be purchased from AliExpress. 
-https://www.aliexpress.com/item/1005008121256506.html
+[aliexpress](https://www.aliexpress.com/item/1005008121256506.html)
 
 Detailed LV connector C144 pin description
 

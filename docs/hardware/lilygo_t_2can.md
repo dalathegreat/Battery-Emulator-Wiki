@@ -25,7 +25,7 @@ The hardware can be bought via sites like AliExpress, or the official [LilyGo st
 ## Hardware info
 
 The hardware has more details on LilyGo's Github page
-https://github.com/Xinyuan-LilyGO/T-2Can
+[github/Xinyuan-LilyGO](https://github.com/Xinyuan-LilyGO/T-2Can)
 
 !!! note "NOTE"
     This has an included Antenna that needs to be mounted for good Wifi performance. Failure to install this will lead to connectivity issues.
@@ -171,7 +171,7 @@ The screens are available in several sizes. Some are monochrome, others are two-
 #### DIN Rail Holder
 
 STL for 3D printing 
-[Open Frame DIN] (https://www.thingiverse.com/thing:7278747)
+[Open Frame DIN](https://www.thingiverse.com/thing:7278747)
 
 ### Boot button 
 

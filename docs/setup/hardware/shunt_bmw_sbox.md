@@ -33,5 +33,5 @@ When connecting the S-BOX to a shared CAN bus, ensure that these IDs are not alr
 You can adjust the voltage limits and relay timers by modifying the BMW-SBOX.h file.
 
 ## More info
-* [https://github.com/damienmaguire/BMW_SBox](https://github.com/damienmaguire/BMW_SBox)
-* [https://openinverter.org/wiki/BMW_Hybrid_Battery_Pack#S-Box](https://openinverter.org/wiki/BMW_Hybrid_Battery_Pack#S-Box)
+* [github/damienmaguire](https://github.com/damienmaguire/BMW_SBox)
+* [openinverter](https://openinverter.org/wiki/BMW_Hybrid_Battery_Pack#S-Box)

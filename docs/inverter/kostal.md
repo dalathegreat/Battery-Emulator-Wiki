@@ -18,7 +18,7 @@ A checkmark (✅) indicates that an user has reported back successfully using th
 * PIKO MP Plus 3.0-1, 3.0-2, 3.5-1, 3.5-2, 4.6-2, 5.0-2
 * PIKO 6.0 BA / 8.0 BA / 10 BA
 
-Note that for some models the battery feature is optional, and needs to be activated via an activation code (or "PLENTICOIN") that needs to be purchased first.  This code must be entered either via the onscreen menu or the web interface. On older firmware versions this was possible with the regular user login, on newer firmware versions this requires a service code. The same applies for the battery configuration screen. More details: https://www.kostal-solar-electric.com/Guideline_PLENTICORE-BYD/
+Note that for some models the battery feature is optional, and needs to be activated via an activation code (or "PLENTICOIN") that needs to be purchased first.  This code must be entered either via the onscreen menu or the web interface. On older firmware versions this was possible with the regular user login, on newer firmware versions this requires a service code. The same applies for the battery configuration screen. More details: [kostal-solar-electric](https://www.kostal-solar-electric.com/Guideline_PLENTICORE-BYD/)
 
 ![image](../images/kostal-01.png)
 
@@ -50,7 +50,7 @@ The Kostal inverter works via RS485. Connect pins A, B and GND from the Kostal c
 
 ***
 
-Use this tree of the battery emulator on a LilyGo: https://github.com/lewurm/Battery-Emulator/tree/rs485-sniffing
+Use this tree of the battery emulator on a LilyGo: [github/lewurm](https://github.com/lewurm/Battery-Emulator/tree/rs485-sniffing)
 Compile with Arduino ide ESP32 firmware 3.1.3.
 It will just print whatever bytes are seen on the RS485 line to the USB serial.
 

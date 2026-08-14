@@ -45,7 +45,7 @@ Make sure the contactor assembly (Left picture, silver box) is included with the
 
 ## Wiring diagram, low voltage
 Connect HVIL2_EXT_IN and HVIL2_EXT_OUT together with a cable. (this will close the HVIL loop in BECM.)
-Dont forget the driveline connector. When using the 4wd it's only for on the connector to the rear axle. If you have a different type it can be multiple connectors. For the wiring diagram see https://www.loopybunny.co.uk/schematics/MY24_Schematic.pdf
+Dont forget the driveline connector. When using the 4wd it's only for on the connector to the rear axle. If you have a different type it can be multiple connectors. For the wiring diagram see [loopybunny](https://www.loopybunny.co.uk/schematics/MY24_Schematic.pdf)
 
 The BECM has no built in 120ohm resistor. (BECM = Battery Energy Control Module) 
 Make sure the terminating resistors are correct. CAN networks should have two 120 Ohm resistors in each end of the network. With everything OFF, you can measure resistance between CAN-H and CAN-L. The result should be 60 Ohm.

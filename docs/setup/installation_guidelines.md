@@ -40,7 +40,7 @@ While on the topic of temperatures, it is also important to keep the hardware ru
 2. Disable ESPNow if you don't use it. ESPNow, just like Access Point, increases CPU temperature significantly!
 3. Open the lid / drill some ventilation holes if possible. Only do this if the enclosure is not exposed to water!
 4. You can also mount a small heatsink to the CPU. RAM heatsinks make for great makeshift ESP32 heatsinks!
-https://vi.aliexpress.com/w/wholesale-Raspberry-Pi--aluminium-heatsink.html
+[aliexpress](https://vi.aliexpress.com/w/wholesale-Raspberry-Pi--aluminium-heatsink.html)
 5. For extreme ambient temperatures (>40°C), you can further combat the overheating by mounting a fan to provide some air circulation
 
 ![image](../../images/installation-guidelines-01.png)
@@ -167,7 +167,7 @@ Example, wire shielding cut too close to copper, making the shield touch HV-. Th
 
 ![image](../../images/installation-guidelines-13.png){ width="608" height="558" }
 
-Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the wiring is OK, the battery itself can also have an internal leak. These are much harder to diagnose compared to external wiring issues. Checkout this video for more example of leakage to ground https://www.youtube.com/watch?v=00eEj_EgMas
+Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the wiring is OK, the battery itself can also have an internal leak. These are much harder to diagnose compared to external wiring issues. Checkout this video for more example of leakage to ground [youtube](https://www.youtube.com/watch?v=00eEj_EgMas)
 
 #### Optional stuff!
 

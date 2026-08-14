@@ -154,7 +154,7 @@ Original part number for Nissan Leaf battery is 297A65SH1A but a cheaper alterna
 
 The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/dam/tti-europe/manufacturers/aptiv/doc/aptiv-hv-rcs-800-automotive-connectors-datasheet-specifications.pdf).
 
-If you are mounting the battery indoors, you can also 3d-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is a link to Pelle_C's excellent 3d-printable connector: https://gitlab.com/pelle8/3d
+If you are mounting the battery indoors, you can also 3d-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is a link to Pelle_C's excellent 3d-printable connector: [gitlab/pelle8](https://gitlab.com/pelle8/3d)
 ![rcs800_32A](../images/nissan-leaf-e-nv200-13.jpeg)
 ![rcs800_leaf](../images/nissan-leaf-e-nv200-14.jpeg)
 

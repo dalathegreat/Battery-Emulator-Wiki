@@ -72,5 +72,5 @@ Max Continuous Current | ±250A
 </ul>
 
 <p>Here are some useful tools I created. My pack developed a P1B25 fault before finished integration so I have abandoned the project and ordered a different pack.
-[Kia 8.9kWh PHEV.zip] (https://github.com/user-attachments/files/30602101/Kia.8.9kWh.PHEV.zip) <p>
+[Kia 8.9kWh PHEV.zip](https://github.com/user-attachments/files/30602101/Kia.8.9kWh.PHEV.zip) <p>
 

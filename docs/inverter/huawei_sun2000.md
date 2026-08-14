@@ -13,4 +13,4 @@ The SUN2000 inverters are compatible with both 400V and 800V systems. However, w
 
 ## Installation manual
 
-See this manual for more info on 400V LG Resu: https://support.huawei.com/enterprise/en/doc/EDOC1100011910
+See this manual for more info on 400V LG Resu: [huawei](https://support.huawei.com/enterprise/en/doc/EDOC1100011910)

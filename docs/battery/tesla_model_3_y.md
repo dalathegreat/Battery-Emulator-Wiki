@@ -87,10 +87,10 @@ Incase your battery is missing some wires/fuses, here are the OEM part numbers a
 
 |  Product | Part # | Purchase Link |
 | :--------: | :---------: | :---------: |
-| Pyrofuse | 1064689 106469-00-J 1064689-00 10646900J 1064689-00 | https://www.amazon.com/dp/B0CBRQJL7B?psc=1&ref=ppx_yo2ov_dt_b_product_details |
-| HV connector | 1109000-00 | https://ingenext.ca/products/tesla-model-3-asy-hv-harn-rdu-m3-1109000-00-d |
-| X098 connector | 6189-7077 13 Pin Sumitomo Sealed Female | https://a.aliexpress.com/_EyTbzzK  |
-| Penthouse socket | Torx Socket 10EPR | https://www.fcpeuro.com/products/epr-torx-plus-socket-set-1-4-drive-5-piece-cta-manufacturing-5064 or https://vi.aliexpress.com/item/1005006015748803.html  |
+| Pyrofuse | 1064689 106469-00-J 1064689-00 10646900J 1064689-00 | [amazon](https://www.amazon.com/dp/B0CBRQJL7B?psc=1&ref=ppx_yo2ov_dt_b_product_details) |
+| HV connector | 1109000-00 | [ingenext](https://ingenext.ca/products/tesla-model-3-asy-hv-harn-rdu-m3-1109000-00-d) |
+| X098 connector | 6189-7077 13 Pin Sumitomo Sealed Female | [aliexpress](https://a.aliexpress.com/_EyTbzzK)  |
+| Penthouse socket | Torx Socket 10EPR | [fcpeuro](https://www.fcpeuro.com/products/epr-torx-plus-socket-set-1-4-drive-5-piece-cta-manufacturing-5064) or [aliexpress](https://vi.aliexpress.com/item/1005006015748803.html)  |
 
 ## Replace the Pyrofuse
 
@@ -197,7 +197,7 @@ The downside of this is that you will never have any shutdown incase a high volt
 ** To gain access to the penthouse you will need a specialist socket (example of one listed above in parts table) **
 
 ![bild](../images/tesla-model-s-3-x-y-12.png)
-Connections info: https://electrek.co/2017/08/24/tesla-model-3-exclusive-battery-pack-architecture/
+Connections info: [electrek](https://electrek.co/2017/08/24/tesla-model-3-exclusive-battery-pack-architecture/)
 
 | Number | Description |
 | :-----: | :---: |

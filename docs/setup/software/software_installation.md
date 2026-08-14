@@ -10,7 +10,7 @@ Follow these instructions if you have a compatible device that doesn't yet have 
 
 The easiest way to install Battery Emulator is via the Web Installer, using a compatible browser (Chrome/Edge).
 
-1. Visit https://dalathegreat.github.io/BE-Web-Installer/
+1. Visit [BE-Web-Installer](https://dalathegreat.github.io/BE-Web-Installer/)
 
 2. Follow the instructions to plug in your device over USB, erase it, and flash a suitable factory image.
 
@@ -18,7 +18,7 @@ The easiest way to install Battery Emulator is via the Web Installer, using a co
 
 If you are unable to use the Web Installer, you can download and flash a factory image yourself.
 
-1. Find and download the appropriate factory image for your device from https://github.com/dalathegreat/BE-Web-Installer/tree/main/images
+1. Find and download the appropriate factory image for your device from [BE-Web-Installer](https://github.com/dalathegreat/BE-Web-Installer/tree/main/images)
 
 2. Open up a terminal and `cd` to the folder you downloaded the factory image to.
 
@@ -29,7 +29,7 @@ If you are unable to use the Web Installer, you can download and flash a factory
     pip install esptool
     esptool write-flash -e 0 BE_v9.1.4_LilygoT-CAN485.factory.bin
     ```
-  - Or by installing `uv` (see https://docs.astral.sh/uv/getting-started/installation/) and using that:
+  - Or by installing `uv` (see [astral](https://docs.astral.sh/uv/getting-started/installation/)) and using that:
     ```sh
     uv tool run --from=esptool esptool write-flash -e 0 BE_v9.1.4_LilygoT-CAN485.factory.bin
     ```
@@ -38,7 +38,7 @@ If you are unable to use the Web Installer, you can download and flash a factory
 
 5. Connect to the `BatteryEmulator` WiFi SSID, password 123456789
 
-6. Go to http://192.168.4.1 and configure the device (connecting it to your own WiFi, and/or changing the AP WiFi password).
+6. Go to [192.168.4.1](http://192.168.4.1) and configure the device (connecting it to your own WiFi, and/or changing the AP WiFi password).
 
 # Upgrading
 

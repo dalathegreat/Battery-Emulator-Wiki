@@ -128,18 +128,18 @@ Below the newest SW settings, details depend on your setup, but this is basis.
 
 For the previous/older SW version:
 Make sure to enable the #define PRECHARGE_CONTROL option in the USER_SETTINGS.h file
-https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/USER_SETTINGS.h
+[Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/USER_SETTINGS.h)
 
 Generic:
 The precharge code itself is located in the folder Software/src/communication/precharge_control/precharge_control.cpp.
 
-https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/src/communication/precharge_control/precharge_control.cpp
+[Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/src/communication/precharge_control/precharge_control.cpp)
 
 At the time of writing (release 8.13.0) both Lilygo and Stark CMR are tested and supported out of the box.
 
 The mapping of the pins towards the physical hardware can be found in the corresponding file linked to the hardware you use, located in the directory Software/src/devboard/hal. Make sure to double check the connection is as expected.
 
-https://github.com/dalathegreat/Battery-Emulator/tree/main/Software/src/devboard/hal
+[Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/tree/main/Software/src/devboard/hal)
 
 ## PWM testmode (Lilygo or Stark CMR)
 As of release 10.2.0 and above there is a testmode to drive the HIA4V1. This allows you generate a voltage and check polarity.

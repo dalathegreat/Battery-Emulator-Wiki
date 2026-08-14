@@ -22,7 +22,7 @@ For this battery type, use the option called "Renault Zoe Gen2 50kWh" under the 
 ![image](../images/renault-zoe-gen2-15.png){ width="593" height="73" }
 
 ## Zoe Gen2 pictures and pinout
-Credit goes to ljames28 for the excellent repo: https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information
+Credit goes to ljames28 for the excellent repo: [github/ljames28](https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information)
 
 Beware that the plug for previous generations battery fits the Gen2 version but the pinout is different so it will not work.
 Allso note plug pinout is seen from the rear of the plug where the wires come out. If you cannot source a plug and are comfortable opening the battery, theres a handy industry std connector just on the inside, but the colors of wires change. (white visible below)

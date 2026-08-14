@@ -15,7 +15,7 @@ There is an Android App available which may be used to further experiments: [Sou
 
 ### Parts List
 
-Connectors: MG656922-5 KET (pins are included) can be ordered here https://xhxqsm.en.alibaba.com/
+Connectors: MG656922-5 KET (pins are included) can be ordered here [alibaba](https://xhxqsm.en.alibaba.com/)
 
 Connector pin: [KET Female Terminal ST731438-3 C060](https://www.alibaba.com/product-detail/KET-ST731438-3-C060-WP-Female_1600912337153.html)
 

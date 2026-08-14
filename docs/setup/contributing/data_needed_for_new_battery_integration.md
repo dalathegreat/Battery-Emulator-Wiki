@@ -30,9 +30,9 @@ You will first have to get some hardware capable of reading the communication. H
     You can use the Battery-Emulator to log CAN messages. See the [CAN logging page](../can_related/can_logging.md)
 
     Battery-Emulator hardware, for instance a LilyGo board (can log data in testing mode!)💲 
-    USBCAN PCAN clone 💲 Recommended,link: https://www.aliexpress.us/item/1005006341852788.html 
+    USBCAN PCAN clone 💲 Recommended,link: [aliexpress](https://www.aliexpress.us/item/1005006341852788.html) 
     Raspberry PI with CAN shield 💲💲
-    USB2CAN Korlan 💲💲 Recommended, link: https://www.8devices.com/products/usb2can_korlan 
+    USB2CAN Korlan 💲💲 Recommended, link: [8devices](https://www.8devices.com/products/usb2can_korlan) 
     Kvaser 💲💲💲
     Peak PCAN 💲💲💲
     Softing 💲💲💲
@@ -42,7 +42,7 @@ Take pictures of HV and LV connectors on the battery. Figure out the pinout with
 
 Start battery by applying 12V to it, and CAN H-L pins to a CAN reader / Battery-Emulator hardware. Note, on some batteries you might need to satisfy interlock or airbag / crash signals before they startup.
 
-Get a CAN log of the battery in standalone operation. An example from start to finish can be seen here: https://github.com/dalathegreat/Nissan-Leaf-Battery-to-OBD2
+Get a CAN log of the battery in standalone operation. An example from start to finish can be seen here: [Nissan-Leaf-Battery-to-OBD2](https://github.com/dalathegreat/Nissan-Leaf-Battery-to-OBD2)
 
 # Taking CAN logs with the Battery-Emulator (LilyGo hardware as an example)
 

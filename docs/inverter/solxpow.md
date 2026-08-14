@@ -26,7 +26,7 @@ The Solxpow inverters use a slightly modified version of the Pylontech HV protoc
 
 ## User manual 
 
-https://files.fm/u/hzwsdzfkr8 
+[files](https://files.fm/u/hzwsdzfkr8) 
 
 ## Wiring diagram
 

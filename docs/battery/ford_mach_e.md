@@ -41,7 +41,7 @@ Red is overall width, Yellow is overall length, Purple is height of short area, 
 Warning - If BE powers down with contactors closed the contactors remain closed. Use Relay or Stark CMR to supply power to the BECM (BMS) to power down the BECM if Battery Emulator goes down. 
 
 A replacement LV connector can be purchased from AliExpress. 
-https://www.aliexpress.com/item/1005008121256506.html
+[aliexpress](https://www.aliexpress.com/item/1005008121256506.html)
 
 Detailed LV connector C144 pin description.
 

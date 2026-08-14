@@ -14,7 +14,7 @@ The Battery-Emulator has support for the 4-192S RJXZS BMS. With this BMS you can
 
 ### Where do I get the hardware?
 
-- https://www.aliexpress.com/i/1005005915643384.html
+- [aliexpress](https://www.aliexpress.com/i/1005005915643384.html)
 - contact [sales@rjxzstech.com](mailto:sales@rjxzstech.com)
 
 ### Where do I get the User Manual?
@@ -26,7 +26,7 @@ User Manual can be found here:
 You need to see the voltage range of the inverter, and calculate based on the chemistry you intend to use. For instance, a Fronius Gen24 takes 160-531V on the battery input. Using the limits for NCM chemistry (3.0V empty, 4.2V full), this means the minimum viable battery configuration would be 160V empty (160V/3.0V=53S), and the largest battery configuration would be (531V/4.2V=126S). So a 53S at minimum, and a 126S config max.
 
 ## Setting up the BMS
-You can download the latest official version from RJXZS at: https://www.rjxzstech.com/download/the-APP-of-192S-Ghost-BMS-for-android.html
+You can download the latest official version from RJXZS at: [rjxzstech](https://www.rjxzstech.com/download/the-APP-of-192S-Ghost-BMS-for-android.html)
 
 On some phones to run app you need to turn on GPS positioning and allow app to use that feature:
 

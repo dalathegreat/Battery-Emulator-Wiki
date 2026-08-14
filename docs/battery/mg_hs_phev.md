@@ -60,7 +60,7 @@ The MG HS PHEV battery has 3 separate HV connectors (Orange), and a Low Voltage 
 
 ![mg_lv_diagram](../images/mg-hs-phev-03.png)
 
-This is the LV connector plug: https://www.aliexpress.com/item/1005004815715620.html
+This is the LV connector plug: [aliexpress](https://www.aliexpress.com/item/1005004815715620.html)
 The one you need is the one with the black face.
 There's a non-wired version too for doing your own crimping but this looks easier to implement.
 
@@ -147,4 +147,4 @@ Here is a list of functions for those pins on the second generation model:
 
 ![32 Pin Molex pins](../images/mg-hs-phev-08.png){ width="433" height="731" }
 
-Lots of useful information here: https://cardiagn.com/2022-2024-mg-ehs-hybrid-service-and-repair-manual-incl-wiring/
+Lots of useful information here: [cardiagn](https://cardiagn.com/2022-2024-mg-ehs-hybrid-service-and-repair-manual-incl-wiring/)

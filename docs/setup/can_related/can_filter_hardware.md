@@ -20,7 +20,7 @@ Software for the CAN filter [can be found here](https://github.com/No-Signal/Can
 
 ## Flashing the CAN filter
 
-See this video: https://www.youtube.com/watch?v=LssrvVYLtp8
+See this video: [youtube](https://www.youtube.com/watch?v=LssrvVYLtp8)
 
 Flash with BridgeFlasher.exe located in software folder. The compiled .srec files are [located in the releases section](https://github.com/dalathegreat/Nissan-LEAF-Battery-Upgrade/releases)  . For ST LINK CLI, point the exe towards the "ST-LINK_CLI.exe" located in the "STM32 ST-LINK Utility" folder that appears after installing it. Incase the BridgeFlasher.exe doesn't run, make sure you have installed [vc++ 2015 x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) 
 

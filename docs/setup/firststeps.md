@@ -40,16 +40,16 @@ This code uses the following excellent libraries:
 
 It is also based on the information found in the following excellent repositories/websites:
 
-- https://gitlab.com/pelle8/inverter_resources //new url
-- https://github.com/burra/byd_battery
-- https://github.com/flodorn/TeslaBMSV2
-- https://github.com/SunshadeCorp/can-service
-- https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3
-- https://github.com/dalathegreat/leaf_can_bus_messages
-- https://github.com/rand12345/solax_can_bus
-- https://github.com/Tom-evnut/BMWI3BMS/ SMA-CAN
-- https://github.com/FozzieUK/FoxESS-Canbus-Protocol FoxESS-CAN
-- https://github.com/maciek16c/hyundai-santa-fe-phev-battery
-- https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information
-- Renault Zoe CAN Matrix https://docs.google.com/spreadsheets/u/0/d/1Qnk-yzzcPiMArO-QDzO4a8ptAS2Sa4HhVu441zBzlpM/edit?pli=1#gid=0
-- Pylon hacking https://www.eevblog.com/forum/programming/pylontech-sc0500-protocol-hacking/
+- [gitlab/pelle8](https://gitlab.com/pelle8/inverter_resources) //new url
+- [github/burra](https://github.com/burra/byd_battery)
+- [github/flodorn](https://github.com/flodorn/TeslaBMSV2)
+- [github/SunshadeCorp](https://github.com/SunshadeCorp/can-service)
+- [github/openvehicles](https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3)
+- [leaf_can_bus_messages](https://github.com/dalathegreat/leaf_can_bus_messages)
+- [github/rand12345](https://github.com/rand12345/solax_can_bus)
+- [github/Tom-evnut](https://github.com/Tom-evnut/BMWI3BMS/) SMA-CAN
+- [github/FozzieUK](https://github.com/FozzieUK/FoxESS-Canbus-Protocol) FoxESS-CAN
+- [github/maciek16c](https://github.com/maciek16c/hyundai-santa-fe-phev-battery)
+- [github/ljames28](https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information)
+- Renault Zoe CAN Matrix [google](https://docs.google.com/spreadsheets/u/0/d/1Qnk-yzzcPiMArO-QDzO4a8ptAS2Sa4HhVu441zBzlpM/edit?pli=1#gid=0)
+- Pylon hacking [eevblog](https://www.eevblog.com/forum/programming/pylontech-sc0500-protocol-hacking/)

@@ -9,7 +9,7 @@ From the beginning of the year 2013 Mitsubishi changed from Yuasa LEV50 to Yuasa
 In Japan there was a rare third battery. It had LTO cells inside and around 10.5kWh of capacity. The reason why the LTO model got released is because Mitsubishi had to replace the known bad LEV50 batteries on warranty on masses and was loosing money. They was searching for alternative and that is why there was this LTO model that got released. If you get a rare LTO model, it should last the longest. Those LTO cells are known to have nearly no degradation.
 
 The chemistry between the LEV50 and LEV50N changed a bit. Because of that the BMU got a firmware update. This firmware update was send to the Mitsubishi shop on a CD. Sadly there is no copy of this CD anywhere. It would be great if someone could get a copy of this cd and put the ISO online. You can read out the firmware from LEV50 BMU and LEV50N BMU and crossflash it.
-A Russian developer from Novosibirsk https://github.com/kolyandex modded the BMU firmware and told that the BMU firmware can be modified. Sadly this was sold as a service and not offered open source. The very few people who got this from him, probably does not know how to read out the BMU firmware and that is why it is still not documented how to mod the BMU firmware.
+A Russian developer from Novosibirsk [github/kolyandex](https://github.com/kolyandex) modded the BMU firmware and told that the BMU firmware can be modified. Sadly this was sold as a service and not offered open source. The very few people who got this from him, probably does not know how to read out the BMU firmware and that is why it is still not documented how to mod the BMU firmware.
 
 The DIY battery packs have CATL93Ah NMC cells that replace the trash LEV50 cells. Most people are using a CAN bridge because of the missing knowledge how to modify the BMU firmware.
 These days some people get smaller EVE58Ah NMC cells to save some weight. Because of their smaller capacity, most just leave out the CAN bridge and use the original LEV50 BMU firmware with the EVE58Ah NMC cells.
@@ -23,7 +23,7 @@ Other cars build around the MiEV technology are the Minicab Miev, the Citroën B
     The battery out of a triplet does not always contain the required parts needed for safe re-use of the battery. The early battery design (pre 2015), had the Battery Management Unit (BMU) located outside of the battery, under the rear left seat. The BMU tells the individual modules inside the battery when to perform cell balancing, and the BMU also calculates state of charge %, and measures how much energy is going in/out of the battery. So without the BMU, it is very hard to safely reuse the battery for stationary storage as-is.
 
 If you are using a 2015 and below battery with external BMU, try to also source the BMU from the same vehicle to not have to search for one that is either for LEV50 or LEV50N.
-The service manual containing also information about the pinouts is available here: http://mmc-manuals.ru/Mitsubishi_i-MiEV/en
+The service manual containing also information about the pinouts is available here: [mmc-manuals](http://mmc-manuals.ru/Mitsubishi_i-MiEV/en)
 
 ## Connection diagram
 Here is a connection diagram of a 201#? battery:
@@ -55,5 +55,5 @@ From left, Solax X3 hybrid 15d inverter, in the middle LilyGo with dual can solu
 ![image](../images/i-miev-czero-ion-02.png)
 
 ## Further reading
-Checkout this repository for more information on the triplet battery: https://github.com/dadantech/czero-ev-battery
+Checkout this repository for more information on the triplet battery: [github/dadantech](https://github.com/dadantech/czero-ev-battery)
 
