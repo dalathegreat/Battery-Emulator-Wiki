@@ -1,5 +1,5 @@
 ---
-title: "Dacia Springn Renault K-ZE (CMFA-EV platform)"
+title: "Dacia Spring/Renault K-ZE (CMFA-EV)"
 ---
 
 The Dacia Spring Electric (27.4kWh) / Renault K-ZE (26.8kWh), are both vehicles in the CMFA-EV platform. 
@@ -81,7 +81,7 @@ Connect the battery to the Battery-Emulator according to this diagram:
 
 Use a relay board (NO) (5V or 12V) to apply GND to the pins (pin 2AE / 2AD / 2AC all accept a **GND signal** to be toggled on).
 
-See  [4ch SSR on DIN rail **(DC-CN)**](https://s.click.aliexpress.com/e/_olDgyMC)
+See [4ch SSR on DIN rail **(DC-CN)**](https://s.click.aliexpress.com/e/_olDgyMC)
 
 ![4ch SSR on DIN GND](../images/dacia-spring-renault-k-ze-07.jpg)
 
