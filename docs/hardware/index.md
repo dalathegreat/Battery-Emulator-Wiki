@@ -10,14 +10,14 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 
 |  Product | Notes | CAN interfaces | Newcomer friendly |
 | :---------: | :---------: | :----------: | :----------: |
-| [Stark CMR Module](stark_cmr.md) | Professional HW, CE certified, Massive I/O | 2 (+ 1 add-on) | ⭐⭐⭐
-| [BECom](becom.md) | Open source triple-CAN and RS485 (fully isolated) | 3 | ⭐⭐⭐
-| [LilyGo T-2CAN](lilygo_t_2can.md) | Cheap! Dual isolated CAN | 2 (+ 1 add-on) | ⭐⭐⭐
-| [LilyGo T-2CANFD](lilygo_t_2can.md) | Cheap! Isolated CAN & Isolated CAN-FD | 2 (+ 1 add-on) | ⭐⭐⭐
-| [Waveshare ESP32-S3-RS485-CAN](waveshare_esp32_s3_rs485_can.md) | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐⭐
-| [DFRobot Edge101](dfrobot_edge101.md) | Cheap! CAN & Modbus! | 1 | ⭐⭐
+| [Stark CMR Module](stark_cmr.md) | Professional HW, CE certified, Massive I/O, DIN rail mount | 2 (+ 1 add-on) | ⭐⭐⭐
+| [BECom](becom.md) | Open source triple-CAN and RS485 (fully isolated), DIN rail mount | 3 | ⭐⭐⭐
+| [LilyGo T-2CAN](lilygo_t_2can.md) | Dual isolated CAN | 2 (+ 1 add-on) | ⭐⭐⭐
+| [LilyGo T-2CANFD](lilygo_t_2can.md) | Isolated CAN & Isolated CAN-FD | 2 (+ 1 add-on) | ⭐⭐⭐
+| [Waveshare ESP32-S3-RS485-CAN](waveshare_esp32_s3_rs485_can.md) | CAN & Modbus, DIN rail mount | 1 (+ 1 add-on) | ⭐⭐
+| [DFRobot Edge101](dfrobot_edge101.md) | CAN & Modbus, metal enclosure, Massive I/O, DIN rail mount | 1 | ⭐⭐
 | [3LB](https://github.com/malcolmputer/3lb) | Open source triple-CAN (fully isolated) | 3 (+ ? add-on) | ⚠️
-| [LilyGo T-CAN485](lilygo_t_can485.md)   | Cheap! CAN & Modbus! | 1 (+ 1 add-on) | ⭐
+| [LilyGo T-CAN485](lilygo_t_can485.md)   | CAN & Modbus! | 1 (+ 1 add-on) | ⭐
 | [ESP32 Devkit V1](esp32_devkit_v1.md) | Build your own! For expert tinkerers | | ⭐
 
 !!! note "NOTE"
