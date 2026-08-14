@@ -1,5 +1,5 @@
 ---
-title: "BMW Gen3 & 4 PHV Platform - (330e 530e X5-45e)"
+title: "BMW 330e 530e X5-45e (Gen3/4 PHV)"
 ---
 
 # BMW Gen3 & 4 PHV Platform - (330e 530e X5-45e)
