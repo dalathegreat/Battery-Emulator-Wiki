@@ -136,7 +136,9 @@ BTW it's not strictly necessary to be automotive grade cable if it has enough co
 NOTE: If you pin your connector yourself - ensure the pins go all the way to the bottom and the pin is seated properly. If they are inserted incorrectly (not far enough, "wonky") then you won't have proper communication.
 
 Here is a nice example of a completed 22-pin 2011-2012 cable:
+
 ![image](../images/nissan-leaf-e-nv200-10.png)
+
 ![Yazaki_22pin](../images/nissan-leaf-e-nv200-11.png)
 
 Crimping B24 (36pin) connector in progress.
@@ -158,16 +160,23 @@ The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/da
 
 ### Socket covers
 If you are mounting the battery indoors, you can also 3d-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is a link to Pelle_C's excellent 3d-printable connector: [gitlab/pelle8](https://gitlab.com/pelle8/3d)
+
 ![rcs800_32A](../images/nissan-leaf-e-nv200-13.jpeg)
+
 ![rcs800_leaf](../images/nissan-leaf-e-nv200-14.jpeg)
 
 The 2013-2023 batteries have an external high voltage heater port. The socket can be covered with [3D printed backoff](https://www.printables.com/model/1756569-nissan-leaf-battery-ptc-connector-cover). It can also be plugged with silicone, but beware that certain types of silicone are conductive while uncured. Allow the silicone to cure for 24 hours before engaging contactors in such a case.
-![bild](../images/nissan-leaf-e-nv200-15.png)
+
+![heater-port-cover](../images/nissan-leaf-e-nv200-15.png)
 
 [This is a dust and water spill protection cover](https://www.printables.com/model/1810318-nissan-leaf-ze0aze0ze1-data-connector-protection-c) for the data connector of of Nissan Leaf 2011-2023 batteries. It slides on top of the connector, and uses two cable glands (a PG9 and a PG13.5) to access separately the CAN and a contactor control / BMS power cables:
-![datac-con-cover](../images/nissan-leaf-data-connector-cover.png)
+
+![data-con-cover](../images/nissan-leaf-data-connector-cover.png)
 
 There's also [a fixation ring for the data connector socket](https://www.printables.com/model/1810328-nissan-leaf-ze0aze0ze1-data-connector-fixation-rin). It slides in the knot at the base of the socket. Use it to prevent the socket to fall into the battery - this can occur when the workers who originally dismounted the battery pack from the car were not careful enough when they disconnected the factory plug, and made the socket loose. This ring is a quick fix you can apply without having to open up the battery penthouse.
+
+![data-con-ring](../images/nissan-leaf-data-socket-fix.png)
+
 
 ### Alternative Service Disconnect Switch
 
