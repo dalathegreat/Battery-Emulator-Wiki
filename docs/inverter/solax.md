@@ -175,7 +175,7 @@ For a pack with actual voltage of 337v (21% soc) and using different Battery Kin
 
 Previously known Kinds:
 
-- 0x50 (Blank) 6 works works - 7 does not ("About" menu has no info)
+- 0x50 (Blank) 6 works - 7 does not ("About" menu has no info)
 - 0x51 (BAK) 6 works
 - 0x52 (REPT) 6 packs works - 5 + 7 do not
 - 0x53 (SINOWATT) 6 works
@@ -185,14 +185,14 @@ Previously known Kinds:
 - 0x82 (TP201) 6 works 4/5 and 7-9 do not
 - 0x83 (TP202), 7 packs works fine and even changing it to 8 works despite being out of range (should be min 348.5v) but going lower to 6 causes battvoltfault. So it seems to prefer higher voltages than lower ones.
 - Type 129(dec) = REP TP58
-- Yype 97(dec) is TP013
+- Type 97(dec) is TP013
 
 New Kinds Tested:
 
 - 0x00 NA - 6 works, 0/5/7 does not
 - 0x5B (TP007) 6 works 4>5 and 7>9 do not (4 was the no of packs I recorded in logs from real setup with 2 x triple batteries which reported voltage min/max of 180>262v and actual voltage of 238v at 97% SoC)
 
-Other battery Kind ranges I checked just to see if they showed in the about menu - didnt try no of packs (sorry numbers below in Dec not HEX):
+Other battery Kind ranges I checked just to see if they showed in the about menu - didn't try no of packs (sorry numbers below in Dec not HEX):
 
 ```
 0-10 N/A

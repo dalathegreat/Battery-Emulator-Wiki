@@ -10,7 +10,7 @@ So far, the [44.5kWh](https://github.com/dalathegreat/Battery-Emulator/discussio
 
 No LFP packs have been tested yet.
 
-There is overlap with some of the the MG5 packs, see [MG5](mg5_marvel_r.md) for more information.
+There is overlap with some of the MG5 packs, see [MG5](mg5_marvel_r.md) for more information.
 
 ## Battery overview
 

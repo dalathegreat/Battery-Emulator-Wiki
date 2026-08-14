@@ -28,7 +28,7 @@ These batteries have 72 cells in series, which creates an operating voltage of a
 ![image](../images/dacia-spring-renault-k-ze-01.png)
 
 ### Testing the battery
-In order to read the informations from the BMS, you need:
+In order to read the information from the BMS, you need:
 
 - [LiLyGo T-CAN485](https://s.click.aliexpress.com/e/_oDPdyMg) with Battery Emulator installed and configured for this battery and NO inverter.
 - 12V source for the board and battery (it can be a Gel battery, UPS, 12V adapter etc)
@@ -77,7 +77,7 @@ Connect the battery to the Battery-Emulator according to this diagram:
 
 ![schema_conectare](../images/dacia-spring-renault-k-ze-24.png)
 
-12V power info: The preacharge+contactors consume 1.5A. The BMS itself uses 0.1A
+12V power info: The precharge+contactors consume 1.5A. The BMS itself uses 0.1A
 
 Use a relay board (NO) (5V or 12V) to apply GND to the pins (pin 2AE / 2AD / 2AC all accept a **GND signal** to be toggled on).
 
@@ -99,7 +99,7 @@ The polarity of the High Voltage outputs can be seen here, Left is **positive**,
 ![Polarity](../images/dacia-spring-renault-k-ze-10.jpg)
 
 ## HV Cable preparation
-Beware of the the mantle strings (cut them) = not to touch the copper conductor.
+Beware of the mantle strings (cut them) = not to touch the copper conductor.
 The optional [ferrule](https://www.aliexpress.com/item/1005007192861678.html) for the copper conductor is 35smm
 ![HV cable](../images/dacia-spring-renault-k-ze-11.jpg)
 

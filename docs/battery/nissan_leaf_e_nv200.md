@@ -79,7 +79,7 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 
 ### Manual control 🖐️
 !!! warning "WARNING"
-    New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installls using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
+    New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
 The Nissan LEAF BMS is not able to operate 24/7 under all conditions. Over time the SOC% will become less and less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
@@ -162,7 +162,7 @@ The 2013-2023 batteries have an external high voltage heater port. The socket ca
 
 ![heater-port-cover](../images/nissan-leaf-e-nv200-15.png)
 
-[This is a dust and water spill protection cover](https://www.printables.com/model/1810318-nissan-leaf-ze0aze0ze1-data-connector-protection-c) for the data connector of of Nissan Leaf 2011-2023 batteries. It slides on top of the connector, and uses two cable glands (a PG9 and a PG13.5) to access separately the CAN and a contactor control / BMS power cables:
+[This is a dust and water spill protection cover](https://www.printables.com/model/1810318-nissan-leaf-ze0aze0ze1-data-connector-protection-c) for the data connector of Nissan Leaf 2011-2023 batteries. It slides on top of the connector, and uses two cable glands (a PG9 and a PG13.5) to access separately the CAN and a contactor control / BMS power cables:
 
 ![data-con-cover](../images/nissan-leaf-data-connector-cover.png)
 

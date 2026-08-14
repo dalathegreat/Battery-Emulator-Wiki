@@ -94,7 +94,7 @@ I had connectors but [these fit also](https://nl.aliexpress.com/item/10050083202
 
 Disconnect switch 24281696 24288304  24291219  or latest part number 24294004
 
-Cotactors must be connected with the emulator via the GPIO pins: [Contactor control via GPIO pins](../setup/software/contactor_control_via_gpio_pins.md)
+Contactors must be connected with the emulator via the GPIO pins: [Contactor control via GPIO pins](../setup/software/contactor_control_via_gpio_pins.md)
 
 Please note that the precharge contactor is placed in the negative line of battery. To make precharge work the positive contactor must close before precharge contactor. Workaround: Swap Positive and negative control-lines to relays.
 

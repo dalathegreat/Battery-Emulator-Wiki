@@ -64,9 +64,9 @@ The 22kWh pack pinout (black connector)
 | 1 | Red | fused +12V permanent to BMS  |
 | 3,4,5 | Black | electrical earth |
 | 6 | White | Can High |
-| 7 | Violet | fused +12V to pwer relays|
-| 8 | Orange | Power relay 1 - positiv (ground to close) |
-| 9 | Green | Power relay 2 - negativ (ground to close) |
+| 7 | Violet | fused +12V to power relays|
+| 8 | Orange | Power relay 1 - positive (ground to close) |
+| 9 | Green | Power relay 2 - negative (ground to close) |
 | 10 | Brown | Precharge relay (ground to close) |
 | 12 | Violet | Can Low |
 

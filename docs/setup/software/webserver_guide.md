@@ -15,7 +15,7 @@ To be able to use the Webserver, you need to connect to the Battery-Emulator to 
 To have the Battery-Emulator accessible in your home network, you need to enter your home Wifi credentials into the webserver settings. See the quickstart guide for more information on how to perform the initial Wifi setup.
 
 !!! note "NOTE"
-    SSID can max be 63 chars, and password needs to be atleast 8 chars long. Only 2.4Ghz networks are supported, 5Ghz will NOT work! 
+    SSID can max be 63 chars, and password needs to be at least 8 chars long. Only 2.4Ghz networks are supported, 5Ghz will NOT work! 
 
 When the board boots, it will attempt to connect to the wifi network you specified. Your router will give it a unique IP, so next up is figuring out what the actual address is. There are a few options you can do.
 
@@ -44,7 +44,7 @@ If you don't plan to use the Access Point on a regular basis, disable it. Not on
 ![image](../../images/webserver-guide-02.png)
 
 ## Using the Webserver
-The front page will contain some quick information about the system. What software version the system has, Inverter protocol, Battery type, Livedata from the battery transmitted to the Inverter, along with some buttons to go to other pages. The page will be green incase all is well, go yellow incase there is an active warning, and go red incase an error is active and blocking operation. Incase there is a warning/error active, you can click the `Events` button to go to this view.
+The front page will contain some quick information about the system. What software version the system has, Inverter protocol, Battery type, Live data from the battery transmitted to the Inverter, along with some buttons to go to other pages. The page will be green incase all is well, go yellow incase there is an active warning, and go red incase an error is active and blocking operation. Incase there is a warning/error active, you can click the `Events` button to go to this view.
 
 ![image](../../images/webserver-guide-03.png)
 
@@ -62,7 +62,7 @@ Above this text you can also see the Amperages allowed by the Emulator. You can 
 ![image](../../images/webserver-guide-06.png)
 
 ## Events
-This page contains information about events that have occured while the system has been running. All events are timestamped, and have an occurance counter so you know if many events of the same type has triggered. 
+This page contains information about events that have occurred while the system has been running. All events are timestamped, and have an occurrence counter so you know if many events of the same type has triggered. 
 
 ![image](../../images/webserver-guide-07.png)
 
@@ -135,7 +135,7 @@ From the appropriate dropdown lists select the Inverter protocol and the interfa
 
 ![image](../../images/webserver-guide-15.png){ width="570" height="164" }
 
-From the appropriate dropdown lists select the driver you'd like to use when communicating with your battery. An intersting type is **Fake battery for testing purposes** which simulates the setup of a single, double or triple battery towards the inverter and the integration plaftforms. This "battery" offers a "Fake battery voltage:" configurable option at the bottom of the page: you can simulate various SOCs, even balancing of simulated cells if you set SOC above 85%.
+From the appropriate dropdown lists select the driver you'd like to use when communicating with your battery. An interesting type is **Fake battery for testing purposes** which simulates the setup of a single, double or triple battery towards the inverter and the integration platforms. This "battery" offers a "Fake battery voltage:" configurable option at the bottom of the page: you can simulate various SOCs, even balancing of simulated cells if you set SOC above 85%.
 
 Certain settings allow customizing the battery parameters:
 

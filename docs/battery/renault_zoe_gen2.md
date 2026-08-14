@@ -25,7 +25,7 @@ For this battery type, use the option called "Renault Zoe Gen2 50kWh" under the 
 Credit goes to ljames28 for the excellent repo: [github/ljames28](https://github.com/ljames28/Renault-Zoe-PH2-ZE50-Canbus-LBC-Information)
 
 Beware that the plug for previous generations battery fits the Gen2 version but the pinout is different so it will not work.
-Allso note plug pinout is seen from the rear of the plug where the wires come out. If you cannot source a plug and are comfortable opening the battery, theres a handy industry std connector just on the inside, but the colors of wires change. (white visible below)
+Also note plug pinout is seen from the rear of the plug where the wires come out. If you cannot source a plug and are comfortable opening the battery, there's a handy industry std connector just on the inside, but the colors of wires change. (white visible below)
 
 ![image](../images/renault-zoe-gen2-02.png)
 ![connections](../images/renault-zoe-gen2-03.png)
@@ -40,7 +40,7 @@ Example Wiring Diagram: LilyGo T-CAN485 + Zoe Gen2 + optional equipment stop but
 
 ![image](../images/renault-zoe-gen2-05.png)
 
-Example Wiring Diagram: LilyGo T-CAN485 + Zoe Gen2 + optional equipment stop button + CAN Filter (as required for some invertors)
+Example Wiring Diagram: LilyGo T-CAN485 + Zoe Gen2 + optional equipment stop button + CAN Filter (as required for some inverters)
 
 ![image](../images/renault-zoe-gen2-06.png)
 

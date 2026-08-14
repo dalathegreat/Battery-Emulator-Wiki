@@ -7,7 +7,7 @@ title: "Yingfa"
 * [YF5K-HES-1A](https://a.aliexpress.com/_EvdEBRw)
 
 This inverter works with pylon can. 
-It hasbeen tested with the Ferroamp compatible pylon protocol. 
+It has been tested with the Ferroamp compatible pylon protocol. 
 There seem to be no issues as of now. 
 
 ## Setting up the Yingfa inverter for a I3 battery
@@ -15,7 +15,7 @@ There seem to be no issues as of now.
 The i3 battery cannot handle the precharge because the capacitance of the inverter is larger than it expects, so a switch with a resistor has to be added.
 In my case I have 2 separate circuit breakers one negative and one positive. 
 You need to have one of the breakers closed and one open. 
-Once you close the contactors you can use a switch with a resistor in series to bypass the open circuit breaker. A 25 Ohm 50 Watt resistor will precharge the capacitor in less than a second. You will notice the screen of the inverter turn on, close the the second breaker before the inverter starts to pull power as it might burn out the resistor!
+Once you close the contactors you can use a switch with a resistor in series to bypass the open circuit breaker. A 25 Ohm 50 Watt resistor will precharge the capacitor in less than a second. You will notice the screen of the inverter turn on, close the second breaker before the inverter starts to pull power as it might burn out the resistor!
 
 ## Battery
 
@@ -26,7 +26,7 @@ Confirmed working with a I3 battery and a lilygo T-2Can. SOC is properly display
 if you want to connect this inverter to the grid then you HAVE to use the CT sensor, otherwise it will throw a grid fault.
 
 There are 2 pages for the password as it is 8 digits `11110000`.
-One page is all 1s and after pressing enter a second page will appear with all 0s jist keep pressing enter until you cycle through the second page and the advanced settings will appear.
+One page is all 1s and after pressing enter a second page will appear with all 0s, just keep pressing enter until you cycle through the second page and the advanced settings will appear.
 
 ## Starting and stopping the system
 

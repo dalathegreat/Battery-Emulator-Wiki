@@ -56,7 +56,7 @@ The 50.3 kWh and 61.1 kWh batteries should fit with HV cable MG part number 1086
 
 ![image](../images/mg5-marvel-r-07.png){ width="1469" height="600" }
 
-The low voltage connector(EB212): This connector is the same for all battery versions. It fits the molex connector part 643193211. You can either assemble the connector on your own with crimp terminals(64322 and 64323) and plugs(643191201 and 643251010) and a cap(643191201) or you can buy a premade connector from alieexpress.
+The low voltage connector(EB212): This connector is the same for all battery versions. It fits the molex connector part 643193211. You can either assemble the connector on your own with crimp terminals(64322 and 64323) and plugs(643191201 and 643251010) and a cap(643191201) or you can buy a premade connector from AliExpress.
 
 ![image](../images/mg5-marvel-r-08.png){ width="1064" height="1003" }
 
@@ -83,7 +83,7 @@ An example connection diagram is shown below. It uses an external HV DC/DC that 
 Note: If an external 12V DC power supply is used the DC/DC converter is not required.
 ![Screenshot From 2026-01-08 23-02-56](../images/mg5-marvel-r-09.png){ width="2066" height="600" }
 
-# Sofware configuration
+# Software configuration
 
 The MG5 code only runs on hardware that has more than 4Mb of flash memory.
 

@@ -64,7 +64,7 @@ Configure all the settings according to the specifications of the battery you ha
 After uploading the code to the Battery-Emulator, you can check cellvoltages, SOC etc. via the [Webserver](../setup/software/webserver_guide.md)
 
 !!! info "IMPORTANT"
-    During first startup, RJXZS will report faults, thats why first thing you need to do is clear all events in bluetooth app by holding CLR button for a few seconds:
+    During first startup, RJXZS will report faults, that is why the first thing you need to do is clear all events in bluetooth app by holding CLR button for a few seconds:
 
     ![image](../../images/rjxzs-bms-04.png)
 

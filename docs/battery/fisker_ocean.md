@@ -10,7 +10,7 @@ The Fisker Ocean was produced between 2022-2024, and came with three battery var
 - 113kWh NMC
 - 106kWh NMC
 
-The typelabel on the battery specifies the capacity
+The type label on the battery specifies the capacity
 
 ![image](../images/fisker-ocean-01.png)
 

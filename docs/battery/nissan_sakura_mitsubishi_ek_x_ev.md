@@ -4,7 +4,7 @@ title: "Nissan Sakura Mitsubishi eK X"
 
 ## Compatible batteries
 
-This platform has a 20kWh batteryy.
+This platform has a 20kWh battery.
 
 - Nissan Sakura 2022–present
 - Mitsubishi eK X
@@ -26,7 +26,7 @@ This platform has a 20kWh batteryy.
 For this battery type, use the option called "Nissan LEAF" under the "Battery Protocol" section.
 
 ## Part numbers 
-The LV connectors are the samme as on Nissan LEAF.
+The LV connectors are the same as on Nissan LEAF.
 
 | Component | Part Number | Purchase Link |
 |-----------|-------------|---------------|

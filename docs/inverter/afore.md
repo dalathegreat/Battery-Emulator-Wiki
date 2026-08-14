@@ -6,7 +6,7 @@ title: "Afore"
 
 - AF17K-THA 230V :ballot_box_with_check: (Works with "BYD Battery-Box Premium HVS over CAN Bus" or "Afore CAN" option)
 
-Depending on software version, you might need to do an inverter firwmare update to get the BYD CAN option.
+Depending on software version, you might need to do an inverter firmware update to get the BYD CAN option.
 
 ## Communication wiring
 The Afore inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)

@@ -150,7 +150,7 @@ Miniwiggler v3 dap attached to BMS board via PCI-e from old motherboard to avoid
 Flashing tips;
 
 - External 5V to VREF and GND is required
-- If it is toggling "Device has no ID register", thhe supplied current might be too low. You must apply external 5v with around 1A
+- If it is toggling "Device has no ID register", the supplied current might be too low. You must apply external 5v with around 1A
 - If you cannot make connection with memtool, it could be that access is blocked via code, see picture below. password is unknown until now, if blocked like picture then BECM board needs to be swapped
 ![image](../images/volvo-xc40-polestar-2-19.png){ width="630" height="262" }
 

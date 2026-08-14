@@ -209,7 +209,7 @@ Steps:
 5. Connect to the SMA web interface. The IP address of webserver is `192.168.12.3` when connecting directly to the SMA WiFi network (access point). This web interface will list the IP address of the SMA on your local network on the bottom of the page. On your local network, you can also reach the webpage via its hostname `smaxxxxxxxxxx.home` (where `xxxxxxxxxx` shall be replaced with the serial number of your device).
 6. Log in to the SMA web interface as installer. To perform the battery configuration process you'll need the installer password (or request the PUK on the SMA website).
 7. Start the installation assistant (https://smaxxxxxxxxxx.home/#/formwizard).
-8. Proceed with the SMA instalation assistant till step 6 (do not go to battery config yet).
+8. Proceed with the SMA installation assistant till step 6 (do not go to battery config yet).
 9. Power on the battery emulator. Wait for the battery emulator to be fully booted. For pairing to succeed, the following conditions must be fulfilled:
 
     - The battery emulator state (as seen on the webserver) is OK. This means that the battery must be sending CAN messages.
@@ -247,7 +247,7 @@ To simulate the SMA energy meter you can use Home Assistant and an energy meter 
 
 Please feel free to add!
 
-### SMA Sunny Boy Storage to battery emultator
+### SMA Sunny Boy Storage to battery emulator
 
 This is how the SBS should be connected to the Battery-Emulator hardware.
 ![image](../images/sma-05.png)

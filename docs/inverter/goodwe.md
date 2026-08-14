@@ -23,7 +23,7 @@ There are probably more compatible GoodWe inverters, feel free to add confirmed 
     An important point is to be prepared for potential issues if you have an RCD (residual current device) on the inverter's AC side while also using solar panels. In this case, you may need to replace the RCD with the 300mA version recommended in the manual, as a 30mA version might trip during the inverter's self-check process.
 
 ## Note on double battery ports
-Some Goodwe inverters have dual battery ports. You can connect two independant Battery-Emulator systems to the same inverter this way. Check the operating manual of your Goodwe inverter for more info.
+Some Goodwe inverters have dual battery ports. You can connect two independent Battery-Emulator systems to the same inverter this way. Check the operating manual of your Goodwe inverter for more info.
 
 ![image](../images/goodwe-01.png)
 
@@ -42,7 +42,7 @@ Good idea to watch the installation video from GoodWe's training services, on ho
 3. Connect both the inverter canbus and battery canbus to the board
 4. Double check your code to make sure the contactors will isolate under the required fault conditions
 5. Plug in the battery connector (make sure the terminals are not live)
-6. Double double check all your wiring.
+6. Double check all your wiring.
 7. Switch your battery breaker on
 8. Enable the contactors and the inverter will configure and connect if all has gone well.
 9. Configure the inverter with the battery connected

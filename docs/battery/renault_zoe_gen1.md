@@ -37,7 +37,7 @@ Note the battery fuse. Do not confuse it with the version from the 52kWh battery
 
 ![image](../images/renault-zoe-gen1-05.png)
 
-Renault ZOE Gen 1 fuse has to have continiuity between two external sides (positive line):
+Renault ZOE Gen 1 fuse has to have continuity between two external sides (positive line):
 ![image](../images/renault-zoe-gen1-06.png)
 
 There are also two other fuses inside the pack. There is a fuse under the cover for the contactors and a fuse at the join of the two halves of the pack at the opposite end from the connectors. If the fuse in the middle of the pack blows, this shows as a cell imbalance with cell 48 being somewhere around 0v. Replacing the fuse restores operation.

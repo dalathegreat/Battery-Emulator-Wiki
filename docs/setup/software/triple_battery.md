@@ -34,4 +34,4 @@ For batteries that require externally controlled contactors, you can automate th
 
 This will start with connecting battery1, then once voltages match, battery2 and battery3 joins the DC link when voltages are close enough to first battery.
 
-See the HAL pin defitions for your hardware, to see which pin actuates the extra contactor set.
+See the HAL pin definitions for your hardware, to see which pin actuates the extra contactor set.

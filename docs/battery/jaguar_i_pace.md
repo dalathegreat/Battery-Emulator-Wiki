@@ -8,7 +8,7 @@ This battery is currently being reverse engineered by [@obbardc](https://github.
 
 ### Current state
 
-The battery has the internal contactor coils forceably controlled by the Battery-Emulator, using the `Contactor control via GPIO` setting. This is because the
+The battery has the internal contactor coils forcibly controlled by the Battery-Emulator, using the `Contactor control via GPIO` setting. This is because the
 
 We need to verify if the cells are being properly balanced by the iPace BMS with the contactors forcibly engaged.
 

@@ -51,7 +51,7 @@ First, extract just the addresses (the hex values before the colons):
 Then run each address through addr2line in the terminal:
 `~/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-addr2line -pfiaC -e "firmware.elf" 0x40117056`
 
-This will output where the issue occured:
+This will output where the issue occurred:
 
 `****0x40117056: transmit_can_frame_to_interface(CAN_frame const*, CAN_Interface) at /home/dala/Git/Battery-Emulator/Software/src/communication/can/comm_can.cpp:279****`
 

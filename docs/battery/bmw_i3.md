@@ -87,9 +87,9 @@ It has the following pinout:
 
 Connect the wiring as follow:
 
-* Pin 1 30C - Connect to to 12V, 10A fuse optional
+* Pin 1 30C - Connect to 12V, 10A fuse optional
 * Pin 9 15WUP-Signal (Green/GreenRed) - Connect to 12V, 5A fuse optional. Control this pin with ASR-10DD relay or a Pololu Power Switch controlled by the WUP GPIO pin of your board (see the list below).
-* Pin 7 (Red) - Connect to to 12V, 5A fuse optional
+* Pin 7 (Red) - Connect to 12V, 5A fuse optional
 * Pin 2 Ground (BrownBlack) - Connect to Ground
 * Pin 4 CAN-H (WhiteYellow) - Connect to CAN-H on the board - twist with CAN-L cable and put a 120Ω resistor across to CAN-L.
 * PIN 10 CAN-L (WhiteBlue) - Connect to CAN-L on the board
@@ -171,7 +171,7 @@ Example of capacitor integrated at point where wire gauge is reduced, inside exc
 [![](../images/bmw-i3-21.png){ width="300" }](../images/bmw-i3-21.png)
 
 ### Note on Balancing :b: 
-The BMW i3 battery needs periodic cell-balancing to be able to operate at full capacity. To start this balancing procedure, charge the battery to 100%, and go to the "More Battery Info" page on the Webserver. There there is a button called "Start balancing". When balancing is started via this page, the battery will power off the wakeup(WUP) pin towards the battery, stop CAN communication, and the battery can then start to balance, just as it would in a car.
+The BMW i3 battery needs periodic cell-balancing to be able to operate at full capacity. To start this balancing procedure, charge the battery to 100%, and go to the "More Battery Info" page on the Webserver. There is a button called "Start balancing". When balancing is started via this page, the battery will power off the wakeup(WUP) pin towards the battery, stop CAN communication, and the battery can then start to balance, just as it would in a car.
 
 Perform this balancing as often as necessary to keep cell mV delta low. Failure to balance will longterm lead to much capacity being unavailable due to voltage diff, along with wildly incorrect SOC% readings.
 

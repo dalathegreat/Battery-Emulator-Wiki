@@ -97,4 +97,4 @@ The **Source(s)** column describes the possible origins of the value.
 | Pack chemistry type     | Optional    | Battery<br>Manual configuration               | The chemistry leads to different values for min/max voltages (both pack and cell), etc                                   |
 
 ## Creating the integration
-One the mandatory info has been found for the battery communuication, it can be integrated to the software. Create a battery .cpp and .h header, see the other batteries for how the structure should look like. If in doubt, contact the developers!
+Once the mandatory info has been found for the battery communication, it can be integrated to the software. Create a battery .cpp and .h header, see the other batteries for how the structure should look like. If in doubt, contact the developers!

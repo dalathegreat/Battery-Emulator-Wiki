@@ -153,7 +153,7 @@ Make sure to connect the 12V battery to the PCS (two M8 screws close to the X098
 
 The Tesla battery contains pyro and glass fuses that can be broken if the battery comes from a crashed vehicle. Do not use the battery unattended with these fuses bypassed !
 
-For testing purposes, temporary copper cables can be used to replace glass fuses, but you should ideally use a replacement pyro fuse as you can't simply replace that fuse with wire.  The reason is that there are 2 small pins below the pyro fuse that expect to see around 2 Ohms of resistance from the Pyro fuse so simply putting wire across where the pyro fuse would usually be be will not work.  You will need to put a resistor across the 2 pins below where the pyro fuse would normally sit, but this is definitely not recommended and you should ideally just buy a replacement pyro fuse instead of doing anything temporary.
+For testing purposes, temporary copper cables can be used to replace glass fuses, but you should ideally use a replacement pyro fuse as you can't simply replace that fuse with wire.  The reason is that there are 2 small pins below the pyro fuse that expect to see around 2 Ohms of resistance from the Pyro fuse so simply putting wire across where the pyro fuse would usually be will not work.  You will need to put a resistor across the 2 pins below where the pyro fuse would normally sit, but this is definitely not recommended and you should ideally just buy a replacement pyro fuse instead of doing anything temporary.
 
 Remember, if you do anything temporary to make sure you install a proper fuse later on !!!
 
@@ -204,7 +204,7 @@ Connections info: [electrek](https://electrek.co/2017/08/24/tesla-model-3-exclus
 | 1 | Charge port connector |
 | 2 | Fast charge contactor assembly |
 | 3 | Coolant line to PCS |
-| 4 | PCS – Power Conversion System (often refered to as OBC) |
+| 4 | PCS – Power Conversion System (often referred to as OBC) |
 | 5 | HVC – High Voltage Controller |
 | 6 | Low voltage connector to HVC from the vehicle (X098 connector) |
 | 7 | 12V output from PCS |
