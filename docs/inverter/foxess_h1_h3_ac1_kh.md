@@ -107,7 +107,7 @@ Feel free to add your own images here!
 # Video Guide
 To aid installation Battery Man has produced a video series using the H3 Pro inverter which documents an install with Tesla LFP batteries and both the LilyGo and Stark CMR. There is a full playlist touching on different aspects.
 ![thumb for YT opt 7 FINAL](../images/foxess-h1-h3-ac1-kh-05.jpg)
-Installing inverter - https://youtu.be/9YnuPMdJaoI?si=odCptB7YAE56yFHq
+Installing inverter - [youtube](https://youtu.be/9YnuPMdJaoI?si=odCptB7YAE56yFHq)
 ![THUMB HACK V3](../images/foxess-h1-h3-ac1-kh-06.jpg)
-Work to add inverter integration - https://youtu.be/BYqYpsv5svQ?si=oxXq-E-KLXL0grea
-https://youtu.be/PYyTD87KQpo?si=jaSvQWiqEct-WYPS
+Work to add inverter integration - [youtube](https://youtu.be/BYqYpsv5svQ?si=oxXq-E-KLXL0grea)
+[youtube](https://youtu.be/PYyTD87KQpo?si=jaSvQWiqEct-WYPS)

@@ -120,7 +120,7 @@ Did your battery not come with all the required cables/plugs? No worries, here a
 
 #### High voltage connectors
 
-- https://a.aliexpress.com/_EImj7ZG
+- [aliexpress](https://a.aliexpress.com/_EImj7ZG)
 
 - J9D3-14N236
 
@@ -140,7 +140,7 @@ Did your battery not come with all the required cables/plugs? No worries, here a
 
 #### Class-Y Capacitors 10NF 400V:
 
-- Aliexpress: https://a.aliexpress.com/_EH7Rw0k
+- [aliexpress](https://a.aliexpress.com/_EH7Rw0k)
 
 #### Low voltage connector
 
@@ -152,7 +152,7 @@ LFP low voltage connector in stock on Mouser incase you are not able to get the 
 - Pins 0.3 to 0.5 mm$`^2`$: SZRO-A021T-M0.64 
 - Pins 0.75 to 0.85 mm$`^2`$: SZRO-A031T-M0.64 
 - Dummy Plug: WPHDP-H-1A-H
-- Aliexpress: https://aliexpress.com/item/1005010560783903.html
+- [aliexpress](https://aliexpress.com/item/1005010560783903.html)
 
 ### Disabling isolation monitoring via HW modification
 
@@ -217,7 +217,7 @@ Also you might have stored errors in BMS. When trying to clear the codes you MUS
 
 ### Reverse engineering info
 
-Can Logs can be found here: https://drive.google.com/drive/folders/1S-Nf0dN5nZi71HhXIoM3GTydEk_VHHuM?usp=drive_link
+Can Logs can be found here: [google](https://drive.google.com/drive/folders/1S-Nf0dN5nZi71HhXIoM3GTydEk_VHHuM?usp=drive_link)
 
 ### Troubleshooting tips
 

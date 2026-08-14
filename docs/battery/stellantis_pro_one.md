@@ -24,7 +24,7 @@ HV connector (175 A max). This is the easiest one to source and use, while the o
 
 ![image](../images/stellantis-pro-one-01.png){ width="532" height="504" }
 
-https://nl.aliexpress.com/item/1005003639011124.html?spm=a2g0o.order_list.order_list_main.18.252f79d2fTtchH&gatewayAdapt=glo2nld
+[aliexpress](https://nl.aliexpress.com/item/1005003639011124.html?spm=a2g0o.order_list.order_list_main.18.252f79d2fTtchH&gatewayAdapt=glo2nld)
 
 Another HV connector, rated for up to 600 A, can also be used if you can find one. (Has HVIL that needs to be seated!)
 
@@ -38,7 +38,7 @@ The HV connector on the right side (DC fast charging) cannot be used with the Ba
 
 ![image](../images/stellantis-pro-one-04.png){ width="691" height="1019" }
 
-https://nl.aliexpress.com/item/1005005787269820.html?spm=a2g0o.order_list.order_list_main.12.252f79d2fTtchH&gatewayAdapt=glo2nld
+[aliexpress](https://nl.aliexpress.com/item/1005005787269820.html?spm=a2g0o.order_list.order_list_main.12.252f79d2fTtchH&gatewayAdapt=glo2nld)
 
 ### Wiring pinout
 

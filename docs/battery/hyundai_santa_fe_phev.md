@@ -32,5 +32,5 @@ For this battery type, use the option called "Santa Fe PHEV" under the "Battery 
 # Credits
 Credits go to maciek16c for the CAN findings!
 Massive thanks to GoSmart on the Discord for testing this!
-https://github.com/maciek16c/hyundai-santa-fe-phev-battery
-https://openinverter.org/forum/viewtopic.php?p=62256
+[github/maciek16c](https://github.com/maciek16c/hyundai-santa-fe-phev-battery)
+[openinverter](https://openinverter.org/forum/viewtopic.php?p=62256)

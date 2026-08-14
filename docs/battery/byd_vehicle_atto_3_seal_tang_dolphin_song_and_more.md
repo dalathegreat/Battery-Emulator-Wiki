@@ -56,7 +56,7 @@ For this battery type, use the option called "BYD Atto 3/Seal/Dolphin" under the
 ## Video example
 Here is a great video made by "Flying Tools" showcasing how to connect the BYD Atto 3 battery.
 
-https://www.youtube.com/watch?v=YBYWBapnnyM
+[youtube](https://www.youtube.com/watch?v=YBYWBapnnyM)
 
 ## Battery specifications
 
@@ -125,7 +125,7 @@ High voltage connectors vary a bit between the different BYD variants. Due to th
 ## Contactor Block Modification
 In the event of the battery being locked, the pre-charge and two contactors can be wired to manually switch on, or preferably to automatically activate via 3 SSRs with the GPIO pins on the Lilygo board (see [Contactor control via GPIO pins](../setup/software/contactor_control_via_gpio_pins.md)).
 When accessing the internals of the battery, wear the appropriate safety gloves and follow safe procedures to avoid shorting across HV terminals. To access the contactor block, first remove the top cover, which fortunately is not sealed down; ~ 76 screws and 2 central top bolts require removal. In the pictorial description that follows, details of the full removal of the contactor block is shown, to identify the various parts. With connection points identified, it is now not necessary to remove the block as these 12V connection points are accessible from the top of the block. This current protocol involved connecting 3 circuits individually to the precharge and two contactor relays. This was achieved merely by wiring in extra lines on top of existing wiring connector points. With hindsight, a more effective alternative is included in the discussion below (Unlocking a crashed battery).
-https://github.com/juancruz1953/Images/blob/main/Atto3ContactorBlockRewire.pdf
+[github/juancruz1953](https://github.com/juancruz1953/Images/blob/main/Atto3ContactorBlockRewire.pdf)
 
 ## Contactor control over CAN (software — no teardown)
 As an alternative to wiring the contactor block to GPIO via SSRs, Battery-Emulator
@@ -160,7 +160,7 @@ Here are some of the part numbers and purchase links, incase your battery came w
 |  Part |  Product Link | Notes |
 | :--------: | :---------: | :---------: |
 | LV connector |  [AliExpress](https://a.aliexpress.com/_EugRLIo)   | 19pin 1192800MB 1192800FB BYD
-| LV connecor Pre-wired  | https://a.aliexpress.com/_EHMKS3i | ----
+| LV connecor Pre-wired  | [aliexpress](https://a.aliexpress.com/_EHMKS3i) | ----
 | HV cable | ---- | OEM numbers: 1364774600 & SC2EM215300A or SC2EM-2105300
 | HV cable PE5/PE6 | ---- | OEM numbers: EKEA2105300Y / 13568667-00
 

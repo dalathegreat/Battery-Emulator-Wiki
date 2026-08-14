@@ -22,7 +22,7 @@ All i3 batteries have the following length/width/height 1660mm x 964mm x 174mm.
 !!! warning "CAUTION"
     When shutting down a working i3 battery system, no load can be present on the HV system. First shut down inverter before shutting off the battery, OR use the PAUSE button in the Webserver to ensure that 0A of current before shutting down the battery. The i3 has extremely sensitive welding detection. If there is over a few A of current during opening of contactors, it will set the "Contactors Welded" state and lock the battery permanently.
 
-The EoS tester can be rented from some places, a great i3 expert is available in CZ, https://www.i3upgrade.cz/
+The EoS tester can be rented from some places, a great i3 expert is available in CZ, [i3upgrade](https://www.i3upgrade.cz/)
 Another alternative when dealing with a locked battery, is to open up the battery and bypass the contactors. Nobody has reported if this works yet (feel free to edit this wiki!), worst case you could also replace the i3 BMS with an [RJXZS](rjxzs_bms.md)
 
 An indicator if the battery is not in lock state is the range indicator of the crashed car. If it displays battery range/percentage, the battery is *probably* not in lock state even if a few airbags have gone off.

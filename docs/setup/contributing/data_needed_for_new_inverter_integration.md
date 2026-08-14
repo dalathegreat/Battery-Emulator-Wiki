@@ -28,7 +28,7 @@ If the system is modbus based, the difficulty grows a bit more. Here is a list o
 - TODO: Add more options
 - LilyGo board, see [example here](../../inverter/kostal.md#traces-for-reverse-engineering)
 
-The following sniffer is recommended: https://github.com/alerighi/modbus-sniffer
+The following sniffer is recommended: [github/alerighi](https://github.com/alerighi/modbus-sniffer)
 
 This provides an output possibility as Wireshark PCAP file which improves the analysis and filtering capability.
 

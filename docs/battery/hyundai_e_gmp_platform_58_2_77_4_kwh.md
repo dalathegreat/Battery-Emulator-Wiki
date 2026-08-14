@@ -86,5 +86,5 @@ The 800V battery architecture uses CAN-FD, so incase you plan on integrating thi
 See [KIA EV6 Battery](kia_ev6.md)
 
 ### More information about battery and it's internals
-https://www.batterydesign.net/2022-kia-ev6/
+[batterydesign](https://www.batterydesign.net/2022-kia-ev6/)
 

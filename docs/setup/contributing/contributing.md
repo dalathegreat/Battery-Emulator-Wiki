@@ -37,7 +37,7 @@ _Why are you not supporting Raspberry Pi / STM32 / X86 / ARM_ etc. This question
 
 This project uses the PlatformIO extension within Visual Studio Code for development and uploading. It handles all the complex toolchains and library management for you.
 ### 1. Installing VSCode
-- Download the stable build of Visual Studio Code for your operating system (Windows, macOS, or Linux) from the official website: https://code.visualstudio.com/
+- Download the stable build of Visual Studio Code for your operating system (Windows, macOS, or Linux) from the official website: [visualstudio](https://code.visualstudio.com/)
 - Run the installer and follow the setup instructions.
 - (Recommended) Launch VSCode after installation.
 

@@ -20,8 +20,8 @@ We made two videos about the reverse engineering:
 
 #### Reverse engineering threads/links
 
- - https://openinverter.org/forum/viewtopic.php?t=5124 - Connecting to standalone BECM including pinouts, UDS PIDs, UDS error codes etc. (by @obbardc)
- - https://openinverter.org/forum/viewtopic.php?t=4532 - BMS
+ - [openinverter](https://openinverter.org/forum/viewtopic.php?t=5124) - Connecting to standalone BECM including pinouts, UDS PIDs, UDS error codes etc. (by @obbardc)
+ - [openinverter](https://openinverter.org/forum/viewtopic.php?t=4532) - BMS
 
  - [Car PIDs spreadsheet (incl. BECM)](https://docs.google.com/spreadsheets/d/1wNMtpPqMAejNeOZGsPCcgau8HODROzceFcUSfk2lVz8/edit?gid=445693275#gid=445693275)
 

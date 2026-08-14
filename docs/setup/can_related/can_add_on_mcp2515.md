@@ -21,7 +21,7 @@ Some Inverters do not like to see automotive CAN frames on the CAN channel meant
 The solution is to add a separate CAN channel, via an additional MCP2515. The additional MCP2515 can be connected to the board in multiple ways. The wiring below is given for the LilyGo T-CAN485 as an example, other boards work the same way with their own pin names.
 
 ### Option 0: MCP2515 powered via 3.3V (no extra power connections needed)
-You can use this MCP2515 board from Seeed Studio - it operates directly on the lilygo 3.3V supply. https://www.seeedstudio.com/Seeed-Studio-CAN-Bus-Breakout-Board-for-XIAO-and-QT-Py-p-5702.html
+You can use this MCP2515 board from Seeed Studio - it operates directly on the lilygo 3.3V supply. [seeedstudio](https://www.seeedstudio.com/Seeed-Studio-CAN-Bus-Breakout-Board-for-XIAO-and-QT-Py-p-5702.html)
 
 ![image](../../images/can-add-on-mcp2515-01.png)
 
@@ -40,14 +40,14 @@ These pins need to be connected between the LilyGo header and the MCP2515 board:
 Note on CAN termination: The board doesn't have a 120 ohm terminating resistor enabled by default. If you want to enable this resistor (which is in most cases when running battery emulator extended can through this board), solder over the p1 pads on the back of the board.
 
 ### Option 1: MCP2515 powered via 5V (easiest no-solder method)
-(Available here: https://aliexpress.com/item/1005006646252397.html)
+(Available here: [aliexpress](https://aliexpress.com/item/1005006646252397.html))
 
 If you want to avoid soldering and just use the MCP2515 module, supply the VCC pin on the MCP2515 module with 5V.
 
 ![image](../../images/can-add-on-mcp2515-02.png)
 
 ### Option 2: MCP2515 powered via Lilygo VDD pin converted to 5V
-(Available here: https://aliexpress.com/item/1005006646252397.html)
+(Available here: [aliexpress](https://aliexpress.com/item/1005006646252397.html))
 
 As a 5V pin is not directly available on the Lilygo, it would be ideal if the VDD pin can be used to power the MCP2515 board. This can be achieved in the following manner.
 

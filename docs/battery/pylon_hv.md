@@ -39,5 +39,5 @@ For this battery type, use the option called "Pylon compatible battery" under th
 Finally, remember to configure the voltage limits to match the Pylon battery you are using (e.g. 180-228V)
 
 ## References used
-- https://www.eevblog.com/forum/programming/pylontech-sc0500-protocol-hacking/
-- https://onlineshop.gcsolar.co.za/wp-content/uploads/2021/07/CAN-Bus-Protocol-Sermatec-high-voltage-V1.1810kW.pdf
+- [eevblog](https://www.eevblog.com/forum/programming/pylontech-sc0500-protocol-hacking/)
+- [gcsolar](https://onlineshop.gcsolar.co.za/wp-content/uploads/2021/07/CAN-Bus-Protocol-Sermatec-high-voltage-V1.1810kW.pdf)

@@ -47,10 +47,10 @@ Pinout X036:
 
 Digikey links:
 
-* X035: https://www.digikey.be/nl/products/detail/molex/0334721201/1756779
-* X036: https://www.digikey.be/nl/products/detail/molex/0334721202/3838609
-* 18-20AWG pins (CANbus + HVIL): https://www.digikey.be/nl/products/detail/molex/0330122002/2421383
-* 14-16AWG pins (+12 V + GND): https://www.digikey.be/nl/products/detail/molex/0330122001/2404852
+* X035: [digikey](https://www.digikey.be/nl/products/detail/molex/0334721201/1756779)
+* X036: [digikey](https://www.digikey.be/nl/products/detail/molex/0334721202/3838609)
+* 18-20AWG pins (CANbus + HVIL): [digikey](https://www.digikey.be/nl/products/detail/molex/0330122002/2421383)
+* 14-16AWG pins (+12 V + GND): [digikey](https://www.digikey.be/nl/products/detail/molex/0330122001/2404852)
 
 ## Notes on balancing
 

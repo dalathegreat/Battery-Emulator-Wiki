@@ -27,7 +27,7 @@ suitable high-voltage battery cable for Mercedes, Various models fit (for exampl
 
 Suitable connector for the information port of the high-voltage - battery HC18B-S32
 ![AMPEHENOL32](../images/aiways-u5-2021-08.jpg){ width="1058" height="694" }
-You can AMPHENOL 32 Core New Energy EV-Connector HC18B-S32 buy it on AliExpress at this link: https://a.aliexpress.com/_EIi8AZY
+You can AMPHENOL 32 Core New Energy EV-Connector HC18B-S32 buy it on AliExpress at this link: [aliexpress](https://a.aliexpress.com/_EIi8AZY)
 
 Genuine Aiways adapter for reading battery data via the OBD2 port.
 ![ADAPTER_ODB2_](../images/aiways-u5-2021-09.jpg){ width="1064" height="828" }

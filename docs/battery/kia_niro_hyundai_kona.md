@@ -14,7 +14,7 @@ What are the affected vehicles? The subject vehicles include:
 
 • Approximately 2 model year 2020 Hyundai Ioniq Electric vehicles produced from November 8, 2019 through November 11, 2019.
    
-This was done under program Recall 200 - https://static.nhtsa.gov/odi/rcl/2021/RCMN-21V127-9103.pdf
+This was done under program Recall 200 - [nhtsa](https://static.nhtsa.gov/odi/rcl/2021/RCMN-21V127-9103.pdf)
 
 So can it be that the battery donor car is from 2020 or 2021 but has received the new battery, good to check then the battery label production date.
 
@@ -233,7 +233,7 @@ Battery relay: 135					= Don’t know.
 Here are the sources used
 [Kona.64.kWh.contactors.log.files.zip](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/files/13322609/Kona.64.kWh.contactors.log.files.zip)
 
-* https://docs.google.com/spreadsheets/d/1dbOT9I-Aj7lU7yCiJDpXERjYRVOL_M1Tm2QFgmyYt4Y/htmlview?fbclid=IwAR3HZMGhDfGsOdJrbMfRUDkS8c-25cSwnZcwzIewC10mJ1gy6hf719BUBNM#
-* https://docs.google.com/spreadsheets/d/1-9jZafV9eZeBUnPQo7qQHbX2-_4qZfWfRVpidoF1owA/edit#gid=660740603
+* [google](https://docs.google.com/spreadsheets/d/1dbOT9I-Aj7lU7yCiJDpXERjYRVOL_M1Tm2QFgmyYt4Y/htmlview?fbclid=IwAR3HZMGhDfGsOdJrbMfRUDkS8c-25cSwnZcwzIewC10mJ1gy6hf719BUBNM#)
+* [google](https://docs.google.com/spreadsheets/d/1-9jZafV9eZeBUnPQo7qQHbX2-_4qZfWfRVpidoF1owA/edit#gid=660740603)
 Massive thanks to Lubos, Tyrel Haveman, goev1390, Peter Lord, Projectgus, JejuSoul, Heikki Jaakkola
 [technical-schematics-kia-64kwh-SG2-spanish.pdf](https://github.com/user-attachments/files/26715929/technical-schematics-kia-64kwh-SG2-spanish.pdf)

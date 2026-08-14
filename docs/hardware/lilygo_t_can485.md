@@ -21,7 +21,7 @@ The hardware can be bought via sites like [AliExpress](https://www.aliexpress.co
 ## Hardware info
 
 The hardware has more details on LilyGo's Github page
-https://github.com/Xinyuan-LilyGO/T-CAN485
+[github/Xinyuan-LilyGO](https://github.com/Xinyuan-LilyGO/T-CAN485)
 
 ## Expanding the board
 
@@ -65,8 +65,8 @@ Take this into consideration when building enclosures for it.
 If the situation is crifical (hot and direct sun), you can use a [Peltier element with fan](https://s.click.aliexpress.com/e/_c4LFUPAt).
 
 There are several enclosure designs that can be 3D printed, so it can be mounted on a DIN rail.
-https://www.thingiverse.com/thing:6788996
-https://www.thingiverse.com/thing:7029497
+[thingiverse](https://www.thingiverse.com/thing:6788996)
+[thingiverse](https://www.thingiverse.com/thing:7029497)
 
 The lilygo has an internal voltage regulator, and input is rated at 5-12 volts. 
 Not all lilygos actually work on 5V. A higher input is needed often. 

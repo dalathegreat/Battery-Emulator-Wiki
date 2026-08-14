@@ -38,7 +38,7 @@ Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible
 
 To access the CAN-logging, enable the `Enable CAN message logging via USB serial:` feature. When this is enabled, all the incoming/outgoing CAN&CAN-FD messages will get timestamp, direction, ID, DLC, and data fields printed out via the Arduino IDE serial monitor. This can then be exported to a .txt file for later analysis.
 
-Alternatively, a much better way to log the data is via Putty. Connect to the COM port and set baud rate, and configure Putty to save the output to a file https://www.putty.org/
+Alternatively, a much better way to log the data is via Putty. Connect to the COM port and set baud rate, and configure Putty to save the output to a file [putty](https://www.putty.org/)
 
 ##Log file format
 The log file format is compatible with the CANdump format. This can be read natively by tools like [SavvyCAN](https://github.com/collin80/SavvyCAN). 
