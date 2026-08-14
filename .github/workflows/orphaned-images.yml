@@ -38,7 +38,9 @@ jobs:
       - name: Open cleanup pull request
         if: inputs.open_cleanup_pr && steps.scan.outputs.orphan_count != '0'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # A PAT sidesteps the "Actions cannot create pull requests"
+          # restriction; GITHUB_TOKEN needs that setting enabled instead.
+          GH_TOKEN: ${{ secrets.PR_IMAGES_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           BRANCH="chore/remove-orphaned-images-${{ github.run_id }}"
           git config user.name 'github-actions[bot]'
@@ -56,8 +58,25 @@ jobs:
             git show --stat --oneline HEAD | tail -n +2
             echo '```'
           } > body.md
-          gh pr create \
-            --title "chore: remove orphaned images" \
-            --body-file body.md \
-            --head "$BRANCH" \
-            --base "${{ github.ref_name }}"
+          # The branch is already pushed, so a blocked PR creation is not
+          # fatal — surface the link and let it be opened by hand.
+          if ! gh pr create \
+                --title "chore: remove orphaned images" \
+                --body-file body.md \
+                --head "$BRANCH" \
+                --base "${{ github.ref_name }}"; then
+            LINK="${{ github.server_url }}/${{ github.repository }}/compare/${{ github.ref_name }}...${BRANCH}?expand=1"
+            echo "::warning::Could not open the pull request automatically."
+            {
+              echo
+              echo "### Cleanup branch pushed"
+              echo
+              echo "The deletions are on \`${BRANCH}\`, but the pull request could not"
+              echo "be created automatically. Open it here: ${LINK}"
+              echo
+              echo "To let this step finish on its own next time, enable"
+              echo "**Settings → Actions → General → Workflow permissions →**"
+              echo "**Allow GitHub Actions to create and approve pull requests**,"
+              echo "or add a \`PR_IMAGES_TOKEN\` secret."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
