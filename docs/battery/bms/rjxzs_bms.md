@@ -2,14 +2,6 @@
 title: "RJXZS BMS"
 ---
 
-## Read this first
-
-Preface, the entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Cell balancing wire taps, shunts, busbar connections, BMS integration, temperature monitoring, fuses, contactors, interlocks, etc. all will have to be implemented by yourself instead of using a pre-made product. As with all things custom, there are higher risks of human error. This page covers emulating High Voltage protocols, so while most tinkerers might be familiar with 48V DIY batteries, building a 96S 400VDC battery is an entirely different beast that can be lethal. Take extra precaution when working on a custom DIY HV battery, you have been warned.
-
-!!! warning "CAUTION"
-    If you are unsure of your technical knowhow, avoid building a high voltage battery from scratch.
-
-## Custom DIY battery with RJXZS BMS
 The Battery-Emulator has support for the 4-192S RJXZS BMS. With this BMS you can construct your own high voltage battery, and connect the BMS via CAN to the Battery-Emulator. This allows you to use a DIY battery (instead of an EV battery) with any normal Battery-Emulator supported inverter.
 
 ### Where do I get the hardware?

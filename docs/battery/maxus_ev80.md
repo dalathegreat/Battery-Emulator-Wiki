@@ -2,7 +2,7 @@
 title: "Maxus EV80"
 ---
 
-Note! The EV80 battery does not contain any contactors or shunt. This means there is no way to control the battery, and the battery does not keep track of SOC% in any way. This is handled externally on the EV80 vehicle. Due to this, you will need to fit an aftermarket BMS onto the battery to use it, for instance the RJXZS BMS.
+Note! The EV80 battery does not contain any contactors or shunt. This means there is no way to control the battery, and the battery does not keep track of SOC% in any way. This is handled externally on the EV80 vehicle. Due to this, you will need to fit an aftermarket BMS onto the battery to use it, for instance the [RJXZS](bms/rjxzs_bms.md) BMS.
 
 - Maxus EV80
 

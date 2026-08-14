@@ -81,16 +81,21 @@ If the battery has a 2️⃣ or 3️⃣ symbol, double- or triple battery is sup
 |                  Volvo                  |          [SPA PHEV](volvo_spa_s60_90_v60_90_xc60_90_hybrid_batteries.md)           |        19         |        ✅         |                       ⭐                       |                                |                          |       290 / 450       | Requires DC/DC load, can lock itself permanently |
 
 ### Other batteries
-* DIY HV battery:
-   * [RJXZS BMS](rjxzs_bms.md) ✅
-   * [Orion BMS](orion_bms.md) ✅
-   * [Simp BMS](simpbms.md) ✅
-   * [DALY BMS](daly_smartbms.md) ✅
-   * [EMUS G1 BMS](emus_g1_bms.md) ✅
-   * [Ennoid BMS](ennoid_bms.md) ⚠️ (Not tested)
-* DIY LV battery:
-   * [DALY BMS](daly_smartbms.md) ✅
-* [FoxESS HV2600 batteries](foxess_hv2600.md) ✅
-* [Pylon HV batteries (Dyness Tower)](pylon_hv.md) ✅
-* [CHAdeMO vehicles](chademo_vehicle.md) ⚠️ (Experimental support for emergencies)
+
+DIY HV battery:
+
+* [RJXZS BMS](bms/rjxzs_bms.md) ✅
+* [Orion BMS](bms/orion_bms.md) ✅
+* [Simp BMS](bms/simpbms.md) ✅
+* [DALY BMS](bms/daly_smartbms.md) ✅
+* [EMUS G1 BMS](bms/emus_g1_bms.md) ✅
+* [Ennoid BMS](bms/ennoid_bms.md) ⚠️ (Not tested)
+
+DIY LV battery:
+
+* [DALY BMS](bms/daly_smartbms.md) ✅
+
+[FoxESS HV2600 batteries](foxess_hv2600.md) ✅
+[Pylon HV batteries (Dyness Tower)](pylon_hv.md) ✅
+[CHAdeMO vehicles](chademo_vehicle.md) ⚠️ (Experimental support for emergencies)
 
