@@ -31,32 +31,31 @@ This means that if you have a high voltage battery (450V), you will see much hig
 
 Keep this amperage limit of 22A/50A in mind when designing a battery system for the Fronius!
 
-## Software limitation :floppy_disk: 
+!!! note "Software limitation :floppy_disk:"
+    There is a non-Plus variant of Gen24 available, for this you have to purchase a battery license before you can add a battery to the configuration. Contact your installer incase "Battery Operation" feature is missing!
 
-ℹ️ There is a NON-Plus variant of Gen24 available, for this you have to purchase a battery license before you can add a battery to the configuration. Contact your installer incase "Battery Operation" feature is missing!
+    ![Bildschirmfoto_vom_2024-04-07_10-01-43](../images/fronius-01.png)
 
-![Bildschirmfoto_vom_2024-04-07_10-01-43](../images/fronius-01.png)
+    This can also be seen from the label on the inverter, incase "Plus" is missing:
 
-This can also be seen from the label on the inverter, incase "Plus" is missing:
-
-![bild](../images/fronius-02.png)
+    ![bild](../images/fronius-02.png)
 
 ## Setting up the Fronius inverter for DIY battery
 
 You will need a technician login to the inverter to make changes to the setup. Contact your solar installer incase you don't have the technician login!
 
-ℹ️ You will also need a Fronius Smartmeter so that the system can measure consumption and generation. The Fronius Smart Meter models "63A-3", "TS 65A-3" and "IP"(wireless) are all compatible.
-For Home Assistant users: there's an [add-on](https://github.com/M4rt1nCh/ha-fronius-virtual-smart-meter) that creates a Virtual Smartmeter using data from HA entities.
+!!! note "NOTE"
+    You will also need a Fronius Smartmeter so that the system can measure consumption and generation. The Fronius Smart Meter models "63A-3", "TS 65A-3" and "IP"(wireless) are all compatible. For Home Assistant users: there's an [add-on](https://github.com/M4rt1nCh/ha-fronius-virtual-smart-meter) that creates a Virtual Smartmeter using data from HA entities.
 
 To use a Fronius inverter with a used EV battery, it needs to be setup for battery operation. This is done via the "Solar.start" app, under components, add battery, and select "BYD Premium HVS/M".
 
 ![FroniusSetup](../images/fronius-03.png)
 
-After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter according to this diagram (LilyGo T-CAN485 and LEAF battery example)
+After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter according to this diagram (LilyGo T-CAN485 and LEAF battery example):
 
 ![FroniusWiring](../images/fronius-06.png)
 
-When the low voltage communication is handled, also connect the high voltage side (LEAF battery example)
+When the low voltage communication is handled, also connect the high voltage side (Nissan LEAF battery example):
 
 ![HighVoltageWiringFronius](../images/fronius-07.png)
 
@@ -89,23 +88,24 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 1. First start the Fronius inverter via AC breaker
 2. Turn on the Solar DC switch
 3. Turn on the Battery DC switch
-4. Start the EV battery with 12V & Start the Battery-Emulator hardware with 5/12V
-6. Contactors will close on EV battery (CAN controlled / GPIO control), and Fronius will start to use the battery
+4. Power on the EV battery with 12V & and the Battery-Emulator hardware
+6. Wait until contactors close at the EV battery (CAN controlled / GPIO control), and Fronius will start to use the battery
 
 ### Shutdown
 
 Important to note when shutting down is to not open any DC breakers/isolators under load! Doing so can cause DC arcs and prematurely wear them out, and in worst case start a fire.
 
 1. Signal to the inverter that battery is not available, with any of the following options:
-   a. Press PAUSE in the Webserver (best option)
-   b. Press optional Equipment stop if installed
-   c. Press Open contactors in the Webserver
-   d. Power off Battery-Emulator hardware entirely
-2. Once Fronius stops using battery after a few seconds (verify in app to make sure) it can be powered down
-3. Turn off the Fronius inverter via AC breaker
-4. Turn off the Fronius inverter via the DC switch on the Fronius itself
-5. Turn off the Battery DC isolator switch
-6. Turn off the Solar DC isolator switch
+   
+       a. Press PAUSE in the Webserver (best option)
+       b. Press optional Equipment stop if installed
+       c. Press Open contactors in the Webserver
+       
+3. Once Fronius stops using battery after a few seconds (verify in app to make sure) it can be powered down
+4. Turn off the Fronius inverter via AC breaker
+5. Turn off the Fronius inverter via the DC switch on the Fronius itself
+6. Turn off the Battery DC isolator switch
+7. Turn off the Solar DC isolator switch
 
 ## Day to day monitoring
 
@@ -128,18 +128,18 @@ Then verify the following
 ![image](../images/fronius-10.png)
 
 - Make sure the Precharge/Positive has not been accidentally swapped (Easy mistake on GPIO controlled packs). This will show up as voltage still on inverter pins, but as soon as any load is put on the system the voltage will sag heavily and inverter will r eport "Battery not detected"
-- If using PWM contactors, make sure they are not dropping voltage momentarily. Try disabling PWM
+- If using PWM contactors, make sure they are not dropping voltage momentarily. Try disabling PWM.
 - Next step is checking that Modbus connection is active. Check the Events page, if you see this MODBUS_INVERTER_MISSING event;
 
 ![image](../images/fronius-11.png)
 
 It means that the Modbus connection is down. Verify that:
 
-- Polarity of M0+ and MO- is correct
+- Polarity of M0+ and M0- is correct
 - Protective earth is attached in both Inverter and Battery side
 - Modbus cable shielding is attached only an one side
 - Wires are seated correctly in the Fronius connector. It is very easy to miss that the wires are not pushed in all the way.
-- Try a different powersupply for the Battery Emulator board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see strange modbus errors, your powersupply might be noisy
+- Try a different power supply for the Battery Emulator board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see strange modbus errors, your power supply might be noisy
 
 Make sure the Battery-Emulator has a good modbus connection to the Inverter.
 
@@ -192,10 +192,11 @@ Pin0 is not used when hard wiring for full backup. Pin0 is used for automatic sw
 
 The Fronius Gen24 configuration documents describe both automatic and manual switch-over to backup mode using combination of switches and/or relays. Both options can be commercially sourced if you need a non hard-wired off-grid only solution. 
 
-!!! note "IMPORTANT NOTE"
+!!! note "NOTE"
     When running as Full-Backup, the inverter will run at 53Hz. As such, no other inverter can be active on the AC circuit. Only the Gen24 can be providing power! If you need additional power, then a true Micro-Grid should be used (AC coupling with Victron etc).
 
-Also note, that Fronius officially supports 2000h off-grid (full-backup) per year on the Gen24. Exceeding this hour count voids the warranty. There is no reports of any inverters shutting down after 2000hours. 
+!!! warning "IMPORTANT"
+    Also note, that Fronius officially supports 2000h off-grid (full-backup) per year on the Gen24. Exceeding this hour count voids the warranty. There is no reports of any inverters shutting down after 2000hours. 
 
 To get around this off-grid limitation, you can create a microgrid using a 48V battery that powers a small inverter, and then connect the Gen24 to this microgrid. Then it will be essentially offgrid, without incrementing the 2000h max counter. Example of this running successfully has been done with a Victron a 7.2kwh(LV) , and FroniusGen24 with a 75Kwh battery(HV). A smart meter is required if running as a true micro-grid.
 
