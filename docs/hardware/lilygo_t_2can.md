@@ -9,7 +9,7 @@ The LilyGo T-2CAN is a dual CAN board, excellent for integrations that require s
 **There are two versions of the T-2CAN:**
 
 - **T-2CAN** (classic): Supports 2x CAN
-- **T-2CAN FD**: Supports 1x CAN and 1x CAN FD. This is supported by BE, but needs DIP switch '1' turning ON, and you can't also use the BMS POWER output (TODO: remap to another pin).
+- **T-2CAN FD**: Supports 1x CAN and 1x CAN FD.
 
 Since they are the same price, the T-2CAN FD is generally recommended.
 
@@ -50,7 +50,7 @@ The board comes with 2 CAN channels. One is labelled CAN-A , and the other one i
 
 The interfaces correspond to the following options in the Battery-Emulator software
 
-- CAN-A -> **CAN MCP 2515 Add-on**
+- CAN-A -> **CAN MCP 2515 Add-on** (classic) / **CAN FD A (MCP2518)** (FD)
    - CANLA (CAN-LOW)
    - CANHA (CAN-HIGH)
 - CAN-B -> **Native CAN**
