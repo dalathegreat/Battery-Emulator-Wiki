@@ -12,6 +12,7 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | PE4 | Seal | 61.66kWh | 150Ah | 409.6V | ✅
 | ??? | Atto 3 | 50kWh | ? | ? | ✅ 
 | P48 | Atto 3 | 60.48kWh | 150Ah | 403.2V | ✅ 
+| P4S | ? | 74.8kWh | 150Ah | 499.2V | ✅ 
 | VD6 | Seal U DM-i | 18,32kWh | 54Ah | 339.2V | :x: (Type B LV connector)
 | PA4 | Tang | 86.4kWh  | 135Ah | 640V | :x: (Type B LV connector)
 | PE2 | Han | 85.4kWh  | 150Ah | 569.6V | :x: (Type B LV connector)
