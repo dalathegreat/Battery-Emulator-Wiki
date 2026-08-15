@@ -8,13 +8,11 @@ hide:
 
 Be sure to checkout the [installation guidelines](../setup/hardware/installation_guidelines.md) section for how to install your battery. Amount of stars ⭐ signal how mature and stable the integration is.
 
-- ⭐ Works, but many values estimated or functionality missing. Expect manual tweaking to keep battery operational
-- ⭐⭐ Integration has minor known issues or missing features. Manual interventions sometimes required.
 - ⭐⭐⭐ Very well supported battery. Longterm stability confirmed without user interaction. Many success stories from users.
-
-If the battery has a 🅱️ symbol, cell balancing has been confirmed working (Important for longterm operation)
-
-If the battery has a 2️⃣ or 3️⃣ symbol, double- or triple battery is supported.
+- ⭐⭐ Integration has minor known issues or missing features. Manual interventions sometimes required.
+- ⭐ Works, but many values estimated or functionality missing. Expect manual tweaking to keep battery operational.
+- 🅱️ Cell balancing has been confirmed working (Important for longterm operation).
+- 2️⃣ / 3️⃣ double- or triple battery setup is supported.
 
 |           Car (Manufacturer)            |                                    Product Name                                    |  Capacity (kWh)   | Supported status |                 Support level                 |        Balancing (🅱️)         | Parallel Packs (2️⃣/3️⃣) | Voltage min / max (V) |                      Notes                       |
 |:---------------------------------------:|:----------------------------------------------------------------------------------:|:-----------------:|:----------------:|:---------------------------------------------:|:------------------------------:|:------------------------:|:---------------------:|:------------------------------------------------:|
