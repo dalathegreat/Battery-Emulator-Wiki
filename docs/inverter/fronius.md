@@ -98,7 +98,9 @@ Important to note when shutting down is to not open any DC breakers/isolators un
 1. Signal to the inverter that battery is not available, with any of the following options:
    
        a. Press PAUSE in the Webserver (best option)
+   
        b. Press optional Equipment stop if installed
+   
        c. Press Open contactors in the Webserver
        
 3. Once Fronius stops using battery after a few seconds (verify in app to make sure) it can be powered down
@@ -196,9 +198,9 @@ The Fronius Gen24 configuration documents describe both automatic and manual swi
     When running as Full-Backup, the inverter will run at 53Hz. As such, no other inverter can be active on the AC circuit. Only the Gen24 can be providing power! If you need additional power, then a true Micro-Grid should be used (AC coupling with Victron etc).
 
 !!! warning "IMPORTANT"
-    Also note, that Fronius officially supports 2000h off-grid (full-backup) per year on the Gen24. Exceeding this hour count voids the warranty. There is no reports of any inverters shutting down after 2000hours. 
+    Fronius officially supports a maximum of 2000h off-grid (full-backup) per year on the Gen24. Exceeding this hour count voids the warranty. There are no reports of any inverters shutting down after 2000hours. 
 
-To get around this off-grid limitation, you can create a microgrid using a 48V battery that powers a small inverter, and then connect the Gen24 to this microgrid. Then it will be essentially offgrid, without incrementing the 2000h max counter. Example of this running successfully has been done with a Victron a 7.2kwh(LV) , and FroniusGen24 with a 75Kwh battery(HV). A smart meter is required if running as a true micro-grid.
+    To get around this off-grid limitation, you can create a microgrid using a 48V battery that powers a small inverter, and then connect the Gen24 to this microgrid. Then it will be essentially offgrid, without incrementing the 2000h max counter. Example of this running successfully has been done with a Victron a 7.2kwh(LV) , and FroniusGen24 with a 75Kwh battery(HV). A smart meter is required if running as a true micro-grid.
 
 All normal earthing requirements when running in 'off-grid' must still be followed. Consult a qualified electrician for advice. 
 
