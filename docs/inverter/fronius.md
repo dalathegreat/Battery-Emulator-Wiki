@@ -14,9 +14,9 @@ The code works with the following Fronius inverters:
 
 On this date (23.04.2025) Fronius deployed a new software version that momentarily broke compatibility with Battery-Emulator. 
 
-- Installed: ROW 1.35.8-1 (Working ✅ ) Works with BE versions below 8.11.0
-- New: ROW 1.36.5-1 (Breaks ❌ ) Works with BE versions above 8.12.0
-- Newest firmware (1.41.11-1) works with the current BE version. (as of 2026-08-12)
+- ROW 1.35.8-1 (Working ✅ ) Works with BE versions below 8.11.0
+- ROW 1.36.5-1 (Breaks ❌ ) Works with BE versions above 8.12.0
+- ROW 1.41.11-1 works with the current BE version (as of 2026-08-12).
 
 It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator.
 
@@ -52,15 +52,6 @@ To use a Fronius inverter with a used EV battery, it needs to be setup for batte
 
 ![FroniusSetup](../images/fronius-03.png)
 
-#### Notes on Scaled SOC + Fronius min/max SOC
-In the Fronius settings it is possible to define "SOC minimum" and "SOC maximum". If you are using the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to only have one of the systems restrict the SOC window, which simplifies any troubleshooting.
-
-Example of double-rescaling:
-
-![image](../images/fronius-04.png)
-
-![scaled](../images/fronius-05.jpg)
-
 After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter according to this diagram (LilyGo T-CAN485 and LEAF battery example)
 
 ![FroniusWiring](../images/fronius-06.png)
@@ -79,6 +70,15 @@ For this inverter type, use the option called "BYD 11kWh HVM battery over Modbus
 
 !!! note "NOTE"
     If you intend to use the [Periodic Reset](../setup/hardware/periodic_bms_reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
+
+### Notes on Scaled SOC + Fronius min/max SOC
+In the Fronius settings it is possible to configure "SoC Minimum" and "SoC Maximum" values. If you are using the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to always leave in Fronius the "SoC Maximum" to 100%, and adjust the "SOC max percentage" setting in Battery Emulator instead, to be able to take advantage of the "Charge power tapering based on SOC" which avoids power oscillations.
+
+Avoid double-rescaling:
+
+![image](../images/fronius-04.png)
+
+![scaled](../images/fronius-05.jpg)
 
 ## Starting and stopping the system
 
