@@ -6,8 +6,10 @@ title: "List of 3d‐printable parts"
 Here's a collection of 3d-printable parts that you can utilize in your build.
 
 - LilyGo DIN rail: [Thingiverse - DIN Rail enclosure for Lilygo T-CAN-485 Module](https://www.thingiverse.com/thing:6788996)
+- LilyGo DIN rail: [Thingiverse - DIN Rail enclosure for Lilygo T-CAN-485 Module with beter ventilation](https://www.thingiverse.com/thing:7029497)
 - LilyGo Vertical Din-rail case: [printables](https://www.printables.com/model/1312677-lilygo-t-can485-dinrail-case)
 - LilyGo T_2CAN case: [thingiverse](https://www.thingiverse.com/thing:7172799)
+- LilyGo T_2CAN case with LCD and DIN rail support([https://www.thingiverse.com/thing:7172799](https://www.printables.com/model/1567398-lilygo-t2-can-display-din-rail-mount))
 
 ## BYD Vehicles
 - Front connector cover port: [Abdeckung HV Anschluss Motor vorn.step.zip](https://github.com/user-attachments/files/29167093/Abdeckung.HV.Anschluss.Motor.vorn.step.zip)
