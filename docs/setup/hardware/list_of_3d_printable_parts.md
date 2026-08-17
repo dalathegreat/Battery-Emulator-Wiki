@@ -11,10 +11,11 @@ Here's a collection of 3D-printable parts that you can utilize in your build.
 - LilyGo Vertical DIN-rail case: [Lilygo T-CAN485 dinrail case](https://www.printables.com/model/1312677-lilygo-t-can485-dinrail-case)
 - LilyGo T_2CAN case: [LilyGo T-2CAN case](https://www.thingiverse.com/thing:7172799)
 - LilyGo T_2CAN case with LCD and DIN rail support [LilyGO T2 CAN + Display DIN Rail Mount](https://www.printables.com/model/1567398-lilygo-t2-can-display-din-rail-mount)
+- LilyGo T_2CAN [Open Frame DIN](https://www.thingiverse.com/thing:7278747)
 
 ## BMW iX, i4‐i7 (Gen5)
 
-On [Thingiverse](https://www.thingiverse.com/thing:6845382/files) you can download some 3D printable covers for the large rear connector, smaller front connector and internal blanking covers for BMU (If you disconnect the additional HV outputs internally).
+- covers for the large rear connector, smaller front connector and internal blanking covers for BMU: [Thingiverse](https://www.thingiverse.com/thing:6845382/files).
 
 ## BYD Vehicles
 
@@ -23,7 +24,7 @@ On [Thingiverse](https://www.thingiverse.com/thing:6845382/files) you can downlo
 
 ## Ford Mach‐E
 
-The 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
+- The 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
 
 ## Kia/Hyundai 39/64kWh
 
@@ -56,7 +57,7 @@ The link contains the drawing of the copper contact part, you can cut yourself a
 
 ### HV Connector
 
-If you are mounting the battery indoors, you can also 3d-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is a link to Pelle_C's excellent 3d-printable connector: [gitlab/pelle8](https://gitlab.com/pelle8/3d)
+If you are mounting the battery indoors, you can also 3D-print a high voltage plug. This is generally not recommended, due to no IP rating, and no voltage rating. So try to source a real HV connector if possible! That said, this is the link to Pelle_C's excellent 3d-printable connector: [gitlab/pelle8](https://gitlab.com/pelle8/3d)
 
 ![rcs800_32A](../../../images/nissan-leaf-e-nv200-13.jpeg)
 
@@ -64,18 +65,10 @@ If you are mounting the battery indoors, you can also 3d-print a high voltage pl
 
 ## Tesla Model 3/Y
 
-Charger cover and HVAC covers
-[thingiverse](https://www.thingiverse.com/thing:6929352)
-
-X098/logic connector cap
-[thingiverse](https://www.thingiverse.com/thing:6945472)
-
-DC Model 3 charge port cap
-[printables](https://www.printables.com/model/1695452-tesla-model-3-dc-charge-port-hv-connector-capblank)
-
-Model 3 motor connector cap
-[printables](https://www.printables.com/model/1695435-tesla-model-3-motor-hv-connector-capblank)
-
+- Charger cover and HVAC covers: [thingiverse](https://www.thingiverse.com/thing:6929352)
+- X098/logic connector cap: [thingiverse](https://www.thingiverse.com/thing:6945472)
+- DC Model 3 charge port cap: [printables](https://www.printables.com/model/1695452-tesla-model-3-dc-charge-port-hv-connector-capblank)
+- Model 3 motor connector cap: [printables](https://www.printables.com/model/1695435-tesla-model-3-motor-hv-connector-capblank)
 
 ## Volkswagen MEB
 
