@@ -57,16 +57,15 @@ To make the board even more professional (DIN mounting solution with CANFD and c
 
 ![image](../images/lilygo-t-can485-06.png)
 
+## Boot button 
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../setup/software/boot_button_functions.md)
+
 ## Enhancements notes, things to know
 
 The chip has the tendency to run quite hot. Some people book good results by adding a RAM or Raspberry Pi heatsinks on the chip, reducing the heat.
 Above 80 degrees the BE screen turns yellow as a warning, and above 95 degrees damage is possible.
 Take this into consideration when building enclosures for it.
 If the situation is critical (hot and direct sun), you can use a [Peltier element with fan](https://s.click.aliexpress.com/e/_c4LFUPAt).
-
-There are several enclosure designs that can be 3D printed, so it can be mounted on a DIN rail.
-[thingiverse](https://www.thingiverse.com/thing:6788996)
-[thingiverse](https://www.thingiverse.com/thing:7029497)
 
 The lilygo has an internal voltage regulator, and input is rated at 5-12 volts. 
 Not all lilygos actually work on 5V. A higher input is needed often. 
@@ -77,6 +76,6 @@ If it is outside, in the cold, use a 12V source like [**HDR-60-12**](https://www
 
 ![HDR-60-12](../images/lilygo-t-can485-01.jpg)
 
-### Boot button 
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../setup/software/boot_button_functions.md)
+## 3D-printable parts
 
+You can print your own cases and mounts for this board, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
