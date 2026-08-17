@@ -12,29 +12,23 @@ Here's a collection of 3D-printable parts that you can utilize in your build.
 - LilyGo T_2CAN case: [LilyGo T-2CAN case](https://www.thingiverse.com/thing:7172799)
 - LilyGo T_2CAN case with LCD and DIN rail support [LilyGO T2 CAN + Display DIN Rail Mount](https://www.printables.com/model/1567398-lilygo-t2-can-display-din-rail-mount)
 
+## BMW iX, i4‐i7 (Gen5)
+
+On [Thingiverse](https://www.thingiverse.com/thing:6845382/files) you can download some 3D printable covers for the large rear connector, smaller front connector and internal blanking covers for BMU (If you disconnect the additional HV outputs internally).
+
 ## BYD Vehicles
 
 - Front connector cover port: [Abdeckung HV Anschluss Motor vorn.step.zip](https://github.com/user-attachments/files/29167093/Abdeckung.HV.Anschluss.Motor.vorn.step.zip)
 - Front connector cover port O-ring version: [Verschlussdeckel Klimaleitung mit O-Ring 2,5mm.step.zip](https://github.com/user-attachments/files/29182999/Verschlussdeckel.Klimaleitung.mit.O-Ring.2.5mm.step.zip)
 
+## Ford Mach‐E
+
+The 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
+
 ## Kia/Hyundai 39/64kWh
 
 - AUX HV cover [AUX HV COVER KIA HYUNDAI.zip](https://github.com/user-attachments/files/18517606/AUX.HV.COVER.KIA.HYUNDAI.zip)
 - low voltage plug to collect all cables to 20mm pipe [LV COVER KIA HYUNDAI.zip](https://github.com/user-attachments/files/18517605/LV.COVER.KIA.HYUNDAI.zip)
-
-## Tesla Model 3/Y
-
-Charger cover and HVAC covers
-[thingiverse](https://www.thingiverse.com/thing:6929352)
-
-X098/logic connector cap
-[thingiverse](https://www.thingiverse.com/thing:6945472)
-
-DC Model 3 charge port cap
-[printables](https://www.printables.com/model/1695452-tesla-model-3-dc-charge-port-hv-connector-capblank)
-
-Model 3 motor connector cap
-[printables](https://www.printables.com/model/1695435-tesla-model-3-motor-hv-connector-capblank)
 
 ## Nissan LEAF
 
@@ -68,13 +62,24 @@ If you are mounting the battery indoors, you can also 3d-print a high voltage pl
 
 ![rcs800_leaf](../../../images/nissan-leaf-e-nv200-14.jpeg)
 
+## Tesla Model 3/Y
+
+Charger cover and HVAC covers
+[thingiverse](https://www.thingiverse.com/thing:6929352)
+
+X098/logic connector cap
+[thingiverse](https://www.thingiverse.com/thing:6945472)
+
+DC Model 3 charge port cap
+[printables](https://www.printables.com/model/1695452-tesla-model-3-dc-charge-port-hv-connector-capblank)
+
+Model 3 motor connector cap
+[printables](https://www.printables.com/model/1695435-tesla-model-3-motor-hv-connector-capblank)
+
+
 ## Volkswagen MEB
 
 - Cover for the LV connector: [meb_CAN_cover_v1.zip](https://github.com/user-attachments/files/19849815/meb_CAN_cover_v1.zip)
 - Cover for the AC Charger port: [MEB-Cover_for_internal_Charger.zip](https://github.com/user-attachments/files/27005556/MEB-Cover_for_internal_Charger.zip)
 - Cover for the CCS or Inverter connector: [MEB-Cover_for_inverter_or_CCS.zip](https://github.com/user-attachments/files/26513415/MEB-Cover_for_inverter_or_CCS.zip)
 
-
-## Ford Mach‐E
-
-The 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
