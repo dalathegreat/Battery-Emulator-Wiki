@@ -34,9 +34,9 @@ This means that if you have a high voltage battery (450V), you will see much hig
 Keep this amperage limit of 22A/50A in mind when designing a battery system for the Fronius!
 
 !!! note "Software limitation :floppy_disk:"
-    There is a non-Plus variant of Gen24 available, for this you have to purchase a battery license before you can add a battery to the configuration. Contact your installer incase "Battery Operation" feature is missing!
+    There is a non-Plus variant of Gen24 available, for this you have to purchase a battery license before you can add a battery to the configuration. In **System > Information > License** you should see something like below. Contact your installer incase "Battery Operation" feature is missing!
 
-    ![Bildschirmfoto_vom_2024-04-07_10-01-43](../images/fronius-01.png)
+    ![activefeats](../images/fronius-01.png)
 
     This can also be seen from the label on the inverter, incase "Plus" is missing:
 
