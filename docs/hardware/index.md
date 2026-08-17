@@ -41,4 +41,4 @@ The board has wifi, and supports running a [Webserver that you can connect to fo
 For those into home automation, the code also supports [MQTT](../setup/software/mqtt.md) 
 
 ## Optional screen via ESPNow 🖥️
-No Battery-Emulator hardware comes with displays by default. If you want to add a local display to your system, the best option is to add a [ESPNow](../setup/software/espno.md/) compatible microcontroller, which will wirelessly connect to the Battery-Emulator board and display statistics.
+No Battery-Emulator hardware comes with displays by default. If you want to add a local display to your system, the best option is to add a [ESPNow](../setup/software/espnow.md/) compatible microcontroller, which will wirelessly connect to the Battery-Emulator board and display statistics.
