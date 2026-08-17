@@ -48,7 +48,7 @@ There are four connectors on the battery:
 
 The Manual service disconnect(MSD): this is just a plug that inhibits the closing of the relays when not present. It needs to be removed when doing maintenance, always remove it when you are working on the battery yourself.
 
-The auxiliary HV connector: It is only present on the 52.5kWh battery. It supplies the PTC battery heater unit. We dont need it. I have potted it with epoxy and put a 3d printed cover over it. This connector has  two HVIL (high voltage interlock) pins that signal the car when the HV connector is connected. Since the HVIL loop is not check by the BMS in the battery, it is not needed to short the pins in this connector.
+The auxiliary HV connector: It is only present on the 52.5kWh battery. It supplies the PTC battery heater unit. We dont need it. I have potted it with epoxy and put a 3d printed cover over it. This connector has two HVIL (high voltage interlock) pins that signal the car when the HV connector is connected. Since the HVIL loop is not check by the BMS in the battery, it is not needed to short the pins in this connector.
 
 The high voltage connector(HV009): This is the main HV connector from the battery to the car. It has three pins, a positive pin, a negative pin and another negative pin specifically for fast charging. Since we don't use the fast charging connection, we only need to connect the normal positive and negative pin. Although they look very similar,  the type of HV connector for the 52.5 kWh battery is different from the other two, they don't fit on each other.
 The 52.5 kWh battery has an amphenol HVC3P80MV108227U19 connector, it fits with a high voltage cable MG part number 10824432.
