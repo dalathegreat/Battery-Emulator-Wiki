@@ -79,7 +79,7 @@ Avoid double-rescaling:
 
 ![image](../images/fronius-04.png)
 
-![scaled](../images/fronius-05.jpg)
+![scaled](../images/fronius-05.png)
 
 ## Starting and stopping the system
 
