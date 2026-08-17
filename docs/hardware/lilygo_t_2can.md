@@ -143,6 +143,10 @@ On the T-2CAN FD, this means you can have two CAN FD ports and one CAN (non-FD) 
 
 You can attach a WS2812B LED to the board, connecting to IO35, 5V and GND. It may be easiest to solder this directly to the board using thin jumper wires. It is preferable to use the 5V rather than 3.3V supply as it has more spare capacity.
 
+### Boot button 
+
+The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../setup/software/boot_button_functions.md)
+
 #### Contactors
 
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
@@ -168,11 +172,6 @@ The screens are available in several sizes. Some are monochrome, others are two-
 
 ![image](../images/lilygo-t-2can-01.jpg)
 
-#### DIN Rail Holder
+### 3D-printable parts
 
-STL for 3D printing 
-[Open Frame DIN](https://www.thingiverse.com/thing:7278747)
-
-### Boot button 
-
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../setup/software/boot_button_functions.md)
+You can print your own cases and mounts for this board, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
