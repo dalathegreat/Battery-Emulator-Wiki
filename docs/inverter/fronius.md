@@ -42,14 +42,14 @@ Keep this amperage limit of 22A/50A in mind when designing a battery system for 
 
     ![bild](../images/fronius-02.png)
 
-## Setting up the Fronius inverter for DIY battery
+## Setting up the Fronius inverter with Battery Emulator
 
 You will need a technician login to the inverter to make changes to the setup. Contact your solar installer incase you don't have the technician login!
 
 !!! note "NOTE"
     You will also need a Fronius Smartmeter so that the system can measure consumption and generation. The Fronius Smart Meter models "63A-3", "TS 65A-3" and "IP"(wireless) are all compatible. For Home Assistant users: there's an [add-on](https://github.com/M4rt1nCh/ha-fronius-virtual-smart-meter) that creates a Virtual Smartmeter using data from HA entities.
 
-To use a Fronius inverter with a used EV battery, it needs to be setup for battery operation. This is done via the "Solar.start" app, under components, add battery, and select "BYD Premium HVS/M".
+To use a Fronius inverter with a used EV battery, it needs to be setup for battery operation. This is done via the "Solar.start" app or **Device Configuration > Components > Add Component > Battery**, and select **BYD HVS/M (2020-25)**:
 
 ![FroniusSetup](../images/fronius-03.png)
 
@@ -65,7 +65,7 @@ When the low voltage communication is handled, also connect the high voltage sid
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO or CAN will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. 
 
 ## Which protocol to use
-For this inverter type, use the option called "BYD 11kWh HVM battery over Modbus" under the "Inverter Protocol" setting. Also select the Inverter interface as "Modbus"
+For this inverter type, use the option called **BYD 11kWh HVM battery over Modbus** under the **Inverter Protocol** setting. Also select the Inverter interface as **Modbus**.
 
 ![image](../images/fronius-12.png){ width="490" height="65" }
 
@@ -80,6 +80,8 @@ Avoid double-rescaling:
 ![image](../images/fronius-04.png)
 
 ![scaled](../images/fronius-05.png)
+
+Optional setting: If you have multiple AC coupled inverters in your network, and they all reside behind the SmartMeter, you can enable **Battery charging from other sources** and select **from other generators in the home network**.
 
 ## Starting and stopping the system
 
