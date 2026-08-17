@@ -20,6 +20,8 @@ On this date (23.04.2025) Fronius deployed a new software version that momentari
 
 It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator.
 
+![working](../images/fronius_anim.gif)
+
 ## Hardware limitation :zap:
 
 * Fronius GEN24 **Symo** inverters (3-5kW) are capped to max 12.5A on the battery port.
