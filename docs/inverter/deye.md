@@ -99,6 +99,10 @@ If you connected everything correctly, you will see data on the display:
 
 ## Troubleshooting
 
-- If you see F58 BMS_COMMUNICATION_FAULT, make sure the Max Discharge Speed is not set too high, this will make the Deye fault (For instance having it set to 150.0A will crash it)
+- If you see F58 BMS_COMMUNICATION_FAULT: 
+   - Make sure the Max Discharge Speed is not set too high, this will make the Deye fault (For instance having it set to 150.0A will crash it)
+- If you see F56 bat1_voltlow_fault-error
+   - Make sure battery is not overdischarged (Scaled SOC can be used to bring back SOC% measurement)
+   - One user Factory Reset inverter to get out of this error state
 - If the inverter appears to be OFF on the LCD, make sure that both power switches on the inverters are ON. One switch which apparently is only for PV panels - the one that you turn 90 degrees AND another one which is a push button that is ONLY for battery side
 
