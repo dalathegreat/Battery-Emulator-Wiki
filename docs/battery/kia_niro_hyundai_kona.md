@@ -161,9 +161,9 @@ If the service disconnect switch is missing, these two small pins must be shorte
 
 Plus, the HV side must be connected together (diagram missing for running without service disconnect plug). Due to this, it is recommended to get the OEM service disconnect plug before continuing.
 
-## STL files for unused battery connections
+## 3D-printable parts
 
-There are STL files available to 3D print covers for the unused battery connectors.
+You can print your own covers for the unused battery connectors, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
 
 ## Special notes on 37501-AO050 battery
 There is a 2022+ Hyundai Kona or Kia e-niro battery that uses CAN-FD, that comes with a AO050 part number sticker. It is CATL made, it consist in 24 modules(2.835 kwh) x 4 cells(3.7v), configured 96s1p(358v in total) 64.8kwh(68.4 in total)
