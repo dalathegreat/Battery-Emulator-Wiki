@@ -99,10 +99,9 @@ There are several high-voltage connectors on the outside of the pack. We only us
 
 The auxiliary connector is referred to as the CCU (Combined Charging Unit) connector. The connector type is Hirschman HPS40-2, and a suitable cable is for instance 5A2DB59-03. Please check the color coding (most likely black) inside the connector of the pack and the color coding of the cable used. The color should match. The battery pack should have a fuse (100A). Some cables also have a fuse inside them, others do not. Both cable types can be used. By cutting the cable you will have two 6 mm2 wires that can be connected to the HV terminals of the inverter.
 
-#### HV connector cover
+#### 3D-printable parts
 
-On [Thingiverse](https://www.thingiverse.com/thing:6845382/files) you can download some 3D printable covers for the large rear connector, smaller front connector and internal blanking covers for BMU (If you disconnect the additional HV outputs internally).
-
+You can print your own HV connector cover, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
 
 #### Additional information about HV connectors
 
