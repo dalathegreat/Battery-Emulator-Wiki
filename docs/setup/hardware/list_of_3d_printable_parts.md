@@ -68,10 +68,13 @@ If you are mounting the battery indoors, you can also 3d-print a high voltage pl
 
 ![rcs800_leaf](../../../images/nissan-leaf-e-nv200-14.jpeg)
 
-## MEB battery
+## Volkswagen MEB
 
-The CAN connector cover for MEB batteries: [meb_CAN_cover_v1.zip](https://github.com/user-attachments/files/19849815/meb_CAN_cover_v1.zip)
+- Cover for the LV connector: [meb_CAN_cover_v1.zip](https://github.com/user-attachments/files/19849815/meb_CAN_cover_v1.zip)
+- Cover for the AC Charger port: [MEB-Cover_for_internal_Charger.zip](https://github.com/user-attachments/files/27005556/MEB-Cover_for_internal_Charger.zip)
+- Cover for the CCS or Inverter connector: [MEB-Cover_for_inverter_or_CCS.zip](https://github.com/user-attachments/files/26513415/MEB-Cover_for_inverter_or_CCS.zip)
+
 
 ## Ford Mach‐E
 
-You can print your own 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
+The 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
