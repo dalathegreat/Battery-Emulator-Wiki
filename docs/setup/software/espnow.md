@@ -11,7 +11,7 @@ Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
 ### Supported ESPNow projects
 The following projects are supported, link to repositories with more info
 
-- TODO
+- [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) — a four-screen ESP-NOW v2 dashboard with a USB web installer, phone-based setup, local web controls, and prebuilt firmware.
 
 ### Enabling it
 
