@@ -78,7 +78,6 @@ The original TE connector is restricted, no information will be given by TE, but
   - VAG part: `5Q0 973 733 A`
 - **Small pins** 0.5 × 0.4 mm: `1-2177909-1` (or `2177909-1`)
 - **Large pins** 1.2 × 0.6 mm: `7-1452671-1`
-- **3D-printed cover** for the connector: [meb_CAN_cover_v1.zip](https://github.com/user-attachments/files/19849815/meb_CAN_cover_v1.zip)
 
 The pins can also be requested directly from TE.com as a (free) sample.
 
@@ -87,9 +86,6 @@ The pins can also be requested directly from TE.com as a (free) sample.
 ![MEB HV connector description](../images/meb-05.png){ width="600" }
 
 The connector marked **AC Charger** is wired in parallel to the **motor inverter** port. The DC-charging port has its own contactors.
-
-- 3D-printed cover for the AC Charger port: [MEB-Cover_for_internal_Charger.zip](https://github.com/user-attachments/files/27005556/MEB-Cover_for_internal_Charger.zip)
-- 3D-printed cover for the CCS or Inverter connector: [MEB-Cover_for_inverter_or_CCS.zip](https://github.com/user-attachments/files/26513415/MEB-Cover_for_inverter_or_CCS.zip)
 
 Cable part number for the inverter connector: `1EA971015T`, `1EA971015AA` or `1EA973732X`.
 
@@ -100,6 +96,10 @@ If reusing cables from a donor car:
 | DC charge port      | 70 or 95 mm² |
 | Motor inverter      | 35 or 50 mm² |
 | Onboard AC charger / A/C / PTC etc. | 6 mm² |
+
+### 3D-printable parts
+
+You can print your own covers for the CAN connector, AC Charger port or CCS or Inverter connector, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
 
 ## Wiring details
 
