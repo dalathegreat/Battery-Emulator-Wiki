@@ -229,7 +229,6 @@ Status (-28):
  - Previously Set DTC - Not Present at Time of Request
  - Malfunction Indicator Lamp is Off for this DTC
 
-## 3D Prints
+## 3D-printable parts
 
-4 Pin C295 DC/DC Converter connector
-[DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
+You can print your own 4 Pin C295 DC/DC Converter connector, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
