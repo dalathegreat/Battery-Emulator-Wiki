@@ -23,7 +23,7 @@ There are many hardware kits that can run the Battery-Emulator software. Cheap o
 !!! note "NOTE"
     There is no way to purchase a pre-programmed device. This is a hobbyist open source project. You will be responsible for loading the software and setting it up correctly for your components. There is however a [support Discord group](https://www.patreon.com/dala) available.
 
-## Status LED
+## Status LED 🟢
 
 Some boards has a built in LED that is used to signal current status. Most boards expose a GPIO pin where you can attach your own WS2812-compatible pixel you can cut off a LED strip. With this feature, it is easy to at a glance catch what info the board is getting. It will show the current colors:
 
@@ -34,8 +34,11 @@ Some boards has a built in LED that is used to signal current status. Most board
 
 By visiting the "Events" page in the Webserver, you can see which specific warnings/faults are active.
 
-## Connectivity
+## Connectivity 🛜
 
 The board has wifi, and supports running a [Webserver that you can connect to for real time values](../setup/software/webserver_guide.md), [Over The Air updates](../setup/software/ota_update.md) (OTA), cellmonitoring, changing settings and more. See the [Webserver](../setup/software/webserver_guide.md) page for more info on how to use the system.
 
 For those into home automation, the code also supports [MQTT](../setup/software/mqtt.md) 
+
+## Optional screen via ESPNow 🖥️
+No Battery-Emulator hardware comes with displays by default. If you want to add a local display to your system, the best option is to add a [ESPNow](../setup/software/espno.md/) compatible microcontroller, which will wirelessly connect to the Battery-Emulator board and display statistics.
