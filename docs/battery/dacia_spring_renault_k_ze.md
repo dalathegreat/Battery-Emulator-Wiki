@@ -57,6 +57,8 @@ The battery contains a terminating resistor.
 
 ![image](../images/dacia-spring-renault-k-ze-03.jpg)
 
+The original drawing file can be found [here](../images/working_Spring-Schema.drawio)
+
 The LV connector on the battery has the following pinout:
 
 ![image](../images/dacia-spring-renault-k-ze-04.png)
@@ -76,6 +78,8 @@ Connect the battery to the Battery-Emulator according to this diagram:
 ![conexiuni](../images/dacia-spring-renault-k-ze-06.jpg)
 
 ![schema_conectare](../images/dacia-spring-renault-k-ze-24.png)
+
+The original drawing file can be found [here](../images/Miguel-2026-03-19-2107.excalidraw)
 
 12V power info: The precharge+contactors consume 1.5A. The BMS itself uses 0.1A
 
