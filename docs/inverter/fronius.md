@@ -123,11 +123,14 @@ img
 ## Troubleshooting
 
 ### Battery not detected
-If you see "No Battery Detected" in the Fronius apps;
 
-![bild](../images/fronius-09.png)
+![err2](../images/fronius-09.png)
 
-Then verify the following
+If you see `No bat­tery de­tec­ted` or `No bat­tery voltage meas­ured but bat­tery is act­ive` in the **Service Messages**:
+
+![err1](../images/fronius-err.png)
+
+Then verify the following:
 
 - Make sure High Voltage is present on inverter battery input. Also make sure the DC isolator switch on the front of the Fronius is turned ON
 
@@ -154,7 +157,7 @@ Make sure the Battery-Emulator has a good modbus connection to the Inverter.
 
 ### Invalid battery size detected
 
-![image](../images/fronius-13.png){ width="445" height="233" }
+![image](../images/fronius-13.png)
 
 If you see this error, it might be because the battery you are using is having higher allowed maxvoltage than the Fronius inverter accepts. A good example is using BYD Atto3 battery (Max 460V), with a Fronius Primo single phase inverter, that only can take 450.
 
