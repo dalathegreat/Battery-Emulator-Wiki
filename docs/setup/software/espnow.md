@@ -2,27 +2,16 @@
 title: "ESPNow"
 ---
 
-## Some background
+## **ESPNow in Battery Emulator context**
 
-ESP-NOW is a low-latency wireless protocol by Espressif that allows direct device-to-device communication without a router. It works on the data-link layer, bypassing higher OSI layers, which results in fast response times and minimal overhead. It supports ESP8266, ESP32, ESP32-S, and ESP32-C series chips and can coexist with Wi-Fi and Bluetooth LE.
-It’s ideal for smart home devices, remote controls, and sensor networks, supporting one-to-one, one-to-many, and many-to-many communication.
-
-### **Key Features:**
-* Low latency (millisecond-level delay)
-* No gateway required
-* Encrypted or unencrypted communication
-* Range up to ~220 meters in open space
-* Supports callbacks for send/receive events
-* Payload up to 250 bytes in ESP-NOW v1, raised to 1470 bytes in ESP-NOW v2 (ESP-IDF 5.4+)
+Any ESP32 device nearby can display Battery Emulator data without any physical connection to the hardware. The emulator broadcasts (or unicasts) its full telemetry set: emulator-wide state, per-battery values for all three batteries, cell voltages and balancing bits, and the recent event log.
 
 Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
 
-!!! note "NOTE" 
-    Enabling ESPNow increases the temperature of the ESP chip, as it shares the radio interface with Wi-Fi. Without ESP-NOW, the Wi-Fi client connection lets the modem duty-cycle down to the network's DTIM interval. The moment ESP-NOW is active, the connectionless path needs the PHY/RX chain powered continuously — Espressif's own FAQ states that once the device enters modem-sleep it can't service ESP-NOW. So you flip from a low duty-cycle radio to a ~100%-on radio, and the PA/PHY idle current is what generates heat with ESPNow enabled. It's the radio staying lit.
+### Supported ESPNow projects
+The following projects are supported, link to repositories with more info
 
-## **ESPNow in Battery Emulator context**
-
-Any ESP32 device nearby can display Battery Emulator data without any physical connection to the Battery Emulator. The emulator broadcasts (or unicasts) its full telemetry set: emulator-wide state, per-battery values for all three batteries, cell voltages and balancing bits, and the recent event log.
+- TODO
 
 ### Enabling it
 
@@ -48,6 +37,22 @@ v2 is a self-describing key/length/value (TLV) stream:
 * Adding a new *data type* never breaks an existing receiver either: the length is encoded in the tag independently of the type, so a parser that has never heard of a type can still skip past it. This is the property that lets the protocol grow without another compatibility break.
 * Fields a given battery integration does not provide are simply not emitted, so receivers can tell **"not supported" apart from "zero"**.
 * Cell voltages are transmitted as raw millivolts. No quantization, for all three batteries.
+
+## Technical details
+
+ESP-NOW is a low-latency wireless protocol by Espressif that allows direct device-to-device communication without a router. It works on the data-link layer, bypassing higher OSI layers, which results in fast response times and minimal overhead. It supports ESP8266, ESP32, ESP32-S, and ESP32-C series chips and can coexist with Wi-Fi and Bluetooth LE.
+It’s ideal for smart home devices, remote controls, and sensor networks, supporting one-to-one, one-to-many, and many-to-many communication.
+
+### **Key Features:**
+* Low latency (millisecond-level delay)
+* No gateway required
+* Encrypted or unencrypted communication
+* Range up to ~220 meters in open space
+* Supports callbacks for send/receive events
+* Payload up to 250 bytes in ESP-NOW v1, raised to 1470 bytes in ESP-NOW v2 (ESP-IDF 5.4+)
+
+!!! note "NOTE" 
+    Enabling ESPNow increases the temperature of the ESP chip, as it shares the radio interface with Wi-Fi. Without ESP-NOW, the Wi-Fi client connection lets the modem duty-cycle down to the network's DTIM interval. The moment ESP-NOW is active, the connectionless path needs the PHY/RX chain powered continuously — Espressif's own FAQ states that once the device enters modem-sleep it can't service ESP-NOW. So you flip from a low duty-cycle radio to a ~100%-on radio, and the PA/PHY idle current is what generates heat with ESPNow enabled. It's the radio staying lit.
 
 ### Wire format
 
