@@ -10,34 +10,39 @@ from various sources, such as battery communication, data sheets, manual configu
 If you want to integrate a battery, this page will help you figure out what you need to be able to extract from the battery via CAN logs and such.
 
 ## CAN logs needed
+
 Unless the communication protocol is already reverse engineered and available, it is usually far easier to start an integration with logs from a working vehicle. Usually, this capture will need to be completed from the powertrain bus (attached to the battery). The OBD port is most often behind a gateway that does not pass through the frames needed by the battery. Therefore, it is required to break into the harness at some point to get access to this CAN bus.
 
 The minimum battery CAN communication logs needed to integrate a new battery are:
 
 - CAN logs from a working vehicle
+  
   - Vehicle idle
   - Vehicle startup
   - Vehicle charging
   - Vehicle completing charge
+
 - CAN logs from a standalone battery
 
 This data is typically matched to noted values "offline", such as reading the SOC in the instrument cluster to match it with the CAN data.
 
 ## Hardware for logging
+
 You will first have to get some hardware capable of reading the communication. Here are some examples, listed from least expensive to more expensive. Do note that more expensive tools will be easier to use, since the software provided with the tools are very user friendly. Also more expensive tools will have better timing and accuracy on timestamps.
 
 !!! tip "TIP"
     You can use the Battery-Emulator to log CAN messages. See the [CAN logging page](../can_related/can_logging.md)
 
-    Battery-Emulator hardware, for instance a LilyGo board (can log data in testing mode!)💲 
-    USBCAN PCAN clone 💲 Recommended,link: [aliexpress](https://www.aliexpress.us/item/1005006341852788.html) 
-    Raspberry PI with CAN shield 💲💲
-    USB2CAN Korlan 💲💲 Recommended, link: [8devices](https://www.8devices.com/products/usb2can_korlan) 
-    Kvaser 💲💲💲
-    Peak PCAN 💲💲💲
-    Softing 💲💲💲
+- Battery-Emulator hardware, for instance a LilyGo board (can log data in testing mode!)💲 
+- USBCAN PCAN clone 💲 Recommended,link: [aliexpress](https://www.aliexpress.us/item/1005006341852788.html) 
+- Raspberry PI with CAN shield 💲💲
+- USB2CAN Korlan 💲💲 Recommended, link: [8devices](https://www.8devices.com/products/usb2can_korlan) 
+- Kvaser 💲💲💲
+- Peak PCAN 💲💲💲
+- Softing 💲💲💲
 
 # Reading standalone battery
+
 Take pictures of HV and LV connectors on the battery. Figure out the pinout with manuals found online, or behind paywalls. Add this info to wiki page for the new battery. If the wiki page for your battery does not exist yet, create a new page.
 
 Start battery by applying 12V to it, and CAN H-L pins to a CAN reader / Battery-Emulator hardware. Note, on some batteries you might need to satisfy interlock or airbag / crash signals before they startup.
@@ -57,10 +62,12 @@ The CAN-logging is available when using the `TEST_FAKE_BATTERY` mode. This enabl
 7592  5BF  8  0 0 0 0 28 0 0 1A 
 7593  1D4  8  F7 7 0 0 47 46 0 BC 
 ```
+
 !!! note "NOTE"
     If your serial monitor is filled with strange symbols "???!"?¤¤%" , change the baud rate in the serial monitor window from 9600 -> 115200  
 
 # Reverse engineering values
+
 Say you want to locate voltage from a CAN log. Read the physical value with a multimeter (370.0V), and try to find a CAN message that contains this value (0xE74)
 
 Same with for instance temperature. If the pack is located in a 20*C environment, look for a value that has a typical -40 offset. Example, 0x3C would be decimal 60 (-40 offset) = 20*C.
