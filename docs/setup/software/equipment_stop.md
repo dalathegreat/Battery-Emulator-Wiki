@@ -7,7 +7,7 @@ title: "Equipment Stop"
 <table >
   <tr>
     <td style="text-align: center;" width="175">
-      ![](../../images/equipment-stop-01.png){ width="165" height="126" }
+      ![img](../../images/equipment-stop-01.png){ width="165" height="126" }
     </td>
     <td style="padding-left: 20px;">
 <p><b>Equipment Stop</b> is a critical safety feature that immediately pauses all operations and sets maximum charge and discharge values to zero. Once current reaches zero, the battery contactors are opened immediately — interrupting all high-voltage connections. If current does not reach zero, the contactors are opened unconditionally after 7 seconds regardless.</p>
@@ -48,7 +48,7 @@ _- VDC pin - Switch NC_<br>
 <table >
   <tr>
     <td style="text-align: center;" width="175">
-      ![](../../images/equipment-stop-02.png)
+      ![img](../../images/equipment-stop-02.png)
     </td>
     <td style="padding-left: 20px;">
       <p>In our system, we use external pull resistors to ensure stable and reliable readings from the equipment stop button. Specifically, we use a 2kΩ resistor between the switch and VCC (3.3V) and a 10kΩ resistor between the GPIO pin and GND. This configuration creates a pull-down circuit, which stabilizes the signal and prevents floating values when the button is not pressed.</p>
