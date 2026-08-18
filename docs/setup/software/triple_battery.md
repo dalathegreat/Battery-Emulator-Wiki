@@ -1,5 +1,5 @@
 ---
-title: "Triple Battery"
+title: "Battery - Triple"
 ---
 
 ## Hardware requirement
