@@ -7,7 +7,7 @@ Double Battery means running two battery packs at the same time. This doubles th
 
 Good info on running multiple packs and associated risks: [orionbms](https://www.orionbms.com/manuals/pdf/parallel_strings.pdf)
 
-If you need more capacity than Double Battery provides, you can also go [Triple Battery](triple_battery.md)
+If you need more capacity than Double Battery provides, you can also go [Triple Battery](battery_3x.md)
 
 ### How does parallel operation work?
 The batteries get connected in parallel. This means the voltage stays the same, but the capacity doubles.
