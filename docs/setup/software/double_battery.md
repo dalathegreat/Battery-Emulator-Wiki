@@ -1,5 +1,5 @@
 ---
-title: "Double Battery"
+title: "Battery - Double"
 ---
 
 ### What is this feature?
