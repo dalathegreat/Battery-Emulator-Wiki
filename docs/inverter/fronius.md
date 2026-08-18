@@ -12,10 +12,10 @@ The code works with the following Fronius inverters:
 * Fronius Symo Hybrid 3.0/4.0/5.0-3-S ✅ (ℹ️ Legacy product, no longer available for purchase)
 * Fronius Verto Plus (all sizes) ✅
 
-On this date (23.04.2025) Fronius deployed a new software version that momentarily broke compatibility with Battery-Emulator. 
+On the date of 23.04.2025 Fronius deployed a firmware update that momentarily broke compatibility with Battery-Emulator. This was fixed and interoperability was restored.
 
-- ROW 1.35.8-1 (Working ✅ ) Works with BE versions below 8.11.0
-- ROW 1.36.5-1 (Breaks ❌ ) Works with BE versions above 8.12.0
+- ROW 1.35.8-1 (Working ✅ ) worked with BE versions **below** 8.11.0
+- ROW 1.36.5-1 (Breaks ❌ ) worked with BE versions **above** 8.12.0
 - ROW 1.41.11-1 works with the current BE version (as of 2026-08-12).
 
 It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator.
