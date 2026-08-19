@@ -30,7 +30,7 @@ Both battery buses are **CAN FD**, each handled by its own MCP2518FD controller 
 
 The inverter side is fully isolated: an isolated CAN transceiver, an isolated RS485 transceiver and an optocoupled **Enable** output (for inverters such as SMA that expect a dry contact). Each isolated domain has its own supply, common-mode chokes, gas discharge tubes, TVS diodes and resettable PTC fuses on every line.
 
-Bus termination is set with DIP switches on the board, marked **CAN Term**, **RS485 Term**, **CANFD1 Term** and **CANFD2 Term**. The same switch blocks also carry **Contactor Polarity** and **UPS Bat V**, which disconnects the backup battery for storage or transport. A small 2×2 header lets the two CAN FD buses be bridged together when both batteries share one bus.
+Bus termination is set with DIP switches on the board, marked **CAN Term**, **RS485 Term**, **CANFD1 Term** and **CANFD2 Term**. The same switch blocks also carry **Contactor Polarity** and **UPS Bat V**, which selects the UPS Battery Charge Termination Voltage between 12.3V for 3S Li-Ion packs and 14.7V for Lead-Acid and 4S LFP packs. A small 2×2 header lets the two CAN FD buses be bridged together when both batteries share one bus.
 
 ![image](../images/becom-01.png)
 
