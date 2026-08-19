@@ -32,7 +32,7 @@ Most Deye inverters have two ports for adding batteries. The smaller 25k and low
 
 When using the larger >30k inverters with two batteries, you will need one BE for each BMS port. This means you will have two totally independent BE systems, and the inverter treats them as separate batteries.
 
-When using the smaller <25k inverters with two batteries, you will need to join them together in parallel using the [Double-Battery support](../setup/software/double_battery.md). You will need one single BE unit with Double-CAN for this, and the Deye will see 1 single battery (even though you have 2 in parallel!)
+When using the smaller <25k inverters with two batteries, you will need to join them together in parallel using the [Double-Battery support](../setup/software/battery_2x.md). You will need one single BE unit with Double-CAN for this, and the Deye will see 1 single battery (even though you have 2 in parallel!)
 
 ## Notes on geo-lock :world_map: 
 

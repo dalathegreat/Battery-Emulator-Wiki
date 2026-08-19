@@ -25,22 +25,29 @@ Double-Battery can be run on all inverters. The inverter will think that there i
     Double-Battery should not be confused with Dual Input inverters. Dual input can have 2 separate batteries operating at the same time (Foxess or Sofar for instance).  lookup how to in your inverter type/brand Wiki for more information about Dual input.
 
 ### Which batteries are supported?
-Double battery support is only available for highly stable battery types. The ones with checkmark have been confirmed working well.
+The list below is generated from `battery_supports_double()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
-- Bolt Ampera
+- [Chevrolet Bolt EV / Opel Ampera-e](../../battery/ampera_e_64_kwh.md)
 - [BMW i3](../../battery/bmw_i3.md) ✅ (CAN contactors)
-- [BYD Atto 3](../../battery/byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) ✅ (CAN contactors)
-- [Nissan LEAF](../../battery/nissan_leaf_e_nv200.md) ✅ (GPIO contactors built-in)
-- [CMFA Platform (Dacia Spring, Renault KZE](../../battery/dacia_spring_renault_k_ze.md) ✅ (GPIO contactors)
-- Stellantis CMP Smart Car ✅ (CAN contactors)
-- Stellantis ECMP ✅ (CAN contactors)
+- [BYD Atto 3 / Seal / Dolphin / Song](../../battery/byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) ✅ (CAN contactors)
+- [CMFA platform (Dacia Spring, Renault K-ZE)](../../battery/dacia_spring_renault_k_ze.md) ✅ (GPIO contactors)
+- [Kia/Hyundai 39/64 kWh](../../battery/kia_niro_hyundai_kona.md) ✅ (CAN contactors)
+- [MG Gen1 (HS/ZS/MG5/MarvelR)](../../battery/mg_zs.md)
+- [Nissan LEAF / e-NV200](../../battery/nissan_leaf_e_nv200.md) ✅ (GPIO contactors built-in)
+- [Pylon / Dyness compatible battery](../../battery/pylon_hv.md)
+- [Relion LV](../../battery/relion_lv.md) ✅ (GPIO contactors)
 - [Renault Zoe Gen1](../../battery/renault_zoe_gen1.md) ✅ (GPIO contactors)
 - [Renault Zoe Gen2](../../battery/renault_zoe_gen2.md) ✅ (GPIO contactors)
-- [Relion LV](../../battery/relion_lv.md) ✅ (GPIO contactors)
-- [Kia-Hyundai 39/64 kWh](../../battery/kia_niro_hyundai_kona_64_kwh.md) ✅ (CAN contactors)
-- Pylon Battery
-- Santa Fe PHEV
-- Tesla 2020+ (Testing ongoing in PR) (CAN contactors)
+- [Santa Fe PHEV](../../battery/hyundai_santa_fe_phev.md)
+- [Stellantis CMP Smart Car](../../battery/stellantis_cmp_smart_car_platform.md) ✅ (CAN contactors)
+- [Stellantis ECMP](../../battery/stellantis_ecmp_citroen_ds_opel_peugeot.md) ✅ (CAN contactors)
+- [Tesla Model 3/Y](../../battery/tesla_model_3_y.md) (Testing ongoing) (CAN contactors)
+- [Tesla Model S/X (2021+)](../../battery/tesla_model_s_x_2021.md) (Testing ongoing) (CAN contactors)
+- Fake battery for testing purposes (no hardware needed, useful for trying out a double setup)
+
+!!! note "NOTE"
+    The legacy [Tesla Model S/X 2012-2020](../../battery/tesla_model_s_x_2012_2020.md) integration is a separate one and does **not** support Double Battery. The same applies to the legacy "MG 5 battery" integration — use "MG Gen1 (HS/ZS/MG5/MarvelR)" instead.
+
 If your batteries are not on this list, get in touch with a developer.
 
 #### CAN communication

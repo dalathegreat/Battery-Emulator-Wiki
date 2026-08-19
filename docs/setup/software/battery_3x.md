@@ -19,9 +19,15 @@ Coming soon hardware:
 - BECom
 
 ## Supported integrations
-The following batteries have support for Triple operation.
+The list below is generated from `battery_supports_triple()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Triple battery" option in the Settings page.
 
-- Nissan LEAF/eNV200 24/30/40/62kWh ✅
+- [CMFA platform (Dacia Spring, Renault K-ZE)](../../battery/dacia_spring_renault_k_ze.md)
+- [Nissan LEAF / e-NV200 24/30/40/62kWh](../../battery/nissan_leaf_e_nv200.md) ✅
+- [Relion LV](../../battery/relion_lv.md)
+- [Stellantis ECMP](../../battery/stellantis_ecmp_citroen_ds_opel_peugeot.md)
+- Fake battery for testing purposes (no hardware needed, useful for trying out a triple setup)
+
+All of these also support [Double Battery](battery_2x.md). The same rules apply as for double operation: identical model and size, packs as close as possible in state of health, parallel connection only.
 
 ## GPIO controlled contactors
 For batteries that require externally controlled contactors, you can automate this by enabling:
