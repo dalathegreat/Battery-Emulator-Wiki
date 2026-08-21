@@ -7,7 +7,7 @@ title: "MG5, Marvel R"
 | Car | kWh | Chemistry | Battery type  | Part number | Status |
 |----------|----------|----------|--------|----------|---------|
 | MG5  | 52.5  | NMC  |    EU150A52S  | 10847655 | Tested and working |
-| MG5  | 61    | NMC  |    EU174A61S  | 11163326 | Not tested |
+| MG5  | 61    | NMC  |    EU174A61S  | 11163326 | Reported working (Using MG5 battery) |
 | MG5  | 50.3  | LFP  |    BU131A50S  | 11486669 | Being tested |
 | MG Marvel R  | 69.92 | NMC  |  EU199A69S |           | Reported working |
 | MG Marvel R  | 69.9  | NMC  |  EU199A70S | 10953172  | Reported working (v10.11+) |
@@ -37,6 +37,8 @@ Make sure the MSD is fitted. Without this, the battery will be disabled.
 Example, missing MSD:
 
 ![image](../images/mg5-marvel-r-05.png){ width="234" height="224" }
+
+You can bridge this with a cable, so if you find a pack without it - it isn't a deal breaker. I have used a 1mm Twin & Earth cable, using either the Brown or Blue, stripping the ends and pushing it in to both connectors.
 
 # MG Marvel R Batteries
 
