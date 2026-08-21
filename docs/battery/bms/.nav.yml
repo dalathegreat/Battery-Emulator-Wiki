@@ -1,0 +1,6 @@
+ignore:
+  - index.md
+nav:
+  - read_this_first.md
+  - "*.md"
+  
