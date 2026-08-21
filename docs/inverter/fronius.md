@@ -115,8 +115,7 @@ Important to note when shutting down is to not open any DC breakers/isolators un
 
 ## Day to day monitoring
 
-The performance of the system can be tracked with the app "Solar.web". This app gives direct info on current output/input, SOC% level of battery, graphs, and more. No settings can be changed via this app, but it is a great tool for visualizations and quick status checks.
-img
+The performance of the system can be tracked with the app "Solar.web". This app gives direct info on current output/input, SOC% level of battery, graphs, and more. No settings can be changed via this app, but it is a great tool for visualizations and quick status checks. You can also see at a glance if an inverter firmware update becomes available for you.
 
 ![SolarApp](../images/fronius-08.png)
 
