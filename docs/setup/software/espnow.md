@@ -14,6 +14,8 @@ The following independently maintained community projects provide ready-to-insta
 - [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) - a compact five-screen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-t-display-s3/), phone-based setup, local web controls, and prebuilt firmware.
 - [Battery Display for ESP32-4848S040C](https://github.com/sort282-rgb/battery-display-esp32-4848s040c) - a 480 x 480 touchscreen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-esp32-4848s040c/installer/), phone-based setup, local web controls, and prebuilt firmware.
 
+The main telemetry screens use battery-agnostic ESP-NOW v2 fields and are not limited to Tesla integrations. The current firmware displays battery 1 and plots up to 96 cells. Tesla-specific HVIL, DTC and BMS controls are available only in Wi-Fi web mode and are not applicable to other battery integrations. Integrations that do not provide cell-voltage telemetry may show unavailable cell values.
+
 !!! note "Payload-size compatibility"
     The current public firmware builds use an ESP-NOW receive layer limited to 250-byte payloads. Build Battery Emulator with `ESPNOW_MAX_PAYLOAD=250` for complete cell-voltage telemetry. The ESP32-4848S040C application's packet buffer is already sized to 1470 bytes, but the ESP-NOW SDK in the published build still limits received payloads to 250 bytes.
 
