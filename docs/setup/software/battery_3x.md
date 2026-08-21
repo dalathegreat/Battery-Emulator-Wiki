@@ -8,15 +8,14 @@ Triple-Battery, much like Double-Battery, requires a dedicated CAN channel for e
 At the moment the following 3-CAN boards are supported:
 
 - [LilyGo T-2CAN with MCP2518FD add-on](../../hardware/lilygo_t_2can.md)
-  - Connect Battery1 to CAN-A
-  - Connect Battery2 to CAN-B
-  - Connect Battery3 to MCP2518FD
-  - Connect Inverter to CAN-A (Shared with battery1)
+    - Connect Battery1 to CAN-A
+    - Connect Battery2 to CAN-B
+    - Connect Battery3 to MCP2518FD
+    - Connect Inverter to CAN-A (Shared with battery1)
+- [BECom](../../hardware/becom.md)
 
 Coming soon hardware:
-
 - 3LB
-- BECom
 
 ## Supported integrations
 The list below is generated from `battery_supports_triple()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Triple battery" option in the Settings page.
