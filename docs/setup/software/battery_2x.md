@@ -43,7 +43,7 @@ The list below is generated from `battery_supports_double()` in `Software/src/ba
 - [Stellantis ECMP](../../battery/stellantis_ecmp_citroen_ds_opel_peugeot.md) ✅ (CAN contactors)
 - [Tesla Model 3/Y](../../battery/tesla_model_3_y.md) (Testing ongoing) (CAN contactors)
 - [Tesla Model S/X (2021+)](../../battery/tesla_model_s_x_2021.md) (Testing ongoing) (CAN contactors)
-- Fake battery for testing purposes (no hardware needed, useful for trying out a double setup)
+- [Fake battery for testing purposes](../../battery/fake_battery.md) (no hardware needed, useful for trying out a double setup)
 
 !!! note "NOTE"
     The legacy [Tesla Model S/X 2012-2020](../../battery/tesla_model_s_x_2012_2020.md) integration is a separate one and does **not** support Double Battery. The same applies to the legacy "MG 5 battery" integration — use "MG Gen1 (HS/ZS/MG5/MarvelR)" instead.

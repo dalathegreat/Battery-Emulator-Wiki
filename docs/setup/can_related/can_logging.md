@@ -8,7 +8,7 @@ The board can operate as a CAN logger, skipping the need for purchasing an expen
 ### Logging a live vehicle :warning: 
 If you intend to log CAN messages from a functional vehicle, remember to:
 
-* Use Battery protocol: "Test Fake Battery" to avoid any CAN messages being sent towards the vehicle
+* Use Battery protocol: [Fake battery for testing purposes](../../battery/fake_battery.md) to avoid any CAN messages being sent towards the vehicle
 * Use Inverter/Shunt protocol: "None" to avoid any CAN messages being sent towards the vehicle
 * Remove any termination resistors from the board (Either remove jumper on Stark, or desolder on LilyGo)
 
