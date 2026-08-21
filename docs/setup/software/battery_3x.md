@@ -3,6 +3,7 @@ title: "Triple Battery"
 ---
 
 ## Hardware requirement
+
 Triple-Battery, much like Double-Battery, requires a dedicated CAN channel for each battery.
 
 At the moment the following 3-CAN boards are supported:
@@ -11,13 +12,11 @@ At the moment the following 3-CAN boards are supported:
     - Connect Battery1 to CAN-A
     - Connect Battery2 to CAN-B
     - Connect Battery3 to MCP2518FD
-    - Connect Inverter to CAN-A (Shared with battery1)
+    - Connect Inverter to Modbus, RS485 or CAN-A (shared with battery1)
 - [BECom](../../hardware/becom.md)
 
-Coming soon hardware:
-- 3LB
-
 ## Supported integrations
+
 The list below is generated from `battery_supports_triple()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Triple battery" option in the Settings page.
 
 - [CMFA platform (Dacia Spring, Renault K-ZE)](../../battery/dacia_spring_renault_k_ze.md)
@@ -29,6 +28,7 @@ The list below is generated from `battery_supports_triple()` in `Software/src/ba
 All of these also support [Double Battery](battery_2x.md). The same rules apply as for double operation: identical model and size, packs as close as possible in state of health, parallel connection only.
 
 ## GPIO controlled contactors
+
 For batteries that require externally controlled contactors, you can automate this by enabling:
 
 - Battery1 - Contactor control via GPIO: ✅
