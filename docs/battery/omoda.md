@@ -41,29 +41,29 @@ The connection on the battery has following Pins.
 
 | Pin| Output           | Colour         | Notes
 |----|------------------|----------------|----------
-| 1: | <!-- -->         | Blue & Yellow  | 1.2mm Power
+| 1: | Vehicle Fuse box | Blue & Yellow  | 1.2mm Power
 | 3: | Crash In         | Solid Blue     |
-| 5: | Ground ???       | 0.85mm Black   |
+| 5: | Ground           | 0.85mm Black   |
 | 6: | DC-Charge CC     | Red & White    |
-| 7: | Ground ???       | 1.2mm Black    | 
-| 9: | CAN H            | Green & White  | Twisted Pair (1)
-| 10:| CAN L            | Yellow & Blue  | Twisted Pair (1)
-| 12:| <!-- -->         | Green & Yellow | Twisted Pair (2)
-| 13:| <!-- -->         | Purple & Yellow| Twisted Pair (2)
-| 14:| <!-- -->         | Blue & White   | 1.2mm Power
+| 7: | Ground           | 1.2mm Black    | 
+| 9: | CAN1_H BMS CANH  | Green & White  | Twisted Pair (1)
+| 10:| CAN1_L BMS CANH  | Yellow & Blue  | Twisted Pair (1)
+| 12:| CAN H            | Green & Yellow | Twisted Pair (2)
+| 13:| CAN L            | Purple & Yellow| Twisted Pair (2)
+| 14:| Service Switch   | Blue & White   | 1.2mm Power
 | 15:| A+ Charge wakeup | White & Green  | 
-| 19:| Ground ???       | 1.2mm Black    | 
+| 19:| Ground           | 1.2mm Black    | 
 | 20:| PSS- Air Bag     | Blue & Black   | Twisted Pair (3)
 | 23:| Not Connected    | Not Connected  | Pin on battery but no connection 
 | 24:| Not Connected    | Not Connected  | Pin on battery but no connection 
-| 25:| <!-- -->         | Red & Blue     | Beware 25 & 28 Same colour wire !!
-| 26:| <!-- -->         | White & Red    | 1.2mm Power 
+| 25:| Ignition         | Red & Blue     | Beware 25 & 28 Same colour wire !!
+| 26:| Service Switch   | White & Red    | 1.2mm Power 
 | 27:| PSS+ Air Bag     | Red & Black    | Twisted Pair (3)
-| 28:| <!-- -->         | Red & Blue     | Beware 25 & 28 Same colour wire !!
+| 28:| Vehicle Fuse box | Red & Blue     | 
 | 29:| HVIL2 Out        | Solid Orange   |
 | 30:| HVIL2 IN         | Solid Green    |
-| 31:| Ground ???       | 0.85mm Black   |
-| 32:| Ground ???       | 1.2mm Black    | 
+| 31:| Ground           | 0.85mm Black   |
+| 32:| Ground           | 1.2mm Black    | 
  
 ![IMG_20260611_161810](../images/omoda-05.jpg){ width="775" height="473" }
 
