@@ -135,7 +135,7 @@ From the appropriate dropdown lists select the Inverter protocol and the interfa
 
 ![image](../../images/webserver-guide-15.png){ width="570" height="164" }
 
-From the appropriate dropdown lists select the driver you'd like to use when communicating with your battery. An interesting type is **Fake battery for testing purposes** which simulates the setup of a single, double or triple battery towards the inverter and the integration platforms. This "battery" offers a "Fake battery voltage:" configurable option at the bottom of the page: you can simulate various SOCs, even balancing of simulated cells if you set SOC above 85%.
+From the appropriate dropdown lists select the driver you'd like to use when communicating with your battery. An interesting type is [Fake battery for testing purposes](../../battery/fake_battery.md) which simulates the setup of a single, double or triple battery towards the inverter and the integration platforms. This "battery" offers a "Fake battery voltage:" configurable option at the bottom of the page: you can simulate various SOCs, even balancing of simulated cells if you set SOC above 85%.
 
 Certain settings allow customizing the battery parameters:
 
