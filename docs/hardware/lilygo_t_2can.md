@@ -175,3 +175,6 @@ The screens are available in several sizes. Some are monochrome, others are two-
 ### 3D-printable parts
 
 You can print your own cases and mounts for this board, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
+
+### Troubleshooting 🔧
+If you see CAN_NATIVE_BUS_ERROR / CANMCP2515_BUS_ERROR events and have problems with CAN interfaces, supply the board with 12V instead of 5V. This stabilizes the CAN hardware significantly
