@@ -126,7 +126,7 @@ The Fake battery supports both **Double battery** and **Triple battery**. Each e
 
 #### The second and third contactors stay open at the default voltage
 
-!!! warning "CAUTION"
+!!! note "NOTE"
     With external (GPIO) contactor control on a double or triple setup, the contactors of battery 2 and 3 will **not** engage while the fake voltage is left at its default 370.0 V. Change the **Fake battery voltage** to any other value, for example 370.1 V or 380.0 V, and they close normally.
 
 This is not a bug in the parallel logic, it is the parallel voltage-sync safety check protecting itself against uninitialised data. Before it compares the packs, `check_parallel_battery_safety()` aborts if either pack reads 0.0 V **or exactly 370.0 V**, because 3700 dV is the value most integrations leave in the datalayer until the first real measurement arrives. The Fake battery boots at exactly that voltage and mirrors it to packs 2 and 3, so the check keeps bailing out, the "battery allows contactor closing" flag is never raised, and the extra contactors stay open.
