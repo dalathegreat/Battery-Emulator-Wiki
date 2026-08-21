@@ -9,9 +9,13 @@ Any ESP32 device nearby can display Battery Emulator data without any physical c
 Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
 
 ### Supported ESPNow projects
-The following projects are supported, links to repositories with more info:
+The following independently maintained community projects provide ready-to-install ESP-NOW displays:
 
-- [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) - a five-screen ESP-NOW v2 dashboard with a USB web installer, phone-based setup, local web controls, and prebuilt firmware.
+- [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) - a compact five-screen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-t-display-s3/), phone-based setup, local web controls, and prebuilt firmware.
+- [Battery Display for ESP32-4848S040C](https://github.com/sort282-rgb/battery-display-esp32-4848s040c) - a 480 x 480 touchscreen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-esp32-4848s040c/installer/), phone-based setup, local web controls, and prebuilt firmware.
+
+!!! note "Payload-size compatibility"
+    The current public firmware builds use an ESP-NOW receive layer limited to 250-byte payloads. Build Battery Emulator with `ESPNOW_MAX_PAYLOAD=250` for complete cell-voltage telemetry. The ESP32-4848S040C application's packet buffer is already sized to 1470 bytes, but the ESP-NOW SDK in the published build still limits received payloads to 250 bytes.
 
 ### Enabling it
 
