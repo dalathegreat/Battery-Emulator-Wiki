@@ -93,9 +93,9 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 ### Startup
 
 1. Power on the Battery-Emulator hardware and the EV battery respectively
-2. Start the Fronius inverter via AC breaker
-3. Turn on the Solar DC switch
-4. Turn on the Battery DC switch
+2. Turn on the Solar DC switch and the Battery DC switch if there is any
+3. Set the DC disconnector to the "On" switch position on the Fronius inverter
+4. Start the Fronius inverter via AC breaker
 5. Wait until contactors close at the EV battery (CAN controlled / GPIO control), and Fronius will start to use it
 
 ### Shutdown
