@@ -20,9 +20,12 @@ On the date of 23.04.2025 Fronius deployed a firmware update that momentarily br
 
 It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator.
 
+!!! note "Advice"
+    Always read manufacturer's release notes before upgrading the firmware. You can save yourself from a serious amount of trouble by not upgrading to a version which may state that radically changes compatibility level with the emulated battery. Downgrading Fronius firmware to old versions is not possible.
+
 ![working](../images/fronius_anim.gif)
 
-## Hardware limitation :zap:
+## Hardware limits :zap:
 
 * Fronius GEN24 **Symo** inverters (3-5kW) are capped to max 12.5A on the battery port.
 * Fronius GEN24 **Symo** inverters (6-10kW) are capped to max 22A on the battery port.
@@ -33,7 +36,7 @@ This means that if you have a high voltage battery (450V), you will see much hig
 
 Keep this amperage limit of 22A/50A in mind when designing a battery system for the Fronius!
 
-!!! note "Software limitation :floppy_disk:"
+!!! note "Software limits :floppy_disk:"
     There is a non-Plus variant of Gen24 available, for this you have to purchase a battery license before you can add a battery to the configuration. In **System > Information > License** you should see something like below. Contact your installer incase "Battery Operation" feature is missing!
 
     ![activefeats](../images/fronius-01.png)
@@ -85,15 +88,15 @@ Optional setting: If you have multiple AC coupled inverters in your network, and
 
 ## Starting and stopping the system
 
-When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode.
+When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode, but pay attention to each step.
 
 ### Startup
 
-1. First start the Fronius inverter via AC breaker
-2. Turn on the Solar DC switch
-3. Turn on the Battery DC switch
-4. Power on the EV battery with 12V & and the Battery-Emulator hardware
-6. Wait until contactors close at the EV battery (CAN controlled / GPIO control), and Fronius will start to use the battery
+1. Power on the Battery-Emulator hardware and the EV battery respectively
+2. Turn on the Solar DC switch and the Battery DC switch if there is any
+3. Set the DC disconnector to the "On" switch position on the Fronius inverter
+4. Start the Fronius inverter via AC breaker
+5. Wait until contactors close at the EV battery (CAN controlled / GPIO control), and Fronius will start to use it
 
 ### Shutdown
 
@@ -164,17 +167,19 @@ A quick solution is to enable the "450V maxvoltage cap" setting. This fakes it s
 
 ![image](../images/fronius-14.png){ width="675" height="172" }
 
-!!! danger "NOTE"
+!!! danger "Note"
     This setting should not be used with Fronius Symo 3-phase inverters. These inverters are designed to work with battery voltages up to 700VDC.
 
-## Advanced control of energy (Spot price, scheduled charge/discharge etc.)
-Once you have your battery connected to the Fronius, it is possible to add additional hardware into the mix for advanced control of how energy should flow in the system. This is useful for those with spot-price electricity, or a nightly tariff. Below are some examples you can utilize to control the Fronius Gen24 directly via Modbus TCP.
+!!! note "Notes on reported capacity"
+    Fronius inverters are designed to work with maximum 3x22kWh BYD batteries, and the protocol has a max value of 65535 Wh (unsigned 16bit value) for reporting Wh towards inverter. That means we have to restrict reported Wh number towards the inverter, for example when using a 75kWh Tesla battery, it will show up as max 60kWh in Fronius portal. This is just a REPORTED value, you can still use the full capacity of the battery. For instance, a 400kWh battery will be displayed as 60kWh, but the inverter will still be able to use the full 400kWh.
 
-- You can setup forced nightly charging via the webinterface of the Gen24 (Requires connecting to the inverter directly, not available via SolarWeb). This is very useful if you have a cheap night tariff, and want to charge the battery during the night and use the energy during the day
-- [Arska-node](https://github.com/Netgalleria/arska-node/) reads Nordpool electricity prices (from EntsoE/Elering) and renewal energy forecast (solar from Open Meteo, solar/wind from Finnish FMI) as well as local real-time net power consumption/sales (smart meter HAN P1-port -tested in FI, Shelly 3EM). Based on this and time based data (+ optional ds18b20) the system updates variables ([github/Netgalleria](https://github.com/Netgalleria/arska-node/wiki/Channels#variables)) which are used in channel rules deciding whether the channel should be up/down/charging/discharging. Arska has also basic load management functionality (limits loads if consumption exceeds given limits). So far users have used the system mainly to optimise self-consumption of PV production and for scheduling flexible consumption at the cheapest time and selling any surplus when the price is high. Arska has controlled (through GPIO, Shelly and Tasmota relays) water boilers and (underfloor) heating. According to the developer, version 1.3 controls the Fronius GEN24 charging/discharging parameters (nWRte, OutWRte, StorCtl_Mod) based on given channel rules.
-- Info on how to [control Fronius Modbus via Homeassistant (German)](https://www.libe.net/byd-modbus)
-- [SBAM: Charge Fronius battery using SolCast weather forecast](https://github.com/atbore-phx/sbam/tree/main)
-- [This integration](https://github.com/callifo/fronius_modbus) gives you full control over the charge and discharge of the battery.
+## Other settings
+
+![kép](../images/fronius-17.png)
+
+**Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first.
+
+**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive).
 
 ## Off-Grid/Backup Configuration
 
@@ -210,9 +215,13 @@ The Fronius Gen24 configuration documents describe both automatic and manual swi
 
 All normal earthing requirements when running in 'off-grid' must still be followed. Consult a qualified electrician for advice. 
 
-## Notes on capacity reporting
+## Advanced control of energy (Spot price, scheduled charge/discharge etc.)
+Once you have your battery connected to the Fronius, it is possible to add additional hardware into the mix for advanced control of how energy should flow in the system. This is useful for those with spot-price electricity, or a nightly tariff. Below are some examples you can utilize to control the Fronius Gen24 directly via Modbus TCP.
 
-Fronius is designed to work with 22kWh BYD batteries, and the protocol has a max value of 65535 Wh (unsigned 16bit value) for reporting Wh towards inverter. That means we have to restrict reported Wh number towards the inverter, for example when using a 75kWh Tesla battery, it will show up as max 60kWh in Fronius portal.
+- You can setup forced nightly charging via the webinterface of the Gen24 (Requires connecting to the inverter directly, not available via SolarWeb). This is very useful if you have a cheap night tariff, and want to charge the battery during the night and use the energy during the day
+- [Arska-node](https://github.com/Netgalleria/arska-node/) reads Nordpool electricity prices (from EntsoE/Elering) and renewal energy forecast (solar from Open Meteo, solar/wind from Finnish FMI) as well as local real-time net power consumption/sales (smart meter HAN P1-port -tested in FI, Shelly 3EM). Based on this and time based data (+ optional ds18b20) the system updates variables ([github/Netgalleria](https://github.com/Netgalleria/arska-node/wiki/Channels#variables)) which are used in channel rules deciding whether the channel should be up/down/charging/discharging. Arska has also basic load management functionality (limits loads if consumption exceeds given limits). So far users have used the system mainly to optimise self-consumption of PV production and for scheduling flexible consumption at the cheapest time and selling any surplus when the price is high. Arska has controlled (through GPIO, Shelly and Tasmota relays) water boilers and (underfloor) heating. According to the developer, version 1.3 controls the Fronius GEN24 charging/discharging parameters (nWRte, OutWRte, StorCtl_Mod) based on given channel rules.
+- Info on how to [control Fronius Modbus via Homeassistant (German)](https://www.libe.net/byd-modbus)
+- [SBAM: Charge Fronius battery using SolCast weather forecast](https://github.com/atbore-phx/sbam/tree/main)
+- [This integration](https://github.com/callifo/fronius_modbus) gives you full control over the charge and discharge of the battery.
 
-Note that this is just a REPORTED value, you can still use the full capacity of the battery. For instance, a 400kWh battery will show up as  60kWh, but the inverter will still use the full 400kWh.
 
