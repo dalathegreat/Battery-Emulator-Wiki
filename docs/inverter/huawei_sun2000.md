@@ -2,7 +2,7 @@
 title: "Huawei SUN2000"
 ---
 
-LUNA2000 support is not planned at the moment due to requiring DC/DC converter.
+LUNA2000 compatibility is not planned at the moment due to requiring DC/DC converter.
 
 ## ⚠️ DC/DC link
 

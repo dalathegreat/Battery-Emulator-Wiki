@@ -26,7 +26,7 @@ Battery voltage and current, min/max cell temperatures, and individual cell volt
 
 ## Models
 
-| Year |  Model | Battery capacity | Supported? | Notes |
+| Year |  Model | Battery capacity | Compatible? | Notes |
 | :--------: | :---------: | :---------: | :----------: | :----------: |
 | 2018- | MG HS PHEV | 16.6kWh | ✅ | 
 | 2022- | MG HS PHEV (Gen2) | 24.7kWh | Untested | Same as [Roewe RX5](https://en.wikipedia.org/wiki/Roewe_RX5)

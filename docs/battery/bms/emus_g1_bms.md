@@ -2,9 +2,9 @@
 title: "EMUS G1"
 ---
 
-The Battery-Emulator has support for the EMus G1 BMS. 
+The Battery-Emulator is compatible with the EMus G1 BMS. 
 With this BMS you can construct your own high voltage battery, and connect the BMS via CAN to the Battery-Emulator. 
-This allows you to use a DIY battery (instead of an EV battery) with any normal Battery-Emulator supported inverter.
+This allows you to use a DIY battery (instead of an EV battery) with any normal Battery-Emulator compatible inverter.
 
 ## Where do I get the hardware?
 

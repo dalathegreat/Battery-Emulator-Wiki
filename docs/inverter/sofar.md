@@ -60,7 +60,7 @@ If you use Sofar CAN, select the "General" option
 ![image](../images/sofar-06.png)
 
 ## Sofar CAN
-This inverter can also use the dedicated "Sofar BMS (Extended) via CAN" protocol. The bonus of this protocol, is that it supports multiple batteries, using separate IDs for each battery. 
+This inverter can also use the dedicated "Sofar BMS (Extended) via CAN" protocol. The bonus of this protocol, is that it is compatible with multiple batteries, using separate IDs for each battery. 
 
 In "Advanced Settings/Battery Parameters" choose `GENERAL` as battery type and set address accordingly to address set in Battery Emulator.
 To run two separate batteries on two different DC terminals first you have to enable `BAT 1` and `BAT 2` in Input channel setting. Then, when setting parameters for each batteries use two different address for `BAT 1` and `BAT 2`. 

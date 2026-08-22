@@ -10,12 +10,12 @@ title: "CHAdeMO vehicles"
 
 Be mindful that there is inherent risk to the rest of the vehicle and that you assume responsibility for that risk. Do not attempt on a vehicle you do not own. Be aware that some Nissan Leaf vehicles have experienced contactor welding when using other V2X equipment like Setec inverters; it is a possibility here even despite our best efforts to avoid such issues.
 
-## Supported CHAdeMO vehicles
+## Compatible CHAdeMO vehicles
 Generally: CHAdeMO vehicles v1.0 and forward are OK for V2X. 
 
-| Make and Model   | Supported | Tested | Note |
+| Make and Model   | Compatible | Tested | Note |
 | -------- | ------- | -------  | ------- |
-| Nissan LEAF 2011-2012 | No | No | These use CHAdeMO v0.9 which **does not** support V2X. However, testing shows that V2X is possible if the reported current back to the car is faked.  |
+| Nissan LEAF 2011-2012 | No | No | These use CHAdeMO v0.9 which is **not** compatible with V2X. However, testing shows that V2X is possible if the reported current back to the car is faked.  |
 | Nissan LEAF 2013-2017 | Yes | Testing | These use CHAdeMO v1.0-1.1 V2X, albeit with some unique idiosyncrasies |
 | Nissan LEAF 2018-2024 | Yes | Testing | These use CHAdeMO v1.2+ |
 | Mitsubishi i-MiEV | Maybe | No | |
@@ -87,7 +87,7 @@ Even though the vehicle will contain a measuring circuit that checks how much cu
 
 This sensor gets attached to the Chademo high voltage wiring (either + or -), and connected via CAN to the Battery-Emulator. You can use the same CAN channel as the Chademo CAN, or use an isolated CAN bus for this sensor.
 
-Supported sensors:
+Compatible sensors:
 
 - Isabellenhütte IVT shunt (IVT-Modular or IVT-S) [Can be purchased for instance here](https://www.evcreate.com/shop/charging/ivt-current-sensor/)
 

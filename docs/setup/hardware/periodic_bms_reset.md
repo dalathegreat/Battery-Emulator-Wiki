@@ -7,7 +7,7 @@ Some EV batteries are not able to operate 24/7 nonstop under all conditions. Ove
 
 The solution is to periodically reset the 12V power going into the BMS.
 
-The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks by removing its power for a configured time. This requires hardware support: the board must define a `BMS_POWER` pin **and** you must have physically wired the BMS's power supply through it (via a relay/MOSFET). Boards that define the pin include LilyGo T-CAN485, LilyGo-2-CAN, 3LB, Stark CMR, Waveshare and BeCom; the generic/default HAL leaves it unconnected (`GPIO_NUM_NC`), so the toggle is a no-op there. 
+The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks by removing its power for a configured time. This requires compatible hardware: the board must define a `BMS_POWER` pin **and** you must have physically wired the BMS's power supply through it (via a relay/MOSFET). Boards that define the pin include LilyGo T-CAN485, LilyGo-2-CAN, 3LB, Stark CMR, Waveshare and BeCom; the generic/default HAL leaves it unconnected (`GPIO_NUM_NC`), so the toggle is a no-op there. 
 
 ### Batteries that benefit from Periodic Reset
 

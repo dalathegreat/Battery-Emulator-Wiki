@@ -9,7 +9,7 @@ The current implementation "Growatt High Voltage protocol via CAN Bus" emulates 
 * Growatt SPH 10 10000TL3 BH-UP ✅
 * Growatt SPA 4000-10000TL3 BH-UP :question:
 
-We can also emulate a WIT battery when selecting the "Growatt WIT compatible battery via CAN" option. This enables support for the following inverters.
+We can also emulate a WIT battery when selecting the "Growatt WIT compatible battery via CAN" option. This enables compatibility with the following inverters.
 
 * Growatt WIT 50XHU ✅
 * Growatt WIT 100HU ✅

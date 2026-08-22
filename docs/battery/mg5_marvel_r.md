@@ -12,7 +12,7 @@ title: "MG5, Marvel R"
 | MG Marvel R  | 69.92 | NMC  |  EU199A69S |           | Reported working |
 | MG Marvel R  | 69.9  | NMC  |  EU199A70S | 10953172  | Reported working (v10.11+) |
 
-Battery Emulator currently has two different integrations supporting MG5, the legacy "MG5" integration and the updated "MG Gen1 (HS/ZS/MG5/MarvelR)" integration. The latter is more fully-featured and more likely to work with newer packs.
+Battery Emulator currently has two different integrations compatible with MG5, the legacy "MG5" integration and the updated "MG Gen1 (HS/ZS/MG5/MarvelR)" integration. The latter is more fully-featured and more likely to work with newer packs.
 
 # MG5 Batteries
 

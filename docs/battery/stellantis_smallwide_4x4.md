@@ -2,7 +2,7 @@
 title: "Stellantis SmallWide 4x4"
 ---
 
-### Supported Stellantis SmallWide 4x4 batteries
+### Compatible Stellantis SmallWide 4x4 batteries
 
 The following vehicles are part of the SmallWide 4x4 platform according to Wikipedia.
 

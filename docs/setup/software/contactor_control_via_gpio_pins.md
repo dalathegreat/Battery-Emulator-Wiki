@@ -58,11 +58,11 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 You can check the Event view in the webserver, to see if any critical Error has been encountered.
 
 #### Overloaded GPIO pins
-Incase the current draw on the GPIO pins is exceeded, for instance incase you use an unsupported SSR, the webserver will appear this way:
+Incase the current draw on the GPIO pins is exceeded, for instance incase you use an incompatible SSR, the webserver will appear this way:
 
 ![image](../../images/contactor-control-via-gpio-pins-03.png)
 
-Note the "X" on both contactors, even though the emulator is in active state and should have contactors engaged. If you see this, remove the wires and restart the emulator, to confirm that activation of the pins is possible. Then switch to a supported SSR.
+Note the "X" on both contactors, even though the emulator is in active state and should have contactors engaged. If you see this, remove the wires and restart the emulator, to confirm that activation of the pins is possible. Then switch to a compatible SSR.
 
 ## PWM control for lower power draw 🧊 
 Optional: It is also possible to reduce power consumption of keeping the big contactors engaged via PWM control. This requires Solid State Relays (SSR). The PWM signal will very quickly turn on/off the SSR, and still keep the contactor engaged. Do be careful, and test this properly before using it. It is very much depending on what SSR and battery contactor combination you use. 

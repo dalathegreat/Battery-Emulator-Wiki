@@ -8,7 +8,7 @@ Any ESP32 device nearby can display Battery Emulator data without any physical c
 
 Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
 
-### Supported ESPNow projects
+### Compatible ESPNow projects
 The following independently maintained community projects provide ready-to-install ESP-NOW displays:
 
 - [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) - a compact five-screen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-t-display-s3/), phone-based setup, local web controls, and prebuilt firmware.
@@ -46,7 +46,7 @@ v2 is a self-describing key/length/value (TLV) stream:
 
 ## Technical details
 
-ESP-NOW is a low-latency wireless protocol by Espressif that allows direct device-to-device communication without a router. It works on the data-link layer, bypassing higher OSI layers, which results in fast response times and minimal overhead. It supports ESP8266, ESP32, ESP32-S, and ESP32-C series chips and can coexist with Wi-Fi and Bluetooth LE.
+ESP-NOW is a low-latency wireless protocol by Espressif that allows direct device-to-device communication without a router. It works on the data-link layer, bypassing higher OSI layers, which results in fast response times and minimal overhead. It is compatible with ESP8266, ESP32, ESP32-S, and ESP32-C series chips and can coexist with Wi-Fi and Bluetooth LE.
 It’s ideal for smart home devices, remote controls, and sensor networks, supporting one-to-one, one-to-many, and many-to-many communication.
 
 ### **Key Features:**
@@ -138,7 +138,7 @@ Events are not streamed as they occur: the **10 most recent** entries are re-sen
 
 ### Frame size and chunking
 
-ESP-NOW v2 raises the maximum payload from 250 to 1470 bytes, which is what makes unquantized 16 bit cell voltages practical. v2 is assumed on the emulator side: every SoC the emulator runs on supports it, so there is no runtime version negotiation.
+ESP-NOW v2 raises the maximum payload from 250 to 1470 bytes, which is what makes unquantized 16 bit cell voltages practical. v2 is assumed on the emulator side: every SoC the emulator runs on is compatible with it, so there is no runtime version negotiation.
 
 The limit that matters is the **receiver's** buffer, not its silicon. A receiver that has not raised its own receive buffer above the 250 byte default silently drops larger frames — ESPHome's `espnow` component is one such case, where `max_payload_size: 1470` has to be set explicitly. The cell voltage array is therefore always split into index-tagged chunks sized by `ESPNOW_MAX_PAYLOAD`, so lowering that one constant in `espnow.cpp` is enough to talk to a 250 byte receiver.
 

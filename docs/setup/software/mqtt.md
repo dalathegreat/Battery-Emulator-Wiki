@@ -2,7 +2,7 @@
 title: "MQTT"
 ---
 
-The Battery-Emulator has MQTT support. It can be configured to publish data to your MQTT broker and then be used in whatever way you choose. You can modify the Battery-Emulator code to publish more data, less data, or other data, as well as subscribing to MQTT topics. There are also advanced functions that can be triggered via MQTT, such as charge limits.
+The Battery-Emulator is compatible with MQTT. It can be configured to publish data to your MQTT broker and then be used in whatever way you choose. You can modify the Battery-Emulator code to publish more data, less data, or other data, as well as subscribing to MQTT topics. There are also advanced functions that can be triggered via MQTT, such as charge limits.
 
 The main purpose of this implementation is better integration with popular home automation platforms such as Home Assistant, in order to (for example) keep track of battery temperature and cell deviation. If "MQTT" and "Home Assistant" are not familiar words, you will likely not benefit from this until you're up to speed on the current state of home automation.
 
@@ -54,7 +54,7 @@ Out of the box, the implementation publishes the following topics. All topics ar
 | `battery-emulator-a1b2/spec_data_3` | Battery #3 cell voltages and per-cell balancing status (when enabled) | No |
 | `battery-emulator-a1b2/events` | Battery-Emulator events | No |
 
-When a **second battery** is configured, its values are published to its **own topic** `.../info_2`, using the **same key names** as battery #1 (`SOC`, `battery_voltage`, …, without any suffix), and its cell data goes to `.../spec_data_2`. A **third battery**, where supported, follows the same pattern with `.../info_3` and `.../spec_data_3`. The global emulator values (`bms_status`, `pause_status`, `event_level`, `emulator_status`, `hardware`, `software_version`, `cpu_temp`, `emulator_uptime`, `heap_*`) are only present on `.../info`.
+When a **second battery** is configured, its values are published to its **own topic** `.../info_2`, using the **same key names** as battery #1 (`SOC`, `battery_voltage`, …, without any suffix), and its cell data goes to `.../spec_data_2`. A **third battery**, on compatible integrations, follows the same pattern with `.../info_3` and `.../spec_data_3`. The global emulator values (`bms_status`, `pause_status`, `event_level`, `emulator_status`, `hardware`, `software_version`, `cpu_temp`, `emulator_uptime`, `heap_*`) are only present on `.../info`.
 
 Two publish cadences are used:
 

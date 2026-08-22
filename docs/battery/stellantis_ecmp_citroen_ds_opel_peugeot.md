@@ -9,15 +9,15 @@ title: "Stellantis eCMP (Citroen, DS, Opel, Peugeot)"
 
 Failure to fulfill the two requirements will lead to contactors opening after 60 seconds of use (2 minutes on some packs), due to Isolation DTC being set inside the battery.
 
-### Supported Stellantis e-CMP batteries
-The following eCMP ( Peugeot, Citroën, DS, Opel/Vauxhall ) batteries are currently supported.
+### Compatible Stellantis e-CMP batteries
+The following eCMP ( Peugeot, Citroën, DS, Opel/Vauxhall ) batteries are currently compatible.
 
 - Citroen ë-C4 (2020-) ✔️
 - DS DS3 (2020-) ❓ 
 - Opel/Vauxhall Corsa-e/Mokka-e (2019-) ✔️
 - Peugeot e-208/e-2008(2020-) ✔️
 
-### Supported 50kWh & 75kWh VAN? platform batteries
+### Compatible 50kWh & 75kWh VAN? platform batteries
 The same Stellantis eCMP platform integration can be used for **some** Toyota/Citroen/Fiat/Opel/Peugeot/Vauxhall van batteries. These batteries come in 50 and 75kWh sizes. It is still unclear what packs work, and which require more integration. It is also unclear what specific platform these batteries are.
 
 #### V1 vs V2 VANs
@@ -32,7 +32,7 @@ Only V1 VAN packs work, V2 does not. You can spot the V1 by looking at the small
 - Peugeot Partner / Expert / Traveller ✔️
 - Maybe more, feel free to add
 
-### Supported 44kWh & 82kWh "STLA medium" platform batteries
+### Compatible 44kWh & 82kWh "STLA medium" platform batteries
 
 Work in progress, values not valid yet.
 
@@ -224,7 +224,7 @@ Can Logs can be found here: [google](https://drive.google.com/drive/folders/1S-N
 - Try feeding the battery from separate 12V supply than your BE device. A 12V lead-acid battery is fine for troubleshooting.
 
 ### Double battery operation :battery: :battery: 
-ECMP integration supports running two packs in parallel
+ECMP integration is compatible with running two packs in parallel
 For double ECMP batteries you need:
 
 - 2 separate AC/DC PSU or another way to isolate the GND from the 2 BMS

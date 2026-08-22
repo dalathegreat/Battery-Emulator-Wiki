@@ -14,7 +14,7 @@ The Stark CMR (SCMR) is the only commercially available and CE certified product
 
 Supply voltage (+5VDC - +16VDC) protected with reverse polarity circuitry<br/>
 Operating current < 300mA @ 3,3VDC when all outputs are activated<br/>
-Simultaneous USB connection and external power supply supported<br/>
+USB connection and simultaneous external power supply are compatible<br/>
 All 3V3 logic with resettable over-current protection<br/>
 Four individually controllable power outputs, equal to the DC input voltage consisting of:<br/>
 
@@ -108,7 +108,7 @@ The interfaces correspond to the following options in the Battery-Emulator softw
 
 ### Adding a third CAN channel
 
-For integrations that need double/triple battery support via CAN, or an additional CAN-FD chanel, you can add an MCP251**8FD** add-on board via the GPIO expansion header. Connect the wires as following:
+For integrations that need double/triple battery compatibility via CAN, or an additional CAN-FD chanel, you can add an MCP251**8FD** add-on board via the GPIO expansion header. Connect the wires as following:
 
 - IMT to 14
 - CS to 12

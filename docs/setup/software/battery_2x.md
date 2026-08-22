@@ -18,13 +18,13 @@ The batteries get connected in parallel. This means the voltage stays the same, 
 !!! warning "CAUTION"
     Do not connect packs in series. There are no safeties implemented for operation in series connection!
 
-### Which inverters are supported?
+### Which inverters are compatible?
 Double-Battery can be run on all inverters. The inverter will think that there is just one large battery attached.
 
 !!! note "NOTE"
     Double-Battery should not be confused with Dual Input inverters. Dual input can have 2 separate batteries operating at the same time (Foxess or Sofar for instance).  lookup how to in your inverter type/brand Wiki for more information about Dual input.
 
-### Which batteries are supported?
+### Which batteries are compatible?
 The list below is generated from `battery_supports_double()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
 - [Chevrolet Bolt EV / Opel Ampera-e](../../battery/ampera_e_64_kwh.md)
@@ -46,13 +46,13 @@ The list below is generated from `battery_supports_double()` in `Software/src/ba
 - [Fake battery for testing purposes](../../battery/fake_battery.md) (no hardware needed, useful for trying out a double setup)
 
 !!! note "NOTE"
-    The legacy [Tesla Model S/X 2012-2020](../../battery/tesla_model_s_x_2012_2020.md) integration is a separate one and does **not** support Double Battery. The same applies to the legacy "MG 5 battery" integration — use "MG Gen1 (HS/ZS/MG5/MarvelR)" instead.
+    The legacy [Tesla Model S/X 2012-2020](../../battery/tesla_model_s_x_2012_2020.md) integration is a separate one and is **not** compatible with Double Battery. The same applies to the legacy "MG 5 battery" integration — use "MG Gen1 (HS/ZS/MG5/MarvelR)" instead.
 
 If your batteries are not on this list, get in touch with a developer.
 
 #### CAN communication
 
-:information_source: If your inverter does not support seeing automotive CAN messages and need a separate channel, you need a [CAN-Filter](../can_related/can_filter_hardware.md).
+:information_source: If your inverter is not compatible with automotive CAN messages and needs a separate channel, you need a [CAN-Filter](../can_related/can_filter_hardware.md).
 
 If you are using LilyGo:
 

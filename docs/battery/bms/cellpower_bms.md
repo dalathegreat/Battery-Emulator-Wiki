@@ -2,7 +2,7 @@
 title: "Cellpower"
 ---
 
-The Battery-Emulator has support for Cellpower BMS, used on Intercel CLPL batteries.
+The Battery-Emulator is compatible with Cellpower BMS, used on Intercel CLPL batteries.
 
 ## Configuration
 

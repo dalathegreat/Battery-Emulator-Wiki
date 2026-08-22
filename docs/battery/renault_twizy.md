@@ -4,7 +4,7 @@ title: "Renault Twizy"
 
 ### WIP :construction: 
 
-Renault Twizy is a 48V battery. The software supports this battery, but documentation is missing.
+Renault Twizy is a 48V battery. The software is compatible with this battery, but documentation is missing.
 
 ## Software config
 

@@ -13,7 +13,7 @@ title: "Volvo SPA (XC40, C40 / Polestar 2)"
 
 ## Battery specifications
 
-The following SPA platform batteries are supported, checkbox on those confirmed by users to work.
+The following SPA platform batteries are compatible, checkbox on those confirmed by users to work.
 
 * Volvo XC40 2021-present
    * 64 kWh (usable), 69 kWh (gross) ✅

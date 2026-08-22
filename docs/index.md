@@ -21,8 +21,8 @@ At the same time, EV manufacturers have been putting high capacity battery packs
 **Battery Emulator** enables EV battery packs to be repurposed for stationary storage. It acts as a translation layer between the EV battery and the home inverter. This makes it extremely cheap and easy to use large EV batteries in a true plug'n'play fashion!
 
 ## Quickstart guide 📜
-- Pick a [supported inverter](inverter/index.md#supported-inverters-list) (solar panels optional) :sun_with_face: 
-- Pick a [supported battery](battery/index.md#supported-batteries-list) :battery: 
+- Pick a [compatible inverter](inverter/index.md#compatible-inverters-list) (solar panels optional) :sun_with_face: 
+- Pick a [compatible battery](battery/index.md#compatible-batteries-list) :battery: 
 - Order a Battery-Emulator board or module [compatible hardware](hardware/index.md) :robot: 
 - Follow the [installation guidelines](setup/hardware/installation_guidelines.md) section for how to install and commission your battery properly :notebook: 
 

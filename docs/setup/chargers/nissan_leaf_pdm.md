@@ -2,13 +2,13 @@
 title: "Charger Nissan LEAF PDM"
 ---
 
-## Supported PDMs 🏅 
+## Compatible PDMs 🏅 
 There are two different 2013+ LEAF charger (PDM) variants that work with the Battery-Emulator as a charger. One is 3.3kW, and the other is 6.6kW (both are only 1-phase chargers). There is a sticker on the PDM that signals how fast it can charge.
 ![Nissan_PDM](../../images/charger-nissan-leaf-pdm-01.jpg) ![PDM66](../../images/charger-nissan-leaf-pdm-02.jpg)
 
-The following LEAF PDMs are supported:
+The following LEAF PDMs are compatible:
 
-- 2011 to 2012 ZE0 ❌  Not supported!
+- 2011 to 2012 ZE0 ❌  Not compatible!
 - 2013 to 2017 AZE0 ✅ 
 - 2018 to 2024 ZE1 ✅ 
 
@@ -73,7 +73,7 @@ The PDM will output 12V when running. You can use this to charge a 12V lead acid
 ![image](../../images/charger-nissan-leaf-pdm-11.png) ![12v](../../images/charger-nissan-leaf-pdm-12.jpg)
 
 ### Software setup 💻 
-Compiling the software for LEAF PDM support is done by enabling `NISSANLEAF_CHARGER` option in the `USER_SETTINGS.h` file. After uploading the software to the board, you will have a new view in the webserver. When charging is active you can monitor the power coming from the charger.
+Compiling the software for LEAF PDM compatibility is done by enabling `NISSANLEAF_CHARGER` option in the `USER_SETTINGS.h` file. After uploading the software to the board, you will have a new view in the webserver. When charging is active you can monitor the power coming from the charger.
 
 ![301633922-e3ff4a69-e536-4ff8-b651-d64d06f9a372](../../images/charger-nissan-leaf-pdm-13.png)
 

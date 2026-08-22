@@ -4,7 +4,7 @@ title: "Volvo SPA (S60 90 V60 90 XC60 90)"
 
 # Volvo SPA S60 90 V60 90 XC60 90 Hybrid 
 
-Battery list with part numbers up to MY2022. This is the list of Volvo supported batteries not the list of BE supported batteries. For the moment none of those are supported.
+Battery list with part numbers up to MY2022. This is the list of Volvo compatible batteries, not the list of BE compatible batteries. For the moment none of those are compatible.
 
 So everything before MY2022 is assumed to be 96 cells batteries with capacity 10-12kWh (30-34 Ah) and then some break from MY2022 and beyond with 102 cells batteries with capacity 18.83kWh (51 Ah). Not sure if the way older 27 Ah are representative (mostly for older XC90)
 
@@ -22,7 +22,7 @@ For this battery type, use the option called "Volvo PHEV battery" under the "Bat
 ![image](../images/volvo-spa-s60-90-v60-90-xc60-90-hybrid-batteries-06.png){ width="592" height="73" }
 
 ## Battery specifications
-The following SPA platform batteries are supported, checkbox on those confirmed by users to work.
+The following SPA platform batteries are compatible, checkbox on those confirmed by users to work.
 
 * Volvo hybrid SPA 2017-2022
    * 7.26 kWh (usable), 10.37 kWh (gross)
