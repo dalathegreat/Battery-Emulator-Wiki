@@ -11,7 +11,7 @@ This project is still in development and is currently at the proof of concept st
 See [this page](../inverter/index.md#compatible-inverters-list)
 
 ## Could I use this project to use my Leaf battery without removing it from the car?
-While technically you could potentially make this work over the CHAdeMO connector, finding a suitable connector is prohibitively expensive. For the price of a Chademo connector alone, you can purchase ~10kWh of stationary storage! The [scope of this project](https://github.com/dalathegreat/BYD-Battery-Emulator-For-Gen24/issues/7) is battery reuse outside of a vehicle.
+While technically you could potentially make this work over the CHAdeMO connector, finding a suitable connector is prohibitively expensive. For the price of a Chademo connector alone, you can purchase ~10kWh of stationary storage! The [scope of this project](https://github.com/dalathegreat/Battery-Emulator/issues/7) is battery reuse outside of a vehicle.
 
 ## Can I buy this as an off-the-shelf unit?
 No. This is a DIY project to enable battery reuse. It should be done by competent individuals who understand the risks involved with HV batteries.

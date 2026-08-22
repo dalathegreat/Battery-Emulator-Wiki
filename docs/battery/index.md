@@ -6,7 +6,7 @@ hide:
 
 # Compatible batteries list
 
-Be sure to checkout the [installation guidelines](../setup/hardware/installation_guidelines.md) section for how to install your battery. Amount of stars ⭐ signal how mature and stable the integration is.
+Be sure to checkout the [installation guidelines](../setup/installation_guidelines.md) section for how to install your battery. Amount of stars ⭐ signal how mature and stable the integration is.
 
 - ⭐⭐⭐ Fully compatible battery. Longterm stability confirmed without user interaction. Many success stories from users.
 - ⭐⭐ Integration has minor known issues or missing features. Manual interventions sometimes required.

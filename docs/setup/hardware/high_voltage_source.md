@@ -128,7 +128,7 @@ Below the newest SW settings, details depend on your setup, but this is basis.
 
 For the previous/older SW version:
 Make sure to enable the #define PRECHARGE_CONTROL option in the USER_SETTINGS.h file
-[Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/USER_SETTINGS.h)
+[Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/blob/v8.13.0/Software/USER_SETTINGS.h)
 
 Generic:
 The precharge code itself is located in the folder Software/src/communication/precharge_control/precharge_control.cpp.
