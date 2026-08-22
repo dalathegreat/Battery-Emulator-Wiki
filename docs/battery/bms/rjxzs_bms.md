@@ -49,10 +49,11 @@ Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emul
 ![image](../../images/rjxzs-bms-03.png)
 
 - If you have a Modbus inverter, connect it to the RS485 port of the Battery-Emulator
-- If you have a CAN inverter, you need to connect it to a separate 500kbps CAN channel, since the BMS runs at 250kbps on the native CAN
-   - One option is to use [add on MCP2515](../../setup/can_related/can_add_on_mcp2515.md) board
-   - Another options is to use [add on CAN-FD MCP2518](../../setup/can_related/can_fd_add_on_mcp2518fd.md) board 
-   - Third option is to use [Stark CMR board](../../hardware/stark_cmr.md)
+- If you have a CAN inverter, you need to connect it to a separate 500kbps CAN channel, since the BMS runs at 250kbps on the native CAN:
+  
+      - One option is to use [add on MCP2515](../../setup/can_related/can_add_on_mcp2515.md) board
+      - Another options is to use [add on CAN-FD MCP2518](../../setup/can_related/can_fd_add_on_mcp2518fd.md) board 
+      - Third option is to use the [Stark CMR](../hardware/stark_cmr.md) or [BECom](../hardware/becom.md) hardware
 
 For this battery type, use the option called "RJXZS BMS, DIY battery" under the "Battery Protocol" setting.
 
