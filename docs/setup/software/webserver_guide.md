@@ -207,7 +207,7 @@ On hardware that has an µSD slot, **General logging to SD card** and **CAN mess
 
 **General logging to syslog server** forwards each general-log line as a UDP **syslog** datagram in **RFC 5424** format to a server of your choice — handy for aggregating logs from a permanently installed system into an existing logging/monitoring setup. Configure the **server IP**, **UDP port** (default 514) and **facility** (0–23, default 1 = user) under Debug options.
 
-Each line is tagged with a syslog **severity**: lines that originate from an event carry that event's level (error → *err*, warning → *warning*, firmware update → *notice*, info → *info*), and all other lines are sent as *debug*. The datagram uses the board's hostname and an app-name of `BatteryEmulator`, and it leaves the timestamp field empty (NILVALUE `-`) so the receiving syslog server stamps each message on arrival. Datagrams can only be received while the board is joined to the Wi-Fi.
+Each line is tagged with a syslog **severity**: lines that originate from an event carry that event's level (error → *err*, warning → *warning*, firmware update → *notice*, info → *info*), and all other lines are sent as *debug*. The datagram uses the board's hostname, as app-name it logs the functuion that produced the message, leaving the timestamp field empty (NILVALUE `-`) so the receiving syslog server stamps each message on arrival. Datagrams can only be received while the board is joined to the Wi-Fi. Messages are backlogged if the network connection shortly drops, pushing the messages to the server in a batch preceeded by the uptime stamp and the delta time. 
 
 !!! tip "TIP"
     If you own a Synology NAS, in the Log Center set up a Log Receiving entry in **IETF** format.
