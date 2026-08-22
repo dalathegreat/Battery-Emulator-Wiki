@@ -175,7 +175,7 @@ A quick solution is to enable the "450V maxvoltage cap" setting. This fakes it s
 
 ## Other settings
 
-<img width="740" height="199" alt="kép" src="https://github.com/user-attachments/assets/8debe78a-2b01-499c-bdd2-80dfe16fa9fa" />
+![kép](../images/fronius-17.png)
 
 **Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first.
 
