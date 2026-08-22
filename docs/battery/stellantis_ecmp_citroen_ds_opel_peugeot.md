@@ -237,5 +237,3 @@ Currently you cant clear the 2nd battery error codes from BE, only the 1st batte
 
 Schematics below. As always - take extra care when working with HV batteries.
 ![double-ecmp-battery-emulator](../images/stellantis-ecmp-citroen-ds-opel-peugeot-24.jpg)
-
-NOTE: When  
