@@ -1,8 +1,8 @@
 ---
-title: "FoxESS H1 H3 AC1 KH"
+title: "FoxESS"
 ---
 
-!!! info "⚠️ Word of caution, CAN overvoltage ⚠️"
+!!! danger "⚠️ Word of caution, CAN overvoltage ⚠️"
     FoxESS inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE. 
     
     Note: This does not impact the lilygo T-2CAN, it is galvanically isolated, Foxess cannot fry the T-2CAN!
