@@ -1,0 +1,6185 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation (Wiki) for Battery Emulator">
+      
+      
+      
+        <link rel="canonical" href="https://dalathegreat.github.io/Battery-Emulator-Wiki/setup/software/mqtt/">
+      
+      
+        <link rel="prev" href="../home_assistant/">
+      
+      
+        <link rel="next" href="../ota_update/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/be.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>MQTT - Battery Emulator</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.5%207.75A.75.75%200%200%201%207.25%207h1a.75.75%200%200%201%20.75.75v2.75h.25a.75.75%200%200%201%200%201.5h-2a.75.75%200%200%201%200-1.5h.25v-2h-.25a.75.75%200%200%201-.75-.75M8%206a1%201%200%201%201%200-2%201%201%200%200%201%200%202%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6.457%201.047c.659-1.234%202.427-1.234%203.086%200l6.082%2011.378A1.75%201.75%200%200%201%2014.082%2015H1.918a1.75%201.75%200%200%201-1.543-2.575Zm1.763.707a.25.25%200%200%200-.44%200L1.698%2013.132a.25.25%200%200%200%20.22.368h12.164a.25.25%200%200%200%20.22-.368Zm.53%203.996v2.5a.75.75%200%200%201-1.5%200v-2.5a.75.75%200%200%201%201.5%200M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M9.504.43a1.516%201.516%200%200%201%202.437%201.713L10.415%205.5h2.123c1.57%200%202.346%201.909%201.22%203.004l-7.34%207.142a1.25%201.25%200%200%201-.871.354h-.302a1.25%201.25%200%200%201-1.157-1.723L5.633%2010.5H3.462c-1.57%200-2.346-1.909-1.22-3.004zm1.047%201.074L3.286%208.571A.25.25%200%200%200%203.462%209H6.75a.75.75%200%200%201%20.694%201.034l-1.713%204.188%206.982-6.793A.25.25%200%200%200%2012.538%207H9.25a.75.75%200%200%201-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005%200-.009.004%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enabling-mqtt" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Battery Emulator" class="md-header__button md-logo" aria-label="Battery Emulator" data-md-component="logo">
+      
+  <img src="../../../assets/be.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Battery Emulator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MQTT
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dalathegreat/Battery-Emulator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dalathegreat/Battery-Emulator
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../inverter/" class="md-tabs__link">
+          
+  
+  
+  Compatible inverters
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../battery/" class="md-tabs__link">
+          
+  
+  
+  Compatible batteries
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../hardware/" class="md-tabs__link">
+          
+  
+  
+  Emulator Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../firststeps/" class="md-tabs__link">
+          
+  
+  
+  Setup & Docs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Battery Emulator" class="md-nav__button md-logo" aria-label="Battery Emulator" data-md-component="logo">
+      
+  <img src="../../../assets/be.svg" alt="logo">
+
+    </a>
+    Battery Emulator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dalathegreat/Battery-Emulator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dalathegreat/Battery-Emulator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible inverters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compatible inverters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible inverters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/afore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Afore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/bluesun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluesun
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/deye/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deye
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/felicity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Felicity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/ferroamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferroamp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/foxess_h1_h3_ac1_kh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FoxESS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/fronius/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fronius
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/goodwe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GoodWe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/growatt_hv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growatt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/hoymiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoymiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/huawei_sun2000/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Huawei SUN2000
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/ingeteam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingeteam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/kostal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kostal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/saj/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAJ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/schneider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schneider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/sma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/sofar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sofar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/sol_ark_lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sol‐Ark LV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/solax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/solis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/solxpow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solxpow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/sungrow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sungrow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/vevor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vevor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/yingfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yingfa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../inverter/zcs_azzurro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ZCS Azzurro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible batteries
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compatible batteries
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible batteries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BMS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/read_this_first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read this first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/batrium_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batrium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/cellpower_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cellpower
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/daly_smartbms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Daly Smart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/emus_g1_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EMUS G1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/ennoid_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ennoid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/growatt_ark_bms_hv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growatt ARK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/orion_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/rjxzs_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RJXZS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/shunt_bmw_sbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW S-BOX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/simpbms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SimpBMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bms/thunderstruck_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thunderstruck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/aiways_u5_2021/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aiways U5 (2021)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/ampera_e_64_kwh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampera‐e 64 kWh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bmw_i3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW i3 60/94/120AH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bmw_ix_i4_i7_gen5_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW iX, i4‐i7 (Gen5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/bmw_phev_gen_3_and_4_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW 330e 530e X5-45e (Gen3/4 PHV)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/byd_dolphin_seal_seagull/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BYD Dolphin Seal Seagull
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/byd_vehicle_atto_3_seal_tang_dolphin_song_and_more/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BYD Vehicle Batteries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/ccs_bidirectional_charging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCS bidirectional charging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/chademo_vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CHAdeMO vehicles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/dacia_spring_renault_k_ze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dacia Spring/Renault K-ZE (CMFA-EV)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/fake_battery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fake battery (for testing)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/fisker_ocean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fisker Ocean
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/ford_f_150_lightning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ford F‐150 Lightning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/ford_mach_e/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ford Mach‐E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/foxess_hv2600/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FoxESS HV2600
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/geely_gea_platform_galaxy_emas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geely GEA (Galaxy, eMAS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/geely_geometry_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geely Geometry C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/hyundai_e_gmp_platform_58_2_77_4_kwh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hyundai E-GMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/hyundai_santa_fe_phev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hyundai Santa Fe PHEV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/i_miev_czero_ion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mitsubishi i-MiEV / Citroen C-Zero / Peugeot Ion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/jaguar_i_pace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jaguar I‐PACE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/kia_ev6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia EV6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/kia_niro_hybrid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia Niro Hybrid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/kia_niro_hyundai_kona/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia e-Niro/Hyundai Kona 64 kWh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/kia_soul/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia Soul
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/kia_xceed_phev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia Xceed PHEV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/land_rover/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Land Rover
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/maxus_ed3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maxus eD3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/maxus_ev80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maxus EV80
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/mercedes_b_class_b250e_w246/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mercedes B250E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/mg4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/mg5_marvel_r/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG5, Marvel R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/mg_hs_phev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG HS PHEV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/mg_zs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG ZS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/nissan_ariya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nissan Ariya
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/nissan_leaf_e_nv200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nissan LEAF / e-NV200
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/nissan_sakura_mitsubishi_ek_x_ev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nissan Sakura Mitsubishi eK X
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/omoda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omoda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/pylon_hv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pylon HV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/relion_lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relion LV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/renault_fluence_ze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Fluence ZE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/renault_kangoo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Kangoo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/renault_twizy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Twizy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/renault_zoe_gen1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Zoe Gen1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/renault_zoe_gen2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Zoe Gen2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/rivian_r1t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rivian R1T
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/seres_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seres 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/smart_eq_fortwo_forfour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart EQ Fortwo Forfour
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/stellantis_cmp_smart_car_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis CMP Smart Car
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/stellantis_ecmp_citroen_ds_opel_peugeot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis eCMP (Citroen, DS, Opel, Peugeot)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/stellantis_pro_one/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis Pro One
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/stellantis_smallwide_4x4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis SmallWide 4x4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/stellantis_smp_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis SMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/taycan_e_tron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taycan E‐Tron
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/tesla_model_3_y/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Model 3/Y
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/tesla_model_s_x_2012_2020/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Model S/X 2012-2020
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/tesla_model_s_x_2021/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Model S/X 2021+
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/think_city/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Think City
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/volvo_sea_ex30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Volvo SEA (EX30 + others)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/volvo_spa_s60_90_v60_90_xc60_90_hybrid_batteries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Volvo SPA (S60 90 V60 90 XC60 90)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/volvo_spa_xc40_polestar2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Volvo SPA (XC40, C40 / Polestar 2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/vw_meb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VW/Audi/Škoda/Cupra MEB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../battery/vw_mqb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VW/Audi/Škoda/Cupra MQB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emulator Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Emulator Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emulator Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/becom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BECom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/dfrobot_edge101/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DFRobot Edge101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/esp32_devkit_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP32 DevKit V1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/lilygo_t_2can/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LilyGo T‐2CAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/lilygo_t_can485/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LilyGo T‐CAN485
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/lilygo_t_can485_and_can_fd_motherboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LilyGo T‐CAN485 + CAN‐FD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/stark_cmr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stark CMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/waveshare_esp32_s3_rs485_can/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveshare ESP32‐S3‐RS485‐CAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup & Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../firststeps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frequently_asked_questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation_guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Installer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/high_voltage_source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options for high voltage precharge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/isolation_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is insulation monitoring?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/lightning_strike/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lightning strike
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/list_of_3d_printable_parts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D‐printable parts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/periodic_bms_reset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Periodic BMS reset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/recovering_undercharged_battery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recovering undercharged battery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../battery_2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Double Battery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../battery_3x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Triple Battery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boot_button_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BOOT button functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contactor_control_via_gpio_pins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contactor Control via GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipment_stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Equipment Stop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../espnow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESPNow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home_assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home Assistant goodies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MQTT
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling MQTT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#published-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Published data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Published data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-robustness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection robustness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscriptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subscriptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opening-and-closing-contactors-stop-and-pause-vs-resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening and closing contactors (STOP and PAUSE vs. RESUME)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SET_LIMITS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET_LIMITS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-limit-is-applied-and-expires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the limit is applied and expires
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#home-assistant-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home Assistant Discovery
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Home Assistant Discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sensor-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensor discovery
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensor discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-discovery-payload-is-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the discovery payload is built
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cell-voltage-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cell-voltage discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-command-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Button (command) discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-multiple-battery-emulators-on-one-broker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running multiple Battery Emulators on one broker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrating-from-older-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migrating from older releases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ota_update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTA Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webserver_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webserver guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible chargers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compatible chargers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chargers/chevrolet_volt_gen1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chevrolet Volt Gen1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chargers/nissan_leaf_pdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charger Nissan LEAF PDM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chargers/tesla_model_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charger Tesla Model 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN tips
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CAN tips
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../can_related/can_add_on_mcp2515/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN add‐on (MCP2515)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../can_related/can_fd_add_on_mcp2518fd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why add CAN-FD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../can_related/can_filter_hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN filter hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../can_related/can_logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../can_related/can_replay/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN replay
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../can_related/can_wiring_practices_and_troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN wiring practices and troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing to project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing to project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CONTRIBUTING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/data_needed_for_new_battery_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New battery integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/data_needed_for_new_inverter_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New inverter integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/exception_crash_reporting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exception Crash reporting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling MQTT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#published-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Published data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Published data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-robustness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection robustness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscriptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subscriptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opening-and-closing-contactors-stop-and-pause-vs-resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening and closing contactors (STOP and PAUSE vs. RESUME)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SET_LIMITS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET_LIMITS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-limit-is-applied-and-expires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the limit is applied and expires
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#home-assistant-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Home Assistant Discovery
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Home Assistant Discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sensor-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensor discovery
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensor discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-discovery-payload-is-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the discovery payload is built
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cell-voltage-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cell-voltage discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-command-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Button (command) discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-multiple-battery-emulators-on-one-broker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running multiple Battery Emulators on one broker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrating-from-older-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migrating from older releases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+    <a href="https://github.com/dalathegreat/Battery-Emulator-Wiki/blob/main/docs/setup/software/mqtt.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>MQTT</h1>
+
+<p>The Battery-Emulator is compatible with MQTT. It can be configured to publish data to your MQTT broker and then be used in whatever way you choose. You can modify the Battery-Emulator code to publish more data, less data, or other data, as well as subscribing to MQTT topics. There are also advanced functions that can be triggered via MQTT, such as charge limits.</p>
+<p>The main purpose of this implementation is better integration with popular home automation platforms such as Home Assistant, in order to (for example) keep track of battery temperature and cell deviation. If "MQTT" and "Home Assistant" are not familiar words, you will likely not benefit from this until you're up to speed on the current state of home automation.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>The MQTT topic name, the Home Assistant object-ID prefix, the HA device name, and the HA device identifier are no longer independently configurable settings. All four are automatically set to the device's <strong>hostname</strong>, which itself defaults to <code>battery-emulator-xxxx</code> (<code>xxxx</code> being the last two bytes of the device's MAC address) unless a custom hostname has been set on the Connectivity settings page. The examples on this page use <code>battery-emulator-a1b2</code> as a stand-in for this value — substitute your device's actual hostname wherever you see it.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>This page documents the MQTT implementation as found in <code>Software/src/devboard/mqtt/mqtt.cpp</code>. The behaviour described here matches recent builds. Older releases behave differently — see <a href="#migrating-from-older-releases">Migrating from older releases</a>.</p>
+</div>
+<h2 id="enabling-mqtt">Enabling MQTT<a class="headerlink" href="#enabling-mqtt" title="Permanent link">~</a></h2>
+<p>To start using MQTT, enable the <strong>Enable MQTT</strong> checkbox under the Integration settings in the Web UI. The remaining MQTT fields only appear once that box is ticked.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Range / default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MQTT server</strong></td>
+<td>hostname or IP</td>
+<td>Broker address (plain TCP; TLS is not implemented)</td>
+</tr>
+<tr>
+<td><strong>MQTT port</strong></td>
+<td>1–65535, default <code>1883</code></td>
+<td>Broker port</td>
+</tr>
+<tr>
+<td><strong>MQTT user</strong> / <strong>MQTT password</strong></td>
+<td>printable ASCII</td>
+<td>Credentials; leaving the password field blank keeps the stored one</td>
+</tr>
+<tr>
+<td><strong>MQTT timeout ms</strong></td>
+<td>1–60000, default <code>2000</code></td>
+<td>Network timeout of the underlying esp-mqtt client</td>
+</tr>
+<tr>
+<td><strong>MQTT publish interval (seconds)</strong></td>
+<td>1–300, default <code>5</code></td>
+<td>Main publish cadence (see <a href="#published-data">Published data</a>)</td>
+</tr>
+<tr>
+<td><strong>Send all cellvoltages via MQTT</strong></td>
+<td>off</td>
+<td>Enables the <code>spec_data*</code> topics</td>
+</tr>
+<tr>
+<td><strong>Publish heap metric diagnostics</strong></td>
+<td>off</td>
+<td>Adds four heap sensors to <code>/info</code> and to autodiscovery</td>
+</tr>
+<tr>
+<td><strong>Allow remote BMS reset via MQTT</strong></td>
+<td>off</td>
+<td>Gates the <code>BMSRESET</code> command</td>
+</tr>
+<tr>
+<td><strong>Home Assistant autodiscovery</strong></td>
+<td>off</td>
+<td>Publishes retained HA discovery configs</td>
+</tr>
+<tr>
+<td><strong>Autodiscovery topic</strong></td>
+<td>default <code>homeassistant</code></td>
+<td>Base topic for discovery messages</td>
+</tr>
+<tr>
+<td><strong>Publish at firmware updates</strong></td>
+<td>off</td>
+<td>Publish the discovery configs whenever a firmware update is detected</td>
+</tr>
+<tr>
+<td><strong>Publish at next boot</strong></td>
+<td>off</td>
+<td>Publish the discovery configs at next boot (unticks automatically)</td>
+</tr>
+</tbody>
+</table>
+<p>The device's <strong>Hostname</strong> field (set in the Network config section) determines the MQTT topic name, the HA object-ID prefix, the HA device name, and the HA device identifier — see the note at the top of this page.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>The publish interval is applied when the MQTT client is started, and the heap-metrics checkbox changes which sensors are auto-discovered. Both take effect <strong>after a restart</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>Make sure that your LAN is not on <code>192.168.4.x</code>, since this conflicts with the built-in ESP access point!</p>
+</div>
+<h2 id="published-data">Published data<a class="headerlink" href="#published-data" title="Permanent link">~</a></h2>
+<p>Out of the box, the implementation publishes the following topics. All topics are prefixed with the device's topic name (its hostname), shown here as <code>battery-emulator-a1b2</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Contents</th>
+<th>Retained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>battery-emulator-a1b2/status</code></td>
+<td>Availability string (<code>online</code> / <code>offline</code>)</td>
+<td>Yes (both values)</td>
+</tr>
+<tr>
+<td><code>battery-emulator-a1b2/info</code></td>
+<td>System/emulator status + battery #1 state JSON</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>battery-emulator-a1b2/info_2</code></td>
+<td>Battery #2 state JSON (double-battery setups)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>battery-emulator-a1b2/info_3</code></td>
+<td>Battery #3 state JSON (triple-battery setups)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>battery-emulator-a1b2/spec_data</code></td>
+<td>All cell voltages and per-cell balancing status (when enabled)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>battery-emulator-a1b2/spec_data_2</code></td>
+<td>Battery #2 cell voltages and per-cell balancing status (when enabled)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>battery-emulator-a1b2/spec_data_3</code></td>
+<td>Battery #3 cell voltages and per-cell balancing status (when enabled)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>battery-emulator-a1b2/events</code></td>
+<td>Battery-Emulator events</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>When a <strong>second battery</strong> is configured, its values are published to its <strong>own topic</strong> <code>.../info_2</code>, using the <strong>same key names</strong> as battery #1 (<code>SOC</code>, <code>battery_voltage</code>, …, without any suffix), and its cell data goes to <code>.../spec_data_2</code>. A <strong>third battery</strong>, on compatible integrations, follows the same pattern with <code>.../info_3</code> and <code>.../spec_data_3</code>. The global emulator values (<code>bms_status</code>, <code>pause_status</code>, <code>event_level</code>, <code>emulator_status</code>, <code>hardware</code>, <code>software_version</code>, <code>cpu_temp</code>, <code>emulator_uptime</code>, <code>heap_*</code>) are only present on <code>.../info</code>.</p>
+<p>Two publish cadences are used:</p>
+<ul>
+<li>The <strong>main interval</strong> is the configurable <strong>MQTT publish interval</strong> (default <strong>5 s</strong>) and covers <code>events</code> and all <code>info</code> topics. On each cycle the order is: <code>events</code> → <code>info</code> → <code>info_2</code> → <code>info_3</code>.</li>
+<li><strong>Cell data</strong> (<code>spec_data*</code>) is published on a fixed <strong>60-second</strong> cadence, independent of the main interval. Cell voltages change slowly, and these are by far the largest payloads.</li>
+</ul>
+<p>Publishing is skipped entirely while an <strong>OTA update</strong> is in progress, so a firmware upload is not competing with MQTT traffic.</p>
+<p>Values are only published once <strong>valid data</strong> exists. Battery values appear only after the battery has actually been seen on CAN (not merely expected), CAN sending is allowed, and the post-boot startup delay has passed. Individual values that arrive later — such as <code>total_capacity</code> on batteries that derive it from received data, <code>insulation_resistance</code>, or <code>charged_energy</code>/<code>discharged_energy</code> — are omitted from the JSON until they are known. In Home Assistant this shows as <strong>"unknown"</strong> rather than a false <code>0</code> (or a false default like <code>370.0 V</code>) during boot.</p>
+<p><strong><code>&lt;hostname&gt;/info</code> (and <code>/info_2</code>, <code>/info_3</code>)</strong></p>
+<p><code>.../info</code> holds the system/emulator status plus battery #1's state. <code>.../info_2</code> and <code>.../info_3</code> hold only the respective battery's state, with identical key names. Numeric scaling notes:</p>
+<ul>
+<li>All voltages (<code>battery_voltage</code>, <code>cell_min_voltage</code>, <code>cell_max_voltage</code>) are published in <strong>volts</strong> as floats.</li>
+<li><code>cell_voltage_delta</code> is the raw difference and is published in <strong>millivolts</strong>.</li>
+<li><code>battery_current</code> is in amperes, power values in watts, energy/capacity values in watt-hours.</li>
+<li><code>insulation_resistance</code> is in <strong>kΩ</strong>.</li>
+<li>Temperatures are in °C. <code>cpu_temp</code> is published as a float (display precision is suggested to HA as 1 decimal).</li>
+<li>Heap values are in <strong>bytes</strong>, <code>heap_fragmentation</code> in percent.</li>
+</ul>
+<p>Example payload (single battery), published to <code>battery-emulator-a1b2/info</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"bms_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"pause_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUNNING"</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">"SOC"</span><span class="p">:</span><span class="w"> </span><span class="mf">63.30</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">"SOC_real"</span><span class="p">:</span><span class="w"> </span><span class="mf">61.05</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">"state_of_health"</span><span class="p">:</span><span class="w"> </span><span class="mf">92.00</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">"temperature_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">"temperature_max"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.4</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">"stat_batt_power"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1450.0</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">"battery_current"</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.5</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">"battery_voltage"</span><span class="p">:</span><span class="w"> </span><span class="mf">386.4</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">"cell_max_voltage"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.787</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">"cell_min_voltage"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.765</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nt">"cell_voltage_delta"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.0</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="nt">"total_capacity"</span><span class="p">:</span><span class="w"> </span><span class="mf">75000.0</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nt">"remaining_capacity_real"</span><span class="p">:</span><span class="w"> </span><span class="mf">45780.0</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nt">"remaining_capacity"</span><span class="p">:</span><span class="w"> </span><span class="mf">47475.0</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="nt">"max_discharge_power"</span><span class="p">:</span><span class="w"> </span><span class="mf">30000.0</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nt">"max_charge_power"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="nt">"balancing_active_cells"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="nt">"balancing_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ready"</span><span class="p">,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="nt">"charging_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Discharging"</span><span class="p">,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="nt">"limiting_factor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Battery"</span><span class="p">,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="nt">"event_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO"</span><span class="p">,</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="nt">"emulator_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUNNING"</span><span class="p">,</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="nt">"hardware"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waveshare ESP32-S3 RS485 CAN"</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="nt">"software_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.2.dev"</span><span class="p">,</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="nt">"cpu_temp"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.3</span><span class="p">,</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="nt">"emulator_uptime"</span><span class="p">:</span><span class="w"> </span><span class="mi">10001</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Keys appear conditionally:</p>
+<ul>
+<li>All battery values — only once the battery has been detected on CAN, is still communicating, CAN sending is allowed and the board has finished booting. Before that, <code>.../info</code> contains only the global emulator values.</li>
+<li><code>total_capacity</code> — only once known (non-zero); some battery integrations derive it from received data.</li>
+<li><code>charged_energy</code> / <code>discharged_energy</code> — only on batteries that support charged-energy tracking, and only once both totals are non-zero. Each battery reports <strong>its own</strong> totals.</li>
+<li><code>cell_max_voltage</code> / <code>cell_min_voltage</code> / <code>cell_voltage_delta</code> — only once per-cell voltages have been populated.</li>
+<li><code>insulation_resistance</code> — only on batteries that report insulation resistance, and only once a valid sample has been decoded.</li>
+<li><code>cpu_temp</code> — only when <strong>Measure CPU temperature</strong> is enabled in the settings.</li>
+<li><code>heap_free</code>, <code>heap_max_block</code>, <code>heap_min_free</code>, <code>heap_fragmentation</code> — only when <strong>Publish heap metric diagnostics</strong> is enabled.</li>
+<li><code>dc_dc_current</code> / <code>dc_dc_voltage</code> — only for Tesla Model 3/Y and Model S/X.</li>
+<li><code>autocal_taper</code>, <code>autocal_dwell_s</code>, <code>autocal_cooldown_ready</code>, <code>autocal_soc_drift</code>, <code>min_cell_number</code>, <code>max_cell_number</code> — only for the BYD Atto 3.</li>
+<li><code>leaf_hx</code> — only for the Nissan Leaf, and only once a battery-group reply with a known layout has been decoded.</li>
+</ul>
+<p><strong>Status strings</strong></p>
+<p><code>balancing_status</code> is one of: <code>Unknown</code>, <code>Error</code>, <code>Ready</code>, <code>Active</code>, <code>Pending</code>. <code>Pending</code> means cells are flagged for balancing but the BMS is not bleeding them yet.</p>
+<p><code>charging_state</code> is one of: <code>Idle</code>, <code>Charging</code>, <code>Discharging</code> (derived from the sign of the battery current).</p>
+<p><code>limiting_factor</code> tells you what is currently capping the allowed power in the active direction: <code>Inverter</code>, <code>UserSetting</code>, <code>Battery</code>, or <code>Idle</code> when the battery is neither charging nor discharging.</p>
+<p><strong>Heap metric diagnostics</strong></p>
+<p>When enabled, four internal-RAM heap values are added to <code>.../info</code>, using the same sources and fragmentation formula as the ESPHome debug component, so they are directly comparable with an ESPHome node's:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"heap_free"</span><span class="p">:</span><span class="w"> </span><span class="mi">157284</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">"heap_max_block"</span><span class="p">:</span><span class="w"> </span><span class="mi">110592</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">"heap_min_free"</span><span class="p">:</span><span class="w"> </span><span class="mi">141020</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">"heap_fragmentation"</span><span class="p">:</span><span class="w"> </span><span class="mf">29.7</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>heap_fragmentation</code> is the share of the free heap that is not reachable as one contiguous block. It is omitted rather than published as <code>NaN</code> if the free heap ever reads zero.</p>
+<p><strong><code>&lt;hostname&gt;/spec_data</code></strong></p>
+<p>Published only when <strong>Send all cellvoltages via MQTT</strong> is enabled, and only on battery implementations that report per-cell voltages. Published every <strong>60 seconds</strong> (see above). Cell voltages are in <strong>volts</strong> as floats; the per-cell balancing status is included in the same message.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">"cell_voltages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">3.779</span><span class="p">,</span><span class="w"> </span><span class="mf">3.780</span><span class="p">,</span><span class="w"> </span><span class="mf">3.782</span><span class="p">,</span><span class="w"> </span><span class="mf">3.767</span><span class="p">,</span><span class="w"> </span><span class="mf">3.783</span><span class="p">,</span><span class="w"> </span><span class="mf">3.769</span><span class="p">,</span><span class="w"> </span><span class="mf">3.782</span><span class="p">,</span><span class="w"> </span><span class="mf">3.768</span><span class="p">],</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">"cell_balancing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">]</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The two arrays always have the same length and describe the same snapshot: element <em>N</em> of <code>cell_balancing</code> is the balancing state of the cell whose voltage is element <em>N</em> of <code>cell_voltages</code>. The <code>cell_voltages</code> key is <strong>absent</strong> until the BMS has actually filled the voltages in, so the very first messages after boot may contain only <code>cell_balancing</code>.</p>
+<p>The whole message must fit the 4 KB MQTT message buffer. If a pack has so many cells that the payload would overflow it, the message is skipped (with <code>Cell data MQTT msg too large for buffer</code> in the log) rather than truncated, and the rest of the publish cycle continues normally.</p>
+<p><strong><code>&lt;hostname&gt;/events</code></strong></p>
+<p>One message is published per new, not-yet-published event, in ascending timestamp order. All values are strings.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESET_SW"</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO"</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Info: The board was reset via software, webserver or OTA. Normal operation"</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">"millis"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001"</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong><code>&lt;hostname&gt;/status</code> (availability / LWT)</strong></p>
+<p>A plain-text availability topic (not JSON), following the standard MQTT Last-Will pattern:</p>
+<ul>
+<li><code>online</code> is published <strong>once, retained</strong>, each time the device connects to the broker.</li>
+<li><code>offline</code> is registered as the broker's Last Will and Testament (QoS 1, <strong>retained</strong>), so the broker publishes it automatically if the connection drops unexpectedly.</li>
+</ul>
+<p>Because both values are retained, any subscriber (including Home Assistant after a restart) immediately receives the current availability without waiting for the next publish. The MQTT keepalive is set to 30 seconds, so after a sudden failure (power loss, Wi-Fi drop) the broker marks the device <code>offline</code> within roughly 45 seconds.</p>
+<p>This topic is referenced by the <code>availability</code> block of every Home Assistant discovery message.</p>
+<h3 id="connection-robustness">Connection robustness<a class="headerlink" href="#connection-robustness" title="Permanent link">~</a></h3>
+<p>A few implementation details are worth knowing if you are debugging a flaky broker or a weak Wi-Fi link:</p>
+<ul>
+<li><strong>Publishes use QoS 0</strong>; the command subscription uses QoS 1.</li>
+<li>The esp-mqtt <strong>outbox is capped at 16 KB</strong>. Queued traffic that cannot reach the broker fails to enqueue instead of growing on the heap until the device runs out of memory.</li>
+<li><strong>A failed publish is logged once per outage.</strong> The first failure of an outage produces a <code>... MQTT msg could not be sent</code> line; the message is not repeated every cycle until a complete publish cycle has succeeded again.</li>
+<li>The MQTT client id is <code>BatteryEmulatorClient-&lt;hostname&gt;</code>.</li>
+</ul>
+<h2 id="subscriptions">Subscriptions<a class="headerlink" href="#subscriptions" title="Permanent link">~</a></h2>
+<p>The Battery-Emulator subscribes to <code>&lt;hostname&gt;/command/+</code>, e.g. <code>battery-emulator-a1b2/command/+</code> (subscription QoS 1).</p>
+<p>The currently supported commands are:</p>
+<ul>
+<li><code>BMSRESET</code> — Triggers a hardware power-cycle of the BMS. <strong>Only acted upon if remote BMS reset is enabled</strong> (see <a href="../../hardware/periodic_bms_reset/#remote-trigger-through-mqtt">Remote trigger through MQTT</a>); otherwise the message is ignored.</li>
+<li><code>PAUSE</code> — Triggers the pause feature</li>
+<li><code>RESUME</code> — Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see <a href="#opening-and-closing-contactors-stop-and-pause-vs-resume">Opening and closing contactors</a>)</li>
+<li><code>RESTART</code> — Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)</li>
+<li><code>STOP</code> — Triggers the equipment stop (opens contactors); see <a href="#opening-and-closing-contactors-stop-and-pause-vs-resume">Opening and closing contactors</a></li>
+<li><code>SET_LIMITS</code> — Sets a temporary charge and/or discharge limit</li>
+</ul>
+<p>For example: <code>battery-emulator-a1b2/command/PAUSE</code></p>
+<h3 id="opening-and-closing-contactors-stop-and-pause-vs-resume">Opening and closing contactors (<code>STOP</code> and <code>PAUSE</code> vs. <code>RESUME</code>)<a class="headerlink" href="#opening-and-closing-contactors-stop-and-pause-vs-resume" title="Permanent link">~</a></h3>
+<p>The auto-discovered button labelled <strong>"Open Contactors"</strong> is the <code>STOP</code> command. There is <strong>no separate "Close Contactors" command or button</strong> — closing the contactors is exposed through MQTT as the <code>RESUME</code> command (the auto-discovered "Resume charge/discharge" button). The naming is asymmetric, which is why it can look as though closing is missing: <code>STOP</code> is named after its contactor effect, while its inverse <code>RESUME</code> is named after its pause effect.</p>
+<p>Under the hood, <code>STOP</code> latches an equipment-stop state, and <code>RESUME</code> clears it:</p>
+<ul>
+<li><code>STOP</code> sets the equipment-stop flag, which forces the contactor state machine open and prevents it from re-closing.</li>
+<li><code>RESUME</code> clears the equipment-stop flag, which allows the contactor state machine to run through precharge and close again.</li>
+</ul>
+<p>So the effective mapping is:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Effect on contactors</th>
+<th>HA button label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STOP</code></td>
+<td>Opens (sets equipment stop)</td>
+<td>Open Contactors</td>
+</tr>
+<tr>
+<td><code>RESUME</code></td>
+<td>Closes (clears equipment stop)</td>
+<td>Resume charge/discharge</td>
+</tr>
+</tbody>
+</table>
+<p>Two things to keep in mind:</p>
+<ul>
+<li><code>RESUME</code> <em>allows</em> the contactors to close; it does not <em>force</em> them closed. They only actually close if the inverter also permits closing and the normal preconditions are met (battery detected, past the post-boot startup delay, no faults). If the inverter is what is holding the contactors open, <code>RESUME</code> will not override that.</li>
+<li><code>RESUME</code> does double duty — it both ends a <code>PAUSE</code> and clears an equipment stop. There is no command that closes the contactors without also resuming charge/discharge, just as <code>STOP</code> cannot open them without also pausing.</li>
+</ul>
+<h3 id="set_limits">SET_LIMITS<a class="headerlink" href="#set_limits" title="Permanent link">~</a></h3>
+<p>Sets a <strong>temporary</strong> charge and/or discharge current limit for <code>timeout</code> seconds. While the limit is active it overrides the manual (user-set) limit in settings.</p>
+<p>Limits are set as deciampere, i.e. <code>300</code> = 30.0 A.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Data type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_charge</code></td>
+<td>number</td>
+<td>disable limit</td>
+</tr>
+<tr>
+<td><code>max_discharge</code></td>
+<td>number</td>
+<td>disable limit</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>seconds</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>max_charge</code> or <code>max_discharge</code> is omitted (or not an integer), the corresponding limit is disabled. If <code>timeout</code> is omitted, it defaults to 30 seconds.</p>
+<p>Example payload (max charge 30 A, max discharge 40 A, timeout 60 seconds), published to <code>battery-emulator-a1b2/command/SET_LIMITS</code>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">"max_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">"max_discharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="how-the-limit-is-applied-and-expires">How the limit is applied and expires<a class="headerlink" href="#how-the-limit-is-applied-and-expires" title="Permanent link">~</a></h4>
+<ul>
+<li><strong>Temporary by design.</strong> The main loop checks every cycle whether <code>now &gt; (timestamp_of_last_command + timeout)</code>. Once that is true, the remote limit flags are cleared and the remote values are zeroed, so the limit must be <strong>re-sent before each timeout</strong> to stay in effect.</li>
+<li><strong>Not persisted.</strong> The remote limit is never written to flash, so it is also cleared by a reboot. After power-on no remote limit is active until a new <code>SET_LIMITS</code> is received.</li>
+<li><strong>Reverts to the manual/BMS limit, not to "unrestricted".</strong> When the remote limit expires, the allowed current falls back to the manual (user-set) limit, or to the BMS/inverter-derived limit if no manual limit applies.</li>
+<li><strong>Overrides rather than combines with the manual limit.</strong> While a remote limit is active, the manual user limit is bypassed — the remote value is used instead. The remote limit can therefore sit <em>above</em> your manual limit during the active window. It still only ever <em>lowers</em> the BMS/inverter-derived allowed current (it caps, it cannot raise the battery's own limit).</li>
+</ul>
+<p>To cancel a limit quickly, send a new message with a short timeout (for instance <code>1</code> second).</p>
+<h2 id="home-assistant-discovery">Home Assistant Discovery<a class="headerlink" href="#home-assistant-discovery" title="Permanent link">~</a></h2>
+<p>When <a href="../home_assistant/">Home Assistant</a> auto-discovery is enabled, the device publishes retained configuration topics so entities are created automatically. Discovery topics are published under the configurable <strong>Home Assistant auto discovery topic</strong> (default <code>homeassistant</code>); the entity/object portion and the device identity are both derived from the device's hostname.</p>
+<p>All discovery payloads share a common block:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"battery-emulator-a1b2"</span><span class="p">],</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Battery Emulator"</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSS"</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2"</span><span class="p">,</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">"hw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waveshare ESP32-S3 RS485 CAN"</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">"sw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.2.dev"</span><span class="p">,</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nt">"configuration_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.1.50"</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/status"</span><span class="w"> </span><span class="p">}],</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="nt">"payload_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="nt">"payload_not_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offline"</span><span class="p">,</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span><span class="nt">"enabled_by_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>manufacturer</code> and <code>model</code> are fixed values; <code>identifiers</code> and <code>name</code> are the device's hostname, so each Battery-Emulator on the network appears as its own distinct HA device as long as each has a unique hostname (the default, MAC-based hostname already guarantees this). <code>hw_version</code> is the board name, <code>sw_version</code> the running firmware version, and <code>configuration_url</code> links straight to the device's Web UI from the Home Assistant device page.</p>
+<p>The full set of auto-discovered sensors is generated from the battery and global templates.</p>
+<p><strong>Per battery:</strong> <code>SoC (scaled)</code>, <code>SoC (real)</code>, <code>State of Health</code>, <code>Temperature Min/Max</code>, <code>Battery Power</code>, <code>Battery Current</code>, <code>Cell Max/Min Voltage</code>, <code>Cell Voltage Delta</code>, <code>Battery Voltage</code>, <code>Total Capacity</code>, <code>Remaining Capacity (scaled)</code> and <code>(real)</code>, <code>Max Charge/Discharge Power</code>, <code>Battery Charged/Discharged Energy</code>, <code>Insulation Resistance</code>, <code>Balancing Cells</code>, <code>Balancing Status</code>, <code>Charging State</code>, <code>Limiting Factor</code>, plus the battery-specific <code>DC-DC Current/Voltage</code> (Tesla), the <code>BYD Auto-cal</code> set and <code>Min/Max Cell Number</code> (BYD Atto 3), and <code>Hx</code> (Nissan Leaf).</p>
+<p><strong>Emulator-level (diagnostic):</strong> <code>BMS Status</code>, <code>Pause Status</code>, <code>Event Level</code>, <code>Emulator Status</code>, <code>Emulator Uptime</code>, <code>Emulator Version</code>, <code>CPU Temperature</code>, <code>Event</code>, and — when enabled — <code>Heap Free</code>, <code>Heap Max Block</code>, <code>Heap Min Free</code>, <code>Heap Fragmentation</code>. These are published with <code>"entity_category": "diagnostic"</code>, so Home Assistant files them under the device's Diagnostic section instead of the main sensor list. The <strong>Reboot Emulator</strong> button is a diagnostic entity too.</p>
+<p>With a second (or third) battery, each battery sensor is duplicated with a <code>2</code> (or <code>3</code>) name suffix and a <code>_2</code> (<code>_3</code>) suffix on its <code>unique_id</code> and object ID; its <code>state_topic</code> points at <code>.../info_2</code> (<code>.../info_3</code>), and its <code>value_template</code> uses the plain, un-suffixed key.</p>
+<h3 id="sensor-discovery">Sensor discovery<a class="headerlink" href="#sensor-discovery" title="Permanent link">~</a></h3>
+<p>Topic: <code>&lt;discovery topic&gt;/sensor/&lt;hostname&gt;/&lt;entity_id&gt;/config</code> (battery 2/3 sensors use the <code>_2</code>/<code>_3</code>-suffixed entity id in the topic, e.g. <code>.../SOC_2/config</code>).</p>
+<p>Example (<code>homeassistant/sensor/battery-emulator-a1b2/SOC/config</code>):</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SoC (scaled)"</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nt">"state_topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/info"</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nt">"unique_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2_SOC"</span><span class="p">,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="nt">"default_entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sensor.battery-emulator-a1b2_SOC"</span><span class="p">,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="nt">"value_template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ value_json.SOC | default(none) }}"</span><span class="p">,</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nt">"unit_of_measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%"</span><span class="p">,</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="nt">"device_class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery"</span><span class="p">,</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="nt">"state_class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"measurement"</span><span class="p">,</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="nt">"suggested_display_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"battery-emulator-a1b2"</span><span class="p">],</span><span class="w"> </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Battery Emulator"</span><span class="p">,</span><span class="w"> </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSS"</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2"</span><span class="p">,</span><span class="w"> </span><span class="nt">"hw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waveshare ESP32-S3 RS485 CAN"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.2.dev"</span><span class="p">,</span><span class="w"> </span><span class="nt">"configuration_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.1.50"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/status"</span><span class="w"> </span><span class="p">}],</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="nt">"payload_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="nt">"payload_not_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offline"</span><span class="p">,</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">  </span><span class="nt">"enabled_by_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The same sensor for a second battery (<code>.../SOC_2/config</code>) differs only in: <code>"name": "SoC (scaled) 2"</code>, <code>"unique_id": "battery-emulator-a1b2_SOC_2"</code>, <code>"default_entity_id": "sensor.battery-emulator-a1b2_SOC_2"</code>, and <code>"state_topic": "battery-emulator-a1b2/info_2"</code> — the <code>value_template</code> stays <code>{{ value_json.SOC | default(none) }}</code>.</p>
+<h4 id="how-the-discovery-payload-is-built">How the discovery payload is built<a class="headerlink" href="#how-the-discovery-payload-is-built" title="Permanent link">~</a></h4>
+<ul>
+<li><strong><code>value_template</code> uses <code>| default(none)</code>.</strong> Keys that are legitimately absent (a battery that has not been detected yet, a capacity that is not known yet) therefore land in Home Assistant as <em>unknown</em> instead of raising a template error on every message.</li>
+<li><strong><code>state_class</code></strong> is set to <code>measurement</code> for every sensor that has a <code>device_class</code>. The numeric sensors that deliberately have no <code>device_class</code> — <code>balancing_active_cells</code>, <code>insulation_resistance</code>, <code>leaf_hx</code>, <code>heap_fragmentation</code> — get <code>measurement</code> explicitly.</li>
+<li><strong>Capacity sensors use <code>device_class: energy_storage</code></strong>, not <code>energy</code>. Home Assistant rejects <code>energy</code> combined with <code>state_class: measurement</code>, and <code>total_capacity</code> / <code>remaining_capacity*</code> represent a currently stored amount rather than a running total.</li>
+<li><strong><code>charged_energy</code> / <code>discharged_energy</code> keep <code>device_class: energy</code></strong> but use <code>state_class: total_increasing</code>, since they are genuine lifetime counters.</li>
+<li><strong><code>suggested_display_precision</code></strong> is set to 3 for cell min/max voltage, 2 for <code>leaf_hx</code>, 1 for battery current, CPU temperature, both SoC sensors and heap fragmentation, and 0 for insulation resistance. It is deliberately not applied to <code>battery_voltage</code>.</li>
+<li><strong>MDI icons</strong> are assigned centrally: by entity for the status-like sensors (<code>mdi:fuel-cell</code> for the balancing pair, <code>mdi:information-box-outline</code> for BMS status, <code>mdi:resistor</code> for insulation, <code>mdi:battery-heart-variant</code> for Hx, <code>mdi:home-battery</code> / <code>mdi:home-battery-outline</code> for charging state and limiting factor, <code>mdi:information-outline</code> for emulator status / event level, <code>mdi:battery-outline</code> for pause status, <code>mdi:tag-outline</code> for the version, <code>mdi:memory</code> for the heap sensors), and by device class for the rest (<code>mdi:current-dc</code> for voltage, <code>mdi:equal</code> for current).</li>
+</ul>
+<h3 id="cell-voltage-discovery">Cell-voltage discovery<a class="headerlink" href="#cell-voltage-discovery" title="Permanent link">~</a></h3>
+<p>Topic: <code>&lt;discovery topic&gt;/sensor/&lt;hostname&gt;/cell_voltage&lt;N&gt;/config</code> (second battery uses a <code>_2_</code> suffix in the topic, third battery <code>_3_</code>).</p>
+<p>Example (<code>homeassistant/sensor/battery-emulator-a1b2/cell_voltage96/config</code>):</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Battery Cell Voltage 96"</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">"default_entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sensor.battery-emulator-a1b2_battery_voltage_cell96"</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">"unique_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2battery-emulator-a1b2__battery_voltage_cell96"</span><span class="p">,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="nt">"device_class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voltage"</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="nt">"state_class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"measurement"</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="nt">"state_topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/spec_data"</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="nt">"unit_of_measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V"</span><span class="p">,</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="nt">"suggested_display_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mdi:current-dc"</span><span class="p">,</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nt">"value_template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ value_json.cell_voltages[95] }}"</span><span class="p">,</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"battery-emulator-a1b2"</span><span class="p">],</span><span class="w"> </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Battery Emulator"</span><span class="p">,</span><span class="w"> </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSS"</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2"</span><span class="p">,</span><span class="w"> </span><span class="nt">"hw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waveshare ESP32-S3 RS485 CAN"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.2.dev"</span><span class="p">,</span><span class="w"> </span><span class="nt">"configuration_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.1.50"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">  </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/status"</span><span class="w"> </span><span class="p">}],</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">  </span><span class="nt">"payload_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">  </span><span class="nt">"payload_not_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offline"</span><span class="p">,</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">  </span><span class="nt">"enabled_by_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Cell-voltage entities update every 60 seconds, matching the <code>spec_data</code> publish cadence.</p>
+<p>Cell-voltage discovery is <strong>retried until the cell count is known</strong>. A battery that has not yet reported how many cells it has does not block the rest of the discovery pack — the per-cell configs are simply published on a later cycle, once the count arrives.</p>
+<h3 id="event-discovery">Event discovery<a class="headerlink" href="#event-discovery" title="Permanent link">~</a></h3>
+<p>Topic: <code>&lt;discovery topic&gt;/sensor/&lt;hostname&gt;/event/config</code></p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event"</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">"state_topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/events"</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">"unique_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2_event"</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nt">"default_entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sensor.battery-emulator-a1b2_event"</span><span class="p">,</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="nt">"value_template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ value_json.event_type ~ ' (c:' ~ value_json.count ~ ',m:' ~ value_json.millis ~ ') ' ~ value_json.message }}"</span><span class="p">,</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="nt">"json_attributes_topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/events"</span><span class="p">,</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nt">"json_attributes_template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ value_json | tojson }}"</span><span class="p">,</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mdi:information-outline"</span><span class="p">,</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="nt">"entity_category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diagnostic"</span><span class="p">,</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"battery-emulator-a1b2"</span><span class="p">],</span><span class="w"> </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Battery Emulator"</span><span class="p">,</span><span class="w"> </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOSS"</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2"</span><span class="p">,</span><span class="w"> </span><span class="nt">"hw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Waveshare ESP32-S3 RS485 CAN"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sw_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.2.dev"</span><span class="p">,</span><span class="w"> </span><span class="nt">"configuration_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://192.168.1.50"</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span><span class="nt">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"battery-emulator-a1b2/status"</span><span class="w"> </span><span class="p">}],</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">  </span><span class="nt">"payload_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">  </span><span class="nt">"payload_not_available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offline"</span><span class="p">,</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">  </span><span class="nt">"enabled_by_default"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="button-command-discovery">Button (command) discovery<a class="headerlink" href="#button-command-discovery" title="Permanent link">~</a></h3>
+<p>In addition to sensors, Home Assistant <strong>Button</strong> entities are auto-discovered for the supported commands, so they can be triggered from the HA dashboard. These are published once on MQTT connect, and only marked as done once <em>all</em> of them went out — a mid-list failure is retried on the next connect rather than leaving the remaining buttons undiscovered.</p>
+<p>Topic: <code>&lt;discovery topic&gt;/button/&lt;hostname&gt;/&lt;command&gt;/config</code></p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Command</th>
+<th>Icon</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reset BMS</td>
+<td><code>BMSRESET</code></td>
+<td><code>mdi:star-four-points-box-outline</code></td>
+<td>Triggers the BMS reset feature (only if remote BMS reset is enabled)</td>
+</tr>
+<tr>
+<td>Pause charge/discharge</td>
+<td><code>PAUSE</code></td>
+<td><code>mdi:battery-minus-outline</code></td>
+<td>Triggers the pause feature</td>
+</tr>
+<tr>
+<td>Resume charge/discharge</td>
+<td><code>RESUME</code></td>
+<td><code>mdi:battery-sync-outline</code></td>
+<td>Resumes from the paused state</td>
+</tr>
+<tr>
+<td>Reboot Emulator</td>
+<td><code>RESTART</code></td>
+<td><code>mdi:restart</code></td>
+<td>Restarts the Battery-Emulator (diagnostic entity)</td>
+</tr>
+<tr>
+<td>Open Contactors</td>
+<td><code>STOP</code></td>
+<td><code>mdi:battery-remove-outline</code></td>
+<td>Triggers the stop feature</td>
+</tr>
+</tbody>
+</table>
+<h2 id="running-multiple-battery-emulators-on-one-broker">Running multiple Battery Emulators on one broker<a class="headerlink" href="#running-multiple-battery-emulators-on-one-broker" title="Permanent link">~</a></h2>
+<p>Multiple Battery Emulators can share the same MQTT broker, and they separate themselves automatically: the MQTT topic name, the HA object-ID prefix, the HA device name, and the HA device identifier all default to the device's hostname, which itself defaults to <code>battery-emulator-a1b2</code> (<code>a1b2</code> being the last two bytes of the device's MAC address) — making it unique out of the box without any manual configuration. If you'd prefer a friendlier name, set a custom hostname on the Connectivity settings page; just make sure each device on the same broker gets a different one.</p>
+<h2 id="migrating-from-older-releases">Migrating from older releases<a class="headerlink" href="#migrating-from-older-releases" title="Permanent link">~</a></h2>
+<p>Recent builds changed the MQTT layout in several ways that affect anyone consuming the raw topics (manually configured <code>mqtt:</code> sensors, Node-RED flows, Telegraf, custom scripts). <strong>Home Assistant auto-discovery users are migrated automatically</strong> — the discovery configs are updated and all <code>unique_id</code>s are preserved, so existing entities keep their history and no duplicates appear. Some entity <em>display names</em> changed (<code>SOC (Scaled)</code> → <code>SoC (scaled)</code>, <code>Stat Batt Power</code> → <code>Battery Power</code>, <code>State Of Health</code> → <code>State of Health</code>, the <code>RESTART</code> button → <code>Reboot Emulator</code>); any custom name you set in Home Assistant is untouched.</p>
+<ul>
+<li><strong>Battery 2/3 moved to their own topics.</strong> Previously, a second/third battery's values were added to <code>.../info</code> with suffixed keys (<code>SOC_2</code>, <code>battery_voltage_3</code>, …). They are now published to <code>.../info_2</code> and <code>.../info_3</code> using the same plain key names as battery #1. Update raw consumers to subscribe to the per-battery topic and drop the key suffix.</li>
+<li><strong><code>balancing_data*</code> topics were removed.</strong> The per-cell balancing arrays are now part of the <code>spec_data*</code> messages, under the <code>cell_balancing</code> key. Update raw consumers to read <code>cell_balancing</code> from <code>.../spec_data</code> (or <code>.../spec_data_2</code> / <code>_3</code>).</li>
+<li><strong><code>balancing_status</code> no longer reports <code>Blocked</code>.</strong> That state is now published as <code>Pending</code>. Any automation matching on the literal string needs updating.</li>
+<li><strong>The discovery prefix is configurable.</strong> It still defaults to <code>homeassistant</code>, so nothing changes unless you set the new <strong>Home Assistant auto discovery topic</strong> field.</li>
+<li><strong>Several emulator-level entities became diagnostic.</strong> They still exist with the same <code>unique_id</code>, but Home Assistant now lists them under the device's Diagnostic section.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>Cell data now updates every 60 seconds rather than at the main publish interval, and battery values are omitted from the JSON until real data has been received from the battery — consumers must tolerate absent keys rather than assuming every key is present in every message.</p>
+</div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">~</a></h2>
+<ul>
+<li><a href="https://www.home-assistant.io/integrations/mqtt/">Home Assistant MQTT overview</a> — brokers, discovery, configuration and HA services related to MQTT</li>
+<li><a href="https://www.home-assistant.io/integrations/sensor.mqtt/">Home Assistant MQTT Sensor</a> — manual (non-discovery) setup of MQTT sensors</li>
+<li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/protocols/mqtt.html">ESP-IDF MQTT (esp-mqtt) documentation</a> — the MQTT client library currently used</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+  
+    <div class="admonition warning" markdown="1">
+      <p class="admonition-title">CAUTION</p>
+      <p>Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.</p>
+    </div>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.patreon.com/dala" target="_blank" rel="noopener" title="www.patreon.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M490 153.8c-.1-65.4-51-119-110.7-138.3-74.2-24-172-20.5-242.9 12.9C50.6 68.9 23.6 157.7 22.6 246.2 21.8 319 29 510.6 137.2 512c80.3 1 92.3-102.5 129.5-152.3 26.4-35.5 60.5-45.5 102.4-55.9 72-17.8 121.1-74.7 121-150z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dalathegreat/Battery-Emulator" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.action.edit", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
