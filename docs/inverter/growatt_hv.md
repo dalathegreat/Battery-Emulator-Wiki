@@ -27,7 +27,7 @@ We can also emulate a WIT battery when selecting the "Growatt WIT compatible bat
 * Growatt MIN TL-XH (This inverter does not have the DC-DC converter between internal DC-bus and battery connectors, also the RS485 protocol is not modbus and Growatt support does not release the internal protocol.)
 
 ### Communication wiring
-The Growatt HV inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
+The Growatt HV inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
 
 ### Which protocol to use
 For this inverter type, use the option called **Growatt High Voltage protocol via CAN Bus** under the "Inverter Protocol" setting.
@@ -38,7 +38,7 @@ For this inverter type, use the option called **Growatt High Voltage protocol vi
 
 ### Communication wiring
 
-The Growatt LV compatible inverters works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
+The Growatt LV compatible inverters works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
 
 ### Which protocol to use
 For this inverter type, use the option called **Growatt Low Voltage (48V) protocol via CAN** under the "Inverter Protocol" setting.
