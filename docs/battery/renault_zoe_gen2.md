@@ -3,7 +3,7 @@ title: "Renault Zoe Gen2"
 ---
 
 # Renault Zoe Gen2
-The Renault Zoe Gen2 has good support in the Battery-Emulator project. Note that confused packs need NVROL reset, more info on that further down in this Wiki.
+The Renault Zoe Gen2 has good compatibility with the Battery-Emulator project. Note that confused packs need NVROL reset, more info on that further down in this Wiki.
 
 ## Variants of the Zoe
 There are 4x batteries available for the Zoe, This page focuses on the Gen2 50/52kWh battery.

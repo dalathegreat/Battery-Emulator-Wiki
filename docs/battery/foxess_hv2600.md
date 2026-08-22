@@ -4,7 +4,7 @@ title: "FoxESS HV2600"
 
 ## FoxESS HV2600
 
-The FoxESS battery is an OEM high quality LFP battery intended for stationary storage. The Battery-Emulator has support for interfacing with this OEM battery, so that you can connect it to other Inverters not originally intended for it. For example a Fronius Gen24.
+The FoxESS battery is an OEM high quality LFP battery intended for stationary storage. The Battery-Emulator is compatible with this OEM battery, so that you can connect it to other Inverters not originally intended for it. For example a Fronius Gen24.
 
 ## Specifications
 

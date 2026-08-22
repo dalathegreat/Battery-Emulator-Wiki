@@ -4,9 +4,9 @@ title: "Chevrolet Volt Gen1"
 
 # Charger Details
 ## Overview
-The Battery-Emulator project has support for the independent battery chargers starting in release 5.0. This feature is optional, intended to facilitate emergency charging from generators, supplemental charging when inverter lacks an onboard charger, or as part of battery commissioning/maintenance. 
+The Battery-Emulator project is compatible with the independent battery chargers starting in release 5.0. This feature is optional, intended to facilitate emergency charging from generators, supplemental charging when inverter lacks an onboard charger, or as part of battery commissioning/maintenance. 
 
-This page describes chargers from the Chevy Volt and Opel Ampera between model years 2011 and 2015, referred to as Gen1 (generation 1) chargers. They are occasionally referenced as Lear chargers in resale/parts/surplus, as Lear is manufacturer supplying many OEMs. Physically similar models were also used in Coda vehicles, but notably they run different firmware from Chevy/Ampera models (e.g. different CAN messages). Coda variants may be supported in future revisions.
+This page describes chargers from the Chevy Volt and Opel Ampera between model years 2011 and 2015, referred to as Gen1 (generation 1) chargers. They are occasionally referenced as Lear chargers in resale/parts/surplus, as Lear is manufacturer supplying many OEMs. Physically similar models were also used in Coda vehicles, but notably they run different firmware from Chevy/Ampera models (e.g. different CAN messages). Coda variants may become compatible in future revisions.
 
 ## Specs
 * Maximum power: 3300w

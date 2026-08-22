@@ -19,7 +19,7 @@ One of the options is the HIA4V1 board original or modified for Lilygo or Stark 
     There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
 
 # Option A: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
-The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Support for this was added in firmware v10.11.0.
+The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Compatibility with this was added in firmware v10.11.0.
 
 ## Wiring diagram
 Parts needed:
@@ -135,7 +135,7 @@ The precharge code itself is located in the folder Software/src/communication/pr
 
 [Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/src/communication/precharge_control/precharge_control.cpp)
 
-At the time of writing (release 8.13.0) both Lilygo and Stark CMR are tested and supported out of the box.
+At the time of writing (release 8.13.0) both Lilygo and Stark CMR are tested and compatible out of the box.
 
 The mapping of the pins towards the physical hardware can be found in the corresponding file linked to the hardware you use, located in the directory Software/src/devboard/hal. Make sure to double check the connection is as expected.
 

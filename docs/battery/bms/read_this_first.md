@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-Battery-Emulator has support for DIY battery packs with self-installed BMS modules.
+Battery-Emulator is compatible with DIY battery packs with self-installed BMS modules.
 
 !!! danger "CAUTION"
     If you are unsure of your technical knowhow, avoid building a high voltage battery from scratch.

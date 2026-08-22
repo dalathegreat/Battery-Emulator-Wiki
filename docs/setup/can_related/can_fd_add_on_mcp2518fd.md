@@ -3,7 +3,7 @@ title: "Why add CAN-FD"
 ---
 
 # Why add CAN-FD
-Some batteries use CAN-FD instead of just CAN. Batteries like Kia EV6 are moving towards the faster and more flexible CAN-FD. Most boards, for instance the LilyGo T-CAN485 and T-2CAN, do not support the CAN-FD protocol, but this can be added with an extra MCP2518FD chip via the GPIO pins, similar to the CAN add-on setup.
+Some batteries use CAN-FD instead of just CAN. Batteries like Kia EV6 are moving towards the faster and more flexible CAN-FD. Most boards, for instance the LilyGo T-CAN485 and T-2CAN, are not compatible with the CAN-FD protocol, but this can be added with an extra MCP2518FD chip via the GPIO pins, similar to the CAN add-on setup.
 
 !!! tip "TIP"
     The CAN-FD chip can also be used for normal CAN. Just enable the "Use CanFD as classic CAN" , and you can use the add-on chip with classic CAN batteries.

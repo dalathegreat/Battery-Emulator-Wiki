@@ -2,11 +2,11 @@
 title: "Stellantis Pro One"
 ---
 
-### Supported Stellantis Pro One / MCA batteries
+### Compatible Stellantis Pro One / MCA batteries
 
 110kWh - 90S - min ~270V max ~380V 
 
-The following vehicles are supported
+The following vehicles are compatible
 
 - E-Ducato 110kWh
 - ProMaster 110kWh

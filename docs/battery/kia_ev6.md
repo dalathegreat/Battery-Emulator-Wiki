@@ -3,7 +3,7 @@ title: "Kia EV6"
 ---
 
 !!! info "IMPORTANT"
-    The EGMP battery platform cannot communicate over CAN. It only supports CAN FD!
+    The EGMP battery platform cannot communicate over CAN. It is only compatible with CAN FD!
 
 Pinout on battery
 ![image](../images/kia-ev6-01.png)

@@ -80,7 +80,7 @@ If you have debug logging enabled and there are too many messages on the CAN bus
 
 Once enabled the `CAN logger` button will be enabled on the webserver, no data will be shown on the website, instead the CAN log file can be downloaded by clicking on the `Export to .txt` button which will download the file from the battery emulator. You can also delete the CAN log file by clicking on the `Delete log file` button. For very large captures it may be quicker to remove the SD card and plug it into a PC directly.
 
-The SD card must be formatted using the FAT file system, if you are using an SD card larger than 32GB you will need to partition the card otherwise exFAT will be used which the ESP32 does not support.
+The SD card must be formatted using the FAT file system, if you are using an SD card larger than 32GB you will need to partition the card otherwise exFAT will be used, which is not compatible with the ESP32.
 The best tool to use for formatting of the SD card is [SD Card Formatter](https://www.sdcard.org/downloads/formatter/)
 
 On startup the SD card is checked and if you have debug logging enabled a message will be output showing success or failure.

@@ -9,12 +9,12 @@ The LilyGo T-2CAN is a dual CAN board, excellent for integrations that require s
 **There are two versions of the T-2CAN:**
 
 - **T-2CAN** (classic): Supports 2x CAN
-- **T-2CAN FD**: Supports 1x CAN and 1x CAN FD. This is supported by BE, but needs DIP switch '1' turning ON, and you can't also use the BMS POWER output (TODO: remap to another pin).
+- **T-2CAN FD**: Supports 1x CAN and 1x CAN FD. This is compatible with BE, but needs DIP switch '1' turning ON, and you can't also use the BMS POWER output (TODO: remap to another pin).
 
 Since they are the same price, the T-2CAN FD is generally recommended.
 
 !!! note "NOTE"
-    This board does not support Modbus/RS485 or CAN FD (in the case of the non-FD 2CAN) natively, although both can be [added on](#add-ons).
+    This board is not natively compatible with Modbus/RS485 or CAN FD (in the case of the non-FD 2CAN), although both can be [added on](#add-ons).
 
 ![image](../images/lilygo-t-2can-02.png)
 
@@ -151,7 +151,7 @@ The BOOT button has [special features to enable AP, wipe wifi settings or factor
 
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
 
-### Screen support
+### Screen compatibility
 
 The T-2CAN board can have a 128x64 SSD1306/SSD1309 I2C OLED display attached to it, that will display battery status, events and WiFi info.
 

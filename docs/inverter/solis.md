@@ -9,10 +9,10 @@ S6-EH3P(3–10)K-H-EU _(EU model)_ **VS**  S6-EH3P(3–10)K-H-AU _(AU model)_
 
 While the protocol, software, and hardware design are generally identical, the main differences lie in the available local energy network settings and region-specific configurations.
 
-However, it is strongly recommended to always compare the technical datasheets to ensure compatibility and to verify that your exact model is included in the supported device list.
+However, it is strongly recommended to always compare the technical datasheets to ensure compatibility and to verify that your exact model is included in the compatible device list.
 
 **Voltage range:**
-Most Solis inverters support a wide battery voltage range. Nevertheless, you should always confirm that the voltage range of your specific inverter model is compatible with the battery you intend to use.
+Most Solis inverters are compatible with a wide battery voltage range. Nevertheless, you should always confirm that the voltage range of your specific inverter model is compatible with the battery you intend to use.
 
 * RHI-3P(5-10)K-HVES-5G ✅
 * RHI-3P10K-HVES-5G ✅ (can also use PYLON protocol)

@@ -15,7 +15,7 @@ To be able to use the Webserver, you need to connect to the Battery-Emulator to 
 To have the Battery-Emulator accessible in your home network, you need to enter your home Wifi credentials into the webserver settings. See the quickstart guide for more information on how to perform the initial Wifi setup.
 
 !!! note "NOTE"
-    SSID can max be 63 chars, and password needs to be at least 8 chars long. Only 2.4Ghz networks are supported, 5Ghz will NOT work! 
+    SSID can max be 63 chars, and password needs to be at least 8 chars long. Only 2.4Ghz networks are compatible, 5Ghz will NOT work! 
 
 When the board boots, it will attempt to connect to the wifi network you specified. Your router will give it a unique IP, so next up is figuring out what the actual address is. There are a few options you can do.
 
@@ -171,7 +171,7 @@ This setting caps the amount of power that can go in/out of the battery. Even th
 
 #### Manual charge voltage limits
 
-Disabled by default. This option can be enabled to manually limit min/max voltage in the system. Note that not all inverters support voltage based limits, the setting was primarily developed for BYD_CAN. If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC% is enabled)
+Disabled by default. This option can be enabled to manually limit min/max voltage in the system. Note that not all inverters are compatible with voltage based limits, the setting was primarily developed for BYD_CAN. If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC% is enabled)
 
 ![image](../../images/webserver-guide-12.png)
 

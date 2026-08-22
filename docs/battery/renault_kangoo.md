@@ -4,7 +4,7 @@ title: "Renault Kangoo"
 
 ## FAQ: Renault Kangoo Battery
 
-Renault Zoe support is still being developed. The Kangoo shares a fair share of CAN data with the Renault Zoe and Renault Fluence.
+Renault Zoe compatibility is still being developed. The Kangoo shares a fair share of CAN data with the Renault Zoe and Renault Fluence.
 
 ## Variants of the Kangoo
 There are 3x batteries available for the Kangoo:
@@ -15,7 +15,7 @@ There are 3x batteries available for the Kangoo:
 * 33kWh 2017-2021
    * Can be used with Zoe Gen1 software setting: `Renault Zoe Gen1 22/40kWh`
 * 44kWh 2022+
-   * Pinout unknown, NOT SUPPORTED YET since nobody has tested it
+   * Pinout unknown, NOT COMPATIBLE YET since nobody has tested it
 
 ![image](../images/renault-kangoo-01.png){ width="393" height="91" }
 

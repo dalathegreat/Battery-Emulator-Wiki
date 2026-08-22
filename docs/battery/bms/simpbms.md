@@ -4,7 +4,7 @@ title: "SimpBMS"
 
 The SimpBMS is an open source (software) BMS for reusing various EV battery modules in a custom pack, instead of using the OEM BMS, for example if you want to use fewer/more modules than the OEM battery had.
 
-There's some instructions here [github/Tom-evnut](https://github.com/Tom-evnut/SimpBMS) and there's support for the BMW PHEV modules, VW PHEV and ID modules, Tesla modules, Outlander PHEV modules etc.
+There's some instructions here [github/Tom-evnut](https://github.com/Tom-evnut/SimpBMS) and the SimpBMS is compatible with the BMW PHEV modules, VW PHEV and ID modules, Tesla modules, Outlander PHEV modules etc.
 
 ### Where do I get the hardware?
 

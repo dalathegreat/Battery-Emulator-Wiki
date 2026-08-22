@@ -3,7 +3,7 @@ title: "Renault Zoe Gen1"
 ---
 
 # Renault Zoe Gen1
-Zoe Generation 1 batteries have perfect support in the Battery-Emulator.
+Zoe Generation 1 batteries have perfect compatibility with the Battery-Emulator.
 
 ## Variants of the Zoe
 There are 3x batteries available for the Zoe, this page focuses on the Gen1 22/40kWh batteries.

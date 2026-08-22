@@ -4,7 +4,7 @@ title: "BMW i3 60/94/120AH"
 
 # BMW i3 60/94/120AH
 
-## Supported BMW batteries
+## Compatible BMW batteries
 
 All i3 batteries have the following length/width/height 1660mm x 964mm x 174mm.
 

@@ -6,7 +6,7 @@ title: "MG4"
 
 ## Specifications
 
-| Year |  Model | Battery capacity | Supported? | Rated Voltage | Voltage Range |
+| Year |  Model | Battery capacity | Compatible? | Rated Voltage | Voltage Range |
 | :--------: | :---------: | :---------: | :----------: | :----------: |  :----------: |
 | 2024- | MG4 EH32 | 49kWh LFP       |   ✅⚠️ Testing ongoing | 315V | 250-365V 
 | 2022- | MG4 EH32 | 51kWh LFP       |   ✅⚠️ Testing ongoing | 327V | 260-379.6V   |

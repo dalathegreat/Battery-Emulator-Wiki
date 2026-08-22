@@ -7,7 +7,7 @@ The DFRobot Edge101 is a rugged board, with the following features.
 
 - Isolated CAN
 - Isolated RS485
-- Ethernet (Will be supported in later BE releases)
+- Ethernet (Will become compatible in later BE releases)
 - External Wifi antenna
 - PCIe expansion slot with UART
 - Case with DIN Rail mount (that fits perfectly inside of a Fronius Verto)

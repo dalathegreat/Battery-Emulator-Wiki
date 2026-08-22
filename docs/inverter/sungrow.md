@@ -8,19 +8,19 @@ title: "Sungrow"
 |-------|---------|--------------------|-------|
 | SH5.0/6.0/8.0/10RT | ✅ | ✅ | |
 | SH3.0/3.6/4.0/5.0/6.0RS | ✅ | ✅ | |
-| SH3.0/3.6/4.0/5.0/6.0RS (Australia) | ❌ | ✅ | No BYD support. [Old firmware](https://github.com/dalathegreat/Battery-Emulator/issues/670#issuecomment-2546911926) may work with BYD |
-| SH8.0RS/SH10RS (Australia) | ❌ | ✅ | No BYD support |
-| SH15T/SH20T/SH25T | ✅ | ✅ | Some regions dropping BYD support |
-| SH15T/SH20T/SH25T (Australia) | ❌ | ✅ | No BYD support |
+| SH3.0/3.6/4.0/5.0/6.0RS (Australia) | ❌ | ✅ | Not BYD compatible. [Old firmware](https://github.com/dalathegreat/Battery-Emulator/issues/670#issuecomment-2546911926) may work with BYD |
+| SH8.0RS/SH10RS (Australia) | ❌ | ✅ | Not BYD compatible |
+| SH15T/SH20T/SH25T | ✅ | ✅ | Some regions dropping BYD compatibility |
+| SH15T/SH20T/SH25T (Australia) | ❌ | ✅ | Not BYD compatible |
 
 !!! note "NOTE"
-    Sungrow is promoting their own battery systems and dropping third-party battery support in some regions. As of June 2024, [Australia has officially dropped all support for non-Sungrow batteries](https://service.sungrowpower.com.au/TI_20210824_Approved%20battery%20declaration%20for%20sungrow%20hybrid%20inverters_V16_EN-1.pdf). If your inverter lacks BYD support, use the Sungrow SBRXXX protocol instead.
+    Sungrow is promoting their own battery systems and dropping third-party battery compatibility in some regions. As of June 2024, [Australia has officially dropped all compatibility with non-Sungrow batteries](https://service.sungrowpower.com.au/TI_20210824_Approved%20battery%20declaration%20for%20sungrow%20hybrid%20inverters_V16_EN-1.pdf). If your inverter is not BYD compatible, use the Sungrow SBRXXX protocol instead.
 
 ## Protocol Selection
 
 ### BYD CAN Protocol
 
-Use **"BYD Battery-Box Premium HVS over CAN Bus"** for inverters with BYD support.
+Use **"BYD Battery-Box Premium HVS over CAN Bus"** for inverters that are BYD compatible.
 
 Remember to enable "Long inverter CAN timeout" to avoid false positive CAN_INVERTER_MISSING events. The Sungrow is very slow to communicate via CAN, and we incorrectly detect it as missing without this fix.
 
@@ -28,7 +28,7 @@ Remember to enable "Long inverter CAN timeout" to avoid false positive CAN_INVER
 
 ### Sungrow SBRXXX Protocol
 
-Use **"Sungrow SBRXXX battery over CAN bus"** for inverters without BYD support (e.g., Australian models).
+Use **"Sungrow SBRXXX battery over CAN bus"** for inverters that are not BYD compatible (e.g., Australian models).
 
 When using this protocol, select the battery model that best matches your actual battery voltage range best. Note that the capacity you can use is not impacted by this selection, you can use the full 100kWh from an EV battery even though you select a smaller SBR model.
 
@@ -48,7 +48,7 @@ See the [SBR battery datasheet](https://info-support.sungrowpower.com/applicatio
     The Sungrow SBRXXX protocol uses 250 kbps CAN bitrate, which differs from most battery protocols. This means you cannot have an EV battery on the same CAN channel as the Sungrow.
 
 !!! info "IMPORTANT"
-    The emulator sends your actual battery's minimum and maximum voltage limits to the inverter. Before connecting, verify that your battery's voltage range is compatible with your Sungrow inverter's supported battery voltage range (check your inverter's datasheet).
+    The emulator sends your actual battery's minimum and maximum voltage limits to the inverter. Before connecting, verify that your battery's voltage range is compatible with your Sungrow inverter's compatible battery voltage range (check your inverter's datasheet).
 
 ## Hardware Setup
 

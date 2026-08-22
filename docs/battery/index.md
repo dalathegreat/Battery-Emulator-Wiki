@@ -1,21 +1,21 @@
 ---
-title: "Supported batteries"
+title: "Compatible batteries"
 hide:
   - toc
 ---
 
-# Supported batteries list
+# Compatible batteries list
 
 Be sure to checkout the [installation guidelines](../setup/hardware/installation_guidelines.md) section for how to install your battery. Amount of stars ⭐ signal how mature and stable the integration is.
 
-- ⭐⭐⭐ Very well supported battery. Longterm stability confirmed without user interaction. Many success stories from users.
+- ⭐⭐⭐ Fully compatible battery. Longterm stability confirmed without user interaction. Many success stories from users.
 - ⭐⭐ Integration has minor known issues or missing features. Manual interventions sometimes required.
 - ⭐ Works, but many values estimated or functionality missing. Expect manual tweaking to keep battery operational.
 - 🅱️ Cell balancing has been confirmed working (Important for longterm operation).
-- 2️⃣ Double battery supported (two identical packs in parallel, see [Double Battery](../setup/software/battery_2x.md)).
-- 3️⃣ Triple battery supported (see [Triple Battery](../setup/software/battery_3x.md)). Every triple-capable integration also supports double.
+- 2️⃣ Compatible with Double battery (two identical packs in parallel, see [Double Battery](../setup/software/battery_2x.md)).
+- 3️⃣ Compatible with Triple battery (see [Triple Battery](../setup/software/battery_3x.md)). Every triple-capable integration is also compatible with double.
 
-|           Car (Manufacturer)            |                                    Product Name                                    |  Capacity (kWh)   | Support status |                 Support level                 |        Balancing        | Parallel Packs | Voltage min / max (V) |                      Notes                       |
+|           Car (Manufacturer)            |                                    Product Name                                    |  Capacity (kWh)   | Compatibility status |                 Compatibility level                 |        Balancing        | Parallel Packs | Voltage min / max (V) |                      Notes                       |
 |:---------------------------------------:|:----------------------------------------------------------------------------------:|:-----------------:|:----------------:|:---------------------------------------------:|:------------------------------:|:------------------------:|:---------------------:|:------------------------------------------------:|
 |                  Aiways                 |                              [U5](aiways_u5_2021.md)                               |         63        |        ⚠️        |   Wiring documented, integration not started  |                                |                          |                       |                                                  |
 |                   BMW                   |                          [BMW i3 (all sizes)](bmw_i3.md)                           |   18 / 22 / 40    |        ✅         |                      ⭐⭐⭐                      |              🅱️               |           2️⃣            |       270 / 400       |         Balancing only when powered off          |
@@ -121,7 +121,7 @@ DIY LV battery:
 
 [Pylon HV batteries (Dyness Tower)](pylon_hv.md) ✅ 2️⃣
 
-[CHAdeMO vehicles](chademo_vehicle.md) ⚠️ (Experimental support)
+[CHAdeMO vehicles](chademo_vehicle.md) ⚠️ (Experimental compatibility)
 
-[CCS bidirectional charging](ccs_bidirectional_charging.md) ⚠️ (Experimental support)
+[CCS bidirectional charging](ccs_bidirectional_charging.md) ⚠️ (Experimental compatibility)
 

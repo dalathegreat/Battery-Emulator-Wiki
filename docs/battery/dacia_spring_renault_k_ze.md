@@ -23,7 +23,7 @@ Some 2024+ batteries seem to not respond to CAN. Investigation ongoing!
 
 ### General info
 
-These batteries have 72 cells in series, which creates an operating voltage of approximately **216 to 302VDC**. Make sure [the inverter](../inverter/index.md#supported-inverters-list) you are planning to use is compatible with this voltage range!
+These batteries have 72 cells in series, which creates an operating voltage of approximately **216 to 302VDC**. Make sure [the inverter](../inverter/index.md#compatible-inverters-list) you are planning to use is compatible with this voltage range!
 
 ![image](../images/dacia-spring-renault-k-ze-01.png)
 

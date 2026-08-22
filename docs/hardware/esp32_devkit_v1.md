@@ -25,7 +25,7 @@ The ESP32 DevKit V1 hardware can be used with Battery-Emulator, and has the foll
 * Supply voltage (+6.5VDC - +16VDC), if used with ESP32 DevKit V1 breakout board.
 
 !!! warning "WARNING"
-    USB connection and simultaneous external power may not be supported. Ensure to disconnect the external power before connecting USB.
+    USB connection and simultaneous external power may not be compatible. Ensure to disconnect the external power before connecting USB.
 
 ### Communication
 

@@ -8,7 +8,7 @@ The Rivian R1T comes in three different battery sizes. A checkbox means that an 
 - Gen1 105 kWh, x kg Lifepo4
 - Gen1 135 kWh, x kg Samsung NCM ✅
 - Gen1 149 kWh, x kg Samsung NCM
-- Gen2 NOT SUPPORTED :x:
+- Gen2 NOT COMPATIBLE :x:
 
 !!! warning "WARNING"
     If the battery pack is sourced from a crashed vehicle, the battery could be permanently locked. That means contactors will not turn on, and values will NOT update via CAN. Right now we have no way of unlocking a crashed battery, it requires assistance from Rivian. If the battery is not crashed, the contactors will turn on when the battery gets CAN data from the Battery-Emulator. 

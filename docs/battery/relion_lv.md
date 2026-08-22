@@ -8,7 +8,7 @@ title: "Relion LV"
 
 ## Software configuration
 
-The Relion LV protocol supports 48V batteries.
+The Relion LV protocol is compatible with 48V batteries.
 
 For this battery type, use the option called "Relion LV protocol via 250kbps CAN" under the "Battery Protocol" setting.
 

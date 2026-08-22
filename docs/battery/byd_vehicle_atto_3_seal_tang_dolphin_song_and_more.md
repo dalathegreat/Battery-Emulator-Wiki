@@ -2,7 +2,7 @@
 title: "BYD Vehicle Batteries"
 ---
 
-The code supports a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working.
+The code is compatible with a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working.
 
 To get contactor closing to function, start BYD battery first, and Battery-Emulator afterwards. If you start Battery-Emulator before the battery, it wont close contactors before you restart the emulator. Also make sure no FAULT events are active when trying to start, this will open contactors.
 
@@ -70,7 +70,7 @@ The connection diagram is derived from reverse engineering the pins. The followi
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-09.png)
 
 ## LV Connector Type B
-This connector appears on newer battery types, such as the PA4. The software does NOT have full support for TypeB batteries yet. :x:
+This connector appears on newer battery types, such as the PA4. The software is NOT fully compatible with TypeB batteries yet. :x:
 Pinout varies between different batteries despite the plug & socket being the same.
 
 *Development ongoing, many details can be found in the Discord*

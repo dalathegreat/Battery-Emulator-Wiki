@@ -45,7 +45,7 @@ Also remember to configure the allowed charging power, since we do not read this
 ## Note on CAN-FD
 The Gen5 BMW battery architecture uses CAN-FD, so if you plan on integrating this battery, you will need to get the LilyGo T-2CAN, plus a [CAN-FD chip add-on](../setup/can_related/can_fd_add_on_mcp2518fd.md).
 
-Alternatively, if you want to make it even easier, get the [Stark CMR](../hardware/stark_cmr.md) hardware which has built in support for CAN-FD. This is the recommended path!
+Alternatively, if you want to make it even easier, get the [Stark CMR](../hardware/stark_cmr.md) hardware which has built in compatibility with CAN-FD. This is the recommended path!
 
 # Connectors
 The battery pack has several connectors on the outside and inside of the pack that are relevant for connecting this pack to the inverter and the battery emulator.

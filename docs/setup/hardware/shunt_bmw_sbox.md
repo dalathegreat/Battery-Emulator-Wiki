@@ -9,7 +9,7 @@ Preface, the entire Battery-Emulator project sets out to achieve safe re-use of 
 ## BMW S-BOX
 The BMW S-BOX is a safety box that includes precharge contactors as well as voltage and current probes and fuse. S-BOX can be used eg. on DIY HV Battery and with CHAdeMo vehicles. 
 
-|  Part Number |  Supported | Precharge resistor | Negative/Positive Relays | Precharge relay | Fuse |  Notes |
+|  Part Number | Compatible | Precharge resistor | Negative/Positive Relays | Precharge relay | Fuse |  Notes |
 | :--------: | :---------: | :---------: | :---------: | :---------: | :---------: |:---------: |
 | 8686893 | ✅ | 15 Ω | AEV14012 120A/450V (400A 30s) | AEC51012 | 7GP074 450V 350A | HW 24.002, SW 10.050 |
 

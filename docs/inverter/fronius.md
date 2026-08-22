@@ -178,7 +178,7 @@ Once you have your battery connected to the Fronius, it is possible to add addit
 
 ## Off-Grid/Backup Configuration
 
-Symo/Primo Gen24 inverters that are smaller than 6.0kW do **not** support running full backup mode (Primo 5.0 has support). On these smaller inverters, your best bet is to utilize the PVpoint outlet to get power out of the battery.
+Symo/Primo Gen24 inverters that are smaller than 6.0kW are **not** compatible with running full backup mode (the Primo 5.0 is). On these smaller inverters, your best bet is to utilize the PVpoint outlet to get power out of the battery.
 
 A Smart-Meter is mandatory for battery use when connected to a grid (or generator). However, the Gen24 can run 'Off-Grid' if configured specifically for this scenario and limitations. 
 
