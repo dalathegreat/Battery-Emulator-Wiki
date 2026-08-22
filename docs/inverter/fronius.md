@@ -101,11 +101,11 @@ Important to note when shutting down is to not open any DC breakers/isolators un
 
 1. Signal to the inverter that battery is not available, with any of the following options:
    
-       a. Press PAUSE in the Webserver (best option)
+       - Press PAUSE in the Webserver (best option)
    
-       b. Press optional Equipment stop if installed
+       - Press optional Equipment stop if installed
    
-       c. Press Open contactors in the Webserver
+       - Press Open contactors in the Webserver
        
 3. Once Fronius stops using battery after a few seconds (verify in app to make sure) it can be powered down
 4. Turn off the Fronius inverter via AC breaker
@@ -135,7 +135,7 @@ Then verify the following:
 
 ![image](../images/fronius-10.png)
 
-- Make sure the Precharge/Positive has not been accidentally swapped (Easy mistake on GPIO controlled packs). This will show up as voltage still on inverter pins, but as soon as any load is put on the system the voltage will sag heavily and inverter will r eport "Battery not detected"
+- Make sure the Precharge/Positive has not been accidentally swapped (Easy mistake on GPIO controlled packs). This will show up as voltage still on inverter pins, but as soon as any load is put on the system the voltage will sag heavily and inverter will report **Battery not detected**.
 - If using PWM contactors, make sure they are not dropping voltage momentarily. Try disabling PWM.
 - Next step is checking that Modbus connection is active. Check the Events page, if you see this MODBUS_INVERTER_MISSING event;
 
@@ -147,12 +147,12 @@ It means that the Modbus connection is down. Verify that:
 - Protective earth is attached in both Inverter and Battery side
 - Modbus cable shielding is attached only an one side
 - Wires are seated correctly in the Fronius connector. It is very easy to miss that the wires are not pushed in all the way.
-- Try a different power supply for the Battery Emulator board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see strange modbus errors, your power supply might be noisy
+- Try a different power supply for the Battery Emulator board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see strange modbus errors, your power supply might be noisy.
 
 Make sure the Battery-Emulator has a good modbus connection to the Inverter.
 
  - Use shielded wires for a stable connection
- - If you see "ModbusServerRTU.cpp  [ 252] serve: RTU receive: E5 - Packet length error" in the USB output of the board, it is an indication that wiring is not perfect and occasionally get corrupted
+ - If you see `ModbusServerRTU.cpp [252] serve: RTU received: E5 - packet length error` in the [logs](../setup/software/webserver_guide.md#log) of the board, it is an indication that wiring is not perfect and occasionally get corrupted
 
 ### Invalid battery size detected
 
@@ -164,8 +164,8 @@ A quick solution is to enable the "450V maxvoltage cap" setting. This fakes it s
 
 ![image](../images/fronius-14.png){ width="675" height="172" }
 
-!!! note "NOTE"
-    This setting should not be used with Fronius Symo 3-phase inverters. These inverters are OK with battery voltages up to 700VDC
+!!! danger "NOTE"
+    This setting should not be used with Fronius Symo 3-phase inverters. These inverters are designed to work with battery voltages up to 700VDC.
 
 ## Advanced control of energy (Spot price, scheduled charge/discharge etc.)
 Once you have your battery connected to the Fronius, it is possible to add additional hardware into the mix for advanced control of how energy should flow in the system. This is useful for those with spot-price electricity, or a nightly tariff. Below are some examples you can utilize to control the Fronius Gen24 directly via Modbus TCP.
@@ -201,7 +201,7 @@ Pin0 is not used when hard wiring for full backup. Pin0 is used for automatic sw
 The Fronius Gen24 configuration documents describe both automatic and manual switch-over to backup mode using combination of switches and/or relays. Both options can be commercially sourced if you need a non hard-wired off-grid only solution. 
 
 !!! note "NOTE"
-    When running as Full-Backup, the inverter will run at 53Hz. As such, no other inverter can be active on the AC circuit. Only the Gen24 can be providing power! If you need additional power, then a true Micro-Grid should be used (AC coupling with Victron etc).
+    When running as Full-Backup, the inverter will run by default at 53Hz. As such, no other inverter can be active on the AC circuit. Only the Gen24 can be providing power! If you need additional power, then a true Micro-Grid should be used (AC coupling with Victron etc).
 
 !!! warning "IMPORTANT"
     Fronius officially supports a maximum of 2000h off-grid (full-backup) per year on the Gen24. Exceeding this hour count voids the warranty. There are no reports of any inverters shutting down after 2000hours. 
