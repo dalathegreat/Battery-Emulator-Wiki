@@ -1,5 +1,5 @@
 ---
-title: "Growatt HV"
+title: "Growatt"
 ---
 
 ## Growatt HV
