@@ -21,7 +21,7 @@ It is meant for:
 1. Open the emulator web UI and go to **Settings**.
 2. In the **Battery** dropdown, select `Fake battery for testing purposes`.
 3. Set **Battery communication interface** to any available interface (e.g. `CAN native`). The Fake battery never transmits and does not need a bus, but an interface must be selected.
-4. Optionally tick **Double battery** and/or **Triple battery** (both are compatible, see below) and select their interfaces.
+4. Optionally tick **Double battery** and/or **Triple battery** (both are supported, see below) and select their interfaces.
 5. Press **Save**, then **Reboot**.
 
 After the reboot the status page shows the protocol name `Fake battery for testing purposes`, the emulator raises the normal "battery detected" event, and the system goes to ACTIVE just as with a real pack.
@@ -122,7 +122,7 @@ The Fake battery implements none of the optional BMS functions (reset BMS, reset
 
 ### Double and triple battery
 
-The Fake battery is compatible with both **Double battery** and **Triple battery**. Each extra instance is created on its own configured interface and gets its own datalayer entry, its own cell voltages, its own randomisation and its own balancing state. Batteries 2 and 3 copy the pack voltage of battery 1, so all packs stay at the same voltage and SOC — which is what a healthy parallel installation looks like. Total capacity becomes 60 kWh (double) or 90 kWh (triple).
+The Fake battery supports both **Double battery** and **Triple battery**. Each extra instance is created on its own configured interface and gets its own datalayer entry, its own cell voltages, its own randomisation and its own balancing state. Batteries 2 and 3 copy the pack voltage of battery 1, so all packs stay at the same voltage and SOC — which is what a healthy parallel installation looks like. Total capacity becomes 60 kWh (double) or 90 kWh (triple).
 
 #### The second and third contactors stay open at the default voltage
 
