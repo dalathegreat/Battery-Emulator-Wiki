@@ -49,7 +49,7 @@ For this inverter type, use the option called "SolaX Triple Power LFP over CAN b
     Never use lead-acid battery mode to force a battery to operate. This means there is no communication between the EV battery and inverter, and battery has no way to stop the charge. Users have permanently degraded batteries by operating in this mode!
 
 !!! info "IMPORTANT"
-    If you see a **BattVoltFault** fault code on the inverter, you might need to edit the CAN data content. This can happen if you use a 60S battery instead of 96S battery. Follow the steps below.
+    If you see a **BattVoltFault IE07** fault code on the inverter, you might need to edit the CAN data content. This can happen if you use a 60S battery instead of 96S battery. Follow the steps below.
 
 1. Start with checking that your battery contactors are closing, and that high voltage is present on the inverter input pins. 
 2. If the inverter has voltage, but is still throwing the BattVoltFault error, "Reported module count" and the "Reported battery type" option
