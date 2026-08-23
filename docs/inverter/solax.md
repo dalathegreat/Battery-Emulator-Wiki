@@ -151,9 +151,15 @@ TPCU011(HR522): 171
 !!! info "IMPORTANT"
     Solax is one of the few protocols that demands contactors to open from time to time. This works great with GPIO controlled contactors, but on battery packs that are only controllable via CAN (Like Tesla), this does not play nice. Tesla batteries like to treat contactor opening requests as a really bad thing, and require 12V removal to get going again.
 
-To get around this issue for instance on Tesla batteries, enable the "Inverter should ignore contactors" checkbox.
+To get around this issue for instance on Tesla batteries, configure the "Inverter Contactor Workaround:" option
 
 ![image](../images/solax-07.png){ width="430" height="30" }
+
+It can be configured to either:
+
+- No workaround (Allows Solax to command contactors open/closed)
+- Keep contactors always closed (Skips any requests coming from Solax)
+- Lock contactors closed after first close request (Only the initial Solax demand goes thru, afterwards contactors are no longer obeying Solax)
 
 This will make Battery Emulator ignore requests from the inverter to open contactors, and always report to the inverter that the contactors are closed (regardless of their actual state), preventing the inverter from waiting for the contactors to open.
 
@@ -161,6 +167,8 @@ This will make Battery Emulator ignore requests from the inverter to open contac
     This contactor-opening-suppression seems to cause issues with double-input inverters, since the inverter insists on waiting for both batteries to open their contactors before starting. (Note: even if only one battery input is occupied!) There is a pending change to allow stubborn integrations to suspend their initial closing (but then not to reopen once closed), but this needs further testing.
 
 Additional: When experiencing a "waiting" status when all other settings are good, unchecking this box can result in normal operation. Be aware of this, as Solax is not too helpful in telling why it is in actual "waiting" status, this can be an easy test.
+
+In other words, experimentation required with this setting to see what works best for your components.
 
 ## Reverse engineering information
 
