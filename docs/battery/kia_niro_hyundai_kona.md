@@ -2,9 +2,8 @@
 title: "Kia e-Niro/Hyundai Kona 64 kWh"
 ---
 
-# Kia e-Niro 64 kWh / Hyundai Kona Electric 64 kWh
+## Kia e-Niro 64 kWh / Hyundai Kona Electric 64 
 
-## A word of caution about battery fires 🔥
 !!! warning "CAUTION"
     The batteries manufactured by LG Chem were recalled due to fire risk. If you are using a battery from a vehicle that did not get the recall, there is a higher risk to re-use these 64kWh batteries. The recall started in 2021, so if you are using a battery from a vehicle that was crashed before 2021, there is a high probability you have an pre-recall battery. **You have been warned!**
 
@@ -28,12 +27,15 @@ So can it be that the battery donor car is from 2020 or 2021 but has received th
 
 Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Number Q is used for Niro. ✅ means that someone has successfully used the pack with the Battery-Emulator.
 
-- 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ This battery uses **CAN-FD**, Use `Kia 64kWh **FD** Battery` option in software!
-- 37501 AT510 is Kia Niro Hybrid 11 kWh, uses **CAN-FD** too:
+
+**CAN-FD** models:
+
 ![image](../images/kia-niro-hyundai-kona-64-kwh-16.png)
 
+- 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ 
+- 37501 AT510 is Kia Niro Hybrid 11 kWh
 
-All Ioniq 28kWh packs use the following options:
+Ioniq 28kWh packs use the following options:
 
 ![image](../images/kia-niro-hyundai-kona-64-kwh-17.png)
 
@@ -69,9 +71,7 @@ Other models:
 - 37510 E4050 is [Kia Soul 27kWh](kia_soul.md)
 
 !!! note “Remark”
-    It is possible the BMS in the battery needs a 12V power cycle for 10 ~ 20 sec , after that or at the same time boot the Lilly and contractors are closed and HIGH VOLTAGE !! is active on the battery pins.
-
-    This also applies when an emergency knob/button is installed in the interlock loop. When the loop is interrupted, the whole battery system needs a 12V power cycle to be active again.
+    It is possible the BMS in the battery needs a 12V power cycle for 10 ~ 20 sec, after that or at the same time boot the Lilly and contractors are closed and HIGH VOLTAGE !! is active on the battery pins. This also applies when an emergency knob/button is installed in the interlock loop. When the loop is interrupted, the whole battery system needs a 12V power cycle to be active again.
 
 ## Part numbers
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
