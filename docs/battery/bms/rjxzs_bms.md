@@ -49,11 +49,11 @@ Start by connecting the CAN port of the BMS, to the CAN port on the Battery-Emul
 ![image](../../images/rjxzs-bms-03.png)
 
 - If you have a Modbus inverter, connect it to the RS485 port of the Battery-Emulator
-- If you have a CAN inverter, you need to connect it to a separate 500kbps CAN channel, since the BMS runs at 250kbps on the native CAN
-   - One option is to use [add on MCP2515](../setup/can_related/can_add_on_mcp2515.md) board
-   - Another options is to use [add on CAN-FD MCP2518](../setup/can_related/can_fd_add_on_mcp2518fd.md) board 
-   - Third option is to use [Stark CMR board](../hardware/stark_cmr.md)
-   - Fourth option is to use [Double LilyGo](../setup/software/double_lilygo.md) setup
+- If you have a CAN inverter, you need to connect it to a separate 500kbps CAN channel, since the BMS runs at 250kbps on the native CAN:
+  
+      - One option is to use [add on MCP2515](../../setup/can_related/can_add_on_mcp2515.md) board
+      - Another options is to use [add on CAN-FD MCP2518](../../setup/can_related/can_fd_add_on_mcp2518fd.md) board 
+      - Third option is to use the [Stark CMR](../hardware/stark_cmr.md) or [BECom](../hardware/becom.md) hardware
 
 For this battery type, use the option called "RJXZS BMS, DIY battery" under the "Battery Protocol" setting.
 
@@ -61,7 +61,7 @@ For this battery type, use the option called "RJXZS BMS, DIY battery" under the 
 
 Configure all the settings according to the specifications of the battery you have constructed, the general password to access settings is "0". CAN send ID and CAN receive ID should be 245 and 244 respectively, these settings are locked behind the password "770921".
 
-After uploading the code to the Battery-Emulator, you can check cellvoltages, SOC etc. via the [Webserver](../setup/software/webserver_guide.md)
+After uploading the code to the Battery-Emulator, you can check cellvoltages, SOC etc. via the [Webserver](../../setup/software/webserver_guide.md)
 
 !!! info "IMPORTANT"
     During first startup, RJXZS will report faults, that is why the first thing you need to do is clear all events in bluetooth app by holding CLR button for a few seconds:

@@ -15,8 +15,12 @@ The batteries get connected in parallel. This means the voltage stays the same, 
 !!! info "IMPORTANT"
     The batteries need to be of the same model and size, and preferably as close as possible in state of health. Do not connect battery packs with too much variation in condition, this lowers overall efficiency significantly!
 
-!!! warning "CAUTION"
-    Do not connect packs in series. There are no safeties implemented for operation in series connection!
+!!! danger "CAUTION"
+    Do not connect packs in series!
+    
+    - How to ensure balancing, that each battery reaches 100%? In parallel operation this is easy, in series it's next to impossible.
+    - There are no safeties implemented for operation in series connection! No control over CAN controlled contactors would make this feature hard to use safely.
+    - None of the isolation is designed for double the working voltage. Yes, each battery only sees it's own voltage, but the isolation to earth and in the BMS comms suddenly sees twice. As do any internal contactors, which is probably the more immediate issue.
 
 ### Which inverters are compatible?
 Double-Battery can be run on all inverters. The inverter will think that there is just one large battery attached.

@@ -15,9 +15,21 @@ At the moment the following 3-CAN boards are compatible:
     - Connect Inverter to Modbus, RS485 or CAN-A (shared with battery1)
 - [BECom](../../hardware/becom.md)
 
-## Compatible integrations
+### How does parallel operation work?
+The batteries get connected in parallel. This means the voltage stays the same, but the capacity triples.
 
-The list below is generated from `battery_supports_triple()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Triple battery" option in the Settings page.
+!!! info "IMPORTANT"
+    The batteries need to be of the same model and size, and preferably as close as possible in state of health. Do not connect battery packs with too much variation in condition, this lowers overall efficiency significantly!
+
+!!! danger "CAUTION"
+    Do not connect packs in series!
+    
+    - How to ensure balancing, that each battery reaches 100%? In parallel operation this is easy, in series it's next to impossible.
+    - There are no safeties implemented for operation in series connection! No control over CAN controlled contactors would make this feature hard to use safely.
+    - None of the isolation is designed for double the working voltage. Yes, each battery only sees it's own voltage, but the isolation to earth and in the BMS comms suddenly sees twice. As do any internal contactors, which is probably the more immediate issue.
+
+## Which batteries are compatible?
+The list below is generated from `battery_supports_triple()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Triple battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
 - [CMFA platform (Dacia Spring, Renault K-ZE)](../../battery/dacia_spring_renault_k_ze.md)
 - [Nissan LEAF / e-NV200 24/30/40/62kWh](../../battery/nissan_leaf_e_nv200.md) ✅
@@ -25,7 +37,7 @@ The list below is generated from `battery_supports_triple()` in `Software/src/ba
 - [Stellantis ECMP](../../battery/stellantis_ecmp_citroen_ds_opel_peugeot.md)
 - [Fake battery for testing purposes](../../battery/fake_battery.md) (no hardware needed, useful for trying out a triple setup)
 
-All of these are also compatible with [Double Battery](battery_2x.md). The same rules apply as for double operation: identical model and size, packs as close as possible in state of health, parallel connection only.
+All of these are also compatible with [Double Battery](battery_2x.md). 
 
 ## GPIO controlled contactors
 

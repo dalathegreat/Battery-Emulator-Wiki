@@ -9,7 +9,7 @@ title: "Afore"
 Depending on software version, you might need to do an inverter firmware update to get the BYD CAN option.
 
 ## Communication wiring
-The Afore inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/index.md#can-wiring-troubleshooting)
+The Afore inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
 
 ℹ️ Always check the termination resistance of the system! That way you know if resistor needs to be removed or not.
 

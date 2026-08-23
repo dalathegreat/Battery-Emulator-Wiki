@@ -1,12 +1,7 @@
 ---
-title: "Shunt BMW SBOX"
+title: "BMW S-BOX"
 ---
 
-## Read this first
-
-Preface, the entire Battery-Emulator project sets out to achieve safe re-use of EV batteries. By building your own battery, you will be taking larger risks. Take extra precaution when working on a custom DIY HV battery, you have been warned.
-
-## BMW S-BOX
 The BMW S-BOX is a safety box that includes precharge contactors as well as voltage and current probes and fuse. S-BOX can be used eg. on DIY HV Battery and with CHAdeMo vehicles. 
 
 |  Part Number | Compatible | Precharge resistor | Negative/Positive Relays | Precharge relay | Fuse |  Notes |
@@ -30,7 +25,7 @@ When connecting the S-BOX to a shared CAN bus, ensure that these IDs are not alr
 
 ## Configuration:
 
-You can adjust the voltage limits and relay timers by modifying the BMW-SBOX.h file.
+You can adjust the voltage limits and relay timers by modifying the `BMW-SBOX.h` file and compiling the binary yourself.
 
 ## More info
 * [github/damienmaguire](https://github.com/damienmaguire/BMW_SBox)

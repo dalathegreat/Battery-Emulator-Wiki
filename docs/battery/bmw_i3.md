@@ -187,7 +187,7 @@ Perform this balancing as often as necessary to keep cell mV delta low. Failure 
 | Event "Error: Battery interlock loop broken. Check that high voltage / low voltage connectors are seated"  | Check that both interlocks are OK. 1. The High Voltage needs to have the two small HVIL wires joined together near the orange connector. 2. The Low Voltage connector also needs to have pin 6 and 12 connected via a 33 Ohm resistor. If you are doing the pins yourself, make sure they are seated all the way. |
 
 ## Example completed setup
-Fronius Gen24 with 2x BMW i3 batteries in [double battery mode](../setup/software/double_battery.md)
+Fronius Gen24 with 2x BMW i3 batteries in [double battery mode](../setup/software/battery_2x.md)
 
 [![](../images/bmw-i3-22.png){ width="300" }](../images/bmw-i3-22.png)
 

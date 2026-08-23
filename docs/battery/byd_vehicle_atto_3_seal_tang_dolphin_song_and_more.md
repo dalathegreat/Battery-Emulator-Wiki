@@ -35,7 +35,7 @@ Confirmed working BYD Seal 60kWh battery example sticker:
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-01.png)
 
 !!! note "NOTE"
-    If you intend to run two BYD batteries in [parallel](../setup/software/double_battery.md), make sure they are both the same model!
+    If you intend to run two BYD batteries in [parallel](../setup/software/battery_2x.md), make sure they are both the same model!
 
 ### Example battery install, Atto 3 P48 battery
 
@@ -78,8 +78,8 @@ Pinout varies between different batteries despite the plug & socket being the sa
 | Battery | Plug Image | Wiring Diagram | Pinout |
 |---|---|---|---|
 | **PA4** | ![PA4 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-10.png){ width="280" } | — | Not yet documented |
-| **PC5B** (upside down compared to PA4) | ![PC5B plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-11.png){ width="280" } | ![PC5B wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-12.png){ width="280" } | [See below](#pc5b-pinout-from-manual) |
-| **VD6** | ![VD6 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-13.png){ width="280" } | ![VD6 wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-14.png){ width="280" } | [See below](#vd6-pinout-from-manual) |
+| **PC5B** (upside down compared to PA4) | ![PC5B plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-11.png){ width="280" } | ![PC5B wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-12.png){ width="280" } | [See below](#pinout-comparison) |
+| **VD6** | ![VD6 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-13.png){ width="280" } | ![VD6 wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-14.png){ width="280" } | [See below](#pinout-comparison) |
 | **VM7** | ![VM7 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-15.png){ width="280" } | — | Mostly unknown at the moment, derived from in car measurements and comparison to VD6 |
 
 ### Pinout comparison

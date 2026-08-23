@@ -74,7 +74,7 @@ Failing to ground properly will result in CAN errors.
 
 ### CAN Termination
 
-When a board with a single CAN channel, such as the LilyGo T-CAN485, connects to both a CAN battery and CAN inverter on the same pins, and both ends have termination resistors, remove the terminating resistor from the board. See [CAN troubleshooting](../setup/index.md#can-wiring-troubleshooting) for details.
+When a board with a single CAN channel, such as the LilyGo T-CAN485, connects to both a CAN battery and CAN inverter on the same pins, and both ends have termination resistors, remove the terminating resistor from the board. See [CAN troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md) for details.
 
 ℹ️ To verify wiring: With inverter powered on and CAN wires connected only to the inverter, you should measure over 1V (e.g., 1.38V).
 
