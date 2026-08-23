@@ -153,7 +153,7 @@ TPCU011(HR522): 171
 
 To get around this issue for instance on Tesla batteries, configure the "Inverter Contactor Workaround:" option
 
-![image](../images/solax-07.png){ width="430" height="30" }
+![image](../images/solax-08.png){ width="430" height="30" }
 
 It can be configured to either:
 
