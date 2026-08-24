@@ -63,6 +63,7 @@ All the following options use:
 - 37501 Q4053 is Kia eSoul/Niro 64kWh ✅ 
 - 37501 Q4151 is Kia Niro 64kWh ✅ 
 - 37501 Q4452 is Kia Niro 64kWh
+- 37501-AT510 is 11 kWh Kia Niro Hybrid (Uses CAN-FD 64kWh integration) ✅ 
 
 Other models:
 
