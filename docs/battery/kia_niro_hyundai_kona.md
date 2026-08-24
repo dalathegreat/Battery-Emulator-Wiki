@@ -33,7 +33,7 @@ Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Num
 ![image](../images/kia-niro-hyundai-kona-64-kwh-16.png)
 
 - 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ 
-- 37501 AT510 is Kia Niro Hybrid 11 kWh
+- 37501 AT510 is Kia Niro Hybrid 11 kWh ✅ 
 
 Ioniq 28kWh packs use the following options:
 
@@ -63,7 +63,6 @@ All the following options use:
 - 37501 Q4053 is Kia eSoul/Niro 64kWh ✅ 
 - 37501 Q4151 is Kia Niro 64kWh ✅ 
 - 37501 Q4452 is Kia Niro 64kWh
-- 37501-AT510 is 11 kWh Kia Niro Hybrid (Uses CAN-FD 64kWh integration) ✅ 
 
 Other models:
 
