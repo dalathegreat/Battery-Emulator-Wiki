@@ -13,14 +13,14 @@ title: "MG HS PHEV"
   - CAN communication
   - High Voltage Interlock (HVIL)
 - Issues
-  - Earth leakage / isolation resistance testing modification
+  - Earth leakage / insulation resistance testing modification
 - Additional information
 
 ## Current status
 
 The Gen1 MG HS PHEV battery is fully usable, although a modification may be necessary (depending on your inverter/RCD) that requires opening up the battery.
 
-In some situations the battery may detect an isolation failure and open its contactors, which BE will detect, resetting the battery and closing contactors again. This doesn't seem to occur when under load, but sometimes happens during inverter startup.
+In some situations the battery may detect an insulation failure and open its contactors, which BE will detect, resetting the battery and closing contactors again. This doesn't seem to occur when under load, but sometimes happens during inverter startup.
 
 Battery voltage and current, min/max cell temperatures, and individual cell voltages are reported to BE. The battery appears to be balancing automatically.
 
@@ -72,7 +72,7 @@ This is how Molex and MG label the terminals in the connector:
 
 The battery needs a 12V-14V supply, and draws 600mA continuous with the contactors closed, and ~3A briefly when closing the contactors. It also needs a 12V signal to wake it up (via a 1kR resistor, or connected directly) as shown.
 
-To reduce potential issues with the isolation measurement, it is preferable to have a 12V supply that is isolated from the grid (eg, powered from a 2-pin double-insulated adapter).
+To reduce potential issues with the insulation measurement, it is preferable to have a 12V supply that is isolated from the grid (eg, powered from a 2-pin double-insulated adapter).
 
 ### CAN communication
 
@@ -84,7 +84,7 @@ The battery has (at least) three CAN buses:
 
 **CANHV** seems to be the raw data from the HV-side controller in the BMS, and contains raw cell voltages and temperatures, and the current sensor output. This is useful for battery diagnostics, but has high rate of messages (1000 msgs/s).
 
-The CAN1 and CAN2 buses should be bridged together (connecting the high/low pins in parallel) which provides the necessary information as well as allowing OBD/UDS communication (necessary to reset the battery if isolation failure detection occurs).
+The CAN1 and CAN2 buses should be bridged together (connecting the high/low pins in parallel) which provides the necessary information as well as allowing OBD/UDS communication (necessary to reset the battery if insulation failure detection occurs).
 
 > Previous reverse engineering notes:
 >
@@ -102,23 +102,25 @@ The other HVIL connections on the front panel (on each of the three HV connector
 
 ## Issues
 
-### Earth leakage / isolation resistance testing modification
+### Earth leakage / insulation resistance testing modification
 
 The battery has two 90nF Y capacitors inside the contactor module between each HV output terminal and the battery case. It is therefore important to ground/earth the battery case, since with a transformerless inverter these will cause an earth leakage current of >20mA which could be hazardous if an ungrounded battery is touched.
 
 Depending on your inverter and/or RCD, this current may be too high and trip the earth leakage detection, in which case you will need to modify the capacitor circuit to reduce the leakage. Check whether this is necessary by testing with your inverter/RCD first.
 
-The BMS seems to rely on these capacitors when checking the isolation resistance between the HV connections and the battery case - when closing the contactors, and every few seconds whilst the contactors are closed. If it decides that there is a problem, the contactors will open, and the BMS will go into error state 15. Battery Emulator will detect this state and reset the BMS over CAN.
+The BMS seems to rely on these capacitors when checking the insulation resistance between the HV connections and the battery case - when closing the contactors, and every few seconds whilst the contactors are closed. If it decides that there is a problem, the contactors will open, and the BMS will go into error state 15. Battery Emulator will detect this state and reset the BMS over CAN.
 
-Isolation failure errors may be triggered by your inverter's own isolation tests (which are usually performed whilst it is connecting). The extent and inconvenience of this will depend on your exact inverter - a Solax X1-AC seems to only perform these tests before connecting, so as long as the inverter runs continuously without dropping out (or going into standby), it does not seem to trigger isolation failures in the BMS.
+Insulation failure errors may be triggered by your inverter's own insulation tests (which are usually performed whilst it is connecting). The extent and inconvenience of this will depend on your exact inverter - a Solax X1-AC seems to only perform these tests before connecting, so as long as the inverter runs continuously without dropping out (or going into standby), it does not seem to trigger insulation failures in the BMS.
 
 **Obligatory warning - taking the cover off a high voltage battery is dangerous. Remove the MSD first, wear insulating gloves, and check the voltage on all terminals before touching them.**
 
 **The high voltages within the pack are reasonably well contained once the MSD is removed, but be careful around the orange-wrapped wires and connectors which may have ~175V between them.**
 
+For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
+
 #### Step 1: Disconnecting the capacitors from ground
 
-The isolation resistance measuring circuit does not have a DC connection to the case - it seems to rely on these Y capacitors to conduct the AC isolation resistance measuring waveforms. It is therefore possible to disconnect the centerpoint of the capacitors from the chassis ground, leaving them as an effective 45nF capacitance between the HV terminals, and simulating an infinite isolation resistance.
+The insulation resistance measuring circuit does not have a DC connection to the case - it seems to rely on these Y capacitors to conduct the AC insulation resistance measuring waveforms. It is therefore possible to disconnect the centerpoint of the capacitors from the chassis ground, leaving them as an effective 45nF capacitance between the HV terminals, and simulating an infinite insulation resistance.
 
 This can be done by removing the ground connection from the chassis to the contactor board, which is the dangling wire here (ignore the missing capacitor!):
 
@@ -135,7 +137,7 @@ There are two connections between the battery case and the electronics within:
 - inside the contactor module (as disconnected in Option 1 above)
 - underneath one of the BMS mounting bolts to the battery case
 
-If you disconnect both, then the BMS ground will no longer be referenced to the battery case. You can then run an extra wire between the GND screw in the contactor module (shown in the image above), and the case of the BMS, which will bypass the battery case, and keep the isolation measurement completely separate. The wire will not carry much current, but should be well insulated as it will pass close to the main battery terminals.
+If you disconnect both, then the BMS ground will no longer be referenced to the battery case. You can then run an extra wire between the GND screw in the contactor module (shown in the image above), and the case of the BMS, which will bypass the battery case, and keep the insulation measurement completely separate. The wire will not carry much current, but should be well insulated as it will pass close to the main battery terminals.
 
 You will also need to use an isolated 12V power supply (a 2-pin power supply with no earth pin) to power the BMS as well as the Battery Emulator hardware (unless you are using isolated CAN), to ensure that there is no current path between the BMS case and the inverter's ground.
 
