@@ -27,7 +27,7 @@ Follow the official [installation guide](https://www.home-assistant.io/installat
 Two ways to do this, either is fine:
 
 - **DHCP reservation in your router** - reserve an address for the Home Assistant machine's MAC address. Works with every installation type and keeps all address management in one place. This is the simpler option for most users who use the same network device as router and access point.
-- **Static IP in Home Assistant** - on Home Assistant OS, go to **Settings** > **System** > **Network**, expand **IPv4** and switch from DHCP to Static. 
+- **Static IP in Home Assistant** - on Home Assistant OS, go to **Settings** > **System** > **Network**, expand **IPv4** and switch from DHCP to Static. Just make sure you choose an address which falls outside your router's DHCP range.
 
 Use that address in the emulator's **MQTT server** field in step 6. A plain IP address is preferred over a hostname: `homeassistant.local` and other mDNS names may not reliably be resolvable if your local network runs into other issues.
 
@@ -113,7 +113,7 @@ Common problems:
 
 ### Chart examples
 
-Using the [Plotly Graph Card](https://github.com/dbuezas/lovelace-plotly-graph-card) you can generate much better graphics than Home Assistant's built-in ones.
+Using the [Plotly Graph Card](https://github.com/dbuezas/lovelace-plotly-graph-card) you can generate much better graphics than Home Assistant's built-in ones. This requires instalation of [HACS](https://hacs.xyz/docs/use/configuration/basic/) because it's not originally built-in Home Assistant, it's a community-developed component for it.
 
 #### 2D cell monitor with balancing info
 
@@ -460,7 +460,7 @@ mqtt:
 - [Battery Emulator MQTT](mqtt.md) for the complete topic, payload, discovery and command reference, including [remote commands](mqtt.md#subscriptions) such as pause, resume and charge limits.
 - [Running multiple Battery Emulators on one broker](mqtt.md#running-multiple-battery-emulators-on-one-broker) works out of the box
 - [Home Assistant installation](https://www.home-assistant.io/installation/) documentation
-- [Home Assistant Community Store](https://www.hacs.xyz/) to add third party components to Home Assistant
+- [Home Assistant Community Store](https://www.hacs.xyz/) (HACS) to add third party components to Home Assistant
 - [Mosquitto broker](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) app documentation
 - [Home Assistant MQTT integration](https://www.home-assistant.io/integrations/mqtt/) documentation
 - [Home Assistant OS advamced network configuration](https://developers.home-assistant.io/docs/operating-system/network/) for CLI/USB options
