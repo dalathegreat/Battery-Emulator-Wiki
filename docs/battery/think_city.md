@@ -20,8 +20,11 @@ _(instead of make a "floating BMS" I made a "floating Battery"). Since then, my 
 
 ![Image](../images/think-city-02.jpg)
 
+For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
+
 !!! warning "CAUTION"
     The battery box is not grounded! For battery function testing only! Or for complete and safe isolation of the battery box to prevent contact by people and animals.
 ![Data_ENER1-A306_Think-Battery](../images/think-city-03.jpg)
 ![ENER1-A306_Batt](../images/think-city-04.jpg)
+
 
