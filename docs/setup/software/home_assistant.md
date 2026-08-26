@@ -30,7 +30,7 @@ Follow the official [installation guide](https://www.home-assistant.io/installat
 Two ways to do this, either is fine:
 
 - **DHCP reservation in your router** - reserve an address for the Home Assistant machine's MAC address. Works with every installation type and keeps all address management in one place. This is the simpler option for most users who use the same network device as router and access point.
-- **Static IP in Home Assistant** - on Home Assistant OS, go to **Settings** > **System** > **Network**, expand **IPv4** and switch from DHCP to Static. Just make sure you choose an address which falls outside your router's DHCP range.
+- **Static IP in Home Assistant** - on Home Assistant OS, go to **Settings** → **System** → **Network**, expand **IPv4** and switch from DHCP to Static. Just make sure you choose an address which falls outside your router's DHCP range.
 
 Use that address in the emulator's **MQTT server** field in step 6. A plain IP address is preferred over a hostname: `homeassistant.local` and other mDNS names may not reliably be resolvable if your local network runs into other issues.
 
@@ -39,13 +39,13 @@ Use that address in the emulator's **MQTT server** field in step 6. A plain IP a
 
 ## 3. Install the Mosquitto broker app (add-on)
 
-In Home Assistant, go to **Settings** > **Apps** > **Install app**, find **Mosquitto broker**, install it, then enable **Start on boot** and **Watchdog** and start it. The official [Mosquitto broker documentation](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) covers the app in full.
+In Home Assistant, go to **Settings** → **Apps** → **Install app**, find **Mosquitto broker**, install it, then enable **Start on boot** and **Watchdog** and start it. The official [Mosquitto broker documentation](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) covers the app in full.
 
 ![image](../../images/home-assistant-03.png)
 
 Two things that matter for the Battery Emulator:
 
-- **Leave port `1883` published** on the app's *Configuration* > *Network* card. The emulator connects from outside Home Assistant, so the port has to be reachable on the LAN. Blanking it out disables the listener and the emulator cannot connect.
+- **Leave port `1883` published** on the app's *Configuration* → *Network* card. The emulator connects from outside Home Assistant, so the port has to be reachable on the LAN. Blanking it out disables the listener and the emulator cannot connect.
 - **Use the unencrypted listener.** The emulator's MQTT client is plain TCP - TLS is not implemented - so it always connects to `1883`, never to `8883`.
 
 ## 4. Create an MQTT user for the Battery Emulator
@@ -73,11 +73,11 @@ logins:
 
 ![image](../../images/home-assistant-05.png)
 
-As an alternative, the Mosquitto app also authenticates against Home Assistant user accounts (**Settings** > **People** > **Users**, requires *Advanced Mode* on your profile). A broker-local login as shown above is usually the better choice, since it keeps device credentials out of your Home Assistant login system.
+As an alternative, the Mosquitto app also authenticates against Home Assistant user accounts (**Settings** → **People** → **Users**, requires *Advanced Mode* on your profile). A broker-local login as shown above is usually the better choice, since it keeps device credentials out of your Home Assistant login system.
 
 ## 5. Add the MQTT integration
 
-Go to **Settings** > **Devices & services** > **Add integration** and choose **MQTT**. If Mosquitto is running, it is normally offered as a discovered integration and configures itself in one click. See the [MQTT integration documentation](https://www.home-assistant.io/integrations/mqtt/) for the details.
+Go to **Settings** → **Devices & services** → **Add integration** and choose **MQTT**. If Mosquitto is running, it is normally offered as a discovered integration and configures itself in one click. See the [MQTT integration documentation](https://www.home-assistant.io/integrations/mqtt/) for the details.
 
 Relevant for the Battery Emulator:
 
@@ -107,7 +107,7 @@ The full list of settings, published topics, payloads and commands is documented
 ## 7. Result
 
 - On the emulator: the event log shows that MQTT is connected.
-- In Home Assistant: go to **Settings** > **Devices & services** > **MQTT** > **devices**. A device named after the emulator's hostname (for example `battery-emulator-a1b2`) should be listed, with its sensors, its buttons and its event entity. Emulator-level entities such as *BMS Status* or *Emulator Uptime* live under the device's **Diagnostic** section. Wait a couple of minutes for all the entities to start getting values.
+- In Home Assistant: go to **Settings** → **Devices & services** → **MQTT** → **devices**. A device named after the emulator's hostname (for example `battery-emulator-a1b2`) should be listed, with its sensors, its buttons and its event entity. Emulator-level entities such as *BMS Status* or *Emulator Uptime* live under the device's **Diagnostic** section. Wait a couple of minutes for all the entities to start getting values.
 
 ![image](../../images/home-assistant-07.png)
 
@@ -129,7 +129,7 @@ To see some historical data about an entity, just click on its name. It will pop
 | It worked, then stopped after a reboot | Home Assistant's IP address changed - see step 2 |
 | Values show `unknown` right after a start | Normal: the emulator only publishes values once real data has been received from the battery |
 
-- To watch the raw traffic, open **Settings** > **Devices & services** > **MQTT** > **Configure** and listen to the topic `battery-emulator-a1b2/#`.
+- To watch the raw traffic, open **Settings** → **Devices & services** → **MQTT** → **Configure** and listen to the topic `battery-emulator-a1b2/#`.
 
 ## Some extras
 
@@ -172,9 +172,9 @@ fn: |-
     vars.a     = hass.states["sensor.battery_emulator_a1b2_cells"]?.attributes || {};
     vars.cells = vars.a.cell_voltages || [];
     vars.bal   = vars.a.cell_balancing || [];
-    vars.x = vars.cells.map((_, i) => i + 1);
+    vars.x = vars.cells.map((_, i) =→ i + 1);
     vars.y = vars.cells;
-    vars.colors = vars.cells.map((_, i) => vars.bal[i] === true ? "#BA6834" : "#2f7ed8");
+    vars.colors = vars.cells.map((_, i) =→ vars.bal[i] === true ? "#BA6834" : "#2f7ed8");
     vars.delta = vars.cells.length
       ? (Math.max(...vars.cells) - Math.min(...vars.cells)) * 1000
       : 0;
@@ -189,8 +189,8 @@ entities:
     marker:
       color: $ex vars.colors
     texttemplate: "%{y:.3f}"
-    hovertemplate: $ex "Cell %{x}<br>%{y:.3f} V<br>%{customdata}<extra></extra>"
-    customdata: "$ex vars.cells.map((_, i) => vars.bal[i] ? \"balancing/pending\" : \"idle\")"
+    hovertemplate: $ex "Cell %{x}<br→%{y:.3f} V<br→%{customdata}<extra→</extra→"
+    customdata: "$ex vars.cells.map((_, i) =→ vars.bal[i] ? \"balancing/pending\" : \"idle\")"
     refresh_interval: 2
 layout:
   height: 300
@@ -207,7 +207,7 @@ layout:
     r: 45
     b: 35
   annotations:
-    - text: >-
+    - text: →-
         $ex "Cell Voltage Delta: " + (isNaN(vars.delta) ? "--" :
         vars.delta.toFixed(0)) + "mV"
       xref: paper
@@ -382,7 +382,7 @@ entities:
     internal: false
     type: surface
     x: $ex vars.xs
-    "y": $ex vars.data.map((_,i)=>i)
+    "y": $ex vars.data.map((_,i)=→i)
     z: $ex vars.data
     colorbar:
       thickness: 7
@@ -450,7 +450,7 @@ mqtt:
         unit_of_measurement: "A"
         icon: mdi:battery-arrow-up
         retain: false
-        command_template: >-
+        command_template: →-
           {"max_charge": {{ ((value | float(0)) * 10) | round(0) | int }},
            "max_discharge": {{ ((states('number.be_discharge_current_limit') | float(0)) * 10) | round(0) | int }},
            "timeout": {{ states('input_number.be_limit_timeout') | float(30) | int }}}
@@ -470,7 +470,7 @@ mqtt:
         unit_of_measurement: "A"
         icon: mdi:battery-arrow-down
         retain: false
-        command_template: >-
+        command_template: →-
           {"max_charge": {{ ((states('number.be_charge_current_limit') | float(0)) * 10) | round(0) | int }},
            "max_discharge": {{ ((value | float(0)) * 10) | round(0) | int }},
            "timeout": {{ states('input_number.be_limit_timeout') | float(30) | int }}}
