@@ -21,7 +21,7 @@ At the same time, EV manufacturers have been putting high capacity battery packs
 
 **Battery Emulator** enables EV battery packs to be repurposed for stationary storage. It acts as a translation layer between the EV battery and the home inverter. This makes it extremely cheap and easy to use large EV batteries in a true plug'n'play fashion!
 
-The software run on specific ESP32 hardware boards, supports [Over The Air updates](setup/software/ota_update.md), has a [web interace that you can connect to for real time values](setup/software/webserver_guide.md), cellmonitoring, change settings and more. For those into [home automation](setup/software/home_assistant.md), it also supports [MQTT](setup/software/mqtt.md). 
+The software runs on specific ESP32 hardware boards, supports [Over The Air updates](setup/software/ota_update.md), has a [web interace that you can connect to for real time values](setup/software/webserver_guide.md), cellmonitoring, change settings and more. For those into [home automation](setup/software/home_assistant.md), it also supports [MQTT](setup/software/mqtt.md). 
 
 ## Quickstart guide 📜
 
