@@ -9,7 +9,7 @@ The LilyGo T-2CAN is a dual CAN board, excellent for integrations that require s
 **There are two versions of the T-2CAN:**
 
 - **T-2CAN** (classic): Supports 2x CAN
-- **T-2CAN FD**: Supports 1x CAN and 1x CAN FD. This is compatible with BE, but needs DIP switch '1' turning ON, and you can't also use the BMS POWER output (TODO: remap to another pin).
+- **T-2CAN FD**: Supports 1x CAN and 1x CAN FD.
 
 Since they are the same price, the T-2CAN FD is generally recommended.
 
@@ -123,7 +123,7 @@ See below for more information.
 ### Expansion header
 
 The underside of the board has pads for a 26-pin 2.54mm-pitch pin header.
-![image](../images/lilygo-t-2can-12.png)
+<img width="1766" alt="image" src="https://github.com/user-attachments/assets/1ce41176-bf84-4dd7-9328-52ab816b48cf" />
 
 Note that the configurable port setting overrides these pin assignments - for example, if you choose WUP1/WUP2 for the configurable port, these pins will be on the top QWIIC connector, and not the underside expansion header.
 
@@ -150,6 +150,9 @@ The BOOT button has [special features to enable AP, wipe wifi settings or factor
 #### Contactors
 
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
+
+!!! note "NOTE"
+    In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions.
 
 ### Screen compatibility
 
