@@ -85,7 +85,7 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 ## Periodic restart of BMS
 The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
 
-See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the "Skip reset for one period if balancing" option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on these packs.
+See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on AZE0 packs.
 
 !!! note "NOTE"
     The LEAF battery is fully charged at 92-96% SOC. Use the Scaled SOC function to get a nicer looking 100% curve!
@@ -96,7 +96,6 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
     When contactors are closed, the Battery's own insulation measurement shows values averaging around 100kΩ - this is normal!
 
 For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
-
 
 ## Part numbers for Nissan LEAF batteries
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
@@ -130,15 +129,14 @@ These will *not* connect to the Leaf battery terminals.
 
 ## Communication cable AWG limits
 22 or 36pin connector are designed with an hole of 2.1mm that would contain cable and included elastic ring for water proof seal.
-AWG 22 (0.5mm2) is enough cable section for the supported Amps.
+AWG 22 (0.5mm²) is enough cable section for the supported Amps.
 
 Normal cable of the above section (22AWG) have a protective rubber that is too thick (usually 2.1mm external diameter) => need to choose automotive cable that follow reduced rubber cable standard (FLRY-A or B ISO 6722) that shouldn't be thicker than 1.5/1.7mm (better 1.5) outside diameter.
 
-Need at least 0.7/1mm thick cable (e.g. cable + wrap) to allow correct water proof e.g. no ethernet cable can be used because too thin.
-Eth cable can go from 23 to 26 AWG. Normal AWG is usually 24 AWG that is rated for max 0.5A.
+Need at least 0.7/1mm thick cable (e.g. cable + wrap) to allow correct water proof e.g. no ethernet cable can be used because too thin. Ethernet cable can go from 23 to 26 AWG. Normal AWG is usually 24 AWG that is rated for max 0.5A.
 HV battery contactors drain continuously 0.4A each one at 12v.
 
-BTW it's not strictly necessary to be automotive grade cable if it has enough copper diameter (0.5mm2) and outer diameter of ~1.5mm.
+BTW it's not strictly necessary to be automotive grade cable if it has enough copper diameter (0.5mm²) and outer diameter of ~1.5mm.
 
 NOTE: If you pin your connector yourself - ensure the pins go all the way to the bottom and the pin is seated properly. If they are inserted incorrectly (not far enough, "wonky") then you won't have proper communication.
 
@@ -153,10 +151,8 @@ Crimping B24 (36pin) connector in progress.
 ![image](../images/nissan-leaf-e-nv200-12.png)
 
 ### NOTE about cable code
-* FLRY-A Automotive low voltage cable (FL) with reduced thickness of insulation (R)
-made of PVC (Y), with regularly stranded conductor (A)
-* FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R)
-made of PVC (Y), with irregularly stranded conductor (B)
+* FLRY-A Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with regularly stranded conductor (A)
+* FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with irregularly stranded conductor (B)
 
 ### Alternative HV connectors 
 Original part number for Nissan Leaf battery is 297A65SH1A but a cheaper alternative for battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as Leaf battery. 297A22581R is the part numbers for both car.
@@ -165,7 +161,7 @@ The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/da
 
 ## 3D-printable parts
 
-You can print your own safety cover for the **unused Heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
+You can print your own safety cover for the **unused heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
 
 ## Examples of wiring installs
 Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
