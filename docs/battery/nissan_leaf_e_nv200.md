@@ -90,6 +90,14 @@ Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most f
 !!! note "NOTE"
     The LEAF battery is fully charged at 92-96% SOC. Use the Scaled SOC function to get a nicer looking 100% curve!
 
+## Insulation resistance
+
+!!! note "Note"
+    When contactors are closed, the Battery's own insulation measurement shows values averaging around 100kΩ - this is normal!
+
+For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
+
+
 ## Part numbers for Nissan LEAF batteries
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
 
