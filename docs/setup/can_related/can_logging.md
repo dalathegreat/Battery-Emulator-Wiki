@@ -14,8 +14,15 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 
 ## CAN logging via Webserver
 
+### CAN Dump
+To raw dump all CAN coming from the board, visit the **dump_can** page. Browse to the IP address http://192.168.4.1/dump_can
+
+Let the CAN logger run for enough time, and save all the page to a document.
+
+### CAN Logging via can log page
+
 !!! note "NOTE"
-    CAN logging via Webserver does not store all messages due to limited RAM. If you need to log absolutely everything, do it via USB or to SD-CARD.
+    CAN logging via can log page does not store all messages due to limited RAM. If you need to log absolutely everything, do it via CAN Dump page, USB or to SD-CARD.
 
 !!! note "NOTE"
     Some mobile phone browsers can have issues displaying long data lists. If you see no data, try using a Desktop PC / Laptop.
