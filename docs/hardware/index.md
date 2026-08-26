@@ -38,7 +38,7 @@ By visiting the "Events" page in the Webserver, you can see which specific warni
 
 The board has wifi, and supports running a [Webserver that you can connect to for real time values](../setup/software/webserver_guide.md), [Over The Air updates](../setup/software/ota_update.md) (OTA), cellmonitoring, changing settings and more. See the [Webserver](../setup/software/webserver_guide.md) page for more info on how to use the system.
 
-For those into home automation, the code is also compatible with [MQTT](../setup/software/mqtt.md) 
+For those into [home automation](../setup/software/home_assistant.md), the code is also supports [MQTT](../setup/software/mqtt.md). 
 
 ## Optional screen via ESPNow 🖥️
 No Battery-Emulator hardware comes with displays by default. If you want to add a local display to your system, the best option is to add a [ESPNow](../setup/software/espnow.md/) compatible microcontroller, which will wirelessly connect to the Battery-Emulator board and display statistics.
