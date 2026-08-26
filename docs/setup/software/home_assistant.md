@@ -1,17 +1,121 @@
 ---
-title: "Home Assistant goodies"
+title: "Home Assistant quick start"
 ---
 
-# Home Assistant goodies
+This page walks through setting up [Home Assistant](https://www.home-assistant.io/) with an MQTT broker so that the Battery Emulator shows up as a device with all of its sensors, buttons and events - without any manual YAML. This will give you the possibility to do longer term monitoring and analysis of how your battery pack performs in your specific environment.
+
+Home Assistant supports integrations for many other components that you may use with Battery Emulator, like inverters, smart meters, EV chargers, etc. You can not only organize and display data together from all these sources of information, but also automate them together so your system can become more efficient.
+
+Only the parts that are specific to the Battery Emulator are described in detail here. For everything else, follow the official Home Assistant documentation, which is linked at each step and is always up to date with the current Home Assistant version.
 
 !!! tip "TIP"
-    In the examples below, replace the dummy hostname `battery-emulator-a1b2` with the hostname of your own Battery Emulator device!
+    The examples below use `battery-emulator-a1b2` as a stand-in for your device's hostname (`a1b2` being the last two bytes of its MAC address). Replace it with the hostname of your own Battery Emulator device - see [MQTT](mqtt.md).
 
-## Chart examples
+Before you start, the Battery Emulator should already be flashed and joined to your home network, and its [Webserver](webserver_guide.md) should be reachable from a browser.
+
+## 1. Install Home Assistant
+
+Follow the official [installation guide](https://www.home-assistant.io/installation/) and pick the method that suits your hardware.
+
+!!! note "NOTE"
+    If you want to use the built-in Mosquitto broker described below, install **Home Assistant OS** or a **Supervised** installation - those are the ones that support apps (add-ons). With Home Assistant Container or Core you have to run a broker yourself (a separate Mosquitto container, or an existing broker elsewhere on your LAN); everything on the Battery Emulator side stays exactly the same, only the broker address changes.
+
+## 2. Give Home Assistant a fixed IP address
+
+**Strongly recommended.** The Battery Emulator stores the broker address as a fixed string in its settings, and does not rediscover the broker on its own. If Home Assistant gets a new address from your DHCP server (after a reboot, a lease expiry, or a router restart), the emulator keeps knocking on the old address, all Home Assistant entities go unavailable, and the only fix is to edit the **MQTT server** field on the emulator by hand and rebooting it.
+
+Two ways to do this, either is fine:
+
+- **DHCP reservation in your router** - reserve an address for the Home Assistant machine's MAC address. Works with every installation type and keeps all address management in one place. This is the simpler option for most users who use the same network device as router and access point.
+- **Static IP in Home Assistant** - on Home Assistant OS, go to **Settings** > **System** > **Network**, expand **IPv4** and switch from DHCP to Static. 
+
+Use that address in the emulator's **MQTT server** field in step 6. A plain IP address is preferred over a hostname: `homeassistant.local` and other mDNS names may not reliably be resolvable if your local network runs into other issues.
+
+!!! warning "WARNING"
+    Make sure your LAN is **not** on `192.168.4.x`. That range conflicts with the Battery Emulator's built-in Wi-Fi access point, and MQTT will not work whenever you'd decice to turn it on.
+
+## 3. Install the Mosquitto broker app (add-on)
+
+In Home Assistant, go to **Settings** > **Apps** > **Install app**, find **Mosquitto broker**, install it, then enable **Start on boot** and **Watchdog** and start it. The official [Mosquitto broker documentation](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) covers the app in full.
+
+Two things that matter for the Battery Emulator:
+
+- **Leave port `1883` published** on the app's *Configuration* > *Network* card. The emulator connects from outside Home Assistant, so the port has to be reachable on the LAN. Blanking it out disables the listener and the emulator cannot connect.
+- **Use the unencrypted listener.** The emulator's MQTT client is plain TCP - TLS is not implemented - so it always connects to `1883`, never to `8883`.
+
+## 4. Create an MQTT user for the Battery Emulator
+
+The Mosquitto app does **not** accept anonymous connections: every client must log in with a username and password. When you set up the MQTT integration in the next step, Home Assistant generates and stores its own hidden credentials for internal use - those are secret and cannot be reused by the emulator. So the Battery Emulator needs a login of its own.
+
+Open the Mosquitto app's **Configuration** tab and add a login: click on **Add**, add some desired credentials and click on **Add** button to close the popup. The MQTT user should appear in the list.
+
+Alternatively (or to verify that the user has been really added) you can switch the editor to YAML using the 3-dots menu button in the top-right corner and look for something like in the config:
+
+```yaml
+logins:
+  - username: batteryemulator
+    password: your_strong_password_here
+```
+
+**Save**, then **restart the app**. Keep these credentials - you type them into the emulator in step 6.
+
+!!! note "TIPS"
+    - `homeassistant` and `addons` are reserved usernames and cannot be used.
+    - Keep the password to **printable ASCII**, without spaces or quotes: the emulator stores MQTT user and password as printable ASCII, and the value is entered through its web form.
+    - Running several Battery Emulators (or other MQTT devices)? Give each one its own login, so a single device's credentials can be changed or restricted later without touching the rest.
+
+As an alternative, the Mosquitto app also authenticates against Home Assistant user accounts (**Settings** > **People** > **Users**, requires *Advanced Mode* on your profile). A broker-local login as shown above is usually the better choice, since it keeps device credentials out of your Home Assistant login system.
+
+## 5. Add the MQTT integration
+
+Go to **Settings** > **Devices & services** > **Add integration** and choose **MQTT**. If Mosquitto is running, it is normally offered as a discovered integration and configures itself in one click. See the [MQTT integration documentation](https://www.home-assistant.io/integrations/mqtt/) for the details.
+
+Relevant for the Battery Emulator:
+
+- **Leave MQTT discovery enabled.** Without it, no entities are created from the emulator's autodiscovery messages.
+- **Leave the discovery prefix at `homeassistant`.** That is also the emulator's default. If you change it on one side, you must change it on the other to the exact same value.
+
+## 6. Configure MQTT on the Battery Emulator
+
+Open the emulator's Webserver, go to **Settings**, and tick **Enable MQTT** under the Integration settings - the remaining MQTT fields only appear once that box is ticked. Then fill in:
+
+| Battery Emulator setting | Value |
+| ------------------------ | ----- |
+| **MQTT server** | The fixed IP address of Home Assistant from step 2 |
+| **MQTT port** | `1883` |
+| **MQTT user** / **MQTT password** | The login created in step 4 |
+| **Home Assistant autodiscovery** | Enabled |
+| **Autodiscovery topic** | `homeassistant` (must match the prefix used in step 5) |
+| **Publish at firmware updates** | Tick it, so the discovery configs are updated in case of changes coming in firmware updates |
+| **Publish at next boot** | Tick it, so the discovery configs are published on the next start |
+
+Everything else can stay at its default. Save the settings and **restart the emulator** - the MQTT client and the autodiscovery configs are set up while it boots.
+
+The full list of settings, published topics, payloads and commands is documented on the [MQTT](mqtt.md) page.
+
+## 7. Verify
+
+- On the emulator: the event log shows that MQTT is connected.
+- In Home Assistant: go to **Settings** > **Devices & services** > **MQTT** > **devices**. A device named after the emulator's hostname (for example `battery-emulator-a1b2`) should be listed, with its sensors, its buttons and its event entity. Emulator-level entities such as *BMS Status* or *Emulator Uptime* live under the device's **Diagnostic** section. Wait a couple of minutes for all the entities to start getting values.
+- To watch the raw traffic, open **Settings** > **Devices & services** > **MQTT** > **Configure** and listen to the topic `battery-emulator-a1b2/#`.
+
+Common problems:
+
+| Symptom | Likely cause |
+| ------- | ------------ |
+| No device appears in Home Assistant | Autodiscovery not enabled, discovery topic mismatch, or the emulator has not been restarted since ticking **Publish at next boot** |
+| Entities exist but are all unavailable | The emulator is not connected to the broker - it publishes `offline` to its `status` topic, and the broker does the same on its behalf about 45 s after a sudden failure |
+| Nothing connects, Mosquitto log shows a bad username or password | Credentials mismatch, or the login was added but the Mosquitto app was not restarted |
+| It worked, then stopped after a reboot | Home Assistant's IP address changed - see step 2 |
+| Values show `unknown` right after a start | Normal: the emulator only publishes values once real data has been received from the battery |
+
+## Some extras
+
+### Chart examples
 
 Using the [Plotly Graph Card](https://github.com/dbuezas/lovelace-plotly-graph-card) you can generate much better graphics than Home Assistant's built-in ones.
 
-### 2D cell monitor with balancing info
+#### 2D cell monitor with balancing info
 
 ![image](../../images/home-assistant-01.png){ width="504" height="327" }
 
@@ -105,7 +209,7 @@ config:
 
 ```
 
-### 3D Cell monitor (in relation with time) for 96 cells
+#### 3D Cell monitor (in relation with time) for 96 cells
 
 ![image](../../images/home-assistant-02.png){ width="606" height="542" }
 
@@ -269,7 +373,7 @@ entities:
       xanchor: left
 ```
 
-## Pause Charge/Discharge switch (instead of just two buttons)
+### Pause Charge/Discharge switch (instead of just two buttons)
 
 Create a manually configured template switch which not only will toggle Battery Emulator paused state, but will also reflect this in reality.
 
@@ -293,7 +397,7 @@ template:
               payload: "PRESS"
 ```
 
-## [SET_LIMITS](mqtt.md#set_limits) user interface
+### [SET_LIMITS](mqtt.md#set_limits) user interface
 
 Use an input number helper to select the **limit timeout**, and create two MQTT number entities to select the desired current limits. Always set the desired timeout first, and change the current values after.
 
@@ -349,3 +453,14 @@ mqtt:
            "max_discharge": {{ ((value | float(0)) * 10) | round(0) | int }},
            "timeout": {{ states('input_number.be_limit_timeout') | float(30) | int }}}
 ```
+
+
+## References
+
+- [Battery Emulator MQTT](mqtt.md) for the complete topic, payload, discovery and command reference, including [remote commands](mqtt.md#subscriptions) such as pause, resume and charge limits.
+- [Running multiple Battery Emulators on one broker](mqtt.md#running-multiple-battery-emulators-on-one-broker) works out of the box
+- [Home Assistant installation](https://www.home-assistant.io/installation/) documentation
+- [Home Assistant Community Store](https://www.hacs.xyz/) to add third party components to Home Assistant
+- [Mosquitto broker](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) app documentation
+- [Home Assistant MQTT integration](https://www.home-assistant.io/integrations/mqtt/) documentation
+- [Home Assistant OS advamced network configuration](https://developers.home-assistant.io/docs/operating-system/network/) for CLI/USB options
