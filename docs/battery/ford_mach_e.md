@@ -121,6 +121,8 @@ The label should be weather-resistant, difficult to remove accidentally and posi
 ![Close-up of the disconnected Ford isolation-monitoring wire with red insulation]
 ![IMG_0214](../images/ford-mach-e-09.jpg){ width="900" height="675" }
 
+For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
+
 ## Cell balancing
 
 ### LFP battery balancing
