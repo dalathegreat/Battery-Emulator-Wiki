@@ -18,12 +18,14 @@ Before you start, the Battery Emulator should already be flashed and joined to y
 Follow the official [installation guide](https://www.home-assistant.io/installation/) and pick the method that suits your hardware. Choose your hardware by keeping in mind that Home Assistant needs to run 24/7 to gather data in real time from the peripherals you connect to it, including Battery Emulator. Think of connecting it to a UPS source if possible.
 
 !!! tip "TIP"
-    You can use any old computer like a refurbished laptop to run Home Assistant. Just double-check its bios settings that it's not going to suspend/turn off after a while.
+    You can use almost [any old computer like a refurbished laptop](https://www.home-assistant.io/installation/generic-x86-64) to run Home Assistant. Just double-check its bios settings that it's not going to suspend/turn off after a while.
 
 You don't need a display or mouse/keyboard on the actual hardware running Home Assistant. It's a "headless" system, meaning it has a web interface you manage from another computer or from your mobile, just like you do with Battery Emulator.
 
 !!! note "NOTE"
     It's recommended to use the built-in Mosquitto broker as described below - choose **Home Assistant OS** or a **Supervised** installation as those are the ones that support apps (add-ons). With Home Assistant Container or Core you have to run a broker yourself (a separate Mosquitto container, or an existing broker elsewhere on your LAN); everything on the Battery Emulator side stays exactly the same, only the broker address changes.
+
+Once you're done with the install and the [onboarding steps](https://www.home-assistant.io/getting-started/onboarding/), it's worth running through their [concepts and terminology](https://www.home-assistant.io/getting-started/concepts-terminology/) page to get in the picture on the principles behind it.
 
 ## 2. Give Home Assistant a fixed IP address
 
@@ -483,7 +485,7 @@ mqtt:
 
 - [Battery Emulator MQTT](mqtt.md) for the complete topic, payload, discovery and command reference, including [remote commands](mqtt.md#subscriptions) such as pause, resume and charge limits.
 - [Running multiple Battery Emulators on one broker](mqtt.md#running-multiple-battery-emulators-on-one-broker) works out of the box
-- [Home Assistant installation](https://www.home-assistant.io/installation/) documentation
+- [Home Assistant](https://www.home-assistant.io/getting-started/) getting started guides
 - [Home Assistant Community Store](https://www.hacs.xyz/) (HACS) to add third party components to Home Assistant
 - [Mosquitto broker](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) app documentation
 - [Home Assistant MQTT integration](https://www.home-assistant.io/integrations/mqtt/) documentation
