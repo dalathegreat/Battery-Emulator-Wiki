@@ -123,7 +123,7 @@ To see some historical data about an entity, just click on its name. It will pop
 
 ![image](../../images/home-assistant-09.png)
 
-### Common problems:
+## Troubleshooting
 
 | Symptom | Likely cause |
 | ------- | ------------ |
@@ -133,7 +133,7 @@ To see some historical data about an entity, just click on its name. It will pop
 | It worked, then stopped after a reboot | Home Assistant's IP address changed - see step 2 |
 | Values show `unknown` right after a start | Normal: the emulator only publishes values once real data has been received from the battery |
 
-- To watch the raw traffic, open **Settings** → **Devices & services** → **MQTT** → **Configure** and listen to the topic `battery-emulator-a1b2/#`.
+To watch the raw traffic, open **Settings** → **Devices & services** → **MQTT** → **Configure** and listen to the topic `battery-emulator-a1b2/#`.
 
 ## Some extras
 
