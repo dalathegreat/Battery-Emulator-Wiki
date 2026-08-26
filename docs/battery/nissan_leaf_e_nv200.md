@@ -17,13 +17,14 @@ The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged dif
 ![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
 
 ## Software configuration
-For this battery type, use the option called "Nissan LEAF battery" under the "Battery Protocol" setting.
+For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
 
-![image](../images/nissan-leaf-e-nv200-21.png){ width="598" height="146" }
+![image](../images/nissan-leaf-e-nv200-26.png)
 
-* If you are using the 2011-2012 24kWh battery, you can enable "Interlock required" in the software for extra safety. Then the software checks that high voltage connectors are plugged in before you can start.
-   * If you use "Interlock required" on a 2013-2023 battery, both HV plugs need to be seated (80kW and 6kW heater).
-   * For 2013-2023 it is recommended to **not** use "Interlock required" due to the inconvenience of having to source both HV connectors, and instead just block off the unused HV port with a cover.
+- leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed. You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md) to observe behavior is strongly recommended when using experimental settings). Changing this setting requires a BMS reset.
+- on a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
+       - If you enable this setting on a AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus for these it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and insulate manually one of them). Instead just block off the unused HV port with a 3D printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
+- set the **Battery chemistry** to **NMC**.
 
 ## Wiring diagram
 The following pictures show an example of hooking up a LEAF battery to a Fronius Gen24 inverter. The same diagram can be useful for planning other inverter combinations.
@@ -82,10 +83,9 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
-The Nissan LEAF BMS is not able to operate 24/7 under all conditions. Over time the SOC% will become less and less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
+The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
 
-See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details.
-Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the "Skip reset for one period if balancing" option enabled.
+See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on AZE0 packs.
 
 !!! note "NOTE"
     The LEAF battery is fully charged at 92-96% SOC. Use the Scaled SOC function to get a nicer looking 100% curve!
@@ -96,7 +96,6 @@ Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most f
     When contactors are closed, the Battery's own insulation measurement shows values averaging around 100kΩ - this is normal!
 
 For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
-
 
 ## Part numbers for Nissan LEAF batteries
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
@@ -130,15 +129,14 @@ These will *not* connect to the Leaf battery terminals.
 
 ## Communication cable AWG limits
 22 or 36pin connector are designed with an hole of 2.1mm that would contain cable and included elastic ring for water proof seal.
-AWG 22 (0.5mm2) is enough cable section for the supported Amps.
+AWG 22 (0.5mm²) is enough cable section for the supported Amps.
 
 Normal cable of the above section (22AWG) have a protective rubber that is too thick (usually 2.1mm external diameter) => need to choose automotive cable that follow reduced rubber cable standard (FLRY-A or B ISO 6722) that shouldn't be thicker than 1.5/1.7mm (better 1.5) outside diameter.
 
-Need at least 0.7/1mm thick cable (e.g. cable + wrap) to allow correct water proof e.g. no ethernet cable can be used because too thin.
-Eth cable can go from 23 to 26 AWG. Normal AWG is usually 24 AWG that is rated for max 0.5A.
+Need at least 0.7/1mm thick cable (e.g. cable + wrap) to allow correct water proof e.g. no ethernet cable can be used because too thin. Ethernet cable can go from 23 to 26 AWG. Normal AWG is usually 24 AWG that is rated for max 0.5A.
 HV battery contactors drain continuously 0.4A each one at 12v.
 
-BTW it's not strictly necessary to be automotive grade cable if it has enough copper diameter (0.5mm2) and outer diameter of ~1.5mm.
+BTW it's not strictly necessary to be automotive grade cable if it has enough copper diameter (0.5mm²) and outer diameter of ~1.5mm.
 
 NOTE: If you pin your connector yourself - ensure the pins go all the way to the bottom and the pin is seated properly. If they are inserted incorrectly (not far enough, "wonky") then you won't have proper communication.
 
@@ -153,10 +151,8 @@ Crimping B24 (36pin) connector in progress.
 ![image](../images/nissan-leaf-e-nv200-12.png)
 
 ### NOTE about cable code
-* FLRY-A Automotive low voltage cable (FL) with reduced thickness of insulation (R)
-made of PVC (Y), with regularly stranded conductor (A)
-* FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R)
-made of PVC (Y), with irregularly stranded conductor (B)
+* FLRY-A Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with regularly stranded conductor (A)
+* FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with irregularly stranded conductor (B)
 
 ### Alternative HV connectors 
 Original part number for Nissan Leaf battery is 297A65SH1A but a cheaper alternative for battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as Leaf battery. 297A22581R is the part numbers for both car.
@@ -165,7 +161,7 @@ The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/da
 
 ## 3D-printable parts
 
-You can print your own safety cover for the **unused Heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
+You can print your own safety cover for the **unused heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
 
 ## Examples of wiring installs
 Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
