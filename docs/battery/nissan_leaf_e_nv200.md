@@ -19,7 +19,7 @@ The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged dif
 ## Software configuration
 For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
 
-<img width="975" height="325" alt="image" src="https://github.com/user-attachments/assets/47b27f86-a8d6-42d4-8a43-0672ea8df76c" />
+![image](../images/nissan-leaf-e-nv200-26.png)
 
 - leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed. You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md) to observe behavior is strongly recommended when using experimental settings).
 - on a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
