@@ -41,7 +41,7 @@ Use that address in the emulator's **MQTT server** field in step 6. A plain IP a
 
 In Home Assistant, go to **Settings** > **Apps** > **Install app**, find **Mosquitto broker**, install it, then enable **Start on boot** and **Watchdog** and start it. The official [Mosquitto broker documentation](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) covers the app in full.
 
-<img width="1540" height="780" alt="image" src="https://github.com/user-attachments/assets/cf90c073-48a3-4c67-b3ab-a13d5601aa77" />
+![image](../../images/home-assistant-03.png)
 
 Two things that matter for the Battery Emulator:
 
@@ -54,7 +54,7 @@ The Mosquitto app does **not** accept anonymous connections: every client must l
 
 Open the Mosquitto app's **Configuration** tab and add a login: click on **Add**, add some desired credentials and click on **Add** button to close the popup. The MQTT user should appear in the list.
 
-<img width="1301" height="364" alt="image" src="https://github.com/user-attachments/assets/f5bd71ba-518a-4d28-b131-f92780e9ed0b" />
+![image](../../images/home-assistant-04.png)
 
 Alternatively (or to verify that the user has been really added) you can switch the editor to YAML using the 3-dots menu button in the top-right corner and look for something like in the config:
 
@@ -71,7 +71,7 @@ logins:
     - Keep the password to **printable ASCII**, without spaces or quotes: the emulator stores MQTT user and password as printable ASCII, and the value is entered through its web form.
     - Running several Battery Emulators (or other MQTT devices)? Give each one its own login, so a single device's credentials can be changed or restricted later without touching the rest.
 
-<img width="431" height="160" alt="image" src="https://github.com/user-attachments/assets/86125585-f79f-43a3-bdc4-a580e649197d" />
+![image](../../images/home-assistant-05.png)
 
 As an alternative, the Mosquitto app also authenticates against Home Assistant user accounts (**Settings** > **People** > **Users**, requires *Advanced Mode* on your profile). A broker-local login as shown above is usually the better choice, since it keeps device credentials out of your Home Assistant login system.
 
@@ -100,7 +100,7 @@ Open the emulator's Webserver, go to **Settings**, and tick **Enable MQTT** unde
 
 Everything else can stay at its default. Save the settings and **restart the emulator** - the MQTT client and the autodiscovery configs are set up while it boots.
 
-<img width="925" height="570" alt="image" src="https://github.com/user-attachments/assets/69c6f496-80cb-4b41-a523-c3e725514629" />
+![image](../../images/home-assistant-06.png)
 
 The full list of settings, published topics, payloads and commands is documented on the [MQTT](mqtt.md) page.
 
@@ -109,15 +109,15 @@ The full list of settings, published topics, payloads and commands is documented
 - On the emulator: the event log shows that MQTT is connected.
 - In Home Assistant: go to **Settings** > **Devices & services** > **MQTT** > **devices**. A device named after the emulator's hostname (for example `battery-emulator-a1b2`) should be listed, with its sensors, its buttons and its event entity. Emulator-level entities such as *BMS Status* or *Emulator Uptime* live under the device's **Diagnostic** section. Wait a couple of minutes for all the entities to start getting values.
 
-<img width="1291" height="483" alt="image" src="https://github.com/user-attachments/assets/7d85e537-1202-4e61-a4d1-7cc6ad0fddb3" />
+![image](../../images/home-assistant-07.png)
 
-<img width="1578" height="978" alt="image" src="https://github.com/user-attachments/assets/52540f42-d73d-4b5d-9067-239c0b250986" />
+![image](../../images/home-assistant-08.png)
 
 At your convenience, click **Add to dashboard** link on each card you see here to add these entities to the main dashboard page of the system.
 
 To see some historical data about an entity, just click on its name. It will pop up a card showing the data recorded over the last 24 hours:
 
-<img width="706" height="571" alt="image" src="https://github.com/user-attachments/assets/1528b6d6-f8aa-4ce4-b90b-bf20d32a670f" />
+![image](../../images/home-assistant-09.png)
 
 ### Common problems:
 
