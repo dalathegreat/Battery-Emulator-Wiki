@@ -17,13 +17,14 @@ The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged dif
 ![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
 
 ## Software configuration
-For this battery type, use the option called "Nissan LEAF battery" under the "Battery Protocol" setting.
+For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
 
-![image](../images/nissan-leaf-e-nv200-21.png){ width="598" height="146" }
+<img width="975" height="325" alt="image" src="https://github.com/user-attachments/assets/47b27f86-a8d6-42d4-8a43-0672ea8df76c" />
 
-* If you are using the 2011-2012 24kWh battery, you can enable "Interlock required" in the software for extra safety. Then the software checks that high voltage connectors are plugged in before you can start.
-   * If you use "Interlock required" on a 2013-2023 battery, both HV plugs need to be seated (80kW and 6kW heater).
-   * For 2013-2023 it is recommended to **not** use "Interlock required" due to the inconvenience of having to source both HV connectors, and instead just block off the unused HV port with a cover.
+- leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed. You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md) to observe behavior is strongly recommended when using experimental settings).
+- on a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
+       - If you enable this setting on a AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus for these it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and insulate manually one of them). Instead just block off the unused HV port with a 3D printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
+- set the **Battery chemistry** to **NMC**.
 
 ## Wiring diagram
 The following pictures show an example of hooking up a LEAF battery to a Fronius Gen24 inverter. The same diagram can be useful for planning other inverter combinations.
@@ -165,7 +166,7 @@ The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/da
 
 ## 3D-printable parts
 
-You can print your own safety cover for the **unused Heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
+You can print your own safety cover for the **unused Heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
 
 ## Examples of wiring installs
 Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
