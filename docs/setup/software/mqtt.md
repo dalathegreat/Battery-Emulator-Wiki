@@ -2,15 +2,15 @@
 title: "MQTT"
 ---
 
-The Battery-Emulator is compatible with MQTT. It can be configured to publish data to your MQTT broker and then be used in whatever way you choose. You can modify the Battery-Emulator code to publish more data, less data, or other data, as well as subscribing to MQTT topics. There are also advanced functions that can be triggered via MQTT, such as charge limits.
+The Battery-Emulator is compatible with MQTT. It can be configured to publish data to your MQTT broker and then be used in whatever way you choose (like for example [Home Assistant](home_assistant.md)). You can modify the Battery-Emulator code to publish more data, less data, or other data, as well as subscribing to MQTT topics. There are also advanced functions that can be triggered via MQTT, such as charge limits.
 
 The main purpose of this implementation is better integration with popular home automation platforms such as Home Assistant, in order to (for example) keep track of battery temperature and cell deviation. If "MQTT" and "Home Assistant" are not familiar words, you will likely not benefit from this until you're up to speed on the current state of home automation.
 
 !!! note "NOTE"
-    The MQTT topic name, the Home Assistant object-ID prefix, the HA device name, and the HA device identifier are no longer independently configurable settings. All four are automatically set to the device's **hostname**, which itself defaults to `battery-emulator-xxxx` (`xxxx` being the last two bytes of the device's MAC address) unless a custom hostname has been set on the Connectivity settings page. The examples on this page use `battery-emulator-a1b2` as a stand-in for this value — substitute your device's actual hostname wherever you see it.
+    The MQTT topic name, the Home Assistant object-ID prefix, the HA device name, and the HA device identifier are no longer independently configurable settings. All four are automatically set to the device's **hostname**, which itself defaults to `battery-emulator-xxxx` (`xxxx` being the last two bytes of the device's MAC address) unless a custom hostname has been set on the Connectivity settings page. The examples on this page use `battery-emulator-a1b2` as a stand-in for this value - substitute your device's actual hostname wherever you see it.
 
 !!! note "NOTE"
-    This page documents the MQTT implementation as found in `Software/src/devboard/mqtt/mqtt.cpp`. The behaviour described here matches recent builds. Older releases behave differently — see [Migrating from older releases](#migrating-from-older-releases).
+    This page documents the MQTT implementation as found in `Software/src/devboard/mqtt/mqtt.cpp`. The behaviour described here matches recent builds. Older releases behave differently - see [Migrating from older releases](#migrating-from-older-releases).
 
 ## Enabling MQTT
 
@@ -31,7 +31,7 @@ To start using MQTT, enable the **Enable MQTT** checkbox under the Integration s
 | **Publish at firmware updates** | off | Publish the discovery configs whenever a firmware update is detected |
 | **Publish at next boot** | off | Publish the discovery configs at next boot (unticks automatically) |
 
-The device's **Hostname** field (set in the Network config section) determines the MQTT topic name, the HA object-ID prefix, the HA device name, and the HA device identifier — see the note at the top of this page.
+The device's **Hostname** field (set in the Network config section) determines the MQTT topic name, the HA object-ID prefix, the HA device name, and the HA device identifier - see the note at the top of this page.
 
 !!! note "NOTE"
     The publish interval is applied when the MQTT client is started, and the heap-metrics checkbox changes which sensors are auto-discovered. Both take effect **after a restart**.
@@ -63,7 +63,7 @@ Two publish cadences are used:
 
 Publishing is skipped entirely while an **OTA update** is in progress, so a firmware upload is not competing with MQTT traffic.
 
-Values are only published once **valid data** exists. Battery values appear only after the battery has actually been seen on CAN (not merely expected), CAN sending is allowed, and the post-boot startup delay has passed. Individual values that arrive later — such as `total_capacity` on batteries that derive it from received data, `insulation_resistance`, or `charged_energy`/`discharged_energy` — are omitted from the JSON until they are known. In Home Assistant this shows as **"unknown"** rather than a false `0` (or a false default like `370.0 V`) during boot.
+Values are only published once **valid data** exists. Battery values appear only after the battery has actually been seen on CAN (not merely expected), CAN sending is allowed, and the post-boot startup delay has passed. Individual values that arrive later - such as `total_capacity` on batteries that derive it from received data, `insulation_resistance`, or `charged_energy`/`discharged_energy` - are omitted from the JSON until they are known. In Home Assistant this shows as **"unknown"** rather than a false `0` (or a false default like `370.0 V`) during boot.
 
 **`<hostname>/info` (and `/info_2`, `/info_3`)**
 
@@ -113,16 +113,16 @@ Example payload (single battery), published to `battery-emulator-a1b2/info`:
 
 Keys appear conditionally:
 
-- All battery values — only once the battery has been detected on CAN, is still communicating, CAN sending is allowed and the board has finished booting. Before that, `.../info` contains only the global emulator values.
-- `total_capacity` — only once known (non-zero); some battery integrations derive it from received data.
-- `charged_energy` / `discharged_energy` — only on batteries that support charged-energy tracking, and only once both totals are non-zero. Each battery reports **its own** totals.
-- `cell_max_voltage` / `cell_min_voltage` / `cell_voltage_delta` — only once per-cell voltages have been populated.
-- `insulation_resistance` — only on batteries that report insulation resistance, and only once a valid sample has been decoded.
-- `cpu_temp` — only when **Measure CPU temperature** is enabled in the settings.
-- `heap_free`, `heap_max_block`, `heap_min_free`, `heap_fragmentation` — only when **Publish heap metric diagnostics** is enabled.
-- `dc_dc_current` / `dc_dc_voltage` — only for Tesla Model 3/Y and Model S/X.
-- `autocal_taper`, `autocal_dwell_s`, `autocal_cooldown_ready`, `autocal_soc_drift`, `min_cell_number`, `max_cell_number` — only for the BYD Atto 3.
-- `leaf_hx` — only for the Nissan Leaf, and only once a battery-group reply with a known layout has been decoded.
+- All battery values - only once the battery has been detected on CAN, is still communicating, CAN sending is allowed and the board has finished booting. Before that, `.../info` contains only the global emulator values.
+- `total_capacity` - only once known (non-zero); some battery integrations derive it from received data.
+- `charged_energy` / `discharged_energy` - only on batteries that support charged-energy tracking, and only once both totals are non-zero. Each battery reports **its own** totals.
+- `cell_max_voltage` / `cell_min_voltage` / `cell_voltage_delta` - only once per-cell voltages have been populated.
+- `insulation_resistance` - only on batteries that report insulation resistance, and only once a valid sample has been decoded.
+- `cpu_temp` - only when **Measure CPU temperature** is enabled in the settings.
+- `heap_free`, `heap_max_block`, `heap_min_free`, `heap_fragmentation` - only when **Publish heap metric diagnostics** is enabled.
+- `dc_dc_current` / `dc_dc_voltage` - only for Tesla Model 3/Y and Model S/X.
+- `autocal_taper`, `autocal_dwell_s`, `autocal_cooldown_ready`, `autocal_soc_drift`, `min_cell_number`, `max_cell_number` - only for the BYD Atto 3.
+- `leaf_hx` - only for the Nissan Leaf, and only once a battery-group reply with a known layout has been decoded.
 
 **Status strings**
 
@@ -203,18 +203,18 @@ The Battery-Emulator subscribes to `<hostname>/command/+`, e.g. `battery-emulato
 
 The currently supported commands are:
 
-- `BMSRESET` — Triggers a hardware power-cycle of the BMS. **Only acted upon if remote BMS reset is enabled** (see [Remote trigger through MQTT](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt)); otherwise the message is ignored.
-- `PAUSE` — Triggers the pause feature
-- `RESUME` — Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
-- `RESTART` — Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)
-- `STOP` — Triggers the equipment stop (opens contactors); see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume)
-- `SET_LIMITS` — Sets a temporary charge and/or discharge limit
+- `BMSRESET` - Triggers a hardware power-cycle of the BMS. **Only acted upon if remote BMS reset is enabled** (see [Remote trigger through MQTT](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt)); otherwise the message is ignored.
+- `PAUSE` - Triggers the pause feature
+- `RESUME` - Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
+- `RESTART` - Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)
+- `STOP` - Triggers the equipment stop (opens contactors); see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume)
+- `SET_LIMITS` - Sets a temporary charge and/or discharge limit
 
 For example: `battery-emulator-a1b2/command/PAUSE`
 
 ### Opening and closing contactors (`STOP` and `PAUSE` vs. `RESUME`)
 
-The auto-discovered button labelled **"Open Contactors"** is the `STOP` command. There is **no separate "Close Contactors" command or button** — closing the contactors is exposed through MQTT as the `RESUME` command (the auto-discovered "Resume charge/discharge" button). The naming is asymmetric, which is why it can look as though closing is missing: `STOP` is named after its contactor effect, while its inverse `RESUME` is named after its pause effect.
+The auto-discovered button labelled **"Open Contactors"** is the `STOP` command. There is **no separate "Close Contactors" command or button** - closing the contactors is exposed through MQTT as the `RESUME` command (the auto-discovered "Resume charge/discharge" button). The naming is asymmetric, which is why it can look as though closing is missing: `STOP` is named after its contactor effect, while its inverse `RESUME` is named after its pause effect.
 
 Under the hood, `STOP` latches an equipment-stop state, and `RESUME` clears it:
 
@@ -231,7 +231,7 @@ So the effective mapping is:
 Two things to keep in mind:
 
 - `RESUME` *allows* the contactors to close; it does not *force* them closed. They only actually close if the inverter also permits closing and the normal preconditions are met (battery detected, past the post-boot startup delay, no faults). If the inverter is what is holding the contactors open, `RESUME` will not override that.
-- `RESUME` does double duty — it both ends a `PAUSE` and clears an equipment stop. There is no command that closes the contactors without also resuming charge/discharge, just as `STOP` cannot open them without also pausing.
+- `RESUME` does double duty - it both ends a `PAUSE` and clears an equipment stop. There is no command that closes the contactors without also resuming charge/discharge, just as `STOP` cannot open them without also pausing.
 
 ### SET_LIMITS
 
@@ -262,7 +262,7 @@ Example payload (max charge 30 A, max discharge 40 A, timeout 60 seconds), publi
 - **Temporary by design.** The main loop checks every cycle whether `now > (timestamp_of_last_command + timeout)`. Once that is true, the remote limit flags are cleared and the remote values are zeroed, so the limit must be **re-sent before each timeout** to stay in effect.
 - **Not persisted.** The remote limit is never written to flash, so it is also cleared by a reboot. After power-on no remote limit is active until a new `SET_LIMITS` is received.
 - **Reverts to the manual/BMS limit, not to "unrestricted".** When the remote limit expires, the allowed current falls back to the manual (user-set) limit, or to the BMS/inverter-derived limit if no manual limit applies.
-- **Overrides rather than combines with the manual limit.** While a remote limit is active, the manual user limit is bypassed — the remote value is used instead. The remote limit can therefore sit *above* your manual limit during the active window. It still only ever *lowers* the BMS/inverter-derived allowed current (it caps, it cannot raise the battery's own limit).
+- **Overrides rather than combines with the manual limit.** While a remote limit is active, the manual user limit is bypassed - the remote value is used instead. The remote limit can therefore sit *above* your manual limit during the active window. It still only ever *lowers* the BMS/inverter-derived allowed current (it caps, it cannot raise the battery's own limit).
 
 To cancel a limit quickly, send a new message with a short timeout (for instance `1` second).
 
@@ -296,7 +296,7 @@ The full set of auto-discovered sensors is generated from the battery and global
 
 **Per battery:** `SoC (scaled)`, `SoC (real)`, `State of Health`, `Temperature Min/Max`, `Battery Power`, `Battery Current`, `Cell Max/Min Voltage`, `Cell Voltage Delta`, `Battery Voltage`, `Total Capacity`, `Remaining Capacity (scaled)` and `(real)`, `Max Charge/Discharge Power`, `Battery Charged/Discharged Energy`, `Insulation Resistance`, `Balancing Cells`, `Balancing Status`, `Charging State`, `Limiting Factor`, plus the battery-specific `DC-DC Current/Voltage` (Tesla), the `BYD Auto-cal` set and `Min/Max Cell Number` (BYD Atto 3), and `Hx` (Nissan Leaf).
 
-**Emulator-level (diagnostic):** `BMS Status`, `Pause Status`, `Event Level`, `Emulator Status`, `Emulator Uptime`, `Emulator Version`, `CPU Temperature`, `Event`, and — when enabled — `Heap Free`, `Heap Max Block`, `Heap Min Free`, `Heap Fragmentation`. These are published with `"entity_category": "diagnostic"`, so Home Assistant files them under the device's Diagnostic section instead of the main sensor list. The **Reboot Emulator** button is a diagnostic entity too.
+**Emulator-level (diagnostic):** `BMS Status`, `Pause Status`, `Event Level`, `Emulator Status`, `Emulator Uptime`, `Emulator Version`, `CPU Temperature`, `Event`, and - when enabled - `Heap Free`, `Heap Max Block`, `Heap Min Free`, `Heap Fragmentation`. These are published with `"entity_category": "diagnostic"`, so Home Assistant files them under the device's Diagnostic section instead of the main sensor list. The **Reboot Emulator** button is a diagnostic entity too.
 
 With a second (or third) battery, each battery sensor is duplicated with a ` 2` (or ` 3`) name suffix and a `_2` (`_3`) suffix on its `unique_id` and object ID; its `state_topic` points at `.../info_2` (`.../info_3`), and its `value_template` uses the plain, un-suffixed key.
 
@@ -325,12 +325,12 @@ Example (`homeassistant/sensor/battery-emulator-a1b2/SOC/config`):
 }
 ```
 
-The same sensor for a second battery (`.../SOC_2/config`) differs only in: `"name": "SoC (scaled) 2"`, `"unique_id": "battery-emulator-a1b2_SOC_2"`, `"default_entity_id": "sensor.battery-emulator-a1b2_SOC_2"`, and `"state_topic": "battery-emulator-a1b2/info_2"` — the `value_template` stays `{{ value_json.SOC | default(none) }}`.
+The same sensor for a second battery (`.../SOC_2/config`) differs only in: `"name": "SoC (scaled) 2"`, `"unique_id": "battery-emulator-a1b2_SOC_2"`, `"default_entity_id": "sensor.battery-emulator-a1b2_SOC_2"`, and `"state_topic": "battery-emulator-a1b2/info_2"` - the `value_template` stays `{{ value_json.SOC | default(none) }}`.
 
 #### How the discovery payload is built
 
 - **`value_template` uses `| default(none)`.** Keys that are legitimately absent (a battery that has not been detected yet, a capacity that is not known yet) therefore land in Home Assistant as *unknown* instead of raising a template error on every message.
-- **`state_class`** is set to `measurement` for every sensor that has a `device_class`. The numeric sensors that deliberately have no `device_class` — `balancing_active_cells`, `insulation_resistance`, `leaf_hx`, `heap_fragmentation` — get `measurement` explicitly.
+- **`state_class`** is set to `measurement` for every sensor that has a `device_class`. The numeric sensors that deliberately have no `device_class` - `balancing_active_cells`, `insulation_resistance`, `leaf_hx`, `heap_fragmentation` - get `measurement` explicitly.
 - **Capacity sensors use `device_class: energy_storage`**, not `energy`. Home Assistant rejects `energy` combined with `state_class: measurement`, and `total_capacity` / `remaining_capacity*` represent a currently stored amount rather than a running total.
 - **`charged_energy` / `discharged_energy` keep `device_class: energy`** but use `state_class: total_increasing`, since they are genuine lifetime counters.
 - **`suggested_display_precision`** is set to 3 for cell min/max voltage, 2 for `leaf_hx`, 1 for battery current, CPU temperature, both SoC sensors and heap fragmentation, and 0 for insulation resistance. It is deliberately not applied to `battery_voltage`.
@@ -364,7 +364,7 @@ Example (`homeassistant/sensor/battery-emulator-a1b2/cell_voltage96/config`):
 
 Cell-voltage entities update every 60 seconds, matching the `spec_data` publish cadence.
 
-Cell-voltage discovery is **retried until the cell count is known**. A battery that has not yet reported how many cells it has does not block the rest of the discovery pack — the per-cell configs are simply published on a later cycle, once the count arrives.
+Cell-voltage discovery is **retried until the cell count is known**. A battery that has not yet reported how many cells it has does not block the rest of the discovery pack - the per-cell configs are simply published on a later cycle, once the count arrives.
 
 ### Event discovery
 
@@ -391,7 +391,7 @@ Topic: `<discovery topic>/sensor/<hostname>/event/config`
 
 ### Button (command) discovery
 
-In addition to sensors, Home Assistant **Button** entities are auto-discovered for the supported commands, so they can be triggered from the HA dashboard. These are published once on MQTT connect, and only marked as done once *all* of them went out — a mid-list failure is retried on the next connect rather than leaving the remaining buttons undiscovered.
+In addition to sensors, Home Assistant **Button** entities are auto-discovered for the supported commands, so they can be triggered from the HA dashboard. These are published once on MQTT connect, and only marked as done once *all* of them went out - a mid-list failure is retried on the next connect rather than leaving the remaining buttons undiscovered.
 
 Topic: `<discovery topic>/button/<hostname>/<command>/config`
 
@@ -405,11 +405,11 @@ Topic: `<discovery topic>/button/<hostname>/<command>/config`
 
 ## Running multiple Battery Emulators on one broker
 
-Multiple Battery Emulators can share the same MQTT broker, and they separate themselves automatically: the MQTT topic name, the HA object-ID prefix, the HA device name, and the HA device identifier all default to the device's hostname, which itself defaults to `battery-emulator-a1b2` (`a1b2` being the last two bytes of the device's MAC address) — making it unique out of the box without any manual configuration. If you'd prefer a friendlier name, set a custom hostname on the Connectivity settings page; just make sure each device on the same broker gets a different one.
+Multiple Battery Emulators can share the same MQTT broker, and they separate themselves automatically: the MQTT topic name, the HA object-ID prefix, the HA device name, and the HA device identifier all default to the device's hostname, which itself defaults to `battery-emulator-a1b2` (`a1b2` being the last two bytes of the device's MAC address) - making it unique out of the box without any manual configuration. If you'd prefer a friendlier name, set a custom hostname on the Connectivity settings page; just make sure each device on the same broker gets a different one.
 
 ## Migrating from older releases
 
-Recent builds changed the MQTT layout in several ways that affect anyone consuming the raw topics (manually configured `mqtt:` sensors, Node-RED flows, Telegraf, custom scripts). **Home Assistant auto-discovery users are migrated automatically** — the discovery configs are updated and all `unique_id`s are preserved, so existing entities keep their history and no duplicates appear. Some entity *display names* changed (`SOC (Scaled)` → `SoC (scaled)`, `Stat Batt Power` → `Battery Power`, `State Of Health` → `State of Health`, the `RESTART` button → `Reboot Emulator`); any custom name you set in Home Assistant is untouched.
+Recent builds changed the MQTT layout in several ways that affect anyone consuming the raw topics (manually configured `mqtt:` sensors, Node-RED flows, Telegraf, custom scripts). **Home Assistant auto-discovery users are migrated automatically** - the discovery configs are updated and all `unique_id`s are preserved, so existing entities keep their history and no duplicates appear. Some entity *display names* changed (`SOC (Scaled)` → `SoC (scaled)`, `Stat Batt Power` → `Battery Power`, `State Of Health` → `State of Health`, the `RESTART` button → `Reboot Emulator`); any custom name you set in Home Assistant is untouched.
 
 - **Battery 2/3 moved to their own topics.** Previously, a second/third battery's values were added to `.../info` with suffixed keys (`SOC_2`, `battery_voltage_3`, …). They are now published to `.../info_2` and `.../info_3` using the same plain key names as battery #1. Update raw consumers to subscribe to the per-battery topic and drop the key suffix.
 - **`balancing_data*` topics were removed.** The per-cell balancing arrays are now part of the `spec_data*` messages, under the `cell_balancing` key. Update raw consumers to read `cell_balancing` from `.../spec_data` (or `.../spec_data_2` / `_3`).
@@ -418,10 +418,11 @@ Recent builds changed the MQTT layout in several ways that affect anyone consumi
 - **Several emulator-level entities became diagnostic.** They still exist with the same `unique_id`, but Home Assistant now lists them under the device's Diagnostic section.
 
 !!! note "NOTE"
-    Cell data now updates every 60 seconds rather than at the main publish interval, and battery values are omitted from the JSON until real data has been received from the battery — consumers must tolerate absent keys rather than assuming every key is present in every message.
+    Cell data now updates every 60 seconds rather than at the main publish interval, and battery values are omitted from the JSON until real data has been received from the battery - consumers must tolerate absent keys rather than assuming every key is present in every message.
 
 ## References
 
-- [Home Assistant MQTT overview](https://www.home-assistant.io/integrations/mqtt/) — brokers, discovery, configuration and HA services related to MQTT
-- [Home Assistant MQTT Sensor](https://www.home-assistant.io/integrations/sensor.mqtt/) — manual (non-discovery) setup of MQTT sensors
-- [ESP-IDF MQTT (esp-mqtt) documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/protocols/mqtt.html) — the MQTT client library currently used
+- [Home Assistant](home_assistant.md) - quick start guide with Battery Emulator
+- [Home Assistant MQTT overview](https://www.home-assistant.io/integrations/mqtt/) - brokers, discovery, configuration and HA services related to MQTT
+- [Home Assistant MQTT Sensor](https://www.home-assistant.io/integrations/sensor.mqtt/) - manual (non-discovery) setup of MQTT sensors
+- [ESP-IDF MQTT (esp-mqtt) documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/protocols/mqtt.html) - the MQTT client library currently used
