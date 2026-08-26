@@ -4,14 +4,14 @@ title: "Home Assistant quick start"
 
 This page walks through setting up [Home Assistant](https://www.home-assistant.io/) with an MQTT broker so that the Battery Emulator shows up as a device with all of its sensors, buttons and events - without any manual YAML. This will give you the possibility to do longer term monitoring and analysis of how your battery pack performs in your specific environment.
 
-Home Assistant supports integrations for many other components that you may use with Battery Emulator, like inverters, smart meters, EV chargers, etc. You can not only organize and display data together from all these sources of information, but also automate them together so your system can become more efficient.
+Home Assistant supports integrations for many other components that you may already use along Battery Emulator, like inverters, smart meters, EV chargers, etc. You can not only organize and display data together from all these sources of information, but also automate them together so your system can become more efficient.
 
 Only the parts that are specific to the Battery Emulator are described in detail here. For everything else, follow the official Home Assistant documentation, which is linked at each step and is always up to date with the current Home Assistant version.
 
+Before you start, the Battery Emulator should already be flashed and joined to your home network, and its [Webserver](webserver_guide.md) should be reachable from a browser.
+
 !!! tip "TIP"
     The examples below use `battery-emulator-a1b2` as a stand-in for your device's hostname (`a1b2` being the last two bytes of its MAC address). Replace it with the hostname of your own Battery Emulator device - see [MQTT](mqtt.md).
-
-Before you start, the Battery Emulator should already be flashed and joined to your home network, and its [Webserver](webserver_guide.md) should be reachable from a browser.
 
 ## 1. Install Home Assistant
 
@@ -20,8 +20,10 @@ Follow the official [installation guide](https://www.home-assistant.io/installat
 !!! tip "TIP"
     You can use any old computer like a refurbished laptop to run Home Assistant. Just double-check its bios settings that it's not going to suspend/turn off after a while.
 
+You don't need a display or mouse/keyboard on the actual hardware running Home Assistant. It's a "headless" system, meaning it has a web interface you manage from another computer or from your mobile, just like you do with Battery Emulator.
+
 !!! note "NOTE"
-    If you want to use the built-in Mosquitto broker described below, install **Home Assistant OS** or a **Supervised** installation - those are the ones that support apps (add-ons). With Home Assistant Container or Core you have to run a broker yourself (a separate Mosquitto container, or an existing broker elsewhere on your LAN); everything on the Battery Emulator side stays exactly the same, only the broker address changes.
+    It's recommended to use the built-in Mosquitto broker as described below - choose **Home Assistant OS** or a **Supervised** installation as those are the ones that support apps (add-ons). With Home Assistant Container or Core you have to run a broker yourself (a separate Mosquitto container, or an existing broker elsewhere on your LAN); everything on the Battery Emulator side stays exactly the same, only the broker address changes.
 
 ## 2. Give Home Assistant a fixed IP address
 
