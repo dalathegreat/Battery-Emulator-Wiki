@@ -6,6 +6,7 @@ hide:
 ---
 
 # Battery-Emulator ⚡🔋
+
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/dalathegreat/Battery-Emulator?color=%23008000)
 ![GitHub Repo stars](https://img.shields.io/github/stars/dalathegreat/Battery-Emulator?style=flat&color=%23128512)
 ![GitHub forks](https://img.shields.io/github/forks/dalathegreat/Battery-Emulator?style=flat&color=%23128512)
@@ -20,16 +21,20 @@ At the same time, EV manufacturers have been putting high capacity battery packs
 
 **Battery Emulator** enables EV battery packs to be repurposed for stationary storage. It acts as a translation layer between the EV battery and the home inverter. This makes it extremely cheap and easy to use large EV batteries in a true plug'n'play fashion!
 
+The software run on specific ESP32 hardware boards, supports [Over The Air updates](setup/software/ota_update.md), has a [web interace that you can connect to for real time values](setup/software/webserver_guide.md), cellmonitoring, change settings and more. For those into [home automation](setup/software/home_assistant.md), it also supports [MQTT](setup/software/mqtt.md). 
+
 ## Quickstart guide 📜
+
 - Pick a [compatible inverter](inverter/index.md#compatible-inverters-list) (solar panels optional) :sun_with_face: 
 - Pick a [compatible battery](battery/index.md#compatible-batteries-list) :battery: 
 - Order a Battery-Emulator board or module [compatible hardware](hardware/index.md) :robot: 
 - Follow the [installation guidelines](setup/installation_guidelines.md) section for how to install and commission your battery properly :notebook: 
 
-!!! warning "CAUTION"
+!!! danger "DANGER"
     Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.
 
 ## What about safety? ⚠️ ℹ️
+
 Reusing old often crashed EV packs always comes with risks. The system performs a few safety functions for safer charging and discharging. Apart from this, the data sent to the Inverter is also processed on the inverter side, and depending on which inverter is used a few additional safety checks are performed there. Here is a list of all safety functionalities that are in the system. Note that almost all safety features rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be detectable via software. For this you need fuses, and periodic visual inspections. 
 
 !!! tip "TIP"
