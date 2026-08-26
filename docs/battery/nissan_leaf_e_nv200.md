@@ -21,7 +21,7 @@ For this battery type, use the option named **Nissan LEAF battery** under the **
 
 ![image](../images/nissan-leaf-e-nv200-26.png)
 
-- leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed. You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md) to observe behavior is strongly recommended when using experimental settings).
+- leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed. You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md) to observe behavior is strongly recommended when using experimental settings). Changing this setting requires a BMS reset.
 - on a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
        - If you enable this setting on a AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus for these it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and insulate manually one of them). Instead just block off the unused HV port with a 3D printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
 - set the **Battery chemistry** to **NMC**.
@@ -83,10 +83,9 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
-The Nissan LEAF BMS is not able to operate 24/7 under all conditions. Over time the SOC% will become less and less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
+The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
 
-See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details.
-Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the "Skip reset for one period if balancing" option enabled.
+See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the "Skip reset for one period if balancing" option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on these packs.
 
 !!! note "NOTE"
     The LEAF battery is fully charged at 92-96% SOC. Use the Scaled SOC function to get a nicer looking 100% curve!
