@@ -2,9 +2,11 @@
 title: "BYD Vehicle Batteries"
 ---
 
+## Compatible BYD batteries
+
 The code is compatible with a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working.
 
-To get contactor closing to function, start BYD battery first, and Battery-Emulator afterwards. If you start Battery-Emulator before the battery, it wont close contactors before you restart the emulator. Also make sure no FAULT events are active when trying to start, this will open contactors.
+To get contactor closing to function, start BYD battery first, and Battery-Emulator afterwards. If you start Battery-Emulator before the battery, it wont close contactors before you restart the emulator. Also make sure no FAULT events are active when trying to start, this will prevent contactor operation.
 
 |  Product Type |  Byd Model  | Energy | Capacity | Nominal voltage | Status |
 | :-----------: | :---------: | :----: | :------: | :-------------: | :----: |
@@ -36,6 +38,12 @@ Confirmed working BYD Seal 60kWh battery example sticker:
 
 !!! note "NOTE"
     If you intend to run two BYD batteries in [parallel](../setup/software/battery_2x.md), make sure they are both the same model!
+
+## Software setup
+For this battery, select the "BYD Atto 3/Seal/Dolphin" option in the dropdown menu
+
+!!! note "IMPORTANT"
+    The battery needs to be on its own CAN channel. It cannot share the same CAN channel as the solar inverter. LilyGo T-2CAN or similar double CAN hardware is recommended!
 
 ### Example battery install, Atto 3 P48 battery
 
