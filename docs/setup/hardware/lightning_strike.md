@@ -22,14 +22,12 @@ If your system has been exposed to a nearby lightning strike, or if it’s showi
 
 1) Measure CAN Bus Termination Resistance
 
-The CAN bus should have a termination resistance of 120Ω between CAN High and CAN Low wires at each end of the bus. Here's how to check it:
-
-- Step-by-step:
+The CAN bus should have a termination resistance of 120Ω between CAN High and CAN Low wires at each end of the bus. Here's how to check it step-by-step:
   
    - Power down your system completely.
    - Use a multimeter to measure the resistance between the CAN High (H) and CAN Low (L) wires.
    - The expected reading should be close to 60Ω if both terminators are present (120Ω in parallel). If you get a significantly different reading, check the terminations or for potential damage along the bus.
-   - Disconnect each device, and if they contain a termination resistor, it should read 120Ω when measuring.
+   - Disconnect each device, and if they contain a termination resistor, it should read 120Ω when measuring them individually.
 
 !!! tip "TIP"
     Not all CAN devices have a built-in a terminating resistor. So be sure to confirm this before stating it broken.
@@ -38,7 +36,7 @@ The CAN bus should have a termination resistance of 120Ω between CAN High and C
 
 CAN transceivers are often the first to fail due to surges caused by lightning. Look for:
 
-- Visual signs of damage: Burn marks, melted or deformed chips, or any discoloration around the transceiver circuits, especially on both the battery BMS and emulator boards.
+- Visual signs of damage: burn marks, melted or deformed chips, or any discoloration around the transceiver circuits, especially on both the battery BMS and emulator boards.
 - Symptoms of damage:
        - Loss of communication between components.
        - Faulty or dropped messages on the CAN bus.
