@@ -17,7 +17,7 @@ hide:
 
 Many manufacturers sell home battery systems to enable homeowners to store power collected from the grid, or renewable sources, to use at times when electricity demand is higher. However almost all of these home battery systems charge a high cost for every kilowatt hour (kWh) of capacity you buy.
 
-At the same time, EV manufacturers have been putting high capacity battery packs into their cars, with no firm plan for what should happen to those batteries if the car is damaged in a crash, or reaches the end of its life as a vehicle. As it turns out, in the vast majority of the cases the battery pack is the part that outlives the car on very long term. Even after more than ten years, the remaining usable capacity in an EV battery pack is still above the magnitude of a household stationary usage.
+At the same time, EV manufacturers have been putting high capacity battery packs into their cars, with no firm plan for what should happen to those batteries if the car is damaged in a crash, or reaches the end of its life as a vehicle. As it turns out, in the vast majority of the cases the battery pack is the part that outlives the car on very long term. Even after more than ten years, the remaining usable capacity in an EV battery pack is still above the magnitude of a household need.
 
 **Battery Emulator** enables EV battery packs to be repurposed for stationary storage. It acts as a translation layer between the EV battery and the home inverter. This makes it extremely cheap and easy to use large EV batteries in a true plug'n'play fashion!
 
