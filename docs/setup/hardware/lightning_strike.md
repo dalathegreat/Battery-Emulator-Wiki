@@ -40,9 +40,9 @@ CAN transceivers are often the first to fail due to surges caused by lightning. 
 
 - Visual signs of damage: Burn marks, melted or deformed chips, or any discoloration around the transceiver circuits, especially on both the battery BMS and emulator boards.
 - Symptoms of damage:
-   - Loss of communication between components.
-   - Faulty or dropped messages on the CAN bus.
-   - Random or erratic behavior of devices connected to the CAN network.
+       - Loss of communication between components.
+       - Faulty or dropped messages on the CAN bus.
+       - Random or erratic behavior of devices connected to the CAN network.
 
 If you suspect damage, you may need to replace the transceiver ICs or even the entire BMS.
 
