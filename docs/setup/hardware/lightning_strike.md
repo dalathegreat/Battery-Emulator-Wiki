@@ -20,20 +20,21 @@ Even lightning strikes that occur a kilometer away can produce electromagnetic s
 
 If your system has been exposed to a nearby lightning strike, or if it’s showing erratic behavior following a storm, there are a few key steps you can take to diagnose where the damage has occurred.
 
-1. Measure CAN Bus Termination Resistance
+1) Measure CAN Bus Termination Resistance
 
 The CAN bus should have a termination resistance of 120Ω between CAN High and CAN Low wires at each end of the bus. Here's how to check it:
 
 - Step-by-step:
+  
    - Power down your system completely.
    - Use a multimeter to measure the resistance between the CAN High (H) and CAN Low (L) wires.
    - The expected reading should be close to 60Ω if both terminators are present (120Ω in parallel). If you get a significantly different reading, check the terminations or for potential damage along the bus.
    - Disconnect each device, and if they contain a termination resistor, it should read 120Ω when measuring.
 
 !!! tip "TIP"
-    Not all CAN devices contain a terminating resistor. So be sure to confirm this before stating it broken.
+    Not all CAN devices have a built-in a terminating resistor. So be sure to confirm this before stating it broken.
 
-2. Inspect CAN Transceivers
+2) Inspect CAN Transceivers
 
 CAN transceivers are often the first to fail due to surges caused by lightning. Look for:
 
@@ -48,23 +49,25 @@ If you suspect damage, you may need to replace the transceiver ICs or even the e
 Below is an example of a damaged CAN transceiver, caused by direct lightning strike to equipment.
 ![image](../../images/lightning-strike-01.png)
 
-3. Check Modbus Communication Ports
+3) Check Modbus Communication Ports
 
 - Inspect the Modbus connections and ports for any visible signs of damage, like burn marks or scorched connectors.
 - Check if you have an event on the Battery-Emulator for INVERTER_MISSING_ON_MODBUS. If you see this, you might have a burned modbus chip somewhere.
 
-4. Inspect power supplies and Protective Earth grounding
+4) Inspect power supplies and Protective Earth grounding
 
 Lightning strikes can also affect the power supply used by the Battery-Emulator, so check the voltage regulation and grounding of your system. You can also try to use another power supply for the Battery-Emulator, a phone charger usually works great. 
 
 Bad protective earth grounding or improper surge protection increases the vulnerability of your equipment to electrical surges.
 
-## Preventative Measures
+## Preventive measures
 
 While it’s impossible to completely eliminate the risk of lightning damage, you can take steps to protect your system from electrical surges:
 
 1. Disconnect During Storms: When thunderstorms are imminent, power down the solar inverter, battery, and unplug communication wires.
-2. Proper PE Grounding: Ensure that all components are properly grounded, and that there is a solid, **common** PE (earth) connection to divert surges safely away from sensitive equipment. Both Inverter, Battery and communication wire shield should have a good connection to PE. If there's a big distance between the elements of the installation, you can use local PE rods, but you also have to connect them together with strong wire to ensure that PE potential differences cannot develop between them when lightning of a thunderstorm hits the ground nearby.
+
+2. Proper PE Grounding: Ensure that all components are properly grounded, and that there is a solid, **common** PE (earth) connection to divert surges safely away from sensitive equipment. Both Inverter, Battery and communication wire shield should have a good connection to PE. If there's a big distance between the elements of the installation, you can use local PE rods, but you also have to **connect them together** with strong wire to ensure that PE potential differences cannot develop between them when lightning of a thunderstorm hits the ground nearby.
+
 3. Opto-coupler circuits. You can fit CAN opto couplers to the system to get an air-gap between the components. If you have components you have used successfully for this, feel free to add info to this wiki!
 
 ### Suggested hardware
