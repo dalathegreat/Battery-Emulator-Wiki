@@ -35,40 +35,35 @@ The software runs on specific ESP32 hardware boards, supports [Over The Air upda
 
 ## What about safety? ⚠️ ℹ️
 
-Reusing old often crashed EV packs always comes with risks. The system performs a few safety functions for safer charging and discharging. Apart from this, the data sent to the Inverter is also processed on the inverter side, and depending on which inverter is used a few additional safety checks are performed there. Here is a list of all safety functionalities that are in the system. Note that almost all safety features rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be detectable via software. For this you need fuses, and periodic visual inspections. 
+Reusing old often crashed EV packs always comes with risks. The system performs certain safety functions for safer charging and discharging. Apart from this, the data sent to the Inverter is also processed on the inverter side, and depending on which inverter is used some additional safety checks are performed there. Here is a list of some of the safety functionalities that are in the system. Note that almost all safety features rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be detectable via software. For this you need fuses, and periodic visual inspections. 
 
 !!! tip "TIP"
-    Be sure to checkout the [installation guidelines](setup/installation_guidelines.md) section for how to install your battery.
+    Check out the [installation guidelines](setup/installation_guidelines.md) section for how to install your battery.
 
 !!! warning "CAUTION"
     ***At the end of the day, you alone are responsible for the system.***
 
-Safety features run on (most) inverter(s):
+Safety features implemented in (most) inverters are respected. Parameters sent by the battery are taken in consideration in real time:
 
-- Battery sends max total voltage allowed for charging. Incase this value is reached, inverter stops charging. (For instance 404V)
-- Battery sends min total voltage allowed for discharging. Incase this value is reached, inverter stops discharge (For instance 300V)
-- Battery sends max cell temperature. Incase this value goes too high, inverter stops charge/discharge (For instance 40*C)
-- Battery sends min cell temperature. Incase this value goes too low, inverter stops charge/discharge (For instance -15*C)
-- Battery sends max allowed charge in Watts. Incase this goes to 0W, no further charging is possible. (This can happen when battery is full)
-- Battery sends max allowed discharge in Watts. Incase this goes to 0W, no further discharge is possible. (This can happen when battery is completely empty)
-- Battery sends state of health %. Incase this value drops too low, the inverter will alert the user that it is time to recycle the battery.
-- Inverter analyzes insulation resistance of the battery connection. Incase a leakage to ground is detected, the system stops.
+- Maximum total voltage allowed for charging and minimum total voltage allowed for discharging. In case any of these value is reached, inverter stops charging and discharging.
+- Maximum and minimum cell temperature. In case this value goes too high or too low, inverter stops charging or discharging (for instance above 40°C or below -15°C).
+- Maximum allowed charge or discharge power in Watts. In case this goes to 0W, no further charging or discharge is possible. This can happen when battery is full or completely empty.
+- Sate of health in percentage. In case this value drops too low, the inverter will alert the user that it is time to recycle the battery.
+- Inverter analyzes insulation resistance of the battery connection. In case a leakage to ground is detected, the system automatically stops and an alert is being logged.
 
-Safety features run on Battery-Emulator side:
+Examples of additional safety features implemented on Battery Emulator side:
 
-- If the code enters FAULT state, inverter gets notified, all charging/discharging stops, and contactors are opened ([if they are controlled via GPIO pins](setup/software/contactor_control_via_gpio_pins.md)).
-- If CAN communication is lost between emulator and battery for more than 60s, the code enters FAULT state.
-- Total pack voltage is sampled, if it goes too high it sets allowed charge power to 0. If it continues to rise, we enter FAULT mode
-- Total pack voltage is sampled, if it goes too low it sets allowed discharge power to 0. If it continues to fall, we enter FAULT mode
-- Minimum cell voltage is sampled, and if one cell goes too low the code enters FAULT state. (For instance <2900mV)
-- Maximum cell voltage is sampled, and if one cell goes too high the code enters FAULT state. (For instance >4250mV) 
-- Battery state of health % is sampled, if it is below 25% the code stops and informs the user that it is time to recycle the battery.
-- BMS fault codes are sampled, if any serious code is set, the code enters FAULT state (For instance LB_Failsafe_Status on Nissan LEAF packs)
-- High voltage wiring is unhooked during operation. This will trigger interlock messages, and the code enters FAULT state
-- Incase of a high voltage leak to battery casing (Protective earth), the code enters FAULT state (For instance LB_Failsafe_Status on Nissan LEAF packs)
+- If the code enters `FAULT` state, inverter gets notified, all charging/discharging stops, and contactors are opened ([when controlled directly via GPIO](setup/software/contactor_control_via_gpio_pins.md)).
+- If CAN communication is lost between emulator and battery for more than 60s, `FAULT` state is triggered.
+- Total pack voltage is sampled, if it goes too high or too low, it sets allowed charge/discharge power to 0. If it continues to rise `FAULT` state is triggered.
+- Maximum and minimum cell voltage is sampled, and if one cell goes too high or too low `FAULT` state is triggered.
+- State of health % is sampled, if it is below 25% the code stops and informs the user that it is time to recycle the battery.
+- BMS fault codes are sampled, if any serious code is set, the code enters `FAULT` state (For instance the factory `LB_Failsafe_Status` on [Nissan LEAF packs](battery/nissan_leaf_e_nv200.md)).
+- In case of a high voltage leak to battery casing ([Protective earth](setup/installation_guidelines.md#protective-earth)), the code enters FAULT state.
+- High voltage wiring is unhooked during operation. This will trigger interlock messages, and the code enters `FAULT` state.
 
 !!! info "IMPORTANT"
-    Do note that all actual limits are battery/inverter specific, the values here are only used for example purposes. The amount of safeties will vary depending on your choice of battery.
+    All actual limits are battery/inverter specific. The amount of safeties will vary depending on your choice of battery.
 
 !!! tip "TIP"
     You can also add an [equipment stop button](setup/software/equipment_stop.md) to the Battery-Emulator, to increase the amount of safety.
