@@ -11,7 +11,7 @@ Be sure to checkout the [installation guidelines](../setup/installation_guidelin
 - ⭐⭐⭐ Fully compatible battery. Longterm stability confirmed without user interaction. Many success stories from users.
 - ⭐⭐ Integration has minor known issues or missing features. Manual interventions sometimes required.
 - ⭐ Works, but many values estimated or functionality missing. Expect manual tweaking to keep battery operational.
-- 🅱️ Cell balancing has been confirmed working (Important for longterm operation). Note that some batteries require powering off / opening contactors to balance, which can make them unsuiable for offgrid applications
+- 🅱️ Cell balancing has been confirmed working (Important for longterm operation). Note that some batteries require powering off / opening contactors to balance, which can make them unsuitable for offgrid applications
 - 2️⃣ Compatible with Double battery (two identical packs in parallel, see [Double Battery](../setup/software/battery_2x.md)).
 - 3️⃣ Compatible with Triple battery (see [Triple Battery](../setup/software/battery_3x.md)). Every triple-capable integration is also compatible with double.
 
