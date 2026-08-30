@@ -46,7 +46,7 @@ This project uses the PlatformIO extension within Visual Studio Code for develop
 
 PlatformIO is an extension that adds all the necessary functionality to VSCode.
 
-- Inside VSCode, open the Extensions view by clicking the Extensions icon in the Activity Bar on the left side **or** using the keyboard shortcut: Ctrl+Shift+X (Windows/Linux) or Cmd+Shift+X (macOS).
+- Inside VSCode, open the Extensions view by clicking the Extensions icon in the Activity Bar on the left side **or** using the keyboard shortcut: **Ctrl+Shift+X** (Windows/Linux) or **Cmd+Shift+X** (macOS).
     - In the extensions search bar, type: PlatformIO IDE.
     - Find the extension published by PlatformIO and click the Install button.
 - Wait for the installation to complete. This may take a few minutes as PlatformIO downloads and installs its core tools in the background. VSCode might require a reload once finished.
@@ -55,16 +55,16 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 
 - Clone the repository to your local machine using Git.
 - In VSCode:
-    - Go to File > Open Folder...
+    - Go to File → Open Folder...
     - Navigate to and select the root folder of the cloned project (the folder containing the platformio.ini file).
     - Click Open.
 - PlatformIO will automatically recognize the project structure and begin indexing the code. You'll see the PlatformIO icon (a grey alien) appear in the Activity Bar on the left.
 
 - To verify everything is set up correctly, build/compile the project:
     - Click the PlatformIO icon in the Activity Bar to open the PIO Home screen.
-    -  Go to Quick Access > PIO > Build.
+    -  Go to Quick Access → PIO → Build.
         - Alternatively, you can use the checkmark icon in the blue status bar at the bottom of the VSCode window, or the keyboard shortcut Ctrl+Alt+B (Windows/Linux) / Cmd+Alt+B (macOS).
-    - The build process will start. You can monitor the output in the integrated terminal. A successful build will end with ===== [SUCCESS] Took X.XX seconds =====.
+    - The build process will start. You can monitor the output in the integrated terminal. A successful build will end with `===== [SUCCESS] Took X.XX seconds =====`.
 
 ### 4. OptionA: Uploading Code to Board via USB
 
@@ -77,15 +77,15 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 - Ensure the correct upload port is set in the platformio.ini file (it's often auto-detected, but you may need to set it manually. See Troubleshooting below).
 - Upload the code:
     - Click the PlatformIO icon in the Activity Bar.
-    - Go to Quick Access > PIO > Upload.
+    - Go to Quick Access → PIO → Upload.
     - Alternatively, use the right-arrow icon (→) in the blue status bar at the bottom of the VSCode window, or the keyboard shortcut Ctrl+Alt+U (Windows/Linux) / Cmd+Alt+U (macOS).
-- The upload process will begin. The board may reset automatically. A successful upload will end with ===== [SUCCESS] Took X.XX seconds =====.
+- The upload process will begin. The board may reset automatically. A successful upload will end with `===== [SUCCESS] Took X.XX seconds =====`.
 
 ### 4. OptionB: Uploading Code via OTA
 
 - If you already have Battery-Emulator installed on the board, you can OTA update the board with the built file
 - Build the project for your hardware
-- Navigate to the folder (Stark used as example) : /Battery-Emulator/.pio/build/stark_330
+- Navigate to the build output folder (Stark for example: `/Battery-Emulator/.pio/build/stark_330`)
 - Take the firmware.bin file
 - [OTA update](../software/ota_update.md) the board with this file
 
@@ -95,8 +95,8 @@ PlatformIO is an extension that adds all the necessary functionality to VSCode.
 
 - Find the correct port:
     - Windows: Check Device Manager under "Ports (COM & LPT)". It's usually COM3, COM4, etc.
-    - macOS/Linux: Run ls /dev/tty.* or ls /dev/ttyUSB* in a terminal. It's often /dev/tty.usbserial-XXX or /dev/ttyUSB0.
-- Add the line upload_port = COM4 (replace COM4 with your port) to your platformio.ini file in the [env:...] section.
+    - macOS/Linux: Run `ls /dev/tty*` or `ls /dev/ttyUSB*` in a terminal. It's often `/dev/tty.usbserial-XXX`, `/dev/ttyUSB0` or `/dev/ttyACM0`.
+- Add the line `upload_port = COM4` (replace COM4 with your port) to your `platformio.ini` file in the `[env:...]` section.
 
 ## Code formatting 📜
 The project enforces a specific code formatting in the workflows. To get your code formatted properly, it is easiest to use a pre-commit hook before pushing the code to a pull request.
