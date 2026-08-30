@@ -3,33 +3,36 @@ title: "CAN logging"
 ---
 
 ## CAN logging basics
-The board can operate as a CAN logger, skipping the need for purchasing an expensive tool. There are three ways to log CAN messages, via USB (more reliable), via [Webserver](../software/webserver_guide.md) (easiest), and via SD-CARD (requires LilyGo)
+The board can operate as a CAN logger, skipping the need for purchasing an expensive tool. There are three ways to log CAN messages, via USB (more reliable), via [Webserver](../software/webserver_guide.md) (easiest), and via SD-CARD (requires LilyGo).
 
 ### Logging a live vehicle :warning: 
 If you intend to log CAN messages from a functional vehicle, remember to:
 
-* Use Battery protocol: [Fake battery for testing purposes](../../battery/fake_battery.md) to avoid any CAN messages being sent towards the vehicle
-* Use Inverter/Shunt protocol: "None" to avoid any CAN messages being sent towards the vehicle
-* Remove any termination resistors from the board (Either remove jumper on Stark, or desolder on LilyGo)
+* Use Battery protocol: [Fake battery for testing purposes](../../battery/fake_battery.md) to avoid any CAN messages being sent towards the vehicle.
+* Use Inverter/Shunt protocol: "None" to avoid any CAN messages being sent towards the vehicle.
+* Remove any termination resistors from the board (Either remove jumper on Stark, or desolder on LilyGo).
 
 ## CAN logging via Webserver
 
 ### CAN Dump
-To raw dump all CAN coming from the board, visit the **dump_can** page. Browse to the IP address http://192.168.4.1/dump_can
+
+To raw dump all CAN coming from the board, visit the **dump_can** page. Browse to the IP address of Emulator, eg. `http://192.168.4.1/dump_can`.
 
 Let the CAN logger run for enough time, and save all the page to a document.
 
-### CAN Logging via can log page
+!!! tip "TIP"
+    On Linux, you can also do this in one line until you press `Ctrl+C` with 
+    
+    `while true; do curl http://192.168.4.1/dump_can >> can_log.txt; done`.
 
 !!! note "NOTE"
-    CAN logging via can log page does not store all messages due to limited RAM. If you need to log absolutely everything, do it via CAN Dump page, USB or to SD-CARD.
+    The `192.168.4.1` is the Access Point IP of Battery Emulator. In the examples above, replace it with the IP address it has in your own network.
 
-!!! note "NOTE"
-    Some mobile phone browsers can have issues displaying long data lists. If you see no data, try using a Desktop PC / Laptop.
+### CAN logger page
 
-Start by accessing the [Webserver](../software/webserver_guide.md)
+Start by accessing the [Webserver](../software/webserver_guide.md).
 
-On the main page, there is a button named "CAN logger" .When opened, the system starts logging CAN messages. This is disabled by default to not disturb the system.
+Click the button named **CAN logger**. When it opens, the system starts logging CAN messages. This is disabled by default to not overload the system.
 
 ![image](../../images/can-logging-01.png)
 
@@ -39,6 +42,13 @@ Refresh the page to get an updated list of incoming (RX) and sent (TX) CAN messa
 
 Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible CANdump format, for further analysis.
 
+!!! note "NOTE"
+    CAN logging via can log page will not store all messages due to limited RAM. If you need to log absolutely everything, do it via the CAN Dump as above, USB or to SD-CARD.
+
+!!! note "NOTE"
+    Some mobile phone browsers can have issues displaying long data lists. If you see no data, switch to a desktop / laptop PC.
+
+
 ## USB CAN logging
 
 ![image](../../images/can-logging-03.png){ width="482" height="186" }
@@ -47,7 +57,7 @@ To access the CAN-logging, enable the `Enable CAN message logging via USB serial
 
 Alternatively, a much better way to log the data is via Putty. Connect to the COM port and set baud rate, and configure Putty to save the output to a file [putty](https://www.putty.org/)
 
-##Log file format
+### Log file format
 The log file format is compatible with the CANdump format. This can be read natively by tools like [SavvyCAN](https://github.com/collin80/SavvyCAN). 
 
 TX1 / RX0 = Native CAN port
@@ -64,7 +74,9 @@ Example format, CAN log:
 (7.561) TX1 1D4 [8] F7 7 0 0 7 46 0 7B 
 (7.573) TX1 11A [8] 1 40 0 AA C0 0 0 3 
 ```
+
 Example format, CAN-FD log:
+
 ```
 (64.644) TX3 10A [32] D8 DE 99 00 00 00 00 01 FF 01 00 00 36 39 35 35 C9 02 00 00 10 00 00 35 00 00 0A 00 00 00 00 00  
 (64.656) TX3 120 [32] 6E F3 99 00 00 00 00 01 FF 01 00 00 37 35 37 37 C9 02 00 00 00 00 00 35 00 00 0A 00 00 00 00 00 
@@ -92,7 +104,8 @@ The best tool to use for formatting of the SD card is [SD Card Formatter](https:
 
 On startup the SD card is checked and if you have debug logging enabled a message will be output showing success or failure.
 
-Success Example
+Success Example:
+
 ```
 SD Card initialization successful.
 SD Card Type: SDHC
@@ -101,7 +114,8 @@ Total space: 7984 MB
 Used space: 2MB
 ```
 
-Failure Example
+Failure Example:
+
 ```
 sdmmc_init_ocr: send_op_cond (1) returned 0,107
 vfs_fat_sdmmc: sdmmc_card_init failed ()x107).
