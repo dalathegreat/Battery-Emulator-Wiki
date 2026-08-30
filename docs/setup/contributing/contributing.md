@@ -12,7 +12,8 @@ What can I do? 🦸
 You're in luck. There's various sources to contribute:
 
  - Improve the [Wiki documentation](../../index.md)
-     - Especially battery/inverter specific pages need updating. Attach pictures of batteries, wiring diagrams, helpful info etc. 
+     - Especially battery/inverter specific pages need updating. Attach pictures of batteries, wiring diagrams, helpful info etc.
+     - Whenever you make a software improvement don't forget to update the documentation accordingly. Replace outdated screenshots, describe functional changes, etc. 
  - Have a look at the [issue tracker](https://github.com/dalathegreat/Battery-Emulator/issues), especially issues with labels:
      - [good first issue](https://github.com/dalathegreat/Battery-Emulator/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
  - Use your favorite text editor to find `TODO` comments in the code
