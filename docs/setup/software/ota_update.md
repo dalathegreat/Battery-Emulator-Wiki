@@ -13,7 +13,7 @@ Before being able to use OTA update, ensure you have the following prerequisites
    * OR a connection via a router (see [quickstart video](https://youtu.be/sR3t7j0R9Z0) for how to connect Battery-Emulator hardware directly to your home network)
 
 !!! tip "TIP"
-    Starting from version 7.0.0 , many settings are stored to persistent memory. This means that all the things you configure in Webserver (Wifi settings, max charge/discharge rate, SOC scaling settings, Battery capacity) don't have to be configured again. The system will use the previously set settings automatically!
+    Most settings are stored to persistent memory. This means that all the things you configure in Webserver (Wifi settings, max charge/discharge rate, SOC scaling settings, Battery capacity) don't have to be configured again. The system will use the previously set settings automatically!
 
 ### Getting the updated file
 You can download the latest release from [Github Releases](https://github.com/dalathegreat/Battery-Emulator/releases) section.
@@ -41,7 +41,7 @@ After opening the release you want to update to, at the bottom of the page selec
 * Congratulations, you have now updated the firmware remotely over the air! 🥳 
 
 ### If the new firmware does not work
-Starting from the first release after v12.4.0, an update has to prove itself before it is kept. The board keeps the previous firmware in the second flash slot, and the new firmware is confirmed only once it has been running for 42 seconds.
+An update has to prove itself before it is kept. The board keeps the previous firmware in the second flash slot, and the new firmware is confirmed only once it has been running for 42 seconds.
 
 * If the new firmware crashes, trips the watchdog, or the board loses power within those first 42 seconds, the bootloader brings back the previous firmware by itself. No USB cable and no erase are needed, your settings are kept, and the event log records which version failed.
 * If the new firmware runs for 42 seconds, it is confirmed and becomes permanent. Later reboots keep it.
