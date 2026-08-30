@@ -14,14 +14,14 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 
 ## CAN logging via Webserver
 
-### CAN Dump
+### Dump CAN
 
 To raw dump all CAN coming from the board, visit the **dump_can** page. Browse to the IP address of Emulator, eg. `http://192.168.4.1/dump_can`.
 
-Let the CAN logger run for enough time, and save all the page to a document.
+Let the CAN dumper run for enough time, and save the entire page to a document.
 
 !!! tip "TIP"
-    On Linux, you can also do this in one line until you press `Ctrl+C` with: 
+    On Linux, you can also do an export in a txt file using this oneliner until you press `Ctrl+C`: 
     
     `while true; do curl http://192.168.4.1/dump_can >> can_log.txt; done`.
 
