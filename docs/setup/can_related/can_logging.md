@@ -5,11 +5,11 @@ title: "CAN logging"
 ## CAN logging basics
 The board can operate as a CAN logger, skipping the need for purchasing an expensive tool. There are three ways to log CAN messages, via USB (more reliable), via [Webserver](../software/webserver_guide.md) (easiest), and via SD-CARD (requires LilyGo).
 
-### Logging a live vehicle :warning: 
+### Logging a live vehicle 🚘 
 If you intend to log CAN messages from a functional vehicle, remember to:
 
-* Use Battery protocol: [Fake battery for testing purposes](../../battery/fake_battery.md) to avoid any CAN messages being sent towards the vehicle.
-* Use Inverter/Shunt protocol: "None" to avoid any CAN messages being sent towards the vehicle.
+* Use [Fake battery for testing purposes](../../battery/fake_battery.md) protocol to avoid any CAN messages being sent towards the vehicle.
+* Use Inverter/Shunt protocol: **None** to avoid any CAN messages being sent towards the vehicle.
 * Remove any termination resistors from the board (Either remove jumper on Stark, or desolder on LilyGo).
 
 ## CAN logging via Webserver
@@ -21,7 +21,7 @@ To raw dump all CAN coming from the board, visit the **dump_can** page. Browse t
 Let the CAN logger run for enough time, and save all the page to a document.
 
 !!! tip "TIP"
-    On Linux, you can also do this in one line until you press `Ctrl+C` with 
+    On Linux, you can also do this in one line until you press `Ctrl+C` with: 
     
     `while true; do curl http://192.168.4.1/dump_can >> can_log.txt; done`.
 
@@ -53,9 +53,9 @@ Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible
 
 ![image](../../images/can-logging-03.png){ width="482" height="186" }
 
-To access the CAN-logging, enable the `Enable CAN message logging via USB serial:` feature. When this is enabled, all the incoming/outgoing CAN&CAN-FD messages will get timestamp, direction, ID, DLC, and data fields printed out via the Arduino IDE serial monitor. This can then be exported to a .txt file for later analysis.
+To access the CAN-logging, turn on the **Enable CAN message logging via USB serial** feature. When this is enabled, all the incoming/outgoing CAN & CAN-FD messages will get timestamp, direction, ID, DLC, and data fields printed out via the Arduino IDE serial monitor. This can then be exported to a .txt file for later analysis.
 
-Alternatively, a much better way to log the data is via Putty. Connect to the COM port and set baud rate, and configure Putty to save the output to a file [putty](https://www.putty.org/)
+Alternatively, a much simpler way to log the data is via a serial terminal client like [Putty](https://www.putty.org/). Connect to the COM port and set baud rate, and configure it to save the output to a file.
 
 ### Log file format
 The log file format is compatible with the CANdump format. This can be read natively by tools like [SavvyCAN](https://github.com/collin80/SavvyCAN). 
@@ -91,7 +91,7 @@ Example format, CAN-FD log:
 
 ## SD card CAN logging
 
-To enable logging of CAN messages to an SD card enable the `Enable CAN message logging via SD card: ` feature. To maximize performance you should not enable other debug features at the same time as it could lead to CAN messages not being logged. The format of the log file is the same as the USB can log feature and can be read by tools like Savvy CAN directly.
+To enable logging of CAN messages to an SD card enable the **Enable CAN message logging via SD card** feature. To maximize performance you should not enable other debug features at the same time as it could lead to CAN messages not being logged. The format of the log file is the same as the USB can log feature and can be read by tools like Savvy CAN directly.
 
 ![image](../../images/can-logging-04.png){ width="471" height="87" }
 
