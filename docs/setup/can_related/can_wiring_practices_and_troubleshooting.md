@@ -7,7 +7,7 @@ title: "CAN wiring practices and troubleshooting"
 ![image](../../images/can-wiring-practices-and-troubleshooting-05.png){ width="461" height="149" }
 
 !!! info "IMPORTANT"
-    CAN wires need to be twisted pair to ensure signal integrity!
+    CAN wires need to be **twisted pair** to ensure signal integrity!
 
 Every CAN bus must be terminated with a 120 Ohm resistor at each end of the bus. For quick testing, the exact value of the termination resistors is not always critical. Sometimes a single terminator is sufficient. For final installs, proper termination is essential. If you see strange errors, you should check the termination.
 
@@ -29,7 +29,7 @@ The number of transmit or receive errors has crossed the warning threshold. This
 
 ## CAN troubleshooting
 
-If you get events like  BATTERY_MISSING or INVERTER_MISSING, you need to check the CAN wiring. Here are some basic tips:
+If you get events like `BATTERY_MISSING` or `INVERTER_MISSING`, you need to check the CAN wiring. Here are some basic tips:
 
 * Make sure the Webserver settings is configured correctly, with the right CAN configuration. Example, make sure the Battery is configured to use the correct CAN interface if you see BATTERY_MISSING, for instance if you use LilyGo T-2CAN and connect the battery to CAN-A, configure that port under the Battery Interface.
 * Make sure you have flashed the correct software onto your Battery-Emulator board (T-CAN485 instead of T-2CAN is a classic mistake)
@@ -43,10 +43,10 @@ If you get events like  BATTERY_MISSING or INVERTER_MISSING, you need to check t
 * On the Stark CMR board, the terminating resistor can be turned on/off via the switches on the PCB
 ![image](../../images/can-wiring-practices-and-troubleshooting-02.png)
 
-* Make sure the cable you are using is a twisted pair cable. This is important for signal quality.
-* Make sure the cable you are using is shielded. One side of the shield should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This improves signal quality
-* Try a different powersupply for the board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see CAN_TX_FAILURE occasionally your powersupply might be noisy
-* If you are using a board like T-2CAN, it requires 12V to activate the CAN chips, simply powering it via USB is not enough!
+* Make sure the cable you are using is a **twisted pair** cable. This is important for signal quality.
+* Make sure the cable you are using is **shielded**. Only **one side of the shield** should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This avoids ground loops.
+* Try a different power supply for the board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see `CAN_TX_FAILURE` occasionally your powersupply might be noisy, or 5V is not strong enough.
+* If you are using a board like T-2CAN, it requires 12V to activate the CAN chips, simply powering it via USB is not enough! Generally, if the board has multiple power inputs, use the highest voltage one.
 
 ### Loopback testing
 To verify that the CAN channels on the Battery-Emulator hardware you have are working properly, you can perform a loopback test. This can be done by connecting two CAN channels together.
@@ -54,12 +54,11 @@ To verify that the CAN channels on the Battery-Emulator hardware you have are wo
 Example, loopback test on Stark CMR to verify that both hardware channels are OK
 ![image](../../images/can-wiring-practices-and-troubleshooting-06.png)
 
-In the Software, enable the following options as a test,
-Sono Motors on CAN1, Schneider Inverter on CANFD2
+In the Software, enable the following options as a test: **Sono Motors** on CAN1, **Schneider Inverter** on CANFD2
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-07.png)
 
-Save and reboot. Open the "CAN logger" page
+Save and reboot. Open the "CAN logger" page:
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-08.png)
 
@@ -72,7 +71,7 @@ Bonus: You can also use this handy automated test page for the Stark CMR: [redis
 CAN networks are vulnerable to lightning strikes. [See the dedicated wiki page for this for more info](../hardware/lightning_strike.md) :cloud_with_lightning: 
 
 !!! warning "CAUTION"
-    Grounding everything is especially important for certain inverters. If you fail to ground inverter or battery casing to protective earth (PE), there might be a voltage difference between the two components, which can fry the CAN communication chips on the Battery-Emulator. Always connect every component, and the communication shield wire to protective earth before turning the system on!
+    Grounding everything is especially important for certain inverters. If you fail to ground inverter or battery casing to protective earth (PE), there might be a voltage difference between the two components, which can fry the CAN communication chips on the Battery-Emulator. Always connect every component, and the communication shield wire to **the same** protective earth before turning the system on!
 
 See this image for grounding: 
 
@@ -83,4 +82,4 @@ Here is the best way to ensure that there are no paths for spikes in CAN voltage
 ![image](../../images/can-wiring-practices-and-troubleshooting-04.png)
 
 !!! warning "CAUTION"
-    Never connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be freefloating, like shown in the above pictures.
+    Never connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be free floating, like shown in the above pictures.
