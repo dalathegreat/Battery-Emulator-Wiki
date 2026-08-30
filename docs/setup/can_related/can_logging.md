@@ -23,7 +23,9 @@ Let the CAN dumper run for enough time, and save the entire page to a document.
 !!! tip "TIP"
     On Linux, you can also do an export in a txt file using this oneliner until you press `Ctrl+C`: 
     
-    `while true; do curl http://192.168.4.1/dump_can >> ~/Downloads/can_log.txt; done`.
+    ```bash
+    while true; do curl http://192.168.4.1/dump_can >> ~/Downloads/can_log.txt; done
+    ```
 
 !!! note "NOTE"
     The `192.168.4.1` is the Access Point IP of Battery Emulator. In the examples above, replace it with the IP address it has in your own network.
