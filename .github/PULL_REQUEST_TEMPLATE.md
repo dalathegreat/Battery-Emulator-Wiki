@@ -6,7 +6,7 @@
 
 - fixes <link to issue>
 
-## Pull request in [Battery Emulator](https://github.com/dalathegreat/Battery-Emulator/) with related changes (if applicable):
+### Pull request in [Battery Emulator](https://github.com/dalathegreat/Battery-Emulator/) with related changes (if applicable):
 
 - changes in software: <PR link goes here>
 
