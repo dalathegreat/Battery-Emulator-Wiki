@@ -88,7 +88,7 @@ The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 und
 See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on AZE0 packs.
 
 !!! tip "TIP"
-    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0**.
+    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term.
 
 
 ## Insulation resistance
