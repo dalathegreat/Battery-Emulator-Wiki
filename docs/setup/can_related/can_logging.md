@@ -26,7 +26,7 @@ Let the CAN logger run for enough time, and save all the page to a document.
 !!! note "NOTE"
     The `192.168.4.1` is the Access Point IP of Battery Emulator. In the examples above, replace it with the IP address it has in your own network.
 
-### Via CAN logger page
+### CAN logger page
 
 Start by accessing the [Webserver](../software/webserver_guide.md)
 
