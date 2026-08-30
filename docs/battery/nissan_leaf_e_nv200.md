@@ -87,12 +87,13 @@ The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 und
 
 See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on AZE0 packs.
 
-!!! note "NOTE"
-    The LEAF battery is fully charged at 92-96% SOC. Use the Scaled SOC function to get a nicer looking 100% curve!
+!!! tip "TIP"
+    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0**.
+
 
 ## Insulation resistance
 
-!!! note "Note"
+!!! note "NOTE"
     When contactors are closed, the Battery's own insulation measurement shows values averaging around 100kΩ - this is normal!
 
 For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
@@ -179,7 +180,7 @@ The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the a
 Performing this clear can restore a few kWh of usable energy back. 
 
 !!! info "IMPORTANT"
-    The degradation reset only works on 2011-2017 batteries. Performing it on 2018+ 40/62kWh packs will have a negative effect, since it will restore the battery data too low. So only perform this reset on 24/30kWh packs!
+    The degradation reset only works on 2011-2017 batteries. Performing it on 2018+ 40/62kWh packs will have a negative effect, since it will restore the battery data too low. So only perform this reset on ZE0/AZE0 (24/30kWh) packs!
 
 ![image](../images/nissan-leaf-e-nv200-20.png)
 
@@ -205,7 +206,7 @@ You can set up [Home Assistant](../setup/software/home_assistant.md) which lets 
 
 To see some results, follow these steps after you do the reset (in normal ambient conditions, avoid extreme cold or hot periods):
 
-- Disable "Rescale SOC" if you have it set
+- Disable [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) if you have it set
 - Let the battery to charge to empty
 - Let the battery to charge to full
 - Let the battery to charge to empty again
