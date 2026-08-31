@@ -2,20 +2,6 @@
 title: "Nissan LEAF / e-NV200"
 ---
 
-## Physical size
-The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh battery however is 40mm taller.
-
-- 24kWh (2011–2012, ZE0) = 277kg (601lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
-- 30kWh (2013–2017, AZE0) = 294kg (648lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
-- 40kWh (2018–2023, ZE1) = 303kg (668lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
-- 62kWh (2018–2023, ZE1) = 410kg (903lb) 1547.0 (L) × 1188.0 (W) × 304.0 (H) mm
-
-![Leaf 24/30/40kWh pack](../images/nissan-leaf-e-nv200-01.png)
-
-The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged differently from the Leaf packs (active cooling and service disconnect at front instead of middle).
-
-![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
-
 ## Software configuration
 For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
 
@@ -26,7 +12,8 @@ For this battery type, use the option named **Nissan LEAF battery** under the **
        - If you enable this setting on a AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus for these it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and insulate manually one of them). Instead just block off the unused HV port with a 3D printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
 - set the **Battery chemistry** to **NMC**.
 
-## Wiring diagram
+## Wiring diagrams
+
 The following pictures show an example of hooking up a LEAF battery to a Fronius Gen24 inverter. The same diagram can be useful for planning other inverter combinations.
 
 !!! note "NOTE"
@@ -35,7 +22,7 @@ The following pictures show an example of hooking up a LEAF battery to a Fronius
 Remember to seat the service disconnect switch. Without this fitted, the battery will not output any voltage when contactors are closed.
 This is how the SDS is used [(Youtube)](https://www.youtube.com/watch?v=tbo2Qzdj-Rg).
 
-**Here's how to connect the high voltage lines**
+### High Voltage connection (energy)
 
 The Positive (+) wire is close to the data port and the Negative (-) wire is close to the PTC High Voltage port (Aux Max 6kW).
 
@@ -44,18 +31,20 @@ The Positive (+) wire is close to the data port and the Negative (-) wire is clo
 ![423205153-0e4498c8-f8b8-41d3-bd6f-fa9e5d0640d2](../images/nissan-leaf-e-nv200-04.jpg)
 ![Zoe_harness](../images/nissan-leaf-e-nv200-05.jpg)
 
-An even more detailed connection diagram, with automatic contactor control via solid state relays for maximum safety. This diagram features the optional BMS reset relay (if you are not using this, just supply BAT+IGN with constant 12V), and an optional equipment stop circuit.
+### Low Voltage connection (control and data)
 
-Nissan's own documentation uses pin numbering on the 36 pin low voltage connector which does not match the moulded connector. The connections on this diagram have been renumbered so that they do.
+This example diagram shows how to connect a [LilyGo T‐CAN485](../hardware/lilygo_t_can485.md) to a Nissan LEAF pack, using automatic contactor control via solid state relays, also featuring [periodic BMS reset](../setup/hardware/periodic_bms_reset.md) and an optional equipment stop circuit.
+
 ![lilygo draw](../images/nissan-leaf-e-nv200-06.png)
+Nissan's own documentation uses pin numbering on the 36 pin low voltage connector which does not match the moulded connector. The connections on this diagram have been renumbered so that they do.
 
 ## Precharge/Contactor closing
-Almost all EV batteries contain contactors and precharge relays. Contactors act like big relays, and are used to control electrical circuits where currents are high. They are designed to be able to break the flow of current in a safe manner without electrical arcing. There are two contactors, one for positive and one for negative. To avoid electrical arcing when turning on the battery, the initial inrush of current is led thru a precharge resistor, to allow for slow charging of the capacitors inside the inverter. If the inverter has been turned off for a long time, the capacitors inside will act almost as a dead-short, 0 ohm resistance. If you would skip using the precharge, then your contactors will spark every time you close them, wearing them out prematurely. Negative, precharge and positive need to be switched separately in order, to ensure safe operation even if some malfunction would occur. Now that we know what the contactors/precharge does, we can look at how to control it.
+Almost all EV batteries contain contactors and precharge relays. Contactors act like big relays, and are used to control electrical circuits where currents are high. They are designed to be able to break the flow of current in a safe manner without electrical arcing. Usually there are at least two of them, one for positive and one for negative, and a third one for circuit precharging. To avoid electrical arcing when turning on the battery, the initial inrush of current is led thru a precharge resistor, to allow for slow charging of the capacitors inside the inverter. If the inverter has been turned off for a long time, the capacitors inside will act almost as a dead-short, 0 ohm resistance. If you would skip using the precharge, then your contactors will spark every time you close them, wearing them out prematurely. Negative, precharge and positive need to be switched separately in order, to ensure safe operation even if some malfunction would occur. Now that we know what the contactors/precharge does, we can look at how to control it.
 
 ### Automatic control 🤖
-Battery Emulator hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the board. To use these, you need to solder a 2x6 row connector onto the board. After the row connector is fitted, you can connect a flat ribbon cable between the pins, and the relays.
+Battery Emulator hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the supported boards.
 
-To enable the feature in the software, Enable the "Contactor control via GPIO" option on the Settings page.
+To enable the feature in the software, Enable the **Contactor control via GPIO** option on the Settings page.
 
 ![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
 
@@ -83,9 +72,9 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
-The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)).
+The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) become confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)). BAT pin can be under +12V continuously, IGN pin should be the one turned off from time to time. 
 
-See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the 24h period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on AZE0 packs.
+See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Set **Periodic BMS reset off time** to **120 seconds** for Nissan LEAF packs. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the **24h** period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on AZE0 packs.
 
 !!! tip "TIP"
     The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term.
@@ -220,3 +209,17 @@ Try to find the widest time area of **Cell Voltage Delta** where the value chang
 In the example above, the top graph establishes the red lines, which show the comfortable area of **Cell Voltage Delta**. The green lines show where the SOC curve intersects the red lines: this gives the min and the max SOC rescale values for a safe zone. (note the slight hysteresis between charge and discharge, take the highest value for safety).
 
 This way you'll still be in the safe zone with your battery, but you'll likely be able to use bigger capacity than the original SOH allowed in the BMS before reset. Re-evaluate this graph periodically, every 3 months (no need to do full charge-discharge so often, just keep your eye on **Cell Voltage Delta** and **SOC (real)** relation on normal usage)
+
+## Physical size
+The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh battery however is 40mm taller.
+
+- 24kWh (2011–2012, ZE0) = 277kg (601lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
+- 30kWh (2013–2017, AZE0) = 294kg (648lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
+- 40kWh (2018–2023, ZE1) = 303kg (668lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
+- 62kWh (2018–2023, ZE1) = 410kg (903lb) 1547.0 (L) × 1188.0 (W) × 304.0 (H) mm
+
+![Leaf 24/30/40kWh pack](../images/nissan-leaf-e-nv200-01.png)
+
+The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged differently from the Leaf packs (active cooling and service disconnect at front instead of middle).
+
+![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
