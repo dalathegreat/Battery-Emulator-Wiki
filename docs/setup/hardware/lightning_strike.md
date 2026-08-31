@@ -11,6 +11,8 @@ title: "Lightning strike"
 
 Even lightning strikes that occur a kilometer away can produce electromagnetic surges or ground potential rises of tens of thousands of Volts for very short times, that affect electrical and electronic systems. These indirect effects can cause significant damage, particularly to communication interfaces and sensitive electronic components.
 
+Weak points that need extra attention:
+
 * **CAN Transceivers:** The transceiver chips that handle communication on the CAN bus are especially vulnerable to surge damage, which can result in communication errors or permanent failure. Inverters usually have rugged designs, but automotive BMS were never intended to be tied to the ground this way, so similar protection is often lacking.
 * **Modbus Inputs:** Just like CAN transceivers, Modbus communication ports can take damage from surge voltages, leading to miscommunication or failure in the system's data exchange.
 * **Signal Wires:** Long runs of signal cables can act as antennas, picking up electromagnetic pulses (EMPs) from nearby lightning strikes, which may induce damaging voltages into the system.
