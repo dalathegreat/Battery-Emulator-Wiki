@@ -33,10 +33,10 @@ The Positive (+) wire is close to the data port and the Negative (-) wire is clo
 
 ### Low Voltage connection (control and data)
 
-This example diagram shows how to connect a [LilyGo T‐CAN485](../hardware/lilygo_t_can485.md) to a Nissan LEAF pack, using automatic contactor control via solid state relays, also featuring [periodic BMS reset](../setup/hardware/periodic_bms_reset.md) and an optional equipment stop circuit.
+This example diagram shows how to connect a [LilyGo T‐CAN485](../hardware/lilygo_t_can485.md) to a Nissan LEAF AZE0/ZE1 pack (with a Yazaki 36pin connector), using automatic contactor control via solid state relays, also featuring [periodic BMS reset](../setup/hardware/periodic_bms_reset.md) and an optional equipment stop circuit.
 
 ![lilygo draw](../images/nissan-leaf-e-nv200-06.png)
-Nissan's own documentation uses pin numbering on the 36 pin low voltage connector which does not match the moulded connector. The connections on this diagram have been renumbered so that they do.
+Nissan's own documentation uses pin numbering on the 36pin low voltage connector which does not match the moulded connector on AZE0/ZE1. The connections on this diagram have been renumbered so that they do. Scroll further down for the pinout of the 22pin connector for ZE0.
 
 ## Precharge/Contactor closing
 Almost all EV batteries contain contactors and precharge relays. Contactors act like big relays, and are used to control electrical circuits where currents are high. They are designed to be able to break the flow of current in a safe manner without electrical arcing. Usually there are at least two of them, one for positive and one for negative, and a third one for circuit precharging. To avoid electrical arcing when turning on the battery, the initial inrush of current is led thru a precharge resistor, to allow for slow charging of the capacitors inside the inverter. If the inverter has been turned off for a long time, the capacitors inside will act almost as a dead-short, 0 ohm resistance. If you would skip using the precharge, then your contactors will spark every time you close them, wearing them out prematurely. Negative, precharge and positive need to be switched separately in order, to ensure safe operation even if some malfunction would occur. Now that we know what the contactors/precharge does, we can look at how to control it.
@@ -129,13 +129,15 @@ BTW it's not strictly necessary to be automotive grade cable if it has enough co
 
 NOTE: If you pin your connector yourself - ensure the pins go all the way to the bottom and the pin is seated properly. If they are inserted incorrectly (not far enough, "wonky") then you won't have proper communication.
 
+Pinout for the Yazaki 22pin connector, to be used with ZE0 packs:
+
+![Yazaki_22pin](../images/nissan-leaf-e-nv200-11.png)
+
 Here is a nice example of a completed 22-pin 2011-2012 cable:
 
 ![image](../images/nissan-leaf-e-nv200-10.png)
 
-![Yazaki_22pin](../images/nissan-leaf-e-nv200-11.png)
-
-Crimping B24 (36pin) connector in progress.
+Crimping a 36pin connector:
 
 ![image](../images/nissan-leaf-e-nv200-12.png)
 
