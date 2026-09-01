@@ -24,6 +24,13 @@ This can be solved in a few ways:
    - Fourth option is to use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system 
 
 ## Compatible FoxESS inverters
+There are three different protocols available that are compatible with various FoxESS inverters.
+
+1. `FoxESS compatible HV2600/ECS4100`
+2. `SolaX Triple Power LFP over CAN bus`
+3. `FoxESS EP Series battery`
+
+Follow the notes below to see which protocol should be used with your invertetr
 
 * FoxESS H1
    * Use `FoxESS compatible HV2600/ECS4100` primarily.
@@ -34,8 +41,12 @@ This can be solved in a few ways:
    * Uses `SolaX Triple Power LFP over CAN bus` protocol
 * FoxESS KH
    * Works with both `SolaX Triple Power LFP over CAN bus` and `FoxESS compatible HV2600/ECS4100` protocols
+   * Also works with the new `FoxESS EP Series battery` option (Confirmed with KH9)
 * FoxESS KP
    * Uses `FoxESS compatible HV2600/ECS4100` protocol
+* FoxESS EP
+   *  Uses `FoxESS EP Series battery` option
+ 
 ## Communication wiring
 
 The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to the Battery-Emulator.
