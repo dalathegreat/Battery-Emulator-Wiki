@@ -36,7 +36,7 @@ If you get events like `BATTERY_MISSING` or `INVERTER_MISSING`, you need to chec
 * Make sure all CAN devices are turned ON. Verify that the device you are troubleshooting is getting 12V, and that the device is consuming power (typically a few 100mA)
 * Verify that the 12V source provides enough voltage. 13.5V is good, 11V will cause issues
 * Make sure the polarity of High/Low is correct. High goes to High, Low to Low
-* Make sure the terminating resistors are correct. CAN networks should have two 120 Ohm resistors in each end of the network. With everything OFF, you can measure resistance between CAN-H and CAN-L. The result should be 60 Ohm. If it shows 120 Ohm, one resistor is missing at an end. If it shows 40 Ohm, you have too many terminating resistors.
+* Make sure the terminating resistors are correct. CAN networks should have two 120 Ohm resistors ONE at each end of the network. With everything turned OFF, you can measure resistance between CAN-H and CAN-L. The result should be 60 Ohm. If it shows 120 Ohm, one resistor is missing at an end. If it shows 40 Ohm, you have too many terminating resistors.
 * On the LilyGo, the termination resistor can be removed like shown here:
 ![RemoveThisWhenUsingCANinverter](../../images/can-wiring-practices-and-troubleshooting-01.png)
 
