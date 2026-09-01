@@ -23,14 +23,18 @@ Regardless of placement, great care must be taken to avoid water getting into th
 !!! tip "TIP"
     Batteries can often be tilted, and installed on the side of a wall to save space. To this date we have not encountered any packs that would not function in a wallmounted position!
 
-### Keeping the temperature in check
+## Wiring
+
+Check out the dedicated [High Voltage](hardware/wiring_tips_hv.md) and [Low Voltage](hardware/wiring_tips_lv.md) wiring pages with tips and examples on how to make the connections safely. Consider protection against [lighning strikes](hardware/lightning_strike.md) when choosing a location deploying cabling.
+    
+## Keeping the temperature in check
 Lithium batteries are like humans, they perform best at 20°C. Many installs will have the batteries outside or in basic sheds/shelters. This means the battery might be subject to extreme temperatures, which will affect the battery performance. Depending on your climate, this might mean -40°C, or +40°C, both being bad for battery performance/longevity.
 
 **Hot tips** :hot_face: Many lithium battery chemistries stop taking charge/discharge at >50°C. Having the battery in direct sunlight in a hot climate like Australia can cause high temperature shutdown. This can be avoided by placing the battery in a shaded area, and/or utilizing the coolant loops found on some battery packs like Tesla batteries. For [temperate climates](https://en.wikipedia.org/wiki/Temperate_climate) this is usually not required at all. In the event that temperature cannot be maintained below 50°C, the Battery Emulator will automatically stop power transfer and raise an overheated fault event.
 
 **Cold tips** :snowflake: The same is true for the other side of the thermometer, at low temperatures it is not possible to charge/discharge lithium batteries. This lower temperature limit depends on what chemistry is used. LFP batteries start to struggle already at <0°C, while other cells such LMO and NMC can still perform at -20°C. Simply using the battery by charging and discharging it will generate heat, and by putting the battery in an isolated space, this self-generated heat can be enough to keep the battery performing thru winter. Simply keeping the contactors engaged in a battery will consume between 10-20Watts, which is excellent for keeping some heat in it. Some batteries also contain heating elements, which will automatically turn on when it gets too cold. An example of this is the Nissan LEAF battery, which can have internal heating elements that turn on at < -17°C (provided the battery is equipped with the cold climate add-on). Other batteries like Tesla S/3/X/Y has coolant loops, which you can run a heated loop thru in order to keep the battery warm during the winter. A simple space heater can also be used to keep a battery shed heated during the winter. If the battery gets too cold, <-25°C ,the Battery Emulator will automatically stop power transfer and raise a battery frozen fault event.
 
-#### Keeping the Battery-Emulator cooler
+### Keeping the Battery-Emulator cooler
 While on the topic of temperatures, it is also important to keep the hardware running the Battery-Emulator cool. The ESP32 CPU used in all hardware solutions will start to have Wifi issues if the chip gets too hot (at around 85-95°C), and if the CPU continues to heat up towards its maximum rating it will lock up and crash (at around 125°C). This temperature measurement works great on ESP32-S3 chips, but the older ESP32 is notorious for having poorly calibrated CPU temperature. So verify with external thermometer!
 
 **ESP32 tips** :thermometer: Mounting the Battery-Emulator hardware inside a small plastic case can lead to overheating if the ambient temperature is high enough. If you experience wifi issues, and notice high CPU temperatures, the following steps can be taken to reduce temperatures and improve stability;

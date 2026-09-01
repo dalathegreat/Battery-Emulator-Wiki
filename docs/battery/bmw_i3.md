@@ -20,7 +20,7 @@ All i3 batteries have the following length/width/height 1660mm x 964mm x 174mm.
 
 <a name="CAUTIONCONTACTORSWELDED"></a>
 !!! warning "CAUTION"
-    When shutting down a working i3 battery system, no load can be present on the HV system. First shut down inverter before shutting off the battery, OR use the PAUSE button in the Webserver to ensure that 0A of current before shutting down the battery. The i3 has extremely sensitive welding detection. If there is over a few A of current during opening of contactors, it will set the "Contactors Welded" state and lock the battery permanently.
+    When shutting down a working i3 battery system, no load can be present on the HV circuit. First shut down inverter before shutting off the battery, OR use the PAUSE button in the Webserver to ensure that 0A of current before shutting down the battery. The i3 has extremely sensitive welding detection. If there is over a few A of current during opening of contactors, it will set the "Contactors Welded" state and lock the battery permanently.
 
 The EoS tester can be rented from some places, a great i3 expert is available in CZ, [i3upgrade](https://www.i3upgrade.cz/)
 Another alternative when dealing with a locked battery, is to open up the battery and bypass the contactors. Nobody has reported if this works yet (feel free to edit this wiki!), worst case you could also replace the i3 BMS with an [RJXZS](bms/rjxzs_bms.md)
@@ -55,26 +55,8 @@ The HV connector has + and - marked on it.
 * Pin 2 HVIL (loop to 1)
 Can also be bridged with jumper wires.
 
-#### <a name="HVCableMod"></a> High voltage cable modification
-
-The bmw I3 uses a 35mm² high voltage cable. To connect it to a terminal block and go down in size to a more manageable 10mm² you need
-ferrules for these stranded wires to not damage them.
-This can be done by cutting off the old connector and using a ferrule and crimping them. These tools are not so common for consumers.
-An alternative for this is modifying the connector and use the current connector as ferrule so you don't have to buy or rent tools to achieve a non-stranded wire for the thermal block with size 35mm²
-
-Click on Details  ⬇
-<details markdown="1">
-
-[![](../images/bmw-i3-05.jpg){ width="200" }](../images/bmw-i3-05.jpg)
-[![](../images/bmw-i3-06.jpg){ width="200" }](../images/bmw-i3-06.jpg)
-[![](../images/bmw-i3-07.jpg){ width="200" }](../images/bmw-i3-07.jpg)
-[![](../images/bmw-i3-08.jpg){ width="200" }](../images/bmw-i3-08.jpg)
-[![](../images/bmw-i3-09.jpg){ width="200" }](../images/bmw-i3-09.jpg)
-[![](../images/bmw-i3-10.jpg){ width="200" }](../images/bmw-i3-10.jpg)
-[![](../images/bmw-i3-11.jpg){ width="200" }](../images/bmw-i3-11.jpg)
-[![](../images/bmw-i3-12.jpg){ width="200" }](../images/bmw-i3-12.jpg)
-[![](../images/bmw-i3-13.jpg){ width="200" height="267" }](../images/bmw-i3-13.jpg)
-</details>
+!!! tip "TIP"
+    Check out our [High Voltage wiring](../hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 ### Low voltage connector (A191*1B)
 The LV connector is located on the back of the battery pack, next to the A/C cooling port. A/C connector is not required for operation.
@@ -116,8 +98,11 @@ Since the board has 3.3V logic on the GPIO pins, we need to use a solid state re
 
 [![](../images/bmw-i3-16.png){ width="700" }](../images/bmw-i3-16.png)
 
+!!! tip "TIP"
+    Check out our [Low Voltage wiring](../hardware/wiring_tips_lv.md) page on how to make the connections in practice.
+
 #### Example wiring diagram
-Below an example wiring diagram
+Below an example wiring diagram:
 
 [![](../images/bmw-i3-17.png){ width="700" }](../images/bmw-i3-17.png)
 
@@ -164,7 +149,7 @@ Below an example wiring diagram
 
 
 ### Note on capacitor
-Capacitors are high voltage, so they need to be inside an IP enclosure to prevent anyone from touching or water getting onto it and shorting it out. Most either mount the capacitor next to the battery, or next to the inverter, at either end of the HV bus. The most popular solution is to install fuses and the capacitor right at the start where HV comes out of the battery, sort of an add-on box that gets mounted on the original HV cable coming out of the battery. This is also a good place to step down the batteries thick DC cabling (35mm² in case of the i3), down to a more manageable 10mm². [To avoid the need for 35mm² crimping tools you could consider this solution](#HVCableMod)
+Capacitors are high voltage, so they need to be inside an IP enclosure to prevent anyone from touching or water getting onto it and shorting it out. Most either mount the capacitor next to the battery, or next to the inverter, at either end of the HV bus. The most popular solution is to install fuses and the capacitor right at the start where HV comes out of the battery, sort of an add-on box that gets mounted on the original HV cable coming out of the battery. This is also a good place to step down the batteries thick DC cabling (35mm² in case of the i3), down to a more manageable 10mm². Check out our [High Voltage wiring](../hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 Example of capacitor integrated at point where wire gauge is reduced, inside exclosure:
 

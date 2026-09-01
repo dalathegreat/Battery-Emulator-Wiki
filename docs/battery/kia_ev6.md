@@ -5,7 +5,10 @@ title: "Kia EV6"
 !!! info "IMPORTANT"
     The EGMP battery platform cannot communicate over CAN. It is only compatible with CAN FD!
 
-Pinout on battery
+Similar to [E-GMP platform](hyundai_e_gmp_platform_58_2_77_4_kwh.md).
+    
+## Pinout on battery
+
 ![image](../images/kia-ev6-01.png)
 ![image](../images/kia-ev6-02.png)
 
@@ -13,10 +16,12 @@ Pinout on battery
 ![image](../images/kia-ev6-04.png)
 ![image](../images/kia-ev6-05.png)
 
-Batterie Data (from Kia/Hyundai Service Manual)
+## Battery Data (from Kia/Hyundai Service Manual)
+
 ![image](../images/kia-ev6-06.png)
 
-Batterie BMU/CMU Info
+## Battery BMU/CMU Info
+
 ![image](../images/kia-ev6-07.png)
 ![image](../images/kia-ev6-08.png)
 ![image](../images/kia-ev6-09.png)
@@ -25,11 +30,7 @@ Batterie BMU/CMU Info
 ![Zrzut_ekranu_2025-07-16_111425-1](../images/kia-ev6-12.png)
 ![Zrzut_ekranu_2025-07-16_111419](../images/kia-ev6-13.png)
 
-Images etc.
-
-Similar wiki: [E-GMP platform](hyundai_e_gmp_platform_58_2_77_4_kwh.md)
-
-***** Below find pin connection required ******
+## Pin connection
 
  1,2,12 - 12v / 
  3+14 - shunt / 
@@ -42,3 +43,4 @@ Similar wiki: [E-GMP platform](hyundai_e_gmp_platform_58_2_77_4_kwh.md)
  31+32+33 - gnd / 
  
 You also need to shunt the 3 interconnect in the 3 HV connectors. You can measure if the shunt is connected correctly with a voltmeter. If closed correctly the shunt should measure 2.5V
+

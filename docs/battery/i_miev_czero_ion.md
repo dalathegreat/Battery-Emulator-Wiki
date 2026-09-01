@@ -3,15 +3,19 @@ title: "Mitsubishi i-MiEV / Citroen C-Zero / Peugeot Ion"
 ---
 
 There are 3 OEM battery combinations possible and some DIY aftermarket packs.
+
 The first generation packs have 88 Yuasa LEV50 cells. If the car you are getting the battery from is year 2012 or older, then the chances are high you would get a LEV50 one. You do not want such a battery pack. The cells inside have known high degradation. Also do not age well.
-If the pack you are getting is from Citroen C-Zero / Peugeot Ion and have 88 cells inside, its always LEV50.
-From the beginning of the year 2013 Mitsubishi changed from Yuasa LEV50 to Yuasa LEV50N. Those cells have modern chemistry and last like other cells on other modern cars. There are no known issues with LEV50N cells. Citroen C-Zero / Peugeot Ion with LEV50N cells build in have from this time always just 80 and not 88 cells inside. That is why the max voltage is smaller on such cars.
+
+If the pack you are getting is from Citroen C-Zero / Peugeot Ion and have 88 cells inside, its always LEV50. From the beginning of the year 2013 Mitsubishi changed from Yuasa LEV50 to Yuasa LEV50N. Those cells have modern chemistry and last like other cells on other modern cars. There are no known issues with LEV50N cells. Citroen C-Zero / Peugeot Ion with LEV50N cells build in have from this time always just 80 and not 88 cells inside. That is why the max voltage is smaller on such cars.
+
 In Japan there was a rare third battery. It had LTO cells inside and around 10.5kWh of capacity. The reason why the LTO model got released is because Mitsubishi had to replace the known bad LEV50 batteries on warranty on masses and was loosing money. They was searching for alternative and that is why there was this LTO model that got released. If you get a rare LTO model, it should last the longest. Those LTO cells are known to have nearly no degradation.
 
 The chemistry between the LEV50 and LEV50N changed a bit. Because of that the BMU got a firmware update. This firmware update was send to the Mitsubishi shop on a CD. Sadly there is no copy of this CD anywhere. It would be great if someone could get a copy of this cd and put the ISO online. You can read out the firmware from LEV50 BMU and LEV50N BMU and crossflash it.
+
 A Russian developer from Novosibirsk [github/kolyandex](https://github.com/kolyandex) modded the BMU firmware and told that the BMU firmware can be modified. Sadly this was sold as a service and not offered open source. The very few people who got this from him, probably does not know how to read out the BMU firmware and that is why it is still not documented how to mod the BMU firmware.
 
 The DIY battery packs have CATL93Ah NMC cells that replace the trash LEV50 cells. Most people are using a CAN bridge because of the missing knowledge how to modify the BMU firmware.
+
 These days some people get smaller EVE58Ah NMC cells to save some weight. Because of their smaller capacity, most just leave out the CAN bridge and use the original LEV50 BMU firmware with the EVE58Ah NMC cells.
 
 It would make sense to add in the future two BMU firmware dumps. One for the LEV50 and one for the LEV50N cells.

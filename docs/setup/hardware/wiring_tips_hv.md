@@ -146,7 +146,24 @@ Here are some examples on how to wire up the high voltage output from the batter
 ![image](../images/nissan-leaf-e-nv200-17.png)
 ![cabluri2](../images/nissan-leaf-e-nv200-18.jpg)
 
-Phoenix 3049408 DIN rail connectors
+Phoenix 3049408 DIN rail connectors to use with unmodified cable:
+
 ![Phoenix 3049408 DIN rail connectors](../images/nissan-leaf-e-nv200-19.jpg)
 
+### BMW I3
 
+The bmw I3 uses a 35mm² high voltage cable. To connect it to a terminal block and go down in size to a more manageable 10mm² you would need ferrules for these stranded wires to not damage them. This can be done by cutting off the old connector and using a ferrule and crimping them. These tools are not so common for consumers. An alternative for this is modifying the connector and use the current connector as ferrule so you don't have to buy or rent tools to achieve a non-stranded wire for the thermal block with size 35mm². Use at your own risk!
+
+Click on Details  ⬇
+<details markdown="1">
+
+[![](../images/bmw-i3-05.jpg){ width="200" }](../images/bmw-i3-05.jpg)
+[![](../images/bmw-i3-06.jpg){ width="200" }](../images/bmw-i3-06.jpg)
+[![](../images/bmw-i3-07.jpg){ width="200" }](../images/bmw-i3-07.jpg)
+[![](../images/bmw-i3-08.jpg){ width="200" }](../images/bmw-i3-08.jpg)
+[![](../images/bmw-i3-09.jpg){ width="200" }](../images/bmw-i3-09.jpg)
+[![](../images/bmw-i3-10.jpg){ width="200" }](../images/bmw-i3-10.jpg)
+[![](../images/bmw-i3-11.jpg){ width="200" }](../images/bmw-i3-11.jpg)
+[![](../images/bmw-i3-12.jpg){ width="200" }](../images/bmw-i3-12.jpg)
+[![](../images/bmw-i3-13.jpg){ width="200" height="267" }](../images/bmw-i3-13.jpg)
+</details>

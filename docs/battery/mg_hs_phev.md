@@ -2,22 +2,6 @@
 title: "MG HS PHEV"
 ---
 
-## Contents
-
-- Models
-- Current status
-- Prerequisites
-- Software configuration
-- Connections
-  - Low Voltage (LV)
-  - CAN communication
-  - High Voltage Interlock (HVIL)
-- Issues
-  - Earth leakage / insulation resistance testing modification
-- Additional information
-
-## Current status
-
 The Gen1 MG HS PHEV battery is fully usable, although a modification may be necessary (depending on your inverter/RCD) that requires opening up the battery.
 
 In some situations the battery may detect an insulation failure and open its contactors, which BE will detect, resetting the battery and closing contactors again. This doesn't seem to occur when under load, but sometimes happens during inverter startup.
@@ -74,6 +58,15 @@ The battery needs a 12V-14V supply, and draws 600mA continuous with the contacto
 
 To reduce potential issues with the insulation measurement, it is preferable to have a 12V supply that is isolated from the grid (eg, powered from a 2-pin double-insulated adapter).
 
+!!! tip "TIP"
+    Check out our [High Voltage wiring](../hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
+
+### High Voltage Interlock (HVIL)
+
+The HVIL connections under the MSD are bridged together by the MSD itself.
+
+The other HVIL connections on the front panel (on each of the three HV connectors) can be left alone, as the BMS doesn't care whether they're bridged or not.
+    
 ### CAN communication
 
 The battery has (at least) three CAN buses:
@@ -94,11 +87,8 @@ The CAN1 and CAN2 buses should be bridged together (connecting the high/low pins
 > I have a running system based on this.
 > I have only used one of the 4 CAN channels available through the low voltage connector (CAN2), but this is enough to run the battery emulator (although closing the HV contactors is WiP).
 
-### High Voltage Interlock (HVIL)
-
-The HVIL connections under the MSD are bridged together by the MSD itself.
-
-The other HVIL connections on the front panel (on each of the three HV connectors) can be left alone, as the BMS doesn't care whether they're bridged or not.
+!!! tip "TIP"
+    Check out our [Low Voltage wiring](../hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
 ## Issues
 
