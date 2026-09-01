@@ -3,7 +3,7 @@ title: "CAN filter hardware"
 ---
 
 ## What is a CAN filter?
-Since some inverters need to see only certain CAN messages on the bus, we can achieve this by adding a CAN-filter between the inverter and the rest of the CAN-bus. By doing this you can use a board with a single CAN channel, such as the LilyGo T-CAN485, with an inverter that usually requires a dedicated CAN channel.
+Since some inverters need to see only certain CAN messages on the bus, we can achieve this by adding a CAN data filter between the inverter and the rest of the CAN-bus. By doing this you can use a board with a single CAN channel, such as the LilyGo T-CAN485, with an inverter that usually requires a dedicated CAN channel.
 
 ![image](../../images/can-filter-hardware-01.png)
 

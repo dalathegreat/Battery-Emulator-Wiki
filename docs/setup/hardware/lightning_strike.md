@@ -82,7 +82,7 @@ Below are some products you can use to increase the resilience of your CAN/RS485
 
 Example of CAN isolator in use, and PE connections between elements:
 
-![image](../../images/lightning-strike-02.png){ width="1350" height="787" }
+![image](../../images/lightning-strike-02.png)
 
 !!! note "NOTE"
     There's no guarantee that certain opto-coupler circuits will save from lightning strike damage. Success rate varies by quality, rating and deployment - it's pretty certain though that they increase survival chances.

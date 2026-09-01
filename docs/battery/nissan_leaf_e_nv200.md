@@ -17,7 +17,7 @@ For this battery type, use the option named **Nissan LEAF battery** under the **
 The following pictures show an example of hooking up a LEAF battery to a Fronius Gen24 inverter. The same diagram can be useful for planning other inverter combinations.
 
 !!! note "NOTE"
-    The LEAF battery requires a 12V supply capable of delivering 1.5A
+    The LEAF battery requires a 12V supply capable of delivering at least 1.5A.
 
 Remember to seat the service disconnect switch. Without this fitted, the battery will not output any voltage when contactors are closed.
 This is how the SDS is used [(Youtube)](https://www.youtube.com/watch?v=tbo2Qzdj-Rg).
@@ -79,7 +79,6 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
 !!! tip "TIP"
     The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term.
 
-
 ## Insulation resistance
 
 !!! note "NOTE"
@@ -106,7 +105,7 @@ A [spreadsheet](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsraOJc9BEx
 
 297A6 3NA0A does not fit, you have to cut a part of it to use the pins!
 
-![image](../images/nissan-leaf-e-nv200-09.png)
+![image](../images/nissan-leaf-e-nv200-09.png){ width="333" height="289" }
 
 **Incompatible cables**
 When searching on eBay you may come across other cables in the Zoe which use a connector that is similar in appearance but is much smaller:
@@ -116,18 +115,24 @@ When searching on eBay you may come across other cables in the Zoe which use a c
 
 These will *not* connect to the Leaf battery terminals.
 
-## Communication cable AWG limits
-22 or 36pin connector are designed with an hole of 2.1mm that would contain cable and included elastic ring for water proof seal.
-AWG 22 (0.5mm²) is enough cable section for the supported Amps.
+### Alternative HV connectors 
+Original part number for Nissan Leaf battery is 297A65SH1A but a cheaper alternative for battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as Leaf battery. 297A22581R is the part numbers for both car.
 
-Normal cable of the above section (22AWG) have a protective rubber that is too thick (usually 2.1mm external diameter) => need to choose automotive cable that follow reduced rubber cable standard (FLRY-A or B ISO 6722) that shouldn't be thicker than 1.5/1.7mm (better 1.5) outside diameter.
+The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/dam/tti-europe/manufacturers/aptiv/doc/aptiv-hv-rcs-800-automotive-connectors-datasheet-specifications.pdf).
 
-Need at least 0.7/1mm thick cable (e.g. cable + wrap) to allow correct water proof e.g. no ethernet cable can be used because too thin. Ethernet cable can go from 23 to 26 AWG. Normal AWG is usually 24 AWG that is rated for max 0.5A.
-HV battery contactors drain continuously 0.4A each one at 12v.
+## Control wiring specifics
 
-BTW it's not strictly necessary to be automotive grade cable if it has enough copper diameter (0.5mm²) and outer diameter of ~1.5mm.
+The battery contactors drain continuously 0.4A each one at 12V. 0.5mm² (AWG 22) is enough cable section required current. 
 
-NOTE: If you pin your connector yourself - ensure the pins go all the way to the bottom and the pin is seated properly. If they are inserted incorrectly (not far enough, "wonky") then you won't have proper communication.
+### If you pin the connector yourself
+
+The Yazaki 22/36pin connectors are designed with an hole of 2.1mm that would contain cable and included elastic ring for water proof sealing. Normal cable of the above cross-section has protective insulation that is too thick (usually 2.1mm external diameter) to be used with the water proof seals. You may want to choose automotive cable that follow the reduced rubber cable standard (FLRY-A or B ISO 6722) that shouldn't be thicker than 1.5/1.7mm (better 1.5) outside diameter. Need at least 0.7/1mm thick cable (e.g. cable + wrap) to allow correct water proofing e.g. no ethernet cable can be used because it's too thin. 
+
+BTW it's not strictly necessary to be automotive grade cable if it has enough copper diameter (0.5mm²) and outer diameter of ~1.5mm. 
+!!! note "NOTE"
+    Ensure the pins go all the way to the bottom and the pin is seated properly with a "tick". If they are inserted incorrectly (not far enough, "wonky") then you won't have proper connection.
+    
+Of course if you install the battery indoors, you can omit the sealing rings and your wire choices are wider. You can use a 3D printed [cover](../setup/hardware/list_of_3d_printable_parts.md#lv-connector-cover-and-fixation-ring) to protect the connector from falling debris.
 
 Pinout for the Yazaki 22pin connector, to be used with ZE0 packs:
 
@@ -141,31 +146,12 @@ Crimping a 36pin connector:
 
 ![image](../images/nissan-leaf-e-nv200-12.png)
 
-### NOTE about cable code
-
-* FLRY-A Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with regularly stranded conductor (A)
-* FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with irregularly stranded conductor (B)
-
-### Alternative HV connectors 
-Original part number for Nissan Leaf battery is 297A65SH1A but a cheaper alternative for battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as Leaf battery. 297A22581R is the part numbers for both car.
-
-The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/dam/tti-europe/manufacturers/aptiv/doc/aptiv-hv-rcs-800-automotive-connectors-datasheet-specifications.pdf).
-
 ## 3D-printable parts
 
 You can print your own safety cover for the **unused heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
 
-## Examples of wiring installs
-Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
+## Notes on 30kWh (AZE0) pack
 
-![image](../images/nissan-leaf-e-nv200-16.png)
-![image](../images/nissan-leaf-e-nv200-17.png)
-![cabluri2](../images/nissan-leaf-e-nv200-18.jpg)
-
-Phoenix 3049408 DIN rail connectors
-![Phoenix 3049408 DIN rail connectors](../images/nissan-leaf-e-nv200-19.jpg)
-
-## Notes on 30kWh battery
 The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the SOH% back to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
 
 Performing this clear can restore a few kWh of usable energy back. 
