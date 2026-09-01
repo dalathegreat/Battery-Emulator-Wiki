@@ -45,7 +45,7 @@ Follow the notes below to see which protocol should be used with your invertetr
    * Also works with the new `FoxESS EP Series battery` option (Confirmed with KH9)
 * FoxESS KP
    * Uses `FoxESS compatible HV2600/ECS4100` protocol
-   * 
+     
 ## FoxESS EP-Series battery protocol
 
 The `FoxESS EP Series battery` protocol emulates the FoxESS EP-Series battery CAN protocol and provides the additional battery information supported by compatible FoxESS inverters.
