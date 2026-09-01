@@ -71,7 +71,7 @@ The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to th
 
 ## Which protocol to use
 
-For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting.
+Select the appropriate inverter protocol for your FoxESS inverter using the compatibility list above.
 
 ![image](../images/foxess-h1-h3-ac1-kh-07.png){ width="495" height="63" }
 
