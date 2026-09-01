@@ -56,28 +56,25 @@ Almost all EV batteries contain contactors and precharge relays. Contactors act 
 
 The Nissan Ariya battery can be used in two ways. Manual and automatic startup/shutdown of the contactors/precharge circuit.
 
-### Manual control 🖐️
-
-Using switches and manual timing, it is possible to turn on the precharge(A), negative contactor(B), and positive contactor(C). This is the simplest method, but it increases the risk of failures. Accidentally flipping the wrong switch at the wrong time may damage the battery and/or inverter. Also if you leave your battery un-attended, the battery has no way of disconnecting from the inverter incase it senses a fault. **Due to all this, the manual control method is NOT recommended.** 
 
 ### Automatic control 🤖
 
-The Battery-Emulator hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the board. On the LilyGo T-CAN485 for instance, you need to solder a 2x6 row connector onto the board to use these. After the row connector is fitted, you can connect a flat ribbon cable between the pins, and the relays.
+Battery Emulator hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the supported boards.
 
-To enable the feature in the software, uncomment the following line in the `USER_SETTINGS.h` file.
+To enable the feature in the software, Enable the **Contactor control via GPIO** option on the Settings page.
 
-`#define CONTACTOR_CONTROL     //Enable this line to have pins 25,32,33 handle automatic precharge/contactor+/contactor- closing sequence`
+![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
 
 To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
 
 The pin numbers below are the ones used on the LilyGo T-CAN485, check the HAL definitions of your own board if you use a different one:
 
-- Precharge pin 25 - Precharge SSR -> Pin 33 Precharge Sig on B36 connector on battery
-- Positive Contactor pin 32 - Positive SSR -> Pin 19 Main relay 1 Sig on B36 connector on battery
-- Negative Contactor pin 33 - Negative SSR -> Pin 26 Main relay 2 Sig on B36 connector on battery
+- Precharge pin 25 - Precharge SSR + input
+- Positive Contactor pin 32 - Positive SSR + input
+- Negative Contactor pin 33 - Negative SSR + input
 - GND - All 3x SSR - input
 
-- Detailed circuit picture will be placed here
+OPTIONAL: If you use SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM.
 
 ## Part numbers
 
