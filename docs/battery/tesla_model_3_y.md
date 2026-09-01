@@ -140,12 +140,15 @@ The connector above will need the following connections...(apart the grounding o
 ![Tesla HV Battery and HVIL](../images/tesla-model-s-3-x-y-21.png){ width="1301" height="923" }
 
 ### 12 Volt or 16 Volt?
-Tesla used a standard Lead Acid 12 Volt battery in most applications. Beginning in Mid-2021, Tesla began converting the low voltage battery system in its vehicles to utilize a 15.5V 6.9Ah Li-Ion battery. [ohmmu.com](https://support.ohmmu.com/battery-product-support/tesla-all-models-identifying-low-voltage-battery-system-12v-vs-15-5v) Has some information to know if your car has the standard LA or Li-Ion. In 2024+ a new 12.8V LFP battery was introduced. More information from Weber State University YouTube Channel [Tesla 16V](https://www.youtube.com/watch?v=8-MNFgashpQ), [Tesla Low Voltage Charging System](https://www.youtube.com/watch?v=M1ZEorMeuDo), [Tesla 12.8V LFP](https://www.youtube.com/watch?v=QJsy1ay6tXs)
+
+Tesla used a standard Lead Acid 12 Volt battery in most applications. Beginning in Mid-2021, Tesla began converting the low voltage battery system in its vehicles to utilize a 15.5V 6.9Ah Li-Ion battery. [ohmmu.com](https://support.ohmmu.com/battery-product-support/tesla-all-models-identifying-low-voltage-battery-system-12v-vs-15-5v) has some information to know if your car has the standard LA or Li-Ion. In 2024+ a new 12.8V LFP battery was introduced. More information from Weber State University YouTube Channel [Tesla 16V](https://www.youtube.com/watch?v=8-MNFgashpQ), [Tesla Low Voltage Charging System](https://www.youtube.com/watch?v=M1ZEorMeuDo), [Tesla 12.8V LFP](https://www.youtube.com/watch?v=QJsy1ay6tXs).
+
 At this time, BE is not compatible with the use of the 16V Li-Ion or 12.8V LFP battery for communication to tell the PCS DCDC LV Voltage to charge above the standard 12V LA battery. Using the standard 12 Volt Lead Acid battery will work normally in place of the other Li-Ion/LFP.
 
 Make sure to connect the 12V battery to the PCS (two M8 screws close to the X098) with recommended wire size to supply the 30+ Amp demands.
 
-ℹ️ The 12V requirement is quite large for the Tesla packs. Use a high power 14V source (large fully charged lead acid battery OR 30A lab power supply set to 12-16V). If the 12V supply is too weak, closing contactors wont be possible. The cables also need to be quite thick to avoid voltage drop. 1.5mm² is too small, the cables need to be 13mm² (6AWG) at minimum!
+!!! note "NOTE"
+    The 12V requirement is quite large for the Tesla packs. Use a high power 14V source (large fully charged lead acid battery OR 30A lab power supply set to 12-16V). If the 12V supply is too weak, closing contactors wont be possible. The cables also need to be quite thick to avoid voltage drop. 1.5mm² is too small, the cables need to be 13mm² (6AWG) at minimum!
 
 ![image](../images/tesla-model-s-3-x-y-22.png){ width="895" height="750" }
 

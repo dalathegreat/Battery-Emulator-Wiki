@@ -222,16 +222,19 @@ Attached pictures from packs that did not detect all cells. Root cause was water
 ## Explanation of More Battery Info page
 
 More battery info:
-Cells: 98S						= Total amount of cells of battery build
-12V voltage: 11.9					= State of 12V battery input, actual value (minimum 12V!)
-Water leakage: 160					= Don’t know
-Temperature, water inlet: 17				= Temperature on inlet side of water cooling.
-Temperature, power relay: 26				= Temperature of power relays of battery.
-Batterymanagement mode: 1				= Don’t know.
-BMS ignition: 9						= Don’t know.
-Battery relay: 135					= Don’t know.
 
-## Internal schematics of the Battery ( 37501-AO050  version ) 
+```
+Cells: 98S = Total amount of cells of battery build
+12V voltage: 11.9 = State of 12V battery input, actual value (minimum 12V!)
+Water leakage: 160 = Unknown
+Temperature, water inlet: 17 = Temperature on inlet side of water cooling.
+Temperature, power relay: 26 = Temperature of power relays of battery.
+Batterymanagement mode: 1 = Unknown
+BMS ignition: 9 = Unknown
+Battery relay: 135 = Unknown
+```
+## Internal schematics of the Battery (37501-AO050 version) 
+
 [technical-schematics-kia-64kwh-SG2-spanish.pdf](https://github.com/user-attachments/files/26716116/technical-schematics-kia-64kwh-SG2-spanish.pdf)
 
 ## Credits
@@ -240,5 +243,6 @@ Here are the sources used
 
 * [google](https://docs.google.com/spreadsheets/d/1dbOT9I-Aj7lU7yCiJDpXERjYRVOL_M1Tm2QFgmyYt4Y/htmlview?fbclid=IwAR3HZMGhDfGsOdJrbMfRUDkS8c-25cSwnZcwzIewC10mJ1gy6hf719BUBNM#)
 * [google](https://docs.google.com/spreadsheets/d/1-9jZafV9eZeBUnPQo7qQHbX2-_4qZfWfRVpidoF1owA/edit#gid=660740603)
+
 Massive thanks to Lubos, Tyrel Haveman, goev1390, Peter Lord, Projectgus, JejuSoul, Heikki Jaakkola
 [technical-schematics-kia-64kwh-SG2-spanish.pdf](https://github.com/user-attachments/files/26715929/technical-schematics-kia-64kwh-SG2-spanish.pdf)

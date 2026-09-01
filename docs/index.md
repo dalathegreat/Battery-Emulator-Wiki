@@ -40,7 +40,7 @@ The software runs on specific ESP32 hardware boards, supports [Over The Air upda
 Reusing old often crashed EV packs always comes with risks. The system performs certain safety functions for safer charging and discharging. Apart from this, the data sent to the Inverter is also processed on the inverter side, and depending on which inverter is used some additional safety checks are performed there. Here is a list of some of the safety functionalities that are in the system. Note that almost all safety features rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be detectable via software. For this you need fuses, and periodic visual inspections. 
 
 !!! tip "TIP"
-    Check out the [installation guidelines](setup/installation_guidelines.md) section for how to install your battery.
+    Check out the [installation guidelines](setup/installation_guidelines.md) section for how to install your battery. There are dedicated [High Voltage](setup/hardware/wiring_tips_hv.md) and [Low Voltage](setup/hardware/wiring_tips_lv.md) wiring pages with tips and examples on how to make the connections safely. Consider protection against [lighning strikes](setup/hardware/lightning_strike.md) when choosing a location deploying cabling.
 
 !!! warning "CAUTION"
     ***At the end of the day, you alone are responsible for the system.***

@@ -43,8 +43,6 @@ If you get events like `BATTERY_MISSING` or `INVERTER_MISSING`, you need to chec
 * On the Stark CMR board, the terminating resistor can be turned on/off via the switches on the PCB
 ![image](../../images/can-wiring-practices-and-troubleshooting-02.png)
 
-* Make sure the cable you are using is a **twisted pair** cable. This is important for signal quality.
-* Make sure the cable you are using is **shielded**. Only **one side of the shield** should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This avoids ground loops.
 * Try a different power supply for the board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see `CAN_TX_FAILURE` occasionally your powersupply might be noisy, or 5V is not strong enough.
 * If you are using a board like T-2CAN, it requires 12V to activate the CAN chips, simply powering it via USB is not enough! Generally, if the board has multiple power inputs, use the highest voltage one.
 
@@ -66,20 +64,9 @@ You can see  both RX0/TX1 (CAN) function, and RX6/TX3 (CAN-FD). In this successf
 
 Bonus: You can also use this handy automated test page for the Stark CMR: [redispose](https://redispose.se/tests/) For all other hardwares, the above mentioned is a good test!
 
-## CAN grounding practices
+## Wiring and Grounding practices
 
 CAN networks are vulnerable to lightning strikes. [See the dedicated wiki page for this for more info](../hardware/lightning_strike.md) :cloud_with_lightning: 
 
-!!! warning "CAUTION"
-    Grounding everything is especially important for certain inverters. If you fail to ground inverter or battery casing to protective earth (PE), there might be a voltage difference between the two components, which can fry the CAN communication chips on the Battery-Emulator. Always connect every component, and the communication shield wire to **the same** protective earth before turning the system on!
+Be sure to check out the page with [recommendations for low voltage wiring](../hardware/wiring_tips_lv.md).
 
-See this image for grounding: 
-
-![image](../../images/can-wiring-practices-and-troubleshooting-03.png)
-
-Here is the best way to ensure that there are no paths for spikes in CAN voltage to fry chips on the boards (Important for [Solax](../../inverter/solax.md) and [Foxess](../../inverter/foxess_h1_h3_ac1_kh.md), other inverters are more lenient on what power supply you use)
-
-![image](../../images/can-wiring-practices-and-troubleshooting-04.png)
-
-!!! warning "CAUTION"
-    Never connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be free floating, like shown in the above pictures.

@@ -2,7 +2,7 @@
 title: "Options for high voltage precharge"
 ---
 
-# Options for high voltage precharge
+# Options for external high voltage precharge
 
 ### Why
 
