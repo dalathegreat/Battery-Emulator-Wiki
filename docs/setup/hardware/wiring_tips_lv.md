@@ -4,12 +4,12 @@ title: "Low Voltage wiring tips"
 
 ## Data signal
 
-By standard, CAN communication at 500kbps is good for 100meter max. RS485 or Modbus, with proper cabling, can co up to 1km.
+CAN communication at 500kbps is good for maximum 100m. RS485 or Modbus, with proper cabling, can co up to 1km.
 
 !!! note "IMPORTANT"
     Data wires carrying CAN and Modbus data need to be in **twisted pair** to ensure signal integrity. Make sure the cable you are using is **shielded**. 
 
-Maximum data cable lengths may be specified by inverter manufacturers. Respect these distances if possible, to avoid problems. However, since EV batteries may not be installed [in the same circumstances](../installation_guidelines.md) as home battery packs, you may need to use longer cable runs. Compensation can be made by choosing carefully. 
+Data cable max lengths may be specified by inverter manufacturers in their installer manuals. Respect these distances if possible, to avoid problems. However, since EV batteries may not be installed [in the same circumstances](../installation_guidelines.md) as home battery packs, you may need to use longer cable runs. Compensation can be made by choosing carefully. 
 
 The easiest choice is shielded CAT6 cabling used for Ethernet networks, where you only use one pair of the four. Other options include cables designed for Modbus, BACnet MS/TP, CANopen, or DMX512. Choose a good quality shielded twister pair model of at least 0.2 - 0.3mm² (22 - 24 AWG) cross section per wire. As usual, the longer, the tchicker.
 
@@ -45,9 +45,9 @@ Thus, the 12V power source (and backup battery) you use must be able to handle t
 !!! warning "CAUTION"
     To avoid welded contacts ensure you have a 12V backup system to avoid unwanted contact closings under load in case of a blackout. When shutting down a working battery system, no load can be present on the HV circuit. First shut down inverter before shutting off the battery, OR use the PAUSE button in the Webserver to ensure that 0A of current before shutting down the battery. Certain batteries have extremely sensitive welding detection. If there is over a few A of current during opening of contactors, they will set the "Contactors Welded" state in their BMS and lock the battery permanently.
 
-Don't use the free CAT5/6 cable wires you have next to the CAN bus to externally drive contactors at 12V. Not only they are too thin, the contactors's inrush currents may cause interference with CAN / Modbus if you do that. Regular Ethernet cable wires go between 0.12 - 0.25mm² (23 - 26 AWG). You need at least 0.5mm² (20 AWG) which rated for max 0.5A on a few meters distance. 
+**Don't** use the free CAT5/6 cable wires you have next to the CAN bus to externally drive contactors at 12V. Not only they are too thin, the contactors's inrush currents may cause interference with CAN / Modbus if you do that. Regular Ethernet cable wires go between 0.12 - 0.25mm² (23 - 26 AWG). You need at least 0.5mm² (20 AWG) which rated for max 0.5A on a few meters distance. 
 
-Increasing distance significantly will need to increase wire tchickness too, in order to avoid energy loss on the cable itself, just like it happens for [for high voltage](wiring_tips_hv.md) For tens of meters of cable path, use at least 1.5mm² (AWG 14) cable to drive the BMS and the contactors with 12V.
+Increasing distance significantly will need to increase wire tchickness too, in order to avoid energy loss on the cable itself, just like it happens for [for high voltage](wiring_tips_hv.md). For tens of meters of cable path, use at least 1.5mm² (AWG 14) cable to drive the BMS and the contactors with 12V.
 
 If you wanna go really pro, you can use automotive grade cable (FLRY-A or B ISO 6722):
 
