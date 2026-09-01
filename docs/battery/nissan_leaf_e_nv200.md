@@ -33,7 +33,7 @@ The Positive (+) wire is close to the data port and the Negative (-) wire is clo
 
 
 !!! tip "TIP"
-    Check out our [High Voltage wiring](../hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
+    Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 ### Low Voltage connection (control and data)
 
@@ -43,7 +43,7 @@ This example diagram shows how to connect a [LilyGo T‐CAN485](../hardware/lily
 Nissan's own documentation uses pin numbering on the 36pin low voltage connector which does not match the moulded connector on AZE0/ZE1. The connections on this diagram have been renumbered so that they do. Scroll further down for the pinout of the 22pin connector for ZE0.
 
 !!! tip "TIP"
-    Check out our [Low Voltage wiring](../hardware/wiring_tips_lv.md) page on how to make the connections in practice.
+    Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
 ## Precharge/Contactor closing
 Almost all EV batteries contain contactors and precharge relays. Contactors act like big relays, and are used to control electrical circuits where currents are high. They are designed to be able to break the flow of current in a safe manner without electrical arcing. Usually there are at least two of them, one for positive and one for negative, and a third one for circuit precharging. To avoid electrical arcing when turning on the battery, the initial inrush of current is led thru a precharge resistor, to allow for slow charging of the capacitors inside the inverter. If the inverter has been turned off for a long time, the capacitors inside will act almost as a dead-short, 0 ohm resistance. If you would skip using the precharge, then your contactors will spark every time you close them, wearing them out prematurely. Negative, precharge and positive need to be switched separately in order, to ensure safe operation even if some malfunction would occur. Now that we know what the contactors/precharge does, we can look at how to control it.
