@@ -4,7 +4,7 @@ title: "Low Voltage wiring tips"
 
 ## Data signal
 
-CAN communication at 500kbps is good for maximum 100m. RS485 or Modbus, with proper cabling, can co up to 1km.
+CAN communication at 500kbps is good for maximum 100m. RS485 or Modbus, with proper cabling, can go 300m and even up to 1km.
 
 !!! note "IMPORTANT"
     Data wires carrying CAN and Modbus data need to be in **twisted pair** to ensure signal integrity. Make sure the cable you are using is **shielded**. 
