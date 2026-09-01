@@ -7,10 +7,7 @@ title: "Low Voltage wiring tips"
 By standard, CAN communication at 500kbps is good for 100meter max. RS485 or Modbus, with proper cabling, can co up to 1km.
 
 !!! note "IMPORTANT"
-    Data wires carrying CAN and Modbus data need to be in **twisted pair** to ensure signal integrity. 
-
-!!! tip "IMPORTANT"
-    Make sure the cable you are using is **shielded**. Only **one side of the shield** should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This avoids ground loops. 
+    Data wires carrying CAN and Modbus data need to be in **twisted pair** to ensure signal integrity. Make sure the cable you are using is **shielded**. 
 
 Maximum data cable lengths may be specified by inverter manufacturers. Respect these distances if possible, to avoid problems. However, since EV batteries may not be installed [in the same circumstances](../installation_guidelines.md) as home battery packs, you may need to use longer cable runs. Compensation can be made by choosing carefully. 
 
@@ -25,15 +22,17 @@ See this example for grounding:
 
 ![image](../../images/lightning-strike-02.png)
 
-
 ![image](../../images/can-wiring-practices-and-troubleshooting-03.png)
+
+!!! tip "IMPORTANT"
+    Only **one side of the shield** should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This avoids ground loops. 
 
 Here is the best way to ensure that there are no paths for spikes in CAN voltage to fry chips on the boards (Important for [Solax](../../inverter/solax.md) and [Foxess](../../inverter/foxess_h1_h3_ac1_kh.md), other inverters are more lenient on what power supply you use)
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-04.png)
 
 !!! warning "CAUTION"
-    Never connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be free floating, like shown in the above pictures.
+    Again: **Never** connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be free floating, like shown in the above pictures.
 
 ## Control signal (12V)
 
@@ -41,7 +40,10 @@ HV battery packs from EVs usually require an external 12V input at least to powe
 
 Contactors within HV packs drain continuously around 0.5A each, at 12V. Usually there are at least two of them, one for positive and one for negative, and a third one for circuit precharging. Varrying by type, an inrush current can develop for a very small amount of time when applying power to these contactors.
 
-Thus, the 12V power source (and backup battery) you use must be able to handle these. Generally a 12V 2.5A power supply should be enough for Battery Emulator hardware and the battery pack with it's own contactors, and this applies even if the contactors are controlled over CAN. If you use multiple packs in a double of triple setup, you'll need a bigger 12V supply accordingly.
+Thus, the 12V power source (and backup battery) you use must be able to handle these. Generally a 12V 2.5A power supply should be enough for Battery Emulator hardware and the battery pack with it's own contactors, and this applies even if the contactors are controlled over CAN. A good example is **Mean Well DRC-40A**. If you use multiple packs in a double of triple setup, you'll need a bigger 12V supply accordingly. 
+
+!!! warning "CAUTION"
+    To avoid welded contacts ensure you have a 12V backup system to avoid unwanted contact closings under load in case of a blackout. When shutting down a working battery system, no load can be present on the HV circuit. First shut down inverter before shutting off the battery, OR use the PAUSE button in the Webserver to ensure that 0A of current before shutting down the battery. Certain batteries have extremely sensitive welding detection. If there is over a few A of current during opening of contactors, they will set the "Contactors Welded" state in their BMS and lock the battery permanently.
 
 Don't use the free CAT5/6 cable wires you have next to the CAN bus to externally drive contactors at 12V. Not only they are too thin, the contactors's inrush currents may cause interference with CAN / Modbus if you do that. Regular Ethernet cable wires go between 0.12 - 0.25mm² (23 - 26 AWG). You need at least 0.5mm² (20 AWG) which rated for max 0.5A on a few meters distance. 
 
