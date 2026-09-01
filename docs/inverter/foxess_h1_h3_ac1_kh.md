@@ -58,7 +58,7 @@ On a confirmed KH9 installation it enables the FoxESS Battery Details page to sh
 - Daily Charged / Discharged
 - Total Charged / Discharged
 - Battery Cycles
-https://github.com/user-attachments/assets/ff899d91-d8bc-4848-8398-84fef3807a9a
+![FoxESS Battery Details using the EP-Series protocol](../images/Screenshot_2026-08-31-19-11-08-28.jpg)
  
 ## Communication wiring
 
