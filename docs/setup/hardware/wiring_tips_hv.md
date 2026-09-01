@@ -108,16 +108,16 @@ Start by checking the easy stuff, measure if HV wiring is leaking to PE. If the 
 
 ## Terminal tightness :nut_and_bolt: 
 Electrical connections can loosen over time due to thermal cycling (expansion and contraction from heating and cooling during charge/discharge cycles). This is especially noticeable on high power DC systems. A loose connection increases electrical resistance, leading to localized heating, potential fire hazards, and voltage drops that reduce system efficiency.
-loose connection
+
 - **Why it's Important:** Loose terminals are a leading cause of electrical failures. They can cause arcing, melting, and in severe cases, fires.
 - Materials Matter:
-   - **Copper Lugs/Terminals:** Check torque every 1-2 years.
-   - **Aluminium Lugs/Terminals:** Aluminium is more susceptible to "cold flow" or creep under pressure. Check torque annually.
+        - **Copper Lugs/Terminals:** Check torque every 1-2 years.
+        - **Aluminium Lugs/Terminals:** Aluminium is more susceptible to "cold flow" or creep under pressure. Check torque annually.
 - Procedure:
-   - **Safely de-energize the system** and verify there is no voltage present with a known working multimeter
-   - **Use a calibrated torque wrench** and the correct socket.
-   - **Consult your manufacturer's manual for the exact torque specification** (e.g., 4-5 Nm or 35-45 in-lbs). On some terminals the torque value is stamped directly on them. Do not over-tighten, as this can strip threads or damage terminals.
-   - Visually inspect terminals for signs of corrosion, melting, or discoloration.
+        - **Safely de-energize the system** and verify there is no voltage present with a known working multimeter
+        - **Use a calibrated torque wrench** and the correct socket.
+        - **Consult your manufacturer's manual for the exact torque specification** (e.g., 4-5 Nm or 35-45 in-lbs). On some terminals the torque value is stamped directly on them. Do not over-tighten, as this can strip threads or damage terminals.
+        - Visually inspect terminals for signs of corrosion, melting, or discoloration.
 
 ![image](../../images/installation-guidelines-14.png){ width="536" height="523" }
 
@@ -128,13 +128,14 @@ Example of terminal with torque values printed on it.
 Liquid cooling is used in some EV batteries to manage battery temperature. Maintaining the coolant is vital for thermal management and preventing corrosion.
 
 - **Why it's Important:** Low coolant levels can lead to poor heat dissipation, causing the battery to overheat and degrade rapidly. Old coolant loses its anti-corrosive properties, leading to leaks and cooling system blockages.
+
 - Coolant Level Check:
-   - Frequency: Check every 3-6 months.
-   - Procedure: With the system off and cool, inspect the coolant reservoir. The level should be between the "MIN" and "MAX" marks. Top up only with the manufacturer-recommended coolant type. Never mix different coolants.
+        - Frequency: Check every 3-6 months.
+        - Procedure: With the system off and cool, inspect the coolant reservoir. The level should be between the "MIN" and "MAX" marks. Top up only with the manufacturer-recommended coolant type. Never mix different coolants.
 
 - Coolant Replacement:
-   - Frequency: Typically every 3 to 7 years, but follow the manufacturer's strict interval.
-   - Procedure: This is often a very installation specific task. It involves draining the old coolant, flushing the system, and refilling with new, premixed coolant while ensuring all air is bled from the lines to prevent airlocks.
+        - Frequency: Typically every 3 to 7 years, but follow the manufacturer's strict interval.
+        - Procedure: This is often a very installation specific task. It involves draining the old coolant, flushing the system, and refilling with new, premixed coolant while ensuring all air is bled from the lines to prevent airlocks.
 
 ## Examples of wiring installs
 
@@ -154,9 +155,6 @@ Phoenix 3049408 DIN rail connectors to use with unmodified cable:
 
 The bmw I3 uses a 35mm² high voltage cable. To connect it to a terminal block and go down in size to a more manageable 10mm² you would need ferrules for these stranded wires to not damage them. This can be done by cutting off the old connector and using a ferrule and crimping them. These tools are not so common for consumers. An alternative for this is modifying the connector and use the current connector as ferrule so you don't have to buy or rent tools to achieve a non-stranded wire for the thermal block with size 35mm². Use at your own risk!
 
-Click on Details  ⬇
-<details markdown="1">
-
 [![](../../images/bmw-i3-05.jpg){ width="200" }](../../images/bmw-i3-05.jpg)
 [![](../../images/bmw-i3-06.jpg){ width="200" }](../../images/bmw-i3-06.jpg)
 [![](../../images/bmw-i3-07.jpg){ width="200" }](../../images/bmw-i3-07.jpg)
@@ -166,4 +164,4 @@ Click on Details  ⬇
 [![](../../images/bmw-i3-11.jpg){ width="200" }](../../images/bmw-i3-11.jpg)
 [![](../../images/bmw-i3-12.jpg){ width="200" }](../../images/bmw-i3-12.jpg)
 [![](../../images/bmw-i3-13.jpg){ width="200" height="267" }](../../images/bmw-i3-13.jpg)
-</details>
+
