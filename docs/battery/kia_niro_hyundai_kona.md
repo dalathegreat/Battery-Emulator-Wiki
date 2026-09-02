@@ -87,9 +87,10 @@ Incase your battery is missing some wires/disconnect switches, here are the OEM 
 
 (Optional for contactor control inside battery, by adding additional pins to unused positions in battery side low voltage connector (MG646089): 2pcs KET ST741378-3 | 2pcs DJ7019-6.3-21 | 4pcs KET ST741376-3 | 2pcs KET MG651026)
 
-## Wiring info
+## Low Voltage wiring
 
-⚠️ The CAN communication has no error checking. This means it is prone to corruption if it sits close to a high voltage line. Use shielded twisted pair cables for CAN-H and CAN-L , and connect the shield to protective earth in one end of the circuit. 
+!!! tip "TIP"
+    ⚠️ The CAN communication has no error checking. This means it is prone to corruption if it sits close to a high voltage line. Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
 Attached below are pictures of the BMS pinouts. Connect the pins to the Battery-Emulator hardware and 12V supply like this:
 
@@ -121,7 +122,7 @@ Note: PIN side (pack) layout. Not female connector side.
 
 ![Schematic](../images/kia-niro-hyundai-kona-64-kwh-08.png)
 
-## HighVoltage Wiring
+## High Voltage Wiring
 
 Overview of battery, cooling ports, low voltage connector, HVDC connectors
 
@@ -134,6 +135,9 @@ see picture for positive ( red ) and negative ( black ).
 ![Hv cable](../images/kia-niro-hyundai-kona-64-kwh-10.png)
 
 [Battery specs.pdf](https://github.com/dalathegreat/Battery-Emulator/files/15015806/Battery.specs.pdf)
+
+!!! tip "TIP"
+    Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 #### Notes on type of HV cable
 39kwh (2022) was with metal silver HV socket (looks like early 39/64 packs), 64kwh pack was 2020 with orange plastic HV socket. And these HV sockets looks same but they are mechanically different. For easiest way, try to get the HV cable from the same vehicle that you are getting the battery from!
