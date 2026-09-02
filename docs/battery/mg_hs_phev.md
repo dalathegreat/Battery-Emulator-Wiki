@@ -59,7 +59,7 @@ The battery needs a 12V-14V supply, and draws 600mA continuous with the contacto
 To reduce potential issues with the insulation measurement, it is preferable to have a 12V supply that is isolated from the grid (eg, powered from a 2-pin double-insulated adapter).
 
 !!! tip "TIP"
-    Check out our [High Voltage wiring](../hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
+    Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 ### High Voltage Interlock (HVIL)
 
@@ -88,7 +88,7 @@ The CAN1 and CAN2 buses should be bridged together (connecting the high/low pins
 > I have only used one of the 4 CAN channels available through the low voltage connector (CAN2), but this is enough to run the battery emulator (although closing the HV contactors is WiP).
 
 !!! tip "TIP"
-    Check out our [Low Voltage wiring](../hardware/wiring_tips_lv.md) page on how to make the connections in practice.
+    Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
 ## Issues
 
