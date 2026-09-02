@@ -23,7 +23,7 @@ Follow the official [installation guide](https://www.home-assistant.io/installat
 You don't need a display or mouse/keyboard on the actual hardware running Home Assistant. It's a "headless" system, meaning it has a web interface you manage from another computer or from your mobile, just like you do with Battery Emulator.
 
 !!! note "NOTE"
-    It's recommended to use the built-in Mosquitto broker as described below - choose **Home Assistant OS** or a **Supervised** installation as those are the ones that support apps (add-ons). With Home Assistant Container or Core you have to run a broker yourself (a separate Mosquitto container, or an existing broker elsewhere on your LAN); everything on the Battery Emulator side stays exactly the same, only the broker address changes.
+    It's recommended to use the built-in Mosquitto MQTT broker as described below - choose **Home Assistant OS** or a **Supervised** installation as those are the ones that support apps (add-ons). With Home Assistant Container or Core you have to run a broker yourself (a separate Mosquitto container, or an existing broker elsewhere on your LAN); everything on the Battery Emulator side stays exactly the same, only the broker address changes.
 
 Once you're done with the install and the [onboarding steps](https://www.home-assistant.io/getting-started/onboarding/), it's worth running through their [concepts and terminology](https://www.home-assistant.io/getting-started/concepts-terminology/) page to get in the picture on the principles behind it.
 
