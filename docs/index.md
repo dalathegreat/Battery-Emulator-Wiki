@@ -28,6 +28,8 @@ At the same time, EV manufacturers have been putting high capacity battery packs
 
 The software runs on specific ESP32 hardware boards, supports [Over The Air updates](setup/software/ota_update.md), has a [web interace that you can connect to for real time values](setup/software/webserver_guide.md), cellmonitoring, change settings and more. For those into [home automation](setup/software/home_assistant.md), it also supports [MQTT](setup/software/mqtt.md). 
 
+See the [Frequently Asked Questions](setup/frequently_asked_questions.md) list for more details.
+
 ## Quick start steps 📜
 
 - Pick a [compatible inverter](inverter/index.md#compatible-inverters-list) (solar panels optional) :sun_with_face: 
