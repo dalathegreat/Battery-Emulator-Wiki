@@ -1,5 +1,5 @@
 ---
-title: "Installation guidelines"
+title: "Deployment guidelines"
 ---
 
 This section will guide you towards making a safer installation of the battery. Please start by familiarizing yourself with your local regulations regarding solar inverters and stationary storage requirements. Make sure the inverter selection is approved by your grid operator before ordering parts. Finally, make sure the person installing the hardware has a valid electrical safety & installation training.
