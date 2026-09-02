@@ -1,5 +1,7 @@
 ---
 title: "Frequently Asked Questions"
+hide:
+  - toc
 ---
 
 The questions below are the ones most often asked by people evaluating whether this project fits their situation, before any hardware is bought.
@@ -44,7 +46,7 @@ The built-in web server shows live values, which side is currently limiting char
 Yes — two or three packs in parallel, multiplying capacity while the inverter still sees a single large battery. They must be the same model and size and as close as possible in state of health, each pack needs its own CAN channel (so this influences which board you buy), and only some integrations support it. Never connect packs in series: no safeties exist for it and the isolation is not rated for it. See [Double Battery](software/battery_2x.md) and [Triple Battery](software/battery_3x.md).
 
 ## What ongoing maintenance should I plan for?
-Check for new releases every two to three months, and apply anything safety-related promptly. Monthly, review the event log and visually inspect for corrosion, water ingress, pest damage and overheated cabling. Yearly, re-check terminal tightness on the HV connections. Track state of health and cell deviation over time — a degrading cell shows up there before it shows up anywhere else.
+Check for new releases every two to three months, and apply anything safety-related promptly. Monthly, review the event log and visually inspect for corrosion, water ingress, pest damage and overheated cabling. Yearly, re-check terminal tightness on the HV connections. Track state of health and cell deviation over time — a degrading cell shows up there before it shows up anywhere else. [Periodic maintenance](installation_guidelines.md#periodic-maintenance) describes it in detail.
 
 ## What if my battery or inverter isn't supported yet, or I get stuck?
 New integrations are welcome, but they need [real data](contributing/data_needed_for_new_battery_integration.md): CAN logs from a working vehicle covering idle, startup, charging and charge completion, plus logs from the standalone pack. Documentation fixes and issue triage are just as valuable as code — see [contributing](contributing/contributing.md). For questions, use the GitHub discussions and issue tracker, or join the community Discord.
