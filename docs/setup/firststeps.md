@@ -4,6 +4,8 @@ title: "Installation steps"
 
 ## Basics 🪛
 
+Follow the [installation guidelines](setup/installation_guidelines.md) section for how to install and commission your battery properly.
+
 1. Connect your Battery Emulator hardware to your EV battery
 2. Connect your Battery Emulator hardware to your inverter
 3. Wire up high voltage cable between the inverter and the battery
