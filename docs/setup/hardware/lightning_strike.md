@@ -66,7 +66,7 @@ While it’s impossible to completely eliminate the risk of lightning damage, yo
 
 1. Disconnect During Storms: When thunderstorms are imminent, power down the solar inverter, battery, and unplug communication wires.
 
-2. Proper PE Grounding: Ensure that all components are properly grounded, and that there is a solid, **common** PE (earth) connection to divert surges safely away from sensitive equipment. Both Inverter, Battery and communication wire shield should have a good connection to PE. If there's a big distance between the elements of the installation, you can use local PE rods, but you also have to **connect them together** with strong wire to ensure that PE potential differences cannot develop between them when lightning of a thunderstorm hits the ground nearby.
+2. Proper PE Grounding: Ensure that all components are properly grounded, and that there is a solid, **common** PE (earth) connection to divert surges safely away from sensitive equipment. Both Inverter, Battery and communication cable shield drain wire's one end should have a good connection to PE. If there's a big distance between the elements of the installation, you can use local PE rods, but you also have to **connect them together** with strong wire to ensure that PE potential differences cannot develop between them when lightning of a thunderstorm hits the ground nearby.
 
 3. Opto-coupler circuits. You can fit CAN opto couplers to the system to get an air-gap between the components. If you have components you have used successfully for this, feel free to add info to this wiki!
 
