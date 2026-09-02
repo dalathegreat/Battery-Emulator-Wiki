@@ -35,6 +35,8 @@ The software runs on specific ESP32 hardware boards, supports [Over The Air upda
 - Order a Battery-Emulator board or module [compatible hardware](hardware/index.md) :robot: 
 - Follow the [installation guidelines](setup/installation_guidelines.md) section for how to install and commission your battery properly :notebook: 
 
+[![video](https://img.youtube.com/vi/sR3t7j0R9Z0/0.jpg)](https://www.youtube.com/watch?v=sR3t7j0R9Z0)
+
 ## What about safety? ⚠️ ℹ️
 
 Reusing old often crashed EV packs always comes with risks. The system performs certain safety functions for safer charging and discharging. Apart from this, the data sent to the Inverter is also processed on the inverter side, and depending on which inverter is used some additional safety checks are performed there. Here is a list of some of the safety functionalities that are in the system. Note that almost all safety features rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be detectable via software. For this you need fuses, and periodic visual inspections. 
