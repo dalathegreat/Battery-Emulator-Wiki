@@ -3,6 +3,7 @@ title: "Installation steps"
 ---
 
 ## Basics 🪛
+
 1. Connect your Battery Emulator hardware to your EV battery
 2. Connect your Battery Emulator hardware to your inverter
 3. Wire up high voltage cable between the inverter and the battery
@@ -10,20 +11,18 @@ title: "Installation steps"
 5. Configure any additional requirements to allow Battery Emulator to switch on your EV battery (also referred to as 'closing contactors')
 6. Enjoy a big cheap grid connected battery!
 
-For examples showing wiring, see each battery type's own Wiki page. For instance the [Nissan LEAF page](../battery/nissan_leaf_e_nv200.md)
+For examples showing wiring, see each battery type's own Wiki page. For instance the [Nissan LEAF page](../battery/nissan_leaf_e_nv200.md).
 
 ## How to install the software 💻
 
-Start by watching this [quickstart guide](https://www.youtube.com/watch?v=sR3t7j0R9Z0)
+Start by watching this [quickstart video guide](https://www.youtube.com/watch?v=sR3t7j0R9Z0)
 
-[![video](https://img.youtube.com/vi/sR3t7j0R9Z0/0.jpg)](https://www.youtube.com/watch?v=sR3t7j0R9Z0)
-
-1. Open the [webinstaller page](https://dalathegreat.github.io/BE-Web-Installer/)
+1. Open the [webinstaller page](installer.md)
 2. Follow the instructions on that page to install the software
-3. After successful installation, connect to the wireless network (Battery-Emulator , password: 123456789)
-4. Go to setup page and configure component selection
-5. (OPTIONAL, connect the board to your home Wifi)
-6. Connect your battery and inverter to the board and you are done! 🔋⚡
+3. After successful installation, connect to the wireless AP (`battery-emulator-....` , default password: `123456789`)
+4. In the settings, connect it to your local wireless network
+5. Configure your Inverter/Battery component selection
+7. Read on how to connect your battery and inverter to the board and you are done! 🔋⚡
 
 ## Dependencies 📖
 
