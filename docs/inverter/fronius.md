@@ -148,13 +148,13 @@ It means that the Modbus connection is down. Verify that:
 
 - Polarity of M0+ and M0- is correct
 - Protective earth is attached in both Inverter and Battery side
-- Modbus cable shielding is attached only an one side
+- Modbus cable shielding drain wire is attached only at one end
 - Wires are seated correctly in the Fronius connector. It is very easy to miss that the wires are not pushed in all the way.
 - Try a different power supply for the Battery Emulator board. Powering it via USB from a computer can cause noise on the signal output. Powerbank or phone charger might have cleaner voltage output. If you see strange modbus errors, your power supply might be noisy.
 
 Make sure the Battery-Emulator has a good modbus connection to the Inverter.
 
- - Use shielded wires for a stable connection
+ - Use shielded twisted pair cable for a stable connection
  - If you see `ModbusServerRTU.cpp [252] serve: RTU received: E5 - packet length error` in the [logs](../setup/software/webserver_guide.md#log) of the board, it is an indication that wiring is not perfect and occasionally get corrupted
 
 ### Invalid battery size detected
