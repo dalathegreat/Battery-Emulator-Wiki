@@ -2,6 +2,7 @@
 title: "Web Installer"
 hide:
   - toc
+  - title
 ---
 <div style="width: 100%; height: 85vh;">
   <iframe
