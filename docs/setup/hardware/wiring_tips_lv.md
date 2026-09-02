@@ -25,14 +25,14 @@ See this example for grounding:
 ![image](../../images/can-wiring-practices-and-troubleshooting-03.png)
 
 !!! tip "IMPORTANT"
-    Only **one side of the shield** should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This avoids ground loops. 
+    Only **one end of the shield** drain wire should be connected to a pin labelled SHIELD (or PE if no dedicated shield exists). This avoids ground loops. 
 
 Here is the best way to ensure that there are no paths for spikes in CAN voltage to fry chips on the boards (Important for [Solax](../../inverter/solax.md) and [Foxess](../../inverter/foxess_h1_h3_ac1_kh.md), other inverters are more lenient on what power supply you use)
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-04.png)
 
 !!! warning "CAUTION"
-    Again: **Never** connect the signal wire shields in both sides. This creates a ground loop. One side of the shield should be free floating, like shown in the above pictures.
+    Again: **Never** connect the shield drain wire on both sides, to avoid creating a ground loop. One side of the shield should be free floating, like shown in the above pictures.
 
 ## Control signal (12V)
 
