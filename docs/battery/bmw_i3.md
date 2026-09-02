@@ -56,7 +56,7 @@ The HV connector has + and - marked on it.
 Can also be bridged with jumper wires.
 
 !!! tip "TIP"
-    Check out our [High Voltage wiring](../hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
+    Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 ### Low voltage connector (A191*1B)
 The LV connector is located on the back of the battery pack, next to the A/C cooling port. A/C connector is not required for operation.
@@ -99,7 +99,7 @@ Since the board has 3.3V logic on the GPIO pins, we need to use a solid state re
 [![](../images/bmw-i3-16.png){ width="700" }](../images/bmw-i3-16.png)
 
 !!! tip "TIP"
-    Check out our [Low Voltage wiring](../hardware/wiring_tips_lv.md) page on how to make the connections in practice.
+    Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
 #### Example wiring diagram
 Below an example wiring diagram:
@@ -149,7 +149,7 @@ Below an example wiring diagram:
 
 
 ### Note on capacitor
-Capacitors are high voltage, so they need to be inside an IP enclosure to prevent anyone from touching or water getting onto it and shorting it out. Most either mount the capacitor next to the battery, or next to the inverter, at either end of the HV bus. The most popular solution is to install fuses and the capacitor right at the start where HV comes out of the battery, sort of an add-on box that gets mounted on the original HV cable coming out of the battery. This is also a good place to step down the batteries thick DC cabling (35mm² in case of the i3), down to a more manageable 10mm². Check out our [High Voltage wiring](../hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
+Capacitors are high voltage, so they need to be inside an IP enclosure to prevent anyone from touching or water getting onto it and shorting it out. Most either mount the capacitor next to the battery, or next to the inverter, at either end of the HV bus. The most popular solution is to install fuses and the capacitor right at the start where HV comes out of the battery, sort of an add-on box that gets mounted on the original HV cable coming out of the battery. This is also a good place to step down the batteries thick DC cabling (35mm² in case of the i3), down to a more manageable 10mm². Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 Example of capacitor integrated at point where wire gauge is reduced, inside exclosure:
 
