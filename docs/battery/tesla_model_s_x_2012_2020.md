@@ -65,6 +65,13 @@ Note that Batman can also do balancing when the HVBMS is asleep :).
 
 The best way to balance the Model 3 pack is to set charge limit to 90% or higher and let the vehicle sit idle for hours (plugged in or not). 24 hours of balancing can reduce imbalance by 1mV.
 
+## Notes on insulation ⚠️
+The Legacy tesla batteries have very sensitive insulating monitoring. When the Tesla battery notices the solar inverter perform its own insulation measurement, it sometimes leads to unintended contactor opening. To combat this, the battery chassis needs to be isolated
+
+One user notes; "Battery completely isolated from environment via rubber. Only in such case it works."
+
+![](../images/tesla-model-s-x-2012-2020-06.png)
+
 ## Examples
 
 The first testing of a 85kWh battery with a Deye inverter
