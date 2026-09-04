@@ -137,6 +137,10 @@ Liquid cooling is used in some EV batteries to manage battery temperature. Maint
         - Frequency: Typically every 3 to 7 years, but follow the manufacturer's strict interval.
         - Procedure: This is often a very installation specific task. It involves draining the old coolant, flushing the system, and refilling with new, premixed coolant while ensuring all air is bled from the lines to prevent airlocks.
 
+## See also
+
+- [Lots of useful Safety Earth references](https://www.sciencedirect.com/topics/engineering/safety-earth)
+
 ## Examples of wiring installs
 
 Here are some examples on how to wire up the high voltage output from the battery, into a fusebox or DC junction box.
