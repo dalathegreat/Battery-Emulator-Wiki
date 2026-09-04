@@ -34,7 +34,7 @@ It is recommended to always use latest software version of both the Fronius inve
 
 This means that if you have a high voltage battery (450V), you will see much higher charge/discharge power (22A x 450V = 10kW), compared to a low voltage battery (22A x 250V = 5,5kW)
 
-Keep this amperage limit of 22A/50A in mind when choosing a battery for the Fronius!
+Keep this amperage limit in mind when choosing a battery for the Fronius!
 
 !!! note "Software limits :floppy_disk:"
     There is a non-Plus variant of Gen24 available, for this you have to purchase a battery license before you can add a battery to the configuration. In **System > Information > License** you should see something like below. Contact your installer incase "Battery Operation" feature is missing!
@@ -47,12 +47,12 @@ Keep this amperage limit of 22A/50A in mind when choosing a battery for the Fron
 
 ## Setting up the Fronius inverter with Battery Emulator
 
-You will need a **technician** login to the inverter to make changes to the setup. Contact your solar installer incase you don't have the technician login!
+You will need a **technician** login to the inverter to make changes to the setup. Contact your solar installer in case you don't have the technician login!
 
 !!! note "NOTE"
     You will also need a Fronius Smartmeter so that the system can measure consumption and generation. 
 
-To use a Fronius inverter with a used EV battery, it needs to be setup for battery operation. This is done via the "Solar.start" app or **Device Configuration > Components > Add Component > Battery**, and select **BYD HVS/M (2020-25)**:
+Setup for battery operation is done via the **Solar.start** app or **Device Configuration > Components > Add Component > Battery**. Select **BYD HVS/M (2020-25)**:
 
 ![FroniusSetup](../images/fronius-03.png)
 
