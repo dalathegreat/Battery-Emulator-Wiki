@@ -7,13 +7,16 @@ Some EV batteries are not able to operate 24/7 nonstop under all conditions. Ove
 
 The solution is to periodically reset the 12V power going into the BMS.
 
-The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks by removing its power for a configured time. This requires compatible hardware: the board must define a `BMS_POWER` pin **and** you must have physically wired the BMS's power supply through it (via a relay/MOSFET). Boards that define the pin include LilyGo T-CAN485, LilyGo-2-CAN, 3LB, Stark CMR, Waveshare and BeCom; the generic/default HAL leaves it unconnected (`GPIO_NUM_NC`), so the toggle is a no-op there. 
+The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks by removing its power for a configured time. This requires compatible hardware: the board must define a `BMS_POWER` pin **and** you must have physically wired the BMS's IGN input through it (via a relay/SSR/MOSFET). Boards that define the pin include LilyGo T-CAN485, LilyGo-2-CAN, 3LB, Stark CMR, Waveshare and BeCom; the generic/default HAL leaves it unconnected (`GPIO_NUM_NC`), so the toggle is a no-op if a board doesn't define it. 
 
 ### Batteries that benefit from Periodic Reset
 
 - [Nissan LEAF](../../battery/nissan_leaf_e_nv200.md)
 - [Dacia Spring / Renault K-ZE](../../battery/dacia_spring_renault_k_ze.md)
 - various Renault types
+
+!!! note "NOTE"
+    Check the battery-specific page for what settings are required for the BMS reset to be effective. This includes wiring (you may need to cut both VBAT and IGN, or only IGN; you may need to wait a certain amount of time before re-applying power).
 
 ### GPIO behavior
 
@@ -25,7 +28,7 @@ The `BMS_POWER` pin is only configured as an output and driven **HIGH** at boot 
 
 If none of these apply, the initialization block is skipped entirely — the pin is never set as an output and therefore stays low/floating. This is why the pin is not driven high unless one of these options is enabled, and this is why when you don't use this feature, you will have to power your BMS directly.
 
-Both options behave identically with respect to the pin: enabling **"Periodic BMS reset every 24h"** or **"Remote BMS reset via MQTT allowed"** alone is enough to drive the pin HIGH at boot, exactly like the periodic option. 
+Both options behave identically with respect to the pin: enabling **Periodic BMS reset** or **Remote BMS reset via MQTT allowed** alone is enough to drive the pin HIGH at boot, exactly like the periodic option. 
 
 The configured pin will remain **HIGH** during regular reboots and OTA in case BMS Reset is configured as the following:
 
@@ -48,7 +51,7 @@ When a reset runs (via MQTT, the HA button, or the 24h timer), the pin goes **LO
 5. **Power back on** — drive `BMS_POWER` HIGH, then wait a fixed **3 s** warmup.
 6. **Unpause**. Done.
 
-By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer. Some batteries are OK with as short resets as 2 seconds. Here is the setting:
+By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer (you can set values between 1 and 600 seconds). Some batteries are OK with as short resets as 2 seconds, some others require several minutes to save their settings. Here is the setting:
 
 ![image](../../images/periodic-bms-reset-01.png){ width="363" height="95" }
 
@@ -65,7 +68,7 @@ Local triggering has the benefit of operating completely standalone, without any
 
 ![image](../../images/periodic-bms-reset-02.png){ width="721" height="170" }
 
-Enable the **"Periodic BMS reset"** option. This will reveal 3 options:
+Enable the **Periodic BMS reset** option. This will reveal 3 options:
 
 - Do the reset once per 24h or once per 48h
 - Defer reset if SOC (either real or scaled) is less than 15%
