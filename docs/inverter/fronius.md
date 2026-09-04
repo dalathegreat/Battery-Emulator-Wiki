@@ -27,14 +27,14 @@ It is recommended to always use latest software version of both the Fronius inve
 
 ## Hardware limits :zap:
 
-* Fronius GEN24 **Symo** inverters (3-5kW) are capped to max 12.5A on the battery port.
-* Fronius GEN24 **Symo** inverters (6-10kW) are capped to max 22A on the battery port.
-* All Fronius GEN24 **Primo** inverters are capped to max 22A on the battery port.
-* All Fronius **Verto** inverters are capped to max 50A on the battery port.
+* Fronius GEN24 **Symo 3-5kW** inverters are capped to max **12.5A** on the battery port.
+* Fronius GEN24 **Symo 6-10kW** inverters are capped to max **22A** on the battery port.
+* All Fronius GEN24 **Primo** inverters are capped to max **22A** on the battery port.
+* All Fronius **Verto** inverters are capped to max **50A** on the battery port.
 
-This means that if you have a high voltage battery (450V), you will see much higher charge/discharge speed (22A x 450V = 10kW), compared to a low voltage battery (22A x 250V = 5,5kW)
+This means that if you have a high voltage battery (450V), you will see much higher charge/discharge power (22A x 450V = 10kW), compared to a low voltage battery (22A x 250V = 5,5kW)
 
-Keep this amperage limit of 22A/50A in mind when designing a battery system for the Fronius!
+Keep this amperage limit of 22A/50A in mind when choosing a battery for the Fronius!
 
 !!! note "Software limits :floppy_disk:"
     There is a non-Plus variant of Gen24 available, for this you have to purchase a battery license before you can add a battery to the configuration. In **System > Information > License** you should see something like below. Contact your installer incase "Battery Operation" feature is missing!
@@ -47,10 +47,10 @@ Keep this amperage limit of 22A/50A in mind when designing a battery system for 
 
 ## Setting up the Fronius inverter with Battery Emulator
 
-You will need a technician login to the inverter to make changes to the setup. Contact your solar installer incase you don't have the technician login!
+You will need a **technician** login to the inverter to make changes to the setup. Contact your solar installer incase you don't have the technician login!
 
 !!! note "NOTE"
-    You will also need a Fronius Smartmeter so that the system can measure consumption and generation. The Fronius Smart Meter models "63A-3", "TS 65A-3" and "IP"(wireless) are all compatible. For Home Assistant users: there's an [add-on](https://github.com/M4rt1nCh/ha-fronius-virtual-smart-meter) that creates a Virtual Smartmeter using data from HA entities.
+    You will also need a Fronius Smartmeter so that the system can measure consumption and generation. 
 
 To use a Fronius inverter with a used EV battery, it needs to be setup for battery operation. This is done via the "Solar.start" app or **Device Configuration > Components > Add Component > Battery**, and select **BYD HVS/M (2020-25)**:
 
