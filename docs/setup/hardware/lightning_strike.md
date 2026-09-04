@@ -86,3 +86,7 @@ Example of CAN isolator in use, and PE connections between elements:
 
 !!! note "NOTE"
     There's no guarantee that certain opto-coupler circuits will save from lightning strike damage. Success rate varies by quality, rating and deployment - it's pretty certain though that they increase survival chances.
+
+## See also
+
+- [Lots of useful Safety Earth references here](https://www.sciencedirect.com/topics/engineering/safety-earth)
