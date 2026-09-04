@@ -56,3 +56,7 @@ If you wanna go really pro, you can use automotive grade cable (FLRY-A or B ISO 
 
 * FLRY-A Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with regularly stranded conductor (A)
 * FLRY-B Automotive low voltage cable (FL) with reduced thickness of insulation (R) made of PVC (Y), with irregularly stranded conductor (B)
+
+## See also
+
+- [Lots of useful Safety Earth references](https://www.sciencedirect.com/topics/engineering/safety-earth)
