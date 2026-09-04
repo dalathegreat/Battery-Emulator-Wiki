@@ -148,7 +148,7 @@ At this time, BE is not compatible with the use of the 16V Li-Ion or 12.8V LFP b
 Make sure to connect the 12V battery to the PCS (two M8 screws close to the X098) with recommended wire size to supply the 30+ Amp demands.
 
 !!! note "NOTE"
-    The 12V requirement is quite large for the Tesla packs. Use a high power 14V source (large fully charged lead acid battery OR 30A lab power supply set to 12-16V). If the 12V supply is too weak, closing contactors wont be possible. The cables also need to be quite thick to avoid voltage drop. 1.5mm² is too small, the cables need to be 13mm² (6AWG) at minimum!
+    The 12V requirement is quite large for the Tesla packs. Use a high power 14V source (large fully charged lead acid battery OR 30A lab power supply set to 12-16V). If the 12V supply is too weak, closing contactors wont be possible. The cables also need to be quite thick to avoid voltage drop. 1.5mm² is too small, the cables need to be 13mm² (6AWG) at minimum! Any wining/cricket noises are a telltale sign that the wiring is not up to spec.
 
 ![image](../images/tesla-model-s-3-x-y-22.png){ width="895" height="750" }
 
