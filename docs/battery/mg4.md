@@ -49,6 +49,7 @@ The MG4 battery has an HV connector (Orange), and a 12 pin Low Voltage signal co
 ![ESS_connector_pinout](../images/mg4-02.jpg)
 
 ## Low voltage socket
+(This is showing the cable viewed end on, not the battery socket)
 
 ![39d3687d-7d61-4841-a597-aa59d4bf7a2a](../images/mg4-03.jpg)
 
