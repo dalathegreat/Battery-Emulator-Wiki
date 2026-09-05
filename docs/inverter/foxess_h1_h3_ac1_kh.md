@@ -34,7 +34,8 @@ Follow the notes below to see which protocol should be used with your invertetr
 
 * FoxESS H1
    * Use `FoxESS compatible HV2600/ECS4100` primarily.
-   * Can also use `SolaX Triple Power LFP over CAN bus` protocol, but some values will be wrong
+   * Can also use `SolaX Triple Power LFP over CAN bus` protocol, but some values will be wrong.
+   * The `FoxESS EP Series battery` protocol is also expected to be compatible. H1 manager firmware was used during development to help decode the EP protocol, but H1 compatibility has not yet been confirmed on real hardware.
 * FoxESS H3
    * Uses `FoxESS compatible HV2600/ECS4100` protocol
 * FoxESS AC1
@@ -44,8 +45,20 @@ Follow the notes below to see which protocol should be used with your invertetr
    * Also works with the new `FoxESS EP Series battery` option (Confirmed with KH9)
 * FoxESS KP
    * Uses `FoxESS compatible HV2600/ECS4100` protocol
-* FoxESS EP
-   *  Uses `FoxESS EP Series battery` option
+     
+## FoxESS EP-Series battery protocol
+
+The `FoxESS EP Series battery` protocol emulates the FoxESS EP-Series battery CAN protocol and provides the additional battery information supported by compatible FoxESS inverters.
+
+On a confirmed KH9 installation it enables the FoxESS Battery Details page to show:
+
+- SOH
+- Nominal Energy
+- Remaining Energy
+- Daily Charged / Discharged
+- Total Charged / Discharged
+- Battery Cycles
+![FoxESS Battery Details using the EP-Series protocol](../images/Screenshot_2026-08-31-19-11-08-28.jpg)
  
 ## Communication wiring
 
@@ -58,7 +71,7 @@ The FoxESS inverter works via CAN. Connect the Inverter side CAN-H & CAN-L to th
 
 ## Which protocol to use
 
-For this inverter type, use the option called "FoxESS compatible HV2600/ECS4100" under the "Inverter Protocol" setting.
+Select the appropriate inverter protocol for your FoxESS inverter using the compatibility list above.
 
 ![image](../images/foxess-h1-h3-ac1-kh-07.png){ width="495" height="63" }
 
