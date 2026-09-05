@@ -28,7 +28,7 @@ It is recommended to always use latest software version of both the Fronius inve
 ## Hardware limits :zap:
 
 * Fronius GEN24 **Symo 3-5kW** inverters are capped to max **12.5A** on the battery port.
-* Fronius GEN24 **Symo 6-10kW** inverters are capped to max **22A** on the battery port.
+* Fronius GEN24 **Symo 6-12kW** inverters are capped to max **22A** on the battery port (also the SC model).
 * All Fronius GEN24 **Primo** inverters are capped to max **22A** on the battery port.
 * All Fronius **Verto** inverters are capped to max **50A** on the battery port.
 
