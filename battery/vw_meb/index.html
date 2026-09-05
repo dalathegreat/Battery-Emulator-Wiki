@@ -1,0 +1,6255 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation (Wiki) for Battery Emulator">
+      
+      
+      
+        <link rel="canonical" href="https://dalathegreat.github.io/Battery-Emulator-Wiki/battery/vw_meb/">
+      
+      
+        <link rel="prev" href="../volvo_spa_xc40_polestar2/">
+      
+      
+        <link rel="next" href="../vw_mqb/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/be.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>VW/Audi/Škoda/Cupra MEB - Battery Emulator</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.5%207.75A.75.75%200%200%201%207.25%207h1a.75.75%200%200%201%20.75.75v2.75h.25a.75.75%200%200%201%200%201.5h-2a.75.75%200%200%201%200-1.5h.25v-2h-.25a.75.75%200%200%201-.75-.75M8%206a1%201%200%201%201%200-2%201%201%200%200%201%200%202%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6.457%201.047c.659-1.234%202.427-1.234%203.086%200l6.082%2011.378A1.75%201.75%200%200%201%2014.082%2015H1.918a1.75%201.75%200%200%201-1.543-2.575Zm1.763.707a.25.25%200%200%200-.44%200L1.698%2013.132a.25.25%200%200%200%20.22.368h12.164a.25.25%200%200%200%20.22-.368Zm.53%203.996v2.5a.75.75%200%200%201-1.5%200v-2.5a.75.75%200%200%201%201.5%200M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M9.504.43a1.516%201.516%200%200%201%202.437%201.713L10.415%205.5h2.123c1.57%200%202.346%201.909%201.22%203.004l-7.34%207.142a1.25%201.25%200%200%201-.871.354h-.302a1.25%201.25%200%200%201-1.157-1.723L5.633%2010.5H3.462c-1.57%200-2.346-1.909-1.22-3.004zm1.047%201.074L3.286%208.571A.25.25%200%200%200%203.462%209H6.75a.75.75%200%200%201%20.694%201.034l-1.713%204.188%206.982-6.793A.25.25%200%200%200%2012.538%207H9.25a.75.75%200%200%201-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005%200-.009.004%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#volkswagen-meb-battery-platform" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Battery Emulator" class="md-header__button md-logo" aria-label="Battery Emulator" data-md-component="logo">
+      
+  <img src="../../assets/be.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Battery Emulator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VW/Audi/Škoda/Cupra MEB
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dalathegreat/Battery-Emulator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dalathegreat/Battery-Emulator
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../inverter/" class="md-tabs__link">
+          
+  
+  
+  Compatible inverters
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Compatible batteries
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hardware/" class="md-tabs__link">
+          
+  
+  
+  Emulator Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../setup/firststeps/" class="md-tabs__link">
+          
+  
+  
+  Setup & Docs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Battery Emulator" class="md-nav__button md-logo" aria-label="Battery Emulator" data-md-component="logo">
+      
+  <img src="../../assets/be.svg" alt="logo">
+
+    </a>
+    Battery Emulator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dalathegreat/Battery-Emulator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dalathegreat/Battery-Emulator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible inverters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compatible inverters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible inverters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/afore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Afore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/bluesun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluesun
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/deye/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deye
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/felicity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Felicity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/ferroamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferroamp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/foxess_h1_h3_ac1_kh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FoxESS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/fronius/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fronius
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/goodwe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GoodWe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/growatt_hv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growatt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/hoymiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hoymiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/huawei_sun2000/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Huawei SUN2000
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/ingeteam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingeteam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/kostal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kostal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/saj/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAJ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/schneider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schneider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/sma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/sofar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sofar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/sol_ark_lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sol‐Ark LV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/solax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/solis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/solxpow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solxpow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/sungrow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sungrow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/vevor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vevor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/yingfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yingfa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inverter/zcs_azzurro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ZCS Azzurro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible batteries
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compatible batteries
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible batteries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BMS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/read_this_first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read this first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/batrium_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batrium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/cellpower_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cellpower
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/daly_smartbms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Daly Smart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/emus_g1_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EMUS G1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/ennoid_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ennoid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/growatt_ark_bms_hv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growatt ARK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/orion_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/rjxzs_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RJXZS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/shunt_bmw_sbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW S-BOX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/simpbms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SimpBMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bms/thunderstruck_bms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thunderstruck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aiways_u5_2021/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aiways U5 (2021)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../akasol_battery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Akasol Akasystem 15 OEM 50 PRC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ampera_e_64_kwh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampera‐e 64 kWh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bmw_i3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW i3 60/94/120AH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bmw_ix_i4_i7_gen5_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW iX, i4‐i7 (Gen5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bmw_phev_gen_3_and_4_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BMW 330e 530e X5-45e (Gen3/4 PHV)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../byd_dolphin_seal_seagull/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BYD Dolphin Seal Seagull
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../byd_vehicle_atto_3_seal_tang_dolphin_song_and_more/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BYD Vehicle Batteries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ccs_bidirectional_charging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCS bidirectional charging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chademo_vehicle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CHAdeMO vehicles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dacia_spring_renault_k_ze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dacia Spring/Renault K-ZE (CMFA-EV)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fake_battery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fake battery (for testing)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fisker_ocean/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fisker Ocean
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ford_f_150_lightning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ford F‐150 Lightning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ford_mach_e/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ford Mach‐E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foxess_hv2600/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FoxESS HV2600
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geely_gea_platform_galaxy_emas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geely GEA (Galaxy, eMAS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geely_geometry_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geely Geometry C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../growatt_lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growatt LV (GBLI-series)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hyundai_e_gmp_platform_58_2_77_4_kwh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hyundai E-GMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hyundai_santa_fe_phev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hyundai Santa Fe PHEV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i_miev_czero_ion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mitsubishi i-MiEV / Citroen C-Zero / Peugeot Ion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaguar_i_pace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jaguar I‐PACE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kia_ev6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia EV6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kia_niro_hybrid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia Niro Hybrid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kia_niro_hyundai_kona/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia e-Niro/Hyundai Kona 64 kWh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kia_soul/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia Soul
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kia_xceed_phev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kia Xceed PHEV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../land_rover/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Land Rover
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maxus_ed3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maxus eD3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maxus_ev80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maxus EV80
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mercedes_b_class_b250e_w246/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mercedes B250E
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mg4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mg5_marvel_r/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG5, Marvel R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mg_hs_phev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG HS PHEV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mg_zs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MG ZS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nissan_ariya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nissan Ariya
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nissan_leaf_e_nv200/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nissan LEAF / e-NV200
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nissan_sakura_mitsubishi_ek_x_ev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nissan Sakura Mitsubishi eK X
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../omoda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omoda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pylon_hv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pylon HV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relion_lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relion LV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../renault_fluence_ze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Fluence ZE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../renault_kangoo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Kangoo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../renault_twizy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Twizy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../renault_zoe_gen1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Zoe Gen1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../renault_zoe_gen2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renault Zoe Gen2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rivian_r1t/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rivian R1T
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seres_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seres 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smart_eq_fortwo_forfour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart EQ Fortwo Forfour
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stellantis_cmp_smart_car_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis CMP Smart Car
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stellantis_ecmp_citroen_ds_opel_peugeot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis eCMP (Citroen, DS, Opel, Peugeot)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stellantis_pro_one/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis Pro One
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stellantis_smallwide_4x4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis SmallWide 4x4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stellantis_smp_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stellantis SMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taycan_e_tron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taycan E‐Tron
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tesla_model_3_y/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Model 3/Y
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tesla_model_s_x_2012_2020/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Model S/X 2012-2020
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tesla_model_s_x_2021/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Model S/X 2021+
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../think_city/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Think City
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volvo_sea_ex30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Volvo SEA (EX30 + others)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volvo_spa_s60_90_v60_90_xc60_90_hybrid_batteries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Volvo SPA (S60 90 V60 90 XC60 90)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../volvo_spa_xc40_polestar2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Volvo SPA (XC40, C40 / Polestar 2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VW/Audi/Škoda/Cupra MEB
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VW/Audi/Škoda/Cupra MEB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-battery-before-purchase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the battery before purchase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lv-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LV connector
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hv-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HV connector
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HV connector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3d-printable-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D-printable parts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring details
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiring details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important information
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sw-settings-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SW settings example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strange-behaviors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strange behaviors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strange behaviors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pilot-line-does-not-function-as-expected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pilot line does not function as expected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic_precharge_failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AUTOMATIC_PRECHARGE_FAILURE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#info-for-specific-inverters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Info for specific inverters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Info for specific inverters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solax-g4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solax G4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vw_mqb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VW/Audi/Škoda/Cupra MQB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emulator Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Emulator Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emulator Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/becom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BECom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/dfrobot_edge101/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DFRobot Edge101
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/esp32_devkit_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESP32 DevKit V1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/lilygo_t_2can/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LilyGo T‐2CAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/lilygo_t_can485/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LilyGo T‐CAN485
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/lilygo_t_can485_and_can_fd_motherboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LilyGo T‐CAN485 + CAN‐FD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/stark_cmr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stark CMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/waveshare_esp32_s3_rs485_can/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveshare ESP32‐S3‐RS485‐CAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup & Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/firststeps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/frequently_asked_questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/installation_guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/installer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Installer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/wiring_tips_hv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    High Voltage wiring tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/wiring_tips_lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Low Voltage wiring tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/lightning_strike/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lightning strike
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/insulation_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is insulation monitoring?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/high_voltage_source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options for high voltage precharge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/list_of_3d_printable_parts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D‐printable parts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/periodic_bms_reset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Periodic BMS reset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/hardware/recovering_undercharged_battery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recovering undercharged battery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/battery_2x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Double Battery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/battery_3x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Triple Battery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/boot_button_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BOOT button functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/contactor_control_via_gpio_pins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contactor Control via GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/equipment_stop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Equipment Stop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/espnow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESPNow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/home_assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home Assistant quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/ota_update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTA Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/software_installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/software/webserver_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webserver guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatible chargers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compatible chargers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/chargers/chevrolet_volt_gen1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chevrolet Volt Gen1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/chargers/nissan_leaf_pdm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charger Nissan LEAF PDM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/chargers/tesla_model_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charger Tesla Model 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN tips
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CAN tips
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/can_related/can_add_on_mcp2515/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN add‐on (MCP2515)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/can_related/can_fd_add_on_mcp2518fd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why add CAN-FD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/can_related/can_filter_hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN filter hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/can_related/can_logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/can_related/can_replay/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN replay
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/can_related/can_wiring_practices_and_troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN wiring practices and troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing to project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing to project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/contributing/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CONTRIBUTING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/contributing/data_needed_for_new_battery_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New battery integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/contributing/data_needed_for_new_inverter_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New inverter integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/contributing/exception_crash_reporting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exception Crash reporting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-battery-before-purchase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the battery before purchase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lv-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LV connector
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hv-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HV connector
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HV connector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3d-printable-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D-printable parts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring details
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiring details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important information
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sw-settings-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SW settings example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strange-behaviors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strange behaviors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strange behaviors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pilot-line-does-not-function-as-expected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pilot line does not function as expected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic_precharge_failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AUTOMATIC_PRECHARGE_FAILURE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#info-for-specific-inverters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Info for specific inverters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Info for specific inverters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solax-g4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solax G4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+    <a href="https://github.com/dalathegreat/Battery-Emulator-Wiki/blob/main/docs/battery/vw_meb.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="volkswagen-meb-battery-platform">Volkswagen MEB battery platform<a class="headerlink" href="#volkswagen-meb-battery-platform" title="Permanent link">~</a></h1>
+<div class="admonition info">
+<p class="admonition-title">IMPORTANT</p>
+<p>The MEB batteries do <strong>not</strong> have any precharge resistors built in. They need to see actual battery voltage on the high voltage terminals before the battery can turn on the contactors. Due to this requirement the MEB batteries are harder to re-use compared to most EV battery packs. To achieve this, a standalone lab PSU or high voltage isolated boost converter can be used to generate the high voltage needed to start the battery.</p>
+</div>
+<hr />
+<p>This platform is used across the brands of the Volkswagen Group (VW / ŠKODA / CUPRA / AUDI).
+It is composed of cell modules, cell management controllers, a battery management system and some auxiliary components (pyrofuse, fuse, current measuring, contactors, etc.).</p>
+<p>The capacity of the battery is determined by the number of modules. Each module has a capacity of 6.85 kWh. The chemistry is NCM712.</p>
+<table>
+<thead>
+<tr>
+<th>Modules</th>
+<th>Configuration</th>
+<th>Capacity</th>
+<th>Cells in series</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>2p12s</td>
+<td>48 kWh</td>
+<td>84</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2p12s</td>
+<td>55 kWh</td>
+<td>96</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2p12s</td>
+<td>61 kWh</td>
+<td>108</td>
+</tr>
+<tr>
+<td>12</td>
+<td>3p8s</td>
+<td>82 kWh</td>
+<td>96</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary><strong>Vehicles using the MEB platform</strong></summary>
+<ul>
+<li>Audi Q4 e-tron (2021–present)</li>
+<li>Audi Q4 Sportback e-tron (2021–present)</li>
+<li>Audi Q5 e-tron (2021–present)</li>
+<li>Cupra Born (2021–present)</li>
+<li>Cupra Tavascan (2023–present)</li>
+<li>Volkswagen ID. UNYX (2024–present)</li>
+<li>Ford Explorer EV (2024–present)</li>
+<li>Ford Capri EV (2024–present)</li>
+<li>Škoda Enyaq iV (2020–present)</li>
+<li>Škoda Enyaq Coupé iV (2022–present)</li>
+<li>Škoda Elroq iV (2025–present)</li>
+<li>Volkswagen ID.3 (2019–present)</li>
+<li>Volkswagen ID.4 (2020–present)</li>
+<li>Volkswagen ID.5 (2021–present)</li>
+<li>Volkswagen ID.6 (2021–present)</li>
+<li>Volkswagen ID.7 (2023–present)</li>
+<li>Volkswagen ID.7 Tourer (2024–present)</li>
+<li>Volkswagen ID. Buzz (2022–present)</li>
+<li>Volkswagen ID. Buzz Cargo (2022–present)</li>
+</ul>
+</details>
+<p>More background on batterydesign.net: <a href="https://www.batterydesign.net/volkswagen-meb-battery-pack-id-family/">MEB</a> and <a href="https://www.batterydesign.net/vw-id-4-82kwh-battery/">ID4 82kWh</a>.</p>
+<h2 id="testing-the-battery-before-purchase">Testing the battery before purchase<a class="headerlink" href="#testing-the-battery-before-purchase" title="Permanent link">~</a></h2>
+<p>You can test a battery before buying it with a simple LilyGo + CAN-FD add-on board. With this setup you can see if the battery is in crashed mode (blown pyrofuse). Explained in this Swedish video (use English subtitles): <a href="https://www.youtube.com/watch?v=PsB-5heAPhg">https://www.youtube.com/watch?v=PsB-5heAPhg</a>.</p>
+<p>For even more info on the MEB battery, you can use ODIS to read out the full error registers.</p>
+<h2 id="software-configuration">Software configuration<a class="headerlink" href="#software-configuration" title="Permanent link">~</a></h2>
+<p>For this battery type, use the option <strong>"Volkswagen Group MEB platform via CAN-FD"</strong> under the <strong>Battery Protocol</strong> setting.</p>
+<p><img alt="Battery Protocol setting" src="../../images/meb-01.png" width="584" /></p>
+<h2 id="lv-connector">LV connector<a class="headerlink" href="#lv-connector" title="Permanent link">~</a></h2>
+<p><img alt="MEB connector" src="../../images/meb-02.png" width="600" /></p>
+<p>For communication with the battery, <strong>slot C</strong> must be used.
+You can either reuse an existing connector or buy a new one.</p>
+<p><img alt="Slot C female" src="../../images/meb-03.png" width="500" /></p>
+<p>The original TE connector is restricted, no information will be given by TE, but it can be found via AliExpress or Alibaba (some will arrive without terminals/receptacles — ask the seller up front). The easiest and quickest way to get the connector housing is to buy it as a spare part from a VAG dealer.</p>
+<p><img alt="VAG part 5Q0973733A" src="../../images/meb-04.jpg" width="500" /></p>
+<ul>
+<li><strong>Connector housing</strong> (complete spare part kit including connector cover etc., but without pins):</li>
+<li>TE part: <code>0-2315221-1</code> or <code>5-2315221-1</code></li>
+<li>VAG part: <code>5Q0 973 733 A</code></li>
+<li><strong>Small pins</strong> 0.5 × 0.4 mm: <code>1-2177909-1</code> (or <code>2177909-1</code>)</li>
+<li><strong>Large pins</strong> 1.2 × 0.6 mm: <code>7-1452671-1</code></li>
+</ul>
+<p>The pins can also be requested directly from TE.com as a (free) sample.</p>
+<h2 id="hv-connector">HV connector<a class="headerlink" href="#hv-connector" title="Permanent link">~</a></h2>
+<p><img alt="MEB HV connector description" src="../../images/meb-05.png" width="600" /></p>
+<p>The connector marked <strong>AC Charger</strong> is wired in parallel to the <strong>motor inverter</strong> port. The DC-charging port has its own contactors.</p>
+<p>Cable part number for the inverter connector: <code>1EA971015T</code>, <code>1EA971015AA</code> or <code>1EA973732X</code>.</p>
+<p>If reusing cables from a donor car:</p>
+<table>
+<thead>
+<tr>
+<th>Cable</th>
+<th>Cross-section</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DC charge port</td>
+<td>70 or 95 mm²</td>
+</tr>
+<tr>
+<td>Motor inverter</td>
+<td>35 or 50 mm²</td>
+</tr>
+<tr>
+<td>Onboard AC charger / A/C / PTC etc.</td>
+<td>6 mm²</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3d-printable-parts">3D-printable parts<a class="headerlink" href="#3d-printable-parts" title="Permanent link">~</a></h3>
+<p>You can print your own covers for the CAN connector, AC Charger port or CCS or Inverter connector, check out the <a href="../../setup/hardware/list_of_3d_printable_parts/">3D‐printable parts page</a>.</p>
+<h2 id="wiring-details">Wiring details<a class="headerlink" href="#wiring-details" title="Permanent link">~</a></h2>
+<p><img alt="Slot C pin description" src="../../images/meb-06.png" width="600" />
+<img alt="Slot C details" src="../../images/meb-07.png" width="600" />
+<img alt="Wiring example" src="../../images/meb-08.png" width="600" /></p>
+<p>An AWG24 ethernet cable seems to work well: one pair for CAN, one for the pilot line, two pairs for 12 V — with two wires crimped together on pin 1 for GND.</p>
+<p>For the 12 V supply a 30 W power supply has been found to work fine; the BMS draws around 21 W.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p><strong>Wiring size:</strong> Using a single strand of a pair for +12 VDC, ignition and GND also works, but the maximum allowable length is <strong>&lt; 10 m</strong>. Going longer leads to contactors failing to close, and this failure does <strong>not</strong> show up in ODIS as an error. You may hear one contactor close, but it will open again because the voltage drop is too big when the BMS tries to close both contactors.</p>
+</div>
+<h3 id="important-information">Important information<a class="headerlink" href="#important-information" title="Permanent link">~</a></h3>
+<ul>
+<li>The battery control unit uses <strong>CAN-FD</strong> for its communication!</li>
+<li>If CAN communication is lost, the contactors open immediately (nice safety feature).</li>
+<li>The <strong>pilot line</strong> circuit must be closed; without this connection, the control unit will not allow the contactors to close. Pins <strong>16</strong> and <strong>22</strong> must therefore be connected. If the pilot line circuit is broken, the Battery-Emulator raises an event.</li>
+<li>The <code>KL30C</code> message on the <strong>More battery info</strong> page shows the status of the ~~+12 VDC ignition~~ service-disconnect input (pin C5). This needs to be high (12 VDC) to allow the battery to operate.</li>
+</ul>
+<p>Another requirement from the BMS: it evaluates the presence of voltage on the external terminals of the battery before closing the contactors. Under normal circumstances in the car, the main inverter starts generating the actual voltage (depending on battery model and SOC, 300–450 V) from the 12 V battery. The battery controller detects this external voltage; if it is close enough (within a few volts) and everything else is OK, the battery is switched on. This is to prevent arcing of the contactors — an alternative to a precharge resistor.</p>
+<p>The same approach is required when the battery is outside the car and you want to turn it on. You need an external voltage source that connects to the battery terminals (output to the motor inverter) and puts the same voltage as the battery on those terminals to within a few volts. Then it is only possible to switch on the battery by command via the CAN bus. For info on high voltage sources, see <a href="../../setup/hardware/high_voltage_source/">this page</a>.</p>
+<p>You can check if your battery fulfills the required preconditions by opening the <strong>More Battery Info</strong> page. This is what a functional battery looks like, with the contactors ON:</p>
+<p><img alt="Status" src="../../images/meb-09.png" width="600" /></p>
+<h3 id="hardware-list">Hardware list<a class="headerlink" href="#hardware-list" title="Permanent link">~</a></h3>
+<ul>
+<li>Lilygo TCAN / Stark CMR module — see the main wiki page</li>
+<li>CAN-FD add-on board — see the <a href="../../setup/can_related/can_fd_add_on_mcp2518fd/">CAN-FD add-on wiki page</a></li>
+<li>A high voltage boost converter, e.g. the HIA4V1 (see above)</li>
+<li>Low voltage connector + pins (see above)</li>
+<li>12 V power supply, e.g. Meanwell HDR-30 12 V</li>
+<li>High voltage connector + cable (see above for options)</li>
+<li>High voltage DC circuit breakers + e.g. DIN rail clamps to step down from 50 mm² to a smaller diameter wire (if using the motor inverter connector)</li>
+<li><em>Nice-to-have:</em> Emergency / maintenance shutdown button, preferably protected against accidental turn-on with a lock — <a href="https://nl.aliexpress.com/item/1005006825289029.html">example</a></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">TIP</p>
+<p>For beginners it is much easier to use the <strong>Stark CMR</strong> with this battery compared to the LilyGo boards.</p>
+</div>
+<h3 id="sw-settings-example">SW settings example<a class="headerlink" href="#sw-settings-example" title="Permanent link">~</a></h3>
+<p>Stark CMR based, automatic precharge enabled.</p>
+<p><img alt="SW settings 1" src="../../images/meb-10.png" width="600" />
+<img alt="SW settings 2" src="../../images/meb-11.png" width="600" /></p>
+<h3 id="strange-behaviors">Strange behaviors<a class="headerlink" href="#strange-behaviors" title="Permanent link">~</a></h3>
+<h4 id="pilot-line-does-not-function-as-expected">Pilot line does not function as expected<a class="headerlink" href="#pilot-line-does-not-function-as-expected" title="Permanent link">~</a></h4>
+<ul>
+<li>Disconnecting the pilot line <strong>before</strong> turning the battery on results in contactors not closing.</li>
+<li>Disconnecting the pilot line <strong>when contactors are closed</strong> only results in <code>HVIL status: Open!</code>, but contactors stay closed (pilot line alone is therefore <strong>not</strong> suitable for emergency shutdown).</li>
+<li>In all cases the pilot line bit in <code>0x5A2</code> does not change.</li>
+</ul>
+<p>An alternative is to remove 12 V from <code>T30C</code> (service disconnect), which directly results in the contactors opening.</p>
+<h4 id="automatic_precharge_failure"><code>AUTOMATIC_PRECHARGE_FAILURE</code><a class="headerlink" href="#automatic_precharge_failure" title="Permanent link">~</a></h4>
+<p>At startup, the HV init process starts and the precharge relay is activated. In case precharge fails for some reason (e.g. a cabling issue), the pack can log <code>P0C7800</code>, and BE logs <code>AUTOMATIC_PRECHARGE_FAILURE</code>, which can be recovered as follows:</p>
+<ol>
+<li>Remove power from the full system (BE and battery 12 V).</li>
+<li>Open the precharging breaker, which disconnects the HIA4V1 from the battery.</li>
+<li>Apply power again — the system tries to start precharging but fails → BE gives <code>AUTOMATIC_PRECHARGE_FAILURE</code>.</li>
+<li>Remove power from the full system.</li>
+<li>Reconnect precharging.</li>
+<li>Re-apply power.</li>
+<li>The BMS is in an error state which requires ODIS to reset (<code>Precharge Time Too Long P0C7800</code>).</li>
+<li>After clearing it via ODIS, it works again normally.</li>
+</ol>
+<h3 id="info-for-specific-inverters">Info for specific inverters<a class="headerlink" href="#info-for-specific-inverters" title="Permanent link">~</a></h3>
+<h4 id="solax-g4">Solax G4<a class="headerlink" href="#solax-g4" title="Permanent link">~</a></h4>
+<p>Set the following Solax settings to get the battery to work:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>NUMBER_OF_MODULES 8
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>BATTERY_TYPE 131
+</span></code></pre></div>
+<hr />
+<h1 id="water-coolant-connection">Water coolant connection:<a class="headerlink" href="#water-coolant-connection" title="Permanent link">~</a></h1>
+<p>The connection is indicated as a VDA c-lock connection size NW16.
+After some searching i found these at Autodock for a few Euro's.
+See picture below, they fit perfect.
+<img alt="20260526_165440" height="700" src="../../images/meb-12.jpg" width="600" />
+<img alt="20260526_165433" height="700" src="../../images/meb-13.jpg" width="600" /></p>
+<h1 id="unlocking-a-meb-battery">Unlocking a MEB battery<a class="headerlink" href="#unlocking-a-meb-battery" title="Permanent link">~</a></h1>
+<h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">~</a></h2>
+<ol>
+<li>Communicate to the battery and identify issues.</li>
+<li>Physically repair the battery.</li>
+<li>Build and connect ODIS via the bridge.</li>
+<li>Battery unlock procedure.</li>
+</ol>
+<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">~</a></h2>
+<ul>
+<li>T25 Torx to open the metal cover</li>
+<li>24 mm (?? check size) socket wrench</li>
+<li>T27 isolated Torx</li>
+<li>Personal protection equipment</li>
+<li>Additional Lilygo flashed with the <a href="https://github.com/dalathegreat/Battery-Emulator/archive/refs/heads/feature/ODIS-relay.zip">ODIS relay</a> firmware (adjust AP name if you already have the same name)</li>
+<li>CAN-FD interface (remove the 120 Ω resistors R2 and R3)</li>
+<li>Windows 10 laptop with ODIS installed</li>
+<li>VAS 6154 dongle or clone</li>
+</ul>
+<h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">~</a></h2>
+<h3 id="battery-issues-that-can-be-unlocked">Battery issues that can be unlocked<a class="headerlink" href="#battery-issues-that-can-be-unlocked" title="Permanent link">~</a></h3>
+<blockquote>
+<p><strong>Crash locked:</strong> on the <strong>More Battery Info</strong> page the error <em>"BMS fault emergency shutdown"</em> has state <em>Active!</em></p>
+<p><strong>Welded contactor locked:</strong> on the <strong>More Battery Info</strong> page the error <em>"Welded contactors"</em> has state <em>At least 1 contactor welded</em>.</p>
+</blockquote>
+<h2 id="clearing-the-crash-log-from-meb-using-odis-v25">Clearing the crash log from MEB using ODIS V25<a class="headerlink" href="#clearing-the-crash-log-from-meb-using-odis-v25" title="Permanent link">~</a></h2>
+<ol>
+<li>
+<p>Go to <strong>Self-diagnoses</strong>. ODIS will try to detect the VIN but will fail — this can take some time, just wait. When it fails, add a VIN. Any VIN should work, e.g. <code>WVGZZZE2ZPE010564</code>. Then start <strong>OBD</strong> to launch ODIS.
+   <img alt="ODIS step 1" src="../../images/meb-14.png" width="900" /></p>
+</li>
+<li>
+<p>After starting ODIS you get this screen, where you can select the vehicle.
+   <img alt="ODIS step 2" src="../../images/meb-15.png" width="900" /></p>
+</li>
+<li>
+<p>We need to access <code>008C</code> — just double-click it. Sometimes this throws an error; when it does, just restart the ODIS gateway and continue.
+   <img alt="ODIS step 3" src="../../images/meb-16.png" width="900" /></p>
+</li>
+<li>
+<p>After selecting <code>008C</code> we get the following screen.
+   <img alt="ODIS step 4" src="../../images/meb-17.png" width="900" /></p>
+</li>
+<li>
+<p>Here we can see the crash log is active.
+   <img alt="ODIS step 5" src="../../images/meb-18.png" width="900" /></p>
+</li>
+<li>
+<p>Go to <strong>Access Authorization</strong> and press the small green arrow.
+   <img alt="ODIS step 6" src="../../images/meb-19.png" width="900" /></p>
+</li>
+<li>
+<p>To get access, use code <code>20103</code> and press <strong>Implement</strong>.
+   <img alt="ODIS step 7" src="../../images/meb-20.png" width="900" /></p>
+</li>
+<li>
+<p>Switch to <strong>Basic settings</strong> and press the small green arrow again. Then we can start clearing the crash log memory.
+   <img alt="ODIS step 8" src="../../images/meb-21.png" width="900" /></p>
+</li>
+<li>
+<p>In Basic settings, select <strong>DTC memory entry deletion trigger</strong> and move it to the right with the arrows in the middle. Press <strong>Next</strong> (arrow bottom-right above the red cross), and <strong>Next</strong> again on the following page.
+   <img alt="ODIS step 9" src="../../images/meb-22.png" width="900" /></p>
+</li>
+<li>
+<p>You will see many entries, but the one we need is <strong>Crash signal</strong>. Search for it and move it to the right. <strong>Only clear this one!</strong>
+    <img alt="ODIS step 10" src="../../images/meb-23.png" width="900" /></p>
+</li>
+<li>
+<p>Press <strong>Start</strong> and go back to <strong>DTC Memory</strong> via the small arrow top-right.
+    <img alt="ODIS step 11" src="../../images/meb-24.png" width="900" /></p>
+</li>
+<li>
+<p>Finally, to clear out the crash log press <strong>OBD-System</strong> and <strong>OK</strong> on the next screen.
+    <img alt="ODIS step 12" src="../../images/meb-25.png" width="900" /></p>
+</li>
+<li>
+<p>If everything went successfully, there should be no more crash log after pressing <strong>Update NOW</strong>.
+    <img alt="ODIS step 13" src="../../images/meb-26.png" width="900" /></p>
+</li>
+</ol>
+<h3 id="battery-disassembly-and-replacing-the-pyrofuse">Battery disassembly and replacing the pyrofuse<a class="headerlink" href="#battery-disassembly-and-replacing-the-pyrofuse" title="Permanent link">~</a></h3>
+<ol>
+<li>
+<p>Remove all the small Torx screws (TX20) around the top. There are many, so make use of an electric impact screwdriver.
+   <img alt="Step 1" src="../../images/meb-27.jpg" width="480" /></p>
+</li>
+<li>
+<p>Remove the larger big-head bolts (TX30), coated in paraffin. Remove the 4 big lug nuts (28 mm). They are really tight — a large impact wrench is advised.
+   <img alt="Step 2" src="../../images/meb-28.jpg" width="480" /></p>
+</li>
+<li>
+<p>Remove the lid so you can access the BMS, and remove its orange protection cap (loose fit — just grab and lift).
+   <img alt="Step 3" src="../../images/meb-29.jpg" width="480" /></p>
+</li>
+<li>
+<p>BMS top view.
+<img alt="Step 4" src="../../images/meb-30.jpg" width="480" /></p>
+</li>
+<li>
+<p>Remove both HV bus bars, preferably with insulated tools (TX30).
+<img alt="Step 5" src="../../images/meb-31.jpg" width="480" /></p>
+</li>
+<li>
+<p>Pull the red lid up to unlock the connector and get it out of the BMS.
+<img alt="Step 6" src="../../images/meb-32.jpg" width="480" /></p>
+</li>
+<li>
+<p>Push both sides of this connector and pull it up.
+<img alt="Step 7" src="../../images/meb-33.jpg" width="480" /></p>
+</li>
+<li>
+<p>The black connectors just have a locking latch — push them to the side and lightly pull to remove (mark them <strong>R</strong> and <strong>L</strong> to avoid swapping). The pyrofuse can be stuck; wiggle with a small screwdriver.
+<img alt="Step 8" src="../../images/meb-34.jpg" width="480" /></p>
+</li>
+<li>
+<p>Loosen all 4 long bolts in the corners of the BMS. Loosen the 4 black bolts of the bus bar. Put a small screwdriver under the BMS to loosen the adhesive thermal paste, and push it as far to the back as possible to create space for the bus bar.
+<img alt="Step 9" src="../../images/meb-35.jpg" width="480" /></p>
+</li>
+<li>
+<p>When you know how, it’s easy. Spoiler: lift the bus bar vertically. 🙂
+<img alt="Step 10" src="../../images/meb-36.jpg" width="480" /></p>
+</li>
+<li>
+<p>All clear to take it out.
+<img alt="Step 11" src="../../images/meb-37.jpg" width="480" /></p>
+</li>
+<li>
+<p>There are small locking hooks on the left and right. Push them in with a screwdriver while you pull upwards. You can use a screwdriver on the corners to push the lid up. (Keep the locking hooks in your line of attention!)
+<img alt="Step 12a" src="../../images/meb-38.jpg" width="480" />
+<img alt="Step 12b" src="../../images/meb-39.jpg" width="480" /></p>
+</li>
+<li>
+<p>Opened.
+<img alt="Step 13" src="../../images/meb-40.jpg" width="480" /></p>
+</li>
+<li>
+<p>The culprit: defective pyrofuse.
+<img alt="Step 14" src="../../images/meb-41.jpg" width="480" /></p>
+</li>
+<li>
+<p>When disassembled, measure your pyrofuse. There are 2 dimensions: one 83 mm long and one 85 mm long. Holes of 7 mm at 63 vs 70 mm heart-to-heart. A nickel-plated grounding bar of 20 mm wide and 6 mm thick was used, capable of 360 A.
+<img alt="Step 15a" src="../../images/meb-42.jpg" width="480" />
+<img alt="Step 15b" src="../../images/meb-43.jpg" width="480" />
+<img alt="Step 15c" src="../../images/meb-44.jpg" width="480" /></p>
+</li>
+<li>
+<p>Note the differences.
+<img alt="Step 16" src="../../images/meb-45.jpg" width="480" /></p>
+</li>
+<li>
+<p>Try to recover the pins of the pyrofuse.
+<img alt="Step 17" src="../../images/meb-46.jpg" width="480" /></p>
+</li>
+<li>
+<p>Bus bar in place.
+<img alt="Step 18a" src="../../images/meb-47.jpg" width="480" />
+<img alt="Step 18b" src="../../images/meb-48.jpg" width="480" />
+<img alt="Step 18c" src="../../images/meb-49.jpg" width="480" />
+<img alt="Step 18d" src="../../images/meb-50.jpg" width="480" /></p>
+</li>
+<li>
+<p>Close it up.
+<img alt="Step 19" src="../../images/meb-51.jpg" width="480" /></p>
+</li>
+<li>
+<p>The recovered pins connected to a 2.7 Ω resistor, insulated with shrink tube.
+<img alt="Step 20" src="../../images/meb-52.jpg" width="480" /></p>
+</li>
+<li>
+<p>Install it on the pyrofuse connector.
+<img alt="Step 21" src="../../images/meb-53.jpg" width="480" /></p>
+</li>
+<li>
+<p>Put a shrink tube on the connector and resistor so it cannot come loose.
+<img alt="Step 22a" src="../../images/meb-54.jpg" width="480" />
+<img alt="Step 22b" src="../../images/meb-55.jpg" width="480" /></p>
+</li>
+<li>
+<p>Install everything in reversed order. Don’t forget the cable ties to keep it all in place.
+<img alt="Step 23" src="../../images/meb-56.jpg" width="480" /></p>
+</li>
+<li>
+<p>Install the 2 HV bus bars. Don’t be afraid of a little protest — it’s charging the capacitors and electronics. (Be very careful though — HV DC is not to be joked with!)
+<img alt="Step 24" src="../../images/meb-57.jpg" width="480" /></p>
+</li>
+<li>
+<p>Put the orange cap on and assemble the lid again. (Testing first is advised.)
+<img alt="Step 25" src="../../images/meb-58.jpg" width="480" /></p>
+</li>
+</ol>
+<p>Good luck, and have fun with your beautiful battery! 🔋</p>
+<h3 id="battery-repair-procedures">Battery repair procedures<a class="headerlink" href="#battery-repair-procedures" title="Permanent link">~</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">CAUTION</p>
+<p>When disconnecting the BMS (battery internal), the repair manual specifies a specific order of disconnection!
+Failing to do this can <strong>trigger the pyro fuse</strong>. Make sure to follow the correct procedures when performing internal repairs to the battery — a service manual is available.</p>
+<ol>
+<li>First remove any external connections to the battery (motor/inverter, AC charging, DC charging and data connection).</li>
+<li>Then remove the orange bus bar connections to the positive and negative connector/contactor blocks.</li>
+<li>Split the pack in 2 by removing the small orange bus bar at the end of the pack.</li>
+<li>Finally the BMS can be disconnected.</li>
+</ol>
+<p>Reconnection happens in reverse order.</p>
+</div>
+<p><strong>Welded contactor:</strong> test the contactor and check if it is welded. If needed, replace the contactor.</p>
+<blockquote>
+<p>TODO: add contactor part numbers.</p>
+</blockquote>
+<p><strong>Pyro fuse:</strong> replace pyro fuse options</p>
+<ul>
+<li>New pyro fuse <em>(TODO: add type number)</em></li>
+<li>Normal fuse, like <em>(TODO: add type number)</em> and a 2.5 Ω resistor to the BMS connection (can replace the external fuse)</li>
+<li>Jumper bridge (DIY) and a 2.5 Ω resistor to the BMS connection (external fuse still required)</li>
+</ul>
+<p><img alt="Pyrofuse" src="../../images/meb-59.jpg" width="600" /></p>
+<p>There are 2 different lengths of pyrofuses used: 63 mm and 70 mm (screw holes center-to-center). <em>(Note: my pack only had 1 pyrofuse.)</em></p>
+<table>
+<thead>
+<tr>
+<th>Center-to-center</th>
+<th>Part number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63 mm</td>
+<td><code>9j1915463a</code></td>
+</tr>
+<tr>
+<td>70 mm (black)</td>
+<td><code>11k915463b</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Genuine Volkswagen sealant part number: <code>D454300H2</code> (blue sealant between the top cover of the battery)</li>
+<li>Oval hexagon socket head bolt part number: <code>WHT009218</code></li>
+</ul>
+<h3 id="lilygo-odis-setup">Lilygo ODIS setup<a class="headerlink" href="#lilygo-odis-setup" title="Permanent link">~</a></h3>
+<p>Below is the connection diagram for the setup. When Wi-Fi APs are used, make sure both Lilygos have a different name.
+Remove the 2 × 60 Ω resistors in series.</p>
+<p><img alt="Lilygo ODIS setup" src="../../images/meb-60.png" width="700" /></p>
+<h3 id="short-unlock-procedure">Short unlock procedure<a class="headerlink" href="#short-unlock-procedure" title="Permanent link">~</a></h3>
+<ol>
+<li>Go to <strong>OBD</strong>.</li>
+<li>Start diagnostics.</li>
+<li>Manually insert VIN and car type.</li>
+<li>Read modules.</li>
+<li>Open the Hybrid battery module.</li>
+<li>Check errors.</li>
+<li>Enable access via code <code>20103</code>.</li>
+<li>Basic settings — clear the DTC that is needed <em>(create list here)</em>.</li>
+<li>Enable access via code <code>20103</code>.</li>
+<li>Clear OBD memory.</li>
+</ol>
+<p>Check if the error is gone via the Lilygo.</p>
+<p>🎉 Party time!</p>
+<hr />
+<h1 id="manually-balancing-a-module">Manually balancing a module<a class="headerlink" href="#manually-balancing-a-module" title="Permanent link">~</a></h1>
+<h2 id="important-information_1">Important information<a class="headerlink" href="#important-information_1" title="Permanent link">~</a></h2>
+<p>The balancing of the modules works and is automatically controlled by the BMS when there is a significant imbalance. It seems to only get activated during the charging cycle of the battery, but this needs to be verified by other users. If there is a significant imbalance when first buying the battery, it is easier to manually balance the battery first.</p>
+<p>Depending on the type of battery pack you have, make sure to buy the correct balancer, as the supply voltage is different.</p>
+<p>Module voltages:</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Pack capacity</th>
+<th>Nominal voltage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8s3p</td>
+<td>82 kWh</td>
+<td>±33 V</td>
+</tr>
+<tr>
+<td>12s2p</td>
+<td>62 kWh, 55 kWh &amp; 48 kWh</td>
+<td>±50 V (OK for 48 V systems)</td>
+</tr>
+</tbody>
+</table>
+<p>For the <strong>8s3p</strong> module you need the <strong>JK BMS B2A16S</strong> active balancer, as it has a lower voltage range of 24 V – 70 V. The <strong>B2A24S</strong> (the standard one on the JK BMS website) has a voltage range of 40 V – 100 V and will not start up because the module voltage is out of range. While you can use a DC-DC boost module to make it work according to JK BMS, it becomes unnecessarily complex — you don't need the 24-cell balancer for either MEB module type.</p>
+<p>For the <strong>12s2p</strong> it doesn't really matter which one you use, as the module voltage is high enough and within range of both balancers.</p>
+<p><img alt="JK B2A16S" src="../../images/meb-61.jpg" width="500" /></p>
+<h2 id="making-the-connectors">Making the connectors<a class="headerlink" href="#making-the-connectors" title="Permanent link">~</a></h2>
+<p>Follow the guide at <a href="https://www.evcreate.com/using-volkswagen-meb-battery-modules/#connecting-bms">https://www.evcreate.com/using-volkswagen-meb-battery-modules/#connecting-bms</a>.</p>
+<p>The white connector is the module connector for the <strong>8s</strong> module; the black connector is the module connector for the <strong>12s</strong> module.</p>
+<p>Cut the wires of the blue/brown connector and solder them to the corresponding leads of the balancer. The wire of the last positive cell also needs to be connected to the <strong>PWR</strong> input of the balancer.</p>
+<p><img alt="20s battery wiring diagram" src="../../images/meb-62.jpg" width="600" /></p>
+<h2 id="module-layout">Module layout<a class="headerlink" href="#module-layout" title="Permanent link">~</a></h2>
+<p>The battery modules follow the order they are plugged into the CMU modules. You can see the alternating brown / blue / … connectors indicating the module order.</p>
+<p><img alt="MEB module order" src="../../images/meb-63.jpg" width="600" /></p>
+<p>In this example, cells 31, 33, 49, 65, 72 and 88 need to be balanced (or modules 4, 5, 7, 9 and 11).</p>
+<p><img alt="MEB cell monitor" src="../../images/meb-64.png" width="600" /></p>
+<h2 id="steps_1">Steps<a class="headerlink" href="#steps_1" title="Permanent link">~</a></h2>
+<ol>
+<li>Charge the entire pack to 100 %, or until all of the cells are around 4.15 V.</li>
+<li>Split the battery pack in two by removing the middle connector in the back.</li>
+<li>Remove all of the other orange module connectors. Make sure to follow the correct order as mentioned above.</li>
+<li>Remove all the BMS connectors and unplug all of the module connectors (black/white).</li>
+<li>
+<p>Verify that all the modules are at approximately the same voltage and connect them in parallel. All modules will now start to equalize their voltage on module level.</p>
+<div class="admonition info">
+<p class="admonition-title">IMPORTANT</p>
+<p>It is important that all of the modules have the same voltage before connecting them in parallel, to prevent high balancing currents! 1.5 mm² wire can be used; the maximum current in this case was ± 5 A. Make sure the parallel wire does not touch anything other than the intended terminals!</p>
+</div>
+</li>
+</ol>
+<p>Connecting the modules in parallel is important to prevent the module being balanced from having a lower module voltage than the rest of the pack. The active balancer actively moves charge from one cell to another, but it is never 100 % efficient. The parallel connection keeps all modules at the same voltage while the balancer balances individual cells.</p>
+<ol>
+<li>
+<p>Plug the balancer into the module that needs to be balanced. When first plugging in the balancer, configure the cell number and the maximum balancing current.</p>
+<div class="admonition warning">
+<p class="admonition-title">WARNING</p>
+<p><strong>Do NOT exceed 300 mA!</strong> If the balancing current is too high you risk blowing the fuse inside the module, which cannot be repaired. Even though the B2A16S claims a minimum balancing current of 100 mA, the settings don't allow anything lower than 300 mA.</p>
+</div>
+</li>
+<li>
+<p>Enable balancing and wait. The 120 mV imbalance of cell 31 took about 8 days to fully equalize.</p>
+</li>
+<li>Reassemble the battery when finished. Make sure to follow the torque specs when tightening the bolts ⬇️</li>
+</ol>
+<p><img alt="MEB torque specifications" src="../../images/meb-65.png" width="600" /></p>
+<p>Example of balancing current after connecting the modules in parallel ⬇️</p>
+<p><img alt="Balancing current example" src="../../images/meb-66.jpg" width="600" /></p>
+<h3 id="extra-info">Extra info<a class="headerlink" href="#extra-info" title="Permanent link">~</a></h3>
+<p>From safety testing, we have concluded that the MEB batteries will automatically open the contactors if the temperature sensors inside the battery go over <strong>70 °C</strong>. (We automatically write <code>0W allowed</code> if the temperature goes too high, but it's nice to know there is an extra layer of safety built into the MEB BMS.)</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+  
+    <div class="admonition warning" markdown="1">
+      <p class="admonition-title">CAUTION</p>
+      <p>Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.</p>
+    </div>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.patreon.com/dala" target="_blank" rel="noopener" title="www.patreon.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M490 153.8c-.1-65.4-51-119-110.7-138.3-74.2-24-172-20.5-242.9 12.9C50.6 68.9 23.6 157.7 22.6 246.2 21.8 319 29 510.6 137.2 512c80.3 1 92.3-102.5 129.5-152.3 26.4-35.5 60.5-45.5 102.4-55.9 72-17.8 121.1-74.7 121-150z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dalathegreat/Battery-Emulator" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.action.edit", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
