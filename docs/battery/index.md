@@ -116,6 +116,8 @@ DIY LV battery:
 
 * [DALY BMS](bms/daly_smartbms.md) ✅
 
+[Growatt 48V LV batteries](growatt_lv.md) ✅
+
 [Relion LV 48V batteries](relion_lv.md) ✅ 2️⃣3️⃣
 
 [FoxESS HV2600 batteries](foxess_hv2600.md) ✅
