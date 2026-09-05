@@ -11,7 +11,7 @@ title: "Growatt LV (GBLI-series)"
 
 For this battery type, use the option called "Growatt LV (GBLI-series) battery via CAN, 500kbit/s" under the "Battery Protocol" setting.
 
-<img width="828" height="171" alt="Screenshot_20260905_232649" src="https://github.com/user-attachments/assets/af467267-d268-4223-806c-c4538f0dca0d" />
+![Screenshot_20260905_232649](../images/growatt-lv-02.png)
 
 ## Wiring notes
 
