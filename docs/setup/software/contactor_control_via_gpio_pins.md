@@ -13,22 +13,22 @@ The Battery-Emulator simulates an entire car to get EV batteries to turn themsel
 It will also automatically open contactors when a critical FAULT event is encountered, if the FAULT event sticks for longer than 10 seconds contactors are opened. To recover from a latched fault, rebooting the emulator is required. You can then check which event led to the unrecoverable contactor opening via the [Webserver events](webserver_guide.md#events) view. This improves safety for batteries that require manual control over the contactors, compared to manual on/off switches that will stay in their set state when a critical FAULT occurs. So to summarize, if you have a battery that needs hardwired signals for contactors, this feature is highly recommended!
 
 ### Hardware requirements
-This is done via the 3.3V digital output header that is located on the board. To use these, you need to solder a 2x6 row connector onto the board (Easier with the [Stark CMR](../../hardware/stark_cmr.md), no soldering needed there). After the row connector is fitted, you can connect cables between the pins, and the relays.
-
-For instance, 3x ASR-10DD can be used. ASR-M02DD is a din mounted version. If you don't need SSR, and just want a relay, you can use a 4-channel-relay such as [this](https://www.aliexpress.com/item/1005007431826795.html?)
+This is done via the 3.3V digital output header that is located on most of the boards. 
 
 !!! warning "CAUTION"
-    Be sure to get a **DC** SSR. Using an AC triggered SSR will not work, these will latch while waiting for zero crossing.
+    Be sure to use **DC** SSRs. Using an AC triggered SSR will not work, these will latch while waiting for zero crossing.
+
+A good SSR choice is [SSR-04-5DD-CN](https://aliexpress.com/item/1005007825084745.html) which is DIN rail mounted, has 4 channels with a LED on each.
 
 ### Software setup
 
-To enable the feature in the software, Enable the "Contactor Control via GPIO" option under Hardware Config, Save and reboot.
+To enable the feature in the software, Enable the **Contactor Control via GPIO** option under Hardware Config, Save and reboot.
 
 ![image](../../images/contactor-control-via-gpio-pins-04.png)
 
 By default a 100 millisecond long precharge is performed. This value should be set to account for the resistance and capacitance of the inverter you use. 
 
-There is also an option to use "Use Normally Closed logic:" This is for very rare contactor setups, and should for 99.99% of users not be enabled :warning: 
+There is also an option to use **Use Normally Closed logic** This is for very rare contactor setups, and should for 99.99% of users not be enabled :warning: 
 
 !!! note "NOTE"
     Normally EVs perform a much more robust precharge, measuring motor inverter voltage and basing precharge duration based on this info, but since we dont have this info available a simple timer is used. Not optimal, but better than nothing!
@@ -67,7 +67,7 @@ Note the "X" on both contactors, even though the emulator is in active state and
 ## PWM control for lower power draw 🧊 
 Optional: It is also possible to reduce power consumption of keeping the big contactors engaged via PWM control. This requires Solid State Relays (SSR). The PWM signal will very quickly turn on/off the SSR, and still keep the contactor engaged. Do be careful, and test this properly before using it. It is very much depending on what SSR and battery contactor combination you use. 
 
-To use the PWM function, enable the "PWM contactor control" option
+To use the PWM function, enable the **PWM contactor control** option
 
 ![image](../../images/contactor-control-via-gpio-pins-05.png)
 
