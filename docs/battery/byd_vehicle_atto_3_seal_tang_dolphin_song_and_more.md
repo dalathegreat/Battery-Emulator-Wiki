@@ -27,7 +27,10 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | P99 | ? | 44.928kWh | 135Ah | 320.0V | -
 | PC5B | Dolphin mini | 38.8kWh | 135Ah | 288V | :x: (Type B LV connector)
 | ? | Song Plus | 82.56kWh | 150Ah | 550.4V | ✅ 
-| PM6 | Song Plus | 87.04 kWh | 170Ah | 512.0V | 
+| PM6 | Song Plus | 87.04 kWh | 170Ah | 512.0V | ✅
+| PM6B|? | 87.04 kWh | 170Ah | 512.0V | ✅
+| PR2| Song Plus | 87.04 kWh | 170Ah | 512.0V | ?
+| PF9| Song Plus | 87.04 kWh | 170Ah | 512.0V | ?
 | PM7 | Seal U | 71.80 kWh | 170Ah | 422.4V | ✅ 
 | VM7 | Sealion 8 DM-p (AU) | 35.62 kWh | 78.4Ah | 454.4V | :x: (Type C LV connector)
 | PW4 | Seal 7 | 91.392 kWh | 170Ah | 537.6V | ✅
