@@ -82,6 +82,9 @@ For this battery type, use the option called "Kia/Hyundai EGMP platform" under t
 ## Note on CAN-FD
 The 800V battery architecture uses CAN-FD, so incase you plan on integrating this battery, you will need to get the [CAN-FD chip add-on](../setup/can_related/can_fd_add_on_mcp2518fd.md) , or even easier, get the Stark CMR hardware.
 
+## Note on contactors
+The contactors are normally controlled by the BMS itself, but we have not been successful in emulating the vehicle properly yet, so the contactors might open unexpecedly. If that happens on your battery, you can switch to GPIO contactor control, and let the Battery-Emulator control the contactors instead (requires wiring changes)
+
 ## Wiring diagram
 See [KIA EV6 Battery](kia_ev6.md)
 
