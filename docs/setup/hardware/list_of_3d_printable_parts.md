@@ -45,7 +45,7 @@ The 2013-2023 batteries have an external high voltage heater port. The socket ca
 
 ![data-con-cover](../../images/nissan-leaf-data-connector-cover.png)
 
-There's also [a fixation ring for the data connector socket](https://www.printables.com/model/1810328-nissan-leaf-ze0aze0ze1-data-connector-fixation-rin). It slides in the knot at the base of the socket. Use it to prevent the socket to fall into the battery - this can occur when the workers who originally dismounted the battery pack from the car were not careful enough when they disconnected the factory plug, and made the socket loose. This ring is a quick fix you can apply without having to open up the battery penthouse.
+There's also [a fixation ring for the data connector socket](https://www.printables.com/model/1810328-nissan-leaf-ze0aze0ze1-data-connector-fixation-rin). It slides in the knot at the base of the socket. Use it to prevent the socket to fall into the battery - this can occur when the workers who originally dismounted the battery pack from the car were not careful enough and lost the original spring. This ring is a quick fix you can apply without having to open up the battery penthouse.
 
 ![data-con-ring](../../images/nissan-leaf-data-socket-fix.png)
 
