@@ -131,7 +131,7 @@ You can check if your battery fulfills the required preconditions by opening the
 
 ### Hardware list
 
-- Lilygo TCAN / Stark CMR module — see the main wiki page
+- Battery Emulator hardware board
 - CAN-FD add-on board — see the [CAN-FD add-on wiki page](../setup/can_related/can_fd_add_on_mcp2518fd.md)
 - A high voltage boost converter, e.g. the HIA4V1 (see above)
 - Low voltage connector + pins (see above)
@@ -140,12 +140,9 @@ You can check if your battery fulfills the required preconditions by opening the
 - High voltage DC circuit breakers + e.g. DIN rail clamps to step down from 50 mm² to a smaller diameter wire (if using the motor inverter connector)
 - _Nice-to-have:_ Emergency / maintenance shutdown button, preferably protected against accidental turn-on with a lock — [example](https://nl.aliexpress.com/item/1005006825289029.html)
 
-!!! tip "TIP"
-    For beginners it is much easier to use the **Stark CMR** with this battery compared to the LilyGo boards.
-
 ### SW settings example
 
-Stark CMR based, automatic precharge enabled.
+Automatic precharge enabled (Stark CMR example):
 
 ![SW settings 1](../images/meb-10.png){ width="600" }
 ![SW settings 2](../images/meb-11.png){ width="600" }
