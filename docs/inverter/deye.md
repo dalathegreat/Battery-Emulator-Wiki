@@ -92,10 +92,8 @@ If you connected everything correctly, you will see data on the display:
 !!! note "NOTE"
     If you intend on using BYD-CAN with the BMW i3, the battery needs to be on a separate CAN bus. The BMW i3 is using the same CAN IDs as BYD do, so if you try to run them both on the same bus the IDs will collide and values get interpreted wrong. There are a few ways to solve this:
 
-* You can [add an isolated MCP2515 CAN channel](../setup/can_related/can_add_on_mcp2515.md)
-* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../setup/can_related/can_fd_add_on_mcp2518fd.md)
-* You can use the [Stark CMR](../hardware/stark_cmr.md) board
-* You can use the lilygo T-2can with 2 native can ports 
+* choose an Emulator board which has more CAN channels like [LilyGO T-2CAN](../hardware/lilygo_t_2can.md), [BECom](../hardware/becom.md), [Stark CMR](../hardware/stark_cmr.md) 
+* add an [isolated MCP2518 CANFD channel](../setup/can_related/can_fd_add_on_mcp2518fd.md)
 
 ## Troubleshooting
 
