@@ -111,11 +111,11 @@ Zoe gen2 52kWh. First balancing started at last. Procedure that worked on my set
 - Nvrol reset performed
 - 30-ish seconds wait
 - Verify temporization active from More Battery Info page
-- Remove battery can plug from Stark CMR
-- Bms power down (removed plug from stark)
-- Stark CMR power down
+- Disconnect battery CAN from the board
+- BMS power down
+- Battery Emulator board power down
 - Connect all back together
-- Stark CMR power up
+- SBattery Emulator board power up
 - Balancing started immediately, visible from Cellmonitor page
 
 !!! note "NOTE"
