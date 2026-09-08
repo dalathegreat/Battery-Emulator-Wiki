@@ -43,7 +43,9 @@ Confirmed working BYD Seal 60kWh battery example sticker:
     If you intend to run two BYD batteries in [parallel](../setup/software/battery_2x.md), make sure they are both the same model!
 
 ## Software setup
-For this battery, select the "BYD Atto 3/Seal/Dolphin" option in the dropdown menu
+Select **BYD Atto 3/Seal/Dolphin** under **Battery Protocol**.
+
+![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-06.png){ width="599" height="115" }
 
 !!! note "IMPORTANT"
     The battery needs to be on its own CAN channel. It cannot share the same CAN channel as the solar inverter. LilyGo T-2CAN or similar double CAN hardware is recommended!
@@ -59,11 +61,6 @@ Viewed from the front, left is the low voltage connector, central is two refrige
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-05.png)
 
 The front connectors end of the battery also includes the contactor block. There is a well-hidden 800V/350A fuse near the positive contactor(coil:12VDC/contactor:250A) on the RHS of the block, along with a mini pre-charge contactor (coil:12VDC/contactor:10A) and a pre-charge resistor, which is underneath the HV connector. There is no Tesla-like pyro fuse that blows when airbags are deployed; the system just opens the contactors.
-
-## Software configuration
-For this battery type, use the option called "BYD Atto 3/Seal/Dolphin" under the "Battery Protocol" setting.
-
-![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-06.png){ width="599" height="115" }
 
 ## Video example
 Here is a great video made by "Flying Tools" showcasing how to connect the BYD Atto 3 battery.
@@ -134,37 +131,30 @@ Pinout varies between different batteries despite the plug & socket being the sa
 ## HV Connectors
 High voltage connectors vary a bit between the different BYD variants. Due to this, it is best to try and source the high voltage cable from the same type of vehicle that the battery came from.
 
+## Contactor control over CAN (software — no teardown)
+
+Battery-Emulator can control the battery's original contactors over CAN. On a supported, unlocked pack, there is no need to open the battery or add relays for contactor control. This is available from firmware **10.11.0**.
+
+### Behaviour
+
+- The contactors close automatically when the inverter gives permission and there is no active fault.
+- Before opening, Battery-Emulator requests zero power and waits for the current to fall. A normal open request can still proceed after a timeout. If the current does not fall below 2.5 A within 10 seconds, Battery-Emulator skips the [balancing contactor cycle](#cell-balancing) and leaves the battery connected. 
+- You can also use **Open Contactors** and **Close Contactors** on the **More Battery Info** page.
+
+### Safety interlocks
+
+Battery-Emulator requests the contactors open when equipment stop is active, the inverter withdraws permission to close, or the system enters a **FAULT** state. This includes communication faults after a loss of battery or inverter CAN messages.
+
+### Notes
+
+- Power the BYD battery first, then Battery-Emulator.
+- Losing the web UI or VPN connection does not request a shutdown. The battery remains under the control of the equipment-stop, fault and inverter interlocks.
+- Firmware **12.5.0** corrects the link voltage reported to the BMS during precharge. Earlier versions could report full pack voltage too early and cause the BMS to store **P1A3400 Pre-charge Failure**.
+
 ## Contactor Block Modification
 In the event of the battery being locked, the pre-charge and two contactors can be wired to manually switch on, or preferably to automatically activate via 3 SSRs with the GPIO pins on the Lilygo board (see [Contactor control via GPIO pins](../setup/software/contactor_control_via_gpio_pins.md)).
 When accessing the internals of the battery, wear the appropriate safety gloves and follow safe procedures to avoid shorting across HV terminals. To access the contactor block, first remove the top cover, which fortunately is not sealed down; ~ 76 screws and 2 central top bolts require removal. In the pictorial description that follows, details of the full removal of the contactor block is shown, to identify the various parts. With connection points identified, it is now not necessary to remove the block as these 12V connection points are accessible from the top of the block. This current protocol involved connecting 3 circuits individually to the precharge and two contactor relays. This was achieved merely by wiring in extra lines on top of existing wiring connector points. With hindsight, a more effective alternative is included in the discussion below (Unlocking a crashed battery).
 [github/juancruz1953](https://github.com/juancruz1953/Images/blob/main/Atto3ContactorBlockRewire.pdf)
-
-## Contactor control over CAN (software — no teardown)
-As an alternative to wiring the contactor block to GPIO via SSRs, Battery-Emulator
-can open and close the pack's **own** contactors **over CAN**. For a healthy (non-crashed) pack this means **you don't need to open
-the battery or fit any relays.**
-> Requires firmware **[10.11.0]+**
-### Behaviour
-- **Closing is automatic** — Battery-Emulator closes the contactors once the inverter
-  signals it is ready and there is no active fault.
-- **Opening is sequenced like the car** — power is commanded to zero first, BE waits
-  for current to fall to a safe level (with a timeout), then runs
-  shutdown → open-request → standby. **The pack is never dropped under load.**
-- Manual open/close is available from the **More Battery Info** page.
-  *[confirm exact button labels]*
-### Safety interlocks
-Contactors are commanded **open automatically** whenever:
-
-- the equipment-stop is active,
-- the inverter withdraws permission to close (e.g. Solax / SMA not yet ready), or
-- the system enters a **FAULT** state — including loss of CAN communication with the
-  battery or inverter (faults after ~60 s).
-### Notes
-- Keep the original startup order: **power the BYD battery first, then
-  Battery-Emulator.**
-- There is no remote dead-man on the control link — if you lose the web UI / VPN, the
-  contactors stay in their current state. For unattended installs, rely on the
-  fault / e-stop / inverter interlocks above and treat manual control as on-site only.
 
 ## Parts list
 Here are some of the part numbers and purchase links, incase your battery came without them:
@@ -207,72 +197,88 @@ It is recommended to check your handiwork, by performing an insulation test on t
 
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-21.png)
 
-## How do I know if I have a crashed&locked battery?
-If the contactors do not engage when sending CAN towards the battery, the pack is most likely locked.
+## How do I know if I have a crashed & locked battery?
 
-Another way to check is to inspect the "More battery info" on the webserver. This page contains the SOC% value sent by battery (SOC Highprec). If this value stays the same when charging, discharging, the battery is locked.
+Contactors failing to close does not, by itself, confirm that the battery is crash-locked. Check the startup order, CAN communication, active faults and inverter permission first. The **More Battery Info** page shows the contactor state reported by the BMS.
 
-## SOC Drift overtime
-All users will experience a phenomenon where the battery’s SOC appears to drift when using SOC measured by BMS, causing the charging process to stop before the SOC reaches 100%. This drift will gradually increase over time, reducing the available capacity of the battery. Typical value is 1-2% SOC underreported drift per day.
+A BMS SOC reading that stays fixed while the battery is charging or discharging can also be a sign of a locked pack. Use this alongside the other checks rather than treating it as proof on its own.
 
-!!! note "NOTE"
-    As of firmware **10.10.1+** there is an Auto-calibration function to counteract this but the following manual method can still be used for SOC and capacity manipulation if required.
+## Charging and SOC calibration
 
-- Go to the "Calibrate SOC" option. From version **10.3.0** this can be done from the "More Battery info" page.
-- Set the "Calibration target SOC:" option to the desired SOC% you want.
-- Set the "Calibration target capacity:" option to the desired AH capacity (this value will be copied by default from the BMS and will effect your SOH (State Of Health) values!
-- Finally, press the "Calibrate SOC" button
+From firmware **12.5.0**, Battery-Emulator lets the BYD BMS finish charging itself, as it would in the car. This gives the BMS the full-charge event it needs to recalibrate its own SOC and SOH.
 
-![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-22.png){ width="493" height="199" }
+Native charging is **enabled by default**. You can find it on **More Battery Info**, under **Native SOC calibration, charge termination & balancing**.
 
-### Automatic SOC calibration
+Once the BMS finishes charging, Battery-Emulator stops requesting charge. With balancing disabled, the contactors stay closed and the battery remains available for discharge. Another charge session is allowed after the battery has been discharged.
 
-Rather than running the manual *Calibrate SOC* procedure periodically, Battery-Emulator
-can **recalibrate SOC to 100% automatically** whenever it detects the pack is genuinely
-full — correcting the BMS's gradual coulomb-count drift on its own.
+The panel shows the charge session state and the highest cell voltage and cell spread recorded at the last native charge termination.
 
-!!! tip "TIP"
-    Requires firmware **[10.10.1]+**. (shipped by default).
+!!! note "Primary battery only"
+    In firmware **12.5.0**, native charging and the automatic balancing contactor cycle are available on the primary battery only. They are not available on the second battery.
 
-#### What it does
-When enabled, BE watches for the pack sitting at a true, settled top-of-charge and then
-performs the **same calibration write as the manual button** — a security-access write
-into the BMS — so the correction persists across reboots. It then starts a cooldown so it
-won't repeat unnecessarily.
+### Cell balancing
 
-#### When it triggers
-A calibration is performed only when **all** of these are true at once (whose status is visible in the more batt info page):
+From firmware **12.5.0**, Battery-Emulator can briefly disconnect the battery after a native full charge to trigger the BMS to start balancing.
 
-- Automatic calibration is **enabled**.
-- The pack is at the **top of charge** — the charge taper has reached its critical stage
-  (cells near full and current capped to the ~1 A tail).
-- The **main contactors are closed** (the pack itself reports closed).
-- **Current is essentially at rest** — roughly between 0.5 A discharge and 3 A charge.
-- That settled, full condition has held **continuously for ≥10 minutes** (a brief current
-  excursion of up to 60 s is tolerated without resetting the timer).
-- Reported SOC has **drifted below 100 % by more than your configured threshold** (so it
-  only acts when there's meaningful drift to correct).
-- At least **1 hour** has passed since the last calibration (cooldown).
+To use this, leave native charging enabled and turn on **Balancing enabled** in the same panel. Balancing is **off by default**. **Hold for** sets how long the contactors stay open, with a default of **30 minutes**.  Through experimentation on the Discord, users have reported this to work with as little as 3 minutes open time. Press **Save** after changing the hold time.
 
-If any condition isn't met — for example your setup never quite reaches a sustained full
-charge — it simply won't fire, and you can still calibrate manually.
+During this hold, the battery cannot supply or accept power. Once the hold ends, Battery-Emulator closes the contactors again. The BMS can then continue balancing while the battery is in use; it does not need to remain disconnected for the whole balancing period. The panel shows the hold state and remaining time while the battery is held open.
 
-#### Configuration
-On the **More Battery Info** page:
+Testing so far shows that the BMS selects the highest-voltage cells at the end of charging and balances those cells for around **17-18 hours**. Further full-charge cycles let it work through other cells, so an uneven pack may take several cycles to improve. The open time is what triggers the BMS to start balancing; it is not the total balancing time.
 
-- **Auto-calibrate SOC to 100% when full** — the on/off toggle.
-- **Auto-calibrate trigger drift (%)** — how far below 100 % SOC must drift before an automatic
-  recalibration is allowed (higher = less frequent corrections).
-- A live status panel shows each trigger condition (taper reached, current in-window,
-  dwell timer, drift %, cooldown ready, contactors closed) so you can see exactly why a
-  calibration has or hasn't happened.
+If the battery will not close again, Battery-Emulator makes a limited number of retries, then leaves it open and reports a contactor mismatch for you to investigate.
 
-#### Notes
+### Checking the balance timers
 
-- It is deliberately conservative: it requires a genuine, *sustained* full charge **and**
-  real drift **and** the cooldown, so it won't spam writes to the BMS.
-- It writes to the BMS exactly like the manual procedure, so the same persistence and
-  caveats apply.
+Open **More Battery Info → Cell Balance Timers**, then press **Read Timers**. This reads the total balancing hours recorded by the BMS for each cell.
+
+Take a reading before a balancing cycle, then read again the following day using the same browser. The page compares the readings and highlights cells whose totals have increased.
+
+These are lifetime counters, so they show that balancing happened between readings. They do not show which cells are balancing right now. Readings are taken manually, and the comparison history is saved in your browser.
+
+### Insulation monitor and native charging
+
+The BMS will refuse a native charge session while it reports an insulation fault. The **Isolation resistance monitor** section on More Battery Info shows the monitor status and controls.
+
+If automatic monitor disable is enabled, firmware **12.5.0** reapplies it when the BMS turns monitoring back on after the contactors open. This also covers the contactor cycle used for balancing. Disabling the monitor does not repair an insulation fault.
+
+<span id="soc-drift-overtime"></span>
+
+## SOC drift and older calibration options
+
+The BMS's reported SOC can drift over time, particularly if it does not get a chance to complete a full charge. With native charging enabled, the BMS can correct its own SOC when it finishes charging.
+
+The older **Artificial SOC auto-calibration** section is greyed out while native charging is enabled, because the BMS is handling calibration itself. If native charging is disabled, Battery-Emulator's older automatic calibration method is still available. Manual SOC and capacity calibration also remains available.
+
+<span id="automatic-soc-calibration"></span>
+
+### Artificial SOC auto-calibration
+
+This method has been available since firmware **10.10.1**. When enabled and not overridden by native charging, Battery-Emulator waits for a settled full charge, then writes a 100% SOC calibration to the BMS using the same procedure as the manual calibration button. The correction persists across reboots.
+
+The following conditions apply to this older method, not to native charging:
+
+- Automatic calibration is enabled.
+- The charge taper has reached its final stage, with cells near full and the current limit down to about 1 A.
+- The BMS reports that the main contactors are closed.
+- Current is between roughly 0.5 A discharge and 3 A charge.
+- This condition has held for at least 10 minutes. A brief current excursion of up to 60 seconds is tolerated without resetting the timer.
+- SOC is below 100% by more than the configured drift threshold.
+- At least one hour has passed since the last calibration.
+
+On **More Battery Info**, use **Enabled** and **Trigger drift** in the **Artificial SOC auto-calibration** panel to configure it. The status rows show which conditions have been met and what it is still waiting for.
+
+### Manual SOC and capacity calibration
+
+Manual calibration has been available on **More Battery Info** since firmware **10.3.0**. In the **Manual SOC & capacity calibration** panel:
+
+1. Set **Target SOC** to the SOC you want to write to the BMS.
+2. Check **Target capacity**. This defaults to the capacity read from the BMS, and changing it affects the reported SOH.
+3. Press **Calibrate SOC** to write the values.
+
+The screenshot below shows the controls in an older firmware version; the labels and layout have since changed.
+
+![Manual SOC calibration controls in an older firmware version](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-22.png){ width="493" height="199" }
 
 ## How do I unlock a crashed battery?
 There are two methods to try and unlock the battery. The methods are via More Battery Info page (easy), and alternatively via CAN Replay (harder)
