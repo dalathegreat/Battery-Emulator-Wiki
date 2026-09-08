@@ -30,7 +30,6 @@ The ESP32 DevKit V1 hardware can be used with Battery-Emulator, and has the foll
 ### Communication
 
 * 1 x CAN channel using Texas Instruments SN65HVD230 breakout board
-* 1 x CAN channel using Microchip Technology MCP2515 breakout board
 * 1 x CAN-FD channel using Microchip Technology MCP2518FD breakout board
 * 1 x RS485 using Analog Devices MAX13487E breakout board
 
