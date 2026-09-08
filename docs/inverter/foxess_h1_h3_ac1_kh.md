@@ -18,10 +18,9 @@ Another way to tackle this is with the use of a CAN isolator between the inverte
 
 This can be solved in a few ways:
 
-   - One option is to use [add on MCP2515](../setup/can_related/can_add_on_mcp2515.md) board
-   - Another options is to use [add on CAN-FD MCP2518](../setup/can_related/can_fd_add_on_mcp2518fd.md) board 
-   - Third option is to use [Stark CMR hardware](../hardware/stark_cmr.md)
-   - Fourth option is to use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system 
+* choose an Emulator board which has more CAN channels like [LilyGO T-2CAN](../hardware/lilygo_t_2can.md), [BECom](../hardware/becom.md), [Stark CMR](../hardware/stark_cmr.md) 
+* add an [isolated MCP2518 CANFD channel](../setup/can_related/can_fd_add_on_mcp2518fd.md)
+* use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system
 
 ## Compatible FoxESS inverters
 There are three different protocols available that are compatible with various FoxESS inverters.
@@ -130,6 +129,7 @@ Feel free to add your own images here!
 
 # Video Guide
 To aid installation Battery Man has produced a video series using the H3 Pro inverter which documents an install with Tesla LFP batteries and both the LilyGo and Stark CMR. There is a full playlist touching on different aspects.
+
 ![thumb for YT opt 7 FINAL](../images/foxess-h1-h3-ac1-kh-05.jpg)
 Installing inverter - [youtube](https://youtu.be/9YnuPMdJaoI?si=odCptB7YAE56yFHq)
 ![THUMB HACK V3](../images/foxess-h1-h3-ac1-kh-06.jpg)
