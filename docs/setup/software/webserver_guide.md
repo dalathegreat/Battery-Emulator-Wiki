@@ -38,9 +38,6 @@ If you don't plan to use the Access Point on a regular basis, disable it. Not on
 !!! tip "TIP"
     If you disabled the Access Point earlier and need to use it again without having access to the home network, you can [turn it back on with the BOOT button](boot_button_functions.md#start-wi-fi-access-point) on the board.
 
-!!! tip "TIP"
-    You can improve signal quality on the LilyGo board by adding an external Wifi antenna. You can easily salvage one from an old router. There is a SMD resistor that needs to be moved in order for the board to use the external antenna.
-
 ![image](../../images/webserver-guide-02.png)
 
 ## Using the Webserver
