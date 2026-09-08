@@ -13,9 +13,8 @@ Start by connecting the CAN port of the BMS, to the Native CAN port on the Batte
 
 - If you have a Modbus inverter, connect it to the RS485 port of the Battery-Emulator
 - If you have a CAN inverter, you need to connect it to a separate 500kbps CAN channel, since the BMS runs at 250kbps
-    - One option is to use [add on MCP2515](../../setup/can_related/can_add_on_mcp2515.md) board
-    - Another options is to use [add on CAN-FD MCP2518](../../setup/can_related/can_fd_add_on_mcp2518fd.md) board 
-    - Third option is to use [Stark CMR board](../../hardware/stark_cmr.md)
+    - choose an Emulator board which has more CAN channels like [LilyGO T-2CAN](../../hardware/lilygo_t_2can.md), [BECom](../../hardware/becom.md), [Stark CMR](../../hardware/stark_cmr.md) 
+    - add a [separate MCP2518 CANFD channel](../../setup/can_related/can_fd_add_on_mcp2518fd.md)
 
 ## Software configuration
 
