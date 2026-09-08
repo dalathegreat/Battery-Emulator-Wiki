@@ -45,17 +45,13 @@ If the inverter, which likes to see only BYD CAN frames, sees standard automotiv
 
 This can be solved in several ways:
 
-* You can use the [Stark CMR](../hardware/stark_cmr.md) hardware which has more CAN channels (Recommended option)
-* You can use the [LilyGO T-2CAN](../hardware/lilygo_t_2can.md) hardware, which also has two isolated CAN channels (2nd recommended option)
-* You can [add an isolated MCP2515 CAN channel](../setup/can_related/can_add_on_mcp2515.md)
-* You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../setup/can_related/can_fd_add_on_mcp2518fd.md)
-* You can use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system
+* choose Emulator boards which has more CAN channels like [LilyGO T-2CAN](../hardware/lilygo_t_2can.md), [BECom](../hardware/becom.md), [Stark CMR](../hardware/stark_cmr.md) 
+* add an [isolated MCP2518 CANFD channel](../setup/can_related/can_fd_add_on_mcp2518fd.md)
+* use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system
 
 ## Word of caution, controllable HV ⚠️
 
-Keep in mind that you will also need automated contactor control via GPIO, or a battery that has CAN controllable on/off contactors. If you have a CAN controlled integration that is not able to turn OFF contactors when commanded, you will need to add external contactors.
-
-This is due to a complicated pairing process when taking the battery in to use, when the inverter will command on/off the battery in order to succeed with pairing. **Due to this, the Stark CMR is highly recommended for first timers!**
+Keep in mind that you will also need automated contactor control via GPIO, or a battery that has CAN controllable on/off contactors. If you have a CAN controlled integration that is not able to turn OFF contactors when commanded, you will need to add [external contactors](../setup/software/contactor_control_via_gpio_pins.md).
 
 !!! info "IMPORTANT"
     Grounding is extremely important for all inverters. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this may result in CAN errors.
@@ -63,12 +59,6 @@ This is due to a complicated pairing process when taking the battery in to use, 
 ## Connecting the Enable pin from Inverter to Battery Emulator
 
 The inverter needs to be able to control the closing of the contactors. This is done via a signal, called the enable line. It controls the "Inverter allows contactor closing" in the Battery Emulator web interface.
-
-### Stark hardware
-
-If you have the Stark CMR, you can wire the 12V enable line directly to SIGNAL IN (GPIO 2) and SMA GND directly to SIGNAL GND. The Stark CMR hardware does not require any resistors, it can take the full input voltage of the enable line.
-
-### Other hardware
 
 The Enable line is connected to a GPIO pin on the Battery-Emulator hardware, GPIO 5 on the LilyGo T-CAN485 for instance. Due to the signal being 12V, we need to step it down to 3.3V that the Battery-Emulator uses on its GPIO pins.
 
@@ -87,6 +77,9 @@ This stepdown can be achieved with a resistor divider
 ![image](../images/sma-01.png)
 
 The 1k resistor isn't technically needed but just in case there's a short it would limit the current into the GPIO pin.
+
+!!! tip "Stark hardware"
+    If you have the Stark CMR, you can wire the 12V enable line directly to SIGNAL IN (GPIO 2) and SMA GND directly to SIGNAL GND. The Stark CMR hardware does not require any resistors, it can take the full input voltage of the enable line.
 
 ### Details for Sunny Boy Smart Energy & Sunny Tripower Smart Energy
 
