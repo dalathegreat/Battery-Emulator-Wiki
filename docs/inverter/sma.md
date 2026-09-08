@@ -45,7 +45,7 @@ If the inverter, which likes to see only BYD CAN frames, sees standard automotiv
 
 This can be solved in several ways:
 
-* choose Emulator boards which has more CAN channels like [LilyGO T-2CAN](../hardware/lilygo_t_2can.md), [BECom](../hardware/becom.md), [Stark CMR](../hardware/stark_cmr.md) 
+* choose an Emulator board which has more CAN channels like [LilyGO T-2CAN](../hardware/lilygo_t_2can.md), [BECom](../hardware/becom.md), [Stark CMR](../hardware/stark_cmr.md) 
 * add an [isolated MCP2518 CANFD channel](../setup/can_related/can_fd_add_on_mcp2518fd.md)
 * use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system
 
