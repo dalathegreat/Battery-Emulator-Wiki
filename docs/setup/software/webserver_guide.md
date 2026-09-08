@@ -38,8 +38,6 @@ If you don't plan to use the Access Point on a regular basis, disable it. Not on
 !!! tip "TIP"
     If you disabled the Access Point earlier and need to use it again without having access to the home network, you can [turn it back on with the BOOT button](boot_button_functions.md#start-wi-fi-access-point) on the board.
 
-![image](../../images/webserver-guide-02.png)
-
 ## Using the Webserver
 The front page will contain some quick information about the system. What software version the system has, Inverter protocol, Battery type, Live data from the battery transmitted to the Inverter, along with some buttons to go to other pages. The page will be green incase all is well, go yellow incase there is an active warning, and go red incase an error is active and blocking operation. Incase there is a warning/error active, you can click the `Events` button to go to this view.
 
