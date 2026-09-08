@@ -102,20 +102,20 @@ In case your battery is missing some wires/disconnect switches, here are the OEM
 | Precrimped 22/36 connectors | [AliExpress](https://www.aliexpress.com/item/1005005815234149.html)   |
 | High voltage connector 80kW 297A6-5SH1A |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A65SH1A&_sacat=0)   |
 | High voltage connector 80kW 297A22581R ZOE, also works |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A22581R&_sacat=0)   |
-| High voltage 80kW cable 297A21061R from ZOE41 ( Both end have the good connector ) |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A21061R&_sacat=0)   |
-| 4ch SSR on DIN rail. Make sure you get DC-CN. | [AliExpress](https://aliexpress.com/item/1005007825084745.html) |
+| High voltage 80kW cable 297A21061R from ZOE41 (Both ends have the good connector type) |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A21061R&_sacat=0)   |
+| 4ch SSR on DIN rail. Make sure you get the DC-CN version! | [AliExpress](https://aliexpress.com/item/1005007825084745.html) |
+
+!!! tip "TIP"
+    All e-NV200 packs are technically AZE0 / ZE1, so 2013+ parts fit for them!
 
 A [spreadsheet](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsraOJc9BExlsMp5ClRRITRSQVLfkA/edit?gid=0#gid=0) with parts and links for a Nissan 40kwh battery and 8kW inverter (30A fuses).
-
-297A6 3NA0A does not fit, you have to cut a part of it to use the pins!
-
-![image](../images/nissan-leaf-e-nv200-09.png){ width="333" height="289" }
 
 **Incompatible cables**
 When searching on eBay you may come across other cables in the Zoe which use a connector that is similar in appearance but is much smaller:
 
 * Zoe HV Wiring Harness - PN: 240419193R
 * Zoe HV Engine Bay Wiring Harness - PN: 240413370R
+* 297A6 3NA0A does not fit, you have to cut a part of it to use the pins.
 
 These will *not* connect to the Leaf battery terminals.
 
