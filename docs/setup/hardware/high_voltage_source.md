@@ -13,7 +13,7 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 - Capacitance: Capacitor needed to wake battery. Can be raw capacitor, or a DC/DC converter that has capacitance
 - No precharge on inverter side: Means inverter internally has no contactors, exposing capacitance on BAT input
 
-One of the options is the HIA4V1 board original or modified for Lilygo or Stark CMR. 
+One of the options is the HIA4V1 board original or modified. 
 
 !!! warning "CAUTION"
     There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
@@ -50,7 +50,7 @@ The HIA4V1 has been used successfully to precharge the MEB battery's inverter po
 
 ![image](../../images/high-voltage-source-02.png)
 
-## Modified HIA4V1 directly controlled via digital output ESP32 (for Lilygo and Stark CMR)
+## Modified HIA4V1 directly controlled via digital output ESP32
 
 The HIA4V1 contains a 555 based oscillator, with the output connected to a MOSFET. This MOSFET is 3v3 compatible, which means we can directly control it from an ESP32 based board like the lilygo.
 
@@ -58,8 +58,8 @@ To do this:
 
 - first remove the 620 ohm smd resistor (marked 621) from the board. Easiest way to do this is put some solder on top of the resistor such that it covers both ends, melting the solder of both ends and thus releasing the resistor.  
 - In place of the above resistor, on the pad closest to the MOSFET, solder a small wire.
-- Connect this wire via a 330 ohm resistor to a pin on the lilygo (eg. io25) or Stark CMR (eg. io19 GPIO header).
-- Solder a gnd wire to gnd pin of the connector on the underside of the board (if the low voltage gnd of the HIA4V1 is already shared with the lilygo, this step is not necessary). And connect this to the gnd of the lilygo or connect to GND of Stark CMR GPIO header
+- Connect this wire via a 330Ω resistor to the pin on the board (eg. io25 on lilygo 485, io19 on Stark).
+- Solder a gnd wire to gnd pin of the connector on the underside of the board (if the low voltage gnd of the HIA4V1 is already shared with the lilygo, this step is not necessary). And connect this to the gnd of the board.
 
 ![image](../../images/high-voltage-source-03.png) 
 ![image](../../images/high-voltage-source-04.png) 
@@ -74,10 +74,11 @@ Results while powering the board with 12V:
 ledcWrite(PRECHARGE_PIN, 0); to turn the output off.
 
 Note that these values depend on the current the HIA4V1 has to provide. 
+
 !!! warning "CAUTION"
     It is absolutely necessary to bias HIA4V1 board with 4x 140k resistors in series across the HV output (4x to increase voltage handling capability), to prevent very high output voltage in no-load situations (which may damage connected equipment). I didn't do it and I destroyed one battery control unit like this :-(.
 
-## Modified HIA4V1 for control via FET board (possible for Lilygo and Stark CMR)
+## Modified HIA4V1 for control via FET board
 
 HIA4V1 modifications:
 
@@ -121,28 +122,17 @@ You can connect three 5KP150A 150V TVS diodes in series to protect against overv
 
 If using TVS diodes, fuse protection is very important (as these diodes have a pulse rating of 400A, and usually fail short, so could draw a large momentary current from the battery).
 
-## Software configuration (Lilygo or Stark CMR)
+## Software configuration
 Below the newest SW settings, details depend on your setup, but this is basis.
 
 ![1000068581](../../images/high-voltage-source-07.png)
-
-For the previous/older SW version:
-Make sure to enable the #define PRECHARGE_CONTROL option in the USER_SETTINGS.h file
-[Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/blob/v8.13.0/Software/USER_SETTINGS.h)
-
-Generic:
-The precharge code itself is located in the folder Software/src/communication/precharge_control/precharge_control.cpp.
-
-[Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/blob/main/Software/src/communication/precharge_control/precharge_control.cpp)
-
-At the time of writing (release 8.13.0) both Lilygo and Stark CMR are tested and compatible out of the box.
 
 The mapping of the pins towards the physical hardware can be found in the corresponding file linked to the hardware you use, located in the directory Software/src/devboard/hal. Make sure to double check the connection is as expected.
 
 [Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator/tree/main/Software/src/devboard/hal)
 
-## PWM testmode (Lilygo or Stark CMR)
-As of release 10.2.0 and above there is a testmode to drive the HIA4V1. This allows you generate a voltage and check polarity.
+## PWM testmode
+There is a testmode to drive the HIA4V1. This allows you generate a voltage and check polarity.
 
 To activate the testmode configure to software:
 
