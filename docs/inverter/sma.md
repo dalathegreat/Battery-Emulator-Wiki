@@ -32,9 +32,9 @@ title: "SMA"
 
 ### Sunny Island
 
-* Sunny Island 4.4M (SI4.4M-13) (Testers wanted!)
-* Sunny Island 6.0H (SI6.0H-13) (Testers wanted!)
-* Sunny Island 8.0H (SI8.0H-13) (Testers wanted!)
+* Sunny Island 4.4M (SI4.4M-13) ❓
+* Sunny Island 6.0H (SI6.0H-13) ❓
+* Sunny Island 8.0H (SI8.0H-13) ❓
   
 !!! info "IMPORTANT"
       The Sunny Island inverters are rated for 48V. Make sure the battery you intend to use matches the voltage requirement!
@@ -144,25 +144,16 @@ A known working solution to restart the inverter is:
 
 ## Which protocol to use
 
-### Sunny Boy Storage
+Choose the appropriate option as **Inverter Protocol** setting:
 
-For this inverter type, use the option called **SMA SBS compatible BYD Battery-Box HVS** as **Inverter Protocol** setting.
-
-###  Sunny Boy Smart Energy
-  
-For this inverter type, use the option called **SMA compatible BYD Battery-Box HVS** as **Inverter Protocol** setting.
-
-### Sunny Tripower Smart Energy
-  
-For this inverter type, use the option called **SMA compatible BYD Battery-Box HVS** as **Inverter Protocol** setting.
-
-### Sunny Island
-  
-For this inverter type, use the option called a`SMA Low Voltage (48V) protocol via CAN** as **Inverter Protocol** setting.
+- Sunny Boy Storage: **SMA SBS compatible BYD Battery-Box HVS**
+- Sunny Boy Smart Energy: **SMA compatible BYD Battery-Box HVS**
+- Sunny Tripower Smart Energy: **SMA compatible BYD Battery-Box HVS**
+- Sunny Island: **SMA Low Voltage (48V) protocol via CAN**
 
 ## Inverter setup
 
-The SMA inverter is sensitive when you try to install the battery to the inverter. Pairing the battery in the installation assistant is sometimes tricky.
+The SMA inverter is sensitive when you try to install the battery. Pairing the battery in the installation assistant is sometimes tricky.
 
 ### Sunny Boy Storage
 
