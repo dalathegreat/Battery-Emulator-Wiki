@@ -14,7 +14,7 @@ Get the SCMR and other related hardware via the official [web shop](https://shop
 
 | GPIO | Function |
 |---|---|
-| 0 | FLA push-button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 0 | FLA push-button — [long-press options available](../setup/software/boot_button_functions.md) |
 | 2 | [Equipment stop](../setup/software/equipment_stop.md) input — or SMA inverter contactor enable input (also broken out on the extra header) |
 | 4 | LED chain data: pixel 0 = [status LED](index.md#status-led-), pixels 1–4 = precharge, negative contactor, positive contactor, [BMS Power](../setup/hardware/periodic_bms_reset.md) |
 | 5 | On-board [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDI |
@@ -171,6 +171,8 @@ The configuration for the above example would look like this:
 The next wiring diagram shows an example for wiring a Renault Zoe battery. This differs from the previous example as the contactors use _low side_ switching, i.e. the contactors will be closed when the dedicated pins from the contactors on the battery are "shorted to ground". 
 ![image](../images/stark-cmr-01.png)
 
-### Boot button 
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../setup/software/boot_button_functions.md)
+## See also
+
+- [BOOT button](../setup/software/boot_button_functions.md) for special features to enable AP, wipe wifi settings or factory reset the device
+- [CAN add-on MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) for an additional CAN interface
 
