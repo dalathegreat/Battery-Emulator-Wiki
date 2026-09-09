@@ -23,7 +23,7 @@ Equipment stop should be added via a **Normally Closed (NC) latching switch**. T
 
 Example: [IP67 1NO1NC Stop Switch](https://vi.aliexpress.com/item/1005008119829541.html)
 
-Check out the pinout table for each board, which pin is defined for E-STOP usage.
+Check out the pinout table for each board, to see which pin is defined for Equipment Stop (E-STOP) usage.
 
 ### External Pull Resistors for Equipment Stop Button
 
