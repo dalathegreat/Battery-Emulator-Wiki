@@ -34,7 +34,6 @@ The Positive (+) wire is close to the data port and the Negative (-) wire is clo
 ![423205153-0e4498c8-f8b8-41d3-bd6f-fa9e5d0640d2](../images/nissan-leaf-e-nv200-04.jpg)
 ![Zoe_harness](../images/nissan-leaf-e-nv200-05.jpg)
 
-
 !!! tip "TIP"
     Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
@@ -79,14 +78,24 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
 !!! tip "TIP"
     The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
 
-## Insulation resistance
+## More Battery Info
+
+The **More Battery Info** button at the bottom of the main page will open a window containing some extra information about the pack. A few notes about the most important ones:
+
+- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted recently (see further down below).
+- **Capacity as new**: is the estimated capacity in kWh, when the pack was new out of the factory.
+- **Actual capacity**: is the degraded capacity in Ah (and multiplied by the pack's nominal voltage in kWh) corresponding to the BMS's health knowledge about the cells.
+- **SOH raw**: the raw State-Of-Health (and the average one) reported by the BMS on the CAN bus. The average one is what you'd see in LeafSpy. Both show 100% if the pack has been SOH-resetted recently.
+- **QC charge count**: the total number of quick (DC/Chademo) charges that have been started while the pack was operating in the car.
+- **AC charge count**: the number of AC charges that have been started while in the car. This number increases at each pack boot and BMS reset when **BMS starting sequence request** is set to **normal charge**.
+- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs).
+- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ. When contactors are open, this shows much higher values. Both are normal like this.
 
 !!! note "NOTE"
-    When contactors are closed, the Battery's own insulation measurement shows values averaging around 100kΩ - this is normal!
-
-For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
+    The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
 
 ## Part numbers for Nissan LEAF batteries
+
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
 
 |  Product |  Purchase Link |
@@ -150,11 +159,14 @@ Crimping a 36pin connector:
 
 You can print your own safety cover for the **unused heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
 
-## Notes on 30kWh (AZE0) pack
+## Notes on stuck SOH
 
-The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the **Hx** and **SOH** percentages reported by the battery back up to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
+The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the **Hx** and **SOH** percentages reported by the BMS back up to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
 
-Performing this clear can restore a few kWh of usable energy back. Actual capacity in **Ah** is not affected by the reset.
+Performing this clear can restore a few kWh of usable energy back. Actual capacity reported in **Ah** is not affected by the reset.
+
+!!! warning "NOTE"
+    Currently **SOH** and **Hx** reported by the BMS is not following over time the real degradation of the cells in stationary storage. They remain stuck at the values you had when you first installed the pack. If you perform the degradation reset, this will show as 100% and will be stuck at that. However, this will widen up the SOC range you can use your battery in, but you'll have to carefully set your limits manually as described further down below.
 
 !!! info "IMPORTANT"
     The degradation reset only works on 2011-2017 (ZE0/AZE0) batteries. Performing it on 2018+ 40/62kWh packs would have a negative effect, since it will restore the battery data too low. 
@@ -194,20 +206,24 @@ To perform a proper SOH% reset, [that sticks between reboots](https://github.com
 After these steps, the CAN-reported **SOH** and **Hx** reset to 100% becomes persistent. Actual capacity in **Ah** is not affected by the reset.
 
 ### Set your own, real limits
-Note that after you reset the SOH to 100%, the BMS will let charging and discharging the cells likely beyond the limits which are safe to use on long term, in respect to the longevity of the cells. In stationary usage the battery charges and discharges much slower, and in a different pattern than when it used to do in a car, so a SOH recalibration in the BMS will take very long to happen, to match reality. 
+
+Note that after you reset the SOH to 100%, the BMS will let charging and discharging the cells likely beyond the limits which are safe to use on long term, in respect to the longevity of the cells. In stationary usage the battery charges and discharges much slower, and in a different pattern than when it used to do in a car.
 
 You can set up [Home Assistant](../setup/software/home_assistant.md) which lets you track cell voltages and delta on longer term, to be able to investigate the behavior. 
 
 To see some results, follow these steps after you do the reset (in normal ambient conditions, avoid extreme cold or hot periods):
 
 - Disable [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) if you have it set
-- Let the battery to charge to empty
+- Let the battery to discharge to empty
 - Let the battery to charge to full
-- Let the battery to charge to empty again
+- Let the battery to discharge to empty again
 - Watch how the values of **Cell Voltage Delta** and **SOC (real)** change over time as approaching full and empty
 
 For example:
 ![image](../images/nissan-leaf-e-nv200-25.png){ width="2200" height="1000" }
+
+!!! tip "TIP"
+    The BMS will prevent damage to the cells when discharging to empty and charging to full. Battery Emulator will show these events as `Battery is completely discharged` and `Battery is fully charged`. You'll likely see `Large cell voltage deviation! Check balancing of cells` too. The goal is to find the thresholds you can manually set between which the battery can operate without running into these regularly.
 
 Try to find the widest time area of **Cell Voltage Delta** where the value changes least - that's the most comfortable and safe "zone" for the cells to operate. Look at the **SOH** graph in the same time period - that should give you the min and the max percentage of SOC rescaling you can set in Battery Emulator, to prevent the battery to go in the high cell voltage delta zone. Take into account the absolute minimum SOC value your inverter is willing to go until (eg. Fronius allows discharging to 5% only, doesn't go below), you can reduce min SOC rescale about by that amount. 
 
