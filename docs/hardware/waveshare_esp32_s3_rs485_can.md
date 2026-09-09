@@ -81,12 +81,6 @@ Once wired, open the **Settings** page in the web interface and set **GPIO 1/2 f
 
 ![Waveshare_settings](../images/waveshare-esp32-s3-rs485-can-03.png){ width="792" height="374" }
 
-### I2C Display (SSD1306 via GPIO1 + GPIO2)
-
-The same connector can alternatively drive an **SSD1306 128×64 I2C OLED display**, using GPIO1 as SDA and GPIO2 as SCL.
-
-In the **Settings** page, set **GPIO 1/2 function** to **I2C Display (SSD1306)** to enable this.
-
 !!! note "NOTE"
     The status LED and I2C display are mutually exclusive — only one can be active at a time.
 
