@@ -2,13 +2,42 @@
 title: "Stark CMR"
 ---
 
-### What is this?
+**MCU / flash:** ESP32 (Xtensa LX6 dual-core, 240 MHz); 4 MB flash on CMR v1, 8 MB on v2.
 
-The Stark CMR (SCMR) is the only commercially available and CE certified product specifically designed for the Battery Emulator project. It aims to make installs clean, easy, expandable and electrician friendly.<br>Get the SCMR and other related hardware via the official [web shop](https://shop.redispo.se/).
+The Stark CMR (SCMR) is a commercially available and CE certified product specifically designed for the Battery Emulator project. It aims to make installs clean, easy, expandable and electrician friendly. 
+
+Get the SCMR and other related hardware via the official [web shop](https://shop.redispo.se/).
 
 ![SCMR02](../images/stark-cmr-02.jpg){ width="400px" }![SCMR01](../images/stark-cmr-03.jpg){ width="400px" }<br>
 
 ## Overview of features
+
+| GPIO | Function |
+|---|---|
+| 0 | FLA push-button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 2 | [Equipment stop](../setup/software/equipment_stop.md) input — or SMA inverter contactor enable input (also broken out on the extra header) |
+| 4 | LED chain data: pixel 0 = [status LED](index.md#status-led-), pixels 1–4 = precharge, negative contactor, positive contactor, [BMS Power](../setup/hardware/periodic_bms_reset.md) |
+| 5 | On-board [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDI |
+| 12 | Second [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) (GPIO header add-on): CS — JTAG TDI on the header |
+| 14 | Second [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) (GPIO header add-on): INT — JTAG TMS on the header |
+| 15 | [Third battery](../setup/software/battery_3x.md) contactors output — JTAG TDO on the header |
+| 16 | On-board [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SCK on Stark CMR v1 (4 MB flash) |
+| 17 | On-board [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SCK on Stark CMR v2 (also available on the extra header when CAN channel 2 is inactive) |
+| 18 | On-board [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CS |
+| 19 | [Second battery](../setup/software/battery_2x.md) contactors output — or [HIA4V1 precharge control](../setup/hardware/high_voltage_source.md#option-b-hia4v1) (also on the extra header) |
+| 21 | RS485 RX |
+| 22 | RS485 TX |
+| 23 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([BMS Power](../setup/hardware/periodic_bms_reset.md) pin = Pin 23, default) — or precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (when [BMS Power](../setup/hardware/periodic_bms_reset.md) is moved to Pin 25) |
+| 25 | Precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (default) — or [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([BMS Power](../setup/hardware/periodic_bms_reset.md) pin = Pin 25) — or inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or battery wake-up 1 (WUP1); held across a reset/OTA reboot |
+| 26 | Native CAN RX |
+| 27 | Native CAN TX |
+| 32 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or battery wake-up 2 (WUP2) |
+| 33 | Negative [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+| 34 | On-board [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDO |
+| 35 | On-board [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) INT |
+
+!!! note "NOTE"
+      [BMS Power](../setup/hardware/periodic_bms_reset.md) is always enabled on this board (`always_enable_bms_power()`).
 
 ### Power
 
