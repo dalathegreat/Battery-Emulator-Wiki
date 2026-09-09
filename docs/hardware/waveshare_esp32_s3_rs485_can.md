@@ -14,7 +14,7 @@ On setups that require RS485, and have CAN controlled contactors (E.g. Tesla Bat
 
 | GPIO | Function |
 |---|---|
-| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 0 | BOOT button — [long-press options available](../setup/software/boot_button_functions.md) |
 | 1 | I2C display SDA (Configurable port = I2C Display SSD1306) |
 | 2 | [Status LED](index.md#status-led-) (default) — or I2C display SCL (I2C Display SSD1306) |
 | 3 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
