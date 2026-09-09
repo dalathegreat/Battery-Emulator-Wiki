@@ -2,7 +2,7 @@
 title: "BECom"
 ---
 
-## Hardware basics
+**MCU / flash:** ESP32-S3 (Xtensa LX7 dual-core, 240 MHz), 16 MB flash.
 
 The BECom (**B**attery **E**mulator **Com**panion) hardware is an open source hardware design created specifically for the Battery-Emulator project. It aims to replace the devkit-plus-adapters approach with a single purpose-built board: everything a typical stationary storage install needs — two battery CAN FD buses, contactor drivers, isolated inverter comms, a 12 V native power supply and an optional battery backup — is already on the board and wired to pluggable screw terminals.
 
@@ -20,13 +20,31 @@ The board has IO for 2x CAN batteries, along with contactor control for each bat
 
 Both battery buses are **CAN FD**, each handled by its own MCP2518FD controller sharing one SPI bus. Battery 1 gets three contactor outputs (positive, negative and pre-charge), battery 2 gets one. Every battery connector also carries the switched 12 V BMS supply, ground and a BMS wake line.
 
-| Connector | Pins | Signals |
-| --- | --- | --- |
-| **Battery 1** | 8 | Contactor Pre-Chg, Contactor +, Contactor −, BMS Wake, BMS 12V Pwr, BMS Gnd, CAN H, CAN L |
-| **Battery 2** | 6 | CAN2 H, CAN2 L, BMS2 Gnd, BMS2 12V Pwr, BMS2 Wake, Bat2 Contactors |
-| **Inverter** | 8 | RS485 B, RS485 Gnd, RS485 A, En Gnd, Enable, CAN H, CAN Gnd, CAN L |
-| **Power In** | 2 | Power +, Gnd |
-| **UPS Battery** | 2 | UPS B+, Gnd |
+| GPIO | Function |
+|---|---|
+| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 1 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output — inverted logic, HIGH shuts the battery down; held across a reset/OTA reboot |
+| 2 | Battery wake-up 1 (WUP1) |
+| 3 | SMA inverter contactor enable input |
+| 5 | [Status LED](index.md#status-led-) (addressable) |
+| 8 | Native CAN TX (inverter CAN) |
+| 9 | Second [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) (CAN FD battery 2): INT |
+| 10 | First [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) (CAN FD battery 1): INT |
+| 11 | First [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md): SDI |
+| 12 | First [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md): SCK (bus shared with the second [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md)) |
+| 13 | First [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md): SDO |
+| 14 | First [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md): CS |
+| 15 | RS485 TX |
+| 16 | RS485 direction control (DE/ /RE for half duplex) |
+| 17 | RS485 RX |
+| 18 | Native CAN RX |
+| 21 | Second [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) (CAN FD battery 2): CS |
+| 37 | [Second battery](../setup/software/battery_2x.md) contactors output (battery 2 negative contactor) |
+| 41 | Battery wake-up 2 (WUP2) |
+| 45 | Precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (battery 1 precharge) — or [HIA4V1 precharge control](../setup/hardware/high_voltage_source.md#option-b-hia4v1) |
+| 46 | [Equipment stop](../setup/software/equipment_stop.md) input — tied permanently low in hardware v1 |
+| 47 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (battery 1 positive) — or inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+| 48 | Negative [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
 
 The inverter side is fully isolated: an isolated CAN transceiver, an isolated RS485 transceiver and an optocoupled **Enable** output (for inverters such as SMA that expect a dry contact). Each isolated domain has its own supply, common-mode chokes, gas discharge tubes, TVS diodes and resettable PTC fuses on every line.
 
