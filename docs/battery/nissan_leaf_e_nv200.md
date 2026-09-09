@@ -34,7 +34,6 @@ The Positive (+) wire is close to the data port and the Negative (-) wire is clo
 ![423205153-0e4498c8-f8b8-41d3-bd6f-fa9e5d0640d2](../images/nissan-leaf-e-nv200-04.jpg)
 ![Zoe_harness](../images/nissan-leaf-e-nv200-05.jpg)
 
-
 !!! tip "TIP"
     Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
@@ -79,14 +78,24 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
 !!! tip "TIP"
     The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
 
-## Insulation resistance
+## More Battery Info
+
+The **More Battery Info** button at the bottom of the main page will open a window containing some extra information about the pack. A few notes about the most important ones:
+
+- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted (see further down below).
+- **Capacity as new**: is the estimated capacity in kWh, when the pack was new out of the factory
+- **Actual capacity**: is the degraded capacity in Ah (and multiplied by the pack's nominal voltage in kWh) corresponding to the BMS's health knowledge about the cells.
+- **SOH raw**: the raw State-Of-Health (and the average one) reported by the BMS on the CAN bus. The average one is what you'd see in LeafSpy. Both show 100% if the pack has been SOH-resetted.
+- **QC charge count**: the total number of quick (DC/Chademo) charges that have been started while the pack was operating in the car
+- **AC charge count**: the number of AC charges that have been started while in the car. This number increases at each pack boot and BMS reset when **BMS starting sequence request** is set to **normal charge**.
+- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs)
+- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ. When contactors are open, this shows much higher values. Both are is normal.
 
 !!! note "NOTE"
-    When contactors are closed, the Battery's own insulation measurement shows values averaging around 100kΩ - this is normal!
-
-For further information about how insulation measurement values should be interpreted, check out the [Insulation monitoring](../setup/hardware/insulation_monitoring.md) page.
+    The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack.
 
 ## Part numbers for Nissan LEAF batteries
+
 In case your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
 
 |  Product |  Purchase Link |
