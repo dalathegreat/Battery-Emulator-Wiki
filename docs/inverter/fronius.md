@@ -9,7 +9,7 @@ The code works with the following Fronius inverters:
 * Fronius Primo Gen24 Plus (all sizes) ✅
 * Fronius Symo Gen24 Plus (all sizes) ✅
 * Fronius Symo Gen24 Plus SC 12.0 ✅
-* Fronius Symo Hybrid 3.0/4.0/5.0-3-S ✅ (ℹ️ Legacy product, no longer available for purchase)
+* Fronius Symo Hybrid 3.0/4.0/5.0-3-S ✅ (ℹ️ Legacy, no longer available)
 * Fronius Verto Plus (all sizes) ✅
 
 On the date of 23.04.2025 Fronius deployed a firmware update that momentarily broke compatibility with Battery-Emulator. This was fixed and interoperability was restored.
