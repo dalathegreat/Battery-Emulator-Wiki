@@ -56,7 +56,7 @@ Setup for battery operation is done via the **Solar.start** app or **Device Conf
 
 ![FroniusSetup](../images/fronius-03.png)
 
-After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter according to this diagram (LilyGo T-CAN485 and LEAF battery example):
+After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter ([Waveshare ESP32‐S3‐RS485‐CAN](../hardware/waveshare_esp32_s3_rs485_can.md) and LEAF battery example):
 
 ![FroniusWiring](../images/fronius-06.png)
 
