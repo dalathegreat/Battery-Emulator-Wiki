@@ -29,7 +29,7 @@ The DFRobot Edge101 is a rugged board, with the following features.
 | 32 | Native CAN TX (isolated TJA1050) |
 | 35 | Native CAN RX (isolated TJA1050) |
 | 36 | RS485 RX |
-| 38 | User button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) (input-only pin, external pull-up on the board, no resistors needed) |
+| 38 | User button — [long-press options available](../setup/software/boot_button_functions.md) (input-only pin, external pull-up on the board, no resistors needed) |
 | 39 | SD card MISO |
 
 !!! note "NOTE"
@@ -39,3 +39,8 @@ The DFRobot Edge101 is a rugged board, with the following features.
 
 ## Purchase link
 The hardware can be bought via sites like AliExpress, the [official store](https://www.dfrobot.com/product-2934.html) and [various distributors](https://octopart.com/de/part/dfrobot/DFR0886)
+
+## See also
+
+- [BOOT button](../setup/software/boot_button_functions.md) for special features to enable AP, wipe wifi settings or factory reset the device
+- [CAN add-on MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) for an additional CAN interface
