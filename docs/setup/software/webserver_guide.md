@@ -149,10 +149,12 @@ If enabled, the system will rescale SOC% between the configured min/max-percenta
 ![image](../../images/webserver-guide-11.png)
 
 !!! note "NOTE"
-    For some battery chemistries (LFP especially), rescaling SOC% prevents the battery from top-balancing properly. For these chemistries it is recommended only to rescale the bottom section (e.g. using 20-100%) 
+    For some battery chemistries (LFP especially), rescaling SOC% prevents the battery from top-balancing properly. For these chemistries it is recommended to rescale only the bottom section with **SOC min percentage** (e.g. using 20-100%).
+    
+    For batteries of NMC chemistries it's specifically advised against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to around **80** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
 
 !!! tip "TIP"
-    Starting from software 8.10.0, it is now possible to do [negative rescaling](https://github.com/dalathegreat/Battery-Emulator/pull/1040)
+    It is now possible to do negative rescaling, as some inverters restrict the possibility to use the entire battery capacity at the bottom section. With this trick you can circumvent that. Use with caution!
 
 #### Battery charge/discharge limit
 
