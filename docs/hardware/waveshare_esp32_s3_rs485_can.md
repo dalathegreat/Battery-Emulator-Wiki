@@ -2,7 +2,7 @@
 title: "Waveshare ESP32‐S3‐RS485‐CAN"
 ---
 
-**MCU / flash:** ESP32-S3R8 (Xtensa LX7 dual-core, 240 MHz) with 8 MB octal/OPI PSRAM, 16 MB flash. 
+**MCU / flash:** ESP32-S3 R8 (Xtensa LX7 dual-core, 240 MHz) with 8 MB octal/OPI PSRAM, 16 MB flash. 
 
 The Waveshare ESP32-S3-RS485-CAN is an affordable and easy to source board. It supports 1x CAN channel, and 1x RS485 port. It comes with a DIN mountable case, and accepts an input voltage between 7-36V.
 
@@ -41,7 +41,7 @@ The hardware can be bought via sites like Amazon, AliExpress, or the official [W
 
 ## Limitations
 
-This board has a single CAN channel and single RS485 port. The 4-pin SH1.0 connector on the board exposes GPIO1 and GPIO2, which can be configured in firmware settings as either a status LED or an I2C display (see below).
+As can be seen from the pin mapping table above, this board has a single CAN channel and single RS485 port. The 4-pin SH1.0 connector on the board exposes GPIO1 and GPIO2, which can be configured in firmware settings as either a status LED or an I2C display (see below).
 
 Internal header exposes pins to be used for GPIO controlled contactors and an additional CAN interface.
 
