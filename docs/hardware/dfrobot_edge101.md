@@ -33,7 +33,7 @@ The DFRobot Edge101 is a rugged board, with the following features.
 | 39 | SD card MISO |
 
 !!! note "NOTE"
-  This board defines no contactor, precharge, [BMS Power](../setup/hardware/periodic_bms_reset.md), [Equipment stop](../setup/software/equipment_stop.md) or wake-up pins yet.
+    This board defines no contactor, precharge, [BMS Power](../setup/hardware/periodic_bms_reset.md), [Equipment stop](../setup/software/equipment_stop.md) or wake-up pins yet.
 
 ![dfrobot101_verto](../images/dfrobot-edge101-02.jpg){ height="461" }
 
