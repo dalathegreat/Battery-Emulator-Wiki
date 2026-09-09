@@ -2,7 +2,7 @@
 title: "Waveshare ESP32‐S3‐RS485‐CAN"
 ---
 
-## Hardware basics
+**MCU / flash:** ESP32-S3R8 (Xtensa LX7 dual-core, 240 MHz) with 8 MB octal/OPI PSRAM, 16 MB flash. 
 
 The Waveshare ESP32-S3-RS485-CAN is an affordable and easy to source board. It supports 1x CAN channel, and 1x RS485 port. It comes with a DIN mountable case, and accepts an input voltage between 7-36V.
 
@@ -11,6 +11,29 @@ The Waveshare ESP32-S3-RS485-CAN is an affordable and easy to source board. It s
 ### Where this hardware shines
 
 On setups that require RS485, and have CAN controlled contactors (E.g. Tesla Battery with a Fronius inverter), it's a plug and play solution. This board is a more future proof alternative compared to the [LilyGo T-CAN485](lilygo_t_can485.md).
+
+| GPIO | Function |
+|---|---|
+| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 1 | I2C display SDA (Configurable port = I2C Display SSD1306) |
+| 2 | [Status LED](index.md#status-led-) (default) — or I2C display SCL (I2C Display SSD1306) |
+| 3 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+| 4 | Negative [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+| 5 | Precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or [HIA4V1 precharge control](../setup/hardware/high_voltage_source.md#option-b-hia4v1) |
+| 6 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output; held at its driven level across a firmware-initiated reset/OTA reboot |
+| 7 | [Equipment stop](../setup/software/equipment_stop.md) input |
+| 8 | [Second battery](../setup/software/battery_2x.md) contactors output — or battery wake-up 1 (WUP1) |
+| 9 | SMA inverter contactor enable input — or battery wake-up 2 (WUP2) |
+| 10 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CAN FD add-on: SCK |
+| 11 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CAN FD add-on: SDI |
+| 12 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CAN FD add-on: SDO |
+| 13 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CAN FD add-on: CS |
+| 14 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CAN FD add-on: INT |
+| 15 | Native CAN TX |
+| 16 | Native CAN RX |
+| 17 | RS485 TX |
+| 18 | RS485 RX |
+| 21 | RS485 direction control (SP3485 DE and /RE tied together, HIGH = transmit) |
 
 ## Purchase link
 
