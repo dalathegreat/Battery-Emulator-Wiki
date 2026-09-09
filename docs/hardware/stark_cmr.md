@@ -27,8 +27,8 @@ Get the SCMR and other related hardware via the official [web shop](https://shop
 | 19 | [Second battery](../setup/software/battery_2x.md) contactors output — or [HIA4V1 precharge control](../setup/hardware/high_voltage_source.md#option-b-hia4v1) (also on the extra header) |
 | 21 | RS485 RX |
 | 22 | RS485 TX |
-| 23 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([BMS Power](../setup/hardware/periodic_bms_reset.md) pin = Pin 23, default) — or precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (when [BMS Power](../setup/hardware/periodic_bms_reset.md) is moved to Pin 25) |
-| 25 | Precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (default) — or [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([BMS Power](../setup/hardware/periodic_bms_reset.md) pin = Pin 25) — or inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or battery wake-up 1 (WUP1); held across a reset/OTA reboot |
+| 23 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output (default 23) — or precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (when BMS Power moves to Pin 25) |
+| 25 | Precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) (default) — or BMS Power output — or inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or battery wake-up 1 (WUP1); held across a reset/OTA reboot |
 | 26 | Native CAN RX |
 | 27 | Native CAN TX |
 | 32 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or battery wake-up 2 (WUP2) |
