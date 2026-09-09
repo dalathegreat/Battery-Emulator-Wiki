@@ -21,7 +21,7 @@ The ESP32 DevKit V1 hardware can be used with Battery-Emulator, and has the foll
 
 | GPIO | Function |
 |---|---|
-| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 0 | BOOT button — [long-press options available](../setup/software/boot_button_functions.md) |
 | 1 | RS485 TX (UART0, shared with the USB serial console) |
 | 2 | SMA inverter "contactor allowed" indicator LED output |
 | 3 | RS485 RX (UART0, shared with the USB serial console) |
