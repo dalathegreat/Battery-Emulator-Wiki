@@ -5,9 +5,7 @@ title: "Periodic BMS reset"
 ## Why is Periodic Reset needed?
 Some EV batteries are not able to operate 24/7 nonstop under all conditions. Over time the SOC% will become less and less accurate, and in some integrations like the Nissan LEAF, even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)). Balancing also becomes a problem on some packs.
 
-The solution is to periodically reset the 12V power going into the BMS.
-
-The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks by removing its power for a configured time. This requires compatible hardware: the board must define a `BMS_POWER` pin **and** you must have physically wired the BMS's IGN input through it (via a relay/SSR/MOSFET). Boards that define the pin include LilyGo T-CAN485, LilyGo-2-CAN, 3LB, Stark CMR, Waveshare and BeCom; the generic/default HAL leaves it unconnected (`GPIO_NUM_NC`), so the toggle is a no-op if a board doesn't define it. 
+The solution is to periodically reset the 12V power going into the BMS. The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks by removing its power for a configured time. 
 
 ### Batteries that benefit from Periodic Reset
 
@@ -20,7 +18,9 @@ The purpose is to force the BMS to recalculate SOC and clear drift/memory leaks 
 
 ### GPIO behavior
 
-The `BMS_POWER` pin is only configured as an output and driven **HIGH** at boot if **at least one** of the following is true:
+Check out the pinout table for each board, to see which pin is defined for **BMS power**, and wire your SSR to that.
+
+The **BMS power** pin is only configured as an output and driven **HIGH** at boot if **at least one** of the following is true:
 
 - *Periodic BMS reset every 24h* is enabled, **or**
 - *Remote BMS reset via MQTT allowed* is enabled, **or**
