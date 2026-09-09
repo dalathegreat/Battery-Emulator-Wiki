@@ -26,7 +26,7 @@ The hardware can be bought via sites like AliExpress, or the official [LilyGo st
 
 | GPIO | Function |
 |---|---|
-| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 0 | BOOT button — [long-press options available](../setup/software/boot_button_functions.md) |
 | 1 | Battery wake-up 1 (Configurable port = WUP1 / WUP2, default) — or I2C display SDA (I2C Display SSD1306) — or [Equipment stop](../setup/software/equipment_stop.md) input ([E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)) |
 | 2 | Battery wake-up 2 (WUP1 / WUP2, default) — or I2C display SCL (I2C Display SSD1306) — or [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)); held across a reset/OTA reboot |
 | 3 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output (Configurable port = WUP1 / WUP2 or I2C Display); held across a reset/OTA reboot |
@@ -158,6 +158,11 @@ You can attach a WS2812B LED to the board, connecting to IO35, 5V and GND. It ma
 #### Contactors
 
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
+
+## See also
+
+- [BOOT button](../setup/software/boot_button_functions.md) for special features to enable AP, wipe wifi settings or factory reset the device
+- [CAN add-on MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) for an additional CAN interface
 
 !!! note "NOTE"
     In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions.
