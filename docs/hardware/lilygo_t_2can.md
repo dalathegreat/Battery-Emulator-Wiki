@@ -69,7 +69,7 @@ The hardware has more details on LilyGo's Github page
 !!! note "NOTE"
     This has an included Antenna that needs to be mounted for good Wifi performance. Failure to install this will lead to connectivity issues.
 
-![image](../images/lilygo-t-2can-03.png)
+    ![image](../images/lilygo-t-2can-03.png)
 
 ## Installing the software
 
