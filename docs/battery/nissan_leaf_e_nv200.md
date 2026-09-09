@@ -7,10 +7,13 @@ For this battery type, use the option named **Nissan LEAF battery** under the **
 
 ![image](../images/nissan-leaf-e-nv200-26.png)
 
-- leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed. You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md), like for example [Home Assistant](../setup/software/home_assistant.md). to observe behavior is strongly recommended when using experimental settings). Changing this setting requires a BMS reset.
+- leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed, or experiences high cell voltage deltas (> 150mV). You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md), like for example [Home Assistant](../setup/software/home_assistant.md) to observe behavior is strongly recommended when using experimental settings). Changing this setting requires a BMS reset.
 - on a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
        - If you enable this setting on a AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus for these it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and insulate manually one of them). Instead just block off the unused HV port with a 3D printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
 - set the **Battery chemistry** to **NMC**.
+
+!!! tip "TIP"
+    **BMS starting sequence request** set to **nomral charge (experimental)** avoids overbalancing when your pack is in a good shape (small cell voltage delta in your preferred SOC range). 
 
 ## Wiring diagrams
 
