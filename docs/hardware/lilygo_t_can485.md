@@ -2,7 +2,7 @@
 title: "LilyGo T‐CAN485"
 ---
 
-## Hardware basics
+**MCU / flash:** ESP32-D0WDQ6-V3 (Xtensa LX6 dual-core, 240 MHz), 4 MB flash, no PSRAM.
 
 The LilyGo T-CAN485 is what the Battery-Emulator originally started development with. It is a very cheap microcontroller, that runs the entire project easily. It has 1x CAN, 1x RS485, and GPIO pins for expansion.
 
@@ -18,6 +18,34 @@ The LilyGo T-CAN485 is what the Battery-Emulator originally started development 
 The hardware can be bought via sites like [AliExpress](https://www.aliexpress.com/item/1005003624034092.html)
 
 ## Hardware info
+
+| GPIO | Function |
+|---|---|
+| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 2 | SD card MISO (Configurable port = µSD Card, default) |
+| 4 | [Status LED](index.md#status-led-) (addressable) |
+| 5 | MCP2515 MOSI / [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDI — or SMA inverter contactor enable input (SMA enable pin = Pin 5, default) — or CHAdeMO pin 10 |
+| 12 | MCP2515 / [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SCK — or CHAdeMO pin 2 |
+| 13 | SD card CS (Configurable port = µSD Card) |
+| 14 | SD card SCLK (µSD Card) — or I2C display SCL (Configurable port = I2C Display SSD1306) |
+| 15 | SD card MOSI (µSD Card) — or I2C display SDA (I2C Display SSD1306) — or [second battery](../setup/software/battery_2x.md) contactors output — or CHAdeMO current transducer input (ADC2_CH3) |
+| 16 | 5 V boost regulator enable |
+| 17 | RS485 transceiver enable |
+| 18 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([BMS Power](../setup/hardware/periodic_bms_reset.md) pin = Pin 18, default) — or MCP2515 / [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CS — or CHAdeMO lock |
+| 19 | RS485 SE (transceiver shutdown) |
+| 21 | RS485 RX |
+| 22 | RS485 TX |
+| 23 | Native CAN SE (transceiver silent/enable) |
+| 25 | Precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([BMS Power](../setup/hardware/periodic_bms_reset.md) pin = Pin 25) — or [HIA4V1 precharge control](../setup/hardware/high_voltage_source.md#option-b-hia4v1) — or battery wake-up 1 (WUP1); held at its driven level across a firmware-initiated reset/OTA reboot |
+| 26 | Native CAN RX |
+| 27 | Native CAN TX |
+| 32 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or battery wake-up 2 (WUP2) |
+| 33 | Negative [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or SMA inverter contactor enable input (SMA enable pin = Pin 33) |
+| 34 | MCP2515 MISO / [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDO — or CHAdeMO pin 7 |
+| 35 | MCP2515 / [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) INT — or [Equipment stop](../setup/software/equipment_stop.md) input — or CHAdeMO pin 4 |
+
+!!! note "NOTE"
+    Thhe binary for this board builds with `SMALL_FLASH_DEVICE`, which compiles out the I2C display, so on the stock firmware the Configurable port dropdown only offers µSD Card.
 
 The hardware has more details on LilyGo's Github page [github/Xinyuan-LilyGO](https://github.com/Xinyuan-LilyGO/T-CAN485)
 
