@@ -62,7 +62,7 @@ The pin numbers on the picture are the ones used on the LilyGo T-CAN485, check o
 !!! tip "TIP"
     If you use SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM:
 
-![image](../images/nissan-leaf-e-nv200-23.png)
+    ![image](../images/nissan-leaf-e-nv200-23.png)
 
 Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface:
 
