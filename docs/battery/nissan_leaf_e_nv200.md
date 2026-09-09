@@ -48,7 +48,7 @@ Nissan's own documentation uses pin numbering on the 36pin low voltage connector
 !!! tip "TIP"
     Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
-### Automatic control 🤖
+#### Automatic control 🤖
 Battery Emulator hardware can act on its own, and [turn on/off the contactors/precharge resistor](../setup/software/contactor_control_via_gpio_pins.md) when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the supported boards.
 
 To enable the feature in the software, Enable the **Contactor control via GPIO** option on the Settings page.
@@ -68,7 +68,6 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 
 ![bild](../images/nissan-leaf-e-nv200-08.png)
 
-### Manual control 🖐️
 !!! warning "WARNING"
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
@@ -158,20 +157,21 @@ The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the a
 Performing this clear can restore a few kWh of usable energy back. 
 
 !!! info "IMPORTANT"
-    The degradation reset only works on 2011-2017 batteries. Performing it on 2018+ 40/62kWh packs will have a negative effect, since it will restore the battery data too low. So only perform this reset on ZE0/AZE0 (24/30kWh) packs!
+    The degradation reset only works on 2011-2017 (ZE0/AZE0) batteries. Performing it on 2018+ 40/62kWh packs would have a negative effect, since it will restore the battery data too low. 
 
 ![image](../images/nissan-leaf-e-nv200-20.png)
 
 ### Performing the reset
+
 To perform a proper SOH% reset, [that sticks between reboots](https://github.com/dalathegreat/Battery-Emulator/issues/900#issuecomment-3482162856), perform the following steps:
 
 #### Remotely
 
 !!! note "NOTE"
-    You need [Home Assistant](../setup/software/home_assistant.md) set up to be able to do this remotely, by triggereing a BMS Reset on demand. 
+    You need [Home Assistant](../setup/software/home_assistant.md) set up to be able to do this remotely, by triggering a BMS Reset on demand. 
+    
     Also, this can only be done remotely if only **IGN** is cut by BMS Reset and if the battery is alone on the CAN bus.
     
-
 - Set **Periodic BMS reset off time** to 180 s
 - Open contactors
 - Reset battery degradation via the More Battery Info page
