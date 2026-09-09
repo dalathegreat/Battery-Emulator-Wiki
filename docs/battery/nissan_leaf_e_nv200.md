@@ -49,26 +49,20 @@ Nissan's own documentation uses pin numbering on the 36pin low voltage connector
     Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
 ### Automatic control 🤖
-Battery Emulator hardware can act on its own, and turn on/off the contactors/precharge resistor when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the supported boards.
+Battery Emulator hardware can act on its own, and [turn on/off the contactors/precharge resistor](../setup/software/contactor_control_via_gpio_pins.md) when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the supported boards.
 
 To enable the feature in the software, Enable the **Contactor control via GPIO** option on the Settings page.
 
 ![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
 
-To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow this schematic to complete the circuit:
+To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow the schematic above to complete the circuit. 
 
-The pin numbers below are the ones used on the LilyGo T-CAN485, check the HAL definitions of your own board if you use a different one:
+The pin numbers on the picture are the ones used on the LilyGo T-CAN485, check out the pinout table for each board, which pin is defined as contactor output.
 
-- Precharge pin 25 - Precharge SSR + input
-- Positive Contactor pin 32 - Positive SSR + input
-- Negative Contactor pin 33 - Negative SSR + input
-- GND - All 3x SSR - input
+!!! tip "TIP"
+    If you use SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM:
 
-OPTIONAL: If you use SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM.
-
-![image](../images/nissan-leaf-e-nv200-23.png){ width="624" height="118" }
-
-![bild](../images/nissan-leaf-e-nv200-07.png)
+![image](../images/nissan-leaf-e-nv200-23.png)
 
 Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface:
 
@@ -79,7 +73,7 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
-The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) become confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)). BAT pin can be under +12V continuously, IGN pin should be the one turned off from time to time. 
+The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) become confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)). **BAT** pin can be under +12V continuously, **IGN** pin should be the one turned off from time to time (as the wiring diagram above shows). 
 
 See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Set **Periodic BMS reset off time** to **120 seconds** for Nissan LEAF packs. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the **24h** period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on AZE0 packs.
 
@@ -168,16 +162,32 @@ Performing this clear can restore a few kWh of usable energy back.
 
 ![image](../images/nissan-leaf-e-nv200-20.png)
 
-### Performing the reset in detail
+### Performing the reset
 To perform a proper SOH% reset, [that sticks between reboots](https://github.com/dalathegreat/Battery-Emulator/issues/900#issuecomment-3482162856), perform the following steps:
+
+#### Remotely
+
+!!! note "NOTE"
+    You need [Home Assistant](../setup/software/home_assistant.md) set up to be able to do this remotely, by triggereing a BMS Reset on demand. 
+    Also, this can only be done remotely if only **IGN** is cut by BMS Reset and if the battery is alone on the CAN bus.
+    
+
+- Set **Periodic BMS reset off time** to 180 s
+- Open contactors
+- Reset battery degradation via the More Battery Info page
+- Press **Reset BMS** in Home Assistant, and wait for the 180s to pass (watch Battery Emulator main page)
+- Close contactors
+- Reboot Battery Emulator
+
+#### At the location
 
 - Open contactors
 - Reset battery degradation via the More Battery Info page
-- Disconnect CAN cables (also disconnect them from the inverter if they share a single CAN bus)
-- Keep BMS power ON, but remove CHG/IGN 12V signal
+- Disconnect CAN cable from the battery
+- Keep BMS **BAT** power ON, only remove **IGN** 12V power
 - Wait 3 minutes
 - Reconnect CAN cables
-- Restore 12V to GHG/IGN
+- Restore 12V to **IGN**
 - Close contactors
 - Reboot Battery Emulator
 
