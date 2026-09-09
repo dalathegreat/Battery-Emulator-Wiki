@@ -21,7 +21,7 @@ The hardware can be bought via sites like [AliExpress](https://www.aliexpress.co
 
 | GPIO | Function |
 |---|---|
-| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 0 | BOOT button — [long-press options available](../setup/software/boot_button_functions.md) |
 | 2 | SD card MISO (Configurable port = µSD Card, default) |
 | 4 | [Status LED](index.md#status-led-) (addressable) |
 | 5 | MCP2515 MOSI / [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDI — or SMA inverter contactor enable input (SMA enable pin = Pin 5, default) — or CHAdeMO pin 10 |
