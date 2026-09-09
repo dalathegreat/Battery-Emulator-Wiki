@@ -89,7 +89,7 @@ The **More Battery Info** button at the bottom of the main page will open a wind
 - **QC charge count**: the total number of quick (DC/Chademo) charges that have been started while the pack was operating in the car.
 - **AC charge count**: the number of AC charges that have been started while in the car. This number increases at each pack boot and BMS reset when **BMS starting sequence request** is set to **normal charge**.
 - **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs).
-- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ. When contactors are open, this shows much higher values. Both are is normal.
+- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ. When contactors are open, this shows much higher values. Both are normal like this.
 
 !!! note "NOTE"
     The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
