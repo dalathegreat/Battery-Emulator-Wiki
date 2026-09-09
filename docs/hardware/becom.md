@@ -22,7 +22,7 @@ Both battery buses are **CAN FD**, each handled by its own MCP2518FD controller 
 
 | GPIO | Function |
 |---|---|
-| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 0 | BOOT button — [long-press options available](../setup/software/boot_button_functions.md) |
 | 1 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output — inverted logic, HIGH shuts the battery down; held across a reset/OTA reboot |
 | 2 | Battery wake-up 1 (WUP1) |
 | 3 | SMA inverter contactor enable input |
@@ -77,6 +77,7 @@ When updating this board [OTA](../setup/software/ota_update.md), be sure to sele
 
 `BE_vX.Y.Z_BECom.ota.bin`
 
-## Boot button
+## See also
 
-The BOOT button has [special features to enable AP, wipe wifi settings or factory reset the device](../setup/software/boot_button_functions.md)
+- [BOOT button](../setup/software/boot_button_functions.md) for special features to enable AP, wipe wifi settings or factory reset the device
+- [CAN add-on MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) for an additional CAN interface
