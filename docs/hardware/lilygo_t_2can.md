@@ -2,7 +2,7 @@
 title: "LilyGo T‐2CAN"
 ---
 
-## Hardware basics
+**MCU / flash:** ESP32-S3 (Xtensa LX7 dual-core, 240 MHz), 16 MB flash, 8 MB PSRAM. 
 
 The LilyGo T-2CAN is a dual CAN board, excellent for integrations that require separate CAN controllers. It is very easy to use this board on multi-CAN systems compared to the LilyGo T‐CAN485. The CAN interfaces are both galvanically isolated, making it safe to use with inverters such as Solax.
 
@@ -23,6 +23,45 @@ Since they are the same price, the T-2CAN FD is generally recommended.
 The hardware can be bought via sites like AliExpress, or the official [LilyGo store](https://lilygo.cc/products/t-2can)
 
 ## Hardware info
+
+| GPIO | Function |
+|---|---|
+| 0 | BOOT button — [long-press options available](../setup/software/contactor_control_via_gpio_pins.md) |
+| 1 | Battery wake-up 1 (Configurable port = WUP1 / WUP2, default) — or I2C display SDA (I2C Display SSD1306) — or [Equipment stop](../setup/software/equipment_stop.md) input ([E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)) |
+| 2 | Battery wake-up 2 (WUP1 / WUP2, default) — or I2C display SCL (I2C Display SSD1306) — or [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)); held across a reset/OTA reboot |
+| 3 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output (Configurable port = WUP1 / WUP2 or I2C Display); held across a reset/OTA reboot |
+| 4 | [Third battery](../setup/software/battery_3x.md) contactors output — or CHAdeMO pin 4 |
+| 5 | [Second battery](../setup/software/battery_2x.md) contactors output — or CHAdeMO current transducer input (ADC1_CH4) |
+| 6 | Native CAN RX (CAN B) |
+| 7 | Native CAN TX (CAN B) |
+| 8 | On-board controller INT — [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) |
+| 9 | On-board MCP2515 RST (non-FD board only); also driven by the FD/non-FD detection probe at boot |
+| 10 | On-board controller CS — [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) |
+| 11 | On-board controller MOSI/SDI — [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) |
+| 12 | On-board controller SCK — [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) |
+| 13 | On-board controller MISO/SDO — [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) |
+| 14 | Inverter disconnect [contactor output](../setup/software/contactor_control_via_gpio_pins.md) — or battery wake-up 2 (Configurable port = I2C Display or [E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)) |
+| 15 | CHAdeMO pin 10 |
+| 16 | CHAdeMO pin 2 |
+| 17 | Negative [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+| 18 | [HIA4V1 precharge control](../setup/hardware/high_voltage_source.md#option-b-hia4v1) — or battery wake-up 1 (Configurable port = I2C Display or [E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)) |
+| 21 | Precharge [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+| 35 | [Status LED](index.md#status-led-) (addressable) |
+| 36 | [Equipment stop](../setup/software/equipment_stop.md) input (Configurable port = WUP1 / WUP2 or I2C Display) |
+| 37 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDO — header add-on on an FD board, first FD interface on a non-FD board |
+| 38 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SCK — header add-on on an FD board, first FD interface on a non-FD board |
+| 39 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) INT — header add-on on an FD board, first FD interface on a non-FD board |
+| 40 | CHAdeMO lock |
+| 41 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) CS — header add-on on an FD board, first FD interface on a non-FD board |
+| 42 | [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) SDI — header add-on on an FD board, first FD interface on a non-FD board |
+| 43 | RS485 TX (also the bootloader UART, so boot chatter goes out on the bus) |
+| 44 | RS485 RX (also the bootloader UART) |
+| 46 | SMA inverter contactor enable input |
+| 47 | CHAdeMO pin 7 |
+| 48 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+
+!!! note "NOTE"
+    The firmware auto-detects at boot whether the board carries an MCP2515 or an [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md), which decides how GPIO8–13 and GPIO37–42 are used.
 
 The hardware has more details on LilyGo's Github page
 [github/Xinyuan-LilyGO](https://github.com/Xinyuan-LilyGO/T-2Can)
@@ -95,31 +134,6 @@ The second 'QWIIC' connector (the one with GND/3V3/IO01/IO02 on the image above)
 
 ![image](../images/lilygo-t-2can-11.jpeg)
 
-#### WUP1 / WUP2
-
-These signals are used as wake-up signals for some batteries.
-
-|  T-2CAN pin |  Signal |
-| :--------: | :---------: |
-| IO01 | WUP1 |
-| IO02 | WUP2 |
-
-#### E-Stop / BMS Power
-
-|  T-2CAN pin |  Signal | Function |
-| :--------: | :---------: | :---------: | 
-| IO01 | E-Stop | An input which performs an equipment-stop (sets the inverter current to zero). See [Equipment Stop](../setup/software/equipment_stop.md) for more information. |
-| IO02 | BMS Power | An active-high output to drive a contactor/relay to power the BMS. Allows BE to power cycle it periodically. |
-
-#### I2C Display
-
-|  T-2CAN pin |  Signal |
-| :--------: | :---------: |
-| IO01 | SDA |
-| IO02 | SCL |
-
-See below for more information.
-
 ### Expansion header
 
 The underside of the board has pads for a 26-pin 2.54mm-pitch pin header.
@@ -148,33 +162,12 @@ The contactor outputs provide a 3.3V logic signal, which is insufficient to driv
 !!! note "NOTE"
     In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions.
 
-### Screen compatibility
-
-The T-2CAN board can have a 128x64 SSD1306/SSD1309 I2C OLED display attached to it, that will display battery status, events and WiFi info.
-
-Currently only on Lilygo T-2CAN, using the second QWIIC connector (SDA=GPIO1, SCL=GPIO2).
-
-![image](../images/lilygo-t-2can-17.png)
-
-#### Screen parts needed 
-
-The screens are available in several sizes. Some are monochrome, others are two-tone (each pixel can only show one color, but different regions are different colors). The same 4-pin SH-1.0mm 'QWIIC' cable from LilyGo can be used, also available from AliExpress. Pay close attention to the pin connections, since the color code is not consistent between cables.
-
-|  Product |  Purchase Link |
-| :--------: | :---------: |
-| Display |  [0.96 inch](https://a.aliexpress.com/_EInVnDS)   |
-| Display |  [1.54 inch](https://www.aliexpress.com/item/1005009313931934.html) |
-| Display |  [2.42 inch](https://a.aliexpress.com/_EIVtGmY)   |
-| QWIIC 4pin |  [Aliexpress](https://a.aliexpress.com/_EugpEKC)   |
-
-![image](../images/lilygo-t-2can-01.jpg)
-
 ### 3D-printable parts
 
 You can print your own cases and mounts for this board, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
 
 ### Troubleshooting 🔧
-If you see CAN_NATIVE_BUS_ERROR / CANMCP2515_BUS_ERROR events and have problems with CAN interfaces, supply the board with 12V instead of 5V. This stabilizes the CAN hardware significantly
+If you see `CAN_NATIVE_BUS_ERROR` / `CANMCP2515_BUS_ERROR` events and have problems with CAN interfaces, supply the board with 12V instead of 5V. This stabilizes the CAN hardware significantly
 
 ### See also
 
