@@ -30,45 +30,42 @@ The smaller model needs the jumper near the terminal block needs to be seated in
 
 ![MCP2518 module](../../images/lilygo-t-2can-16.png)
 
-![CAN_FD_Lilygo](../../images/can-fd-add-on-mcp2518fd-03.jpg)
+Examples below show how to connect the **MCP2518FD Pro** to the **LilyGo T-CAN485**. It can be connected to the other boards in a similar way. Check out the pinout table for each board, to see which pins are defined for MCP2518FD usage.
 
-Labeling:
+### The smaller board
 
-    MCP2518FD -> Lilygo
-    ___________________
-    SCK -> IO 12
-    SDI -> IO 5
-    SDO -> IO 34
-    nCS -> IO 18
-    INT -> IO 35
-    GND (next to 3V3) -> Any GND pin on LilyGo
-    3V3 -> VDD on LilyGo
-    GND (next to 5V) -> Any GND pin on LilyGo (+ to GND on external 5V source)
-    5V -> 5V source, can be same as feeds LilyGo via the input pins.
+![canfd-small](../../images/can-fd-add-on-mcp2518fd-03.jpg)
+
+| MCP2518FD small | LilyGo T-CAN485 |
+|---|---|
+| SCK | IO 12 |
+| SDI | IO 5 |
+| SDO | IO 34 |
+| nCS | IO 18 |
+| INT | IO 35 |
+| GND (next to 3V3) | Any GND pin |
+| 3V3 | VDD on LilyGo |
+| GND (next to 5V) | Any GND pin |
+| 5V | 5V source |
 
 !!! note "NOTE"
     Only one GND connector is technically required if the same ground is being used for the board.
 
-### Connecting it to LilyGo T-CAN485
+### The bigger board
 
-![lilygo-and-canfd](../../images/can-fd-add-on-mcp2518fd-01.jpg)
+![canfd-big](../../images/can-fd-add-on-mcp2518fd-01.jpg)
 
-    MCP2518FD -> Lilygo
-    ___________________
-    SCK  -> IO 12
-    MOSI -> IO 5
-    MISO -> IO 34
-    CS   -> IO 18
-    INT  -> IO 35
-    GND (next to 3V3) -> Any GND pin on LilyGo
-    3V3  -> VDD on LilyGo
-    GND (next to 5V) -> Any GND pin on LilyGo (+ to GND on external 5V source)
-    5V   -> 5V source, can be same as feeds LilyGo via the input pins.
-
-
-### Connecting it to LilyGo T-2CAN
-
-See the [T-2CAN expansion header](../../hardware/lilygo_t_2can.md#expansion-header)
+| MCP2518FD big | LilyGo T-CAN485 |
+|---|---|
+| SCK  | IO 12 |
+| MOSI | IO 5 |
+| MISO | IO 34 |
+| CS   | IO 18 |
+| INT  | IO 35 |
+| GND (next to 3V3) | Any GND pin |
+| 3V3  | VDD |
+| GND (next to 5V) | Any GND pin |
+| 5V   | 5V source |
 
 ## Software setup
 
