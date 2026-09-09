@@ -82,17 +82,17 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
 
 The **More Battery Info** button at the bottom of the main page will open a window containing some extra information about the pack. A few notes about the most important ones:
 
-- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted (see further down below).
+- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted recently (see further down below).
 - **Capacity as new**: is the estimated capacity in kWh, when the pack was new out of the factory.
 - **Actual capacity**: is the degraded capacity in Ah (and multiplied by the pack's nominal voltage in kWh) corresponding to the BMS's health knowledge about the cells.
-- **SOH raw**: the raw State-Of-Health (and the average one) reported by the BMS on the CAN bus. The average one is what you'd see in LeafSpy. Both show 100% if the pack has been SOH-resetted.
+- **SOH raw**: the raw State-Of-Health (and the average one) reported by the BMS on the CAN bus. The average one is what you'd see in LeafSpy. Both show 100% if the pack has been SOH-resetted recently.
 - **QC charge count**: the total number of quick (DC/Chademo) charges that have been started while the pack was operating in the car.
 - **AC charge count**: the number of AC charges that have been started while in the car. This number increases at each pack boot and BMS reset when **BMS starting sequence request** is set to **normal charge**.
 - **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs).
 - **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ. When contactors are open, this shows much higher values. Both are is normal.
 
 !!! note "NOTE"
-    The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack.
+    The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
 
 ## Part numbers for Nissan LEAF batteries
 
@@ -159,11 +159,14 @@ Crimping a 36pin connector:
 
 You can print your own safety cover for the **unused heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
 
-## Notes on 30kWh (AZE0) pack
+## Notes on stuck SOH
 
 The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the **Hx** and **SOH** percentages reported by the battery back up to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
 
 Performing this clear can restore a few kWh of usable energy back. Actual capacity in **Ah** is not affected by the reset.
+
+!!! warning "NOTE"
+    Currently **SOH** and **Hx** reported by the BMS is not following over time the real degradation of the cells in stationary storage. They remain stuck at the values you had when you first installed the pack. If you perform the degradation reset, this will show as 100% and will be stuck at that. However, this will widen up the SOC range you can use your battery in, but you'll have to carefully set your limits manually.
 
 !!! info "IMPORTANT"
     The degradation reset only works on 2011-2017 (ZE0/AZE0) batteries. Performing it on 2018+ 40/62kWh packs would have a negative effect, since it will restore the battery data too low. 
