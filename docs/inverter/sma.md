@@ -2,32 +2,33 @@
 title: "SMA"
 ---
 
-## SMA inverter types
+## Compatible types
+
 ### Sunny Boy Storage
 
-* Sunny Boy Storage 2.5 (SBS2.5-1VL-10) :heavy_check_mark:
-* Sunny Boy Storage 3.7 (SBS3.7-10) :heavy_check_mark:
-* Sunny Boy Storage 5.0 (SBS5.0-10) :heavy_check_mark:
-* Sunny Boy Storage 6.0 (SBS6.0-10) :heavy_check_mark:
+* Sunny Boy Storage 2.5 (SBS2.5-1VL-10) ✅
+* Sunny Boy Storage 3.7 (SBS3.7-10) ✅
+* Sunny Boy Storage 5.0 (SBS5.0-10) ✅
+* Sunny Boy Storage 6.0 (SBS6.0-10) ✅
 
 !!! note "NOTE"
       The inverter contains a 120 Ohm terminating resistor on CAN-L/H pins. The SBS2.5-1VL-10 inverter has a slightly different protocol than the other SBS inverters.
 
 ### Sunny Boy Smart Energy
 
-* Sunny Boy Smart Energy 3.8  (SBSE3.8-US-50)  :heavy_check_mark:
-* Sunny Boy Smart Energy 4.8  (SBSE4.8-US-50)  :heavy_check_mark:
-* Sunny Boy Smart Energy 5.8  (SBSE5.8-US-50)  :heavy_check_mark:
-* Sunny Boy Smart Energy 7.7  (SBSE7.7-US-50)  :heavy_check_mark:
-* Sunny Boy Smart Energy 9.6  (SBSE9.6-US-50)  :heavy_check_mark:
-* Sunny Boy Smart Energy 11.5 (SBSE11.5-US-50) :heavy_check_mark:
+* Sunny Boy Smart Energy 3.8  (SBSE3.8-US-50)  ✅
+* Sunny Boy Smart Energy 4.8  (SBSE4.8-US-50)  ✅
+* Sunny Boy Smart Energy 5.8  (SBSE5.8-US-50)  ✅
+* Sunny Boy Smart Energy 7.7  (SBSE7.7-US-50)  ✅
+* Sunny Boy Smart Energy 9.6  (SBSE9.6-US-50)  ✅
+* Sunny Boy Smart Energy 11.5 (SBSE11.5-US-50) ✅
 
 ### Sunny Tripower Smart Energy
 
-* Sunny Tripower Smart Energy 5.0 (STP5.0-3SE-40) :heavy_check_mark:
-* Sunny Tripower Smart Energy 6.0 (STP6.0-3SE-40) :heavy_check_mark:
-* Sunny Tripower Smart Energy 8.0 (STP8.0-3SE-40) :heavy_check_mark:
-* Sunny Tripower Smart Energy 10.0 (STP10.0-3SE-40) :heavy_check_mark:
+* Sunny Tripower Smart Energy 5.0 (STP5.0-3SE-40) ✅
+* Sunny Tripower Smart Energy 6.0 (STP6.0-3SE-40) ✅
+* Sunny Tripower Smart Energy 8.0 (STP8.0-3SE-40) ✅
+* Sunny Tripower Smart Energy 10.0 (STP10.0-3SE-40) ✅
 
 ### Sunny Island
 
@@ -38,8 +39,8 @@ title: "SMA"
 !!! info "IMPORTANT"
       The Sunny Island inverters are rated for 48V. Make sure the battery you intend to use matches the voltage requirement!
 
+## Separate CAN required
 
-## Word of caution, isolated CAN ⚠️
 This inverter does not handle a CAN connected EV battery on the same channel.
 If the inverter, which likes to see only BYD CAN frames, sees standard automotive CAN frames, the inverter will enter a fault state.
 
@@ -56,7 +57,7 @@ Keep in mind that you will also need automated contactor control via GPIO, or a 
 !!! info "IMPORTANT"
     Grounding is extremely important for all inverters. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this may result in CAN errors.
 
-## Connecting the Enable pin from Inverter to Battery Emulator
+## Connecting the "Enable pin" from Inverter to Battery Emulator
 
 The inverter needs to be able to control the closing of the contactors. This is done via a signal, called the enable line. It controls the "Inverter allows contactor closing" in the Battery Emulator web interface.
 
@@ -67,9 +68,9 @@ The Enable line is connected to a GPIO pin on the Battery-Emulator hardware, GPI
 
 A small PCB with resistors and JST Connectors is a great way to stop down from 12v to ~3.3V. Parts list:
 
-* 2x 2.2K Ω resistor
-* 1x 1K Ω resistor
-* 1x 3K Ω resistor
+* 2x 2.2KΩ resistor
+* 1x 1KΩ resistor
+* 1x 3KΩ resistor
 * 2x JST Connector 2 pins (1 for SMA Inverter enable line cables, 1 for Battery emulator cables)
 
 This stepdown can be achieved with a resistor divider
@@ -116,11 +117,17 @@ Fast-Stop or emergency stop is a normally open connection. Closing the circuit (
 
 You can enable Fast-Stop in the settings of the inverter (Device parameters -> Device -> Inputs/outputs -> Digital input -> Fast shutdown via the digital input)
 
-When activated the following event will be triggered
-`10513 -NSS quick stop: Stop through Digital inputs is executed`
+When activated the following event will be triggered:
 
-When deactivated the following event will be triggered
-`10513 - NSS quick stop: Start through Digital inputs is executed (maybe it will start-up from itself... )`
+```
+10513 -NSS quick stop: Stop through Digital inputs is executed
+```
+
+When deactivated the following event will be triggered:
+
+```
+10513 - NSS quick stop: Start through Digital inputs is executed (maybe it will start-up from itself... )
+```
 
 I was too impatient to wait for the inverter to startup (after 2 minutes I disconnected the inverter completely) I'm not sure if the inverter will start up to 'normal' if you wait longer (feel free to edit the wiki) 
 
@@ -137,35 +144,27 @@ A known working solution to restart the inverter is:
 
 ## Which protocol to use
 
-<details markdown="1">
-<summary>Details for Sunny Boy Storage</summary>
+### Sunny Boy Storage
 
-For this inverter type, use the option called `SMA SBS compatible BYD Battery-Box HVS` as "Inverter Protocol" setting.
+For this inverter type, use the option called **SMA SBS compatible BYD Battery-Box HVS** as **Inverter Protocol** setting.
 
-</details>
-<details markdown="1">
-<summary>Details for Sunny Boy Smart Energy</summary>
+###  Sunny Boy Smart Energy
   
-For this inverter type, use the option called `SMA compatible BYD Battery-Box HVS` as "Inverter Protocol"
+For this inverter type, use the option called **SMA compatible BYD Battery-Box HVS** as **Inverter Protocol** setting.
 
-</details>
-<details markdown="1">
-<summary>Details for Sunny Tripower Smart Energy</summary>
+### Sunny Tripower Smart Energy
   
-For this inverter type, use the option called `SMA compatible BYD Battery-Box HVS` as "Inverter Protocol"
+For this inverter type, use the option called **SMA compatible BYD Battery-Box HVS** as **Inverter Protocol** setting.
 
-</details>
-<details markdown="1">
-<summary>Details for Sunny Island</summary>
+### Sunny Island
   
-For this inverter type, use the option called a`SMA Low Voltage (48V) protocol via CAN` as "Inverter Protocol"
-
-</details>
+For this inverter type, use the option called a`SMA Low Voltage (48V) protocol via CAN** as **Inverter Protocol** setting.
 
 ## Inverter setup
+
 The SMA inverter is sensitive when you try to install the battery to the inverter. Pairing the battery in the installation assistant is sometimes tricky.
-<details markdown="1">
-<summary>Details for Sunny Boy Storage</summary>
+
+### Sunny Boy Storage
 
 For the SMA battery configuration process (pairing) to succeed, the following conditions must be fulfilled:
 
@@ -181,19 +180,16 @@ Steps:
 3. Log in to the SMA web interface as installer. To perform the battery configuration process you'll need the installer password (or request the PUK on the SMA website).
 4. Start the installation assistant (https://smaxxxxxxxxxx.home/#/formwizard) or via top-right dropdown menu.
 5. Proceed with the SMA installation assistant till the 'battery configuration' step, but do not complete the battery config yet.
-6. Go to the battery config step in the installation assistant. Wait for the pairing to start. During pairing, make sure the `Inverter allows contactor closing` checkbox on the battery emulator webserver goes :heavy_check_mark: <br>
+6. Go to the battery config step in the installation assistant. Wait for the pairing to start. During pairing, make sure the **Inverter allows contactor closing** checkbox on the battery emulator webserver goes ✅ <br>
 ![image](../images/sma-02.png)
 7. Let the pairing run until it completes. The assistant showing 100% may not mean that the pairing is completed. The battery should be recognised by the SMA. It can take up to 30 minutes for the pairing to complete.
-8. Once done, `BYD Battery-Box (4-8)` or 'Battery-Box Premium HVS' and a serial number are seen in the configuration assistant, like in the image below. The capacity is always 10200 Wh, as that is the capacity of the battery type being emulated. <br>
+8. Once done, **BYD Battery-Box (4-8)** or **Battery-Box Premium HVS** and a serial number are seen in the configuration assistant, like in the image below. The capacity is always 10200 Wh, as that is the capacity of the battery type being emulated. <br>
 ![image](../images/sma-03.png)
 9. Sometimes the battery is recognized as `Other`. If the pairing fails, and the red light of the inverter turns on, it may be necessary to power down the SMA, and power it back on again, to complete the pairing.
 10. Once `BYD Battery-Box (4-8)` is seen, complete the battery functional test: charge/discharge the battery using the buttons in the installation assistant.
 11. Proceed with the next pages of the installation assistant to finalize the SMA configuration process.
 
-</details>
-
-<details markdown="1">
-<summary>Details for Sunny Boy Smart Energy & Sunny Tripower Smart Energy</summary>
+### Sunny Boy Smart Energy & Sunny Tripower Smart Energy
 
 1. Power off the battery emulator.
 2. Power off the SMA.
@@ -211,13 +207,12 @@ Steps:
     - The SMA is connected via CAN to the battery emulator, such that the SMA can send a pairing request, and the battery emulator can respond to this.
 
 10. Reconnect the SMA CAN-bus connection on the battery emulator side.
-11. Go to step 7 in the installation assistant. Wait for the pairing to start. During pairing, make sure the `Inverter allows contactor closing` checkbox on the battery emulator webserver goes :heavy_check_mark: <br>
+11. Go to step 7 in the installation assistant. Wait for the pairing to start. During pairing, make sure the **Inverter allows contactor closing** checkbox on the battery emulator webserver goes ✅ <br>
 ![image](../images/sma-02.png)
 12. Let the pairing run until it completes. The battery should be recognised by the SMA. It can take up to 30 minutes for the pairing to complete.
-13. The battery should be recognised as a `BYD Battery-Box Premium HVS battery`.
+13. The battery should be recognised as a **BYD Battery-Box Premium HVS battery**.
 14. Battery functional test: charge/discharge the battery using the buttons in the installation assistant.
 15. Proceed with the next pages of the installation assistant to finalize the SMA configuration process.
-</details>
 
 ## Battery emulator software update
 
@@ -235,10 +230,6 @@ To charge/discharge the battery you need a type of energy meter.
 This can be the SMA Energy meter (expensive) or a simulated SMA energy meter.
 
 To simulate the SMA energy meter you can use Home Assistant and an energy meter (like HomeWizard): [SMA-Energy-Meter-emulator](https://github.com/Roeland54/SMA-Energy-Meter-emulator)
-
-## Installation examples
-
-Please feel free to add!
 
 ### SMA Sunny Boy Storage to battery emulator
 
