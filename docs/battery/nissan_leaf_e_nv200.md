@@ -152,9 +152,9 @@ You can print your own safety cover for the **unused heater port**, a dust prote
 
 ## Notes on 30kWh (AZE0) pack
 
-The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the SOH% back to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
+The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the **Hx** and **SOH** percentages reported by the battery back up to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
 
-Performing this clear can restore a few kWh of usable energy back. 
+Performing this clear can restore a few kWh of usable energy back. Actual capacity in **Ah** is not affected by the reset.
 
 !!! info "IMPORTANT"
     The degradation reset only works on 2011-2017 (ZE0/AZE0) batteries. Performing it on 2018+ 40/62kWh packs would have a negative effect, since it will restore the battery data too low. 
@@ -163,7 +163,7 @@ Performing this clear can restore a few kWh of usable energy back.
 
 ### Performing the reset
 
-To perform a proper SOH% reset, [that sticks between reboots](https://github.com/dalathegreat/Battery-Emulator/issues/900#issuecomment-3482162856), perform the following steps:
+To perform a proper SOH% reset, [that sticks between reboots](https://github.com/dalathegreat/Battery-Emulator/issues/900#issuecomment-3482162856), choose how to perform the following steps:
 
 #### Remotely
 
@@ -191,7 +191,7 @@ To perform a proper SOH% reset, [that sticks between reboots](https://github.com
 - Close contactors
 - Reboot Battery Emulator
 
-After these steps, the SOH reset to 100% becomes persistent. 
+After these steps, the CAN-reported **SOH** and **Hx** reset to 100% becomes persistent. Actual capacity in **Ah** is not affected by the reset.
 
 ### Set your own, real limits
 Note that after you reset the SOH to 100%, the BMS will let charging and discharging the cells likely beyond the limits which are safe to use on long term, in respect to the longevity of the cells. In stationary usage the battery charges and discharges much slower, and in a different pattern than when it used to do in a car, so a SOH recalibration in the BMS will take very long to happen, to match reality. 
