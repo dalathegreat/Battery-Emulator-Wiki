@@ -270,5 +270,5 @@ These pictures show it for AZE0/ZE1. For the ZE0 2011-2012 it's similar, you jus
 
 ![pack-with-tester-cable-and-battery](../images/nissan-leaf-aze0-to-obd-pic.png)
 
-⚠️ To ensure you don't deal with an insulation-faulted pack, measure DC voltage between the contacts of the service disconnect switch and the case. You should see a DC voltage slowly decreasing to 0 (wait till it decreases close to 0 from both pins). If you'd see a constant voltage standing still between the battery casing and any of the contacts, that pack has an insulation fault and may be dangerous to use!
+⚠️ To ensure you don't deal with an insulation-faulted pack, measure DC voltage between each contact of the service disconnect switch and the case (do this with the pack completely powered off and disconnected from anything). You should see a DC voltage slowly decreasing to 0 (wait till it decreases close to 0 from both). If you'd see a constant voltage standing still between the battery casing and any of the contacts, that pack likely has an insulation fault and may be dangerous to use!
 
