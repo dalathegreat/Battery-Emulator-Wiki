@@ -48,6 +48,7 @@ Nissan's own documentation uses pin numbering on the 36pin low voltage connector
     Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
 #### Automatic control 🤖
+
 Battery Emulator hardware can act on its own, and [turn on/off the contactors/precharge resistor](../setup/software/contactor_control_via_gpio_pins.md) when the battery says it is OK and turn off when not OK to proceed. This is done via the 3.3V digital output header that is located on the supported boards.
 
 To enable the feature in the software, Enable the **Contactor control via GPIO** option on the Settings page.
@@ -71,12 +72,19 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. The bonus is that GPIO controlled contactors is inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
+
 The BMS in the Nissan LEAF packs was not designed originally to operate 24/7 under all conditions. Over time the SOC% will become less accurate, and in some conditions even the GIDS (Wh remaining) become confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)). **BAT** pin can be under +12V continuously, **IGN** pin should be the one turned off from time to time (as the wiring diagram above shows). 
 
 See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. Set **Periodic BMS reset off time** to **120 seconds** for Nissan LEAF packs. Based on empiric observations the 30kWh (2013–2017, AZE0) pack benefits most from the **24h** period together with the **Skip reset for one period if balancing** option enabled. Changing **BMS starting sequence request** to **normal charge** may improve balancing on packs that are in good shape (small cell voltage delta over the entire SOC range you use).
 
 !!! tip "TIP"
-    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
+    The LEAF BMS uses *passive* balancing: each of the 96 cells has a small resistor (shunt) that can be switched on to burn off a little energy as heat, slowly bringing fuller cells down to the level of the lowest ones.
+    At the start of a balancing cycle it measures all cells and flags every cell sitting more than a small tolerance above the lowest one.
+    While draining, it keeps count of how much it has taken from each flagged cell, and switches that cell's shunt off once the count says it is close enough to the lowest one.
+    So a small difference between cells is normal, and the flagged cells aren't always the ones with the highest voltage at that moment. The target cell delta is around 17mV.
+
+    The same cells may stay flagged for many hours (sometimes a day) before draining really starts: the [Cellmonitor](../setup/software/webserver_guide.md#cellmonitor) shows them as cyan bars marked **Pending**, then **Balancing** while the list keeps changing, until it's empty.
+    A BMS reset discards the progress and restarts the whole process, waiting included - which is why the **Skip reset for one period if balancing** option helps.
 
 ## More Battery Info 📜
 
@@ -93,6 +101,10 @@ The **More Battery Info** button at the bottom of the main page will open a wind
 
 !!! note "NOTE"
     The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
+
+!!! tip "TIP"
+    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
+
 
 ## Part numbers for Nissan LEAF batteries
 
