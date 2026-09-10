@@ -15,7 +15,7 @@ For this battery type, use the option named **Nissan LEAF battery** under the **
 !!! tip "TIP"
     **BMS starting sequence request** set to **nomral charge (experimental)** avoids overbalancing when your pack is in a good shape (small cell voltage delta in your preferred SOC range). 
 
-## Wiring diagrams
+## Wiring diagrams 🔌
 
 The following pictures show an example of hooking up a LEAF battery to a Fronius Gen24 inverter. The same diagram can be useful for planning other inverter combinations.
 
@@ -78,7 +78,7 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
 !!! tip "TIP"
     The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
 
-## More Battery Info
+## More Battery Info 📜
 
 The **More Battery Info** button at the bottom of the main page will open a window containing some extra information about the pack. A few notes about the most important ones:
 
@@ -159,7 +159,7 @@ Crimping a 36pin connector:
 
 You can print your own safety cover for the **unused heater port**, a dust protector for the **LV connector** and a fixation ring, even a complete **Service Disconnect Switch** or even your own **HV Connector**. Check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md#nissan-leaf).
 
-## Notes on stuck SOH
+## Notes on stuck SOH ❤️‍🩹
 
 The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the **Hx** and **SOH** percentages reported by the BMS back up to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
 
@@ -173,7 +173,7 @@ Performing this clear can restore a few kWh of usable energy back. Actual capaci
 
 ![image](../images/nissan-leaf-e-nv200-20.png)
 
-### Performing the reset
+### Performing the reset 
 
 To perform a proper SOH% reset, [that sticks between reboots](https://github.com/dalathegreat/Battery-Emulator/issues/900#issuecomment-3482162856), choose how to perform the following steps:
 
@@ -205,7 +205,7 @@ To perform a proper SOH% reset, [that sticks between reboots](https://github.com
 
 After these steps, the CAN-reported **SOH** and **Hx** reset to 100% becomes persistent. Actual capacity in **Ah** is not affected by the reset.
 
-### Set your own, real limits
+### Set your own, real limits 
 
 Note that after you reset the SOH to 100%, the BMS will let charging and discharging the cells likely beyond the limits which are safe to use on long term, in respect to the longevity of the cells. In stationary usage the battery charges and discharges much slower, and in a different pattern than when it used to do in a car.
 
@@ -231,7 +231,8 @@ In the example above, the top graph establishes the red lines, which show the co
 
 This way you'll still be in the safe zone with your battery, but you'll likely be able to use bigger capacity than the original SOH allowed in the BMS before reset. Re-evaluate this graph periodically, every 3 months (no need to do full charge-discharge so often, just keep your eye on **Cell Voltage Delta** and **SOC (real)** relation on normal usage)
 
-## Physical size
+## Physical size 📏
+
 The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh battery however is 40mm taller.
 
 - 24kWh (2011–2012, ZE0) = 277kg (601lb) 1547.0 (L) × 1188.0 (W) × 264.0 (H) mm
@@ -244,3 +245,16 @@ The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh b
 The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged differently from the Leaf packs (active cooling and service disconnect at front instead of middle).
 
 ![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
+
+## Try before you buy 🔍
+
+You can test on-site a Leaf pack before you buy it, if you make a portable cable with a Yazaki connector and take a 12V battery (lead acid or 3x18650 in series) with you. If you have a spare, compatible ESP32 board with CAN connector, you can use Battery Emulator with no inverter configured to start talking with the pack, open the More Battery Info to see more details. Worth making a rig with SSRs and enable **Contactor control via GPIO** / **Periodic BMS reset** settings, so the contactors would close and you can verify them with a multimeter that the pack properly outputs the voltage.
+
+You can even connect LeafSpy the same way, if you get an OBD2 socket hooked to the Yazaki connector:
+
+![pack-with-tester-cable-and-battery](../images/nissan-leaf-aze0-to-obd.png)
+
+![pack-with-tester-cable-and-battery](../images/nissan-leaf-aze0-to-obd-pic.png)
+
+⚠️ To ensure you don't deal with an insulation-faulted pack, measure DC voltage between the contacts of the service disconnect switch and the case. You should see a DC voltage slowly decreasing to 0 (wait till it decreases close to 0 from both pins). If you'd see a constant voltage standing still between the battery casing and any of the contacts, that pack has an insulation fault and may be dangerous to use!
+
