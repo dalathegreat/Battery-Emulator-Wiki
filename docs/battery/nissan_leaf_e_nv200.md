@@ -90,14 +90,17 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
 
 The **More Battery Info** button at the bottom of the main page will open a window containing some extra information about the pack. A few notes about the most important ones:
 
-- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted recently (see further down below).
+- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs). Should not go under 10V!
+- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ (may depend on inverter). When contactors are open, this shows much higher values. Both are normal like this. This value should not be considered, it's the inverter who decides if there's an insulation problem or not.
 - **Capacity as new**: is the estimated capacity in kWh, when the pack was new out of the factory.
 - **Actual capacity**: is the degraded capacity in Ah (and multiplied by the pack's nominal voltage in kWh) corresponding to the BMS's health knowledge about the cells.
 - **SOH raw**: the raw State-Of-Health (and the average one) reported by the BMS on the CAN bus. The average one is what you'd see in LeafSpy. Both show 100% if the pack has been SOH-resetted recently.
+- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted recently (see further down below).
 - **QC charge count**: the total number of quick (DC/Chademo) charges that have been started while the pack was operating in the car.
 - **AC charge count**: the number of AC charges that have been started while in the car. This number increases at each pack boot and BMS reset when **BMS starting sequence request** is set to **normal charge**.
-- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs).
-- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ. When contactors are open, this shows much higher values. Both are normal like this.
+- **Charge to full count**: the number of charges that resulted in full battery.
+- **Turtle count**: the number of cases when the car has been forced to run into turtle mode, to prevent over-discharging.
+- **lifetime usage histograms**: Each event recorded the temperature at its start and the peak it reached. Peak (the hottest the pack got) drives the heat assessment; start temperature is shown alongside.
 
 !!! note "NOTE"
     The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
