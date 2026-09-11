@@ -265,7 +265,7 @@ The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged dif
 
 ## Try before you buy 🔍
 
-You can test on-site a Leaf pack before you buy it, if you make a portable cable with a Yazaki connector and take a 12V battery (lead acid or 3x18650 in series) with you. If you have a spare, compatible ESP32 board with CAN connector, you can use Battery Emulator with no inverter configured to start talking with the pack, open the More Battery Info to see more details. Worth making a rig with SSRs and enable **Contactor control via GPIO** / **Periodic BMS reset** settings, so the contactors would close and you can verify them with a multimeter that the pack properly outputs the voltage.
+You can test on-site a Leaf pack before you buy it, if you make a portable cable with a Yazaki connector and take a 12V battery (lead acid or 3x18650 in series) with you. If you have a spare, compatible ESP32 board with CAN connector, you can use Battery Emulator with no inverter configured to start talking with the pack, open **Cell monitor** or **More Battery Info** and check health and lifetime usage. Worth making a rig with SSRs and enable **Contactor control via GPIO** / **Periodic BMS reset** settings, so the contactors would close to verify them with a multimeter that the pack properly outputs the voltage.
 
 You can even connect LeafSpy the same way, if you get an OBD2 socket hooked to the Yazaki connector:
 
