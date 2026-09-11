@@ -105,8 +105,10 @@ The **More Battery Info** button at the bottom of the main page will open a wind
 !!! note "NOTE"
     The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
 
+    A certain difference between total charges and the AC + QC counts is normal — it can happen when charging is interrupted (e.g. a power cut).
+
 !!! tip "TIP"
-    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
+    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80** on long term (during the summer, when the pack would charge to 100% quickly, and then would stay full almost all day).
 
 
 ## Part numbers for Nissan LEAF batteries
