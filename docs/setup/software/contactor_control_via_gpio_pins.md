@@ -38,38 +38,8 @@ By default a 100 millisecond long precharge is performed. This value should be s
 !!! tip "TIP"
     There is also an option to use **Use Normally Closed logic** for very rare contactor setups, and should for 99.99% of users not be enabled.
 
-### Example wiring diagram 🗺️ 
-
-This schematic shows a wiring example with LilyGo T‐CAN485:
-
-- Precharge pin 25 - Precharge SSR + input
-- Positive Contactor pin 32 - Positive SSR + input
-- Negative Contactor pin 33 - Negative SSR + input
-- GND - All 3x SSR - input
-
-![bild](../../images/nissan-leaf-e-nv200-07.png)
-
-### Troubleshooting
-Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface. In this screenshot, battery is preventing startup:
-
-![bild](../../images/nissan-leaf-e-nv200-08.png)
-
-!!! warning "WARNING"
-    In case the whole Emulator goes into Fault state, the contactors will open, and latch. To get them to close again, you need to restart the entire Battery-Emulator (after having analysed the fault)
-
-You can check the Event view in the webserver, to see if any critical Error has been encountered.
-
-!!! tip "TIP"
-    If you observe *after a longer time* that the contactors open by themselves, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure that they remain held steadily.
-
-#### Overloaded GPIO pins
-Incase the current draw on the GPIO pins is exceeded, for instance incase you use an incompatible SSR, the webserver will appear this way:
-
-![image](../../images/contactor-control-via-gpio-pins-03.png)
-
-Note the "X" on both contactors, even though the emulator is in active state and should have contactors engaged. If you see this, remove the wires and restart the emulator, to confirm that activation of the pins is possible. Then switch to a compatible SSR.
-
 ## PWM control for lower power draw 🧊 
+
 Optional: It is also possible to reduce power consumption of keeping the big contactors engaged via PWM control. This requires Solid State Relays (SSR). The PWM signal will very quickly turn on/off the SSR, and still keep the contactor engaged. Do be careful, and test this properly before using it. It is very much depending on what SSR and battery contactor combination you use. 
 
 To use the PWM function, enable the **PWM contactor control** option
@@ -85,3 +55,38 @@ By default we use a Hold value of 250, which is suitable for Nissan LEAF contact
 
 !!! note "NOTE"
     PWM can only be used with electromechanical contactors. It's not applied to the BMS power control pin, despite that's also usually wired using a SSR.
+
+
+## Example wiring diagram 🗺️ 
+
+This schematic shows a wiring example with LilyGo T‐CAN485:
+
+- Precharge pin 25 - Precharge SSR + input
+- Positive Contactor pin 32 - Positive SSR + input
+- Negative Contactor pin 33 - Negative SSR + input
+- GND - All 3x SSR - input
+
+![bild](../../images/nissan-leaf-e-nv200-07.png)
+
+## Troubleshooting
+
+Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface. In this screenshot, battery is preventing startup:
+
+![bild](../../images/nissan-leaf-e-nv200-08.png)
+
+!!! warning "WARNING"
+    In case the whole Emulator goes into Fault state, the contactors will open, and latch. To get them to close again, you need to restart the entire Battery-Emulator (after having analysed the fault)
+
+You can check the Event view in the webserver, to see if any critical Error has been encountered.
+
+!!! tip "TIP"
+    If you observe *after a longer time* that the contactors open by themselves, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure that they remain held steadily.
+
+### Overloaded GPIO pins
+
+In case the current draw on the GPIO pins is exceeded, like when you use an incompatible SSR, the webserver will show this:
+
+![image](../../images/contactor-control-via-gpio-pins-03.png)
+
+Note the "X" on the contactors, even though the emulator is in active state and should have contactors engaged. If you see this, remove the wires and restart the emulator, to confirm that activation of the pins is possible. Then switch to a compatible SSR.
+
