@@ -84,6 +84,9 @@ Externally powered contactors behave deterministically based on Battery-Emulator
 
 When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. 
 
+!!! tip "TIP"
+    If you enable **PWM contactor control** and you observe *after a longer time* that the second battery disconnects raising the event `Too large voltage diff between the batteries. Second battery cannot join the DC-link`, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure the contactors remain held steadily.
+
 #### CAN-controlled contactors
 Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
