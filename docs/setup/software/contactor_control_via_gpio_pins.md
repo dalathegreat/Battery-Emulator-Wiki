@@ -59,6 +59,9 @@ Before the contactors turn on, both Inverter and Battery needs to give OK ✅ si
 
 You can check the Event view in the webserver, to see if any critical Error has been encountered.
 
+!!! tip "TIP"
+    If you observe *after a longer time* that the contactors open by themselves, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure that they remain held steadily.
+
 #### Overloaded GPIO pins
 Incase the current draw on the GPIO pins is exceeded, for instance incase you use an incompatible SSR, the webserver will appear this way:
 
