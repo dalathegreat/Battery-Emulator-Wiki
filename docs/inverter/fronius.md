@@ -20,7 +20,7 @@ On the date of 23.04.2025 Fronius deployed a firmware update that momentarily br
 
 It is recommended to always use latest software version of both the Fronius inverter and the Battery-Emulator.
 
-!!! note "Advice"
+!!! important "Advice"
     Always read manufacturer's release notes before upgrading the firmware. You can save yourself from a serious amount of trouble by not upgrading to a version which may state that radically changes compatibility level with the emulated battery. Downgrading Fronius firmware to old versions is not possible.
 
 ![working](../images/fronius_anim.gif)
@@ -81,6 +81,10 @@ In the Fronius settings it is possible to configure "SoC Minimum" and "SoC Maxim
 Avoid double-rescaling:
 
 ![image](../images/fronius-04.png)
+
+!!! important "IMPORTANT"
+    Fronius's **BYD HVS/M (2020-25)** implementation limits SOC minimum to 5% to avoid battery undercharge when sitting idle empty. It does a trickle charge/discharge cycle during an *Energy saving mode* procedure. Thus, if you enable **Rescale SOC** in Battery Emulator, keep in mind of this requirement at the low end.
+
 
 ![scaled](../images/fronius-05.png)
 
