@@ -90,20 +90,25 @@ See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for detai
 
 The **More Battery Info** button at the bottom of the main page will open a window containing some extra information about the pack. A few notes about the most important ones:
 
-- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted recently (see further down below).
+- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs). Should not go under 10V!
+- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ (may depend on inverter). When contactors are open, this shows much higher values. Both are normal like this. This value should not be considered, it's the inverter who decides if there's an insulation problem or not.
 - **Capacity as new**: is the estimated capacity in kWh, when the pack was new out of the factory.
 - **Actual capacity**: is the degraded capacity in Ah (and multiplied by the pack's nominal voltage in kWh) corresponding to the BMS's health knowledge about the cells.
 - **SOH raw**: the raw State-Of-Health (and the average one) reported by the BMS on the CAN bus. The average one is what you'd see in LeafSpy. Both show 100% if the pack has been SOH-resetted recently.
+- **Hx**: is a Nissan-specific measurement value related to the internal resistance of the pack. Shows 100% if the pack has been SOH-resetted recently (see further down below).
 - **QC charge count**: the total number of quick (DC/Chademo) charges that have been started while the pack was operating in the car.
 - **AC charge count**: the number of AC charges that have been started while in the car. This number increases at each pack boot and BMS reset when **BMS starting sequence request** is set to **normal charge**.
-- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs).
-- **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this values averages around 100kΩ. When contactors are open, this shows much higher values. Both are normal like this.
+- **Charge to full count**: the number of charges that resulted in full battery.
+- **Turtle count**: the number of cases when the car has been forced to run into turtle mode, to prevent over-discharging.
+- **lifetime usage histograms**: Each event recorded the temperature at its start and the peak it reached. Peak (the hottest the pack got) drives the heat assessment; start temperature is shown alongside.
 
 !!! note "NOTE"
     The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
 
+    A certain difference between total charges and the AC + QC counts is normal — it can happen when charging is interrupted (e.g. a power cut).
+
 !!! tip "TIP"
-    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80.0** on long term (during the summer, when the pack charges to full quickly, and then stays full almost all day).
+    The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80** on long term (during the summer, when the pack would charge to 100% quickly, and then would stay full almost all day).
 
 
 ## Part numbers for Nissan LEAF batteries
@@ -258,9 +263,9 @@ The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged dif
 
 ![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
 
-## Try before you buy 🔍
+## Test before you buy 🔍
 
-You can test on-site a Leaf pack before you buy it, if you make a portable cable with a Yazaki connector and take a 12V battery (lead acid or 3x18650 in series) with you. If you have a spare, compatible ESP32 board with CAN connector, you can use Battery Emulator with no inverter configured to start talking with the pack, open the More Battery Info to see more details. Worth making a rig with SSRs and enable **Contactor control via GPIO** / **Periodic BMS reset** settings, so the contactors would close and you can verify them with a multimeter that the pack properly outputs the voltage.
+You can test on-site a Leaf pack before you buy it, if you make a portable cable with a Yazaki connector and take a 12V battery (lead acid or 3x18650 in series) with you. If you have a spare, compatible ESP32 board with CAN connector, you can use Battery Emulator with no inverter configured to start talking with the pack, open **Cell monitor** or **More Battery Info** and check health and lifetime usage. Worth making a rig with SSRs and enable **Contactor control via GPIO** / **Periodic BMS reset** settings, so the contactors would close to verify them with a multimeter that the pack properly outputs the voltage.
 
 You can even connect LeafSpy the same way, if you get an OBD2 socket hooked to the Yazaki connector:
 
