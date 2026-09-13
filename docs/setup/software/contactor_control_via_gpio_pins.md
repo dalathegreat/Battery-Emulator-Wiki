@@ -46,15 +46,18 @@ To use the PWM function, enable the **PWM contactor control** option
 
 ![image](../../images/contactor-control-via-gpio-pins-05.png)
 
-By default we use a Hold value of 250, which is suitable for Nissan LEAF contactors. Tweak this value to suit your contactors.
+By default we use a Hold value of 250, which was tested to work well with Nissan LEAF contactors. Tweak this value to suit your contactors. 
 
 ### Benefits of PWM
+
 * Less load on the 12V supply
 * Better for offgrid solutions where every Watt counts
 * Less heat inside battery is good for summer
 
 !!! note "NOTE"
     PWM can only be used with electromechanical contactors. It's not applied to the BMS power control pin, despite that's also usually wired using a SSR.
+
+    Environment temperature can influence contactor hold strength when driven with PWM. Increase the **PWM Hold** value if you experience disconnects in extreme cold weather.
 
 
 ## Example wiring diagram 🗺️ 
