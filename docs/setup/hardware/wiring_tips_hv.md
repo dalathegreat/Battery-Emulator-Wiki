@@ -10,15 +10,13 @@ DC wire sizing is a very important part of planning your battery build. Most inv
 !!! note "NOTE"
     Since multiple people have assumed 4-way connecting blocks to be 2x2, resulting in short circuit, please make sure to double check continuity for all components before installing!
 
-* When selecting the hardware (wires, fuses, switches), make sure they are rated for the DC voltages in your system. Hardware designed for solar will often work great with EV batteries. Do note that if you are using a 600V battery, you need to buy hardware that is capable of 1000VDC, it is not enough to go with 500VDC certification.
-
-* Also keep in mind that longer DC cabling will cause larger voltage drops. Try to keep the DC wiring run as short as possible. 20-30meter is acceptable, but if you start to go longer distances (~80m?), you will need to have a much larger cross sectional area wire to avoid power losses. For instance 10-25mm² might be required when going longer. Use a voltage drop cabling calculator suited for your country to see the correct cable sizing you need for a specific distance. To get a picture of how much loss you can accumulate over various length of Cu and Al cabling, [check out this calculator](https://docs.google.com/spreadsheets/d/1rSTNwgxBgrDaf8wo9_7r2cqsKLavUIEs/edit?usp=sharing&ouid=100957746627782596285&rtpof=true&sd=true) (ymmv, this is purely informational!). Around 1% of loss can be acceptable.
-
-* DC cabling should also be installed in a conduit, to avoid any external factors damaging the insulation around the wires. The conduit material can either be plastic or aluminium, depends on what's typical in your region.
-
-* 12V control/signal wire has the same limitations, increase cable cross sectional area to be able to go longer distances. Check out our [tips for low voltage wiring page](wiring_tips_lv.md)
-
-* Avoid installing communication wires next to high voltage wiring, in order to avoid signal interference. Keep 300mm distance between AC/DC and CAN/Modbus cabling at all times when possible to avoid interference.
+- When selecting the hardware (wires, fuses, switches), make sure they are rated for the DC voltages in your system. Hardware designed for solar will often work great with EV batteries. Do note that if you are using a 600V battery, you need to buy hardware that is capable of 1000VDC, it is not enough to go with 500VDC certification.
+- Also keep in mind that longer DC cabling will cause larger voltage drops. Try to keep the DC wiring run as short as possible. 20-30meter is acceptable, but if you start to go longer distances (~80m?), you will need to have a much larger cross sectional area wire to avoid power losses. For instance 10-25mm² might be required when going longer. Use a voltage drop cabling calculator suited for your country to see the correct cable sizing you need for a specific distance. To get a picture of how much loss you can accumulate over various length of Cu and Al cabling, check out these calculators. Around 1% of loss can be acceptable. (ymmv, this is purely informational!)
+        - [Cable Size Calculator AS/NZS 3008](https://www.jcalc.net/cable-sizing-calculator-as3008)
+        - [Spreadsheet for manual calculations](https://docs.google.com/spreadsheets/d/1rSTNwgxBgrDaf8wo9_7r2cqsKLavUIEs/edit?usp=sharing&ouid=100957746627782596285&rtpof=true&sd=true)
+- DC cabling should also be installed in a conduit, to avoid any external factors damaging the insulation around the wires. The conduit material can either be plastic or aluminium, depends on what's typical in your region.
+- 12V control/signal wire has the same limitations, increase cable cross sectional area to be able to go longer distances. Check out our [tips for low voltage wiring page](wiring_tips_lv.md)
+- Avoid installing communication wires next to high voltage wiring, in order to avoid signal interference. Keep 300mm distance between AC/DC and CAN/Modbus cabling at all times when possible to avoid interference.
 
 !!! warning "CAUTION"
     Verify polarity of HV system before wiring it to the inverter. Many EV batteries don't have markings which side is +/-, so doing a test run without the inverter connected is a good idea to ensure polarity. Incorrect polarity will destroy your system.
@@ -83,10 +81,10 @@ Some countries have legislation that dictate a need for DC disconnect switches (
 ### Protective earth
 The battery case **needs** to be connected to protective earth (PE). This is required for a few technical and safety reasons;
 
-* Signal integrity. Having the battery case sit at earth potential avoids any ground loops thru communication shield wires.
-* CAN transceiver longevity. Failure to attach PE to battery case can damage CAN bus systems from ground loops thru shield wires
-* Isolation testing. Your inverter will periodically test how safe the high voltage system is by measuring insulation resistance between HV+/- to PE. If the battery case is left freefloating and not connected to PE, any HV leaks might go unnoticed. 
-* If you are in a country that requires a residual current device in your electrical panel (GFCI/RCD), these also need to be able to accurately measure any DC leakage to PE and trip
+- Signal integrity. Having the battery case sit at earth potential avoids any ground loops thru communication shield wires.
+- CAN transceiver longevity. Failure to attach PE to battery case can damage CAN bus systems from ground loops thru shield wires
+- Insulation testing. Your inverter will periodically test how safe the high voltage system is by measuring insulation resistance between HV+/- to PE. If the battery case is left freefloating and not connected to PE, any HV leaks might go unnoticed. 
+- If you are in a country that requires a residual current device in your electrical panel (GFCI/RCD), these also need to be able to accurately measure any DC leakage to PE and trip
 
 !!! warning "CAUTION"
     **Failure to connect battery case to protective earth can lead to dangerous situations where high voltage leaks are not detected**
