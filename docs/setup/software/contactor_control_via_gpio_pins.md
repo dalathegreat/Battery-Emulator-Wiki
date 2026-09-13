@@ -59,6 +59,8 @@ By default we use a Hold value of 250, which was tested to work well with Nissan
 
     Environment temperature can influence contactor hold strength when driven with PWM. Increase the **PWM Hold** value if you experience disconnects in extreme cold weather.
 
+!!! important "IMPORTANT"
+    Ensure that the SSRs you choose support **fast switching**. If they don’t, they will likely fail within a short time with PWM enabled.
 
 ## Example wiring diagram 🗺️ 
 
