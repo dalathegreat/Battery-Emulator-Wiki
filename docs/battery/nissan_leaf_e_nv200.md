@@ -55,12 +55,12 @@ To enable the feature in the software, Enable the **Contactor control via GPIO**
 
 ![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
 
-To keep things simple, it is recommended to use Solid State Relays (SSR). These can be activated with 3Volt, and control large DC currents. Follow the schematic above to complete the circuit. 
+To keep things simple and durable, it is recommended to use Solid State Relays (SSR). These can be activated directly with 3V from the Emulator GPIOs, and control large DC currents. Follow the schematic above to complete the circuit. 
 
 The pin numbers on the picture are the ones used on the LilyGo T-CAN485, check out the pinout table for each board, which pin is defined as contactor output.
 
 !!! tip "TIP"
-    If you use SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM:
+    If you use **fast-switching** SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM:
 
     ![image](../images/nissan-leaf-e-nv200-23.png)
 
