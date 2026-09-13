@@ -12,8 +12,10 @@ DC wire sizing is a very important part of planning your battery build. Most inv
 
 - When selecting the hardware (wires, fuses, switches), make sure they are rated for the DC voltages in your system. Hardware designed for solar will often work great with EV batteries. Do note that if you are using a 600V battery, you need to buy hardware that is capable of 1000VDC, it is not enough to go with 500VDC certification.
 - Also keep in mind that longer DC cabling will cause larger voltage drops. Try to keep the DC wiring run as short as possible. 20-30meter is acceptable, but if you start to go longer distances (~80m?), you will need to have a much larger cross sectional area wire to avoid power losses. For instance 10-25mm² might be required when going longer. Use a voltage drop cabling calculator suited for your country to see the correct cable sizing you need for a specific distance. To get a picture of how much loss you can accumulate over various length of Cu and Al cabling, check out these calculators. Around 1% of loss can be acceptable. (ymmv, this is purely informational!)
+
         - [Cable Size Calculator AS/NZS 3008](https://www.jcalc.net/cable-sizing-calculator-as3008)
         - [Spreadsheet for manual calculations](https://docs.google.com/spreadsheets/d/1rSTNwgxBgrDaf8wo9_7r2cqsKLavUIEs/edit?usp=sharing&ouid=100957746627782596285&rtpof=true&sd=true)
+
 - DC cabling should also be installed in a conduit, to avoid any external factors damaging the insulation around the wires. The conduit material can either be plastic or aluminium, depends on what's typical in your region.
 - 12V control/signal wire has the same limitations, increase cable cross sectional area to be able to go longer distances. Check out our [tips for low voltage wiring page](wiring_tips_lv.md)
 - Avoid installing communication wires next to high voltage wiring, in order to avoid signal interference. Keep 300mm distance between AC/DC and CAN/Modbus cabling at all times when possible to avoid interference.
@@ -109,9 +111,12 @@ Electrical connections can loosen over time due to thermal cycling (expansion an
 
 - **Why it's Important:** Loose terminals are a leading cause of electrical failures. They can cause arcing, melting, and in severe cases, fires.
 - Materials Matter:
+
         - **Copper Lugs/Terminals:** Check torque every 1-2 years.
         - **Aluminium Lugs/Terminals:** Aluminium is more susceptible to "cold flow" or creep under pressure. Check torque annually.
+
 - Procedure:
+
         - **Safely de-energize the system** and verify there is no voltage present with a known working multimeter
         - **Use a calibrated torque wrench** and the correct socket.
         - **Consult your manufacturer's manual for the exact torque specification** (e.g., 4-5 Nm or 35-45 in-lbs). On some terminals the torque value is stamped directly on them. Do not over-tighten, as this can strip threads or damage terminals.
@@ -128,10 +133,12 @@ Liquid cooling is used in some EV batteries to manage battery temperature. Maint
 - **Why it's Important:** Low coolant levels can lead to poor heat dissipation, causing the battery to overheat and degrade rapidly. Old coolant loses its anti-corrosive properties, leading to leaks and cooling system blockages.
 
 - Coolant Level Check:
+
         - Frequency: Check every 3-6 months.
         - Procedure: With the system off and cool, inspect the coolant reservoir. The level should be between the "MIN" and "MAX" marks. Top up only with the manufacturer-recommended coolant type. Never mix different coolants.
 
 - Coolant Replacement:
+
         - Frequency: Typically every 3 to 7 years, but follow the manufacturer's strict interval.
         - Procedure: This is often a very installation specific task. It involves draining the old coolant, flushing the system, and refilling with new, premixed coolant while ensuring all air is bled from the lines to prevent airlocks.
 
