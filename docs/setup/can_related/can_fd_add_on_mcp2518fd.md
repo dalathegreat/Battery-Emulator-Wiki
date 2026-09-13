@@ -26,7 +26,7 @@ Models based on **MCP2518FD Pro**:
 
 ## Example connections
 
-The smaller model needs the jumper near the terminal block needs to be seated in order to have the correct 120Ω bus termination if at cable end.
+The smaller model needs the jumper near the terminal block to be seated in order to have the correct 120Ω bus termination if at cable end.
 
 ![MCP2518 module](../../images/lilygo-t-2can-16.png)
 
