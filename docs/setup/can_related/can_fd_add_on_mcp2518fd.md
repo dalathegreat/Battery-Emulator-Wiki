@@ -26,7 +26,7 @@ Models based on **MCP2518FD Pro**:
 
 ## Example connections
 
-The smaller model needs the jumper near the terminal block needs to be seated in order to have the correct 120Ω bus termination.
+The smaller model needs the jumper near the terminal block needs to be seated in order to have the correct 120Ω bus termination if at cable end.
 
 ![MCP2518 module](../../images/lilygo-t-2can-16.png)
 
@@ -49,7 +49,7 @@ Examples below show how to connect the **MCP2518FD Pro** to the some of the comp
 | 5V | 5V source | 5V pin |
 
 !!! important "IMPORTANT"
-    The board needs **both** the 3.3V and the 5V power inputs. One GND connection is sufficient if the same ground is being used for power and data signal.
+    The board needs **both** the 3.3V and the 5V power inputs. One GND connection is sufficient if the same ground is being used for the powers and data signal.
 
 ### The bigger board
 
