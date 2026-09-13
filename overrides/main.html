@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+  
+  {% if page and page.file.src_path != "index.md" %}
+    <div class="admonition warning" markdown="1">
+      <p class="admonition-title">CAUTION</p>
+      <p>Working with high voltage is dangerous. Always follow local laws and regulations regarding high voltage work. If you are unsure about the rules in your country, consult a licensed electrician for more information.</p>
+    </div>
+  {% endif %}
+{% endblock %}
