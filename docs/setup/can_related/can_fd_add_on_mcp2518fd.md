@@ -30,26 +30,26 @@ The smaller model needs the jumper near the terminal block needs to be seated in
 
 ![MCP2518 module](../../images/lilygo-t-2can-16.png)
 
-Examples below show how to connect the **MCP2518FD Pro** to the **LilyGo T-CAN485**. It can be connected to the other boards in a similar way. Check out the pinout table for each board, to see which pins are defined for MCP2518FD usage.
+Examples below show how to connect the **MCP2518FD Pro** to the some of the compatible Battery Emulator boards. Check out the pinout table for each board, to see which pins are defined for MCP2518FD usage.
 
 ### The smaller board
 
 ![canfd-small](../../images/can-fd-add-on-mcp2518fd-03.jpg)
 
-| MCP2518FD small | LilyGo T-CAN485 |
-|---|---|
-| SCK | IO 12 |
-| SDI | IO 5 |
-| SDO | IO 34 |
-| nCS | IO 18 |
-| INT | IO 35 |
-| GND (next to 3V3) | Any GND pin |
-| 3V3 | VDD on LilyGo |
-| GND (next to 5V) | Any GND pin |
-| 5V | 5V source |
+| MCP2518FD small | LilyGo T-CAN485 | Waveshare ESP32‐S3‐RS485‐CAN |
+|---|---|---|
+| SCK | IO 12 | IO 10 |
+| SDI | IO 5 | IO 11 |
+| SDO | IO 34 | IO 12 |
+| nCS | IO 18 | IO 13 |
+| INT | IO 35 | IO 14 |
+| GND (next to 3V3) | Any GND pin | GND pin |
+| 3V3 | VDD pin | 3V3 pin |
+| GND (next to 5V) | Any GND pin | GND pin |
+| 5V | 5V source | 5V pin |
 
-!!! note "NOTE"
-    Only one GND connector is technically required if the same ground is being used for the board.
+!!! important "IMPORTANT"
+    The board needs **both** the 3.3V and the 5V power inputs. One GND connection is sufficient if the same ground is being used for power and data signal.
 
 ### The bigger board
 
