@@ -59,7 +59,7 @@ Above this text you can also see the Amperages allowed by the Emulator. You can 
 ## Events
 This page contains information about events that have occurred while the system has been running. All events are timestamped, and have an occurrence counter so you know if many events of the same type has triggered. 
 
-<img width="1009" height="738" alt="image" src="https://github.com/user-attachments/assets/4793fa13-e73f-43b9-ac36-acc08d8df858" />
+![image](../../images/webserver-guide-16.png)
 
 Each event also has a description field with more info. The events are grouped into three categories:
 
