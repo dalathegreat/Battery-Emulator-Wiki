@@ -63,14 +63,14 @@ This page contains information about events that have occurred while the system 
 
 Each event also has a description field with more info. The events are grouped into three categories:
 
-### Info ℹ️ 
-Info events contain useful information like when battery has been charged full, completely discharged, reset reason etc. Having info events present does not warranty any user action.
+### 🟩 Info
+Info level events contain useful information like when battery has been charged full, completely discharged, reset reason etc. Having info events present does not warranty any user action.
 
-### Warning 🟡 
-Warning events contain info that users might want to act upon. The system will try to mitigate certain warnings, like incase the battery is reaching too high voltage, the system will raise a warning event and prevent further charging (only discharging will be possible). Warning events should be analyzed when spotted. The front page of the webserver, plus the LED on the board will also turn yellow when a warning event is active.
+### 🟨 Warning
+Warning level events contain info that users might want to act upon. The system will try to mitigate certain warnings, like in case the battery is reaching too high voltage, the system will raise a warning event and prevent further charging (only discharging will be possible). Warning events should be analyzed when spotted. The front page of the webserver, plus the LED on the board will also turn yellow when a warning event is active.
 
-### Error 🔴 
-Critical error events contain info about why the system has stopped operation. Incase it is no longer safe to continue using the battery, an error event will be generated and charging/discharging is set to 0W allowed. Check the Error event description for information on how to proceed or what to check. The front page of the webserver, plus the LED on the board will also turn red when an error event is active.
+### 🟥 Error
+Critical level error events contain info about why the system has stopped operation. In case it is no longer safe to continue using the battery, an error event will be generated and charging/discharging is set to 0W allowed. Check the Error event description for information on how to proceed or what to check. The front page of the webserver, plus the LED on the board will also turn red when an error event is active.
 
 ## Cellmonitor
 Via this page you can keep track of all the cells in your battery. At the top of the page there is a quick readout of Min/Max/Deviation inside the battery. The view also has a grid view of all cells and their values, along with a graph at the bottom for quick visualization on how balanced the battery is. The two cells that are lowest and highest will be highlighted red for quicker identification where they are.
