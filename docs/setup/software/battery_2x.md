@@ -72,16 +72,16 @@ Capacity counts from the moment a pack is configured, so the figure the inverter
 
 #### SOC window
 
-If you use **SOC scaling** in the Settings page, the window is applied once, to the combined battery. It is not applied to each pack separately, because a scaled percentage only means something for the installation as a whole. The individual pack cards therefore always show real, unscaled figures.
+If you use [SOC scaling](webserver_guide.md/#rescale-soc) in the Settings page, the window is applied once, to the combined battery. It is not applied to each pack separately, because a scaled percentage only means something for the installation as a whole. The individual pack cards therefore always show real, unscaled figures.
 
 #### Where the combined values appear
 
-| | Individual packs | Combined battery |
+| | Individual batteries | Combined battery |
 |---|---|---|
-| **Web interface** | One card per pack | The card at the top of the main page |
-| **MQTT** | `<name>/info`, `/info_2`, `/info_3` — entities named "… 1", "… 2", "… 3" | `<name>/info_multi` — entities with no number, ids ending `_multi` |
-| **ESP-NOW** | One battery frame per pack | A dedicated aggregate frame |
 | **Inverter** | — | Everything the inverter receives |
+| [Web interface](webserver_guide.md) | One card per battery | The card above the batteries |
+| [MQTT](mqtt.md) | `<name>/info`, `/info_2`, `/info_3` — entities named "… 1", "… 2", "… 3" | `<name>/info_multi` — entities with no number, ids ending `_multi` |
+| [ESPNow](espnow.md) | One battery frame per pack | A dedicated aggregate frame |
 
 Some values only exist for the installation and are not published per pack, because they describe the whole system: the limiting factor, and the SOC-scaled figures.
 
