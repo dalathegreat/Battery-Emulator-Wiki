@@ -28,6 +28,63 @@ Double-Battery can be run on all inverters. The inverter will think that there i
 !!! note "NOTE"
     Double-Battery should not be confused with Dual Input inverters. Dual input can have 2 separate batteries operating at the same time (Foxess or Sofar for instance).  lookup how to in your inverter type/brand Wiki for more information about Dual input.
 
+### How the packs become one virtual battery
+
+Each pack keeps its own readings. Once per second Battery-Emulator combines them into a single virtual battery, and that is the only thing the inverter ever sees. On the web interface it is the **combined card** at the top of the main page; the cards below it show each pack on its own.
+
+Not every value combines the same way. Some add up, some take the weakest pack, some take the extremes:
+
+| Value | How the packs are combined | Why |
+|---|---|---|
+| **Total capacity** | Sum | Two 30 kWh packs present 60 kWh |
+| **Remaining capacity** | Sum | |
+| **Lifetime charged / discharged energy** | Sum | |
+| **Current** | Sum | Each pack contributes its share of the load |
+| **Power** | Combined current × DC bus voltage | |
+| **Voltage** | The first pack's measurement | Packs are in parallel, so they share one bus voltage |
+| **SOC** | The emptiest pack, blending towards the fullest once that one passes 90% | Discharge stops when the first pack empties, and charge tapers smoothly as the first pack fills, instead of jumping the moment one tops out |
+| **State of health** | The lowest any pack reports | The installation is only as healthy as the pack that fails first |
+| **Cell voltage min / max** | Lowest and highest found in any pack | |
+| **Temperature min / max** | Lowest and highest found in any pack | |
+| **Charge / discharge voltage limits** | Lowest ceiling and highest floor any pack reports | A mismatched pack is never asked to go past what it tolerates |
+| **Max charge / discharge power** | The **lowest** any pack allows — *not* the sum | See the warning below |
+| **Max charge / discharge current** | Derived from the combined power limit at bus voltage, then capped by your charge/discharge settings | |
+
+!!! warning "Charge and discharge power does not double"
+    Capacity doubles, power does not. The inverter is told the limit of the **weakest** pack, because there is no way to steer current towards one pack and away from another — they share a bus and divide the current between themselves according to their own internal resistance. Reporting the sum would allow a healthy pack to drag a weak one past its limit.
+
+    So two packs that each allow 10 kW are presented as 10 kW, not 20 kW. If one pack drops to 6 kW, the whole installation drops to 6 kW.
+
+!!! info "Faults stop the whole installation"
+    If any pack reports a fault, or the safety layer shuts one down, its limits go to zero — and because the combined limit is the lowest of the packs, the inverter is told zero as well. One pack in trouble stops the system, not just itself.
+
+#### Packs that are configured but not yet connected
+
+A second or third pack goes through three stages, and each one changes what it contributes:
+
+| Stage | What it means | What it contributes |
+|---|---|---|
+| **Configured** | Selected in the Settings page | Its capacity counts towards the total |
+| **Detected** | Talking on the CAN bus | Its cells, temperatures, SOH and SOC count too |
+| **Joined** | Its contactor has closed and it is on the DC bus | It now carries current |
+
+Capacity counts from the moment a pack is configured, so the figure the inverter sees does not jump when the contactors finally close. Measurements only count once the pack is actually talking — a configured but silent pack still holds its power-on defaults, and those are not readings.
+
+#### SOC window
+
+If you use **SOC scaling** in the Settings page, the window is applied once, to the combined battery. It is not applied to each pack separately, because a scaled percentage only means something for the installation as a whole. The individual pack cards therefore always show real, unscaled figures.
+
+#### Where the combined values appear
+
+| | Individual packs | Combined battery |
+|---|---|---|
+| **Web interface** | One card per pack | The card at the top of the main page |
+| **MQTT** | `<name>/info`, `/info_2`, `/info_3` — entities named "… 1", "… 2", "… 3" | `<name>/info_multi` — entities with no number, ids ending `_multi` |
+| **ESP-NOW** | One battery frame per pack | A dedicated aggregate frame |
+| **Inverter** | — | Everything the inverter receives |
+
+Some values only exist for the installation and are not published per pack, because they describe the whole system: the limiting factor, and the SOC-scaled figures.
+
 ### Which batteries are compatible?
 The list below is generated from `battery_supports_double()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
@@ -106,4 +163,3 @@ Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, con
 ### Example wiring diagram - Stark Box + 2x BMW i3 + Fronius Gen24
 
 ![image](../../images/double-battery-05.png)
-
