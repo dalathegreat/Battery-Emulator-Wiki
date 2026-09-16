@@ -4,7 +4,7 @@ title: "Triple Battery"
 
 ## Hardware requirement
 
-Triple-Battery, much like Double-Battery, requires a dedicated CAN channel for each battery.
+Triple-Battery, much like [Double Battery](battery_2x.md), requires a dedicated CAN channel for each battery.
 
 At the moment the following 3-CAN boards are compatible:
 
@@ -16,17 +16,8 @@ At the moment the following 3-CAN boards are compatible:
 - [BECom](../../hardware/becom.md)
 
 ### How does parallel operation work?
-The batteries get connected in parallel. This means the voltage stays the same, but the capacity triples.
 
-!!! info "IMPORTANT"
-    The batteries need to be of the same model and size, and preferably as close as possible in state of health. Do not connect battery packs with too much variation in condition, this lowers overall efficiency significantly!
-
-!!! danger "CAUTION"
-    Do not connect packs in series!
-    
-    - How to ensure balancing, that each battery reaches 100%? In parallel operation this is easy, in series it's next to impossible.
-    - There are no safeties implemented for operation in series connection! No control over CAN controlled contactors would make this feature hard to use safely.
-    - None of the isolation is designed for double the working voltage. Yes, each battery only sees it's own voltage, but the isolation to earth and in the BMS comms suddenly sees twice. As do any internal contactors, which is probably the more immediate issue.
+The same principles apply as described at the [Double Battery](battery_2x.md).
 
 ## Which batteries are compatible?
 The list below is generated from `battery_supports_triple()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Triple battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
@@ -49,6 +40,6 @@ For batteries that require externally controlled contactors, you can automate th
 
 ![image](../../images/triple-battery-01.png){ width="580" height="155" }
 
-This will start with connecting battery1, then once voltages match, battery2 and battery3 joins the DC link when voltages are close enough to first battery.
+This will start with connecting battery 1, then once voltages match, battery 2 and battery 3 join the DC link when their voltages are close enough to the first battery.
 
-See the HAL pin definitions for your hardware, to see which pin actuates the extra contactor set.
+Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor set.
