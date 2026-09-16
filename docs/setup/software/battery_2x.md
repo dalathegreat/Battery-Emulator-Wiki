@@ -3,7 +3,7 @@ title: "Double Battery"
 ---
 
 ### What is this feature?
-Double Battery means running two battery packs at the same time. This doubles the capacity of the system. Incase you need more energy than one EV pack can provide, this functionality is for you.
+Double Battery means running two battery packs at the same time. This doubles the capacity of the system. In case you need more energy than one EV pack can provide, this functionality is for you.
 
 Good info on running multiple packs and associated risks: [orionbms](https://www.orionbms.com/manuals/pdf/parallel_strings.pdf)
 
