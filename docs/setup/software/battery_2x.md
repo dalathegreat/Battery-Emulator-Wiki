@@ -145,18 +145,22 @@ When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), si
     If you enable **PWM contactor control** and you observe *after a longer time* that the second battery disconnects raising the event `Too large voltage diff between the batteries. Second battery cannot join the DC-link`, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure the contactors remain held steadily.
 
 #### CAN-controlled contactors
+
 Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
 ![image](../../images/double-battery-03.png){ width="785" height="306" }
 
-After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2 (Cont ext), if it falls within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
+After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2, if it's within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
 
-To control the second battery, you need to install an extra contactor in series with it. Secondary battery does not use precharge, thus you can switch both positive and negative at the same time. Consult the appropriate board hardware description for which GPIO pin controls this contactor.
+To control the second battery, you need to install an extra contactor in series with it. Secondary battery does not use precharge, thus you can switch both positive and negative at the same time.
 
-Enable "Double-Battery Contactor control via GPIO:" in the Settings page. When Battery #2 voltage matches Battery #1 the extra relay will engage and combine the two batteries into one large battery.
+Enable "Double-Battery Contactor control via GPIO:" in the Settings page. When Battery 2 voltage matches Battery 1 the extra contactor will engage and combine the two batteries into one large battery.
+
+Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor.
 
 ### Taking Double Battery into use.
-Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, controlled via GPIO contactors
+
+Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, controlled via GPIO contactors:
 
 ![image](../../images/double-battery-04.png)
 
