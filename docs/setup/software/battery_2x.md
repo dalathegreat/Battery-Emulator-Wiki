@@ -85,6 +85,9 @@ If you use [SOC scaling](webserver_guide.md/#rescale-soc) in the Settings page, 
 
 Some values only exist for the installation and are not published per pack, because they describe the whole system: the limiting factor, and the SOC-scaled figures.
 
+!!! note "NOTE"
+    If you had enabled MQTT **before** enabling **Double Battery** and you use [Home Assistant](home_assistant.md), make sure you enable once the **Publish at next boot:** setting, so that Autodiscovery publishes the appropriate configuration changes to Home Assistant about the entities related to Double Battery setup.
+
 ### Which batteries are compatible?
 The list below is generated from `battery_supports_double()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
