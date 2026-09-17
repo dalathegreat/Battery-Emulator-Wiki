@@ -16,7 +16,7 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 
 To raw dump CAN traffic going through the board, click the "CAN tools" button on the main page, and then press "Start dump". This will open a new page, `\dump_can`.
 
-<img width="800" height="192" alt="image" src="https://github.com/user-attachments/assets/ce159389-fe51-4e80-8011-4e5aaa06c6ce" />
+![image](../../images/can-logging-05.png)
 
 Let the CAN dumper run for enough time, and save the entire page to a document.
 
