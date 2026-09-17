@@ -14,9 +14,9 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 
 ## CAN logging via Webserver
 
-### Dump CAN
+To raw dump CAN traffic going through the board, click the "CAN tools" button on the main page, and then press "Start dump". This will open a new page, `\dump_can`.
 
-To raw dump all CAN coming from the board, visit the **dump_can** page. Browse to the IP address of Emulator, eg. `http://192.168.4.1/dump_can`.
+<img width="800" height="192" alt="image" src="https://github.com/user-attachments/assets/ce159389-fe51-4e80-8011-4e5aaa06c6ce" />
 
 Let the CAN dumper run for enough time, and save the entire page to a document.
 
@@ -27,29 +27,7 @@ Let the CAN dumper run for enough time, and save the entire page to a document.
     while true; do curl http://192.168.4.1/dump_can >> ~/Downloads/can_log.txt; done
     ```
 
-!!! note "NOTE"
-    The `192.168.4.1` is the Access Point IP of Battery Emulator. In the examples above, replace it with the IP address it has in your own network.
-
-### CAN logger page
-
-Start by accessing the [Webserver](../software/webserver_guide.md).
-
-Click the button named **CAN logger**. When it opens, the system starts logging CAN messages. This is disabled by default to not overload the system.
-
-![image](../../images/can-logging-01.png)
-
-Refresh the page to get an updated list of incoming (RX) and sent (TX) CAN messages.
-
-![image](../../images/can-logging-02.png)
-
-Press the "Export to .txt" button to save the CAN log into a SavvyCAN compatible CANdump format, for further analysis.
-
-!!! note "NOTE"
-    CAN logging via can log page will not store all messages due to limited RAM. If you need to log absolutely everything, do it via the CAN Dump as above, USB or to SD-CARD.
-
-!!! note "NOTE"
-    Some mobile phone browsers can have issues displaying long data lists. If you see no data, switch to a desktop / laptop PC.
-
+    The `192.168.4.1` is the Access Point IP of Battery Emulator. In the example above, replace it with the IP address it has in your own network.
 
 ## USB CAN logging
 
