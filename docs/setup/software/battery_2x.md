@@ -166,9 +166,9 @@ Check out the pinout table for each board, to see which pin is defined to actuat
 
 In the settings:
 
-<img width="975" height="93" alt="image" src="https://github.com/user-attachments/assets/7e66d858-3002-46b7-81f9-4853e06740ae" />
+![image](../../images/battery-2x-01.png)
 
-<img width="975" height="202" alt="image" src="https://github.com/user-attachments/assets/a8d466ae-8610-4ae7-9853-9cfbcc74df38" />
+![image](../../images/battery-2x-02.png)
 
 ### Example wiring diagram - Stark Box + 2x BMW i3 + Fronius Gen24
 
