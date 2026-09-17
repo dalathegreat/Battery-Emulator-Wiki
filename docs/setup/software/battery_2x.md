@@ -159,9 +159,7 @@ Check out the pinout table for each board, to see which pin is defined to actuat
 
 #### CAN-controlled contactors
 
-To control the second battery if it has CAN activated contactors, you need to an additional GPIO controlled contactor in series with it. 
-
-Externally powered contactors behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough.
+To control the second battery if it only has CAN activated contactors, you need to an additional GPIO controlled contactor in series with it. External contactros controlled like this behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough.
 
 When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. The behavior varies: either they have reliable contactor control (MG?), last-resort-opening (Kia?), or no real control (they just close and stay closed). There's the question of whether the battery is happy to close contactors with a live bus - some would see this as a welded contactor and potentially permanently lock out (Volvo?). The safest definitely is to have the extra contactor, unless it is known 100% that that type is happy without it (It seems MG Gen1 is happy without it).
 
