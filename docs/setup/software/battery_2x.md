@@ -89,7 +89,8 @@ Some values only exist for the installation and are not published per pack, beca
     If you had enabled MQTT **before** enabling **Double Battery** and you use [Home Assistant](home_assistant.md), make sure you enable once the **Publish at next boot:** setting, so that Autodiscovery publishes the appropriate configuration changes to Home Assistant about the entities related to Double Battery setup.
 
 ### Which batteries are compatible?
-The list below is generated from `battery_supports_double()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
+
+Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
 - [Chevrolet Bolt EV / Opel Ampera-e](../../battery/ampera_e_64_kwh.md)
 - [BMW i3](../../battery/bmw_i3.md) ✅ (CAN contactors)
@@ -163,9 +164,11 @@ Check out the pinout table for each board, to see which pin is defined to actuat
 
 ### Taking Double Battery into use.
 
-Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, controlled via GPIO contactors:
+In the settings:
 
-![image](../../images/double-battery-04.png)
+<img width="975" height="93" alt="image" src="https://github.com/user-attachments/assets/7e66d858-3002-46b7-81f9-4853e06740ae" />
+
+<img width="975" height="202" alt="image" src="https://github.com/user-attachments/assets/a8d466ae-8610-4ae7-9853-9cfbcc74df38" />
 
 ### Example wiring diagram - Stark Box + 2x BMW i3 + Fronius Gen24
 
