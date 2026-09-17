@@ -6,7 +6,7 @@ title: "Triple Battery"
 
 Triple-Battery, much like [Double Battery](battery_2x.md), requires a dedicated CAN channel for each battery.
 
-<img width="695" height="165" alt="image" src="https://github.com/user-attachments/assets/70bddd2c-ede8-498b-9a08-f7daf9fed58c" />
+![image](../../images/battery-3x-01.png)
 
 At the moment the following 3-CAN boards are compatible:
 
@@ -49,7 +49,7 @@ Check out the pinout table for each board, to see which pin is defined to actuat
 - Battery2 - 2ⁿᵈ battery contactor control via GPIO: ✅
 - Battery3 - 3ʳᵈ battery contactor control via GPIO: ✅
 
-<img width="755" height="232" alt="image" src="https://github.com/user-attachments/assets/48a1be15-664b-4bff-8871-e849c8c21340" />
+![image](../../images/battery-3x-02.png)
 
 This will start with connecting battery 1, then once voltages match, battery 2 and battery 3 join the DC link when their voltages are close enough to the first battery.
 
