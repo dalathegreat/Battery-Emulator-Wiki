@@ -42,7 +42,7 @@ Not every value combines the same way. Some add up, some take the weakest pack, 
 | **Current** | Sum | Each pack contributes its share of the load |
 | **Power** | Combined current × DC bus voltage | |
 | **Voltage** | The first pack's measurement | Packs are in parallel, so they share one bus voltage |
-| **SOC** | The emptiest pack, blending towards the fullest once that one passes 90% | Discharge stops when the first pack empties, and charge tapers smoothly as the first pack fills, instead of jumping the moment one tops out |
+| **SOC** | The emptiest pack that is on the bus, blending towards the fullest once that one passes 90% | Discharge stops when the first pack empties, and charge tapers smoothly as the first pack fills, instead of jumping the moment one tops out |
 | **State of health** | The lowest any pack reports | The installation is only as healthy as the pack that fails first |
 | **Cell voltage min / max** | Lowest and highest found in any pack | |
 | **Temperature min / max** | Lowest and highest found in any pack | |
@@ -65,10 +65,14 @@ A second or third pack goes through three stages, and each one changes what it c
 | Stage | What it means | What it contributes |
 |---|---|---|
 | **Configured** | Selected in the Settings page | Its capacity counts towards the total |
-| **Detected** | Talking on the CAN bus | Its cells, temperatures, SOH and SOC count too |
-| **Joined** | Its contactor has closed and it is on the DC bus | It now carries current |
+| **Detected** | Talking on the CAN bus | Its cells, temperatures and state of health count too |
+| **Joined** | Its contactor has closed and it is on the DC bus | It carries current, and its state of charge counts |
 
-Capacity counts from the moment a pack is configured, so the figure the inverter sees does not jump when the contactors finally close. Measurements only count once the pack is actually talking — a configured but silent pack still holds its power-on defaults, and those are not readings.
+Capacity counts from the moment a pack is configured, so the figure the inverter sees does not jump when the contactors finally close.
+
+Measurements only count once the pack is actually talking — a configured but silent pack still holds its power-on defaults, and those are not readings.
+
+State of charge waits for the pack to be on the bus. A pack can be perfectly healthy and talking while it is held out of the DC link, either because its voltage has not come close enough yet or because it was dropped after a fault. Its state of charge is real, but it is not the state of charge of anything the inverter can charge or discharge — so an empty pack sitting outside the link does not make the installation read empty, and a full one does not make it read full.
 
 #### SOC window
 
