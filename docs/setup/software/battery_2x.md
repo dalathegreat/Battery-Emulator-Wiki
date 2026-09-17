@@ -151,9 +151,9 @@ When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), si
 
 Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
-![image](../../images/double-battery-03.png){ width="785" height="306" }
+![image](../../images/be_battery_2x.png)
 
-After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2, if it's within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
+After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
 
 To control the second battery, you need to install an extra contactor in series with it. Secondary battery does not use precharge, thus you can switch both positive and negative at the same time.
 
