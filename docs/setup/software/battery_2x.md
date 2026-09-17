@@ -148,7 +148,7 @@ Connect the high voltage lines like in this diagram. Remember to place fuses bot
 
 After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
 
-If your battery uses **Contactor control via GPIO**, you can use the buil-in contactors to attach the second battery to the DC link. Secondary battery does not use precharge (leave the precharge relay unconnectedÖ, and you can switch both positive and negative at the same time, from the same SSR.
+If your batteries use GPIO-controlled contactors, you use these to attach the second battery to the DC link. Secondary battery does not use precharge (leave the precharge relay unconnected), and you can switch both positive and negative at the same time, from the same SSR. No need to add a secondary contactor.
 
 Enable **2ⁿᵈ battery contactor control via GPIO:** in the Settings page. When the second battery voltage matches the main battery the extra contactor will engage and combine the two batteries into one large one.
 
@@ -159,11 +159,13 @@ Check out the pinout table for each board, to see which pin is defined to actuat
 
 #### CAN-controlled contactors
 
-To control the second battery if it has CAN activated contactors, you need to an additional GPIO controlled contactor in series with it (even if it's CAN controlled!).
+To control the second battery if it has CAN activated contactors, you need to an additional GPIO controlled contactor in series with it. 
 
 Externally powered contactors behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough.
 
-When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them.
+When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. The behavior varies: either they have reliable contactor control (MG?), last-resort-opening (Kia?), or no real control (they just close and stay closed). There's the question of whether the battery is happy to close contactors with a live bus - some would see this as a welded contactor and potentially permanently lock out (Volvo?). The safest definitely is to have the extra contactor, unless it is known 100% that that type is happy without it (It seems MG Gen1 is happy without it).
+
+If your setup has batteries with CAN-controlled contactors, it's enough to add a single-pole contactor to the **2ⁿᵈ battery contactor control via GPIO** control, and intrerrupt only the positive or negative link. The internal contactors will still act on both + and - when it's time to do so.
 
 ### Taking Double Battery into use.
 
