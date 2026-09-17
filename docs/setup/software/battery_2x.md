@@ -134,21 +134,9 @@ If you are using [Stark CMR](../../hardware/stark_cmr.md):
 ![image](../../images/double-battery-02.png)
 
 ### High voltage connection diagram
-:warning: Dealing with one EV battery pack can be dangerous. Using two batteries increases the risks associated with lithium batteries with 100%. Accidentally connecting together the DC side of two batteries at varying SOC% will cause massive amounts of current to be dumped between the packs. Always use fuses to limit the risk and avoid melting wires.
 
-There are two types of EV battery packs:
-
-- Externally powered contactors 
-- CAN activated contactors
-
-Externally powered contactors behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough (<3V).
-
-When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. 
-
-!!! tip "TIP"
-    If you enable **PWM contactor control** and you observe *after a longer time* that the second battery disconnects raising the event `Too large voltage diff between the batteries. Second battery cannot join the DC-link`, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure the contactors remain held steadily.
-
-#### CAN-controlled contactors
+!!! danger "CAUTION"
+    Dealing with one EV battery pack can be dangerous. Using two batteries increases the risks associated with lithium batteries with 100%. Accidentally connecting together the DC side of two batteries at varying SOC% will cause massive amounts of current to be dumped between the packs. Always use fuses to limit the risk and avoid melting wires.
 
 Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
@@ -158,9 +146,23 @@ After the main battery is started, the system will automatically close the inter
 
 To control the second battery, you need to install an extra contactor in series with it. Secondary battery does not use precharge, thus you can switch both positive and negative at the same time.
 
-Enable "Double-Battery Contactor control via GPIO:" in the Settings page. When Battery 2 voltage matches Battery 1 the extra contactor will engage and combine the two batteries into one large battery.
+Enable **2ⁿᵈ battery contactor control via GPIO:** in the Settings page. When the second battery voltage matches the main battery the extra contactor will engage and combine the two batteries into one large one.
 
 Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor.
+
+!!! tip "TIP"
+    If you enable **PWM contactor control** and you observe *after a longer time* that the second battery disconnects raising the event `Too large voltage diff between the batteries. Second battery cannot join the DC-link`, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure the contactors remain held steadily.
+
+#### CAN-controlled contactors
+
+There are two types of EV battery packs:
+
+- Externally powered contactors 
+- CAN activated contactors
+
+Externally powered contactors behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough.
+
+When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. Thus, it's strongly recommended to add an additional GPIO controlled contactor in series with the second battery even if it's CAN controlled.
 
 ### Taking Double Battery into use.
 
