@@ -45,10 +45,10 @@ If your batteries use GPIO-controlled contactors, you use these to attach the se
 
 Enable **2ⁿᵈ battery contactor control via GPIO:** and **3ʳᵈ battery contactor control via GPIO:** in the Settings page. When the second and third battery voltage match the main battery the extra contactors will engage and combine them into one large one. After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. After that next step is to connect the third battery with the same logic.
 
-Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor.
-
 ![image](../../images/battery-3x-02.png)
 
 This will start with connecting battery 1, then once voltages match, battery 2 and battery 3 join the DC link when their voltages are close enough to the first battery.
 
 Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor set.
+
+To control the second battery if it only has CAN activated contactors, you need to an additional GPIO controlled contactor in series with it.
