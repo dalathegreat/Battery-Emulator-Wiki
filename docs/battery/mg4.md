@@ -2,8 +2,6 @@
 title: "MG4"
 ---
 
-** UNDER CONSTRUCTION **
-
 ## Specifications
 
 | Year |  Model | Battery capacity | Compatible? | Rated Voltage | Voltage Range |
@@ -20,13 +18,7 @@ There are a couple of current challenges:
 
 - Most packs (~75% of ones tested) will close contactors when requested, and report the state-of-charge over the PT EXT CAN, but others do not. It is not clear why not, perhaps they are crash-locked and need resetting, the 49kWh pack is reported to have closed contactors once 12V was applied to PIN 4 on the LV connector.
 
-- It is currently necessary to use the PT EXT (non-FD) bus for closing the contactors, but the PT (FD) bus for reading extended information (including temperatures, SoH, cell min, max and voltages). 
-
-The buses can be linked together and it does work, but getting the diagnostic information is inconsistent.  
-
-The better option is to have the PT EXT on the T2-CAN's 2515 interface with the PT bus connected to the 2518 add on board, the latest versions of the MG4 code support this on the shunt dropdown, select "Battery second interface" and select the interface PT EXT is connected to, you can ignore all the other settings.
-
-The BMS SoC drifts over time, we're still work on how to get it to reset once max cell reaches the appropriate level, in the meantime the MG4 code now has the option to "Use estimated SOC" which will snap to 100% and coulomb count backwards from there, the BE SoC is persistent across reboots, but not power cycles.
+MG4 code now has the option to "Use estimated SOC" which will snap to 100% and coulomb count backwards from there, the BE SoC is persistent across reboots, but not power cycles.
 
 - It is not known whether the packs are balancing, but the LFP packs seem to be 3-5mv accept at the extremes.
 
@@ -34,11 +26,13 @@ Both locked packs (using external contactor control and coulomb-counting) and no
 
 ## Software configuration
 
+Not yet merged, latest builds in:
+
+https://github.com/jonny5532/Battery-Emulator/tree/feature/mg4-coulomb-count
+
 For this battery type, use the option called "MG4 battery" under the "Battery config" setting.
 
 ![be](../images/mg4-01.jpg)
-
-![image](../images/mg4-08.png){ width="782" height="146" }
 
 ## Connectors
 
@@ -78,9 +72,9 @@ The battery has three CAN buses:
 
 **CAN PT** is the powertrain bus, which connects the main powertrain components. The battery outputs its vital statistics (voltages, SoC and temperatures) on this bus. OBD requests (0x7e5 & 0x7DF) work over this bus. It is an FD interface which requires a 50000kbit CAN  2Mb CANFD connection.  
 
-**CAN PT EXT** is the powertrain extension bus and it listens for the messages which control the contactors. It's a regular CAN interface at 50000kbit.
+**CAN PT EXT** which we don't use now. It's a regular CAN interface at 50000kbit.
 
-**CAN BMS** seems to be the raw data from the BMS, we're not currently sure what information it contains.  It's a regular CAN interface at 25000kbit.
+**CAN BMS** is the raw data from the BMS that in the car goes to the EVCC.  It's a regular CAN interface at 25000kbit.
 
 ## High Voltage Interlock (HVIL)
 
@@ -88,7 +82,7 @@ The HVIL connections don't seem to be an issue.
 
 ## Physical Size
 
-The 51kWh packs are 1880mm x 1440mm x 110mm and 400kg, the 64/77kWh are 1880mm x 1440mm x 125mm and 410/450kg (including the mounting rails).  At the top of the pack is an Energy Distribution Module (EDM) which mounts the contactors, High and Low Voltage connections and the Battery Management Unit (BMU). If getting from a wrecker/breaker try to get the Power Distribution Box (PDU) as it has a number of useful connectors that can be reused.
+The 51 & 64kWh packs are 1880mm x 1440mm x 110mm and ~400kg, the 77kWh are 1880mm x 1440mm x 125mm and 450kg (including the mounting rails).  At the top of the pack is an Energy Distribution Module (EDM) which mounts the contactors, High and Low Voltage connections and the Battery Management Unit (BMU). If getting from a wrecker/breaker try to get the Power Distribution Box (PDU) as it has a number of useful connectors that can be reused.
 
 ![image](../images/mg4-04.webp)
 
