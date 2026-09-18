@@ -19,7 +19,7 @@ At the moment the following 3-CAN boards are compatible:
 
 ### How does parallel operation work?
 
-The same principles apply as described at the [Double Battery](battery_2x.md).
+The same principles apply as described at the [Double Battery](battery_2x.md). Read that page thoroughly, here we only describe differences from the double setup.
 
 ## Which batteries are compatible?
 
@@ -39,15 +39,13 @@ Connect the high voltage lines like in this diagram. Remember to place fuses bot
 
 ![image](../../images/be_battery_3x.png)
 
-After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. After that next step is to connect the third battery with the same logic.
+If your batteries use GPIO-controlled contactors, you use these to attach the second battery to the DC link. Secondary and third battery don't use precharge (leave the precharge relay unconnected), and you can switch both positive and negative at the same time, from the same SSR. No need to add a secondary contactor:
 
-To control the second and the third battery, you need to install an extra contactor in series with them. They don't use precharge, thus you can switch both positive and negative at the same time.
+<img width="654" height="380" alt="kép" src="https://github.com/user-attachments/assets/f60752aa-98c9-496e-bd38-72b45a3cee32" />
+
+Enable **2ⁿᵈ battery contactor control via GPIO:** and **3ʳᵈ battery contactor control via GPIO:** in the Settings page. When the second and third battery voltage match the main battery the extra contactors will engage and combine them into one large one. After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. After that next step is to connect the third battery with the same logic.
 
 Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor.
-
-- Battery1 - Contactor control via GPIO: ✅
-- Battery2 - 2ⁿᵈ battery contactor control via GPIO: ✅
-- Battery3 - 3ʳᵈ battery contactor control via GPIO: ✅
 
 ![image](../../images/battery-3x-02.png)
 
