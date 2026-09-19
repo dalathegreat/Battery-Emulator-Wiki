@@ -152,7 +152,7 @@ After the main battery is started, the system will automatically close the inter
 
 If your batteries use GPIO-controlled contactors, you use these to attach the second battery to the DC link. Secondary battery does not use precharge (leave the precharge relay unconnected), and you can switch both positive and negative at the same time, from the same SSR. No need to add a secondary contactor:
 
-![kép](../../images/battery-2x-03.png)
+![kép](../../images/be_battery_2x_gpio.png)
 
 Enable **2ⁿᵈ battery contactor control via GPIO:** in the Settings page. When the second battery voltage matches the main battery the extra contactor will engage and combine the two batteries into one large one.
 
