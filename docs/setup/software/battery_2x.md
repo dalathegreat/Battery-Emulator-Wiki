@@ -3,11 +3,11 @@ title: "Double Battery"
 ---
 
 ### What is this feature?
-Double Battery means running two battery packs at the same time. This doubles the capacity of the system. Incase you need more energy than one EV pack can provide, this functionality is for you.
+Double Battery means running two battery packs at the same time. This doubles the capacity of the system. In case you need more energy than one EV pack can provide, this functionality is for you.
 
 Good info on running multiple packs and associated risks: [orionbms](https://www.orionbms.com/manuals/pdf/parallel_strings.pdf)
 
-If you need more capacity than Double Battery provides, you can also go [Triple Battery](battery_3x.md)
+If you need more capacity than Double Battery provides, you can also go [Triple Battery](battery_3x.md).
 
 ### How does parallel operation work?
 The batteries get connected in parallel. This means the voltage stays the same, but the capacity doubles.
@@ -28,8 +28,73 @@ Double-Battery can be run on all inverters. The inverter will think that there i
 !!! note "NOTE"
     Double-Battery should not be confused with Dual Input inverters. Dual input can have 2 separate batteries operating at the same time (Foxess or Sofar for instance).  lookup how to in your inverter type/brand Wiki for more information about Dual input.
 
+### How the packs become one virtual battery
+
+Each battery pack keeps its own readings. Once per second Battery-Emulator combines them into a single virtual battery, and that is the only thing the inverter ever sees. On the web interface it's shown in a combined card on the main page; the cards below it show each pack on its own.
+
+Not every value combines the same way. Some add up, some take the weakest pack, some take the extremes:
+
+| Value | How the packs are combined | Why |
+|---|---|---|
+| **Total capacity** | Sum | Two 30 kWh packs present 60 kWh |
+| **Remaining capacity** | Sum | |
+| **Lifetime charged / discharged energy** | Sum | |
+| **Current** | Sum | Each pack contributes its share of the load |
+| **Power** | Combined current × DC bus voltage | |
+| **Voltage** | The first pack's measurement | Packs are in parallel, so they share one bus voltage |
+| **SOC** | The emptiest pack that is on the bus, blending towards the fullest once that one passes 90% | Discharge stops when the first pack empties, and charge tapers smoothly as the first pack fills, instead of jumping the moment one tops out |
+| **State of health** | The lowest any pack reports | The installation is only as healthy as the pack that fails first |
+| **Cell voltage min / max** | Lowest and highest found in any pack | |
+| **Temperature min / max** | Lowest and highest found in any pack | |
+| **Charge / discharge voltage limits** | Lowest ceiling and highest floor any pack reports | A mismatched pack is never asked to go past what it tolerates |
+| **Max charge / discharge power** | The **lowest** any pack allows — *not* the sum | See the warning below |
+| **Max charge / discharge current** | Derived from the combined power limit at bus voltage, then capped by your charge/discharge settings | |
+
+!!! warning "Charge and discharge power does not double"
+    Capacity doubles, power does not. The inverter is told the limit of the **weakest** pack, because there is no way to steer current towards one pack and away from another — they share a bus and divide the current between themselves according to their own internal resistance. Reporting the sum would allow a healthy pack to drag a weak one past its limit.
+
+    So two packs that each allow 10 kW are presented as 10 kW, not 20 kW. If one pack drops to 6 kW, the whole installation drops to 6 kW.
+
+!!! info "Faults stop the whole installation"
+    If any pack reports a fault, or the safety layer shuts one down, its limits go to zero — and because the combined limit is the lowest of the packs, the inverter is told zero as well. One pack in trouble stops the system, not just itself.
+
+#### Packs that are configured but not yet connected
+
+A second or third pack goes through three stages, and each one changes what it contributes:
+
+| Stage | What it means | What it contributes |
+|---|---|---|
+| **Configured** | Selected in the Settings page | Its capacity counts towards the total |
+| **Detected** | Talking on the CAN bus | Its cells, temperatures and state of health count too |
+| **Joined** | Its contactor has closed and it is on the DC bus | It carries current, and its state of charge counts |
+
+Capacity counts from the moment a pack is configured, so the figure the inverter sees does not jump when the contactors finally close.
+
+Measurements only count once the pack is actually talking — a configured but silent pack still holds its power-on defaults, and those are not readings.
+
+State of charge waits for the pack to be on the bus. A pack can be perfectly healthy and talking while it is held out of the DC link, either because its voltage has not come close enough yet or because it was dropped after a fault. Its state of charge is real, but it is not the state of charge of anything the inverter can charge or discharge — so an empty pack sitting outside the link does not make the installation read empty, and a full one does not make it read full.
+
+#### SOC window
+
+If you use [SOC scaling](webserver_guide.md/#rescale-soc) in the Settings page, the window is applied once, to the combined battery. It is not applied to each pack separately, because a scaled percentage only means something for the installation as a whole. The individual pack cards therefore always show real, unscaled figures.
+
+#### Where the combined values appear
+
+| | Individual batteries | Combined battery |
+|---|---|---|
+| **Inverter** | — | Everything the inverter receives |
+| [Web interface](webserver_guide.md) | One card per battery | The card above the batteries |
+| [MQTT](mqtt.md) | `<name>/info`, `/info_2`, `/info_3` — entities named "… 1", "… 2", "… 3" | `<name>/info_multi` — entities with no number, ids ending `_multi` |
+| [ESPNow](espnow.md) | One battery frame per pack | A dedicated aggregate frame |
+
+Some values only exist for the installation and are not published per pack, because they describe the whole system: the limiting factor, and the SOC-scaled figures.
+
+!!! note "NOTE"
+    If you had enabled MQTT **before** enabling **Double Battery** and you use [Home Assistant](home_assistant.md), make sure you enable once the **Publish at next boot:** setting, so that Autodiscovery publishes the appropriate configuration changes to Home Assistant about the entities related to Double Battery setup.
+
 ### Which batteries are compatible?
-The list below is generated from `battery_supports_double()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
+
+Only these integrations offer the "Double battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
 - [Chevrolet Bolt EV / Opel Ampera-e](../../battery/ampera_e_64_kwh.md)
 - [BMW i3](../../battery/bmw_i3.md) ✅ (CAN contactors)
@@ -73,37 +138,47 @@ If you are using [Stark CMR](../../hardware/stark_cmr.md):
 ![image](../../images/double-battery-02.png)
 
 ### High voltage connection diagram
-:warning: Dealing with one EV battery pack can be dangerous. Using two batteries increases the risks associated with lithium batteries with 100%. Accidentally connecting together the DC side of two batteries at varying SOC% will cause massive amounts of current to be dumped between the packs. Always use fuses to limit the risk and avoid melting wires.
 
-There are two types of EV battery packs:
+!!! danger "CAUTION"
+    Dealing with one EV battery pack can be dangerous. Using two batteries increases the risks associated with lithium batteries with 100%. Accidentally connecting together the DC side of two batteries at varying SOC% will cause massive amounts of current to be dumped between the packs. Always use fuses to limit the risk and avoid melting wires.
 
-- Externally powered contactors 
-- CAN activated contactors
+Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
-Externally powered contactors behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough (<3V).
+![image](../../images/be_battery_2x.png)
 
-When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. 
+After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
+
+### Low voltage connection
+
+#### GPIO-controlled contactors
+
+If your batteries use GPIO-controlled contactors, you use these to attach the second battery to the DC link. Secondary battery does not use precharge (leave the precharge relay unconnected), and you can switch both positive and negative at the same time, from the same SSR. No need to add a secondary contactor:
+
+![kép](../../images/be_battery_2x_gpio.png)
+
+Enable **2ⁿᵈ battery contactor control via GPIO:** in the Settings page. When the second battery voltage matches the main battery the extra contactor will engage and combine the two batteries into one large one.
+
+Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor.
 
 !!! tip "TIP"
     If you enable **PWM contactor control** and you observe *after a longer time* that the second battery disconnects raising the event `Too large voltage diff between the batteries. Second battery cannot join the DC-link`, increase the **PWM Hold** value relatively to **PWM Frequency Hz**, to ensure the contactors remain held steadily.
 
 #### CAN-controlled contactors
-Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
-![image](../../images/double-battery-03.png){ width="785" height="306" }
+To control the second battery if it only has CAN activated contactors, you **need to an additional GPIO controlled contactor in series** with it. External contactros controlled like this behave deterministically based on Battery-Emulator status. Contactors get connected directly to GPIO pins on the Battery-Emulator hardware, and the batteries are started up in a controlled manner. The second battery is allowed to join if the voltages are close enough.
 
-After battery 1 is started, the system will automatically close the interconnect contactor for Battery 2 (Cont ext), if it falls within 1.5V of the Battery 1. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
+When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), since CAN control acts on its own by the BMS, it can be very hard to troubleshoot these systems, and figure out why a specific pack is not closing contactors properly, or why it is opening them. The behavior varies: either they have reliable contactor control (MG?), last-resort-opening (Kia?), or no real control (they just close and stay closed). There's the question of whether the battery is happy to close contactors with a live bus - some would see this as a welded contactor and potentially permanently lock out (Volvo?). The safest definitely is to have the extra contactor, unless it is known 100% that that type is happy without it (It seems MG Gen1 is happy without it).
 
-To control the second battery, you need to install an extra contactor in series with it. Secondary battery does not use precharge, thus you can switch both positive and negative at the same time. Consult the appropriate board hardware description for which GPIO pin controls this contactor.
-
-Enable "Double-Battery Contactor control via GPIO:" in the Settings page. When Battery #2 voltage matches Battery #1 the extra relay will engage and combine the two batteries into one large battery.
+If your setup has batteries with CAN-controlled contactors, it's enough to add a single-pole contactor to the **2ⁿᵈ battery contactor control via GPIO** control, and intrerrupt only the positive or negative link. The internal contactors will still act on both + and - when it's time to do so.
 
 ### Taking Double Battery into use.
-Example configuration, Stark CMR + Fronius Gen24 + 2x Nissan LEAF batteries, controlled via GPIO contactors
 
-![image](../../images/double-battery-04.png)
+In the settings:
+
+![image](../../images/battery-2x-01.png)
+
+![image](../../images/battery-2x-02.png)
 
 ### Example wiring diagram - Stark Box + 2x BMW i3 + Fronius Gen24
 
 ![image](../../images/double-battery-05.png)
-

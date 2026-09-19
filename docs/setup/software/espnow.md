@@ -127,12 +127,13 @@ Key `0xFF` is reserved as an escape for a future 16 bit key space. The extended 
 | 0x02 | `BATTERY` | 1..3 | per-battery scalars |
 | 0x03 | `CELLS` | 1..3 | cell voltages + balancing bits |
 | 0x04 | `EVENT` | 0 | one emulator event |
+| 0x05 | `AGGREGATE` | 0 | every configured pack as one battery — **only sent when more than one battery is configured** |
 
 ### Transmission schedule
 
 One frame is emitted per tick with at least 20 ms between frames, so the Wi-Fi stack always finishes a send before the next one starts. A full round is:
 
-* **SYSTEM + BATTERY** frames every **1 s**.
+* **SYSTEM + AGGREGATE + BATTERY** frames every **1 s**, in that order. `AGGREGATE` is skipped entirely with a single battery.
 * **CELLS** frames every **5 s** — the largest payload, so it goes out less often.
 * **EVENT** frames every **10 s**, or immediately when something new happens.
 
@@ -157,7 +158,8 @@ Keys are globally unique across all frame types, so a receiver can use a single 
 | 0x50..0x8F | battery live measurements |
 | 0x90..0x9F | cell arrays |
 | 0xA0..0xAF | events |
-| 0xB0..0xEF | free for future upstream use |
+| 0xB0..0xCF | combined battery |
+| 0xD0..0xEF | free for future upstream use |
 | 0xF0..0xFE | **reserved for private forks** — upstream will never allocate here |
 | 0xFF | escape for a future 16 bit key space |
 
@@ -202,6 +204,15 @@ Keys are globally unique across all frame types, so a receiver can use a single 
 
 Link state (`BATTERY_DETECTED`, `CAN_ALIVE`, `CAN_ERROR_COUNTER`, `REAL_BMS_STATUS`, `LED_MODE`) is always sent. The measurement keys below are only emitted once the battery has actually been seen and the system has booted up, mirroring the MQTT gating — otherwise the datalayer defaults look like real readings for the first minute after boot.
 
+!!! note "Multi-battery setups change what some of these keys mean"
+    With more than one battery configured, a `BATTERY` frame describes **only that pack**, and three keys behave differently:
+
+    * `MAX_CHARGE_POWER_W` / `MAX_DISCHARGE_POWER_W` carry what **that pack's BMS asked for**, not what the inverter is allowed. The safety layer, the SOC taper and the inverter filter reshape a pack's limits before the inverter sees them, and the result belongs to the installation — it is in the `AGGREGATE` frame. With a single battery these keys are unchanged.
+    * `MAX_CHARGE_CURRENT_DA` / `MAX_DISCHARGE_CURRENT_DA` are derived from that pack's own BMS request and voltage. Previously they were only ever computed for the system, so packs 2 and 3 sent `0`.
+    * `LIMITING_FACTOR` is **not sent at all**. It describes what is capping the inverter, which is one answer for the whole installation — see `AGG_LIMITING_FACTOR`. `CHARGING_STATE` is still sent per pack, because parallel packs at slightly different state of charge genuinely can push current into each other.
+
+    `SOC_PPTT`, `REPORTED_REMAIN_WH` and the reported capacity keys carry **unscaled** values in a multi-battery setup: the SOC window is a property of the installation and is applied once, in the `AGGREGATE` frame. They equal their `_REAL` counterparts.
+
 | Key | Name | Type | Meaning |
 | --- | --- | --- | --- |
 | 0x50 | `SOC_PPTT` | UINT16 | 0.01 %, scaled/reported SOC |
@@ -242,6 +253,41 @@ Link state (`BATTERY_DETECTED`, `CAN_ALIVE`, `CAN_ERROR_COUNTER`, `REAL_BMS_STAT
 | 0x73 | `AUTOCAL_COOLDOWN_READY` | BOOL | **BYD Atto 3 only** |
 | 0x74 | `AUTOCAL_SOC_DRIFT` | FLOAT | %, **BYD Atto 3 only** |
 
+### Combined battery (`AGGREGATE`)
+
+Sent with `battery_id = 0` once per second, **only when more than one battery is configured**. With a single pack it would repeat the `BATTERY` frame verbatim, so it is omitted.
+
+This frame is what the inverter is actually given. How each value is combined is documented on the [Double Battery](../battery_configuration/battery_2x.md) page — in short, capacities, current, power and lifetime energy add up; SOC follows the emptiest pack, blending towards the fullest above 90 %; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the power limits are the **lowest** any pack allows, not the sum.
+
+These are deliberately their own keys rather than a reuse of `0x50..0x74`, so a receiver that dispatches on key alone cannot mistake one pack's reading for the installation's.
+
+| Key | Name | Type | Meaning |
+| --- | --- | --- | --- |
+| 0xB0 | `AGG_SOC_PPTT` | UINT16 | 0.01 %, scaled/reported SOC |
+| 0xB1 | `AGG_SOC_REAL_PPTT` | UINT16 | 0.01 %, emptiest pack, blended to the fullest above 90 % |
+| 0xB2 | `AGG_SOH_PPTT` | UINT16 | 0.01 %, weakest talking pack |
+| 0xB3 | `AGG_VOLTAGE_DV` | UINT16 | deciVolt, shared DC bus |
+| 0xB4 | `AGG_CURRENT_DA` | INT16 | deciAmpere, every pack summed |
+| 0xB5 | `AGG_ACTIVE_POWER_W` | INT32 | W, + = charging |
+| 0xB6 | `AGG_TOTAL_CAPACITY_WH` | UINT32 | Wh, every configured pack summed |
+| 0xB7 | `AGG_REPORTED_CAPACITY_WH` | UINT32 | Wh, inside the SOC window |
+| 0xB8 | `AGG_REMAINING_CAPACITY_WH` | UINT32 | Wh, real |
+| 0xB9 | `AGG_REPORTED_REMAIN_WH` | UINT32 | Wh, inside the SOC window |
+| 0xBA | `AGG_MAX_CHARGE_POWER_W` | UINT32 | W, after safety, taper and filter |
+| 0xBB | `AGG_MAX_DISCHARGE_POWER_W` | UINT32 | W, after safety, taper and filter |
+| 0xBC | `AGG_MAX_CHARGE_CURRENT_DA` | UINT16 | deciAmpere |
+| 0xBD | `AGG_MAX_DISCHARGE_CURRENT_DA` | UINT16 | deciAmpere |
+| 0xBE | `AGG_CELL_MAX_MV` | UINT16 | mV, highest in any talking pack |
+| 0xBF | `AGG_CELL_MIN_MV` | UINT16 | mV, lowest in any talking pack |
+| 0xC0 | `AGG_TEMPERATURE_MAX_DC` | INT16 | 0.1 degrees C |
+| 0xC1 | `AGG_TEMPERATURE_MIN_DC` | INT16 | 0.1 degrees C |
+| 0xC2 | `AGG_TOTAL_CHARGED_WH` | INT32 | Wh lifetime, summed, **omitted** unless some pack tracks it |
+| 0xC3 | `AGG_TOTAL_DISCHARGED_WH` | INT32 | Wh lifetime, same gating |
+| 0xC4 | `AGG_CHARGING_STATE` | UINT8 | `ChargingState`, from the summed current |
+| 0xC5 | `AGG_LIMITING_FACTOR` | UINT8 | `LimitingFactor`, replaces the per-pack `LIMITING_FACTOR` |
+
+There are no cell arrays, balancing, insulation or battery-specific keys here. Those describe a physical pack, not the installation, and stay in the `BATTERY` and `CELLS` frames.
+
 ### Cell arrays (`CELLS`)
 
 | Key | Name | Type | Meaning |
@@ -260,11 +306,14 @@ Link state (`BATTERY_DETECTED`, `CAN_ALIVE`, `CAN_ERROR_COUNTER`, `REAL_BMS_STAT
 | 0xA2 | `EVENT_SEVERITY` | UINT8 | `EVENTS_LEVEL_TYPE` |
 | 0xA3 | `EVENT_STATE` | UINT8 | `EVENTS_STATE_TYPE` |
 | 0xA4 | `EVENT_COUNT` | UINT8 | occurrences since boot |
-| 0xA5 | `EVENT_DATA` | UINT8 | event specific payload byte |
 | 0xA6 | `EVENT_MILLIS` | UINT64 | `millis64()` at the last occurrence |
 | 0xA7 | `EVENT_MESSAGE` | STR | human readable description |
 | 0xA8 | `EVENT_INDEX` | UINT8 | position in the replay batch, 0 = most recent |
 | 0xA9 | `EVENT_TOTAL` | UINT8 | events in this replay batch, 1..10 |
+| 0xAA | `EVENT_DATA_I16` | INT16 | event specific payload |
+
+!!! note "0xA5 is retired"
+    `0xA5 EVENT_DATA` carried the payload as an unsigned byte. The payload is signed and wider than a byte, so under the compatibility rules below the key was **retired rather than redefined**, and `0xAA EVENT_DATA_I16` allocated in its place. A receiver written against the old key will simply stop seeing event data; it will not misread it.
 
 ### Enumerated values
 
@@ -282,6 +331,9 @@ Link state (`BATTERY_DETECTED`, `CAN_ALIVE`, `CAN_ERROR_COUNTER`, `REAL_BMS_STAT
 | `LimitingFactor` | 0 None, 1 Inverter, 2 UserSetting, 3 Battery |
 | `led_mode_enum` | 0 CLASSIC, 1 FLOW, 2 HEARTBEAT (plus GRB variants on T-2CAN) |
 
+
+!!! tip "Which frame should a display read?"
+    For a single overall figure — one SOC, one power, one set of limits — read `AGGREGATE` when it is present and fall back to `BATTERY` for battery 1 when it is not. That is exactly the rule the emulator itself follows, and it keeps a panel working whether one, two or three packs are configured. Read the `BATTERY` frames as well if you want per-pack detail.
 
 !!! warning "Compatibility rules for future changes"
     * Never reuse or change the meaning of an allocated key. Retire it instead.
@@ -332,7 +384,13 @@ Contents of **be_espnow.h** — the protocol constants and a complete decoder. I
 #define BE_HEADER_SIZE 12
 #define BE_FLAG_MORE_CHUNKS 0x01
 
-enum be_frame_type { BE_FRAME_SYSTEM = 0x01, BE_FRAME_BATTERY = 0x02, BE_FRAME_CELLS = 0x03, BE_FRAME_EVENT = 0x04 };
+enum be_frame_type {
+  BE_FRAME_SYSTEM = 0x01,
+  BE_FRAME_BATTERY = 0x02,
+  BE_FRAME_CELLS = 0x03,
+  BE_FRAME_EVENT = 0x04,
+  BE_FRAME_AGGREGATE = 0x05 /* every configured pack as one, only sent with >1 battery */
+};
 
 enum be_type {
   BE_TYPE_UINT = 0,
@@ -424,11 +482,35 @@ enum be_key {
   BE_KEY_EVENT_SEVERITY = 0xA2,
   BE_KEY_EVENT_STATE = 0xA3,
   BE_KEY_EVENT_COUNT = 0xA4,
-  BE_KEY_EVENT_DATA = 0xA5,
   BE_KEY_EVENT_MILLIS = 0xA6,
   BE_KEY_EVENT_MESSAGE = 0xA7,
   BE_KEY_EVENT_INDEX = 0xA8,
-  BE_KEY_EVENT_TOTAL = 0xA9
+  BE_KEY_EVENT_TOTAL = 0xA9,
+  BE_KEY_EVENT_DATA_I16 = 0xAA, /* 0xA5 was the retired unsigned byte form */
+
+  /* combined battery, BE_FRAME_AGGREGATE */
+  BE_KEY_AGG_SOC_PPTT = 0xB0,
+  BE_KEY_AGG_SOC_REAL_PPTT = 0xB1,
+  BE_KEY_AGG_SOH_PPTT = 0xB2,
+  BE_KEY_AGG_VOLTAGE_DV = 0xB3,
+  BE_KEY_AGG_CURRENT_DA = 0xB4,
+  BE_KEY_AGG_ACTIVE_POWER_W = 0xB5,
+  BE_KEY_AGG_TOTAL_CAPACITY_WH = 0xB6,
+  BE_KEY_AGG_REPORTED_CAPACITY_WH = 0xB7,
+  BE_KEY_AGG_REMAINING_CAPACITY_WH = 0xB8,
+  BE_KEY_AGG_REPORTED_REMAIN_WH = 0xB9,
+  BE_KEY_AGG_MAX_CHARGE_POWER_W = 0xBA,
+  BE_KEY_AGG_MAX_DISCHARGE_POWER_W = 0xBB,
+  BE_KEY_AGG_MAX_CHARGE_CURRENT_DA = 0xBC,
+  BE_KEY_AGG_MAX_DISCHARGE_CURRENT_DA = 0xBD,
+  BE_KEY_AGG_CELL_MAX_MV = 0xBE,
+  BE_KEY_AGG_CELL_MIN_MV = 0xBF,
+  BE_KEY_AGG_TEMPERATURE_MAX_DC = 0xC0,
+  BE_KEY_AGG_TEMPERATURE_MIN_DC = 0xC1,
+  BE_KEY_AGG_TOTAL_CHARGED_WH = 0xC2,
+  BE_KEY_AGG_TOTAL_DISCHARGED_WH = 0xC3,
+  BE_KEY_AGG_CHARGING_STATE = 0xC4,
+  BE_KEY_AGG_LIMITING_FACTOR = 0xC5
 };
 
 /* A 256 bit set recording which keys a frame actually carried, so "not supported by this
@@ -523,6 +605,35 @@ typedef struct {
   bool cell_balancing[BE_MAX_CELLS];
 } be_battery_t;
 
+/* The installation seen as one battery. Only populated in multi-battery setups: with a single
+   pack the emulator does not send BE_FRAME_AGGREGATE, so check `present` before using it. */
+typedef struct {
+  bool present;
+  be_keyset_t seen;
+  uint16_t soc_pptt;
+  uint16_t soc_real_pptt;
+  uint16_t soh_pptt;
+  uint16_t voltage_dV;
+  int16_t current_dA;
+  int32_t active_power_W;
+  uint32_t total_capacity_Wh;
+  uint32_t reported_capacity_Wh;
+  uint32_t remaining_capacity_Wh;
+  uint32_t reported_remain_Wh;
+  uint32_t max_charge_power_W;
+  uint32_t max_discharge_power_W;
+  uint16_t max_charge_current_dA;
+  uint16_t max_discharge_current_dA;
+  uint16_t cell_max_mV;
+  uint16_t cell_min_mV;
+  int16_t temperature_max_dC;
+  int16_t temperature_min_dC;
+  int32_t total_charged_Wh;
+  int32_t total_discharged_Wh;
+  uint8_t charging_state;  /* 0 Idle 1 Charging 2 Discharging */
+  uint8_t limiting_factor; /* 0 None 1 Inverter 2 UserSetting 3 Battery */
+} be_aggregate_t;
+
 typedef struct {
   uint16_t id;
   char name[40];
@@ -530,7 +641,7 @@ typedef struct {
   uint8_t severity;
   uint8_t state; /* 0 PENDING 1 INACTIVE 2 ACTIVE 3 ACTIVE_LATCHED */
   uint8_t occurrences;
-  uint8_t data;
+  int16_t data;
   uint64_t millis;
 } be_event_t;
 
@@ -540,6 +651,7 @@ typedef struct {
   bool valid;
   be_system_t system;
   be_battery_t battery[BE_MAX_BATTERIES];
+  be_aggregate_t aggregate;
   be_event_t events[BE_EVENT_LOG];
   uint8_t event_count;
   /* scratch for reassembling one replay batch */
@@ -797,6 +909,79 @@ static void be_apply_battery(be_battery_t* b, uint8_t key, const uint8_t* v, uin
   }
 }
 
+static void be_apply_aggregate(be_aggregate_t* a, uint8_t key, const uint8_t* v, uint16_t n) {
+  switch (key) {
+    case BE_KEY_AGG_SOC_PPTT:
+      a->soc_pptt = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_SOC_REAL_PPTT:
+      a->soc_real_pptt = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_SOH_PPTT:
+      a->soh_pptt = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_VOLTAGE_DV:
+      a->voltage_dV = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_CURRENT_DA:
+      a->current_dA = (int16_t)be_i(v, n);
+      break;
+    case BE_KEY_AGG_ACTIVE_POWER_W:
+      a->active_power_W = (int32_t)be_i(v, n);
+      break;
+    case BE_KEY_AGG_TOTAL_CAPACITY_WH:
+      a->total_capacity_Wh = (uint32_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_REPORTED_CAPACITY_WH:
+      a->reported_capacity_Wh = (uint32_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_REMAINING_CAPACITY_WH:
+      a->remaining_capacity_Wh = (uint32_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_REPORTED_REMAIN_WH:
+      a->reported_remain_Wh = (uint32_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_MAX_CHARGE_POWER_W:
+      a->max_charge_power_W = (uint32_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_MAX_DISCHARGE_POWER_W:
+      a->max_discharge_power_W = (uint32_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_MAX_CHARGE_CURRENT_DA:
+      a->max_charge_current_dA = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_MAX_DISCHARGE_CURRENT_DA:
+      a->max_discharge_current_dA = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_CELL_MAX_MV:
+      a->cell_max_mV = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_CELL_MIN_MV:
+      a->cell_min_mV = (uint16_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_TEMPERATURE_MAX_DC:
+      a->temperature_max_dC = (int16_t)be_i(v, n);
+      break;
+    case BE_KEY_AGG_TEMPERATURE_MIN_DC:
+      a->temperature_min_dC = (int16_t)be_i(v, n);
+      break;
+    case BE_KEY_AGG_TOTAL_CHARGED_WH:
+      a->total_charged_Wh = (int32_t)be_i(v, n);
+      break;
+    case BE_KEY_AGG_TOTAL_DISCHARGED_WH:
+      a->total_discharged_Wh = (int32_t)be_i(v, n);
+      break;
+    case BE_KEY_AGG_CHARGING_STATE:
+      a->charging_state = (uint8_t)be_u(v, n);
+      break;
+    case BE_KEY_AGG_LIMITING_FACTOR:
+      a->limiting_factor = (uint8_t)be_u(v, n);
+      break;
+    default:
+      break;
+  }
+}
+
 /* ---- frame entry point ------------------------------------------------------------ */
 
 typedef void (*be_event_batch_cb)(const be_state_t* s);
@@ -833,6 +1018,10 @@ static void be_espnow_receive(be_state_t* s, const uint8_t* buf, int len) {
   }
   if (frame_type == BE_FRAME_BATTERY && bat) {
     be_keyset_clear(&bat->seen);
+  }
+  if (frame_type == BE_FRAME_AGGREGATE) {
+    be_keyset_clear(&s->aggregate.seen);
+    s->aggregate.present = true;
   }
 
   /* per frame scratch for the chunked / indexed records */
@@ -884,6 +1073,11 @@ static void be_espnow_receive(be_state_t* s, const uint8_t* buf, int len) {
         }
         break;
 
+      case BE_FRAME_AGGREGATE:
+        be_keyset_mark(&s->aggregate.seen, key);
+        be_apply_aggregate(&s->aggregate, key, v, n);
+        break;
+
       case BE_FRAME_CELLS:
         if (!bat) {
           break;
@@ -927,8 +1121,8 @@ static void be_espnow_receive(be_state_t* s, const uint8_t* buf, int len) {
           case BE_KEY_EVENT_COUNT:
             ev.occurrences = (uint8_t)be_u(v, n);
             break;
-          case BE_KEY_EVENT_DATA:
-            ev.data = (uint8_t)be_u(v, n);
+          case BE_KEY_EVENT_DATA_I16:
+            ev.data = (int16_t)be_i(v, n);
             break;
           case BE_KEY_EVENT_MILLIS:
             ev.millis = be_u(v, n);
@@ -1168,7 +1362,7 @@ static void print_events() {
   Serial.println("======== EVENTS ========");
   for (uint8_t e = 0; e < state.event_count; e++) {
     const be_event_t* v = &state.events[e];
-    Serial.printf("[%s/%s] %s (#%u, data %u, %llu ms): %s\n", txt_level(v->severity), txt_evstate(v->state), v->name,
+    Serial.printf("[%s/%s] %s (#%u, data %d, %llu ms): %s\n", txt_level(v->severity), txt_evstate(v->state), v->name,
                   v->occurrences, v->data, (unsigned long long)v->millis, v->message);
   }
 }
