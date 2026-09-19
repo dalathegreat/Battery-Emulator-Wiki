@@ -41,7 +41,7 @@ Connect the high voltage lines like in this diagram. Remember to place fuses bot
 
 If your batteries use GPIO-controlled contactors, you use these to attach the second battery to the DC link. Secondary and third battery don't use precharge (leave the precharge relay unconnected), and you can switch both positive and negative at the same time, from the same SSR. No need to add a secondary contactor:
 
-![kép](../../images/battery-3x-03.png)
+![kép](../../images/be_battery_3x_gpio.png)
 
 Enable **2ⁿᵈ battery contactor control via GPIO:** and **3ʳᵈ battery contactor control via GPIO:** in the Settings page. When the second and third battery voltage match the main battery the extra contactors will engage and combine them into one large one. After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. After that next step is to connect the third battery with the same logic.
 
