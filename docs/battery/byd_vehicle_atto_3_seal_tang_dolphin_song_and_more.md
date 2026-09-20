@@ -20,7 +20,7 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | PE2 | Han | 85.4kWh  | 150Ah | 569.6V | :x: (Type B LV connector)
 | PE5 | Seal   | 82.56kWh | 150Ah | 550.4V | ✅ 
 | PE6 | Seal   | 82.56kWh | 150Ah | 550.4V | ✅ 
-| PK3 | Dolphin | 49.92kWh | 150Ah | 332.8V | -
+| PK3 | Dolphin | 49.92kWh | 150Ah | 332.8V | ✅
 | P0B | Dolphin | 43.2kWh | 150Ah | 288V | -
 | P07 | T3     | 50.37kWh | 115Ah | 438V | -
 | P94 | Dolphin | 44.928kWh | 135Ah | 332.8V | ✅ 
