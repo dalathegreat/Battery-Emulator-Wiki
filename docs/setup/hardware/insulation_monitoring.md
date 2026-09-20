@@ -58,7 +58,7 @@ It is hard to be sure whether a given battery/inverter combination will have pro
 If the battery or inverter detects an insulation failure and decides to open the contactors under load, this is bad as it will damage contactors.
 
 ### Contactor opening issues
-Telltale signs of an issue might be that the battery runs fine for a few seconds/minutes, but then instantly opens contactors. This has been noticed on many EV platforms, for instance the Stellantis ECMP is notorious for opening contactors if battery detects leakage.
+Telltale signs of an issue might be that the battery runs fine for a few seconds/minutes, but then instantly opens contactors. This has been noticed on many EV platforms, for instance the Stellantis ECMP is notorious for opening contactors if battery detects leakage. If your integration supports DTC Reading/Clearing, you will most likely find a "P0AA6" Isolation DTC or similar
 
 To get around this issue, users have experimented with disabling the insulation monitoring on the battery side, either via software mod or hardware mod.
 
@@ -67,3 +67,9 @@ It is very rare to be able to do this, but for instance on the "Stellantis CMP S
 
 #### Disabling insulation monitoring via hardware
 Another way to get around this issue is to break the battery BMS way of performing insulation monitoring. This can involve isolating the BMS from the ground plane, clever connection of PE wiring, using galvanically isolated CAN wiring setups etc. See each batteries Wiki page for more info on any potential workarounds needed. [Example of ECMP platform, disabling insulation check via HW mod](../../battery/stellantis_ecmp_citroen_ds_opel_peugeot.md#disabling-isolation-monitoring-via-hw-modification)
+
+List of things you can try:
+- Use a floating 12V DC supply that has no connection to PE (Or a 12V lead acid battery for quick testing)
+- Physically lift out the BMS case from touching chassis GND
+- Use a galvanically isolated CAN channel
+- As a last resort for quick testing, lift up the battery with rubber blocks, preventing it from touching the ground (⚠️Warning, no connection to PE can lead to stray voltages on chassis, and touching a battery in this state can give you an electric shock. Proceed with extreme caution, only for R&D, no final installs can be done this way!⚠️)
