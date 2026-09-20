@@ -78,17 +78,16 @@ Via this page you can keep track of all the cells in your battery. At the top of
 ![image](../../images/webserver-guide-08.png)
 
 ### Interpreting the values
-In general, the lower the voltage deviation in mV, the better. A battery with 10mV deviation is considerably healthier than one with 100mV deviation. Individual cells that are lower than the rest can be a sign of early stages of cellfailures/degradation/overheating, however, this depends heavily on the chemistry of the battery. Some chemistries like LMO can have way larger deviations at lower SOC% compared to NCM chemistries. 
+
+In general, the lower the voltage deviation in mV, the better. A battery with 10mV deviation is considerably healthier than one with 100mV deviation. Individual cells that are lower than the rest can be a sign of early stages of cell failures/degradation/overheating, however, this depends heavily on the chemistry of the battery. Some chemistries like LMO can have way larger deviations at lower SOC% compared to NCM chemistries. 
 
 Deviations can also grow under heavy load. If you pull tens of kW out of the battery, the mV deviation usually increases. This is completely normal.
 
-The system will automatically go into a warning state incase a cellvoltage goes too high or too low. If this happens, an Event will be raised (see the event page), and further charging/discharging will be halted. 
+The system will automatically go into a warning state in case a cellvoltage goes too high or too low. If this happens, an Event will be raised (see the event page), and further charging/discharging will be halted. 
 
 ### Balancing status
 
-On some battery types (Nissan LEAF, Renault Zoe Gen2, more), we visualize the balancing status that the BMS sends in the graph view. You will see cyan colored bars for cells that balance, along with a text saying BALANCING when you hover over the cell.
-
-![image](../../images/webserver-guide-13.png){ width="954" height="312" }
+On some battery types (Nissan LEAF, Renault Zoe Gen2, more), we visualize the balancing status that the BMS sends in the graph view. You will see cyan colored bars for cells that balance, along with a text saying PENDING or BALANCING when you hover over the cell.
 
 ## Perform OTA Update
 
