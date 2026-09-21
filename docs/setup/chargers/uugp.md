@@ -2,10 +2,6 @@
 title: "UUGreenPower DC/DC V2x CCS2 Charger"
 ---
 
-# Charger Details
-
-## Overview
-
 This page provide details about and how to connect the 22/25Kw charger from UUGP (UBC22K1000-Y1-CCS2D).
 
 The benefit of this charger is that it connects (power) directly to DC, and thus reduce the conversion loss.
@@ -41,8 +37,5 @@ Environment:
 * Communication: CAN/RS485
 * Charging interface: CCS2
 
-
-# Integration
-Integration with the Battery-Emulator hardware is straightforward.
 
 The charger is controlled and monitored via RS485, or via it's local Web IO. 
