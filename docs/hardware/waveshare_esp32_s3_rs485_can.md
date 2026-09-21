@@ -64,13 +64,15 @@ The plastic case has a bit of a headroom above the USB-C socket which allows for
 
 The board has pads for a 20-pin **2.0mm** pitch pin header:
 
-![image](../images/waveshare-esp32-s3-rs485-can-04.png){ width="551" height="449" }
+![image](../images/waveshare-esp32-s3-rs485-can-04.png)
 
 Pigtail cable: [AliExpress](https://www.aliexpress.com/item/1005009728347159.html).
 
 Another version, cut in half: [AliExpress](https://a.aliexpress.com/_Ex1DziI).
 
 And yet another: [AliExpress](https://a.aliexpress.com/_EzacxGE).
+
+2.0 to 2.54mm dupont wires: [AliExpress](https://www.aliexpress.com/item/32872192805.html)
 
 Socket for own soldering: [AliExpress](https://www.aliexpress.com/item/4000597517515.html).
 
@@ -80,11 +82,11 @@ Choose the **2x10p** version!
 
 The 4-pin SH1.0 connector (located directly behind the USB C connector) can power an optional **Adafruit NeoPixel** (or any WS2812-compatible single LED) connected to GPIO2, providing a visual status indicator.  Please note that the Waveshare only outputs 3.3v!
 
-![Waveshare to NeoPixel wiring diagram](../images/waveshare-esp32-s3-rs485-can-02.png){ width="800" height="599" }
+![Waveshare to NeoPixel wiring diagram](../images/waveshare-esp32-s3-rs485-can-02.png)
 
 Once wired, open the **Settings** page in the web interface and set **GPIO 1/2 function** to **Status LED** (this is the default).
 
-![Waveshare_settings](../images/waveshare-esp32-s3-rs485-can-03.png){ width="792" height="374" }
+![Waveshare_settings](../images/waveshare-esp32-s3-rs485-can-03.png)
 
 !!! note "NOTE"
     The status LED and I2C display are mutually exclusive — only one can be active at a time.
