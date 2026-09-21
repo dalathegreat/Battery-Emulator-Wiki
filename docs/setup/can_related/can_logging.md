@@ -12,7 +12,9 @@ If you intend to log CAN messages from a functional vehicle, remember to:
 * Use Inverter/Shunt protocol: **None** to avoid any CAN messages being sent towards the vehicle.
 * Remove any termination resistors from the board (Either remove jumper on Stark, or desolder on LilyGo).
 
-## CAN logging via Webserver
+## CAN logging
+
+### Webserver
 
 To raw dump CAN traffic going through the board, click the "CAN tools" button on the main page, and then press "Start dump". This will open a new page, `\dump_can`.
 
@@ -21,15 +23,27 @@ To raw dump CAN traffic going through the board, click the "CAN tools" button on
 Let the CAN dumper run for enough time, and save the entire page to a document.
 
 !!! tip "TIP"
-    On Linux, you can also do an export in a txt file using this oneliner until you press `Ctrl+C`: 
+    On Linux and Mac, you can also do an export in a txt file using this oneliner until you press `Ctrl+C`: 
     
     ```bash
     while true; do curl http://192.168.4.1/dump_can >> ~/Downloads/can_log.txt; done
     ```
 
-    The `192.168.4.1` is the Access Point IP of Battery Emulator. In the example above, replace it with the IP address it has in your own network.
+    In Windows 10 command prompt:
 
-## USB CAN logging
+    ```bat
+    for /l %i in (0,0,1) do @curl http://192.168.4.1/dump_can >> "%USERPROFILE%\Downloads\can_log.txt"
+    ```
+
+    From PowerShell:
+
+    ```powershell
+    while ($true) { curl.exe http://192.168.4.1/dump_can | Out-File "$HOME\Downloads\can_log.txt" -Append -Encoding ascii }
+    ```
+    
+    The `192.168.4.1` is the Access Point IP of Battery Emulator. In the examples above, replace it with the IP address it has in your own network.
+
+### USB
 
 ![image](../../images/can-logging-03.png){ width="482" height="186" }
 
@@ -37,39 +51,7 @@ To access the CAN-logging, turn on the **Enable CAN message logging via USB seri
 
 Alternatively, a much simpler way to log the data is via a serial terminal client like [Putty](https://www.putty.org/). Connect to the COM port and set baud rate, and configure it to save the output to a file.
 
-### Log file format
-The log file format is compatible with the CANdump format. This can be read natively by tools like [SavvyCAN](https://github.com/collin80/SavvyCAN). 
-
-TX1 / RX0 = Native CAN port
-TX3 / RX2 = Native CANFD port
-TX5 / RX4 = Add-on CAN MCP2515
-TX5 / RX4 = Add-on CAN-FD MCP2518
-
-Example format, CAN log:
-
-```
-(7.556) TX1 54A [8] 10 0 70 2 0 0 0 2B 
-(7.558) TX1 54B [8] 1 8 80 12 4 0 0 0 
-(7.560) TX1 54C [8] 61 66 0 0 0 0 57 0 
-(7.561) TX1 1D4 [8] F7 7 0 0 7 46 0 7B 
-(7.573) TX1 11A [8] 1 40 0 AA C0 0 0 3 
-```
-
-Example format, CAN-FD log:
-
-```
-(64.644) TX3 10A [32] D8 DE 99 00 00 00 00 01 FF 01 00 00 36 39 35 35 C9 02 00 00 10 00 00 35 00 00 0A 00 00 00 00 00  
-(64.656) TX3 120 [32] 6E F3 99 00 00 00 00 01 FF 01 00 00 37 35 37 37 C9 02 00 00 00 00 00 35 00 00 0A 00 00 00 00 00 
-(64.668) TX3 19A [32] 19 48 88 55 44 64 D8 1B 40 20 00 00 00 00 11 52 00 12 02 64 00 00 00 08 13 00 00 00 00 32 00 00 
-(64.669) TX3 10A [32] 12 35 9A 00 00 00 00 01 FF 01 00 00 36 39 35 35 C9 02 00 00 10 00 00 35 00 00 0A 00 00 00 00 00 
-(64.681) TX3 120 [32] A4 18 9A 00 00 00 00 01 FF 01 00 00 37 35 37 37 C9 02 00 00 00 00 00 35 00 00 0A 00 00 00 00 00 
-```
-
-!!! note "NOTE"
-    If your serial monitor is filled with strange symbols "???!"?¤¤%" , change the baud rate in the serial monitor window from 9600 -> 115200  
-    When a large amount of CAN traffic is present on the bus, you may need to increase the serial monitor baud rate to 460800 in Software.ino (  by changing Serial.begin(115200); to Serial.begin(460800); ) of course the serial baud rate of the serial monitor then also needs to be increased to 460800.
-
-## SD card CAN logging
+### SD card
 
 To enable logging of CAN messages to an SD card enable the **Enable CAN message logging via SD card** feature. To maximize performance you should not enable other debug features at the same time as it could lead to CAN messages not being logged. The format of the log file is the same as the USB can log feature and can be read by tools like Savvy CAN directly.
 
@@ -96,7 +78,7 @@ Used space: 2MB
 
 Failure Example:
 
-```
+```bash
 sdmmc_init_ocr: send_op_cond (1) returned 0,107
 vfs_fat_sdmmc: sdmmc_card_init failed ()x107).
 Failed to initialize the card (0x107). Make sure SD_card lines have pull-up resistors in place.
@@ -107,5 +89,63 @@ If you get the SD Card initialization error you may need to remove power to the 
 
 Also try another SD card, and make sure it is not locked. Also make sure it is seated OK, and formatted as FAT32
 
+## Log file format
+
+The log file format is compatible with the CANdump format. This can be read natively by tools like [SavvyCAN](https://github.com/collin80/SavvyCAN). 
+
+Dump contains traffic for all the ports in the system, the packets are identified by the interface they go through:
+
+- `TX1` and `RX0` — Native CAN port
+- `TX3` and `RX2` — Native CANFD port
+- `TX5` and `RX4` — Add-on CAN MCP2515
+- `TX5` and `RX4` — Add-on CAN-FD MCP2518
+- `TX7` and `RX6` — Add-on CAN-FD MCP2518 on shared bus
+
+Example format, CAN log:
+
+```
+(7.556) TX1 54A [8] 10 0 70 2 0 0 0 2B 
+(7.558) TX1 54B [8] 1 8 80 12 4 0 0 0 
+(7.560) TX1 54C [8] 61 66 0 0 0 0 57 0 
+(7.561) TX1 1D4 [8] F7 7 0 0 7 46 0 7B 
+(7.573) TX1 11A [8] 1 40 0 AA C0 0 0 3 
+```
+
+Example format, CAN-FD log:
+
+```
+(64.644) TX3 10A [32] D8 DE 99 00 00 00 00 01 FF 01 00 00 36 39 35 35 C9 02 00 00 10 00 00 35 00 00 0A 00 00 00 00 00  
+(64.656) TX3 120 [32] 6E F3 99 00 00 00 00 01 FF 01 00 00 37 35 37 37 C9 02 00 00 00 00 00 35 00 00 0A 00 00 00 00 00 
+(64.668) TX3 19A [32] 19 48 88 55 44 64 D8 1B 40 20 00 00 00 00 11 52 00 12 02 64 00 00 00 08 13 00 00 00 00 32 00 00 
+(64.669) TX3 10A [32] 12 35 9A 00 00 00 00 01 FF 01 00 00 36 39 35 35 C9 02 00 00 10 00 00 35 00 00 0A 00 00 00 00 00 
+(64.681) TX3 120 [32] A4 18 9A 00 00 00 00 01 FF 01 00 00 37 35 37 37 C9 02 00 00 00 00 00 35 00 00 0A 00 00 00 00 00 
+```
+
+!!! note "NOTE"
+    If your serial monitor is filled with strange symbols "???!"?¤¤%", change the baud rate in the serial monitor window from 9600 -> 115200  
+    When a large amount of CAN traffic is present on the bus, you may need to increase the serial monitor baud rate to 460800 in Software.ino (  by changing Serial.begin(115200); to Serial.begin(460800); ) of course the serial baud rate of the serial monitor then also needs to be increased to 460800.
+
+!!! tip "TIP"
+    To only save the traffic from a specific interface, you can grep the strings. For example to save only Native CAN port (`rx0`, `tx1`) packets until you press `Ctrl+C`:
+    
+    On Linux and Mac: 
+    
+    ```bash
+    while true; do curl -N http://192.168.4.1/dump_can | grep -iE --line-buffered 'rx0|tx1' >> ~/Downloads/can_log.txt; done
+    ```
+
+    In Windows 10 command prompt:
+
+    ```bat
+    for /l %i in (0,0,1) do @curl -N http://192.168.4.1/dump_can | findstr /i "rx0 tx1" >> "%USERPROFILE%\Downloads\can_log.txt"
+    ```
+
+    From PowerShell:
+
+    ```powershell
+    while ($true) { curl.exe -N http://192.168.4.1/dump_can | Where-Object { $_ -match 'rx0|tx1' } | Out-File "$HOME\Downloads\can_log.txt" -Append -Encoding ascii }
+    ```
+
 ## Interpreting the CAN logs
+
 The log files stored by the Battery-Emulator is in a format that [SavvyCAN](https://github.com/collin80/SavvyCAN) can interpret. This program can also be connected to a translation .DBC file for an even easier interpretation of the log.
