@@ -93,10 +93,13 @@ Also try another SD card, and make sure it is not locked. Also make sure it is s
 
 The log file format is compatible with the CANdump format. This can be read natively by tools like [SavvyCAN](https://github.com/collin80/SavvyCAN). 
 
+Dump contains traffic for all the ports in the system, the packets are identified by the interface they go through:
+
 - `TX1` and `RX0` — Native CAN port
 - `TX3` and `RX2` — Native CANFD port
 - `TX5` and `RX4` — Add-on CAN MCP2515
 - `TX5` and `RX4` — Add-on CAN-FD MCP2518
+- `TX7` and `RX6` — Add-on CAN-FD MCP2518 on shared bus
 
 Example format, CAN log:
 
@@ -121,6 +124,27 @@ Example format, CAN-FD log:
 !!! note "NOTE"
     If your serial monitor is filled with strange symbols "???!"?¤¤%", change the baud rate in the serial monitor window from 9600 -> 115200  
     When a large amount of CAN traffic is present on the bus, you may need to increase the serial monitor baud rate to 460800 in Software.ino (  by changing Serial.begin(115200); to Serial.begin(460800); ) of course the serial baud rate of the serial monitor then also needs to be increased to 460800.
+
+!!! tip "TIP"
+    To only save the traffic from a specific interface, you can grep the strings. For example to save only Native CAN port (`rx0`, `tx1`) packets until you press `Ctrl+C`:
+    
+    On Linux and Mac: 
+    
+    ```bash
+    while true; do curl -N http://192.168.4.1/dump_can | grep -iE --line-buffered 'rx0|tx1' >> ~/Downloads/can_log.txt; done
+    ```
+
+    In Windows 10 command prompt:
+
+    ```bat
+    for /l %i in (0,0,1) do @curl -N http://192.168.4.1/dump_can | findstr /i "rx0 tx1" >> "%USERPROFILE%\Downloads\can_log.txt"
+    ```
+
+    From PowerShell:
+
+    ```powershell
+    while ($true) { curl.exe -N http://192.168.4.1/dump_can | Where-Object { $_ -match 'rx0|tx1' } | Out-File "$HOME\Downloads\can_log.txt" -Append -Encoding ascii }
+    ```
 
 ## Interpreting the CAN logs
 
