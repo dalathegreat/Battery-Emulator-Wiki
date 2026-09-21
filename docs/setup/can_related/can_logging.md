@@ -41,7 +41,7 @@ Let the CAN dumper run for enough time, and save the entire page to a document.
     while ($true) { curl.exe http://192.168.4.1/dump_can | Out-File "$HOME\Downloads\can_log.txt" -Append -Encoding ascii }
     ```
     
-    The `192.168.4.1` is the Access Point IP of Battery Emulator. In the example above, replace it with the IP address it has in your own network.
+    The `192.168.4.1` is the Access Point IP of Battery Emulator. In the examples above, replace it with the IP address it has in your own network.
 
 ### USB
 
