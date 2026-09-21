@@ -2,7 +2,7 @@
 title: "UUGreenPower DC/DC V2x CCS2 Charger"
 ---
 
-This page provide details about and how to connect the 22/25Kw charger from UUGP (UBC22K1000-Y1-CCS2D).
+This page provides details about the 22/25Kw charger from UUGP (UBC22K1000-Y1-CCS2D).
 
 The benefit of this charger is that it connects (power) directly to DC, and thus reduce the conversion loss.
 
@@ -10,7 +10,7 @@ The benefit of this charger is that it connects (power) directly to DC, and thus
 
 EV Side DC:
 
-* Rated power 22kW
+* Rated power: 22kW
 * EV side voltage range	Charging mode: 150VDC - 1000VDC（derating below 250Vdc; Discharge mode: 300VDC - 1000VDC)
 * EV side current range	Charging mode: 0 - 88A; Discharge mode: 0 - 80A
 * Voltage stabilization accuracy: ≤±0.5%
