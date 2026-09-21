@@ -57,20 +57,20 @@ Above this text you can also see the Amperages allowed by the Emulator. You can 
 ![image](../../images/webserver-guide-06.png)
 
 ## Events
-This page contains information about events that have occurred while the system has been running. All events are timestamped, and have an occurrence counter so you know if many events of the same type has triggered. 
+This page contains information about events that have occurred while the system has been running. All events are timestamped, and have an occurrence counter so you know if many events of the same type has triggered. The list is ordered with the newest events on top.
 
-![image](../../images/webserver-guide-07.png)
+![image](../../images/webserver-guide-16.png)
 
 Each event also has a description field with more info. The events are grouped into three categories:
 
-### Info ℹ️ 
-Info events contain useful information like when battery has been charged full, completely discharged, reset reason etc. Having info events present does not warranty any user action.
+### 🟩 Info
+Info level events contain useful information like when battery has been charged full, completely discharged, reset reason etc. Having info events present does not warranty any user action.
 
-### Warning 🟡 
-Warning events contain info that users might want to act upon. The system will try to mitigate certain warnings, like incase the battery is reaching too high voltage, the system will raise a warning event and prevent further charging (only discharging will be possible). Warning events should be analyzed when spotted. The front page of the webserver, plus the LED on the board will also turn yellow when a warning event is active.
+### 🟨 Warning
+Warning level events contain info that users might want to act upon. The system will try to mitigate certain warnings, like in case the battery is reaching too high voltage, the system will raise a warning event and prevent further charging (only discharging will be possible). Warning events should be analyzed when spotted. The front page of the webserver, plus the LED on the board will also turn yellow when a warning event is active.
 
-### Error 🔴 
-Critical error events contain info about why the system has stopped operation. Incase it is no longer safe to continue using the battery, an error event will be generated and charging/discharging is set to 0W allowed. Check the Error event description for information on how to proceed or what to check. The front page of the webserver, plus the LED on the board will also turn red when an error event is active.
+### 🟥 Error
+Critical level error events contain info about why the system has stopped operation. In case it is no longer safe to continue using the battery, an error event will be generated and charging/discharging is set to 0W allowed. Check the Error event description for information on how to proceed or what to check. The front page of the webserver, plus the LED on the board will also turn red when an error event is active.
 
 ## Cellmonitor
 Via this page you can keep track of all the cells in your battery. At the top of the page there is a quick readout of Min/Max/Deviation inside the battery. The view also has a grid view of all cells and their values, along with a graph at the bottom for quick visualization on how balanced the battery is. The two cells that are lowest and highest will be highlighted red for quicker identification where they are.
@@ -78,17 +78,16 @@ Via this page you can keep track of all the cells in your battery. At the top of
 ![image](../../images/webserver-guide-08.png)
 
 ### Interpreting the values
-In general, the lower the voltage deviation in mV, the better. A battery with 10mV deviation is considerably healthier than one with 100mV deviation. Individual cells that are lower than the rest can be a sign of early stages of cellfailures/degradation/overheating, however, this depends heavily on the chemistry of the battery. Some chemistries like LMO can have way larger deviations at lower SOC% compared to NCM chemistries. 
+
+In general, the lower the voltage deviation in mV, the better. A battery with 10mV deviation is considerably healthier than one with 100mV deviation. Individual cells that are lower than the rest can be a sign of early stages of cell failures/degradation/overheating, however, this depends heavily on the chemistry of the battery. Some chemistries like LMO can have way larger deviations at lower SOC% compared to NCM chemistries. 
 
 Deviations can also grow under heavy load. If you pull tens of kW out of the battery, the mV deviation usually increases. This is completely normal.
 
-The system will automatically go into a warning state incase a cellvoltage goes too high or too low. If this happens, an Event will be raised (see the event page), and further charging/discharging will be halted. 
+The system will automatically go into a warning state in case a cellvoltage goes too high or too low. If this happens, an Event will be raised (see the event page), and further charging/discharging will be halted. 
 
 ### Balancing status
 
-On some battery types (Nissan LEAF, Renault Zoe Gen2, more), we visualize the balancing status that the BMS sends in the graph view. You will see cyan colored bars for cells that balance, along with a text saying BALANCING when you hover over the cell.
-
-![image](../../images/webserver-guide-13.png){ width="954" height="312" }
+On some battery types (Nissan LEAF, Renault Zoe Gen2, more), we visualize the balancing status that the BMS sends in the graph view. You will see cyan colored bars for cells that balance, along with a text saying PENDING or BALANCING when you hover over the cell.
 
 ## Perform OTA Update
 

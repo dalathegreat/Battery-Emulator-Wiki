@@ -7,11 +7,8 @@ title: "CAN replay"
 The Battery-Emulator can replay CAN and CAN-FD log files, making it a powerful reverse engineering tool. This feature is useful when working with a battery that is not yet compatible, and makes it easy to replay a vehicle log to for example try to get contactor closing to function. This makes it more accessible especially on the CAN-FD side, where previously you would have to spend lots of money on CAN tools. Now just use the Battery-Emulator hardware!
 
 ### How to use the CAN replay feature
-Access the feature via the Webserver, and click the "CAN Replay" button.
 
-![image](../../images/can-replay-01.png)
-
-This opens the Replay page. Via this page you can:
+Access the feature via the Webserver, click the "CAN tools" button. Via the "CAN replay" section of this page you can:
 
 - Select which CAN interface to replay towards
 - Upload the .txt CANdump log file you want to replay
