@@ -153,7 +153,7 @@ When enabled, four internal-RAM heap values are added to `.../info`, using the s
 
 ### The combined battery
 
-In a [double](../battery_configuration/battery_2x.md) or [triple](../battery_configuration/battery_3x.md) battery setup, the individual packs are combined into a single virtual battery, and that is the only thing the inverter ever sees. `.../info_multi` publishes that combined view.
+In a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, the individual packs are combined into a single virtual battery, and that is the only thing the inverter ever sees. `.../info_multi` publishes that combined view.
 
 This topic exists **only when more than one battery is configured**. With a single pack the battery *is* the installation, so `.../info` already carries these values and a second topic would only duplicate them.
 
@@ -192,7 +192,7 @@ Example payload for two Nissan LEAF packs (21.8 kWh + 17.9 kWh), published to `b
 }
 ```
 
-How each value is combined is documented on the [Double Battery](../battery_configuration/battery_2x.md) page. In short: capacities, current, power and lifetime energy add up; SOC follows the emptiest pack; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the **power limits are the lowest any pack allows, not the sum**.
+How each value is combined is documented on the [Double Battery](battery_2x.md) page. In short: capacities, current, power and lifetime energy add up; SOC follows the emptiest pack; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the **power limits are the lowest any pack allows, not the sum**.
 
 `charged_energy` and `discharged_energy` appear only if at least one configured pack tracks lifetime energy. Most integrations - the Nissan LEAF among them - do not, in which case both keys are absent from this topic.
 
@@ -526,7 +526,7 @@ These changes affect multi-battery installations only. Single-battery setups are
 
 ## References
 
-- [Double Battery](../battery_configuration/battery_2x.md) - how the packs are combined into the virtual battery published on `info_multi`
+- [Double Battery](battery_2x.md) - how the packs are combined into the virtual battery published on `info_multi`
 - [Home Assistant](home_assistant.md) - quick start guide with Battery Emulator
 - [Home Assistant MQTT overview](https://www.home-assistant.io/integrations/mqtt/) - brokers, discovery, configuration and HA services related to MQTT
 - [Home Assistant MQTT Sensor](https://www.home-assistant.io/integrations/sensor.mqtt/) - manual (non-discovery) setup of MQTT sensors
