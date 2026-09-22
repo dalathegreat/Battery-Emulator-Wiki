@@ -159,11 +159,6 @@ You can attach a WS2812B LED to the board, connecting to IO35, 5V and GND. It ma
 
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
 
-## See also
-
-- [BOOT button](../setup/software/boot_button_functions.md) for special features to enable AP, wipe wifi settings or factory reset the device
-- [CAN add-on MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) for an additional CAN interface
-
 !!! note "NOTE"
     In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions.
 
@@ -172,6 +167,7 @@ The contactor outputs provide a 3.3V logic signal, which is insufficient to driv
 You can print your own cases and mounts for this board, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
 
 ### Troubleshooting 🔧
+
 If you see `CAN_NATIVE_BUS_ERROR` / `CANMCP2515_BUS_ERROR` events and have problems with CAN interfaces, supply the board with 12V instead of 5V. This stabilizes the CAN hardware significantly
 
 ### See also
