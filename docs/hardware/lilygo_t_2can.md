@@ -58,7 +58,7 @@ The hardware can be bought via sites like AliExpress, or the official [LilyGo st
 | 44 | RS485 RX (also the bootloader UART) |
 | 46 | SMA inverter contactor enable input |
 | 47 | CHAdeMO pin 7 |
-| 48 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
+| 48 | Positive [ output](../setup/software/_control_via_gpio_pins.md) |
 
 !!! note "NOTE"
     The firmware auto-detects at boot whether the board carries an MCP2515 or an [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md), which decides how GPIO8–13 and GPIO37–42 are used.
@@ -160,7 +160,11 @@ You can attach a WS2812B LED to the board, connecting to IO35, 5V and GND. It ma
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
 
 !!! note "NOTE"
-    In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions.
+    In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions. If you are running the CAN-FD version of this board, you need to enable dip switch #2 like in this picture:<br>
+    <img width="600" height="866" alt="image" src="https://github.com/user-attachments/assets/c2c92c91-cd2d-4be7-b7f0-b1d7aff7bf63" />
+
+
+
 
 ### 3D-printable parts
 
