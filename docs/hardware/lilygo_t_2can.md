@@ -160,7 +160,8 @@ You can attach a WS2812B LED to the board, connecting to IO35, 5V and GND. It ma
 The contactor outputs provide a 3.3V logic signal, which is insufficient to drive a contactor directly. You can drive relays via a transistor or optoisolator buffer, or use solid state relays (SSRs) which turn on fully at 3V (the voltage may sag below 3.3V).
 
 !!! note "NOTE"
-    In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions.
+    In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions. If you are running the CAN-FD version of this board, you need to enable dip switch **2** like in this picture:<br>
+    ![image](../images/lilygo-t-2can-19.png)
 
 ### 3D-printable parts
 
