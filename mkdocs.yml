@@ -85,6 +85,8 @@ plugins:
       lang:
         - en
   - awesome-nav
+  - glightbox
+  - pdf-generate
   - redirects:
       redirect_maps:
           'bmsreset.md': 'setup/hardware/periodic_bms_reset.md#taking-it-into-use'
