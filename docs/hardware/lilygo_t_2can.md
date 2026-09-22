@@ -161,7 +161,7 @@ The contactor outputs provide a 3.3V logic signal, which is insufficient to driv
 
 !!! note "NOTE"
     In the past, `BMS POWER` was `IO45` for the 2CAN FD. It has now moved back to `IO3` - if your setup uses `IO45`, you will need to move the connection when upgrading to newer software versions. If you are running the CAN-FD version of this board, you need to enable dip switch #2 like in this picture:<br>
-    <img width="600" height="866" alt="image" src="https://github.com/user-attachments/assets/c2c92c91-cd2d-4be7-b7f0-b1d7aff7bf63" />
+    ![image](../images/lilygo-t-2can-19.png)
 
 
 
