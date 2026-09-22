@@ -180,13 +180,13 @@ You can print your own safety cover for the **unused heater port**, a dust prote
 
 The 2016-2017 30kWh LEAF battery had a software bug in the BMS that caused the amount of kWh reported by the battery to be incorrect, and the state of health % to drop too fast. If you have one of these batteries, and it shows below 50% SOH, your battery might be affected. The Battery-Emulator can perform a degradation reset, and bring the **Hx** and **SOH** percentages reported by the BMS back up to 100%. This can be accessed from the Webserver, via the "More battery info" page. By pressing the "Reset degradation data", the clear is performed. 
 
-Performing this clear can restore a few kWh of usable energy back. Actual capacity reported in **Ah** is not affected by the reset.
+This will not give you any more battery capacity, though if you've swapped a bad cell with a good cell a reset is required to make use of the new capacity. Actual capacity reported in **Ah** is not affected by the reset.
 
 !!! warning "NOTE"
-    Currently **SOH** and **Hx** reported by the BMS is not following over time the real degradation of the cells in stationary storage. They remain stuck at the values you had when you first installed the pack. If you perform the degradation reset, this will show as 100% and will be stuck at that. However, this will widen up the SOC range you can use your battery in, but you'll have to carefully set your limits manually as described further down below.
+    Currently **SOH** and **Hx** reported by the BMS is not following over time the real degradation of the cells in stationary storage. They remain stuck at the values you had when you first installed the pack. If you perform the degradation reset, this will show as 100% and will be stuck at that. However, this will widen up the SOC range you can use your battery in, getting a few kWh of usable energy back, but you'll have to carefully set your limits manually as described further down below.
 
 !!! info "IMPORTANT"
-    The degradation reset only works on 2011-2017 (ZE0/AZE0) batteries. Performing it on 2018+ 40/62kWh packs would have a negative effect, since it will restore the battery data too low. 
+    The degradation reset only works on 2011-2017 (ZE0/AZE0) batteries. 
 
 ![image](../images/nissan-leaf-e-nv200-20.png)
 
