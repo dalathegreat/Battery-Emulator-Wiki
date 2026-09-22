@@ -58,7 +58,7 @@ The hardware can be bought via sites like AliExpress, or the official [LilyGo st
 | 44 | RS485 RX (also the bootloader UART) |
 | 46 | SMA inverter contactor enable input |
 | 47 | CHAdeMO pin 7 |
-| 48 | Positive [ output](../setup/software/_control_via_gpio_pins.md) |
+| 48 | Positive [contactor output](../setup/software/contactor_control_via_gpio_pins.md) |
 
 !!! note "NOTE"
     The firmware auto-detects at boot whether the board carries an MCP2515 or an [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md), which decides how GPIO8–13 and GPIO37–42 are used.
