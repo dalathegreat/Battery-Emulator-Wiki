@@ -6,6 +6,8 @@ title: "BECom"
 
 The BECom (**B**attery **E**mulator **Com**panion) hardware is an open source hardware design created specifically for the Battery-Emulator project. It aims to replace the devkit-plus-adapters approach with a single purpose-built board: everything a typical stationary storage install needs — two battery CAN FD buses, contactor drivers, isolated inverter comms, a 12 V native power supply and an optional battery backup — is already on the board and wired to pluggable screw terminals.
 
+<img width="1575" height="2307" alt="image" src="https://github.com/user-attachments/assets/4952febb-4fdc-4360-b282-0786c90ad9f2" />
+
 The board is built around an **ESP32-S3-WROOM-1U** module (16 MB flash, external antenna) on a 4-layer, roughly 64 × 86 mm PCB that is designed to fit a Kradex Z-108 enclosure. It is powered directly from the 12 V system rail rather than from USB: the input accepts a wide range with a 20 V TVS, reverse-polarity and backflow protection, and an undervoltage lockout that starts the board at about 9.0 V and shuts it down at about 7.75 V.
 
 A built-in **UPS** stage takes a separate backup battery on its own terminal, charges it (13.7 V for lead-acid/LiFePO4 or 12.3 V for lithium, ~543 mA), and switches over automatically when the main input drops below about 9 V, so the emulator keeps running and can shut the batteries down cleanly on a power loss. Each battery's BMS 12 V supply is fed through its own 5 A electronic fuse with undervoltage lockout at 8.24 V and overvoltage protection at 19.73 V, so a short on a battery harness cannot take down the board.
@@ -54,7 +56,7 @@ Bus termination is set with DIP switches on the board, marked **CAN Term**, **RS
 
 ## Hardware info
 
-The hardware has more details [on this Github page](https://github.com/rjsc/BECom)
+The hardware has more details [on the project GitHub repo](https://github.com/rjsc/BECom)
 
 The KiCad project, schematic PDF and footprint libraries are published there under GPL-3.0.
 
@@ -73,9 +75,11 @@ Follow the [quickstart guide](https://github.com/dalathegreat/Battery-Emulator?t
 
 ## Over the air (OTA) software updates
 
-When updating this board [OTA](../setup/software/ota_update.md), be sure to select the software marked for this board. The files will be marked like this, signaling that this is **BECom** hardware.
+When updating this board [OTA](../setup/software/ota_update.md), be sure to select the software marked for this board.
 
-`BE_vX.Y.Z_BECom.ota.bin`
+## Example build
+
+<img width="978" height="1320" alt="image" src="https://github.com/user-attachments/assets/f07442af-d66c-4937-8d6f-44925d426963" />
 
 ## See also
 
