@@ -28,5 +28,6 @@ jobs:
       - run: pip install mkdocs-material
       - run: pip install mkdocs-awesome-nav
       - run: pip install mkdocs-redirects
+      - run: pip install mkdocs-glightbox
       - run: pip install -e "git+https://github.com/iSOLveIT/mkdocs-pdf-generate/#egg=mkdocs-pdf-generate"
       - run: mkdocs gh-deploy --force
