@@ -70,9 +70,6 @@ Other models:
 - 37501 CV050 is Kia EV6 78kWh (For this battery see [EGMP](hyundai_e_gmp_platform_58_2_77_4_kwh.md))
 - 37510 E4050 is [Kia Soul 27kWh](kia_soul.md)
 
-!!! note “Remark”
-    It is possible the BMS in the battery needs a 12V power cycle for 10 ~ 20 sec, after that or at the same time boot Battery Emulator and contractors are closed and HIGH VOLTAGE is active on the battery pins. This also applies when an emergency knob/button is installed in the interlock loop. When the loop is interrupted, the whole battery system needs a 12V power cycle to be active again.
-
 ## Part numbers
 
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
@@ -122,6 +119,9 @@ Note: PIN side (pack) layout. Not female connector side.
 ![bms-conn-wiring](../images/kia-niro-hyundai-kona-64-kwh-07.jpg)
 
 ![Schematic](../images/kia-niro-hyundai-kona-64-kwh-08.png)
+
+!!! note “Remark”
+    It is possible the BMS in the battery needs a 12V power cycle for 10 ~ 20 sec, after that or at the same time boot Battery Emulator and contractors are closed and HIGH VOLTAGE is active on the battery pins. This also applies when an emergency knob/button is installed in the interlock loop. When the loop is interrupted, the whole battery system needs a 12V power cycle to be active again.
 
 ## High Voltage Wiring
 
