@@ -71,9 +71,10 @@ Other models:
 - 37510 E4050 is [Kia Soul 27kWh](kia_soul.md)
 
 !!! note “Remark”
-    It is possible the BMS in the battery needs a 12V power cycle for 10 ~ 20 sec, after that or at the same time boot the Lilly and contractors are closed and HIGH VOLTAGE !! is active on the battery pins. This also applies when an emergency knob/button is installed in the interlock loop. When the loop is interrupted, the whole battery system needs a 12V power cycle to be active again.
+    It is possible the BMS in the battery needs a 12V power cycle for 10 ~ 20 sec, after that or at the same time boot Battery Emulator and contractors are closed and HIGH VOLTAGE is active on the battery pins. This also applies when an emergency knob/button is installed in the interlock loop. When the loop is interrupted, the whole battery system needs a 12V power cycle to be active again.
 
 ## Part numbers
+
 Incase your battery is missing some wires/disconnect switches, here are the OEM part numbers and purchase links. Do note that it might be cheaper to source from your local scrapyard!
 
 |  Product |  Purchase Link |
@@ -140,6 +141,7 @@ see picture for positive ( red ) and negative ( black ).
     Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 #### Notes on type of HV cable
+
 39kwh (2022) was with metal silver HV socket (looks like early 39/64 packs), 64kwh pack was 2020 with orange plastic HV socket. And these HV sockets looks same but they are mechanically different. For easiest way, try to get the HV cable from the same vehicle that you are getting the battery from!
 
 Silver one needs HV cable p/n 91662K4000 (Picture below)
@@ -152,6 +154,7 @@ The two cables side by side
 ![image](../images/kia-niro-hyundai-kona-64-kwh-21.png)
 
 ## HVIL
+
 The battery packs has interlock monitoring on all high voltage connections. To get the contactors to engage, the battery needs to see that all plugs have been seated. If you dont have the original plugs, these are the HVIL connectors that need to be connected together to make the battery think the connectors are seated:
 
 Low voltage side: Pin 3 and 14 must be connected on data plug.
@@ -175,6 +178,7 @@ Plus, the HV side must be connected together (diagram missing for running withou
 You can print your own covers for the unused battery connectors, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).
 
 ## Special notes on 37501-AO050 battery
+
 There is a 2022+ Hyundai Kona or Kia e-niro battery that uses CAN-FD, that comes with a AO050 part number sticker. It is CATL made, it consist in 24 modules(2.835 kwh) x 4 cells(3.7v), configured 96s1p(358v in total) 64.8kwh(68.4 in total)
 
 This battery has the part number 37501-AO050, and this battery requires a CAN-FD hardware interface. Easiest to get a [Stark CMR](../hardware/stark_cmr.md), but you can also add a [CANFD addon interface](../setup/can_related/can_fd_add_on_mcp2518fd.md). To use this battery, enable the `Kia 64kWh FD battery` option in the software.
