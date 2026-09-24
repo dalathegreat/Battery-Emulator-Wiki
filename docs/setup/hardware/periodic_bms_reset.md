@@ -53,7 +53,7 @@ When a reset runs (via MQTT, the HA button, or the 24h timer), the pin goes **LO
 
 By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer (you can set values between 1 and 600 seconds). Some batteries are OK with as short resets as 2 seconds, some others require several minutes to save their settings. Here is the **Periodic BMS reset off time** setting:
 
-<img width="435" height="95" alt="image" src="https://github.com/user-attachments/assets/3f9c2aa6-8fef-4706-8255-d2c887a75488" />
+![image](../../images/periodic-bms-reset-04.png)
 
 ## Taking it into use
 
@@ -68,7 +68,7 @@ Local triggering has the benefit of operating completely standalone, without any
 
 Right under **Periodic BMS reset off time** setting you can find a **Perform a BMS reset now** button to immediately start the procedure on demand. Pressing **Start** will ask for a confirmation:
 
-<img width="524" height="191" alt="image" src="https://github.com/user-attachments/assets/c0784168-6ceb-4935-8ce9-3b6311780a4e" />
+![image](../../images/periodic-bms-reset-05.png)
 
 You will get a notification that "BMS reset started." If you try to trigger it again before it has finished, it will warn you that's already in progress.
 

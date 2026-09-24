@@ -30,7 +30,7 @@ After the reboot the status page shows the protocol name `Fake battery for testi
 
 The Fake battery's settings live on the **More Battery/Cell Info** page (the button on the status page, `/advanced`), not on the Settings page. Below the panel listing the pack's properties there is a blue card with two rows:
 
-<img width="1012" height="482" alt="image" src="https://github.com/user-attachments/assets/637b56b3-e32a-44b0-91aa-4820c675d9be" />
+![image](../images/fake-battery-01.png)
 
 
 **Voltage: `<value>` V** with an **Edit** button
