@@ -133,19 +133,17 @@ From the appropriate dropdown lists select the driver you'd like to use when com
 
 Certain settings allow customizing the battery parameters:
 
-![image](../../images/webserver-guide-09.png)
+<img width="1018" height="541" alt="image" src="https://github.com/user-attachments/assets/f0d9cc49-e3b9-4d16-af62-eb42835b2e24" />
 
 #### Battery Capacity
 
-How much energy can your battery store? Some batteries autodetect this via CAN communication, but for some battery types that do not have this it is good to manually define the value so that your inverter knows how large the battery is.
+How much energy can your battery store? Some batteries autodetect this via CAN communication, this setting is invisible for them, but for some battery types that do not have this it is good to manually define the value so that your inverter knows how large the battery is.
 
 #### Rescale SOC%
 
 If enabled, the system will rescale SOC% between the configured min/max-percentage. By not using the entire battery, the amount of cycles the battery can last increases. Good practice is to use this feature, and restrict SOC% between 20-80%, however, scaling SOC max too low may cause oscillations when charge approaches the scaled 100%. If you run into this, enable "Ramp up charge limits gradually" in "Inverter config" and raise SOC max percentage to 100%.
 
-![image](../../images/webserver-guide-10.png)
-
-![image](../../images/webserver-guide-11.png)
+<img width="599" height="358" alt="image" src="https://github.com/user-attachments/assets/cbbb5fac-42a6-4318-ae4b-98d594d1112e" />
 
 !!! note "NOTE"
     For some battery chemistries (LFP especially), rescaling SOC% prevents the battery from top-balancing properly. For these chemistries it is recommended to rescale only the bottom section with **SOC min percentage** (e.g. using 20-100%).
@@ -155,10 +153,10 @@ If enabled, the system will rescale SOC% between the configured min/max-percenta
 !!! tip "TIP"
     It is now possible to do negative rescaling, as some inverters restrict the possibility to use the entire battery capacity at the bottom section. With this trick you can circumvent that. Use with caution!
 
-#### Battery charge/discharge limit
+#### Battery charge/discharge speed limits
 
-- Max charge speed (A)
-- Max discharge speed (A)
+- Max charge current (A)
+- Max discharge current (A)
 
 This setting caps the amount of power that can go in/out of the battery. Even though most EV packs can push out hundreds of ampere, most inverters will not handle so large amounts of current. Some inverters even stop functioning in case they see allowed a large value. By default this is set to 30A on charge and discharge. Set this value to correspond to the parameters of your inverter (Inverter Power / Vmin), the wiring or the fuses in your system (whichever the lowest). It is important for these numbers to be correct, in order for the filters and the taper to operate correctly. 
 
@@ -167,9 +165,17 @@ This setting caps the amount of power that can go in/out of the battery. Even th
 
 #### Manual charge voltage limits
 
-Disabled by default. This option can be enabled to manually limit min/max voltage in the system. Note that not all inverters are compatible with voltage based limits, the setting was primarily developed for BYD_CAN. If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC% is enabled)
+Disabled by default. This option can be enabled to manually limit min/max voltage in the system. Note that not all inverters are compatible with voltage based limits, the setting was primarily developed for BYD_CAN. If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC% is enabled).
 
-![image](../../images/webserver-guide-12.png)
+<img width="606" height="137" alt="image" src="https://github.com/user-attachments/assets/1b0e3852-51dd-44ac-a067-41a19ff721e9" />
+
+#### Periodic BMS reset
+
+See the dedicated page for [Periodic BMS reset](../hardware/periodic_bms_reset.md).
+
+#### Undercharged emergency recovery mode
+
+See the dedicated page for [Recovering undercharged battery](../hardware/ecovering_undercharged_battery.md).
 
 ### Log
 
