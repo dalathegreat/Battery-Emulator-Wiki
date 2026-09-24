@@ -133,7 +133,7 @@ From the appropriate dropdown lists select the driver you'd like to use when com
 
 Certain settings allow customizing the battery parameters:
 
-<img width="1018" height="541" alt="image" src="https://github.com/user-attachments/assets/f0d9cc49-e3b9-4d16-af62-eb42835b2e24" />
+![image](../../images/webserver-guide-17.png)
 
 #### Battery Capacity
 
@@ -143,7 +143,7 @@ How much energy can your battery store? Some batteries autodetect this via CAN c
 
 If enabled, the system will rescale SOC% between the configured min/max-percentage. By not using the entire battery, the amount of cycles the battery can last increases. Good practice is to use this feature, and restrict SOC% between 20-80%, however, scaling SOC max too low may cause oscillations when charge approaches the scaled 100%. If you run into this, enable "Ramp up charge limits gradually" in "Inverter config" and raise SOC max percentage to 100%.
 
-<img width="599" height="358" alt="image" src="https://github.com/user-attachments/assets/cbbb5fac-42a6-4318-ae4b-98d594d1112e" />
+![image](../../images/webserver-guide-18.png)
 
 !!! note "NOTE"
     For some battery chemistries (LFP especially), rescaling SOC% prevents the battery from top-balancing properly. For these chemistries it is recommended to rescale only the bottom section with **SOC min percentage** (e.g. using 20-100%).
@@ -167,7 +167,7 @@ This setting caps the amount of power that can go in/out of the battery. Even th
 
 Disabled by default. This option can be enabled to manually limit min/max voltage in the system. Note that not all inverters are compatible with voltage based limits, the setting was primarily developed for BYD_CAN. If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC% is enabled).
 
-<img width="606" height="137" alt="image" src="https://github.com/user-attachments/assets/1b0e3852-51dd-44ac-a067-41a19ff721e9" />
+![image](../../images/webserver-guide-19.png)
 
 #### Periodic BMS reset
 
