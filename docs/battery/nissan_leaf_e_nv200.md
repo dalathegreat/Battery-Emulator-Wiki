@@ -5,9 +5,10 @@ title: "Nissan LEAF / e-NV200"
 ## Software configuration
 For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
 
-![image](../images/nissan-leaf-e-nv200-26.png)
+![image](../images/nissan-leaf-e-nv200-27.png)
 
 - leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed, or experiences high cell voltage deltas (> 150mV). You can start experimenting with the other settings when you gained some experience on how balancing and degradation performs over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md), like for example [Home Assistant](../setup/software/home_assistant.md) to observe behavior is strongly recommended when using experimental settings). Changing this setting requires a BMS reset.
+- keep the **Automatic current offset correction** enabled, which will calibrate current measurement skew during open contactors (more info below).
 - on a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
        - If you enable this setting on a AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus for these it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and insulate manually one of them). Instead just block off the unused HV port with a 3D printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
 - set the **Battery chemistry** to **NMC**.
@@ -100,12 +101,15 @@ The **More Battery Info** button at the bottom of the main page will open a wind
 - **AC charge count**: the number of AC charges that have been started while in the car. This number increases at each pack boot and BMS reset when **BMS starting sequence request** is set to **normal charge**.
 - **Charge to full count**: the number of charges that resulted in full battery.
 - **Turtle count**: the number of cases when the car has been forced to run into turtle mode, to prevent over-discharging.
+- **Automatic current offset**: the current offset measured at every boot and again each time the contactors open (see note below).
 - **lifetime usage histograms**: Each event recorded the temperature at its start and the peak it reached. Peak (the hottest the pack got) drives the heat assessment; start temperature is shown alongside.
 
 !!! note "NOTE"
     The SOH value you see in Battery Emulator's main page is calculated from **Capacity as new** and **Actual capacity**. It may be slightly different from the (raw) SOH value you'd see in LeafSpy, but it's a relevant value even in case of a SOH-resetted pack, which would stick to 100% for a longer period of time.
 
     A certain difference between total charges and the AC + QC counts is normal — it can happen when charging is interrupted (e.g. a power cut).
+
+    Some Leaf battery packs report a small current even when none can flow; in some cases it even reaches a few amperes. This shows up as phantom charging or discharging, and skews the power and SOC figures passed to the inverter. With Automatic current offset correction, enabled by default under Battery configg, Battery-Emulator measures this error itself. Whenever a pack's contactors are open, any current the BMS reports can only be sensor offset. After a short settling time, those readings are averaged over up to the last 10 seconds and subtracted from that pack's current from then on. The offset is measured at every boot and again each time the contactors open. It is kept unchanged while they are closed, including during a periodic BMS reset. A second or third pack that stays disconnected, for example because its voltage differs too much from the other packs, keeps updating its offset. Battery Emulator can only tell that contactors are open when it drives them itself, so this needs **Contactor control via GPIO** enabled, plus **2ⁿᵈ / 3ʳᵈ battery contactor control via GPIO** in double or triple battery setups. Each pack is measured separately, using its own contactors. The value found for each pack is shown as **Automatic current offset** at the bottom of the Status panel on the More Battery Info page. "Unknown" means that pack has not been measured yet, for example because its contactors are not controlled by Battery-Emulator. The setting takes effect after a reboot. Put it simple, to re-calibrate, just reboot Battery Emulator.
 
 !!! tip "TIP"
     The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer looking 100% curve! However, Nissan specifically advises against habitual full charging, which adds wear - thus, for longer lifetime, you should set **SOC max percentage** to **80** on long term (during the summer, when the pack would charge to 100% quickly, and then would stay full almost all day).
