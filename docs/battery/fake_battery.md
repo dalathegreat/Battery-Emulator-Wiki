@@ -10,8 +10,8 @@ It is meant for:
 
 - Bringing up a new inverter integration without risking a real pack
 - Testing the web UI, cell monitor, MQTT / Home Assistant autodiscovery, ESP-NOW and the display
-- Verifying double and triple battery setups on a single board
-- Reproducing SOC-, voltage- and balancing-dependent behaviour on demand, by simply typing a pack voltage
+- Verifying double and triple battery setups on a single board, with packs that can be made to differ from each other
+- Reproducing SOC-, voltage-, SOH- and balancing-dependent behaviour on demand, by simply typing a pack voltage or a state of health
 
 !!! danger "CAUTION"
     The Fake battery reports a healthy pack that always allows charge and discharge. If it is selected while real hardware is connected, the inverter will happily push power into or out of whatever is actually on the DC bus. Only use it on a bench setup, or with the HV side disconnected.
@@ -26,28 +26,38 @@ It is meant for:
 
 After the reboot the status page shows the protocol name `Fake battery for testing purposes`, the emulator raises the normal "battery detected" event, and the system goes to ACTIVE just as with a real pack.
 
-### The only dedicated setting: Fake battery voltage
+### Its own settings: Voltage and SOH
 
-Once the Fake battery is running, an extra blue box appears on the Settings page:
+The Fake battery's settings live on the **More Battery/Cell Info** page (the button on the status page, `/advanced`), not on the Settings page. Below the panel listing the pack's properties there is a blue card with two rows:
 
-**Fake battery voltage: `<value>` V** with an **Edit** button.
+<img width="1012" height="482" alt="image" src="https://github.com/user-attachments/assets/637b56b3-e32a-44b0-91aa-4820c675d9be" />
 
-| Property | Value |
-|:---|:---|
-| Unit | Volts (decimals accepted, stored with 0.1 V resolution) |
-| Useful range | 245.0 – 404.0 V (the design limits of the fake pack) |
-| Applied | Immediately, no reboot needed |
-| Persisted | No — after a reboot the pack is back at 370.0 V (see the double/triple contactor note below) |
-| Affects | Battery 1; batteries 2 and 3 mirror the same voltage |
 
-This single value drives almost everything else the Fake battery reports: SOC, remaining energy, cell voltages and the simulated balancing state.
+**Voltage: `<value>` V** with an **Edit** button
+**SOH: `<value>` %** with an **Edit** button
+
+| Property | Voltage | SOH |
+|:---|:---|:---|
+| Unit | Volts, 0.1 V resolution | Percent, 0.01 % resolution |
+| Accepted input | 0 – 5000 | 0 – 100 |
+| Useful range | 245.0 – 404.0 V (the design limits of the fake pack) | any |
+| Value after boot | 370.0 V | 99.00 % |
+| Applied | Immediately, no reboot needed | Immediately, no reboot needed |
+| Persisted | No | No |
+| Affects | Only the pack whose tab is open | Only the pack whose tab is open |
+
+Values are rounded to the nearest step, so typing 370.3 gives 370.3 V, and 87.35 gives 87.35 %.
+
+The voltage drives almost everything else the pack reports: SOC, remaining energy, cell voltages and the simulated balancing state. The SOH is reported as entered and is otherwise inert: it feeds the SOH events and everything that displays or transmits SOH (status page, MQTT, ESP-NOW and the inverter protocols that carry it).
+
+The panel above the card lists what the pack reports but cannot be changed: capacity, number of cells, the SOC above which balancing starts, and the total charged and discharged energy.
 
 !!! note "NOTE"
-    The box is only rendered for integrations that implement `supports_set_fake_voltage()`, so it is invisible for every real battery.
+    The card is drawn by the Fake battery integration itself, so it is invisible for every real battery. On a double or triple setup the page has a tab per battery, and each tab shows and edits that pack's own values.
 
 ### How SOC is derived from the voltage
 
-SOC is interpolated linearly between the fake pack's design limits, 245.0 V (0.00 %) and 404.0 V (100.00 %):
+Each pack's SOC is interpolated linearly between the fake pack's design limits, 245.0 V (0.00 %) and 404.0 V (100.00 %):
 
 ```
 SOC [%] = (pack voltage - 245.0) / (404.0 - 245.0) * 100
@@ -98,11 +108,10 @@ Below 85.00 % SOC the balancing status is reported as **Ready** and all balancin
 
 ### Fixed values reported
 
-Everything not derived from the voltage is a constant:
+Everything not derived from the voltage, and not settable on the info page, is a constant:
 
 | Parameter | Reported value |
 |:---|:---|
-| State of health | 99.00 % |
 | Total capacity | 30 000 Wh (30 kWh) |
 | Current | 0.0 A (so active power is always 0 W) |
 | Max charge power | 5000 W |
@@ -122,36 +131,45 @@ The Fake battery implements none of the optional BMS functions (reset BMS, reset
 
 ### Double and triple battery
 
-The Fake battery supports both **Double battery** and **Triple battery**. Each extra instance is created on its own configured interface and gets its own datalayer entry, its own cell voltages, its own randomisation and its own balancing state. Batteries 2 and 3 copy the pack voltage of battery 1, so all packs stay at the same voltage and SOC — which is what a healthy parallel installation looks like. Total capacity becomes 60 kWh (double) or 90 kWh (triple).
+The Fake battery supports both **Double battery** and **Triple battery**. Each extra instance is created on its own configured interface and gets its own datalayer entry, its own cell voltages, its own randomisation, its own balancing state, and its own voltage and SOH. All packs boot at 370.0 V and 99.00 %, so out of the box they are identical — which is what a healthy parallel installation looks like — and each pack is then free to be moved on its own tab. Total capacity becomes 60 kWh (double) or 90 kWh (triple).
 
-#### The second and third contactors stay open at the default voltage
+Towards the inverter the packs are still presented as one large battery: the capacities and remaining energies are summed, while the SOC handed over follows battery 1. Per-pack differences are therefore visible on the status page, the info tabs, MQTT and ESP-NOW, but they do not move the SOC the inverter reads.
+
+#### Making the packs disagree on purpose
+
+Giving one pack a different voltage is the quickest way to walk the parallel safety check through its states:
+
+| Voltage difference towards battery 1 | What happens |
+|:---|:---|
+| Up to 1.5 V | Packs count as in sync, the extra battery is allowed to close its contactor |
+| More than 1.5 V, over 3 seconds | `Voltage difference between batteries` event is raised |
+| More than 1.5 V, over 10 seconds | The extra battery is no longer allowed to close its contactor, and an already closed contactor opens |
+
+Bringing the voltages back within 1.5 V clears the event and lets the pack rejoin.
 
 !!! note "NOTE"
-    With external (GPIO) contactor control on a double or triple setup, the contactors of battery 2 and 3 will **not** engage while the fake voltage is left at its default 370.0 V. Change the **Fake battery voltage** to any other value, for example 370.1 V or 380.0 V, and they close normally.
-
-This is not a bug in the parallel logic, it is the parallel voltage-sync safety check protecting itself against uninitialised data. Before it compares the packs, `check_parallel_battery_safety()` aborts if either pack reads 0.0 V **or exactly 370.0 V**, because 3700 dV is the value most integrations leave in the datalayer until the first real measurement arrives. The Fake battery boots at exactly that voltage and mirrors it to packs 2 and 3, so the check keeps bailing out, the "battery allows contactor closing" flag is never raised, and the extra contactors stay open.
-
-Nothing is logged when this happens: the check returns before it can raise `Voltage difference between batteries` (that event only appears when the packs really are more than 1.5 V apart for over 3 seconds), so the symptom looks like a silent refusal to close.
-
-Once the voltage is anything else, the mirrored packs are bit-for-bit identical, the difference is 0.0 V, and both extra contactors are allowed to close as soon as the main precharge sequence reaches COMPLETED.
+    In firmware older than this, packs 2 and 3 simply mirrored battery 1's voltage, so they could never be made to disagree. Older builds also refused to close the second and third contactors while the packs sat at exactly 370.0 V: the voltage-sync check treats 3700 dV as "no data read yet" and returned before comparing. It now only does so while the cell voltages are still at their 3700 mV default too, so a pack genuinely at 370.0 V joins normally. If the extra contactors stay open at the default voltage on your build, it predates that fix — change the voltage to 370.1 V and they close.
 
 ### Events you can provoke on purpose
 
-Because the pack voltage is a free input, the Fake battery is a convenient way to walk the safety layer through its states:
+Because the pack voltage and SOH are free inputs, the Fake battery is a convenient way to walk the safety layer through its states:
 
-| Fake voltage | What happens |
-|:---:|:---|
-| Below 245.0 V | Battery undervoltage event, then cell undervoltage below about 242 V |
-| Exactly 245.0 V or lower | SOC 0.00 %, battery empty event, discharge power forced to 0 W |
-| 404.0 V | SOC 100.00 %, battery full event, charge power forced to 0 W |
-| Above 404.0 V | Battery overvoltage event, followed by cell overvoltage and critical cell overvoltage |
-| Around 380 V and up | Balancing goes Active in the UI, MQTT and ESP-NOW |
+| Setting | What happens |
+|:---|:---|
+| Voltage below 245.0 V | Battery undervoltage event, then cell undervoltage below about 242 V |
+| Voltage exactly 245.0 V or lower | SOC 0.00 %, battery empty event, discharge power forced to 0 W |
+| Voltage 404.0 V | SOC 100.00 %, battery full event, charge power forced to 0 W |
+| Voltage above 404.0 V | Battery overvoltage event, followed by cell overvoltage and critical cell overvoltage |
+| Voltage around 380 V and up | Balancing goes Active in the UI, MQTT and ESP-NOW |
+| Voltage of one pack moved away from battery 1 | Voltage difference event and, after 10 seconds, that pack is dropped from the DC link |
+| SOH of battery 1 below 25.00 % | Battery state of health low event |
+| SOH of two packs more than 25.00 % apart | SOH difference event |
+
+!!! note "NOTE"
+    The SOH difference check ignores any pack that reads exactly 99.00 %, because that is the value integrations leave behind when they have no SOH to report. Since 99.00 % is also the Fake battery's default, both packs have to be moved off it before the event can fire. The state of health low event only looks at battery 1.
 
 ### Quirks
 
 - **DC bus reported as not live.** The Fake battery declares the DC bus dead at startup. With GPIO contactor control enabled, the flag is corrected as soon as precharge completes. Without contactor control it stays false, and inverters that gate on it — notably BYD-Modbus — report **STANDBY** instead of **ACTIVE** to the inverter. Enable contactor control, or expect standby on the inverter side.
-- The fake voltage is not stored in NVM, every reboot returns to 370.0 V — which is also the value that blocks the second and third contactors, so on a double or triple setup the voltage has to be re-entered after every reboot.
-- The input validation message on the voltage prompt mentions 0–1000 while the check itself accepts 0–5000.
+- Neither the voltage nor the SOH is stored in NVM, every reboot returns every pack to 370.0 V and 99.00 %.
 - Charged/discharged energy counters are frozen constants, they never move.
-
-
