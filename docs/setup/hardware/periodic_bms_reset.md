@@ -51,9 +51,9 @@ When a reset runs (via MQTT, the HA button, or the 24h timer), the pin goes **LO
 5. **Power back on** — drive `BMS_POWER` HIGH, then wait a fixed **3 s** warmup.
 6. **Unpause**. Done.
 
-By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer (you can set values between 1 and 600 seconds). Some batteries are OK with as short resets as 2 seconds, some others require several minutes to save their settings. Here is the setting:
+By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer (you can set values between 1 and 600 seconds). Some batteries are OK with as short resets as 2 seconds, some others require several minutes to save their settings. Here is the **Periodic BMS reset off time** setting:
 
-![image](../../images/periodic-bms-reset-01.png){ width="363" height="95" }
+![image](../../images/periodic-bms-reset-04.png)
 
 ## Taking it into use
 
@@ -64,7 +64,15 @@ There are two ways you can implement Periodic BMS reset:
 
 Local triggering has the benefit of operating completely standalone, without any dependency of any third party system. Remote triggering has the benefit of having control of the exact moment you want to perform the reset, take into account various aspects of your energy usage.
 
-### Local trigger on Battery Emulator
+### On-demand trigger
+
+Right under **Periodic BMS reset off time** setting you can find a **Perform a BMS reset now** button to immediately start the procedure on demand. Pressing **Start** will ask for a confirmation:
+
+![image](../../images/periodic-bms-reset-05.png)
+
+You will get a notification that "BMS reset started." If you try to trigger it again before it has finished, it will warn you that's already in progress.
+
+### Timed trigger
 
 ![image](../../images/periodic-bms-reset-02.png){ width="721" height="170" }
 
