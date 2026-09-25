@@ -11,6 +11,16 @@ You can interact with the Battery-Emulator via the built in Webserver. Here you 
 ## Prerequisites
 To be able to use the Webserver, you need to connect to the Battery-Emulator to either your home Wifi, or connect directly to the access point that the Battery-Emulator itself is broadcasting.
 
+Minimum browser requirements:
+
+| Browser | Minimum version required |
+|---|---|
+| Chrome / Chrome Android / Android WebView | 80 (2020) |
+| Edge | 80 (2020) |
+| Firefox / Firefox Android | 74 / 79 (2020) |
+| Safari desktop / iOS | 13.1 / 13.4 (2020) |
+| Samsung Internet | 13.0 |
+
 ### A: Connect to your home network
 To have the Battery-Emulator accessible in your home network, you need to enter your home Wifi credentials into the webserver settings. See the quickstart guide for more information on how to perform the initial Wifi setup.
 
