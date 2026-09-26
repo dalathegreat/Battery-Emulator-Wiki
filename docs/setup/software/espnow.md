@@ -6,13 +6,13 @@ title: "ESPNow"
 
 Any ESP32 device nearby can display Battery Emulator data without any physical connection to the hardware. The emulator broadcasts (or unicasts) its full telemetry set: emulator-wide state, per-battery values for all three batteries, cell voltages and balancing bits, and the recent event log.
 
-Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
+Battery Emulator implements ESPNow v2 in the **ESPNow** integration.
 
 ### Compatible ESPNow projects
 
 !!! danger "Third-party displays: use at your own risk"
 
-    The ESP-NOW display projects listed or linked on this page are made by
+    The ESPNow display projects listed or linked on this page are made by
     independent community members. They are **not affiliated with, reviewed
     or endorsed by** the Battery Emulator project. The Battery Emulator
     developers take **no responsibility** for their code, their pre-built
@@ -30,29 +30,30 @@ Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
       accept firmware updates over the network without any login, or show
       saved credentials on their setup pages. Anyone within radio range
       could then take them over or read your Wi-Fi password.
-    - **Prefer direct ESP-NOW mode**, which needs no router, no network. Just 
+    - **Prefer direct ESPNow mode**, which needs no router, no network. Just 
       add power to the display, nothing else. If a display must join a Wi-Fi 
       network, use a separate guest/IoT network isolated from your other devices.
-    - **ESP-NOW traffic is unencrypted.** Anyone nearby can receive your
+    - **Be very careful with displays that can send commands** (pause,
+      contactor control, reboot) to your Battery Emulator over the network. 
+      These act on a high-voltage system and have no authentication. ESPNow
+      in Battery Emulator is unidierctional broadcast-only, and that's on purpose!
+    - **ESPNow traffic is unencrypted.** Anyone nearby can receive your
       battery data or send fake values to a display. Never rely on a display
       for safety decisions. Always check the Battery Emulator web interface.
-    - **Be very careful with displays that can send commands** (pause,
-      contactor control, reboot) to your Battery Emulator. These act on a
-      high-voltage system and have no authentication.
 
-The following independently maintained community projects provide ready-to-install ESP-NOW displays:
+The following independently maintained community projects provide ready-to-install ESPNow displays:
 
-- [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) - a compact five-screen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-t-display-s3/), phone-based setup, local web controls, and prebuilt firmware.
-- [Battery Display for ESP32-4848S040C](https://github.com/sort282-rgb/battery-display-esp32-4848s040c) - a 480 x 480 touchscreen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-esp32-4848s040c/installer/), phone-based setup, local web controls, and prebuilt firmware.
+- [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) - a compact five-screen ESPNow v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-t-display-s3/), phone-based setup, local web controls, and prebuilt firmware.
+- [Battery Display for ESP32-4848S040C](https://github.com/sort282-rgb/battery-display-esp32-4848s040c) - a 480 x 480 touchscreen ESPNow v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-esp32-4848s040c/installer/), phone-based setup, local web controls, and prebuilt firmware.
 
-The main telemetry screens use battery-agnostic ESP-NOW v2 fields and are not limited to Tesla integrations. The current firmware displays battery 1 and plots up to 96 cells. Tesla-specific HVIL, DTC and BMS controls are available only in Wi-Fi web mode and are not applicable to other battery integrations. Integrations that do not provide cell-voltage telemetry may show unavailable cell values.
+The main telemetry screens use battery-agnostic ESPNow v2 fields and are not limited to Tesla integrations. The current firmware displays battery 1 and plots up to 96 cells. Tesla-specific HVIL, DTC and BMS controls are available only in Wi-Fi web mode and are not applicable to other battery integrations. Integrations that do not provide cell-voltage telemetry may show unavailable cell values.
 
 ![espnow_4848s040c](../../images/espnow_4848s040c.jpg)
 
 !!! note "Payload-size compatibility"
-    The current public firmware builds use an ESP-NOW receive layer limited to 250-byte payloads. Build Battery Emulator with `ESPNOW_MAX_PAYLOAD=250` for complete cell-voltage telemetry. The ESP32-4848S040C application's packet buffer is already sized to 1470 bytes, but the ESP-NOW SDK in the published build still limits received payloads to 250 bytes.
+    The current public firmware builds use an ESPNow receive layer limited to 250-byte payloads. Build Battery Emulator with `ESPNOW_MAX_PAYLOAD=250` for complete cell-voltage telemetry. The ESP32-4848S040C application's packet buffer is already sized to 1470 bytes, but the ESPNow SDK in the published build still limits received payloads to 250 bytes.
 
-- [CYD Battery Emulator Display for ESP32-2432S028R](https://github.com/pauLTU3/CYD-Battery-Emulator) - ESP-NOW v2 display for the 2.8" Cheap Yellow Display, supports one or two batteries. Includes a [web installer](https://paultu3.github.io/CYD-Battery-Emulator/).
+- [CYD Battery Emulator Display for ESP32-2432S028R](https://github.com/pauLTU3/CYD-Battery-Emulator) - ESPNow v2 display for the 2.8" Cheap Yellow Display, supports one or two batteries. Includes a [web installer](https://paultu3.github.io/CYD-Battery-Emulator/).
 
 ![espnow_cyd](../../images/espnow_cyd_2432s028r.jpg)
 
@@ -83,7 +84,7 @@ v2 is a self-describing key/length/value (TLV) stream:
 
 ## Technical details
 
-ESP-NOW is a low-latency wireless protocol by Espressif that allows direct device-to-device communication without a router. It works on the data-link layer, bypassing higher OSI layers, which results in fast response times and minimal overhead. It is compatible with ESP8266, ESP32, ESP32-S, and ESP32-C series chips and can coexist with Wi-Fi and Bluetooth LE.
+ESPNow is a low-latency wireless protocol by Espressif that allows direct device-to-device communication without a router. It works on the data-link layer, bypassing higher OSI layers, which results in fast response times and minimal overhead. It is compatible with ESP8266, ESP32, ESP32-S, and ESP32-C series chips and can coexist with Wi-Fi and Bluetooth LE.
 It’s ideal for smart home devices, remote controls, and sensor networks, supporting one-to-one, one-to-many, and many-to-many communication.
 
 ### **Key Features:**
@@ -92,14 +93,14 @@ It’s ideal for smart home devices, remote controls, and sensor networks, suppo
 * Encrypted or unencrypted communication
 * Range up to ~220 meters in open space
 * Supports callbacks for send/receive events
-* Payload up to 250 bytes in ESP-NOW v1, raised to 1470 bytes in ESP-NOW v2 (ESP-IDF 5.4+)
+* Payload up to 250 bytes in ESPNow v1, raised to 1470 bytes in ESPNow v2 (ESP-IDF 5.4+)
 
 !!! note "NOTE" 
-    Enabling ESPNow increases the temperature of the ESP chip, as it shares the radio interface with Wi-Fi. Without ESP-NOW, the Wi-Fi client connection lets the modem duty-cycle down to the network's DTIM interval. The moment ESP-NOW is active, the connectionless path needs the PHY/RX chain powered continuously — Espressif's own FAQ states that once the device enters modem-sleep it can't service ESP-NOW. So you flip from a low duty-cycle radio to a ~100%-on radio, and the PA/PHY idle current is what generates heat with ESPNow enabled. It's the radio staying lit.
+    Enabling ESPNow increases the temperature of the ESP chip, as it shares the radio interface with Wi-Fi. Without ESPNow, the Wi-Fi client connection lets the modem duty-cycle down to the network's DTIM interval. The moment ESPNow is active, the connectionless path needs the PHY/RX chain powered continuously — Espressif's own FAQ states that once the device enters modem-sleep it can't service ESPNow. So you flip from a low duty-cycle radio to a ~100%-on radio, and the PA/PHY idle current is what generates heat with ESPNow enabled. It's the radio staying lit.
 
 ### Wire format
 
-Every ESP-NOW packet is one frame: a 12 byte header followed by TLV records.
+Every ESPNow packet is one frame: a 12 byte header followed by TLV records.
 
 Header (12 bytes, little-endian):
 
@@ -175,7 +176,7 @@ Events are not streamed as they occur: the **10 most recent** entries are re-sen
 
 ### Frame size and chunking
 
-ESP-NOW v2 raises the maximum payload from 250 to 1470 bytes, which is what makes unquantized 16 bit cell voltages practical. v2 is assumed on the emulator side: every SoC the emulator runs on is compatible with it, so there is no runtime version negotiation.
+ESPNow v2 raises the maximum payload from 250 to 1470 bytes, which is what makes unquantized 16 bit cell voltages practical. v2 is assumed on the emulator side: every SoC the emulator runs on is compatible with it, so there is no runtime version negotiation.
 
 The limit that matters is the **receiver's** buffer, not its silicon. A receiver that has not raised its own receive buffer above the 250 byte default silently drops larger frames — ESPHome's `espnow` component is one such case, where `max_payload_size: 1470` has to be set explicitly. The cell voltage array is therefore always split into index-tagged chunks sized by `ESPNOW_MAX_PAYLOAD`, so lowering that one constant in `espnow.cpp` is enough to talk to a 250 byte receiver.
 
@@ -344,10 +345,10 @@ Contents of **be_espnow.h** — the protocol constants and a complete decoder. I
 
 ```C
 /*
- * Battery Emulator ESP-NOW v2 receiver - protocol decoder.
+ * Battery Emulator ESPNow v2 receiver - protocol decoder.
  *
  * Self contained: no Arduino, no ESP-IDF, no dynamic allocation. Feed every received
- * ESP-NOW payload to be_espnow_receive() and read the be_state_t it fills in.
+ * ESPNow payload to be_espnow_receive() and read the be_state_t it fills in.
  */
 #ifndef BE_ESPNOW_H_
 #define BE_ESPNOW_H_
@@ -1017,7 +1018,7 @@ Contents of **BE_ESPNow_Console.ino** — prints everything the emulator sends:
 
 ```C
 /*
- * Battery Emulator ESP-NOW v2 telemetry receiver - console example.
+ * Battery Emulator ESPNow v2 telemetry receiver - console example.
  *
  * Prints every value the emulator broadcasts. Drop be_espnow.h next to this sketch.
  */
@@ -1027,7 +1028,7 @@ Contents of **BE_ESPNow_Console.ino** — prints everything the emulator sends:
 #include <esp_wifi.h>
 #include "be_espnow.h"
 
-// Set to the channel the emulator's Wi-Fi is on, or 0 to join an AP instead. ESP-NOW only
+// Set to the channel the emulator's Wi-Fi is on, or 0 to join an AP instead. ESPNow only
 // works between nodes on the same channel; a station that is not associated stays on
 // channel 1 and will never hear an emulator joined to a network on another channel.
 #define ESPNOW_CHANNEL 1
@@ -1211,7 +1212,7 @@ static void print_events() {
 // ---------------- SETUP ----------------
 void setup() {
   Serial.begin(115200);
-  Serial.println("Battery Emulator ESP-NOW v2 receiver");
+  Serial.println("Battery Emulator ESPNow v2 receiver");
 
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
@@ -1219,7 +1220,7 @@ void setup() {
   Serial.printf("Own MAC: %s\n", WiFi.macAddress().c_str());
 
   if (esp_now_init() != ESP_OK) {
-    Serial.println("Error initializing ESP-NOW");
+    Serial.println("Error initializing ESPNow");
     return;
   }
   esp_now_register_recv_cb(OnDataRecv);
@@ -1247,7 +1248,7 @@ void loop() {
 Example of output:
 
 ```
-Battery Emulator ESP-NOW v2 receiver
+Battery Emulator ESPNow v2 receiver
 Own MAC: 24:6F:28:AA:BB:CC
 ======== EMULATOR ========
 Emulator id          = A1B2
