@@ -30,9 +30,9 @@ Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
       accept firmware updates over the network without any login, or show
       saved credentials on their setup pages. Anyone within radio range
       could then take them over or read your Wi-Fi password.
-    - **Prefer direct ESP-NOW mode**, which needs no router. If a display
-      must join a Wi-Fi network, use a separate guest/IoT network isolated
-      from your other devices.
+    - **Prefer direct ESP-NOW mode**, which needs no router, no network. Just 
+      add power to the display, nothing else. If a display must join a Wi-Fi 
+      network, use a separate guest/IoT network isolated from your other devices.
     - **ESP-NOW traffic is unencrypted.** Anyone nearby can receive your
       battery data or send fake values to a display. Never rely on a display
       for safety decisions. Always check the Battery Emulator web interface.
