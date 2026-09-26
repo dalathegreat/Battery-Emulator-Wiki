@@ -49,6 +49,7 @@ Out of the box, the implementation publishes the following topics. All topics ar
 | `battery-emulator-a1b2/info` | System/emulator status + battery #1 state JSON | No |
 | `battery-emulator-a1b2/info_2` | Battery #2 state JSON (double-battery setups) | No |
 | `battery-emulator-a1b2/info_3` | Battery #3 state JSON (triple-battery setups) | No |
+| `battery-emulator-a1b2/info_multi` | The combined battery - every pack as one - JSON (double/triple setups only) | No |
 | `battery-emulator-a1b2/spec_data` | All cell voltages and per-cell balancing status (when enabled) | No |
 | `battery-emulator-a1b2/spec_data_2` | Battery #2 cell voltages and per-cell balancing status (when enabled) | No |
 | `battery-emulator-a1b2/spec_data_3` | Battery #3 cell voltages and per-cell balancing status (when enabled) | No |
@@ -56,9 +57,11 @@ Out of the box, the implementation publishes the following topics. All topics ar
 
 When a **second battery** is configured, its values are published to its **own topic** `.../info_2`, using the **same key names** as battery #1 (`SOC`, `battery_voltage`, …, without any suffix), and its cell data goes to `.../spec_data_2`. A **third battery**, on compatible integrations, follows the same pattern with `.../info_3` and `.../spec_data_3`. The global emulator values (`bms_status`, `pause_status`, `event_level`, `emulator_status`, `hardware`, `software_version`, `cpu_temp`, `emulator_uptime`, `heap_*`) are only present on `.../info`.
 
+With more than one battery configured, a further topic `.../info_multi` carries the **combined battery** - what the inverter is actually given. See [The combined battery](#the-combined-battery) below. It uses the same key names again, so a template written against `.../info` reads the combined topic unchanged.
+
 Two publish cadences are used:
 
-- The **main interval** is the configurable **MQTT publish interval** (default **5 s**) and covers `events` and all `info` topics. On each cycle the order is: `events` → `info` → `info_2` → `info_3`.
+- The **main interval** is the configurable **MQTT publish interval** (default **5 s**) and covers `events` and all `info` topics. On each cycle the order is: `events` → `info` → `info_multi` → `info_2` → `info_3`.
 - **Cell data** (`spec_data*`) is published on a fixed **60-second** cadence, independent of the main interval. Cell voltages change slowly, and these are by far the largest payloads.
 
 Publishing is skipped entirely while an **OTA update** is in progress, so a firmware upload is not competing with MQTT traffic.
@@ -123,6 +126,7 @@ Keys appear conditionally:
 - `dc_dc_current` / `dc_dc_voltage` - only for Tesla Model 3/Y and Model S/X.
 - `autocal_taper`, `autocal_dwell_s`, `autocal_cooldown_ready`, `autocal_soc_drift`, `min_cell_number`, `max_cell_number` - only for the BYD Atto 3.
 - `leaf_hx` - only for the Nissan Leaf, and only once a battery-group reply with a known layout has been decoded.
+- `SOC`, `remaining_capacity` and `limiting_factor` - **only in single-battery setups**. See [What changes on the per-battery topics](#what-changes-on-the-per-battery-topics) below.
 
 **Status strings**
 
@@ -146,6 +150,72 @@ When enabled, four internal-RAM heap values are added to `.../info`, using the s
 ```
 
 `heap_fragmentation` is the share of the free heap that is not reachable as one contiguous block. It is omitted rather than published as `NaN` if the free heap ever reads zero.
+
+### The combined battery
+
+In a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, the individual packs are combined into a single virtual battery, and that is the only thing the inverter ever sees. `.../info_multi` publishes that combined view.
+
+This topic exists **only when more than one battery is configured**. With a single pack the battery *is* the installation, so `.../info` already carries these values and a second topic would only duplicate them.
+
+Key names match the per-battery topics wherever the meaning is the same, so a `value_template` written against `.../info` works unchanged here. Three keys exist only on this topic, because there is no per-battery equivalent:
+
+| Key | Meaning |
+| --- | ------- |
+| `total_capacity_scaled` | Combined total capacity after the SOC window |
+| `max_charge_current` | Charge current limit given to the inverter, in amperes |
+| `max_discharge_current` | Discharge current limit given to the inverter, in amperes |
+
+Example payload for two Nissan LEAF packs (21.8 kWh + 17.9 kWh), published to `battery-emulator-a1b2/info_multi`:
+
+```json
+{
+  "SOC": 40.32,
+  "SOC_real": 40.23,
+  "state_of_health": 62.09,
+  "battery_voltage": 386.0,
+  "battery_current": 3.0,
+  "stat_batt_power": 1158.0,
+  "total_capacity": 39700.0,
+  "total_capacity_scaled": 27790.0,
+  "remaining_capacity_real": 15972.0,
+  "remaining_capacity": 11204.0,
+  "max_discharge_power": 6700.0,
+  "max_charge_power": 6700.0,
+  "max_discharge_current": 19.0,
+  "max_charge_current": 19.0,
+  "cell_max_voltage": 3.695,
+  "cell_min_voltage": 3.639,
+  "temperature_max": 22.0,
+  "temperature_min": 21.0,
+  "charging_state": "Charging",
+  "limiting_factor": "UserSetting"
+}
+```
+
+How each value is combined is documented on the [Double Battery](battery_2x.md) page. In short: capacities, current, power and lifetime energy add up; SOC follows the emptiest pack; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the **power limits are the lowest any pack allows, not the sum**.
+
+`charged_energy` and `discharged_energy` appear only if at least one configured pack tracks lifetime energy. Most integrations - the Nissan LEAF among them - do not, in which case both keys are absent from this topic.
+
+There is no `cell_voltage_delta`, `balancing_*`, `insulation_resistance` or battery-specific key on this topic. Those describe a physical pack, not the installation, and stay on the per-battery topics.
+
+#### What changes on the per-battery topics
+
+Once a second battery is configured, three keys leave the per-battery topics, and two change meaning:
+
+| Key | Single battery | Two or three batteries |
+| --- | -------------- | ---------------------- |
+| `SOC` | Present (SOC-window scaled) | **Absent** - use `SOC_real` per pack, or `SOC` on `info_multi` |
+| `remaining_capacity` | Present (scaled) | **Absent** - use `remaining_capacity_real` per pack, or `remaining_capacity` on `info_multi` |
+| `limiting_factor` | Present | **Absent** - published on `info_multi` |
+| `max_charge_power` / `max_discharge_power` | What the inverter is allowed | What **that pack's BMS** asked for |
+| `charging_state` | Present | Present - each pack reports its own direction |
+
+The reasoning:
+
+- **The SOC window belongs to the installation.** A scaled percentage only means something for the system as a whole, so with several packs the scaling is applied once, on `info_multi`, and each pack publishes real, unscaled figures. `SOC` and `remaining_capacity` would otherwise just repeat `SOC_real` and `remaining_capacity_real`.
+- **`limiting_factor` is one answer for the system.** It describes what is capping the inverter, which is not a property of any single pack - published per pack it was the same string repeated on every topic.
+- **`charging_state` genuinely is per pack.** Parallel packs at slightly different state of charge push current into each other, so one pack can briefly show `Charging` while another shows `Discharging`.
+- **Per-pack power limits are now the BMS's own request.** A pack's limit is reshaped by the safety layer, the SOC taper and the inverter filter before the inverter sees it, and for pack #1 that made `max_charge_power` the whole system's decision while packs #2 and #3 reported raw BMS values - three different kinds of number under one key. Each pack now reports what its own BMS asked for; the system's limits are on `info_multi`.
 
 **`<hostname>/spec_data`**
 
@@ -263,6 +333,7 @@ Example payload (max charge 30 A, max discharge 40 A, timeout 60 seconds), publi
 - **Not persisted.** The remote limit is never written to flash, so it is also cleared by a reboot. After power-on no remote limit is active until a new `SET_LIMITS` is received.
 - **Reverts to the manual/BMS limit, not to "unrestricted".** When the remote limit expires, the allowed current falls back to the manual (user-set) limit, or to the BMS/inverter-derived limit if no manual limit applies.
 - **Overrides rather than combines with the manual limit.** While a remote limit is active, the manual user limit is bypassed - the remote value is used instead. The remote limit can therefore sit *above* your manual limit during the active window. It still only ever *lowers* the BMS/inverter-derived allowed current (it caps, it cannot raise the battery's own limit).
+- **Applies to the installation, not to a single pack.** In a double or triple setup the limit caps the combined battery, which is what the inverter is given. It shows up as `max_charge_current` / `max_discharge_current` on `info_multi`, with `limiting_factor` reading `UserSetting`.
 
 To cancel a limit quickly, send a new message with a short timeout (for instance `1` second).
 
@@ -292,17 +363,38 @@ All discovery payloads share a common block:
 
 `manufacturer` and `model` are fixed values; `identifiers` and `name` are the device's hostname, so each Battery-Emulator on the network appears as its own distinct HA device as long as each has a unique hostname (the default, MAC-based hostname already guarantees this). `hw_version` is the board name, `sw_version` the running firmware version, and `configuration_url` links straight to the device's Web UI from the Home Assistant device page.
 
-The full set of auto-discovered sensors is generated from the battery and global templates.
+The full set of auto-discovered sensors is generated from the battery, combined-battery and global templates.
 
 **Per battery:** `SoC (scaled)`, `SoC (real)`, `State of Health`, `Temperature Min/Max`, `Battery Power`, `Battery Current`, `Cell Max/Min Voltage`, `Cell Voltage Delta`, `Battery Voltage`, `Total Capacity`, `Remaining Capacity (scaled)` and `(real)`, `Max Charge/Discharge Power`, `Battery Charged/Discharged Energy`, `Insulation Resistance`, `Balancing Cells`, `Balancing Status`, `Charging State`, `Limiting Factor`, plus the battery-specific `DC-DC Current/Voltage` (Tesla), the `BYD Auto-cal` set and `Min/Max Cell Number` (BYD Atto 3), and `Hx` (Nissan Leaf).
+
+**Combined battery (double/triple setups only):** `SoC (scaled)`, `SoC (real)`, `State of Health`, `Battery Voltage`, `Battery Current`, `Battery Power`, `Total Capacity (real)` and `(scaled)`, `Remaining Capacity (real)` and `(scaled)`, `Max Charge/Discharge Power`, `Max Charge/Discharge Current`, `Cell Max/Min Voltage`, `Temperature Min/Max`, `Charging State`, `Limiting Factor`, and `Battery Charged/Discharged Energy` where at least one pack tracks them.
 
 **Emulator-level (diagnostic):** `BMS Status`, `Pause Status`, `Event Level`, `Emulator Status`, `Emulator Uptime`, `Emulator Version`, `CPU Temperature`, `Event`, and - when enabled - `Heap Free`, `Heap Max Block`, `Heap Min Free`, `Heap Fragmentation`. These are published with `"entity_category": "diagnostic"`, so Home Assistant files them under the device's Diagnostic section instead of the main sensor list. The **Reboot Emulator** button is a diagnostic entity too.
 
 With a second (or third) battery, each battery sensor is duplicated with a ` 2` (or ` 3`) name suffix and a `_2` (`_3`) suffix on its `unique_id` and object ID; its `state_topic` points at `.../info_2` (`.../info_3`), and its `value_template` uses the plain, un-suffixed key.
 
+### Naming in multi-battery setups
+
+Once more than one battery is configured the naming shifts, so that the unqualified name always means the installation:
+
+| | Name | `unique_id` / object ID | `state_topic` |
+| --- | ---- | ----------------------- | ------------- |
+| Combined battery | `SoC (scaled)` | `..._SOC_multi` | `.../info_multi` |
+| Battery #1 | `SoC (scaled) 1` | `..._SOC` | `.../info` |
+| Battery #2 | `SoC (scaled) 2` | `..._SOC_2` | `.../info_2` |
+| Battery #3 | `SoC (scaled) 3` | `..._SOC_3` | `.../info_3` |
+
+Battery #1's entities gain a ` 1` in their **display name only**. Their `unique_id` and object ID stay un-suffixed, so existing Home Assistant entities keep their identity and their history - nothing is orphaned by adding a second pack.
+
+!!! note "NOTE"
+    Home Assistant only picks up the new display name if you have not renamed the entity yourself. Any custom friendly name set in the UI is kept, and will not show the ` 1`.
+
+!!! note "NOTE"
+    The combined-battery entities are new entities with new `unique_id`s, so they start with fresh history. If you remove a second battery later they stop updating and go *unavailable* rather than disappearing - delete them from the Home Assistant entity list to clean up.
+
 ### Sensor discovery
 
-Topic: `<discovery topic>/sensor/<hostname>/<entity_id>/config` (battery 2/3 sensors use the `_2`/`_3`-suffixed entity id in the topic, e.g. `.../SOC_2/config`).
+Topic: `<discovery topic>/sensor/<hostname>/<entity_id>/config` (battery 2/3 sensors use the `_2`/`_3`-suffixed entity id in the topic, e.g. `.../SOC_2/config`; combined-battery sensors use `_multi`, e.g. `.../SOC_multi/config`).
 
 Example (`homeassistant/sensor/battery-emulator-a1b2/SOC/config`):
 
@@ -325,13 +417,13 @@ Example (`homeassistant/sensor/battery-emulator-a1b2/SOC/config`):
 }
 ```
 
-The same sensor for a second battery (`.../SOC_2/config`) differs only in: `"name": "SoC (scaled) 2"`, `"unique_id": "battery-emulator-a1b2_SOC_2"`, `"default_entity_id": "sensor.battery-emulator-a1b2_SOC_2"`, and `"state_topic": "battery-emulator-a1b2/info_2"` - the `value_template` stays `{{ value_json.SOC | default(none) }}`.
+The same sensor for a second battery (`.../SOC_2/config`) differs only in: `"name": "SoC (scaled) 2"`, `"unique_id": "battery-emulator-a1b2_SOC_2"`, `"default_entity_id": "sensor.battery-emulator-a1b2_SOC_2"`, and `"state_topic": "battery-emulator-a1b2/info_2"` - the `value_template` stays `{{ value_json.SOC | default(none) }}`. The combined-battery sensor (`.../SOC_multi/config`) follows the same pattern with `_multi` and `.../info_multi`, and keeps the plain name `"SoC (scaled)"`.
 
 #### How the discovery payload is built
 
 - **`value_template` uses `| default(none)`.** Keys that are legitimately absent (a battery that has not been detected yet, a capacity that is not known yet) therefore land in Home Assistant as *unknown* instead of raising a template error on every message.
 - **`state_class`** is set to `measurement` for every sensor that has a `device_class`. The numeric sensors that deliberately have no `device_class` - `balancing_active_cells`, `insulation_resistance`, `leaf_hx`, `heap_fragmentation` - get `measurement` explicitly.
-- **Capacity sensors use `device_class: energy_storage`**, not `energy`. Home Assistant rejects `energy` combined with `state_class: measurement`, and `total_capacity` / `remaining_capacity*` represent a currently stored amount rather than a running total.
+- **Capacity sensors use `device_class: energy_storage`**, not `energy`. Home Assistant rejects `energy` combined with `state_class: measurement`, and `total_capacity*` / `remaining_capacity*` represent a currently stored amount rather than a running total.
 - **`charged_energy` / `discharged_energy` keep `device_class: energy`** but use `state_class: total_increasing`, since they are genuine lifetime counters.
 - **`suggested_display_precision`** is set to 3 for cell min/max voltage, 2 for `leaf_hx`, 1 for battery current, CPU temperature, both SoC sensors and heap fragmentation, and 0 for insulation resistance. It is deliberately not applied to `battery_voltage`.
 - **MDI icons** are assigned centrally: by entity for the status-like sensors (`mdi:fuel-cell` for the balancing pair, `mdi:information-box-outline` for BMS status, `mdi:resistor` for insulation, `mdi:battery-heart-variant` for Hx, `mdi:home-battery` / `mdi:home-battery-outline` for charging state and limiting factor, `mdi:information-outline` for emulator status / event level, `mdi:battery-outline` for pause status, `mdi:tag-outline` for the version, `mdi:memory` for the heap sensors), and by device class for the rest (`mdi:current-dc` for voltage, `mdi:equal` for current).
@@ -365,6 +457,8 @@ Example (`homeassistant/sensor/battery-emulator-a1b2/cell_voltage96/config`):
 Cell-voltage entities update every 60 seconds, matching the `spec_data` publish cadence.
 
 Cell-voltage discovery is **retried until the cell count is known**. A battery that has not yet reported how many cells it has does not block the rest of the discovery pack - the per-cell configs are simply published on a later cycle, once the count arrives.
+
+There are no combined-battery cell-voltage entities. Cells belong to a physical pack, so each pack keeps its own.
 
 ### Event discovery
 
@@ -417,11 +511,22 @@ Recent builds changed the MQTT layout in several ways that affect anyone consumi
 - **The discovery prefix is configurable.** It still defaults to `homeassistant`, so nothing changes unless you set the new **Home Assistant auto discovery topic** field.
 - **Several emulator-level entities became diagnostic.** They still exist with the same `unique_id`, but Home Assistant now lists them under the device's Diagnostic section.
 
+### Double and triple battery setups
+
+These changes affect multi-battery installations only. Single-battery setups are unaffected throughout.
+
+- **`.../info_multi` is new.** It carries the combined battery, which is what the inverter is given. Anything that previously read system-wide values off `.../info` should read them here instead.
+- **`SOC` and `remaining_capacity` left the per-battery topics.** The SOC window is applied to the installation, not to each pack, so the packs publish real figures only. Use `SOC_real` / `remaining_capacity_real` per pack, or the scaled values on `.../info_multi`.
+- **`limiting_factor` moved to `.../info_multi`.** It describes the inverter's limit, which is one answer for the whole system. `charging_state` stays on each pack.
+- **`max_charge_power` / `max_discharge_power` now mean that pack's own BMS request.** Previously battery #1 reported the system's decision here while batteries #2 and #3 reported raw BMS values. For the limit the inverter is actually given, use `.../info_multi`.
+- **Battery #1's entity display names gained a ` 1`.** Identifiers are unchanged, so no entity is orphaned.
+
 !!! note "NOTE"
     Cell data now updates every 60 seconds rather than at the main publish interval, and battery values are omitted from the JSON until real data has been received from the battery - consumers must tolerate absent keys rather than assuming every key is present in every message.
 
 ## References
 
+- [Double Battery](battery_2x.md) - how the packs are combined into the virtual battery published on `info_multi`
 - [Home Assistant](home_assistant.md) - quick start guide with Battery Emulator
 - [Home Assistant MQTT overview](https://www.home-assistant.io/integrations/mqtt/) - brokers, discovery, configuration and HA services related to MQTT
 - [Home Assistant MQTT Sensor](https://www.home-assistant.io/integrations/sensor.mqtt/) - manual (non-discovery) setup of MQTT sensors

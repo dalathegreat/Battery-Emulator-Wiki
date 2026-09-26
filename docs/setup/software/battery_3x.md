@@ -4,7 +4,9 @@ title: "Triple Battery"
 
 ## Hardware requirement
 
-Triple-Battery, much like Double-Battery, requires a dedicated CAN channel for each battery.
+Triple-Battery, much like [Double Battery](battery_2x.md), requires a dedicated CAN channel for each battery.
+
+![image](../../images/battery-3x-01.png)
 
 At the moment the following 3-CAN boards are compatible:
 
@@ -16,20 +18,12 @@ At the moment the following 3-CAN boards are compatible:
 - [BECom](../../hardware/becom.md)
 
 ### How does parallel operation work?
-The batteries get connected in parallel. This means the voltage stays the same, but the capacity triples.
 
-!!! info "IMPORTANT"
-    The batteries need to be of the same model and size, and preferably as close as possible in state of health. Do not connect battery packs with too much variation in condition, this lowers overall efficiency significantly!
-
-!!! danger "CAUTION"
-    Do not connect packs in series!
-    
-    - How to ensure balancing, that each battery reaches 100%? In parallel operation this is easy, in series it's next to impossible.
-    - There are no safeties implemented for operation in series connection! No control over CAN controlled contactors would make this feature hard to use safely.
-    - None of the isolation is designed for double the working voltage. Yes, each battery only sees it's own voltage, but the isolation to earth and in the BMS comms suddenly sees twice. As do any internal contactors, which is probably the more immediate issue.
+The same principles apply as described at the [Double Battery](battery_2x.md). Read that page thoroughly, here we only describe differences from the double setup.
 
 ## Which batteries are compatible?
-The list below is generated from `battery_supports_triple()` in `Software/src/battery/BATTERIES.cpp`. Only these integrations offer the "Triple battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
+
+Only these integrations offer the "Triple battery" option in the Settings page. The ones with a checkmark have been confirmed working well.
 
 - [CMFA platform (Dacia Spring, Renault K-ZE)](../../battery/dacia_spring_renault_k_ze.md)
 - [Nissan LEAF / e-NV200 24/30/40/62kWh](../../battery/nissan_leaf_e_nv200.md) ✅
@@ -41,14 +35,20 @@ All of these are also compatible with [Double Battery](battery_2x.md).
 
 ## GPIO controlled contactors
 
-For batteries that require externally controlled contactors, you can automate this by enabling:
+Connect the high voltage lines like in this diagram. Remember to place fuses both between the Inverter and packs, and the interconnect between the packs.
 
-- Battery1 - Contactor control via GPIO: ✅
-- Battery2 - Double-Battery Contactor control via GPIO: ✅
-- Battery3 - Triple-Battery Contactor control via GPIO: ✅
+![image](../../images/be_battery_3x.png)
 
-![image](../../images/triple-battery-01.png){ width="580" height="155" }
+If your batteries use GPIO-controlled contactors, you use these to attach the second battery to the DC link. Secondary and third battery don't use precharge (leave the precharge relay unconnected), and you can switch both positive and negative at the same time, from the same SSR. No need to add a secondary contactor:
 
-This will start with connecting battery1, then once voltages match, battery2 and battery3 joins the DC link when voltages are close enough to first battery.
+![kép](../../images/be_battery_3x_gpio.png)
 
-See the HAL pin definitions for your hardware, to see which pin actuates the extra contactor set.
+Enable **2ⁿᵈ battery contactor control via GPIO:** and **3ʳᵈ battery contactor control via GPIO:** in the Settings page. When the second and third battery voltage match the main battery the extra contactors will engage and combine them into one large one. After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. After that next step is to connect the third battery with the same logic.
+
+![image](../../images/battery-3x-02.png)
+
+This will start with connecting battery 1, then once voltages match, battery 2 and battery 3 join the DC link when their voltages are close enough to the first battery.
+
+Check out the pinout table for each board, to see which pin is defined to actuate the extra contactor set.
+
+To control the second battery if it only has CAN activated contactors, you need to an additional GPIO controlled contactor in series with it.
