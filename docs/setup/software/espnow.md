@@ -9,6 +9,37 @@ Any ESP32 device nearby can display Battery Emulator data without any physical c
 Battery Emulator implements ESP-NOW v2 in the **ESPNow** integration.
 
 ### Compatible ESPNow projects
+
+!!! danger "Third-party displays: use at your own risk"
+
+    The ESP-NOW display projects listed or linked on this page are made by
+    independent community members. They are **not affiliated with, reviewed
+    or endorsed by** the Battery Emulator project. The Battery Emulator
+    developers take **no responsibility** for their code, their pre-built
+    firmware or web flashers, or for any damage, data loss or security
+    problems caused by using them. Report problems to each display's own
+    author, not to the Battery Emulator issue tracker.
+
+    Before you flash one, keep in mind:
+
+    - **Firmware from a web flasher or a pre-built `.bin` cannot easily be
+      checked against its published source code.** Once flashed, it has full
+      control of the device and of anything you enter into it.
+    - **Do not enter your main home Wi-Fi name and password into these
+      displays.** Some of them run open or default-password setup hotspots,
+      accept firmware updates over the network without any login, or show
+      saved credentials on their setup pages. Anyone within radio range
+      could then take them over or read your Wi-Fi password.
+    - **Prefer direct ESP-NOW mode**, which needs no router. If a display
+      must join a Wi-Fi network, use a separate guest/IoT network isolated
+      from your other devices.
+    - **ESP-NOW traffic is unencrypted.** Anyone nearby can receive your
+      battery data or send fake values to a display. Never rely on a display
+      for safety decisions. Always check the Battery Emulator web interface.
+    - **Be very careful with displays that can send commands** (pause,
+      contactor control, reboot) to your Battery Emulator. These act on a
+      high-voltage system and have no authentication.
+
 The following independently maintained community projects provide ready-to-install ESP-NOW displays:
 
 - [Battery Display for LILYGO T-Display-S3](https://github.com/sort282-rgb/battery-display-t-display-s3) - a compact five-screen ESP-NOW v2 dashboard with a [USB web installer](https://sort282-rgb.github.io/battery-display-t-display-s3/), phone-based setup, local web controls, and prebuilt firmware.
@@ -18,7 +49,7 @@ The main telemetry screens use battery-agnostic ESP-NOW v2 fields and are not li
 
 ![espnow_4848s040c](../../images/espnow_4848s040c.jpg)
 
-!!! note "Payload-size compatibility"
+??? note "Payload-size compatibility"
     The current public firmware builds use an ESP-NOW receive layer limited to 250-byte payloads. Build Battery Emulator with `ESPNOW_MAX_PAYLOAD=250` for complete cell-voltage telemetry. The ESP32-4848S040C application's packet buffer is already sized to 1470 bytes, but the ESP-NOW SDK in the published build still limits received payloads to 250 bytes.
 
 - [CYD Battery Emulator Display for ESP32-2432S028R](https://github.com/pauLTU3/CYD-Battery-Emulator) - ESP-NOW v2 display for the 2.8" Cheap Yellow Display, supports one or two batteries. Includes a [web installer](https://paultu3.github.io/CYD-Battery-Emulator/).
