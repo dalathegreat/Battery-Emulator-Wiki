@@ -49,7 +49,7 @@ The main telemetry screens use battery-agnostic ESP-NOW v2 fields and are not li
 
 ![espnow_4848s040c](../../images/espnow_4848s040c.jpg)
 
-??? note "Payload-size compatibility"
+!!! note "Payload-size compatibility"
     The current public firmware builds use an ESP-NOW receive layer limited to 250-byte payloads. Build Battery Emulator with `ESPNOW_MAX_PAYLOAD=250` for complete cell-voltage telemetry. The ESP32-4848S040C application's packet buffer is already sized to 1470 bytes, but the ESP-NOW SDK in the published build still limits received payloads to 250 bytes.
 
 - [CYD Battery Emulator Display for ESP32-2432S028R](https://github.com/pauLTU3/CYD-Battery-Emulator) - ESP-NOW v2 display for the 2.8" Cheap Yellow Display, supports one or two batteries. Includes a [web installer](https://paultu3.github.io/CYD-Battery-Emulator/).
