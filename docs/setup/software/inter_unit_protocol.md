@@ -76,6 +76,8 @@ The advice on [CAN-controlled contactors](battery_2x.md#can-controlled-contactor
 
 A node runs the normal integration for its battery, so in principle any supported battery can be used. All nodes must use the **same battery type**, and the controller blocks a node that reports a different one.
 
+The battery integration must respect the "inverter allows contactor closing" signal, because that is how the controller tells each node when to close and open its contactors. Each node can only have one pack (see [Each Battery Node](#each-battery-node)).
+
 Confirmed working:
 
 - [BMW i3](../../battery/bmw_i3.md) ✅ (including offline balancing, see below)
@@ -105,7 +107,7 @@ Example: the controller uses its native CAN for the inter-unit bus, and talks to
 
 In the Settings page:
 
-1. **Battery / Battery interface:** your battery, as usual. Leave **Double battery** unchecked, because each node handles one pack.
+1. **Battery / Battery interface:** your battery, as usual. Leave **Double battery** unchecked (see the warning below).
 2. **Inverter protocol:** `Inter-Unit Node`
 3. **Battery node ID (1-24):** a number that is **unique** on the bus. Two nodes with the same ID will corrupt each other's data.
 4. **Inverter interface:** the CAN channel that is wired to the inter-unit bus
@@ -113,6 +115,11 @@ In the Settings page:
 Example: a LilyGo T-2CAN node with the BMW i3 on CAN B and the inter-unit bus on CAN A.
 
 ![image](../../images/inter-unit-protocol-05.png)
+
+!!! warning "Double and Triple Battery are not supported on a node"
+    Each node must have exactly **one** pack. A node only sends its first pack's data to the controller, not the combined data of both or all three packs. With Double or Triple Battery enabled, the controller would only see the first pack's capacity, current and charge/discharge limits, and could allow more power than the other packs can handle.
+
+    Supporting this needs a change in the firmware (the node would have to send the combined data). Until that is done, use more nodes instead.
 
 Save and reboot each board. Configure WiFi on the nodes as well. They then report their IP address to the controller, and the controller's web page links to each node's own web page (see [Web interface](#web-interface)).
 
