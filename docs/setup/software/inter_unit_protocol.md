@@ -34,6 +34,11 @@ If two or three packs are enough and they sit next to each other, Double/Triple 
 
 ## Hardware requirement
 
+!!! warning "Not available on LilyGo T-CAN485 or ESP32 DevKit"
+    These boards have too little flash for this feature, so their firmware does not include it. The **Inter-Unit Controller** battery type and the **Inter-Unit Node** inverter protocol don't appear in their Settings page.
+
+    Use one of these boards for the controller and for every node: [LilyGo T-2CAN](../../hardware/lilygo_t_2can.md), [Stark CMR](../../hardware/stark_cmr.md), [BECom](../../hardware/becom.md), [Waveshare ESP32-S3 RS485 CAN](../../hardware/waveshare_esp32_s3_rs485_can.md) or [DFRobot Edge101](../../hardware/dfrobot_edge101.md).
+
 ```
         ┌───────────┐
         │  Inverter │
@@ -56,7 +61,7 @@ If two or three packs are enough and they sit next to each other, Double/Triple 
 ```
 
 * **Controller:** the inverter connects to the controller's *inverter interface* as usual. The inter-unit bus connects to the controller's *battery interface*. If your inverter uses CAN, the controller needs two CAN channels. If it uses RS485/Modbus, one CAN channel is enough.
-* **Each node:** the battery connects to the node's *battery interface* as usual. The inter-unit bus connects to the node's *inverter interface*. A node therefore needs two CAN channels. On a [LilyGo T-CAN485](../../hardware/lilygo_t_can485.md) that means adding an [MCP2515](../can_related/can_add_on_mcp2515.md). A [LilyGo T-2CAN](../../hardware/lilygo_t_2can.md) has two channels built in.
+* **Each node:** the battery connects to the node's *battery interface* as usual. The inter-unit bus connects to the node's *inverter interface*. A node therefore needs two CAN channels. A [LilyGo T-2CAN](../../hardware/lilygo_t_2can.md) has two channels built in, and a [Stark CMR](../../hardware/stark_cmr.md) has CAN and CAN-FD.
 * **Inter-unit CAN bus:** one shared bus at 500 kbps. Daisy-chain it from board to board. Terminate it with 120 Ω at **both physical ends** and nowhere else. Connect the grounds of all boards together. See [CAN wiring practices](../can_related/can_wiring_practices_and_troubleshooting.md).
 
 !!! note "NOTE"
