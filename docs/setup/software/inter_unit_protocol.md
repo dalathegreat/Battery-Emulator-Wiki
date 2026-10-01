@@ -190,6 +190,8 @@ All events clear themselves when the condition goes away. Every frame on the int
 
 The main page shows the combined battery, which is what the inverter sees. Below it, the **Battery Nodes** section has one card per node. Each card shows SOC, SOH, voltage, current, power, temperature, cell delta, remaining capacity, charge/discharge limits and contactor state (**Engaged**, **Prejoin** or **Open**). If the node has reported its IP address, its name is shown as a link (**Battery 1 ↗**, **Battery 2 ↗** …). Click it to open that node's own web page in a new tab, for example to see its events, cell monitor or log. A node without WiFi is shown without a link.
 
+When a node reports a problem, its card shows **⚠ FAULT** in red (an error, so its contactors are blocked) or **⚠ WARNING** in orange (advisory only). If the node has reported its IP address, the label is a link that opens the **Events** page on that node, so you go straight to the cause.
+
 ![image](../../images/inter-unit-protocol-01.png)
 
 The colour of the Battery Nodes section shows the overall state:
@@ -216,6 +218,7 @@ The top of the main page shows the node ID, whether the controller is online, an
 ## Troubleshooting
 
 * **Node never shows up on the controller.** Check the inter-unit bus wiring and termination. Check that the node's *inverter interface* and the controller's *battery interface* point at the CAN channel that is actually wired. Check that no two nodes share a node ID.
+* **A node card shows ⚠ FAULT or ⚠ WARNING.** Click the label to open that node's Events page and see what its battery is reporting.
 * **Node is online but its contactors never close.** Look at the events page on the controller. The usual causes are a voltage difference that is too large (charge or discharge the packs closer together first), an `IDENT_MISMATCH` (firmware or battery type differs), or a fault flag from that node's battery.
 * **All charge/discharge power is 0.** One of the connected packs is reporting a limit of 0, for example because it is full, empty, or starting offline balancing. Check each node card.
 
