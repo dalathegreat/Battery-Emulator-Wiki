@@ -178,9 +178,13 @@ All events clear themselves when the condition goes away. Every frame on the int
 
 ## Web interface
 
-**On the controller**, the main page shows a **Battery Nodes** section with one card per node. Each card shows SOC, voltage, current, power, temperature, remaining capacity, charge/discharge limits and contactor state (**Engaged**, **Prejoin** or **Open**). If the node has reported its IP address, the card links to that node's own web page.
+### On the controller
 
-The colour of the section shows the overall state:
+The main page shows the combined battery, which is what the inverter sees. Below it, the **Battery Nodes** section has one card per node. Each card shows SOC, SOH, voltage, current, power, temperature, cell delta, remaining capacity, charge/discharge limits and contactor state (**Engaged**, **Prejoin** or **Open**). If the node has reported its IP address, the node's name links to that node's own web page.
+
+![image](../../images/inter-unit-protocol-01.png)
+
+The colour of the Battery Nodes section shows the overall state:
 
 | Colour | Meaning |
 |---|---|
@@ -189,7 +193,15 @@ The colour of the section shows the overall state:
 | Red | Error on at least one node, so its contactors are blocked |
 | Blue | Firmware update (OTA) in progress |
 
-**On each node**, the top of the main page shows the node ID, whether the controller is online, and whether the controller currently allows contactor closing.
+**More Battery Info** on the controller shows each node's firmware version, battery type and cell voltages. A green ✓ means the node matches the controller; a red ✗ means it is blocked by the firmware or battery type check. The **OTA Update** button opens that node's own firmware update page, so you can update every node from one place.
+
+![image](../../images/inter-unit-protocol-02.png)
+
+### On each node
+
+The top of the main page shows the node ID, whether the controller is online, and whether the controller currently allows contactor closing. Below that, the node shows its own battery as a normal single-battery setup would.
+
+![image](../../images/inter-unit-protocol-03.png)
 
 ---
 
