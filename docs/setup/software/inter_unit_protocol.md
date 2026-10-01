@@ -93,20 +93,28 @@ If you run another battery type successfully, please add it to this list.
 
 In the Settings page:
 
-1. **Battery type:** `Inter-Unit Controller`
+1. **Battery:** `Inter-Unit Controller`
 2. **Battery interface:** the CAN channel that is wired to the inter-unit bus
 3. **Inverter protocol / Inverter interface:** your inverter, as usual
+
+Example: the controller uses its native CAN for the inter-unit bus, and talks to a Kostal inverter over RS485.
+
+![image](../../images/inter-unit-protocol-04.png)
 
 ### Each Battery Node
 
 In the Settings page:
 
-1. **Battery type / Battery interface:** your battery, as usual
+1. **Battery / Battery interface:** your battery, as usual. Leave **Double battery** unchecked, because each node handles one pack.
 2. **Inverter protocol:** `Inter-Unit Node`
-3. **Inverter interface:** the CAN channel that is wired to the inter-unit bus
-4. **Battery node ID (1-24):** a number that is **unique** on the bus. Two nodes with the same ID will corrupt each other's data.
+3. **Battery node ID (1-24):** a number that is **unique** on the bus. Two nodes with the same ID will corrupt each other's data.
+4. **Inverter interface:** the CAN channel that is wired to the inter-unit bus
 
-Save and reboot each board. Configure WiFi on the nodes as well. They then report their IP address to the controller, and the controller's web page links to each node's own web page.
+Example: a LilyGo T-2CAN node with the BMW i3 on CAN B and the inter-unit bus on CAN A.
+
+![image](../../images/inter-unit-protocol-05.png)
+
+Save and reboot each board. Configure WiFi on the nodes as well. They then report their IP address to the controller, and the controller's web page links to each node's own web page (see [Web interface](#web-interface)).
 
 ---
 
@@ -180,7 +188,7 @@ All events clear themselves when the condition goes away. Every frame on the int
 
 ### On the controller
 
-The main page shows the combined battery, which is what the inverter sees. Below it, the **Battery Nodes** section has one card per node. Each card shows SOC, SOH, voltage, current, power, temperature, cell delta, remaining capacity, charge/discharge limits and contactor state (**Engaged**, **Prejoin** or **Open**). If the node has reported its IP address, the node's name links to that node's own web page.
+The main page shows the combined battery, which is what the inverter sees. Below it, the **Battery Nodes** section has one card per node. Each card shows SOC, SOH, voltage, current, power, temperature, cell delta, remaining capacity, charge/discharge limits and contactor state (**Engaged**, **Prejoin** or **Open**). If the node has reported its IP address, its name is shown as a link (**Battery 1 ↗**, **Battery 2 ↗** …). Click it to open that node's own web page in a new tab, for example to see its events, cell monitor or log. A node without WiFi is shown without a link.
 
 ![image](../../images/inter-unit-protocol-01.png)
 
