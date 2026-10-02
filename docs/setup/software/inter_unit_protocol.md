@@ -30,7 +30,8 @@ If two or three packs are enough and they sit next to each other, Double/Triple 
 !!! danger "CAUTION"
     Each pack you add increases the energy that can be released in a fault. Connecting packs at different voltages dumps very large currents between them. Fuse every pack separately and fuse the shared DC link. Never connect packs in series.
 
----
+!!! note "NOTE"
+    This integration was tested so far with 3 batteries only.
 
 ## Hardware requirement
 
