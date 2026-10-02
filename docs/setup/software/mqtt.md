@@ -280,6 +280,7 @@ The currently supported commands are:
 - `RESUME` - Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
 - `RESTART` - Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)
 - `STOP` - Triggers the equipment stop (opens contactors); see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume)
+- `SET_SCALESOC` - Sets SOC scaling limits at runtime
 - `SET_LIMITS` - Sets a temporary charge and/or discharge limit
 - `ESPNOW_RUN` - Runtime control of [ESPNow](espnow.md) (payload `1` = start, `0` = stop).
 
@@ -305,6 +306,30 @@ Two things to keep in mind:
 
 - `RESUME` *allows* the contactors to close; it does not *force* them closed. They only actually close if the inverter also permits closing and the normal preconditions are met (battery detected, past the post-boot startup delay, no faults). If the inverter is what is holding the contactors open, `RESUME` will not override that.
 - `RESUME` does double duty - it both ends a `PAUSE` and clears an equipment stop. There is no command that closes the contactors without also resuming charge/discharge, just as `STOP` cannot open them without also pausing.
+
+### SET_SCALESOC
+
+Sets the **runtime** SOC scaling limits (the max and/or min percentage used by "Rescale SOC"). The change is not saved to flash, so a reboot restores the saved values. It only has an effect when "Rescale SOC" is enabled; otherwise the command is ignored.
+
+Limits are set in percent, e.g. `90.0` = 90.0 %.
+
+| Parameter | Data type | Accepted range | Default          |
+| --------- | --------- | -------------- | ---------------- |
+| `max_pct` | number    | 50.0 to 100.0  | keep current max |
+| `min_pct` | number    | -10.0 to 50.0  | keep current min |
+
+If `max_pct` or `min_pct` is omitted, the corresponding limit is left unchanged. A value outside the accepted range is ignored and a warning is logged.
+
+Example payload (max 90.0 %, min 10.0 %), published to `battery-emulator-a1b2/command/SET_SCALESOC`:
+
+```json
+{
+  "max_pct": 90.0,
+  "min_pct": 10.0
+}
+```
+
+Use case for this is to increase the usable SOC window during winter or when weather is worse and charging is slower, decrease it during summer when charge is faster - all these to increase battery lifespan, but still be able to max out the battery capacity when it's really needed - automated by an external system.
 
 ### SET_LIMITS
 
