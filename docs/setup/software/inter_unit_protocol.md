@@ -13,18 +13,18 @@ The inverter sees a single large battery, as with [Double Battery](battery_2x.md
 | Role | Talks to | Does |
 |---|---|---|
 | **Controller** | The inverter, and all nodes over the inter-unit CAN bus | Combines the data from all nodes into one virtual battery for the inverter. Decides when each node may close its contactors. |
-| **Battery Node** | One battery, and the controller over the inter-unit CAN bus | Runs the normal battery integration for its pack. Sends that pack's data to the controller. Closes and opens its contactors only when the controller allows it. |
+| **Battery Node** | One battery (or two/three with [Double/Triple Battery](#double-and-triple-battery-on-a-node)), and the controller over the inter-unit CAN bus | Runs the normal battery integration for its pack(s). Sends the pack data to the controller. Closes and opens its contactors only when the controller allows it. |
 
 #### When to use this instead of Double/Triple Battery
 
 | | Double / Triple Battery | Inter-Unit |
 |---|---|---|
-| Max packs | 2 / 3 | 24 |
+| Max packs | 2 / 3 | 24 nodes, each with 1, 2 or 3 packs |
 | Boards | One board | One controller + one board per pack |
 | CAN channels per board | One per battery, plus the inverter | Two per board (see [Hardware](#hardware-requirement)) |
 | Packs physically far apart | Every battery CAN cable runs to the one board | Each node sits next to its pack. Only the inter-unit CAN bus runs between them. |
 
-If two or three packs are enough and they sit next to each other, Double/Triple Battery is simpler. Use Inter-Unit when you need more packs, or when one board per pack is easier to wire.
+If two or three packs are enough and they sit next to each other, Double/Triple Battery is simpler. Use Inter-Unit when you need more packs, or when one board per pack is easier to wire. The two can also be combined: a node can run Double or Triple Battery itself, for example one node per pair of packs.
 
 !!! info "IMPORTANT"
     The same rules as for [Double Battery](battery_2x.md#how-does-parallel-operation-work) apply. Packs are connected **in parallel only**. They must be the same model and size, and as close as possible in state of health. Read that page first; this page only describes what is different.
@@ -87,7 +87,7 @@ The advice on [CAN-controlled contactors](battery_2x.md#can-controlled-contactor
 
 A node runs the normal integration for its battery, so in principle any supported battery can be used. All nodes must use the **same battery type**, and the controller blocks a node that reports a different one.
 
-The battery integration must respect the "inverter allows contactor closing" signal, because that is how the controller tells each node when to close and open its contactors. Each node can only have one pack (see [Each Battery Node](#each-battery-node)).
+The battery integration must respect the "inverter allows contactor closing" signal, because that is how the controller tells each node when to close and open its contactors. A node can also run Double or Triple Battery, if its battery type supports it (see [Double and Triple Battery on a node](#double-and-triple-battery-on-a-node)).
 
 Confirmed working:
 
@@ -100,7 +100,7 @@ If you run another battery type successfully, please add it to this list.
 ## Taking it into use
 
 !!! warning "Flash every board with the same firmware version"
-    The controller checks each node's firmware version. A node with a different version is not allowed to close its contactors. Update the controller and all nodes together. Older firmware versions of the inter-unit protocol cannot talk to newer ones.
+    The controller checks each node's firmware version. A node with a different version is not allowed to close its contactors. Update the controller and all nodes together. Older firmware versions of the inter-unit protocol cannot talk to newer ones: a node running an older protocol version is never verified by the controller, so its contactors stay open.
 
 ### Controller
 
@@ -118,7 +118,7 @@ Example: the controller uses its native CAN for the inter-unit bus, and talks to
 
 In the Settings page:
 
-1. **Battery / Battery interface:** your battery, as usual. Leave **Double battery** unchecked (see the warning below).
+1. **Battery / Battery interface:** your battery, as usual. Optionally enable **Double battery** or **Triple battery** (see below).
 2. **Inverter protocol:** `Inter-Unit Node`
 3. **Battery node ID (1-24):** a number that is **unique** on the bus. Two nodes with the same ID will corrupt each other's data.
 4. **Inverter interface:** the CAN channel that is wired to the inter-unit bus
@@ -127,10 +127,18 @@ Example: a LilyGo T-2CAN node with the BMW i3 on CAN B and the inter-unit bus on
 
 ![image](../../images/inter-unit-protocol-05.png)
 
-!!! warning "Double and Triple Battery are not supported on a node"
-    Each node must have exactly **one** pack. A node only sends its first pack's data to the controller, not the combined data of both or all three packs. With Double or Triple Battery enabled, the controller would only see the first pack's capacity, current and charge/discharge limits, and could allow more power than the other packs can handle.
+#### Double and Triple Battery on a node
 
-    Supporting this needs a change in the firmware (the node would have to send the combined data). Until that is done, use more nodes instead.
+A node can run two or three packs, exactly like a standalone Battery-Emulator with [Double Battery](battery_2x.md) or [Triple Battery](battery_3x.md). Enable it in the node's own Settings page and wire the extra pack(s) to the node as described on those pages. The option is only offered for battery types that support it, and each extra pack needs its own CAN channel on the node, in addition to the inter-unit bus.
+
+The node sends the controller the **combined** data of its packs, the same values an inverter would get from that board:
+
+* Capacity and current are the **sum** of the node's packs.
+* SOC, charge/discharge power limits and state of health follow the node's **weakest** pack, as described on the [Double Battery](battery_2x.md#how-does-parallel-operation-work) page.
+* Cell voltage and temperature min/max are taken across all of the node's packs.
+* If any of the node's packs starts offline balancing or loses its battery CAN, the whole node reports it.
+
+The extra packs join the node's DC link through the node's own voltage check, exactly as without a node. The controller sees and controls the node as **one** unit: its card shows the combined values, and it opens and closes the node as a whole.
 
 Save and reboot each board. Configure WiFi on the nodes as well. They then report their IP address to the controller, and the controller's web page links to each node's own web page (see [Web interface](#web-interface)).
 
@@ -163,22 +171,22 @@ If the difference is larger than 1.8 V, or the inverter is idle, the pack stays 
 
 ### How the packs become one virtual battery
 
-Only packs whose contactors are **actually closed** count. A pack that is allowed to close but has not closed yet is left out.
+Only nodes whose contactors are **actually closed** count. A node that is allowed to close but has not closed yet is left out. A node with Double or Triple Battery counts as one node, with the combined values of its packs (see [above](#double-and-triple-battery-on-a-node)).
 
-| Value | How the packs are combined |
+| Value | How the nodes are combined |
 |---|---|
 | **Total / remaining capacity** | Sum |
 | **Current** | Sum |
-| **Voltage** | The first pack's measurement (they share one bus) |
-| **Max charge / discharge power** | The **lowest** pack's limit × the number of connected packs |
-| **SOC** | The emptiest pack. When the fullest pack passes 95 %, the value blends smoothly towards the fullest, so the inverter sees a gradual rise to 100 % |
-| **State of health** | Average of all packs, rounded to whole percent |
-| **Temperature min / max** | Lowest and highest of all packs |
-| **Cell voltage min / max** | Lowest and highest of all packs |
-| **Charge / discharge voltage limits** | Lowest ceiling and highest floor of all packs |
+| **Voltage** | The first node's measurement (they share one bus) |
+| **Max charge / discharge power** | The **lowest** node's limit × the number of connected nodes |
+| **SOC** | The emptiest node. When the fullest node passes 95 %, the value blends smoothly towards the fullest, so the inverter sees a gradual rise to 100 % |
+| **State of health** | Average of all nodes, rounded to whole percent |
+| **Temperature min / max** | Lowest and highest of all nodes |
+| **Cell voltage min / max** | Lowest and highest of all nodes |
+| **Charge / discharge voltage limits** | Lowest ceiling and highest floor of all nodes |
 
 !!! info "One pack can stop the whole installation"
-    If any connected pack reports a charge or discharge limit of **0**, the inverter is told 0 for the whole installation. Current divides between parallel packs according to their internal resistance. It cannot be steered away from one pack, so this is the only safe option.
+    If any connected node (or any pack on a Double/Triple node) reports a charge or discharge limit of **0**, the inverter is told 0 for the whole installation. Current divides between parallel packs according to their internal resistance. It cannot be steered away from one pack, so this is the only safe option.
 
 #### Offline balancing (BMW i3)
 
@@ -227,7 +235,7 @@ The colour of the Battery Nodes section shows the overall state:
 
 ### On each node
 
-The top of the main page shows the node ID, whether the controller is online, and whether the controller currently allows contactor closing. Below that, the node shows its own battery as a normal single-battery setup would.
+The top of the main page shows the node ID, whether the controller is online, and whether the controller currently allows contactor closing. Below that, the node shows its own battery, or its two or three packs with Double/Triple Battery, as a normal setup would.
 
 ![image](../../images/inter-unit-protocol-03.png)
 
@@ -238,6 +246,7 @@ The top of the main page shows the node ID, whether the controller is online, an
 * **Node never shows up on the controller.** Check the inter-unit bus wiring and termination. Check that the node's *inverter interface* and the controller's *battery interface* point at the CAN channel that is actually wired. Check that no two nodes share a node ID.
 * **A node card shows ⚠ FAULT or ⚠ WARNING.** Click the label to open that node's Events page and see what its battery is reporting.
 * **Node is online but its contactors never close.** Look at the events page on the controller. The usual causes are a voltage difference that is too large (charge or discharge the packs closer together first), an `IDENT_MISMATCH` (firmware or battery type differs), or a fault flag from that node's battery.
+* **A second or third pack on a node never joins.** That is decided by the node itself, not the controller. Open the node's own web page and check its events: usually the voltage difference between its packs is too large.
 * **All charge/discharge power is 0.** One of the connected packs is reporting a limit of 0, for example because it is full, empty, or starting offline balancing. Check each node card.
 
 ---
