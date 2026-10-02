@@ -37,7 +37,9 @@ If two or three packs are enough and they sit next to each other, Double/Triple 
 !!! warning "Not available on LilyGo T-CAN485 or ESP32 DevKit"
     These boards have too little flash for this feature, so their firmware does not include it. The **Inter-Unit Controller** battery type and the **Inter-Unit Node** inverter protocol don't appear in their Settings page.
 
-    Use one of these boards for the controller and for every node: [LilyGo T-2CAN](../../hardware/lilygo_t_2can.md), [Stark CMR](../../hardware/stark_cmr.md), [BECom](../../hardware/becom.md), [Waveshare ESP32-S3 RS485 CAN](../../hardware/waveshare_esp32_s3_rs485_can.md) or [DFRobot Edge101](../../hardware/dfrobot_edge101.md).
+Use one of these boards for the controller: [LilyGo T-2CAN](../../hardware/lilygo_t_2can.md), [Stark CMR](../../hardware/stark_cmr.md), [BECom](../../hardware/becom.md), [Waveshare ESP32-S3 RS485 CAN](../../hardware/waveshare_esp32_s3_rs485_can.md) or [DFRobot Edge101](../../hardware/dfrobot_edge101.md) - considering the inverter type you have. 
+
+Since the nodes require two CAN connections (one for battery, and one for the bus) for every node your easiest choices are [LilyGo T-2CAN](../../hardware/lilygo_t_2can.md), [Stark CMR](../../hardware/stark_cmr.md), [BECom](../../hardware/becom.md).
 
 ```
         ┌───────────┐
@@ -47,10 +49,11 @@ If two or three packs are enough and they sit next to each other, Double/Triple 
         ┌─────┴──────┐
         │ CONTROLLER │
         └─────┬──────┘
-              │ (Controller's battery interface)
+              │ (Controller's CAN interface intended for battery)
+              │ 
    ═══════════╪═══════════════════╪═══════════════ ...  Inter-unit CAN bus, 500 kbps
-              │                   │                     120 Ω at both ends
-              │ (Node's inverter interface)
+              │                   │                     120 Ω at ends only!
+              │ (Node's CAN interface intended for inverter)
         ┌─────┴──────┐      ┌─────┴──────┐
         │   NODE 1   │      │   NODE 2   │   ... up to NODE 24
         └─────┬──────┘      └─────┬──────┘
