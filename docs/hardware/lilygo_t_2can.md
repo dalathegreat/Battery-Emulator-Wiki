@@ -27,7 +27,7 @@ The hardware can be bought via sites like AliExpress, or the official [LilyGo st
 | GPIO | Function |
 |---|---|
 | 0 | BOOT button — [long-press options available](../setup/software/boot_button_functions.md) |
-| 1 | Battery wake-up 1 (Configurable port = WUP1 / WUP2, default) — or I2C display SDA (I2C Display SSD1306) — or [Equipment stop](../setup/software/equipment_stop.md) input ([E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)) |
+| 1 | Battery wake-up 1 (Configurable port = WUP1 / WUP2, default) — or I2C display SDA (I2C Display SSD1306) — or [Equipment stop](../setup/software/equipment_stop.md) input ([E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)) — or [QNHCK2-16](../setup/hardware/shunt_qnhck2_16.md) current sensor |
 | 2 | Battery wake-up 2 (WUP1 / WUP2, default) — or I2C display SCL (I2C Display SSD1306) — or [BMS Power](../setup/hardware/periodic_bms_reset.md) output ([E-stop](../setup/software/equipment_stop.md) / [BMS Power](../setup/hardware/periodic_bms_reset.md)); held across a reset/OTA reboot |
 | 3 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output (Configurable port = WUP1 / WUP2 or I2C Display); held across a reset/OTA reboot |
 | 4 | [Third battery](../setup/software/battery_3x.md) contactors output — or CHAdeMO pin 4 |

@@ -28,7 +28,8 @@ Both battery buses are **CAN FD**, each handled by its own MCP2518FD controller 
 | 1 | [BMS Power](../setup/hardware/periodic_bms_reset.md) output — inverted logic, HIGH shuts the battery down; held across a reset/OTA reboot |
 | 2 | Battery wake-up 1 (WUP1) |
 | 3 | SMA inverter contactor enable input |
-| 5 | [Status LED](index.md#status-led-) (addressable) |
+| 4 | [QNHCK2-16](../setup/hardware/shunt_qnhck2_16.md) current sensor (expansion socket J5, pin 23) |
+| 5 | [Status LED](index.md#status-led-) |
 | 8 | Native CAN TX (inverter CAN) |
 | 9 | Second [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) (CAN FD battery 2): INT |
 | 10 | First [MCP2518FD](../setup/can_related/can_fd_add_on_mcp2518fd.md) (CAN FD battery 1): INT |

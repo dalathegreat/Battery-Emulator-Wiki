@@ -136,7 +136,11 @@ In case your battery is missing some wires/disconnect switches, here are the OEM
 
 A [spreadsheet](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsraOJc9BExlsMp5ClRRITRSQVLfkA/edit?gid=0#gid=0) with parts and links for a Nissan 40kwh battery and 8kW inverter (30A fuses).
 
+!!! tip "TIP"
+    The current sensor in the LEAF battery is not too precise, especially when measuring low currents. For good measurements, especially in [double](../setup/software/battery_2x.md)/[triple](../setup/software/battery_3x.md) setups, or for accurate [charge power tapering](../setup/software/webserver_guide.md#inverter-config) you can use an external current sensor on the DC wire heading toward the inverter: [QNHCK2-16 DC clamp](../setup/hardware/shunt_qnhck2_16.md).
+
 ### Incompatible cables
+
 When searching on eBay you may come across other cables in the Zoe which use a connector that is similar in appearance but is much smaller:
 
 * Zoe HV Wiring Harness - PN: 240419193R
