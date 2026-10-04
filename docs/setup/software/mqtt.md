@@ -350,9 +350,19 @@ Use command `ESPNOW_RUN` with payload `1` to start and `0` to stop ESPNow. To se
 
 ### Starting and stopping balancing
 
-`STARTBALANCING` and `STOPBALANCING` do the same as the balancing buttons on the webserver's **More Battery Info** page: they start and end a balancing request on the battery. The payload is ignored.
+`STARTBALANCING` and `STOPBALANCING` do the same as the balancing buttons on the webserver's **More Battery Info** page: they start and end a balancing request on the battery.
 
-They only work on batteries whose integration implements balancing control (currently the BMW i3 and BMW PHEV). On any other battery the command is ignored, and the matching Home Assistant buttons are not discovered at all. The commands act on battery #1 only.
+They only work on batteries whose integration implements balancing control (currently the BMW i3 and BMW PHEV). On any other battery the command is ignored, and the matching Home Assistant buttons are not discovered at all.
+
+The payload selects the battery in double and triple setups:
+
+| Payload | Acts on |
+| ------- | ------- |
+| *(empty)*, `1` or `PRESS` | Battery #1 |
+| `2` | Battery #2 |
+| `3` | Battery #3 |
+
+`PRESS` is Home Assistant's default button payload, accepted so hand-made buttons work. Any other payload is ignored and a warning is written to the log. A command for a battery that is not configured, or that does not support balancing, is ignored the same way.
 
 How balancing is carried out, and when it ends on its own, depends on the battery integration. Watch `balancing_status` and `balancing_active_cells` on the `info` topic to follow progress.
 
@@ -517,6 +527,8 @@ Topic: `<discovery topic>/button/<hostname>/<command>/config`
 | Open Contactors | `STOP` | `mdi:battery-remove-outline` | Triggers the stop feature |
 | Start balancing | `STARTBALANCING` | `mdi:scale-balance` | Starts a balancing request (only discovered on batteries that support balancing) |
 | Stop balancing | `STOPBALANCING` | `mdi:stop-circle-outline` | Ends a balancing request (only discovered on batteries that support balancing) |
+
+The two balancing buttons are discovered once per battery that supports balancing. In double and triple setups they are named `Start balancing 1`, `Start balancing 2` and so on, and their discovery topics get `_2` / `_3` appended to the command (for example `STARTBALANCING_2`). All of them send to the same `STARTBALANCING` / `STOPBALANCING` command topic, with the battery number as `payload_press`.
 
 ## Running multiple Battery Emulators on one broker
 
