@@ -8,6 +8,8 @@ Inter-Unit lets you run **up to 24 battery packs in parallel** by giving each pa
 
 The inverter sees a single large battery, as with [Double Battery](battery_2x.md) and [Triple Battery](battery_3x.md).
 
+--8<-- "snippets/small_flash.md"
+
 | Role | Talks to | Does |
 |---|---|---|
 | **Controller** | The inverter, and all nodes over the inter-unit CAN bus | Combines the data from all nodes into one virtual battery for the inverter. Decides when each node may close its contactors. |
