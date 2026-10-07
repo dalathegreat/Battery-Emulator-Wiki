@@ -280,6 +280,8 @@ The currently supported commands are:
 - `RESUME` - Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
 - `RESTART` - Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)
 - `STOP` - Triggers the equipment stop (opens contactors); see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume)
+- `STARTBALANCING` - Requests the battery to start balancing; see [Starting and stopping balancing](#starting-and-stopping-balancing)
+- `STOPBALANCING` - Ends a balancing request; see [Starting and stopping balancing](#starting-and-stopping-balancing)
 - `SET_LIMITS` - Sets a temporary charge and/or discharge limit
 - `ESPNOW_RUN` - Runtime control of [ESPNow](espnow.md) (payload `1` = start, `0` = stop).
 
@@ -345,6 +347,24 @@ To cancel a limit quickly, send a new message with a short timeout (for instance
 Being able to start and stop [ESPNow](espnow.md) at runtime remotely lets an automation turn telemetry on only when a receiver needs it. Since it's intended to be used on a display, which likely most of the time is not being actively watched, might not even be turned on, it's beneficial to have a way to only turn on radio broadcast when it's actually needed. Keeping [ESPNow](espnow.md) off when not used reduces ESP32 temperature, radio interference, power consumption and increases cybersecurity.
 
 Use command `ESPNOW_RUN` with payload `1` to start and `0` to stop ESPNow. To see the current status, watch topic `info/espnow_running`, where the same values reflect the running status.
+
+### Starting and stopping balancing
+
+`STARTBALANCING` and `STOPBALANCING` do the same as the balancing buttons on the webserver's **More Battery Info** page: they start and end a balancing request on the battery.
+
+They only work on batteries whose integration implements balancing control (currently the BMW i3 and BMW PHEV). On any other battery the command is ignored, and the matching Home Assistant buttons are not discovered at all.
+
+The payload selects the battery in double and triple setups:
+
+| Payload | Acts on |
+| ------- | ------- |
+| *(empty)*, `1` or `PRESS` | Battery #1 |
+| `2` | Battery #2 |
+| `3` | Battery #3 |
+
+`PRESS` is Home Assistant's default button payload, accepted so hand-made buttons work. Any other payload is ignored and a warning is written to the log. A command for a battery that is not configured, or that does not support balancing, is ignored the same way.
+
+How balancing is carried out, and when it ends on its own, depends on the battery integration. Watch `balancing_status` and `balancing_active_cells` on the `info` topic to follow progress.
 
 ## Home Assistant Discovery
 
@@ -505,6 +525,10 @@ Topic: `<discovery topic>/button/<hostname>/<command>/config`
 | Resume charge/discharge | `RESUME` | `mdi:battery-sync-outline` | Resumes from the paused state |
 | Reboot Emulator | `RESTART` | `mdi:restart` | Restarts the Battery-Emulator (diagnostic entity) |
 | Open Contactors | `STOP` | `mdi:battery-remove-outline` | Triggers the stop feature |
+| Start balancing | `STARTBALANCING` | `mdi:scale-balance` | Starts a balancing request (only discovered on batteries that support balancing) |
+| Stop balancing | `STOPBALANCING` | `mdi:stop-circle-outline` | Ends a balancing request (only discovered on batteries that support balancing) |
+
+The two balancing buttons are discovered once per battery that supports balancing. In double and triple setups they are named `Start balancing 1`, `Start balancing 2` and so on, and their discovery topics get `_2` / `_3` appended to the command (for example `STARTBALANCING_2`). All of them send to the same `STARTBALANCING` / `STOPBALANCING` command topic, with the battery number as `payload_press`.
 
 ## Running multiple Battery Emulators on one broker
 
