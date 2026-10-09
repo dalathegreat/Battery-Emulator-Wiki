@@ -26,34 +26,37 @@ It is meant for:
 
 After the reboot the status page shows the protocol name `Fake battery for testing purposes`, the emulator raises the normal "battery detected" event, and the system goes to ACTIVE just as with a real pack.
 
-### Its own settings: Voltage and SOH
+### Settings
 
 The Fake battery's settings live on the **More Battery/Cell Info** page (the button on the status page, `/advanced`), not on the Settings page. Below the panel listing the pack's properties there is a blue card with two rows:
 
-![image](../images/fake-battery-01.png)
-
+<img width="1015" height="535" alt="image" src="https://github.com/user-attachments/assets/1dce7520-7e1f-4299-81ab-91d7f8af65da" />
 
 **Voltage: `<value>` V** with an **Edit** button
 **SOH: `<value>` %** with an **Edit** button
+**Disable SOH low event until reboot** checkbox
 
-| Property | Voltage | SOH |
-|:---|:---|:---|
-| Unit | Volts, 0.1 V resolution | Percent, 0.01 % resolution |
-| Accepted input | 0 – 5000 | 0 – 100 |
-| Useful range | 245.0 – 404.0 V (the design limits of the fake pack) | any |
-| Value after boot | 370.0 V | 99.00 % |
-| Applied | Immediately, no reboot needed | Immediately, no reboot needed |
-| Persisted | No | No |
-| Affects | Only the pack whose tab is open | Only the pack whose tab is open |
+The voltage drives almost everything else the pack reports: SOC, remaining energy, cell voltages and the simulated balancing state. The SOH is reported as entered and is otherwise inert: it feeds the SOH events and everything that displays or transmits SOH (status page, MQTT, ESP-NOW and the inverter protocols that carry it). 
 
-Values are rounded to the nearest step, so typing 370.3 gives 370.3 V, and 87.35 gives 87.35 %.
+Battery Emulator enters FAULT state with a SOH lower than 25%. **Disable SOH low event until reboot** overrides that, giving the possibility to investigate how certain inverters would behave with extreme low SOH values.
 
-The voltage drives almost everything else the pack reports: SOC, remaining energy, cell voltages and the simulated balancing state. The SOH is reported as entered and is otherwise inert: it feeds the SOH events and everything that displays or transmits SOH (status page, MQTT, ESP-NOW and the inverter protocols that carry it).
+??? quote "Details"
+    | Property | Voltage | SOH |
+    |:---|:---|:---|
+    | Unit | Volts, 0.1 V resolution | Percent, 0.01 % resolution |
+    | Accepted input | 0 – 5000 | 0 – 100 |
+    | Useful range | 245.0 – 404.0 V (the design limits of the fake pack) | any |
+    | Value after boot | 370.0 V | 99.00 % |
+    | Applied | Immediately, no reboot needed | Immediately, no reboot needed |
+    | Persisted | No | No |
+    | Affects | Only the pack whose tab is open | Only the pack whose tab is open |
+    
+    Values are rounded to the nearest step, so typing 370.3 gives 370.3 V, and 87.35 gives 87.35 %.
 
-The panel above the card lists what the pack reports but cannot be changed: capacity, number of cells, the SOC above which balancing starts, and the total charged and discharged energy.
+The panel above the card lists what the pack reports but cannot be changed: capacity, number of cells, the SOC above which balancing starts, max / min design voltage and the total charged and discharged energy.
 
 !!! note "NOTE"
-    The card is drawn by the Fake battery integration itself, so it is invisible for every real battery. On a double or triple setup the page has a tab per battery, and each tab shows and edits that pack's own values.
+    The card is drawn by the Fake battery integration itself, so it is invisible for every real battery. On a double or triple setup the page has a tab per battery, and each tab shows and edits that pack's own values. **Disable SOH low event until reboot** is only shown on the primary batter's tab.
 
 ### How SOC is derived from the voltage
 
