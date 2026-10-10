@@ -85,15 +85,27 @@ The advice on [CAN-controlled contactors](battery_2x.md#can-controlled-contactor
 
 ## Which batteries are compatible?
 
-A node runs the normal integration for its battery, so in principle any supported battery can be used. All nodes must use the **same battery type**, and the controller blocks a node that reports a different one.
+A node runs the normal integration for its battery. All nodes must use the **same battery type**, and the controller blocks a node that reports a different one.
 
-The battery integration must respect the "inverter allows contactor closing" signal, because that is how the controller tells each node when to close and open its contactors. A node can also run Double or Triple Battery, if its battery type supports it (see [Double and Triple Battery on a node](#double-and-triple-battery-on-a-node)).
+The controller decides when each pack closes onto the shared DC link, so every pack on a node must actually follow that decision **and** report back when its contactors are closed. That is the case when either:
 
-Confirmed working:
+* the pack uses [GPIO contactor control](contactor_control_via_gpio_pins.md), which works with any battery type, or
+* the battery integration closes its contactors over CAN only on command and reports the contactor state. Today these integrations do:
 
-- [BMW i3](../../battery/bmw_i3.md) ✅ (including offline balancing, see below)
+| Battery | Contactor state reported from | Status |
+|---|---|---|
+| [BMW i3](../../battery/bmw_i3.md) | The BMS (DC switch status) | ✅ Confirmed working, including offline balancing (see below) |
+| [Tesla Model 3/Y](../../battery/tesla_model_3_y.md) and [Tesla Model S/X](../../battery/tesla_model_s_x_2021.md) | The BMS (`BMS_contactorState`) | Supported, not yet tested as a node |
+| [Stellantis Pro One](../../battery/stellantis_pro_one.md) | The BMS (contactor status) | Supported, not yet tested as a node |
+| [Relion LV](../../battery/relion_lv.md) | The last command sent (the pack has no contactor feedback) | Supported, being tested |
 
-If you run another battery type successfully, please add it to this list.
+The separate [Tesla Model S/X 2012-2020](../../battery/tesla_model_s_x_2012_2020.md) integration is not on the list. More integrations can be added once they report their contactor state.
+
+If a pack on a node does not qualify, the node raises `EVENT_NODE_CONTACTOR_UNSUPPORTED` and the controller never allows it to close. Use GPIO contactor control for that pack instead.
+
+A node can also run Double or Triple Battery, if its battery type supports it (see [Double and Triple Battery on a node](#double-and-triple-battery-on-a-node)). The rule above then applies to each of its packs.
+
+If you run a battery type successfully, please update this table.
 
 ---
 
@@ -152,13 +164,13 @@ Save and reboot each board. Configure WiFi on the nodes as well. They then repor
 2. When the first node comes online, the controller starts a **20 second grace period**. During this time **all contactors stay open**, so every node has time to report its voltage.
 3. When the grace period ends:
     * If all online packs are within **1.5 V** of each other, they all close together.
-    * Otherwise the first node becomes the reference and closes. The others join one by one as their voltage comes close enough (see below).
+    * Otherwise the first node closes. The others join one by one as their voltage comes close enough to the packs already closed (see below).
 
 A node that has not yet sent its firmware version and battery type is never allowed to close.
 
 ### How packs join the DC link
 
-A pack that is not yet connected must match the voltage of the packs already on the DC link:
+A pack that is not yet connected must match the voltage of the DC link. The controller takes that voltage from a node that **reports its contactors closed**, not from a node that has merely been allowed to close. While another node is still closing, a new join waits, so packs join one at a time.
 
 * **Direct join:** the difference is **1.5 V or less** for **10 seconds**. This is the normal case, for example after a short disconnect.
 * **Pre-join:** the difference is between 1.5 V and 1.8 V *and* the inverter is moving more than 300 W. The charge or discharge current will pull the packs closer together, so the controller waits for that. It allows the pack to close once the difference has been small enough for 2 seconds:
@@ -168,6 +180,8 @@ A pack that is not yet connected must match the voltage of the packs already on 
     If the load stays below 300 W for 30 seconds, pre-join is cancelled and the pack waits for a direct join. The pack's card on the controller shows **Prejoin** in orange while this is active.
 
 If the difference is larger than 1.8 V, or the inverter is idle, the pack stays out until the voltages match. A pack that is already connected is **not** disconnected just because its voltage drifts.
+
+A node that is allowed to close must report its contactors closed within **60 seconds**. If it does not, the controller withdraws the permission and tries again after another 60 seconds. After **3 failed attempts in a row** the node is left open, so a pack that will not close is not cycled open and closed again and again. It is tried again once that node has been offline or the controller restarts.
 
 ### How the packs become one virtual battery
 
@@ -198,13 +212,27 @@ When a node's pack starts offline balancing, the node tells the controller. The 
 
 | Situation | What happens | Event |
 |---|---|---|
+| Node's data stops refreshing for 3 s (broken inter-unit cable, or node software hung) | See [Lost connection to a node](#lost-connection-to-a-node) below: all power goes to 0 so the node can open with no current flowing, then the other nodes continue | `EVENT_BATTERY_NODE_STATUS_STALE` |
 | Node stops responding for 60 s | Node marked offline, its contactors are not allowed to close | `EVENT_BATTERY_NODE_MISSING` |
-| Node keeps sending, but its data stops changing for 3 s (e.g. node software hung) | Node's contactors are not allowed to close until data changes again | `EVENT_BATTERY_NODE_STATUS_STALE` |
 | Node reports a BMS fault, battery CAN timeout or contactor failure | Node's contactors are opened | `EVENT_BATTERY_NODE_FAULT` |
 | Node reports cell over/under-voltage or over-temperature | Warning only, contactors stay as they are | `EVENT_BATTERY_NODE_WARNING` |
 | Node has a different firmware version or battery type | A node that is not yet connected is not allowed to close. A pack that is already connected is not disconnected. | `EVENT_BATTERY_NODE_IDENT_MISMATCH` |
-| Node has heard no heartbeat from the controller for 60 s | Node opens its contactors | `EVENT_CAN_CONTROLLER_MISSING` (on the node) |
+| Node has heard no heartbeat from the controller for 15 s | Node opens its contactors | `EVENT_CAN_CONTROLLER_MISSING` (on the node) |
+| Node was told to open, but after 10 s it still reports its contactors closed or carries more than 2 A | All power is held at 0 until it opens. That pack is on the DC link without the controller being in control of it. | `EVENT_BATTERY_NODE_CONTACTOR_DISOBEYED` |
+| A pack on the node can't be controlled by the controller (no GPIO contactor control, and the battery integration does not report its contactor state) | The node is never allowed to close | `EVENT_NODE_CONTACTOR_UNSUPPORTED` (on the node) |
 | Equipment stop on the controller | All nodes are told to open | |
+
+### Lost connection to a node
+
+If the inter-unit cable to one node breaks, neither side can tell the other what it is doing. Both follow the same fixed timing, so the node opens its contactors with no current flowing:
+
+| Time without data | Controller | Node |
+|---|---|---|
+| 3 s | Sets charge and discharge power to 0 for the whole installation, so the inverter ramps down | |
+| 15 s | Tells the node to open (this reaches it if only its data froze) | Has heard no heartbeat for 15 s and opens its contactors |
+| 20 s | Leaves the node out. The other nodes continue. | |
+
+If the data comes back before 15 s, nothing opens and all nodes continue. Once the cable is fixed, the node joins again like any other pack. A controller restart that takes longer than 15 s also makes the nodes open; they join again after the startup grace period.
 
 All events clear themselves when the condition goes away. Every frame on the inter-unit bus also carries a checksum. A corrupted frame is ignored and never makes anything less safe: a node that only sends corrupted frames ends up offline.
 
@@ -245,7 +273,9 @@ The top of the main page shows the node ID, whether the controller is online, an
 
 * **Node never shows up on the controller.** Check the inter-unit bus wiring and termination. Check that the node's *inverter interface* and the controller's *battery interface* point at the CAN channel that is actually wired. Check that no two nodes share a node ID.
 * **A node card shows ⚠ FAULT or ⚠ WARNING.** Click the label to open that node's Events page and see what its battery is reporting.
-* **Node is online but its contactors never close.** Look at the events page on the controller. The usual causes are a voltage difference that is too large (charge or discharge the packs closer together first), an `IDENT_MISMATCH` (firmware or battery type differs), or a fault flag from that node's battery.
+* **Node is online but its contactors never close.** Look at the events page on the controller. The usual causes are a voltage difference that is too large (charge or discharge the packs closer together first), an `IDENT_MISMATCH` (firmware or battery type differs), or a fault flag from that node's battery. If the node shows `EVENT_NODE_CONTACTOR_UNSUPPORTED`, see [Which batteries are compatible?](#which-batteries-are-compatible). If the node was allowed three times without ever reporting closed, it is left open: check the pack (HVIL, precharge, BMS faults) and restart the controller to try again.
+* **All charge/discharge power drops to 0 for about 20 seconds.** A node's data stopped arriving (see [Lost connection to a node](#lost-connection-to-a-node)). Check the inter-unit cable and that node.
+* **`EVENT_BATTERY_NODE_CONTACTOR_DISOBEYED`.** A node did not open when told to. Check that node's events and its battery integration. Power stays at 0 until it opens.
 * **A second or third pack on a node never joins.** That is decided by the node itself, not the controller. Open the node's own web page and check its events: usually the voltage difference between its packs is too large.
 * **All charge/discharge power is 0.** One of the connected packs is reporting a limit of 0, for example because it is full, empty, or starting offline balancing. Check each node card.
 
