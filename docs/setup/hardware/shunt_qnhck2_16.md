@@ -128,8 +128,6 @@ No sensor has its zero point at exactly 1.65 V, and it drifts with temperature, 
 QNHCK2-16 zero point calibrated to 1644 mV at 12.0 °C
 ```
 
-The temperature is the batteries' as the measurement ended, see [Temperature compensation](#temperature-compensation). It is left out while no battery reports one.
-
 With [Contactor control via GPIO](../software/contactor_control_via_gpio_pins.md) enabled the contactors stay open for at least 10 seconds after every boot, so the zero point is measured within seconds of booting, and nothing needs to be stored. Until then, the inverter gets the batteries' own current (✗ on the main page). The zero point then holds until the contactors open again: at the next boot, when **Open Contactors** is pressed on the main page, when the inverter asks for it, or after a fault.
 
 Requirements:
