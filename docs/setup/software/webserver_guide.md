@@ -224,7 +224,7 @@ The login uses HTTP Basic authentication. This protection level is not particula
 
 ### Battery config
 
-<img width="570" height="130" alt="batt" src="https://github.com/user-attachments/assets/3cd80e05-d38f-4b8b-8386-45f2cd671101" />
+![batt](../../images/webserver-guide-01.png)
 
 Select the integration of your battery from the **Battery** dropdown list, and the **Battery interface** the battery is wired to. Each battery has its own [page in this wiki](../../battery/index.md) with the wiring and the settings it needs. **Battery chemistry** sets the cell chemistry the system assumes; integrations that know the chemistry of their battery don't show it.
 

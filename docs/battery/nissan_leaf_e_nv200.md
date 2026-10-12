@@ -5,7 +5,7 @@ title: "Nissan LEAF / e-NV200"
 ## Software configuration
 For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
 
-<img width="796" height="277" alt="LEAF" src="https://github.com/user-attachments/assets/30eb2a16-a261-41b2-9b5a-0bc2a5657e8d" />
+![LEAF](../images/nissan-leaf-e-nv200-09.png)
 
 - leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed, or experiences high cell voltage deltas (> 150mV). You can start experimenting with the other settings when you have gained some experience on how balancing and degradation perform over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md), like for example [Home Assistant](../setup/software/home_assistant.md), to observe behavior is strongly recommended when using experimental settings). Changing this setting requires a BMS reset.
 - keep the **Automatic current offset correction** enabled, which will calibrate current measurement skew during open contactors (more info below).
