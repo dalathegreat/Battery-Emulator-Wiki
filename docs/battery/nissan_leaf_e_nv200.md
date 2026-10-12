@@ -5,13 +5,12 @@ title: "Nissan LEAF / e-NV200"
 ## Software configuration
 For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
 
-![image](../images/nissan-leaf-e-nv200-27.png)
+<img width="796" height="277" alt="LEAF" src="https://github.com/user-attachments/assets/30eb2a16-a261-41b2-9b5a-0bc2a5657e8d" />
 
 - leave the **BMS starting sequence request** setting at its **other (default)** value if this pack is newly deployed, or experiences high cell voltage deltas (> 150mV). You can start experimenting with the other settings when you have gained some experience on how balancing and degradation perform over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md), like for example [Home Assistant](../setup/software/home_assistant.md), to observe behavior is strongly recommended when using experimental settings). Changing this setting requires a BMS reset.
 - keep the **Automatic current offset correction** enabled, which will calibrate current measurement skew during open contactors (more info below).
 - On a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
        - If you enable this setting on an AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus, for these, it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and manually insulate one of them). Instead, just block off the unused HV port with a 3D-printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
-- set the **Battery chemistry** to **NMC**.
 
 !!! tip "TIP"
     **BMS starting sequence request** set to **normal charge (experimental)** avoids overbalancing when your pack is in good shape (small cell voltage delta in your preferred SOC range). 
@@ -36,7 +35,7 @@ The Positive (+) wire is near the data port, and the Negative (-) wire is near t
 
 ![HighVoltageWiring](../images/nissan-leaf-e-nv200-03.png)
 
-![423205153-0e4498c8-f8b8-41d3-bd6f-fa9e5d0640d2](../images/nissan-leaf-e-nv200-04.jpg)
+![e-nv200](../images/nissan-leaf-e-nv200-04.jpg)
 ![Zoe_harness](../images/nissan-leaf-e-nv200-05.jpg)
 
 !!! success "TIP"
