@@ -289,7 +289,7 @@ The log shows a line when tapering engages. Both options can be used on their ow
 
 | Setting | Description |
 |---|---|
-| **Charger** and **Charger interface** | An optional HV charger controlled by the Emulator. See [Chargers](../chargers/index.md) and [Charger settings](#charger-settings). |
+| **Charger** and **Charger interface** | An optional HV charger controlled by the Emulator. See [Chargers](../chargers/index.md) and [Charger settings](#charger-settings). Not available on the [small flash boards](../../hardware/index.md#small-flash-boards). |
 | **Measurement** and **Interface** | An optional current measurement device: a [BMW SBox](../../battery/bms/shunt_bmw_sbox.md), the [QNHCK2-16 DC current clamp](../hardware/shunt_qnhck2_16.md#configuration), the CT clamp of a [CHAdeMO](../../battery/wip/chademo_vehicle.md) setup (**Custom Clamp**), or the current measured by the inverter (**Using inverter values**, only for the BYD CAN inverter protocol). Only the types usable with the selected battery and inverter are listed. |
 
 ### Hardware config

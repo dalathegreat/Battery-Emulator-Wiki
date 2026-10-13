@@ -36,6 +36,8 @@ The [LilyGo T-CAN485](lilygo_t_can485.md) and the [ESP32 DevKit](esp32_devkit_v1
     | "Custom Clamp" shunt | Not offered in the measurement devices list |
     | [CHAdeMO V2X](../battery/wip/chademo_vehicle.md) battery, with its CT clamp and IVT shunt support | Not offered in the battery list |
     | [Chargebyte CCS V2X](../battery/wip/ccs_bidirectional_charging.md) battery | Not offered in the battery list |
+    | [Chevrolet Volt Gen1 charger](../setup/chargers/chevrolet_volt_gen1.md) | No Charger option in the settings |
+    | [Nissan LEAF PDM charger](../setup/chargers/nissan_leaf_pdm.md) | No Charger option in the settings |
     | `<hostname>.local` address (mDNS) | Reach the board by its IP address instead |
     | I2C display (SSD1306) | Not offered for the configurable port |
     | Built-in help texts of the [Settings page](../setup/software/webserver_guide.md#settings) | Shown only when the browser has Internet access |
