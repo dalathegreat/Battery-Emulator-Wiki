@@ -49,16 +49,35 @@ Not every value combines the same way. Some add up, some take the weakest pack, 
 | **Cell voltage min / max** | Lowest and highest found in any pack | |
 | **Temperature min / max** | Lowest and highest found in any pack | |
 | **Charge / discharge voltage limits** | Lowest ceiling and highest floor any pack reports | A mismatched pack is never asked to go past what it tolerates |
-| **Max charge / discharge power** | The **lowest** any pack allows — *not* the sum | See the warning below |
+| **Max charge power** | Starts at the **lowest** any pack allows, then raised step by step to what the packs take together | See [Parallel headroom tracking](#parallel-headroom-tracking) |
+| **Max discharge power** | The **lowest** any pack allows — *not* the sum | See the warning below |
 | **Max charge / discharge current** | Derived from the combined power limit at bus voltage, then capped by your charge/discharge settings | |
 
-!!! warning "Charge and discharge power does not double"
-    Capacity doubles, power does not. The inverter is told the limit of the **weakest** pack, because there is no way to steer current towards one pack and away from another — they share a bus and divide the current between themselves according to their own internal resistance. Reporting the sum would allow a healthy pack to drag a weak one past its limit.
+!!! warning "Discharge power does not double"
+    Capacity doubles, discharge power does not. The inverter is told the discharge limit of the **weakest** pack, because there is no way to steer current towards one pack and away from another — they share a bus and divide the current between themselves according to their own internal resistance. Reporting the sum would allow a healthy pack to drag a weak one past its limit.
 
-    So two packs that each allow 10 kW are presented as 10 kW, not 20 kW. If one pack drops to 6 kW, the whole installation drops to 6 kW.
+    So two packs that each allow 10 kW of discharge are presented as 10 kW, not 20 kW. If one pack drops to 6 kW, the whole installation drops to 6 kW.
 
 !!! info "Faults stop the whole installation"
-    If any pack reports a fault, or the safety layer shuts one down, its limits go to zero — and because the combined limit is the lowest of the packs, the inverter is told zero as well. One pack in trouble stops the system, not just itself.
+    If any pack reports a fault, or the safety layer shuts one down, its limits go to zero — and since the combined limits start from the lowest of the packs, the inverter is told zero as well. One pack in trouble stops the system, not just itself.
+
+#### Parallel headroom tracking
+
+For charging, the lowest pack limit is too cautious: the packs share whatever the inverter pushes, so two alike packs each take about half of it and neither ever reaches its own limit. The charge limit therefore only starts at the lowest pack limit, and is raised from there in steps while the inverter actually charges at it:
+
+- Each step adds the headroom of the pack closest to its own limit: its limit minus the power it is measured to take. Every pack only takes its share of the extra, so a step of that size cannot push any pack past its limit.
+- After every step the inverter gets 10 seconds to follow before the next one is measured, as some inverters only read the limits every few seconds (Fronius over Modbus every 5).
+- There is no step while the inverter draws less than 95% of what it is allowed — not enough sun, its own maximum, a current cap, the ramp or the taper holding it below — or while a pack on the bus shows no charge current.
+- A step only counts on the lowest limit each pack has reported in the last 60 seconds, so a BMS that flips its limit between two values is not chased up and down. A higher limit counts once it has stayed up for a minute.
+- If a pack goes over its limit anyway, because the split between the packs moved or its BMS lowered the limit, the combined limit is cut at once to the total that puts that pack back on its limit. Until the inverter reads the cut, that pack is over its new limit for a few seconds, the same as a single pack would be.
+- The limit never goes below the lowest pack limit nor above the sum of the packs' limits, and it starts over from the lowest pack limit whenever charging stops.
+
+Two alike packs that each allow 3 kW end up charging at close to 6 kW, not 3 kW. Packs that share the current unevenly settle where the one taking the larger share reaches its limit. The combined card shows the raised limit, the pack cards below it what each BMS allows.
+
+[Ramp up charge limits gradually](webserver_guide.md#inverter-config) and [Charge power tapering based on SOC](webserver_guide.md#inverter-config) work on this combined limit, after the raise, so they always have the last word.
+
+!!! info "Every pack has to report its own current"
+    The headroom comes from the current each pack's own BMS reports. A pack that reports none looks like a pack taking nothing, so it holds every step off, and the charge limit stays at the lowest pack limit.
 
 #### Packs that are configured but not yet connected
 

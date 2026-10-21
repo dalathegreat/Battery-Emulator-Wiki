@@ -104,7 +104,7 @@ The colour of the card shows the state of the system:
 
 When there is a warning or an error, check the [Events](#events) page to see what went wrong. The [status LED](../../hardware/index.md#status-led) of the board follows the same colours.
 
-With a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, a combined card on top shows the whole installation, which is what the inverter sees, and one card per battery pack below it shows that pack's own data, unscaled, with the power limits its own BMS asked for. See [How the packs become one virtual battery](battery_2x.md#how-the-packs-become-one-virtual-battery) for details.
+With a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, a combined card on top shows the whole installation, which is what the inverter sees, and one card per battery pack below it shows that pack's own data, unscaled, with the power limits its own BMS asked for. The combined card's charge limit can be higher than any single pack's ([Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking)). See [How the packs become one virtual battery](battery_2x.md#how-the-packs-become-one-virtual-battery) for details.
 
 Next to the **Max discharge current** and **Max charge current** you can see what is setting the limit:
 
@@ -273,7 +273,7 @@ The following options apply to all inverters:
 - **Start tapering at SOC, percent** (50-99, default 95): the (scaled) SOC where charge power tapering begins.
 - **Float charge power, W** (0-2000, default 400): the minimum charge power held during tapering until 100% SOC is reached. Recommended to set it to 5-10% of the inverter's max power for a single battery (for double and triple, you can increase the value accordingly). 0 disables this, tapering will go linearly to 0 W. It is never applied when the battery or the safety layer itself allows no charging.
 
-The log shows a line when tapering engages. Both options can be used on their own or together.
+The log shows a line when tapering engages. Both options can be used on their own or together. With a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, both work on the combined limits of all packs, after [parallel headroom tracking](battery_2x.md#parallel-headroom-tracking) has raised the charge limit.
 
 !!! info "IMPORTANT"
     Remember to set [Max charge current and Max discharge current](#battery-chargedischarge-limit) correctly to match your setup for these options to work properly! Both options start from the power these limits allow.
