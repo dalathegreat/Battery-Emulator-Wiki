@@ -48,8 +48,8 @@ For this battery type, use the option called **"CMFA platform, 27kWh battery"** 
 
 See [Fronius Gen24 settings](../images/Full_Spring_Conf.jpg)
 
-## Battery module - BMS pin diagram. 
-BMS reads from each module the cell voltage + one GND, and 2 temperature sensors (one for each module). should be ~17Kohm range.
+## Battery module - BMS pin diagram
+The BMS reads the cell voltage from each module, plus one GND and 2 temperature sensors (one per module); they should be in the ~17 kω range.
 
 ![image](../images/dacia-spring-renault-k-ze-22.png)
 
@@ -93,13 +93,14 @@ See this video on [how to crimp the wires](https://www.youtube.com/watch?v=A8TIq
 Get the HV connector too; it makes things look nicer. 
 Search for the HV cable and connector on [eBay](https://www.ebay.com/sch/i.html?_nkw=297A21306R), part#: 297A21306R
 
+There are [two versions of the LV connector](../images/LV_Connector_generations.jpeg), but the **only difference** is the wiring colors.
 Connect the battery to the Battery-Emulator according to this diagram:
 
-![conexiuni](../images/dacia-spring-renault-k-ze-06.jpg)
+![conexiuni](../images/Spring_pins_Color_Wires_LV.jpg)
 
 ![schema_conectare](../images/dacia-spring-renault-k-ze-24.png)
 
-The original drawing file can be found [here](../images/Miguel-2026-03-19-2107.excalidraw) and edited in Excalidraw (https://excalidraw.com).
+The original drawing file is available [here](../images/Miguel-2026-03-19-2107.excalidraw) and can be edited in Excalidraw (https://excalidraw.com).
 
 12V power info: The precharge+contactors consume 1.5A; the BMS itself uses 0.1A
 
@@ -124,7 +125,7 @@ Note that there are two versions of the service disconnect switch. The 2021 mode
 
 ![image](../images/Spring_fuse_2022.jpg)
 
-The polarity of the high-voltage outputs can be seen here: left is **positive**, Right is **negative**.
+The polarity of the high-voltage outputs is shown here: left is **positive**, Right is **negative**.
 
 ![Polarity](../images/dacia-spring-renault-k-ze-10.jpg)
 
@@ -144,7 +145,7 @@ Enable the `CMFA platform, 27 kWh battery` option in the software.
 Do **NOT** use PWM contactor control.
 
 Spring keeps the HV voltage between 220V (0% SOC) and 296V (100% SOC)
-You can adjust the SOC min and max percentages in the emulator settings to keep the battery voltage within the above voltage range. Like -5 / 85 with current build (June 2025).
+You can adjust the SOC min and max percentages in the emulator settings to keep the battery voltage within that range. Like -5 / 85 with current build (June 2025).
 
 This battery also benefits from automated 30s daily resets, which can be automated with BMS power output. See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details.
 
@@ -167,8 +168,8 @@ ex, for a 5kW inverter: 5000W / 218V = 23A => use a [25A fuse](https://s.click.a
 ![PE on the case](../images/dacia-spring-renault-k-ze-16.jpg)
 
 ## Note on missing cell voltages
-If you are not seeing all 72 cells in the cell monitor page, the fuses on the cell taps might be damaged.
-A telltale sign is that some values become corrupted and the charge current drops to 0. This can be repaired by opening the battery and repairing the damaged traces.
+If you don't see all 72 cells on the cell monitor page, the fuses on the cell taps may be damaged.
+A telltale sign is that some values become corrupted and the charge current drops to 0. You can fix this by opening the battery and repairing the damaged traces.
 
 ![image](../images/dacia-spring-renault-k-ze-17.png)
 
@@ -178,10 +179,10 @@ A telltale sign is that some values become corrupted and the charge current drop
 ![Dacia Spring battery 225A fuse](../images/dacia-spring-renault-k-ze-18.jpg)
 
 2. One main BMS + 6 slaves BMS
-The Master <=> Slave BMSs seem **not** to be software-locked, so you can easily swap the main BMS if it's the same part number (printed on the box).
+The Master <=> Slave BMSs don't seem software-locked, so you can easily swap the main BMS if it's the same part number (printed on the box).
 
 ![Dacia Spring battery BMS](../images/dacia-spring-renault-k-ze-19.jpg)
 
 3. Inside look.
-The battery case opens very easily. It has many M7 screws; no glue is used to seal it.
+The battery case opens very easily. It uses many M7 screws, and no glue seals it.
 ![inside Dacia Spring battery](../images/dacia-spring-renault-k-ze-20.jpeg)
