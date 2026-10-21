@@ -63,16 +63,16 @@ Not every value combines the same way. Some add up, some take the weakest pack, 
 
 #### Parallel headroom tracking
 
-For charging, the lowest pack limit is too cautious: the packs share whatever the inverter pushes, so two alike packs each take about half of it and neither ever reaches its own limit. The charge limit therefore only starts at the lowest pack limit, and is raised from there in steps while the inverter actually charges at it:
+For charging, the lowest pack limit would be too cautious: the packs share whatever the inverter pushes, so two alike packs each take about half of it and neither ever reaches its own limit. The charge limit therefore only starts at the lowest pack limit, and is raised from there in steps while the inverter actually charges at it:
 
 - Each step adds the headroom of the pack closest to its own limit: its limit minus the power it is measured to take. Every pack only takes its share of the extra, so a step of that size cannot push any pack past its limit.
 - After every step the inverter gets 10 seconds to follow before the next one is measured, as some inverters only read the limits every few seconds (Fronius over Modbus every 5).
-- There is no step while the inverter draws less than 95% of what it is allowed — not enough sun, its own maximum, a current cap, the ramp or the taper holding it below — or while a pack on the bus shows no charge current.
+- There is no step while the inverter pushes less than 95% of what it is allowed — not enough sun, its own maximum, a current cap, the ramp or the taper holding it below — or while a pack on the bus shows no charge current.
 - A step only counts on the lowest limit each pack has reported in the last 60 seconds, so a BMS that flips its limit between two values is not chased up and down. A higher limit counts once it has stayed up for a minute.
 - If a pack goes over its limit anyway, because the split between the packs moved or its BMS lowered the limit, the combined limit is cut at once to the total that puts that pack back on its limit. Until the inverter reads the cut, that pack is over its new limit for a few seconds, the same as a single pack would be.
 - The limit never goes below the lowest pack limit nor above the sum of the packs' limits, and it starts over from the lowest pack limit whenever charging stops.
 
-Two alike packs that each allow 3 kW end up charging at close to 6 kW, not 3 kW. Packs that share the current unevenly settle where the one taking the larger share reaches its limit. The combined card shows the raised limit, the pack cards below it what each BMS allows.
+For example: two alike packs that each allow 3 kW end up charging in total at close to 6 kW, not just 3 kW. Packs that share the current unevenly settle where the one taking the larger share reaches its limit. The combined card shows the raised limit, the pack cards below it what each BMS allows.
 
 [Ramp up charge limits gradually](webserver_guide.md#inverter-config) and [Charge power tapering based on SOC](webserver_guide.md#inverter-config) work on this combined limit, after the raise, so they always have the last word.
 
