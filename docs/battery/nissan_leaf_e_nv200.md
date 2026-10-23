@@ -283,6 +283,8 @@ For example:
 !!! tip "TIP"
     The BMS will prevent damage to the cells during discharge to empty and charge to full. Battery Emulator will show these events as `Battery is completely discharged` and `Battery is fully charged`. You'll likely see `Large cell voltage deviation! Check balancing of cells` too. The goal is to find the thresholds you can manually set between which the battery can operate without regularly encountering these.
 
+    On AZE0 (2013-2017) packs, a cell overvoltage fault confirmed by the BMS itself also raises `CELL VOLTAGE CRITICALLY HIGH! Not possible to continue. Inspect battery!` and stops the system, even before the next cell voltage reading shows it. This is an error that stays active until a reboot, so it should never come up in normal operation.
+
 Try to find the widest time window of **Cell Voltage Delta** where the value changes the least — that's the most comfortable and safest "zone" for the cells to operate. Look at the **SOH** graph over the same time period — that should give you the minimum and maximum percentage of SOC rescaling you can set in Battery Emulator to prevent the battery from entering the high cell voltage delta zone. Take into account the absolute minimum SOC value your inverter is willing to go until (eg. Fronius allows discharging to 5% only, doesn't go below), you can reduce min SOC rescale about by that amount. 
 
 In the example above, the top graph establishes the red lines, which show the comfortable area of **Cell Voltage Delta**. The green lines show where the SOC curve intersects the red lines: this gives the min and max SOC rescale values for a safe zone. (Note the slight hysteresis between charge and discharge; take the highest value for safety.
