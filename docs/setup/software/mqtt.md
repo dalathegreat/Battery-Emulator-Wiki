@@ -194,7 +194,7 @@ Example payload for two Nissan LEAF packs (21.8 kWh + 17.9 kWh), published to `b
 }
 ```
 
-How each value is combined is documented on the [Double Battery](battery_2x.md) page. In short: capacities, current, power and lifetime energy add up; SOC follows the emptiest pack; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the **power limits are the lowest any pack allows, not the sum**.
+How each value is combined is documented on the [Double Battery](battery_2x.md) page. In short: capacities, current, power and lifetime energy add up; SOC follows the emptiest pack; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the **power limits start from the lowest any pack allows**, the charge limit then raised to what the packs take together ([Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking)).
 
 `charged_energy` and `discharged_energy` appear only if at least one configured pack tracks lifetime energy. Most integrations - the Nissan LEAF among them - do not, in which case both keys are absent from this topic.
 
