@@ -247,7 +247,7 @@ Things to be aware of:
 - When the window is raised, the SOC the inverter sees drops. With a 20-80% window at 80% real SOC, it goes from 100% to 75%. Inverter or home automation rules that react to SOC may act on this.
 - If there is not enough charge to reach full, for example on a cloudy day, the window stays raised and the next charge carries on.
 - After the termination, the inverter shows 100% until the real SOC falls back below your maximum. The lower your maximum, the longer this lasts.
-- The count only advances while Battery-Emulator is running, and is saved once an hour, so a restart loses at most an hour.
+- The count is kept in memory only, to avoid regular flash writes, so it starts again from zero whenever Battery-Emulator restarts. If it restarts more often than the set number of days, the window is never raised.
 - Primary battery only, like native charging.
 
 ### Checking the balance timers
