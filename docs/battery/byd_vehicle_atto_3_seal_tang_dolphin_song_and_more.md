@@ -228,6 +228,28 @@ Testing so far shows that the BMS selects the highest-voltage cells at the end o
 
 If the battery will not close again, Battery-Emulator makes a limited number of retries, then leaves it open and reports a contactor mismatch for you to investigate.
 
+### Full charge with SOC scaling
+
+With **SOC scaling** enabled (for example 20-80%), the inverter sees 100% before the battery is actually full, so the BMS never finishes a native charge. It then never recalibrates its SOC and SOH, and never starts balancing.
+
+**Full charge every** in the same panel fixes this. Enter how many days (1-30) to allow between native full charges and press **Save**. **0** turns it off, which is the default.
+
+Battery-Emulator counts the time since the last native charge termination. Once the set number of days has passed, it raises the top of the SOC scaling window to 100% until the BMS finishes a native charge, then puts your normal window back. The bottom of the window does not change, so the inverter still cannot discharge below your minimum. Any native termination resets the count, including one that happens without the schedule. With **Balancing enabled**, the contactor cycle runs after the termination as normal.
+
+The panel shows one of:
+
+- **Due in Xd Yh**: time left until the window is raised.
+- **Window lifted to 100%, waiting for termination**: the next charge will run to full.
+- **Needs SOC scaling and native termination**: the setting has no effect until both are on.
+
+Things to be aware of:
+
+- When the window is raised, the SOC the inverter sees drops. With a 20-80% window at 80% real SOC, it goes from 100% to 75%. Inverter or home automation rules that react to SOC may act on this.
+- If there is not enough charge to reach full, for example on a cloudy day, the window stays raised and the next charge carries on.
+- After the termination, the inverter shows 100% until the real SOC falls back below your maximum. The lower your maximum, the longer this lasts.
+- The count is kept in memory only, to avoid regular flash writes, so it starts again from zero whenever Battery-Emulator restarts. If it restarts more often than the set number of days, the window is never raised.
+- Primary battery only, like native charging.
+
 ### Checking the balance timers
 
 Open **More Battery Info → Cell Balance Timers**, then press **Read Timers**. This reads the total balancing hours recorded by the BMS for each cell.
