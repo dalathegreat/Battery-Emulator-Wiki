@@ -158,7 +158,7 @@ Battery-Emulator watches for that pattern and raises a warning naming the pack: 
 
 - It is only a warning: nothing is stopped and no contactor is opened. The [voltage check](#high-voltage-connection-diagram) may still drop the pack later, once its voltage drifts away from the others'.
 - It comes 2-4 seconds after the trip with batteries that send their current many times a second (e.g. Nissan LEAF, BMW i3), and up to about 10 seconds with batteries whose current is polled every few seconds (e.g. Pylon).
-- The packs have to be carrying at least 2 A each, below that it can't tell.
+- The check is done when the packs carry at least 2 A each.
 - Not detected: a pack that hasn't carried any current since Battery-Emulator started, and a trip in the same seconds as the total current falling below 40% of what it was.
 - When Battery-Emulator opens a pack's contactor itself (voltage difference, or a fault), that's not reported as a trip.
 
