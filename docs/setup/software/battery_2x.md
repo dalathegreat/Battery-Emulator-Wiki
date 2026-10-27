@@ -150,6 +150,21 @@ Connect the high voltage lines like in this diagram. Remember to place fuses bot
 
 After the main battery is started, the system will automatically close the interconnect contactors for the second battery, if it's within 1.5V of the main battery. Note that if you skip the interconnect contactor and rely on only closing via CAN, you need to manually sync up the system first, otherwise you will blow the fuses.
 
+#### When a pack stops carrying current
+
+If a fuse blows, a breaker trips or a high voltage connection comes loose on one pack's side, that pack is cut off the DC bus while its BMS keeps talking — nothing in its own data says anything is wrong. The only sign is in the currents: its current drops to zero, and the other pack takes over its share on top of its own.
+
+Battery-Emulator watches for that pattern and raises a warning naming the pack: `EVENT_BATTERY_NO_CURRENT` for the main battery, `EVENT_BATTERY2_NO_CURRENT` for the second one, `EVENT_BATTERY3_NO_CURRENT` for the third one in a [Triple Battery](battery_3x.md) setup. The event data shows the amps the pack was carrying before. The warning stays until that pack carries current again, then clears itself.
+
+- It is only a warning: nothing is stopped and no contactor is opened. The [voltage check](#high-voltage-connection-diagram) may still drop the pack later, once its voltage drifts away from the others'.
+- It comes 2-4 seconds after the trip with batteries that send their current many times a second (e.g. Nissan LEAF, BMW i3), and up to about 10 seconds with batteries whose current is polled every few seconds (e.g. Pylon).
+- The packs have to be carrying at least 2 A each, below that it can't tell.
+- Not detected: a pack that hasn't carried any current since Battery-Emulator started, and a trip in the same seconds as the total current falling below 40% of what it was.
+- When Battery-Emulator opens a pack's contactor itself (voltage difference, or a fault), that's not reported as a trip.
+
+!!! tip "TIP"
+    While one pack was cut off, the other one kept charging or discharging, so their voltages may be far apart by the time you notice. Before you reset the breaker or replace the fuse, mind the caution above.
+
 ### Low voltage connection
 
 #### GPIO-controlled contactors
