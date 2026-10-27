@@ -7,7 +7,6 @@ title: "Growatt"
 The current implementation "Growatt HV over CAN" emulates a "HVC 60050-A1 BMS". This means the following inverters work:
 
 * Growatt SPH 10 10000TL3 BH-UP ✅
-* Growatt MOD 10KTL3-XH ✅ 
 * Growatt SPA 4000-10000TL3 BH-UP :question:
 
 We can also emulate a WIT battery when selecting the "Growatt WIT over CAN" option. This enables compatibility with the following inverters.
