@@ -36,6 +36,32 @@ The project started out in 2022 with compatibility for the "LilyGo T-CAN485", wh
 
 _Why are you not compatible with Raspberry Pi / STM32 / X86 / ARM_ etc. This question gets from time to time. The reason is that the project is very popular (over 2500 installs done at start of 2026), and we already have great hardware options on ESP32. The development team is equipped with all compatible ESP32 boards, and can assist with any issues that are board particular. Expanding the hardware selection to other hardware architecture platforms would introduce a very high support load on the developers, spreading them thin. Maintaining a fork of the software to run on other architectures would also be extremely time consuming. There has been some Raspberry Pi offshoots, but these have died since after the port, the upstream changes from this repository has never made it back to the fork. So whoever ports the software would need to almost fulltime take in patches, or build a development pipeline that can keep up with the rapid development here. This is free open source software, anyone is free to fork and develop whatever they want, but officially this project will only be compatible with ESP32, and support from developers will only be given to ESP32 users.
 
+## Notes on safety critical operations ⚠️
+
+Since Battery-Emulator has either explicit contactor control via GPIO, or a CAN controlled contactor option where it can command a pack to close/open contactors, it comes with great responsibility to try and actuate the contactors according to the incoming BMS sensor data. These are the most critical operations that BE needs to perform:
+
+* Open contactors if battery voltage goes over the designed battery pack max voltage
+* Open contactors if battery voltage goes under the designed battery pack min voltage
+* Open contactors if a cell goes over the designed cell max voltage
+* Open contactors if a cell goes under the designed cell min voltage
+* Open contactors if the battery temperature goes above the designed max temperature
+* Open contactors if the battery temperature goes below the designed min temperature
+* Open contactors if a FAULT event triggers (Component communication down, HVIL broken, etc.)
+* Only allow contactor closing if no FAULTs are active
+* If a fault latches for more than 120s, latch permanently OFF
+* Stop allowing power in/out if battery says 0A allowed
+
+All other scenarios to turn off the battery are up to the solar inverter (insulation leak, inverter problem). Note that BE relies on CAN data, and cannot spot corrosion, damage, water ingress, loose terminals etc. That is up to the user to periodically inspect.
+
+We stop allowing further discharge if:
+
+* SOC reaches 0%
+* Battery sends 0A allowed
+* Pack goes undervoltage (252V 84S, 288V 96S, 312V 104S, 324V 108S)
+* Cell goes undervoltage (2700mV)
+
+Keep these in mind when contributing. Changes must never weaken or bypass any of the above protections. Note that they are only as reliable as the data the BMS reports: if the BMS itself is confused or sends wrong values, BE cannot know.
+
 ## Setting up the compilation environment (VScode + PlatformIO) 💻
 
 This project uses the PlatformIO extension within Visual Studio Code for development and uploading. It handles all the complex toolchains and library management for you.
