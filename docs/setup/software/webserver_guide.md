@@ -243,6 +243,7 @@ Depending on the battery selected, more options appear:
 | **Battery max/min design voltage (V)**, **Cell max/min design voltage (mV)** | BMS type integrations (Orion, SIMPBMS, Daly, RJXZS etc.) and some others | The safe voltage range of the whole pack and of a single cell, used as charge target and protection limits |
 | **Pylon CAN baudrate (kbps)** | Pylon HV battery | 500 kbps for most batteries, 250 kbps for some |
 | **Double battery** with **2ⁿᵈ interface**, then **Triple battery** with **3ʳᵈ interface** | Integrations that support [double](battery_2x.md) or [triple](battery_3x.md) batteries | Run two or three packs in parallel, each on a CAN interface of its own |
+| **Parallel headroom tracking** | Double or triple battery | Raises the combined charge limit above the lowest pack limit, to what the packs take together. Off by default. See [Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking) |
 
 ### Inverter config { #inverter-config }
 

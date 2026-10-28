@@ -49,7 +49,7 @@ Not every value combines the same way. Some add up, some take the weakest pack, 
 | **Cell voltage min / max** | Lowest and highest found in any pack | |
 | **Temperature min / max** | Lowest and highest found in any pack | |
 | **Charge / discharge voltage limits** | Lowest ceiling and highest floor any pack reports | A mismatched pack is never asked to go past what it tolerates |
-| **Max charge power** | Starts at the **lowest** any pack allows, then raised step by step to what the packs take together | See [Parallel headroom tracking](#parallel-headroom-tracking) |
+| **Max charge power** | The **lowest** any pack allows. With [Parallel headroom tracking](#parallel-headroom-tracking) on, it starts there and is raised step by step to what the packs take together | See [Parallel headroom tracking](#parallel-headroom-tracking) |
 | **Max discharge power** | The **lowest** any pack allows — *not* the sum | See the warning below |
 | **Max charge / discharge current** | Derived from the combined power limit at bus voltage, then capped by your charge/discharge settings | |
 
@@ -63,7 +63,11 @@ Not every value combines the same way. Some add up, some take the weakest pack, 
 
 #### Parallel headroom tracking
 
-For charging, the lowest pack limit would be too cautious: the packs share whatever the inverter pushes, so two alike packs each take about half of it and neither ever reaches its own limit. The charge limit therefore only starts at the lowest pack limit, and is raised from there in steps while the inverter actually charges at it:
+For charging, the lowest pack limit is too cautious: the packs share whatever the inverter pushes, so two alike packs each take about half of it and neither ever reaches its own limit. With parallel headroom tracking on, the charge limit only starts at the lowest pack limit, and is raised from there in steps while the inverter actually charges at it. This lets more of the solar power into the batteries, especially in low-sun conditions, when cold packs allow little each.
+
+It is off by default. Turn it on with **Parallel headroom tracking** in the [Battery config](webserver_guide.md#battery-config) card of the Settings page, which appears once **Double battery** is ticked, and reboot. Off, charging works like discharging: the inverter is told the lowest pack limit.
+
+How the raise works:
 
 - Each step adds the headroom of the pack closest to its own limit: its limit minus the power it is measured to take. Every pack only takes its share of the extra, so a step of that size cannot push any pack past its limit.
 - After every step the inverter gets 10 seconds to follow before the next one is measured, as some inverters only read the limits every few seconds (Fronius over Modbus every 5).
