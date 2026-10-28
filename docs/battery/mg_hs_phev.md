@@ -13,11 +13,11 @@ Battery voltage and current, min/max cell temperatures, and individual cell volt
 | Year |  Model | Battery capacity | Compatible? | Notes |
 | :--------: | :---------: | :---------: | :----------: | :----------: |
 | 2018- | MG HS PHEV | 16.6kWh | ✅ | 
-| 2022- | MG HS PHEV (Gen2) | 24.7kWh | Untested | Same as [Roewe RX5](https://en.wikipedia.org/wiki/Roewe_RX5)
+| 2022- | MG HS PHEV (Gen2) | 24.7kWh | Under test | Same as [Roewe RX5](https://en.wikipedia.org/wiki/Roewe_RX5)
 
 Initial focus has been on getting the 16.6kWh battery working with Battery-Emulator (BE).
 
-The Gen2 batteries use a different architecture (similar to the MG4), so are unlikely to work with this integration.
+The Gen2 batteries use a different architecture (similar to the MG4), currently being tested with MG4 integration.
 
 ## Prerequisites
 
@@ -131,12 +131,82 @@ If you disconnect both, then the BMS ground will no longer be referenced to the 
 
 You will also need to use an isolated 12V power supply (a 2-pin power supply with no earth pin) to power the BMS as well as the Battery Emulator hardware (unless you are using isolated CAN), to ensure that there is no current path between the BMS case and the inverter's ground.
 
-## Additional information
+## Second-generation (2022-?) - Testing in progress
 
-### Second-generation (2022-?) LV pinout (untested)
+You will need:
 
-Here is a list of functions for those pins on the second generation model:
+ - A battery (with the MSD included)
+ - A 12-14V power supply, ideally isolated (2-pin plug), capable of 3A output
+ - HV connector and cable assembly (from scrapper)
+ - LV connector (from scrapper or AliExpress)
+ - Battery Emulator hardware with a CAN FD channel
+## Software configuration
+For this battery type, use the option called "MG4" under the "Battery Protocol" setting. (Not in the master branch yet!)
 
-![32 Pin Molex pins](../images/mg-hs-phev-08.png){ width="433" height="731" }
+## Connections
+
+The MG HS gen 2 PHEV battery has 2 separate HV connectors (Orange), access panel to HV fuses, a Low Voltage signal connector (Black) and the MSD device (same as on MG5, if missing, it can be bridged with a wire).
+
+## HV Connectrs
+Main HV connector (fused internally by 500A fuse, polarity indicated on the picture)
+<img width="504" height="469" alt="image" src="https://github.com/user-attachments/assets/b7bb2a28-59b1-4a04-82a7-911ebcbc5975" />
+
+Aux. HV connector (Output 1 – 40A fused, Output 2 – 60A fused, fuses accessible and are not monitored by BMS)
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/8a724170-008a-4d93-b3f8-9cd1a314b7f0" />
+<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/54bd8454-a772-4250-b546-30e792f80d61" />
+<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/fddca40c-b503-4a9d-a9c4-52924e1c0700" />
+
+## This is the LV connector plug:
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/08a56805-ffd7-4dcf-be5f-ae2b990e4a75" />
+
+Sumitomo part number 6189-8093
+ [aliexpress](https://www.aliexpress.com/item/1005012028788848.html)
+There's a non-wired version too for doing your own crimping but this looks easier to implement.
+
+LV connector wiring details
+
+<img width="470" height="205" alt="image" src="https://github.com/user-attachments/assets/67c60044-1693-4d58-bc51-b0c9fd613aea" />
+
+<img width="558" height="358" alt="image" src="https://github.com/user-attachments/assets/3688be7f-f179-41dd-9cda-f657d6633118" />
+
+### Minimum LV connections 
+required to make the integration work (close contactors)
+
+Pin 1   +12V (linked to pin 13)
+
+Pin 4   Ignition Relay - connect to +12V
+
+Pin 8   GND
+
+Pin 5   Power Train CAN FD - H 
+
+Pin 6   Power Train CAN FD - L
+
+
+The battery needs a 12V-14V supply, and draws 1A continuous with the contactors closed (about 250mA with contactors open), and ~2A briefly when closing the contactors. It also needs a 12V signal to wake it up (via a 1kR resistor, or connected directly) as shown.
+
+
+To reduce potential issues with the insulation measurement, it is preferable to have a 12V supply that is isolated from the grid (eg, powered from a 2-pin double-insulated adapter).
+
+
+!!! tip "TIP"
+    Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
+
+
+The HVIL connections under the MSD are bridged together by the MSD itself. This is required to be able to close contactors.
+For a basic battery test (e.g. when buying one), it is possible to get info (like SoC, HoC, temps, cell voltages, DCTs and other) from the battery without the MSD plugged in, which will prevent accidental contactor closing and energizing the HV connector. 
+
+
+The other HVIL connections on the front panel (on each of the two HV connectors) should be bridged/connected, as the BMS is checking these and will report DCT if missing. The contactors will close once DCT is cleared, but DCT will return shortly as the fault is still present.
+
+## CAN communication
+The battery has (at least) three CAN buses:
+
+**CAN1** is the power train bus - CAN FD, which connects the main powertrain components. The battery outputs its vital statistics (voltages, SoC and temperatures) on this bus, and listens for the messages which control the contactors. 
+
+**CAN2** is power train Extended bus - not required for the integration
+
+**CAN BMS** it connects to CCU (combined charging Unit) - not required for the integration.
 
 Lots of useful information here: [cardiagn](https://cardiagn.com/2022-2024-mg-ehs-hybrid-service-and-repair-manual-incl-wiring/)
