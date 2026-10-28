@@ -44,6 +44,8 @@ Here is a detailed [shopping list](https://docs.google.com/spreadsheets/d/14ghFL
 ## Software configuration
 For this battery type, use the option called **"CMFA platform, 27kWh battery"** under the "Battery Protocol" section.
 
+NOTE: Some batteries are locked and do not send valid allowed charge/discharge power. If you encounter one of these batteries, enable "Use estimated charge limits" checkbox and manually specify allowed charge/discharge power
+
 ![setari](../images/Spring_batt_Config.png)
 
 See [Fronius Gen24 settings](../images/Full_Spring_Conf.jpg)
