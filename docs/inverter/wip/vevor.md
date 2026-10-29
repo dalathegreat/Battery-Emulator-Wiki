@@ -2,7 +2,10 @@
 title: "Vevor"
 ---
 
-This inverter is a cheap and cheerfull chinese built to order for vevor it can be found in various other brands. It has a SmartESS wifi adapter installed, that is well integrated in HomeAssistant. Beware that the could solution does limit datacalls, so you will experience issues if you bombard it.
+!!! warning "Work in progress"
+    This inverter is not entirely supported by Battery-Emulator, there is no dedicated protocol for it in the Settings and it is not confirmed yet which of the existing protocols works with it. This page collects what is known so far, so it may be incomplete or untested. Can you help? See [data needed for a new inverter integration](../../setup/contributing/data_needed_for_new_inverter_integration.md).
+
+This inverter is a cheap and cheerful Chinese built to order for Vevor it can be found in various other brands. It has a SmartESS wifi adapter installed, that is well integrated in Home Assistant. Beware that the could solution does limit data calls, so you will experience issues if you bombard it.
 
 The inverter has a exceptionally low start power rating (somewhere between 60-90v) so ideal for smaller installations.
 
