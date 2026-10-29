@@ -94,9 +94,12 @@ The day starts when Battery Emulator is powered on and booted successfully. Afte
 
 Battery Emulator's [MQTT](../software/mqtt.md#button-command-discovery) implementation subscribes to the `BMSRESET` command topic to trigger a hardware power-cycle of the BMS from a remote system like [Home Assistant](../software/home_assistant.md). 
 
-The `BMSRESET` command (and the auto-discovered "Reset BMS" Home Assistant button) is only acted upon when **Allow remote BMS reset via MQTT** (`REMBMSRESET`) is enabled. If it is disabled, the command is silently ignored. Note that the HA button is published regardless of this setting, so it can appear in Home Assistant but do nothing until the option is enabled.
+The `BMSRESET` command (and the auto-discovered "BMS Power reset" Home Assistant button) is only acted upon when **Allow remote BMS reset via MQTT** (`REMBMSRESET`) is enabled. If it is disabled, the command is silently ignored. Note that the HA button is published regardless of this setting, so it can appear in Home Assistant but do nothing until the option is enabled.
 
 ![image](../../images/periodic-bms-reset-03.png){ width="579" height="32" }
 
-With **Allow remote BMS reset via MQTT** option enabled, the GPIO pin will be toggled ON upon boot. It will be toggled OFF and back ON after the configured time when the command arrives. It doesn't send any battery protocol/CAN message. It performs a **hardware power-cycle of the BMS** by toggling the `BMS_POWER` GPIO pin, using the exact same routine as the built-in feature. 
+With **Allow remote BMS reset via MQTT** option enabled, the GPIO pin will be toggled ON upon boot. It will be toggled OFF and back ON after the configured time when the command arrives. It doesn't send any battery protocol/CAN message. It performs a **hardware power-cycle of the BMS** by toggling the `BMS_POWER` GPIO pin, using the exact same routine as the built-in feature.
+
+!!! note "NOTE"
+    This is not the software **BMS Reset** of the More Battery/Cell Info page. With a Tesla battery, that one has its own [MQTT command and Home Assistant button](../software/mqtt.md#tesla-bms-reset-and-soc-reset), which restarts the BMS controller over CAN and needs no GPIO pin or setting. 
 
