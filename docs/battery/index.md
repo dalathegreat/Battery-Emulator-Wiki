@@ -44,6 +44,7 @@ Be sure to checkout the [installation guidelines](../setup/installation_guidelin
 | Geely<br>[Geometry C](geely_geometry_c.md) | 53/70<br>270 / 442 | ⚠️ Testing ongoing |  |  |  | <sup>3</sup> |
 | Geely<br>[GEA platform (Galaxy, eMAS)](wip/geely_gea_platform_galaxy_emas.md) |  | ⚠️ Work in progress |  |  |  |  |
 | Hyundai<br>[E‐GMP platform](hyundai_e_gmp_platform_58_2_77_4_kwh.md) | 58.2/72.6/77.4/84<br>430 / 806 | ⚠️ Integration ongoing! |  |  | CAN | <sup>4</sup> |
+| Hyundai<br>[Ioniq Electric 28kWh](kia_niro_hyundai_kona.md) | 28<br>288 / 405 | ⚠️ Not confirmed by users yet |  |  | CAN |  |
 | Hyundai<br>[Kona 39/64kWh](kia_niro_hyundai_kona.md) | 39/64<br>230 / 410 | ⭐⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>3,5</sup> |
 | Hyundai<br>[Kona Hybrid](kia_niro_hybrid.md) | 2 | ⚠️ Testing ongoing |  |  |  |  |
 | Hyundai<br>[Santa Fe PHEV](hyundai_santa_fe_phev.md) | 14<br>290 / 400 | ⭐⭐ |  | 2️⃣ | CAN |  |
@@ -85,6 +86,7 @@ Be sure to checkout the [installation guidelines](../setup/installation_guidelin
 | Rivian<br>[R1T](rivian_r1t.md) | 135<br>292 / 448 | ⭐⭐ |  |  | CAN |  |
 | Seres<br>[3 / E3](wip/seres_3.md) | 53.61 | ⚠️ Work in progress |  |  |  |  |
 | Smart<br>[EQ Fortwo / Forfour](wip/smart_eq_fortwo_forfour.md) |  | ⚠️ Work in progress |  |  |  |  |
+| Sono Motors<br>Sion | 54<br>250 / 500 | ⚠️ Not confirmed by users yet |  |  |  |  |
 | Tesla<br>[Model 3 & Y (all sizes)](tesla_model_3_y.md) | All<br>280 / 400 | ⭐ | ⚠️ | 2️⃣ | CAN | <sup>2</sup> |
 | Tesla<br>[Model S & X (2021+)](tesla_model_s_x_2021.md) | All<br>285 / 460 | ⭐ |  | 2️⃣ | CAN | <sup>2</sup> |
 | Tesla<br>[Model S & X (2012-2020)](tesla_model_s_x_2012_2020.md) | All<br>280 / 400 | ⭐ |  |  | CAN |  |
@@ -140,6 +142,10 @@ DIY LV battery:
 [FoxESS HV2600 batteries](foxess_hv2600.md) ✅
 
 [Pylon HV batteries (Dyness Tower)](pylon_hv.md) ✅ 2️⃣
+
+BYD Battery-Box Premium ⚠️ (Not confirmed by users yet)
+
+Samsung SDI LV batteries ⚠️ (Not confirmed by users yet)
 
 [CHAdeMO vehicles](wip/chademo_vehicle.md) ⚠️ (Experimental compatibility)
 
