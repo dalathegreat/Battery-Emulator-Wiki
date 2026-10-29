@@ -18,14 +18,14 @@ To start using MQTT, enable the **Enable MQTT** checkbox under the Integration s
 
 | Setting | Range / default | Meaning |
 | ------- | --------------- | ------- |
-| **MQTT server** | hostname or IP | Broker address (plain TCP; TLS is not implemented) |
-| **MQTT port** | 1–65535, default `1883` | Broker port |
-| **MQTT user** / **MQTT password** | printable ASCII | Credentials; leaving the password field blank keeps the stored one |
-| **MQTT timeout ms** | 1–60000, default `2000` | Network timeout of the underlying esp-mqtt client |
-| **MQTT publish interval (seconds)** | 1–300, default `5` | Main publish cadence (see [Published data](#published-data)) |
-| **Send all cellvoltages via MQTT** | off | Enables the `spec_data*` topics |
+| **Server** | hostname or IP | Broker address (plain TCP; TLS is not implemented) |
+| **Port** | 1–65535, default `1883` | Broker port |
+| **Username** / **Password** | printable ASCII | Credentials; leaving the password field blank keeps the stored one |
+| **Timeout (ms)** | 1–60000, default `2000` | Network timeout of the underlying esp-mqtt client |
+| **Publish interval (s)** | 1–300, default `5` | Main publish cadence (see [Published data](#published-data)) |
+| **Publish cellvoltages** | off | Enables the `spec_data*` topics |
 | **Publish heap metric diagnostics** | off | Adds four heap sensors to `/info` and to autodiscovery |
-| **Allow remote BMS reset via MQTT** | off | Gates the `BMSRESET` command |
+| **Allow remote BMS Power reset** | off | Gates the `BMSRESET` command |
 | **Home Assistant autodiscovery** | off | Publishes retained HA discovery configs |
 | **Autodiscovery topic** | default `homeassistant` | Base topic for discovery messages |
 | **Publish at firmware updates** | off | Publish the discovery configs whenever a firmware update is detected |
@@ -61,7 +61,7 @@ With more than one battery configured, a further topic `.../info_multi` carries 
 
 Two publish cadences are used:
 
-- The **main interval** is the configurable **MQTT publish interval** (default **5 s**) and covers `events` and all `info` topics. On each cycle the order is: `events` → `info` → `info_multi` → `info_2` → `info_3`.
+- The **main interval** is the configurable **Publish interval** (default **5 s**) and covers `events` and all `info` topics. On each cycle the order is: `events` → `info` → `info_multi` → `info_2` → `info_3`.
 - **Cell data** (`spec_data*`) is published on a fixed **60-second** cadence, independent of the main interval. Cell voltages change slowly, and these are by far the largest payloads.
 
 Publishing is skipped entirely while an **OTA update** is in progress, so a firmware upload is not competing with MQTT traffic.
@@ -221,7 +221,7 @@ The reasoning:
 
 **`<hostname>/spec_data`**
 
-Published only when **Send all cellvoltages via MQTT** is enabled, and only on battery implementations that report per-cell voltages. Published every **60 seconds** (see above). Cell voltages are in **volts** as floats; the per-cell balancing status is included in the same message.
+Published only when **Publish cellvoltages** is enabled, and only on battery implementations that report per-cell voltages. Published every **60 seconds** (see above). Cell voltages are in **volts** as floats; the per-cell balancing status is included in the same message.
 
 ```json
 {
@@ -525,7 +525,7 @@ Topic: `<discovery topic>/button/<hostname>/<command>/config`
 
 | Button | Command | Icon | Action |
 | ------ | ------- | ---- | ------ |
-| Reset BMS | `BMSRESET` | `mdi:star-four-points-box-outline` | Triggers the BMS reset feature (only if remote BMS reset is enabled) |
+| BMS Power reset | `BMSRESET` | `mdi:star-four-points-box-outline` | Triggers the BMS Power reset feature (only if **Allow remote BMS Power reset** is enabled) |
 | Pause charge/discharge | `PAUSE` | `mdi:battery-minus-outline` | Triggers the pause feature |
 | Resume charge/discharge | `RESUME` | `mdi:battery-sync-outline` | Resumes from the paused state |
 | Reboot Emulator | `RESTART` | `mdi:restart` | Restarts the Battery-Emulator (diagnostic entity) |

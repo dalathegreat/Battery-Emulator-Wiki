@@ -29,14 +29,14 @@ Once you're done with the install and the [onboarding steps](https://www.home-as
 
 ## 2. Give Home Assistant a fixed IP address
 
-**Strongly recommended.** The Battery Emulator stores the broker address as a fixed string in its settings, and does not rediscover the broker on its own. If Home Assistant gets a new address from your DHCP server (after a reboot, a lease expiry, or a router restart), the emulator keeps knocking on the old address, all Home Assistant entities go unavailable, and the only fix is to edit the **MQTT server** field on the emulator by hand and rebooting it.
+**Strongly recommended.** The Battery Emulator stores the broker address as a fixed string in its settings, and does not rediscover the broker on its own. If Home Assistant gets a new address from your DHCP server (after a reboot, a lease expiry, or a router restart), the emulator keeps knocking on the old address, all Home Assistant entities go unavailable, and the only fix is to edit the **Server** field on the emulator by hand and rebooting it.
 
 Two ways to do this, either is fine:
 
 - **DHCP reservation in your router** - reserve an address for the Home Assistant machine's MAC address. Works with every installation type and keeps all address management in one place. This is the simpler option for most users who use the same network device as router and access point.
 - **Static IP in Home Assistant** - on Home Assistant OS, go to **Settings** → **System** → **Network**, expand **IPv4** and switch from DHCP to Static. Just make sure you choose an address which falls outside your router's DHCP range.
 
-Use that address in the emulator's **MQTT server** field in step 6. A plain IP address is preferred over a hostname: `homeassistant.local` and other mDNS names may not reliably be resolvable if your local network runs into other issues.
+Use that address in the emulator's **Server** field in step 6. A plain IP address is preferred over a hostname: `homeassistant.local` and other mDNS names may not reliably be resolvable if your local network runs into other issues.
 
 !!! warning "WARNING"
     Make sure your LAN is **not** on `192.168.4.x`. That range conflicts with the Battery Emulator's built-in Wi-Fi access point, and MQTT will not work whenever you'd decice to turn it on.
@@ -94,9 +94,9 @@ Open the emulator's Webserver, go to **Settings**, and tick **Enable MQTT** unde
 
 | Battery Emulator setting | Value |
 | ------------------------ | ----- |
-| **MQTT server** | The fixed IP address of Home Assistant from step 2 |
-| **MQTT port** | `1883` |
-| **MQTT user** / **MQTT password** | The login created in step 4 |
+| **Server** | The fixed IP address of Home Assistant from step 2 |
+| **Port** | `1883` |
+| **Username** / **Password** | The login created in step 4 |
 | **Home Assistant autodiscovery** | Enabled |
 | **Autodiscovery topic** | `homeassistant` (must match the prefix used in step 5) |
 | **Publish at firmware updates** | Tick it, so the discovery configs are updated in case of changes coming in firmware updates |

@@ -45,7 +45,7 @@ The Positive (+) wire is near the data port, and the Negative (-) wire is near t
 
 ### Low Voltage connection (control and data)
 
-The example diagrams below show how to connect a [LilyGo T‐CAN485](../hardware/lilygo_t_can485.md) or a [Waveshare ESP32-S3-RS485-CAN](../hardware/waveshare_esp32_s3_rs485_can.md) to a Nissan LEAF AZE0/ZE1 pack (with a Yazaki 36-pin connector), using automatic contactor control via solid-state relays, also featuring [periodic BMS reset](../setup/hardware/periodic_bms_reset.md) and an optional [equipment stop](../setup/software/equipment_stop.md) circuit.
+The example diagrams below show how to connect a [LilyGo T‐CAN485](../hardware/lilygo_t_can485.md) or a [Waveshare ESP32-S3-RS485-CAN](../hardware/waveshare_esp32_s3_rs485_can.md) to a Nissan LEAF AZE0/ZE1 pack (with a Yazaki 36-pin connector), using automatic contactor control via solid-state relays, also featuring [periodic BMS Power reset](../setup/hardware/periodic_bms_reset.md) and an optional [equipment stop](../setup/software/equipment_stop.md) circuit.
 
 #### LilyGo T-CAN485
 
@@ -91,7 +91,7 @@ Before the contactors turn on, both the inverter and the battery need to give an
 The BMS in the Nissan LEAF packs was not originally designed to operate 24/7 under all conditions. Over time, the SOC% will become less accurate, and under certain conditions, even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)). The **BAT** pin can be under +12V continuously; the **IGN** pin should be the one turned off from time to time (as the wiring diagram above). 
 
 See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. 
-Set **Periodic BMS reset off time** to **120 seconds** for Nissan LEAF packs. Based on empirical observations, the 30kWh (2013–2017, AZE0) pack benefits most from the **24h** period, together with the **Skip reset for one period if balancing** option enabled. Changing **Balancing strategy** to **Conservative** may improve balancing on packs that are in good shape (small cell voltage delta over the entire SOC range you use).
+Set **Periodic BMS Power reset OFF time** to **120 seconds** for Nissan LEAF packs. Based on empirical observations, the 30kWh (2013–2017, AZE0) pack benefits most from the **24h** period, together with the **Skip reset for one period if balancing** option enabled. Changing **Balancing strategy** to **Conservative** may improve balancing on packs that are in good shape (small cell voltage delta over the entire SOC range you use).
 
 !!! tip "TIP"
     The LEAF BMS uses *passive* balancing: each of the 96 cells has a small resistor (shunt) that can be switched on to dissipate a small amount of energy as heat, slowly bringing fuller cells down to the level of the lowest cells.
@@ -254,10 +254,10 @@ To perform a proper SOH% reset, [that sticks between reboots](https://github.com
 !!! note "NOTE"
     This can only be done remotely if only **IGN** is cut by BMS Reset and the battery is the only device on the CAN bus.
     
-- Set **Periodic BMS reset off time** to 180 s
+- Set **Periodic BMS Power reset OFF time** to 180 s
 - Open contactors
 - Reset battery degradation via the More Battery Info page
-- At **Perform a BMS reset now** press **Start** and wait for the 180s to pass (watch Battery Emulator main page)
+- At **Perform a BMS Power reset now** press **Start** and wait for the 180s to pass (watch Battery Emulator main page)
 - Close contactors
 - Reboot Battery Emulator
 
@@ -310,7 +310,7 @@ You can test a Leaf pack on-site before you buy it by making a portable cable wi
 
 If you have a spare, compatible ESP32 board with a CAN connector, you can use the Battery Emulator **with no inverter configured** to start communicating with the pack; open **Cell monitor** or **More Battery Info** to check health and lifetime usage. 
 
-Worth making a rig with SSRs and enabling **Contactor control via GPIO** / **Periodic BMS reset** settings, so the contactors would close to verify with a multimeter that the pack properly outputs the voltage.
+Worth making a rig with SSRs and enabling **Contactor control via GPIO** / **Periodic BMS Power reset** settings, so the contactors would close to verify with a multimeter that the pack properly outputs the voltage.
 
 You can even connect [LeafSpy](https://leafspy.com) the same way if you get an OBD2 socket hooked to the Yazaki connector:
 

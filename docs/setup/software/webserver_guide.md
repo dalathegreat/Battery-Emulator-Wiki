@@ -300,7 +300,7 @@ The log shows a line when tapering engages. Both options can be used on their ow
 | **Contactor control via GPIO**, **Precharge time ms**, **Use Normally Closed logic** | See [Contactor control via GPIO](contactor_control_via_gpio_pins.md#software-setup) |
 | **2ⁿᵈ / 3ʳᵈ battery contactor control via GPIO** | See [Double battery](battery_2x.md#gpio-controlled-contactors) |
 | **PWM contactor control**, **PWM Frequency Hz**, **PWM Hold** | See [PWM control](contactor_control_via_gpio_pins.md#pwm-control-for-lower-power-draw) |
-| **Periodic BMS reset**, **Every**, **Defer reset if SOC less than 15%**, **Skip reset for one period if balancing** | See [Periodic BMS reset](../hardware/periodic_bms_reset.md#timed-trigger) |
+| **Periodic BMS Power reset**, **Every**, **Defer reset if SOC less than 15%**, **Skip reset for one period if balancing** | See [Periodic BMS Power reset](../hardware/periodic_bms_reset.md#timed-trigger) |
 | **External precharge via HIA4V1** and its options | See [External precharge](../hardware/high_voltage_source.md#software-configuration) |
 | **Measure CPU temperature**, **CPU temperature calibration offset (°C)** | Shows the CPU temperature on the main page. The reading of the internal sensor can be corrected with an offset, measured with a separate thermometer. |
 | **Status LED pattern** | How the [status LED](../../hardware/index.md#status-led) animates: **Classic** pulses steadily, **Energy Flow** pulses differently while charging, discharging or idle, **Heartbeat** beats faster on a warning or an error. The LilyGo T-2CAN also offers GRB versions, for LEDs with a different colour order. |
@@ -312,7 +312,7 @@ The log shows a line when tapering engages. Both options can be used on their ow
 |---|---|
 | **Start ESPNow at boot**, **ESPNow receiver MACs** | See [ESPNow](espnow.md#enabling-it) |
 | **Enable MQTT** and its options | See [MQTT](mqtt.md#enabling-mqtt) |
-| **Allow remote BMS reset via MQTT** | See [Periodic BMS reset](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt) |
+| **Allow remote BMS Power reset** | See [Periodic BMS Power reset](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt) |
 | **Home Assistant autodiscovery** and its options | See [Home Assistant Discovery](mqtt.md#home-assistant-discovery) |
 
 ### Debug options
@@ -397,9 +397,9 @@ Disabled by default. This option can be enabled to manually limit the min/max vo
 
 ![image](../../images/webserver-guide-07.png)
 
-#### Periodic BMS reset
+#### Periodic BMS Power reset
 
-**Periodic BMS reset off time** (1-600 s, default 30) sets how long the BMS stays powered off during a reset, and **Perform a BMS reset now** starts a reset on demand. Both are shown when **Periodic BMS reset** or **Allow remote BMS reset via MQTT** is enabled. See the dedicated page for [Periodic BMS reset](../hardware/periodic_bms_reset.md#on-demand-trigger).
+**Periodic BMS Power reset OFF time** (1-600 s, default 30) sets how long the BMS stays powered off during a reset, and **Perform a BMS Power reset now** starts a reset on demand. Both are shown when **Periodic BMS Power reset** or **Allow remote BMS Power reset** is enabled. See the dedicated page for [Periodic BMS Power reset](../hardware/periodic_bms_reset.md#on-demand-trigger).
 
 #### Undercharged emergency recovery mode
 
