@@ -347,6 +347,9 @@ There are no cell arrays, balancing, insulation or battery-specific keys here. T
 !!! note "0xA5 is retired"
     `0xA5 EVENT_DATA` carried the payload as an unsigned byte. The payload is signed and wider than a byte, so under the compatibility rules below the key was **retired rather than redefined**, and `0xAA EVENT_DATA_I16` allocated in its place. A receiver written against the old key will simply stop seeing event data; it will not misread it.
 
+!!! warning "Identify events by name"
+    `EVENT_ID` is the event's position in the firmware's list of events. It shifts whenever a firmware version adds or removes events before it, so the same ID can mean a different event after an update. Match events on `EVENT_NAME` instead, which only changes when an event is renamed, and treat `EVENT_ID` as valid within one firmware version only.
+
 ### Enumerated values
 
 | Enum | Values |
