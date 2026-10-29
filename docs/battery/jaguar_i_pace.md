@@ -52,7 +52,7 @@ We made two videos about the reverse engineering:
 ### Wiring diagram (low voltage)
 To use the battery, you need to connect 6 wires in total ( 2x 12V signals, 2x GND signals, and CAN-H/L )
 
-![image](../images/jaguar-i-pace-01.png)
+![image](../images/jaguar-i-pace-02.jpg)
 
 There also seems to be HVIL pins (Pin 7-15, but not confirmed yet if these are required)
 
