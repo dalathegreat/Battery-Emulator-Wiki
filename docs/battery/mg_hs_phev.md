@@ -142,6 +142,7 @@ You will need:
  - Battery Emulator hardware with a CAN FD channel
 ## Software configuration
 For this battery type, use the option called "MG4" under the "Battery Protocol" setting. (Not in the master branch yet!)
+(https://github.com/dalathegreat/Battery-Emulator/pull/1875)
 
 ## Connections
 
