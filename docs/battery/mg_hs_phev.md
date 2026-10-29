@@ -149,16 +149,16 @@ The MG HS gen 2 PHEV battery has 2 separate HV connectors (Orange), access panel
 
 ## HV Connectrs
 Main HV connector (fused internally by 500A fuse, polarity indicated on the picture)
-<img width="504" height="469" alt="image" src="https://github.com/user-attachments/assets/b7bb2a28-59b1-4a04-82a7-911ebcbc5975" />
+![image](../images/mg-hs-phev-09.png)
 
 Aux. HV connector (Output 1 – 40A fused, Output 2 – 60A fused, fuses accessible and are not monitored by BMS)
-<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/8a724170-008a-4d93-b3f8-9cd1a314b7f0" />
-<img width="400" height="400" alt="image" src="https://github.com/user-attachments/assets/54bd8454-a772-4250-b546-30e792f80d61" />
-<img width="400" height="200" alt="image" src="https://github.com/user-attachments/assets/fddca40c-b503-4a9d-a9c4-52924e1c0700" />
+![image](../images/mg-hs-phev-10.png)
+![image](../images/mg-hs-phev-11.png)
+![image](../images/mg-hs-phev-12.png)
 
 ## This is the LV connector plug:
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/08a56805-ffd7-4dcf-be5f-ae2b990e4a75" />
+![image](../images/mg-hs-phev-13.png)
 
 Sumitomo part number 6189-8093
  [aliexpress](https://www.aliexpress.com/item/1005012028788848.html)
@@ -166,9 +166,9 @@ There's a non-wired version too for doing your own crimping but this looks easie
 
 LV connector wiring details
 
-<img width="470" height="205" alt="image" src="https://github.com/user-attachments/assets/67c60044-1693-4d58-bc51-b0c9fd613aea" />
+![image](../images/mg-hs-phev-14.png)
 
-<img width="558" height="358" alt="image" src="https://github.com/user-attachments/assets/3688be7f-f179-41dd-9cda-f657d6633118" />
+![image](../images/mg-hs-phev-15.png)
 
 ### Minimum LV connections 
 required to make the integration work (close contactors)
