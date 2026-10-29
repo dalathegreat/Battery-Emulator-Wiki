@@ -1,5 +1,5 @@
 ---
-title: "Periodic BMS reset"
+title: "Periodic BMS Power reset"
 ---
 
 ## Why is Periodic Reset needed?
@@ -22,13 +22,13 @@ Check out the pinout table for each board, to see which pin is defined for **BMS
 
 The **BMS power** pin is only configured as an output and driven **HIGH** at boot if **at least one** of the following is true:
 
-- *Periodic BMS reset every 24h* is enabled, **or**
-- *Remote BMS reset via MQTT allowed* is enabled, **or**
+- *Periodic BMS Power reset* is enabled, **or**
+- *Allow remote BMS Power reset* is enabled, **or**
 - the board forces it on (only the Stark CMR board does this).
 
 If none of these apply, the initialization block is skipped entirely — the pin is never set as an output and therefore stays low/floating. This is why the pin is not driven high unless one of these options is enabled, and this is why when you don't use this feature, you will have to power your BMS directly.
 
-Both options behave identically with respect to the pin: enabling **Periodic BMS reset** or **Remote BMS reset via MQTT allowed** alone is enough to drive the pin HIGH at boot, exactly like the periodic option. 
+Both options behave identically with respect to the pin: enabling **Periodic BMS Power reset** or **Allow remote BMS Power reset** alone is enough to drive the pin HIGH at boot, exactly like the periodic option. 
 
 The configured pin will remain **HIGH** during regular reboots and OTA in case BMS Reset is configured as the following:
 
@@ -47,17 +47,17 @@ When a reset runs (via MQTT, the HA button, or the 24h timer), the pin goes **LO
 1. **Pause** the emulator so it stops requesting charge/discharge.
 2. **Wait for safe current** — proceeds when current is 0 A, or below 1.0 A after 5 s. If current is still flowing after 10 s the reset **aborts** (to avoid damaging contactors under load) and raises `EVENT_PERIODIC_BMS_RESET_FAILURE`. Exception: if the emulator drives the contactors directly, it cuts power immediately since it can hold the contactors closed.
 3. **Cut BMS power** — drive `BMS_POWER` LOW.
-4. **Hold** for the *Periodic BMS reset off time* (`BMSRESETDUR`, default **30 s**, configurable in the webserver).
+4. **Hold** for the *Periodic BMS Power reset OFF time* (`BMSRESETDUR`, default **30 s**, configurable in the webserver).
 5. **Power back on** — drive `BMS_POWER` HIGH, then wait a fixed **3 s** warmup.
 6. **Unpause**. Done.
 
-By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer (you can set values between 1 and 600 seconds). Some batteries are OK with as short resets as 2 seconds, some others require several minutes to save their settings. Here is the **Periodic BMS reset off time** setting:
+By default the system will power off for 30 seconds during the daily reboots. This time can be tweaked in the Webserver settings if you want the reset to be shorter or longer (you can set values between 1 and 600 seconds). Some batteries are OK with as short resets as 2 seconds, some others require several minutes to save their settings. Here is the **Periodic BMS Power reset OFF time** setting:
 
 ![image](../../images/periodic-bms-reset-04.png)
 
 ## Taking it into use
 
-There are two ways you can implement Periodic BMS reset:
+There are two ways you can implement Periodic BMS Power reset:
 
 - triggered locally on Battery Emulator
 - triggered from an external system through MQTT
@@ -66,17 +66,17 @@ Local triggering has the benefit of operating completely standalone, without any
 
 ### On-demand trigger
 
-Right under **Periodic BMS reset off time** setting you can find a **Perform a BMS reset now** button to immediately start the procedure on demand. Pressing **Start** will ask for a confirmation:
+Right under **Periodic BMS Power reset OFF time** setting you can find a **Perform a BMS Power reset now** button to immediately start the procedure on demand. Pressing **Start** will ask for a confirmation:
 
 ![image](../../images/periodic-bms-reset-05.png)
 
-You will get a notification that "BMS reset started." If you try to trigger it again before it has finished, it will warn you that's already in progress.
+You will get a notification that "BMS Power reset started." If you try to trigger it again before it has finished, it will warn you that's already in progress.
 
 ### Timed trigger
 
 ![image](../../images/periodic-bms-reset-02.png){ width="721" height="170" }
 
-Enable the **Periodic BMS reset** option. This will reveal 3 options:
+Enable the **Periodic BMS Power reset** option. This will reveal 3 options:
 
 - Do the reset once per 24h or once per 48h
 - Defer reset if SOC (either real or scaled) is less than 15%
@@ -86,7 +86,7 @@ Deferring in case of low SOC is useful for cases when reset causes the calculate
 
 Skipping one period if balancing (of either 24h or 48h) can be useful for battery packs which report balancing state correctly. Resetting the BMS while balancing is in progress could be counter-productive on packs which spent a lot of time measuring the cells before balancing. This option gives a chance to the balancing process to actually finish, and only perform the reset a cycle later. We don't wait forever to finish balancing, as it's very unlikely that this process would take multiple days. If it still reports as balancing after a second period has passed, it will be reset nevertheless.
 
-With **Periodic BMS reset** option enabled, the GPIO pin will be toggled ON upon boot, and when the time comes to reset the BMS, the pin will be turned OFF for the number of seconds configured (default 30).
+With **Periodic BMS Power reset** option enabled, the GPIO pin will be toggled ON upon boot, and when the time comes to reset the BMS, the pin will be turned OFF for the number of seconds configured (default 30).
 
 The day starts when Battery Emulator is powered on and booted successfully. After 24 hours of uptime, the reset will be triggered.
 
@@ -94,9 +94,9 @@ The day starts when Battery Emulator is powered on and booted successfully. Afte
 
 Battery Emulator's [MQTT](../software/mqtt.md#button-command-discovery) implementation subscribes to the `BMSRESET` command topic to trigger a hardware power-cycle of the BMS from a remote system like [Home Assistant](../software/home_assistant.md). 
 
-The `BMSRESET` command (and the auto-discovered "Reset BMS" Home Assistant button) is only acted upon when **Allow remote BMS reset via MQTT** (`REMBMSRESET`) is enabled. If it is disabled, the command is silently ignored. Note that the HA button is published regardless of this setting, so it can appear in Home Assistant but do nothing until the option is enabled.
+The `BMSRESET` command (and the auto-discovered "BMS Power reset" Home Assistant button) is only acted upon when **Allow remote BMS Power reset** (`REMBMSRESET`) is enabled. If it is disabled, the command is silently ignored. Note that the HA button is published regardless of this setting, so it can appear in Home Assistant but do nothing until the option is enabled.
 
 ![image](../../images/periodic-bms-reset-03.png){ width="579" height="32" }
 
-With **Allow remote BMS reset via MQTT** option enabled, the GPIO pin will be toggled ON upon boot. It will be toggled OFF and back ON after the configured time when the command arrives. It doesn't send any battery protocol/CAN message. It performs a **hardware power-cycle of the BMS** by toggling the `BMS_POWER` GPIO pin, using the exact same routine as the built-in feature. 
+With **Allow remote BMS Power reset** option enabled, the GPIO pin will be toggled ON upon boot. It will be toggled OFF and back ON after the configured time when the command arrives. It doesn't send any battery protocol/CAN message. It performs a **hardware power-cycle of the BMS** by toggling the `BMS_POWER` GPIO pin, using the exact same routine as the built-in feature. 
 
