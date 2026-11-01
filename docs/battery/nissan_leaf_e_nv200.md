@@ -150,7 +150,7 @@ If your battery is missing any wires/disconnect switches, here are the OEM part 
 | 4ch SSR on DIN rail. Make sure you get the DC-CN version! | [AliExpress](https://aliexpress.com/item/1005007825084745.html) |
 
 !!! tip "TIP"
-    All e-NV200 packs are technically AZE0 / ZE1, so 2013+ parts fit them!
+    All e-NV200 packs are technically similar to AZE0 so 2013+ parts fit them!
 
 A [**spreadsheet**](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsraOJc9BExlsMp5ClRRITRSQVLfkA/edit?gid=0#gid=0) with parts and links for a Nissan 40kwh battery and 8kW inverter (30A fuses).
 
@@ -300,7 +300,9 @@ The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh b
 
 ![Leaf 24/30/40kWh pack](../images/nissan-leaf-e-nv200-01.png)
 
-The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged differently from the Leaf packs (active cooling and service disconnect at the front instead of the middle).
+The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged differently from the LEAF packs (active cooling and service disconnect at the front instead of the middle).
+
+Battery Emulator will detect an e-NV200 pack as LEAF AZE0.
 
 ![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
 
