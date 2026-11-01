@@ -22,7 +22,9 @@ Due to this, it is recommended to only install batteries in the following places
 * Underground
 * Shipping container
 
-Regardless of placement, great care must be taken to avoid water getting into the battery. While most EV batteries are splash proof, they cannot cope with large amounts of water/rain. If you are installing a battery outside, construct a roof to keep the battery dry.
+**Water intrusion:** Regardless of placement, great care must be taken to avoid water getting into the battery. While most EV batteries are splash proof, they cannot cope with large amounts of water/rain. If you are installing a battery outside, construct a roof to keep the battery dry.
+
+**Ventilation and pressure relief:** In the rare event of a fire or thermal runaway, a battery can vent gas with considerable force. Whatever location you choose, the enclosure must never be airtight. Provide a permanent opening or pressure-relief path directed away from people and buildings. For sheds, containers and garages this typically means adequate vents at high level (and low-level air inlet), or a blow-out panel. Do not seal a battery inside a closed box.
 
 !!! tip "TIP"
     Batteries can often be tilted, and installed on the side of a wall to save space. To this date we have not encountered any packs that would not function in a wallmounted position!
