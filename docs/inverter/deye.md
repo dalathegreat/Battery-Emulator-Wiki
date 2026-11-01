@@ -6,8 +6,9 @@ title: "Deye"
 
 * Deye SUN 5-25K-SG01HP3-EU-AM2 ✅ 
 * Deye SUN 29.9-50K SG01HP3-EU-BM3 ✅
+* Deye SUN 29.9-50K SG02HP3-EU-AM3 ✅
 * Deye SUN 8/10/12/15K-SG01HP2-US-AM2 ✅️ 
-* Deye SUn 80K-SG02HP3 ✅️ 
+* Deye SUN 80K-SG02HP3 ✅️ 
 
 Most likely way more Deye inverters work, since they are all BYD / Pylon compatible!
 
