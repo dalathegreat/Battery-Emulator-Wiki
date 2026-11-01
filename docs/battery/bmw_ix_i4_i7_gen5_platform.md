@@ -146,6 +146,13 @@ Some packs (e.g. SE26, SE27) have a free-standing A332*1B connector, of which so
 
 ![image](../images/bmw-ix-i4-i7-gen5-platform-02.png)
 
+#### Example tapping into internal pins
+Example of "Custom passthrough cabling"
+
+Purple is Precharge
+
+![image](../images/bmw-ix-i4-i7-gen5-platform-08.png)
+
 ## Note on Diagnostic trouble codes (DTC)
 You can read active DTCs via the More Battery Info page. Note that some code will always be active, plus if your battery has been crashed in the past there will be more codes.
 

@@ -128,6 +128,8 @@ A certain discrepancy between total charges and the AC + QC counts is normal —
 ??? quote "Automatic current offset"
     Some Leaf battery packs report a small current even when none should flow; in some cases, it reaches a few amperes. This shows up as phantom charging or discharging, and skews the power and SOC figures passed to the inverter. With Automatic current offset correction, enabled by default under Battery config, Battery-Emulator measures this error itself. Whenever a pack's contactors are open, any current the BMS reports can only be sensor offset. After a short settling time, those readings are averaged over the last 10 seconds and subtracted from that pack's current thereafter. The offset is measured at every boot and again each time the contactors open. It is kept unchanged while they are closed, including during a periodic BMS reset. A second or third pack that stays disconnected, for example because its voltage differs too much from the other packs, keeps updating its offset. Battery Emulator can only tell that contactors are open when it drives them itself, so this needs **Contactor control via GPIO** enabled, plus **2ⁿᵈ / 3ʳᵈ battery contactor control via GPIO** in [double](../setup/software/battery_2x.md) or [triple](../setup/software/battery_3x.md) battery setups. Each pack is measured separately, using its own contactors. The value found for each pack is shown as **Automatic current offset** at the bottom of the Status panel on the More Battery Info page. "Unknown" means the pack has not yet been measured, for example, because its contactors are not controlled by Battery-Emulator. The setting takes effect after a reboot. Put simply, to recalibrate, just reboot Battery Emulator.
 
+When the BMS limits the pack's output power, the [log](../setup/software/webserver_guide.md#log) names the reason each time it changes, for example `Battery output power limit reason: 3, high temperature`. The reasons are 1 low cell voltage, 2 fault or other, 3 high temperature (hottest sensor at or above 51°C), 4 low temperature (coldest sensor below -10°C), and 0 when the limit is lifted. ZE1 (2018+) packs show the number only, as their codes are not decoded yet.
+
 !!! tip "TIP"
     The LEAF battery is fully charged at 92-96% SOC. Use the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) function to get a nicer-looking 100% curve! However, Nissan specifically advises against habitually charging to 100%, which adds wear; thus, for a longer lifetime, you should set **SOC max percentage** to **80** long term (during the summer, when the pack would charge to 100% quickly and then stay full almost all day).
 
@@ -148,7 +150,7 @@ If your battery is missing any wires/disconnect switches, here are the OEM part 
 | 4ch SSR on DIN rail. Make sure you get the DC-CN version! | [AliExpress](https://aliexpress.com/item/1005007825084745.html) |
 
 !!! tip "TIP"
-    All e-NV200 packs are technically AZE0 / ZE1, so 2013+ parts fit them!
+    All e-NV200 packs are technically similar to AZE0 so 2013+ parts fit them!
 
 A [**spreadsheet**](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsraOJc9BExlsMp5ClRRITRSQVLfkA/edit?gid=0#gid=0) with parts and links for a Nissan 40kwh battery and 8kW inverter (30A fuses).
 
@@ -298,7 +300,9 @@ The Leaf battery packs (24/30/40kWh) are all the same physical size. The 62kWh b
 
 ![Leaf 24/30/40kWh pack](../images/nissan-leaf-e-nv200-01.png)
 
-The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged differently from the Leaf packs (active cooling and service disconnect at the front instead of the middle).
+The e-NV200 battery pack is 1578 (L) x 1102 (W) x 266 (H) mm and is packaged differently from the LEAF packs (active cooling and service disconnect at the front instead of the middle).
+
+Battery Emulator will detect an e-NV200 pack as LEAF AZE0.
 
 ![e-NV200 24/40kWh battery pack](../images/nissan-leaf-e-nv200-02.jpg)
 

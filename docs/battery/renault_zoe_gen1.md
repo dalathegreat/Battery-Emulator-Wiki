@@ -64,7 +64,7 @@ Two other fuses are also inside the pack. One fuse is under the contactor cover,
 ## Wiring diagrams
 
 !!! info "IMPORTANT"
-    This battery has no negative contactor. You control only the precharge and the positive contactor.
+    This battery has no negative contactor. You control only the precharge and the positive contactor. The control of these are NEGATIVE switched, which is very rare for automotive contactors. This means you supply GND to get the pre/pos-contactor to operate.
 
 Example of contactor control via SSR relays, connected to a LilyGo T-CAN485 board:
 

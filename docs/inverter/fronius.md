@@ -52,9 +52,9 @@ You will need a **technician** login to the inverter to make changes to the setu
 !!! note "NOTE"
     You will also need a Fronius Smartmeter so that the system can measure consumption and generation. 
 
-Setup for battery operation is done via the **Solar.start** app or **Device Configuration > Components > Add Component > Battery**. Select **BYD HVS/M (2020-25)**:
+Setup for battery operation is done via the **Solar.start** app or **Device Configuration > Components > Add Component > Battery**. Select **BYD HVS/HVM**:
 
-![FroniusSetup](../images/fronius-03.png)
+![FroniusSetup](../images/fronius-18.png)
 
 After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter ([Waveshare ESP32‐S3‐RS485‐CAN](../hardware/waveshare_esp32_s3_rs485_can.md) and LEAF battery example):
 
@@ -68,14 +68,22 @@ When the low voltage communication is handled, also connect the high voltage sid
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO or CAN will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. 
 
 ## Which protocol to use
-For this inverter type, use the option called **BYD 11kWh HVM battery over Modbus** under the **Inverter Protocol** setting. Also select the Inverter interface as **Modbus**.
 
-![image](../images/fronius-12.png){ width="490" height="65" }
+For this inverter type, use the option called **BYD HVS/HVM over Modbus** under the **Inverter Protocol** setting. Also select the Inverter interface as **Modbus**:
+
+![settings](../images/fronius-19.png)
 
 !!! note "NOTE"
     If you intend to use the [Periodic Reset](../setup/hardware/periodic_bms_reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
 
+### Other settings
+
+**Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
+
+**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive).
+
 ### Notes on Scaled SOC + Fronius min/max SOC
+
 In the Fronius settings it is possible to configure "SoC Minimum" and "SoC Maximum" values. If you are using the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to always leave in Fronius the "SoC Maximum" to 100%, and adjust the "SOC max percentage" setting in Battery Emulator instead, to be able to take advantage of the "Charge power tapering based on SOC" which avoids power oscillations.
 
 Avoid double-rescaling:
@@ -83,7 +91,7 @@ Avoid double-rescaling:
 ![image](../images/fronius-04.png)
 
 !!! important "IMPORTANT"
-    Fronius's **BYD HVS/M (2020-25)** implementation limits SOC minimum to 5% to avoid battery undercharge when sitting idle empty. It does a trickle charge/discharge cycle during an *Energy saving mode* procedure. Thus, if you enable **Rescale SOC** in Battery Emulator, keep in mind of this requirement at the low end.
+    Fronius's **BYD HVS/HVM** implementation limits SOC minimum to 5% to avoid battery undercharge when sitting idle empty. It does a trickle charge/discharge cycle during an *Energy saving mode* procedure. Thus, if you enable **Rescale SOC** in Battery Emulator, keep in mind of this requirement at the low end.
 
 
 ![scaled](../images/fronius-05.png)
@@ -176,14 +184,6 @@ A quick solution is to enable the "450V maxvoltage cap" setting. This fakes it s
 
 !!! note "Notes on reported capacity"
     Fronius inverters are designed to work with maximum 3x22kWh BYD batteries, and the protocol has a max value of 65535 Wh (unsigned 16bit value) for reporting Wh towards inverter. That means we have to restrict reported Wh number towards the inverter, for example when using a 75kWh Tesla battery, it will show up as max 60kWh in Fronius portal. This is just a REPORTED value, you can still use the full capacity of the battery. For instance, a 400kWh battery will be displayed as 60kWh, but the inverter will still be able to use the full 400kWh.
-
-## Other settings
-
-![kép](../images/fronius-17.png)
-
-**Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
-
-**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive).
 
 ## Off-Grid/Backup Configuration
 

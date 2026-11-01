@@ -150,10 +150,10 @@ A known working solution to restart the inverter is:
 
 Choose the appropriate option as **Inverter Protocol** setting:
 
-- Sunny Boy Storage: **SMA SBS compatible BYD Battery-Box HVS**
-- Sunny Boy Smart Energy: **SMA compatible BYD Battery-Box HVS**
-- Sunny Tripower Smart Energy: **SMA compatible BYD Battery-Box HVS**
-- Sunny Island: **SMA Low Voltage (48V) protocol via CAN**
+- Sunny Boy Storage: **BYD HVS over SMA-SBS CAN**
+- Sunny Boy Smart Energy: **BYD HVS over SMA CAN**
+- Sunny Tripower Smart Energy: **BYD HVS over SMA CAN**
+- Sunny Island: **SMA LV (48V) via CAN**
 
 ## Inverter setup
 

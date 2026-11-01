@@ -26,7 +26,7 @@ The Ferroamp inverter works via CAN. A board with a single CAN channel, such as 
 [PD10008_ESS-Power-Case-Installation-Manual_A02b.pdf](https://github.com/user-attachments/files/16394301/PD10008_ESS-Power-Case-Installation-Manual_A02b.pdf)
 
 ## Which protocol to use
-For this inverter type, use the option called "Ferroamp Pylon battery over CAN Bus" under the "Inverter Protocol" setting.
+For this inverter type, use the option called "Ferroamp Pylon over CAN" under the "Inverter Protocol" setting.
 
 !!! info "IMPORTANT"
     The Pylon protocol is very versatile. By default we emulate a 4x96V Force H2 battery. Not all inverters like this setup, so please adjust the configuration if needed. If 0 is left as default values, the below options will be used.

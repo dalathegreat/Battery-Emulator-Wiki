@@ -52,7 +52,7 @@ The Deye inverter works via CAN. A board with a single CAN channel, such as the 
     Grounding is extremely important. Make sure the battery case is connected to protective earth, and the shield part of the twisted pair CAN is connected to PE also! Failing to do this will result in CAN errors.
 
 ## Which protocol to use
-For this inverter type, the recommended option is the "BYD Battery-Box Premium HVS over CAN Bus" m which is found under the "Inverter Protocol" setting. Also be sure to enable the "Deye avoid over/undercharge fix:" checkbox, otherwise the Deye inverter can over/undercharge the battery.
+For this inverter type, the recommended option is the "BYD HVS/HVM over CAN" m which is found under the "Inverter Protocol" setting. Also be sure to enable the "Deye avoid over/undercharge fix:" checkbox, otherwise the Deye inverter can over/undercharge the battery.
 
 ![image](../images/deye-07.png)
 

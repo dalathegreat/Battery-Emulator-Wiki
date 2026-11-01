@@ -17,7 +17,7 @@ The Hoymiles inverter works via CAN.
 
 ## Which protocol to use
 
-For this inverter type, use the "Pylon HV" option which is found under the "Inverter Protocol" setting. Also required to enable the "30k offset", and the "Invert byteorder" option. The inverter **will not** see correct data unless you enable these options. 
+For this inverter type, use the "Pylontech HV over CAN" option which is found under the "Inverter Protocol" setting. Also required to enable the "30k offset", and the "Invert byteorder" option. The inverter **will not** see correct data unless you enable these options. 
 
 Hoymiles's battery compatibility list claims compatibility with BYD HVS too, but the protocol doesn't seem to match BE implementation. Pick Pylontech brand as the battery type in the S-Miles Installer app.
 
