@@ -36,7 +36,7 @@ Here is the best way to ensure that there are no paths for spikes in CAN voltage
 
 ## Control signal (12V)
 
-HV battery packs from EVs usually require an external 12V input at least to power the BMS. Many packs despite having built-in HV contactors, they are controlled externally with 12V signals. Since contactors themselves contain coils which draw rather high currents compared to what a microcontroller can provide, external relays/SSRs/Mosfets are used to drive these.
+HV battery packs from EVs usually require an external 12V input at least to power the BMS. Many packs despite having built-in HV contactors, they are controlled externally with 12V signals. Since contactors themselves contain coils which draw rather high currents compared to what a microcontroller can provide, external relays/SSRs/Mosfets are used to drive these. For example, this is the wiring principle of a Nissan LEAF battery pack: 
 
 ![nissan_leaf_priniciple](../../images/wiring-tips-lv-01.png)
 
