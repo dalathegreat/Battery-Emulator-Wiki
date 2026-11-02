@@ -157,14 +157,14 @@ If your battery is missing any wires/disconnect switches, here are the OEM part 
 
 |  Product |  Purchase Link |
 | :--------: | :---------: |
-| Service disconnect switch (2011-2012) 2971C13NA0B |  [Ebay](https://www.ebay.com/sch/i.html?_nkw=fuse+2971C13NA0B)   |
-| Service disconnect switch (2013-2023) 297C1-3NF0A |  [Ebay](https://www.ebay.com/sch/i.html?_nkw=nissan+297C1-3NF0A&_sacat=0)   |
-| 22pin battery connector (2011-2012) Yazaki 7283-8750-30 |  [AliExpress](https://www.aliexpress.com/item/1005003344398420.html)   |
-| 36pin battery connector (2013-2023) Yazaki 7287-1065-30 |  [AliExpress](https://www.aliexpress.com/item/1005004180391674.html)   |
-| Precrimped 22/36 connectors | [AliExpress](https://www.aliexpress.com/item/1005005815234149.html)   |
 | High voltage connector 80kW 297A6-5SH1A |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A65SH1A&_sacat=0)   |
 | High voltage connector 80kW 297A22581R ZOE, also works |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A22581R&_sacat=0)   |
 | High voltage 80kW cable 297A21061R from ZOE41 (both ends have the good connector type) |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A21061R&_sacat=0)   |
+| 36pin battery connector (2013-2023) Yazaki 7287-1065-30 |  [AliExpress](https://www.aliexpress.com/item/1005004180391674.html)   |
+| 22pin battery connector (2011-2012) Yazaki 7283-8750-30 |  [AliExpress](https://www.aliexpress.com/item/1005003344398420.html)   |
+| Precrimped 22/36 connectors | [AliExpress](https://www.aliexpress.com/item/1005005815234149.html)   |
+| Service disconnect switch (2013-2023) 297C1-3NF0A |  [Ebay](https://www.ebay.com/sch/i.html?_nkw=nissan+297C1-3NF0A&_sacat=0)   |
+| Service disconnect switch (2011-2012) 2971C13NA0B |  [Ebay](https://www.ebay.com/sch/i.html?_nkw=fuse+2971C13NA0B)   |
 | 4ch SSR on DIN rail. Make sure you get the DC-CN version! | [AliExpress](https://aliexpress.com/item/1005007825084745.html) |
 
 !!! tip "TIP"
@@ -175,21 +175,19 @@ A [**spreadsheet**](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsraOJc
 !!! tip "TIP"
     The current sensor in the LEAF battery is not very precise, especially at low currents. For good measurements, especially in [double](../setup/software/battery_2x.md)/[triple](../setup/software/battery_3x.md) setups, or for accurate [charge power tapering](../setup/software/webserver_guide.md#inverter-config), you can use an external current sensor on the DC wire heading toward the inverter: [QNHCK2-16 DC clamp](../setup/hardware/shunt_qnhck2_16.md).
 
+### Alternative HV connectors 
+
+The original part number for the Nissan Leaf battery is 297A65SH1A, but a cheaper alternative for the battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as the Leaf battery.
+
+The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/dam/tti-europe/manufacturers/aptiv/doc/aptiv-hv-rcs-800-automotive-connectors-datasheet-specifications.pdf).
+
 ### Incompatible cables
 
-When searching on eBay, you may come across other cables in the Zoe that use a connector that is similar in appearance but is much smaller:
+When searching on eBay, you may come across other cables in the Zoe that use a connector that is similar in appearance but is much smaller. These will *not* connect to the Leaf battery terminals:
 
 * Zoe HV Wiring Harness - PN: 240419193R
 * Zoe HV Engine Bay Wiring Harness - PN: 240413370R
 * 297A6 3NA0A does not fit; you have to cut a part of it to use the pins.
-
-These will *not* connect to the Leaf battery terminals.
-
-### Alternative HV connectors 
-
-The original part number for the Nissan Leaf battery is 297A65SH1A, but a cheaper alternative for the battery HV connector can be found in scrapyards. Renault Zoe or Kangoo Batteries use the same connector as the Leaf battery. 297A22581R is the part number for both cars.
-
-The connector used is an [Aptiv HV RCS 800](https://www.ttieurope.com/content/dam/tti-europe/manufacturers/aptiv/doc/aptiv-hv-rcs-800-automotive-connectors-datasheet-specifications.pdf).
 
 ## Control wiring specifics
 
