@@ -125,7 +125,7 @@ A BMS reset discards the progress and restarts the whole process, waiting includ
 
 The **More Battery Info** button at the bottom of the main page opens a window with additional information about the pack. A few notes about the most important ones:
 
-- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs). Should not go below 10 V!
+- **+12V BAT level**: the voltage level of the 12V source that you use to power up the pack (at **BAT** and **IGN** inputs). Should not go below 11 V!
 - **Insulation**: [insulation resistance](../setup/hardware/insulation_monitoring.md) measured by the BMS. When contactors are closed, this value averages around 100kΩ (may depend on the inverter). When contactors are open, this shows much higher values. Both are normal like this. This value should not be considered; it's the inverter that determines whether there's an insulation problem.
 - **Capacity as new**: is the estimated capacity in kWh when the pack was new out of the factory.
 - **Actual capacity**: is the degraded capacity in Ah (and multiplied by the pack's nominal voltage in kWh) corresponding to the BMS's health knowledge about the cells.
