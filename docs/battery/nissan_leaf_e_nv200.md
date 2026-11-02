@@ -41,13 +41,27 @@ The Positive (+) wire is near the data port, and the Negative (-) wire is near t
 
 ![HighVoltageWiring](../images/nissan-leaf-e-nv200-03.png)
 
-![423205153-0e4498c8-f8b8-41d3-bd6f-fa9e5d0640d2](../images/nissan-leaf-e-nv200-04.jpg)
+![hv-cable](../images/nissan-leaf-e-nv200-04.jpg)
 ![Zoe_harness](../images/nissan-leaf-e-nv200-05.jpg)
 
 !!! success "TIP"
     Check out our [High Voltage wiring](../setup/hardware/wiring_tips_hv.md) page with examples on how to make the connections safely.
 
 ### Low Voltage connection (control and data)
+
+This battery requires **Contactor control via GPIO** option enabled on the Settings page to [turn on/off the contactors/precharge resistor](../setup/software/contactor_control_via_gpio_pins.md). 
+
+![image](../images/nissan-leaf-e-nv200-22.png)
+
+!!! tip "TIP"
+    To keep things simple and durable, it is recommended to use Solid-State Relays (SSRs). These can be activated directly with 3V from the Emulator GPIOs and control large DC currents. Follow the schematic above to complete the circuit. If you use **fast-switching** SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM:
+
+    ![image](../images/nissan-leaf-e-nv200-23.png)
+
+Before the contactors turn on, both the inverter and the battery need to give an OK signal: 
+
+- Emulator allows contactor closing: ✓
+- Inverter allows contactor closing: ✓
 
 The example diagrams below show how to connect a [LilyGo T‐CAN485](../hardware/lilygo_t_can485.md) or a [Waveshare ESP32-S3-RS485-CAN](../hardware/waveshare_esp32_s3_rs485_can.md) to a Nissan LEAF AZE0/ZE1 pack (with a Yazaki 36-pin connector), using automatic contactor control via solid-state relays, also featuring [periodic BMS reset](../setup/hardware/periodic_bms_reset.md) and an optional [equipment stop](../setup/software/equipment_stop.md) circuit.
 
@@ -61,44 +75,46 @@ The example diagrams below show how to connect a [LilyGo T‐CAN485](../hardware
 
 The schematics can be found [**here**](../images/Fronius_Nissan_leaf.drawio) and can be edited via [draw.io](https://app.diagrams.net).
 
-Nissan's own documentation uses pin numbering on the 36-pin low-voltage connector, which does not match the molded connector on AZE0/ZE1. The connections on this diagram have been renumbered so that they do. Scroll further down for the pinout of the 22-pin connector for ZE0.
+#### Connector pinouts
+
+Nissan's own documentation uses pin numbering on the 36-pin low-voltage connector, which does not match the molded connector on AZE0/ZE1. The connections on the diagrams have been renumbered so that they do. 
+
+| PIN name | Yazaki 36 pin | Yazaki 22 pin |
+| :------ | :------: | :------: |
+| BAT | 1 | 1 |
+| IGN | 2 | 2 |
+| EV CAN L | 4 | 4 |
+| EV CAN H | 5 | 5 |
+| PRE CHARGE V | 7 | 6 |
+| PRE CHARGE GND | 8 | 7 |
+| GND | 10 | 9 |
+| GND | 11 | 10 |
+| GND | 12 | 11 |
+| RELAY POS V | 15 | 12 |
+| RELAY POS GND | 16 | 13 |
+| RELAY NEG V | 18 | 15 |
+| RELAY NEG GND | 19 | 16 |
+| CHG-IGN | 29 | 19 |
+
+Yazaki **36 pin** for AZE0, ZE1 (2013-2023)
+Yazaki **22 pin** for ZE0 (2011-2012)
+
+![Yazaki_pinouts](../images/nissan-leaf-e-nv200-11.png)
+
+#### LV ratings
+
+Voltage levels: between 10.5-16V measured at the pin against GND.
 
 | PIN name | Rating | Function |
 | :-------- | :---------: | :---------: |
 | BAT | 200mA (dark: 1mA) | BMS power supply |
 | IGN | 0.5mA | starts/stops the BMS |
-| MAIN RLY P (+) | 7W | Positive contactor |
-| MAIN RLY N (-) | 7W | Negative contactor |
-| PRE CHARGE RLY | 7W | Pre-charge relay |
-
-Voltage levels: between 10.5-16V measured at the pin against GND.
+| RELAY POS | 7W | Positive contactor |
+| RELAY NEG | 7W | Negative contactor |
+| PRE CHARGE | 7W | Pre-charge relay |
 
 !!! success "TIP"
     Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
-
-#### Automatic control 🤖
-
-Battery Emulator hardware can act on its own and [turn on/off the contactors/precharge resistor](../setup/software/contactor_control_via_gpio_pins.md) when the battery says it is OK, and turn off when it is not OK to proceed. This is done via the 3.3V digital output header that is located on the supported boards.
-
-To enable the feature in the software, enable the **Contactor control via GPIO** option on the Settings page.
-
-![image](../images/nissan-leaf-e-nv200-22.png){ width="505" height="42" }
-
-To keep things simple and durable, it is recommended to use Solid-State Relays (SSRs). These can be activated directly with 3V from the Emulator GPIOs and control large DC currents. Follow the schematic above to complete the circuit. 
-
-The pin numbers in the picture are used on the LilyGo T-CAN485; check the pinout table for each board to see which pin is designated as the contactor output.
-
-!!! tip "TIP"
-    If you use **fast-switching** SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM:
-
-![image](../images/nissan-leaf-e-nv200-23.png)
-
-Before the contactors turn on, both the inverter and the battery need to give an OK ✅ signal. This can be verified via the web interface:
-
-![bild](../images/nissan-leaf-e-nv200-08.png)
-
-!!! warning "WARNING"
-    New hardware requirement for Fronius :warning: Battery voltage is reported to Fronius inverters only after contactors are engaged. **This means that legacy installs using manual A/B/C switches to turn on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO will work. This is a new, stricter safety requirement to get the Fronius inverter to start up faster and with fewer errors. The bonus is that GPIO-controlled contactors are inherently safer than manual A/B/C triggering.
 
 ## Periodic restart of BMS
 
@@ -201,10 +217,6 @@ BTW, it's not strictly necessary for a cable to be automotive-grade if it has a 
     Ensure the pins go all the way to the bottom and the pin is seated properly with a "tick". If they are inserted incorrectly (not far enough, "wonky") then you won't have a proper connection.
     
 Of course, if you install the battery indoors, you can omit the sealing rings and have a wider range of wire choices. You can use a 3D-printed [cover](../setup/hardware/list_of_3d_printable_parts.md#lv-connector-cover-and-fixation-ring) to protect the connector from falling debris.
-
-Pinout for the Yazaki 22-pin connector, to be used with ZE0 packs:
-
-![Yazaki_22pin](../images/nissan-leaf-e-nv200-11.png)
 
 Here is a nice example of a completed 22-pin 2011-2012 cable:
 
