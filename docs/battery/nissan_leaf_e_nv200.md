@@ -19,6 +19,10 @@ For this battery type, use the option named **Nissan LEAF battery** under the **
 
 ## Wiring diagrams 🔌
 
+Connectors on an AZE0, ZE1 pack:
+
+![connectors_aze0](../images/nissan-leaf-e-nv200-21.png)
+
 The following pictures show an example of hooking up a LEAF battery to a [Fronius Gen24 inverter](../inverter/fronius.md). The same diagram can be useful for planning other inverter combinations.
 
 [Waveshare ESP32-S3-RS485-CAN](../hardware/waveshare_esp32_s3_rs485_can.md) is the new recommended hardware.
@@ -58,6 +62,16 @@ The example diagrams below show how to connect a [LilyGo T‐CAN485](../hardware
 The schematics can be found [**here**](../images/Fronius_Nissan_leaf.drawio) and can be edited via [draw.io](https://app.diagrams.net).
 
 Nissan's own documentation uses pin numbering on the 36-pin low-voltage connector, which does not match the molded connector on AZE0/ZE1. The connections on this diagram have been renumbered so that they do. Scroll further down for the pinout of the 22-pin connector for ZE0.
+
+| PIN name | Rating | Function |
+| :-------- | :---------: | :---------: |
+| BAT | 200mA (dark: 1mA) | BMS power supply |
+| IGN | 0.5mA | starts/stops the BMS |
+| MAIN RLY P (+) | 7W | Positive contactor |
+| MAIN RLY N (-) | 7W | Negative contactor |
+| PRE CHARGE RLY | 7W | Pre-charge relay |
+
+Voltage levels: between 10.5-16V measured at the pin against GND.
 
 !!! success "TIP"
     Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
