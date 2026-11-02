@@ -102,6 +102,7 @@ The idea is that these switches will be installed in a location where first resp
 ### Protective earth
 The battery case **needs** to be connected to protective earth (PE). This is required for a few technical and safety reasons;
 
+- HV Shield. If you are using the OEM HV cables, they contain an outer shield layer. This needs to have same potential as PE, and will automatically become PE once you ground the battery casing.
 - Signal integrity. Having the battery case at earth potential avoids ground loops through the communication shield wires.
 - CAN transceiver longevity. Failure to attach PE to the battery case can damage CAN bus systems from ground loops through shield wires
 - Insulation testing. Your inverter will periodically test the safety of the high-voltage system by measuring the insulation resistance between HV+/- and PE. If the battery case is left free-floating and not connected to PE, any HV leaks might go unnoticed. 
