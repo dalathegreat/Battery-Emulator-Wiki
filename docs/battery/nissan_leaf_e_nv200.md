@@ -51,18 +51,6 @@ The Positive (+) wire is near the data port, and the Negative (-) wire is near t
 
 This battery requires **Contactor control via GPIO** option enabled on the Settings page to [turn on/off the contactors/precharge resistor](../setup/software/contactor_control_via_gpio_pins.md). 
 
-![image](../images/nissan-leaf-e-nv200-22.png)
-
-!!! tip "TIP"
-    To keep things simple and durable, it is recommended to use Solid-State Relays (SSRs). These can be activated directly with 3V from the Emulator GPIOs and control large DC currents. Follow the schematic above to complete the circuit. If you use **fast-switching** SSR relays with the Battery-Emulator hardware, you can also enable PWM mode for reduced power consumption. Here are parameters confirmed working with the LEAF contactors+PWM:
-
-    ![image](../images/nissan-leaf-e-nv200-23.png)
-
-Before the contactors turn on, both the inverter and the battery need to give an OK signal: 
-
-- Emulator allows contactor closing: ✓
-- Inverter allows contactor closing: ✓
-
 The example diagrams below show how to connect a [LilyGo T‐CAN485](../hardware/lilygo_t_can485.md) or a [Waveshare ESP32-S3-RS485-CAN](../hardware/waveshare_esp32_s3_rs485_can.md) to a Nissan LEAF AZE0/ZE1 pack (with a Yazaki 36-pin connector), using automatic contactor control via solid-state relays, also featuring [periodic BMS reset](../setup/hardware/periodic_bms_reset.md) and an optional [equipment stop](../setup/software/equipment_stop.md) circuit.
 
 #### LilyGo T-CAN485
@@ -96,8 +84,8 @@ Nissan's own documentation uses pin numbering on the 36-pin low-voltage connecto
 | RELAY NEG GND | 19 | 16 |
 | CHG-IGN | 29 | 19 |
 
-Yazaki **36 pin** for AZE0, ZE1 (2013-2023)
-Yazaki **22 pin** for ZE0 (2011-2012)
+- Yazaki **36 pin** for AZE0, ZE1 (2013-2023), e-NV200
+- Yazaki **22 pin** for ZE0 (2011-2012)
 
 ![Yazaki_pinouts](../images/nissan-leaf-e-nv200-11.png)
 
