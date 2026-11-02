@@ -19,6 +19,10 @@ For this battery type, use the option named **Nissan LEAF battery** under the **
 
 ## Wiring diagrams 🔌
 
+Connectors on an AZE0, ZE1 pack:
+
+<img width="1385" height="768" alt="connectors_aze0" src="https://github.com/user-attachments/assets/a18b380d-e3c7-4c21-bf46-fa87b9419096" />
+
 The following pictures show an example of hooking up a LEAF battery to a [Fronius Gen24 inverter](../inverter/fronius.md). The same diagram can be useful for planning other inverter combinations.
 
 [Waveshare ESP32-S3-RS485-CAN](../hardware/waveshare_esp32_s3_rs485_can.md) is the new recommended hardware.
