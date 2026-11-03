@@ -5,7 +5,7 @@ title: "Webserver guide"
 Battery Emulator has a built-in web interface. With it you can check the battery status, change the configuration, update the software over-the-air, check events, monitor the cell voltages and much more. It makes commissioning a new system easy, and it is the preferred way to monitor a newly set up battery.
 
 !!! info "IMPORTANT"
-    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted. Without password protection the board [refuses requests from outside the local network](#without-password-protection), but treat that only as a safety net.
+    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a private VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted. Without password protection the board [refuses requests from outside the local network](#without-password-protection), but treat that only as a safety net.
 
 ## Connecting to the web interface
 
@@ -240,7 +240,7 @@ This refuses a port forward whether it is reached by your public IP address or b
 - A reverse proxy that passes the original public name on to the board.
 
 !!! warning "WARNING"
-    This is a safety net against exposing the board by accident, not access control. A proxy, tunnel or NAT that rewrites both the address and the name looks local. Turning password protection on lifts the restriction entirely: from then on the login is the only thing between the internet and the board, and it travels over plain HTTP. For remote access, use a VPN as described at the top of this page.
+    This is a safety net against exposing the board by accident, not access control. A proxy, tunnel or NAT that rewrites both the address and the name looks local. Turning password protection on lifts the restriction entirely: from then on the login is the only thing between the internet and the board, and it travels over plain HTTP. For remote access this is still not safe enough, use a VPN as described at the top of this page.
 
 ### Battery config
 
