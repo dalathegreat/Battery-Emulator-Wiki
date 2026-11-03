@@ -5,7 +5,7 @@ title: "Webserver guide"
 Battery Emulator has a built-in web interface. With it you can check the battery status, change the configuration, update the software over-the-air, check events, monitor the cell voltages and much more. It makes commissioning a new system easy, and it is the preferred way to monitor a newly set up battery.
 
 !!! info "IMPORTANT"
-    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted. Without password protection the board [refuses requests from outside the local network](#local-network-only), but treat that only as a safety net.
+    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted. Without password protection the board [refuses requests from outside the local network](#without-password-protection), but treat that only as a safety net.
 
 ## Connecting to the web interface
 
@@ -222,7 +222,7 @@ The login uses HTTP Basic authentication. This protection level is not particula
 !!! note "NOTE"
     If you forget the password, a [factory reset with the BOOT button](boot_button_functions.md#factory-reset) clears it, together with all other settings.
 
-#### Without password protection { #local-network-only }
+#### Without password protection
 
 While password protection is off, the web interface only answers devices on the local network, and only when they reach it by a local name or address. Anything else gets a page saying so (HTTP 403), and the [general log](#debug-options) shows a warning, at most once a minute, with the address and the name that were refused.
 
