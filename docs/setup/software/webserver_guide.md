@@ -5,7 +5,7 @@ title: "Webserver guide"
 Battery Emulator has a built-in web interface. With it you can check the battery status, change the configuration, update the software over-the-air, check events, monitor the cell voltages and much more. It makes commissioning a new system easy, and it is the preferred way to monitor a newly set up battery.
 
 !!! info "IMPORTANT"
-    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted.
+    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a private VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted. Without password protection the board [refuses requests from outside the local network](#without-password-protection), but treat that only as a safety net.
 
 ## Connecting to the web interface
 
@@ -221,6 +221,26 @@ The login uses HTTP Basic authentication. This protection level is not particula
 
 !!! note "NOTE"
     If you forget the password, a [factory reset with the BOOT button](boot_button_functions.md#factory-reset) clears it, together with all other settings.
+
+#### Without password protection
+
+While password protection is off, the web interface only answers devices on the local network, and only when they reach it by a local name or address. Anything else gets a page saying so (HTTP 403), and the [general log](#debug-options) shows a warning, at most once a minute, with the address and the name that were refused.
+
+A request counts as local when both of these hold:
+
+| Checked | Accepted |
+|---|---|
+| The address of the connecting device | A private address (`10.x.x.x`, `172.16.x.x`-`172.31.x.x`, `192.168.x.x`), a link-local address (`169.254.x.x`) or an address in the board's own subnet. Never the router (gateway) itself, and never a carrier-grade NAT address (`100.64.x.x`-`100.127.x.x`). |
+| The name or address in the browser's address bar | The board's own IP address, on the home network or on its access point; its hostname, alone or followed by any domain (`battery-emulator-a1b2`, `battery-emulator-a1b2.local`, `battery-emulator-a1b2.fritz.box`); any name without a dot; or a name ending in `.local`, `.lan`, `.home`, `.home.arpa`, `.internal` or `.localdomain`. |
+
+This refuses a port forward whether it is reached by your public IP address or by a dynamic DNS name, also on routers that hand forwarded connections over with their own address. It refuses a few setups inside the home network too:
+
+- Opening the board through your public address or dynamic DNS name from inside the network. Use its local IP address or hostname instead.
+- A local DNS name under a real domain that does not start with the board's hostname, for example `solar.example.com`. Use the IP address or the hostname, or turn password protection on.
+- A reverse proxy that passes the original public name on to the board.
+
+!!! warning "WARNING"
+    This is a safety net against exposing the board by accident, not access control. A proxy, tunnel or NAT that rewrites both the address and the name looks local. Turning password protection on lifts the restriction entirely: from then on the login is the only thing between the internet and the board, and it travels over plain HTTP. For remote access this is still not safe enough, use a VPN as described at the top of this page.
 
 ### Battery config
 
