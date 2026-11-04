@@ -30,9 +30,22 @@ The inverter's BMS cable ends in an RJ45 plug at the battery. Only two of its co
 | 7 | RS485 A+ |
 | 8 | RS485 B− |
 
-Count the pins with the clip away from you and the contacts up, 1 to 8 from left to right. The cable has no ground core. Connect pins 7 and 8 to Battery-Emulator's RS485 A and B. Leave the board's 120 ohm termination off, because the bus is already terminated.
+Count the pins with the clip away from you and the contacts up, 1 to 8 from left to right. The cable has no ground core. Connect pins 7 and 8 to Battery-Emulator's RS485 A and B.
 
-The bus runs at 9600 baud, 8N1.
+The bus runs at 9600 baud, 8N1. At that speed over a few metres, the RS485 link doesn't need termination, so leave the board's RS485 120 ohm termination off. Turn the CAN termination on, because Battery-Emulator is one end of the CAN bus to the battery. On the Waveshare ESP32-S3-RS485-CAN, the H1 (CAN) and H2 (RS485) headers inside the case set these. Pins 1 and 2 bridged turn the 120 ohm on, and pins 2 and 3 turn it off.
+
+## Settings
+
+Battery-Emulator sends the inverter the lower of the battery's own limits and its settings:
+
+- "Max charge current" and "Max discharge current" cap the limits sent in holding registers 26 and 27, which the inverter obeys. Battery-Emulator's default is 30 A for both. A Gen 3 also caps the charge at 60 A and the discharge at 75 A itself.
+- With "Manual charge voltage limits" on, Battery-Emulator reports the battery full when the pack reaches the target charge voltage, and empty when it falls to the target discharge voltage. Each stays set until the pack voltage moves 2 V back. Set both values before you turn it on. The defaults of 450 V and 300 V are for high-voltage batteries, and with them a 48 V pack always reads as empty. For a 16-cell LFP pack, 56.8 V (3.55 V a cell) and 48.0 V suit.
+
+You don't need either of the two charge-shaping options:
+
+- The protocol always tapers the charge limit by the highest cell voltage, as a GivEnergy battery does. The limit falls from full at 3.45 V to 3 A at 3.55 V. It holds 3 A until the highest cell falls below 3.40 V, and charging stops at 3.60 V. The settings don't change this.
+- "Charge power tapering based on SOC" adds a second taper, by state of charge, from the start percentage down to the float power at 100%. If you turn it on, the lower of the two tapers applies.
+- "Ramp up charge limits gradually" raises a limit over about 10 seconds instead of at once. A limit still drops at once.
 
 ## What Battery-Emulator sends
 
