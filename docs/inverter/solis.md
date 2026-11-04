@@ -33,7 +33,7 @@ The Solis inverter works via CAN. A board with a single CAN channel, such as the
 --8<-- "snippets/grounding_termination.md"
 
 ## Which protocol to use
-For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting.
+For this inverter type, use the option called "BYD HVS/HVM over CAN" under the "Inverter Protocol" setting.
 
 ![image](../images/afore-01.png){ width="484" height="68" }
 

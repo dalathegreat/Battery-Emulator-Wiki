@@ -222,6 +222,7 @@ Can Logs can be found here: [google](https://drive.google.com/drive/folders/1S-N
 ### Troubleshooting tips
 
 - Try feeding the battery from separate 12V supply than your BE device. A 12V lead-acid battery is fine for troubleshooting.
+- Try adding ferrite core in the HV line to filter out inverter noise. You can loop it multiple times through.
 
 ### Double battery operation :battery: :battery: 
 ECMP integration is compatible with running two packs in parallel

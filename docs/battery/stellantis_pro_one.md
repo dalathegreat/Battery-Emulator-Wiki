@@ -4,6 +4,17 @@ title: "Stellantis Pro One"
 
 **110 kWh · 90S · MCA Battery Platform**
 
+## 🚐 Compatible vehicles
+
+The following vehicle batteries are compatible with the Stellantis Pro One / MCA 110 kWh battery platform:
+
+- Fiat E-Ducato 110 kWh
+- Ram ProMaster 110 kWh
+- Toyota Proace Max 110 kWh
+- Opel Movano 110 kWh
+- Citroën Jumper 110 kWh
+- Peugeot Boxer 110 kWh
+
 ## 🔵 Battery specifications
 
 | Specification | Value |
@@ -26,17 +37,6 @@ title: "Stellantis Pro One"
 | 270 V (low state of charge) | 50 A | **13.5 kW** |
 
 These figures represent the theoretical maximum DC power available at the specified battery voltages. Actual AC output power will be lower due to conversion losses and may be further limited by the inverter.
-
-## 🚐 Compatible vehicles
-
-The following vehicles are compatible with the Stellantis Pro One / MCA 110 kWh battery platform:
-
-- Fiat E-Ducato 110 kWh
-- Ram ProMaster 110 kWh
-- Toyota Proace Max 110 kWh
-- Opel Movano 110 kWh
-- Citroën Jumper 110 kWh
-- Peugeot Boxer 110 kWh
 
 ## ⚡ High-voltage (HV) connector
 

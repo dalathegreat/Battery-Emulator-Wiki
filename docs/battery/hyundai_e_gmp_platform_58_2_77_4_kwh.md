@@ -83,11 +83,14 @@ For this battery type, use the option called "Kia/Hyundai EGMP platform" under t
 The 800V battery architecture uses CAN-FD, so incase you plan on integrating this battery, you will need to get the [CAN-FD chip add-on](../setup/can_related/can_fd_add_on_mcp2518fd.md) , or even easier, get the Stark CMR hardware.
 
 ## Note on contactors
-The contactors are normally controlled by the BMS itself, but we have not been successful in emulating the vehicle properly yet, so the contactors might open unexpecedly. If that happens on your battery, you can switch to GPIO contactor control, and let the Battery-Emulator control the contactors instead (requires wiring changes)
+The EGMP driver can request contactor opening and closing. When opening is requested, it stops sending the fixed CAN-FD template messages. No explicit BMS open command has been identified, so opening relies on the BMS watchdog timing out; it may not happen immediately.
+
+Before sending the template messages needed for closing, the driver checks that contactor feedback is known and fresh, the inverter allows closing, the system is not in a fault state, and a complete set of cell voltages is fresh and within the configured limits (strictly above 2950 mV and below 4220 mV per cell). Supported cell counts are 144, 180, and 192. If feedback reports open while closing is allowed, the driver queues one BMS soft reset attempt. A manual open request remains latched until a close request is made.
+
+Contactor control has been tested, but the cell-voltage interlock has not yet been validated on hardware. GPIO contactor control may be used as an alternative if it is appropriate for your installation; this requires wiring changes.
 
 ## Wiring diagram
 See [KIA EV6 Battery](kia_ev6.md)
 
 ### More information about battery and it's internals
 [batterydesign](https://www.batterydesign.net/2022-kia-ev6/)
-

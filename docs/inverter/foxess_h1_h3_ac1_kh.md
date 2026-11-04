@@ -25,29 +25,29 @@ This can be solved in a few ways:
 ## Compatible FoxESS inverters
 There are three different protocols available that are compatible with various FoxESS inverters.
 
-1. **FoxESS compatible HV2600/ECS4100**
-2. **SolaX Triple Power LFP over CAN bus**
-3. **FoxESS EP Series battery**
+1. **FoxESS HV2600/ECS4100 over CAN**
+2. **SolaX Triple Power LFP over CAN**
+3. **FoxESS EP over CAN**
 
 Follow the notes below to see which protocol should be used with your invertetr
 
 * FoxESS H1
-   * Use **FoxESS compatible HV2600/ECS4100** primarily.
-   * Can also use **SolaX Triple Power LFP over CAN bus** protocol, but some values will be wrong.
-   * The **FoxESS EP Series battery** protocol is also expected to be compatible. H1 manager firmware was used during development to help decode the EP protocol, but H1 compatibility has not yet been confirmed on real hardware.
+   * Use **FoxESS HV2600/ECS4100 over CAN** primarily.
+   * Can also use **SolaX Triple Power LFP over CAN** protocol, but some values will be wrong.
+   * The **FoxESS EP over CAN** protocol is also expected to be compatible. H1 manager firmware was used during development to help decode the EP protocol, but H1 compatibility has not yet been confirmed on real hardware.
 * FoxESS H3
-   * Uses **FoxESS compatible HV2600/ECS4100** protocol
+   * Uses **FoxESS HV2600/ECS4100 over CAN** protocol
 * FoxESS AC1
-   * Uses **SolaX Triple Power LFP over CAN bus** protocol
+   * Uses **SolaX Triple Power LFP over CAN** protocol
 * FoxESS KH
-   * Works with both **SolaX Triple Power LFP over CAN bus** and **FoxESS compatible HV2600/ECS4100** protocols
-   * Also works with the new **FoxESS EP Series battery** option (Confirmed with KH9)
+   * Works with both **SolaX Triple Power LFP over CAN** and **FoxESS HV2600/ECS4100 over CAN** protocols
+   * Also works with the new **FoxESS EP over CAN** option (Confirmed with KH9)
 * FoxESS KP
-   * Uses **FoxESS compatible HV2600/ECS4100** protocol
+   * Uses **FoxESS HV2600/ECS4100 over CAN** protocol
      
 ## FoxESS EP-Series battery protocol
 
-The **FoxESS EP Series battery** protocol emulates the FoxESS EP-Series battery CAN protocol and provides the additional battery information supported by compatible FoxESS inverters.
+The **FoxESS EP over CAN** protocol emulates the FoxESS EP-Series battery CAN protocol and provides the additional battery information supported by compatible FoxESS inverters.
 
 On a confirmed KH9 installation it enables the FoxESS Battery Details page to show:
 

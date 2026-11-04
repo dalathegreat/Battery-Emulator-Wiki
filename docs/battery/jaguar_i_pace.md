@@ -2,13 +2,16 @@
 title: "Jaguar I‐PACE"
 ---
 
-### WIP
+### Jaguar I‐PACE battery Wiki
 
 This battery is currently being reverse engineered by [@obbardc](https://github.com/obbardc) and [Cory Mac - ØY Electrical](https://www.youtube.com/@corymac) (along with lots of help from [@dalathegreat](https://github.com/dalathegreat) and other community members).
 
-### Current state
+### Battery specifications
+90kWh battery, Model years 2018–2024
 
-The battery has the internal contactor coils forcibly controlled by the Battery-Emulator, using the `Contactor control via GPIO` setting. This is because the
+### Note on Contactor Control
+
+The battery has the internal contactor coils forcibly controlled by the Battery-Emulator, using the `Contactor control via GPIO` setting. This is because the CAN control of contactors are not operating yet.
 
 We need to verify if the cells are being properly balanced by the iPace BMS with the contactors forcibly engaged.
 
@@ -22,7 +25,6 @@ We made two videos about the reverse engineering:
 
  - [openinverter](https://openinverter.org/forum/viewtopic.php?t=5124) - Connecting to standalone BECM including pinouts, UDS PIDs, UDS error codes etc. (by @obbardc)
  - [openinverter](https://openinverter.org/forum/viewtopic.php?t=4532) - BMS
-
  - [Car PIDs spreadsheet (incl. BECM)](https://docs.google.com/spreadsheets/d/1wNMtpPqMAejNeOZGsPCcgau8HODROzceFcUSfk2lVz8/edit?gid=445693275#gid=445693275)
 
 #### TODO
@@ -48,8 +50,13 @@ We made two videos about the reverse engineering:
 ### Pictures
 
 ### Wiring diagram (low voltage)
+To use the battery, you need to connect 6 wires in total ( 2x 12V signals, 2x GND signals, and CAN-H/L )
 
-- For now see [connector pinout spreadsheet](https://docs.google.com/spreadsheets/d/17EmBsm7eqVYdQGEEauHqlMVK45hghRZNUVGEhLQdNIg/edit?usp=sharing)
+![image](../images/jaguar-i-pace-02.jpg)
+
+There also seems to be HVIL pins (Pin 7-15, but not confirmed yet if these are required)
+
+- [Based on connector pinout spreadsheet](https://docs.google.com/spreadsheets/d/17EmBsm7eqVYdQGEEauHqlMVK45hghRZNUVGEhLQdNIg/edit?usp=sharing)
 
 ### High voltage wiring
 

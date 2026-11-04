@@ -8,10 +8,10 @@ DC wire sizing is a very important part of planning your bat10 mm²build. Most i
 ### Wire gauge (cross-sectional area)
 
 !!! note "NOTE"
-    Since multiple people have assumed 4-way connecting blocks are 2x2, resulting in a short circuit, please double-check continuity for all components before installing!
+    Since multiple people have assumed that 4-way connecting blocks are 2x2, which can result in a short circuit, please double-check continuity for all components before installing!
 
 * When selecting the hardware (wires, fuses, switches), make sure they are rated for the DC voltages in your system. Hardware designed for solar often works well with EV batteries. Do note that if you are using a 600V battery, you need to buy hardware rated for 1000VDC; 500VDC certification is not sufficient.
-* Also keep in mind that longer DC cabling will cause larger voltage drops. Try to keep the DC wiring run as short as possible. 20-30 meters is acceptable, but if you go longer distances (~80 m?), you will need a much larger-gauge wire to avoid power losses. For instance, 10-25 mm² might be required when going longer. Use a voltage drop cabling calculator for your country to determine the correct cable size for a specific distance. To get a picture of how much loss you can accumulate over various lengths of Cu and Al cabling, check out these calculators. A loss of around 1% can be acceptable. (ymmv, this is purely informational!)
+* Also keep in mind that longer DC cabling will cause larger voltage drops. Try to keep the DC wiring run as short as possible. 20-30 meters is acceptable, but if you go farther (~80 m?), you will need a much larger-gauge wire to avoid power loss. For instance, 10-25 mm² might be required when going longer. Use a voltage-drop cabling calculator for your country to determine the correct cable size for a given distance. To get a picture of how much loss you can accumulate over various lengths of Cu and Al cabling, check out these calculators. A loss of around 1% can be acceptable. (ymmv, this is purely informational!)
     * [Cable Size Calculator AS/NZS 3008](https://www.jcalc.net/cable-sizing-calculator-as3008)
     * [Spreadsheet for manual calculations](https://docs.google.com/spreadsheets/d/1rSTNwgxBgrDaf8wo9_7r2cqsKLavUIEs/edit?usp=sharing&ouid=100957746627782596285&rtpof=true&sd=true)
 
@@ -20,9 +20,9 @@ DC wire sizing is a very important part of planning your bat10 mm²build. Most i
 * Avoid installing communication wires next to high-voltage wiring, in order to avoid signal interference. Keep a 300mm separation between AC/DC and CAN/Modbus cabling whenever possible to avoid interference.
 
 !!! warning "CAUTION"
-    Verify polarity of HV system before wiring it to the inverter. Many EV batteries don't have markings indicating which side is +/-, so doing a test run without the inverter connected is a good idea to ensure polarity. Incorrect polarity will destroy your system.
+    Verify the polarity of the HV system before wiring it to the inverter. Many EV batteries don't have markings indicating which side is +/-, so doing a test run without the inverter connected is a good idea to ensure polarity. Incorrect polarity will destroy your system.
 
-Example, 50mm² cable stepped down to 10mm², and at the same time fused off with a 25A solar DC ceramic fuse:
+Example, 50mm² cable stepped down to 10 mm², and at the same time fused off with a 25A solar DC ceramic fuse:
 
 ![image](../../images/installation-guidelines-07.png)
 
@@ -30,15 +30,16 @@ Example: two EV battery inputs stepped down to 10mm² using DC fuses:
 
 ![image](../../images/installation-guidelines-08.png)
 
-If you just want to step down the wire size (from 50mm² cable to 10mm² cable), you can use a terminal block such as [UKK 160](https://s.click.aliexpress.com/e/_c36053wp)
+If you just want to step down the wire size (from 50 mm² cable to 10 mm² cable), you can use a terminal block such as [UKK 160](https://s.click.aliexpress.com/e/_c36053wp)
 
 ![image](../../images/installation-guidelines-10.png)
 
-If space is an issue, you can use this [1 module 150A terminal block](https://s.click.aliexpress.com/e/_c4lHpV37):
-- 1 in (35mm²), 1 out (35mm²)
-- 1 in(35mm²), 2 out (10mm²)
+If space is an issue, you can use this: [1 module 150A terminal block](https://s.click.aliexpress.com/e/_c4lHpV37):
 
-![image](../../images/1_module_distribution_block.jpg)
+    - 1 cable in (35mm²), 1 cable out (35mm²)
+    - 1 cable in (35mm²), 2 cables out (10mm²)
+
+![image](../../images/1_module_distribution_block.jpg) { width="300" }
 
 ### DC Fuses
 
@@ -83,14 +84,14 @@ Don't buy cheap products from doubtful sources unless you intend to burn your ho
 
 If you want to use DIN DC MCB Fuses, use something like [**Schneider C60PV-DC 800VDC (A9N61660)**](https://www.se.com/be/en/product/download-pdf/A9N61660?filename=Schneider+Electric_Acti9-C60HDC-Acti9-C60PVDC_A9N61660.pdf).
 
-![image](../../images/DC_MCB_bidirectional.jpg)
+![image](../../images/DC_MCB_bidirectional.jpg) { width="500" }
 
-#### Disconnect switches
+#### DC Disconnect switch
 Some countries have legislation requiring DC disconnect switches (also known as DC isolation switches). 
 
 The idea is that these switches will be installed in a location where first responders and firefighters can easily turn off your solar/battery system. Check your local legislation to see if this is required in your area.
 
-![1170104_1_5](../../images/installation-guidelines-12.png)
+![image](../../images/DC_Switch.jpg) { width="500" }
 
 [IP67 Waterproof 32A 1000V Disconnect Switch](https://imopc.com/imo_uk_gbp_view/enclosed-dc-switch-ip66-6249d58eb8c4a.html)
 
@@ -101,6 +102,7 @@ The idea is that these switches will be installed in a location where first resp
 ### Protective earth
 The battery case **needs** to be connected to protective earth (PE). This is required for a few technical and safety reasons;
 
+- HV Shield. If you are using the OEM HV cables, they contain an outer shield layer. This needs to have same potential as PE, and will automatically become PE once you ground the battery casing.
 - Signal integrity. Having the battery case at earth potential avoids ground loops through the communication shield wires.
 - CAN transceiver longevity. Failure to attach PE to the battery case can damage CAN bus systems from ground loops through shield wires
 - Insulation testing. Your inverter will periodically test the safety of the high-voltage system by measuring the insulation resistance between HV+/- and PE. If the battery case is left free-floating and not connected to PE, any HV leaks might go unnoticed. 
@@ -122,7 +124,7 @@ Example: wire shielding cut too close to the copper, causing the shield to touch
 
 ![image](../../images/installation-guidelines-13.png){ width="608" height="558" }
 
-Start by checking the easy stuff; measure if HV wiring is leaking to PE. If the wiring is OK, the battery itself can also have an internal leak. These are much harder to diagnose compared to external wiring issues. Check out [this video](https://www.youtube.com/watch?v=00eEj_EgMas) for more examples of leakage to ground.
+Start by checking the easy stuff; measure whether the HV wiring is leaking to PE. If the wiring is OK, the battery itself can also have an internal leak. These are much harder to diagnose compared to external wiring issues. Check out [this video](https://www.youtube.com/watch?v=00eEj_EgMas) for more examples of leakage to ground.
 
 ## Terminal tightness :nut_and_bolt: 
 Electrical connections can loosen over time due to thermal cycling (expansion and contraction from heating and cooling during charge/discharge cycles). This is especially noticeable on high-power DC systems. A loose connection increases electrical resistance, leading to localized heating, potential fire hazards, and voltage drops that reduce system efficiency.
@@ -166,7 +168,7 @@ Here are some examples of how to wire up the high-voltage output from the batter
 ### Nissan LEAF
 
 ![image](../../images/nissan-leaf-e-nv200-16.png)
-![image](../../images/nissan-leaf-e-nv200-17.png)
+![image](../../images/nissan-leaf-e-nv200-17.png)operating
 ![cabluri2](../../images/nissan-leaf-e-nv200-18.jpg)
 ![emulator box](../../images/emulator_box.jpeg)
 
@@ -176,7 +178,7 @@ Phoenix 3049408 DIN rail connectors to use with the unmodified cable:
 
 ### BMW I3
 
-The BMW i3 uses a 35 mm² high-voltage cable. To connect it to a terminal block and reduce the size to a more manageable 10 mm², you would need ferrules for these stranded wires to avoid damaging them. This can be done by cutting off the old connector, inserting a ferrule, and crimping it. These tools are not so common for consumers. An alternative is to modify the connector and use the current connector as a ferrule, so you don't have to buy or rent tools to achieve a non-stranded wire for the thermal block with a size of 35 mm². Use at your own risk!
+The BMW i3 uses a 35 mm² high-voltage cable. To connect it to a terminal block and reduce the size to a more manageable 10 mm², you would need ferrules for these stranded wires to prevent damage. This can be done by cutting off the old connector, inserting a ferrule, and crimping it. These tools are not so common for consumers. An alternative is to modify the connector and use the current connector as a ferrule, so you don't have to buy or rent tools to achieve a non-stranded wire for the thermal block with a 35 mm² size. Use at your own risk!
 
 [![](../../images/bmw-i3-05.jpg){ width="200" }](../../images/bmw-i3-05.jpg)
 [![](../../images/bmw-i3-06.jpg){ width="200" }](../../images/bmw-i3-06.jpg)

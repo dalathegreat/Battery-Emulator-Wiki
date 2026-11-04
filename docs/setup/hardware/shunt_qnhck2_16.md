@@ -141,7 +141,7 @@ A measurement further than 0.2 V from 1.65 V is not used, and the log names the 
 
 The zero point drifts with temperature, and in a stationary system the contactors may stay closed for weeks, long enough for a season's worth of temperature change to build up. **Zero point drift (mV/°C)**, shown while **Automatic calibration** is ticked, makes up for it. As each zero point measurement ends, the emulator notes the reported temperature. From then on it moves the zero point by the set amount for every °C that temperature changes, until the contactors open again and the next measurement starts over from a new temperature.
 
-Although the datasheet only limits the sensor's drift to ±1 mV/°C either way, each sensor's own figure has to be found. The setting accepts −5.0 to +5.0 mV/°C in 0.1 steps, since the figure found this way also takes in the ADC's drift. 0, the default, is off.
+Although the datasheet only limits the sensor's drift to ±1 mV/°C either way, each sensor's own figure has to be found. The setting accepts −5.00 to +5.00 mV/°C in 0.01 steps, since the figure found this way also takes in the ADC's drift. 0, the default, is off.
 
 To find it, compare the zero points the log shows at different temperatures. Typically this can be done early in the morning for a low temperature point, and late in the afternoon for a high one. 
 
@@ -152,7 +152,7 @@ QNHCK2-16 zero point calibrated to 1644 mV at 12.0 °C     → morning values
 QNHCK2-16 zero point calibrated to 1653 mV at 19.0 °C     → afternoon values
 ```
 
-Divide the difference in mV by the difference in °C, keeping the sign: **(1653 − 1644) / (19.0 − 12.0) = 1.3 mV/°C**. A zero point that falls as it gets warmer gives a negative figure. Each reading is used as measured, without compensation, even with [manual calibration](#manual-calibration).
+Divide the difference in mV by the difference in °C, keeping the sign: **(1653 − 1644) / (19.0 − 12.0) = 1.29 mV/°C**. A zero point that falls as it gets warmer gives a negative figure. Each reading is used as measured, without compensation, even with [manual calibration](#manual-calibration).
 
 ### Manual calibration
 
@@ -172,11 +172,11 @@ The log (**Log** on the main page, with **General logging via Webserver** enable
 
 | Log message | Meaning |
 | :-- | :-- |
-| `QNHCK2-16 on GPIO1: 30 A ±0.625 V, zero point measured while the contactors are open` | Started, with automatic calibration |
-| `QNHCK2-16: zero point follows the batteries' temperature by 0.9 mV/°C` | Started, with [temperature compensation](#temperature-compensation) |
-| `QNHCK2-16 on GPIO1: 30 A ±0.625 V, zero point 1648 mV` | Started, with the zero point stored by the manual calibration |
+| `QNHCK2-16: on GPIO1 30A ±0.625V, zero point measured while contactors are open` | Started, with automatic calibration |
+| `QNHCK2-16: zero point follows the temperature by 1.29 mV/°C` | Started, with [temperature compensation](#temperature-compensation) |
+| `QNHCK2-16: on GPIO1 30A ±0.625V, zero point 1648 mV` | Started, with the zero point stored by the manual calibration |
 | `QNHCK2-16 zero point calibrated to 1648 mV at 21.5 °C` | New zero point measured, at that battery temperature. Without the temperature while no battery reports one, and with the manual calibration |
-| `QNHCK2-16: automatic calibration needs contactor control via GPIO for every battery. Its reading is not used until then.` | See [Automatic calibration](#automatic-calibration) |
+| `QNHCK2-16: automatic calibration needs contactor control via GPIO for every battery!` | See [Automatic calibration](#automatic-calibration) |
 | `QNHCK2-16: GPIO1 reads 93 mV with the contactors open, too far from 1.65 V to be its zero point.` | Check its supply and the pin, see [LV Wiring](#lv-wiring) |
 | `QNHCK2-16 reads 36500 mA, beyond its range. Using the current the batteries report.` | More than 1.2 × its rated current. `QNHCK2-16 reading back within range.` follows when it drops again |
 

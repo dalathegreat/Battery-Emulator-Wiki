@@ -20,7 +20,7 @@ title: "Sungrow"
 
 ### BYD CAN Protocol
 
-Use **"BYD Battery-Box Premium HVS over CAN Bus"** for inverters that are BYD compatible.
+Use **"BYD HVS/HVM over CAN"** for inverters that are BYD compatible.
 
 Remember to enable "Long inverter CAN timeout" to avoid false positive CAN_INVERTER_MISSING events. The Sungrow is very slow to communicate via CAN, and we incorrectly detect it as missing without this fix.
 
@@ -28,7 +28,7 @@ Remember to enable "Long inverter CAN timeout" to avoid false positive CAN_INVER
 
 ### Sungrow SBRXXX Protocol
 
-Use **"Sungrow SBRXXX battery over CAN bus"** for inverters that are not BYD compatible (e.g., Australian models).
+Use **"Sungrow SBRXXX over CAN"** for inverters that are not BYD compatible (e.g., Australian models).
 
 When using this protocol, select the battery model that best matches your actual battery voltage range best. Note that the capacity you can use is not impacted by this selection, you can use the full 100kWh from an EV battery even though you select a smaller SBR model.
 

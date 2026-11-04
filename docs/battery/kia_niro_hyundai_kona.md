@@ -30,10 +30,13 @@ Here is a list of Kia / Hyundai stickers. The Number K is used for Kona, and Num
 
 **CAN-FD** models:
 
+⚠️ Note that CAN-FD models require manual control over contactors. Opening of battery required to wire up control for Battery-Emulator over the internal contactors
+
 ![image](../images/kia-niro-hyundai-kona-64-kwh-16.png)
 
 - 37501 AO050 is Hyundai Kona / Kia e-niro 64kWh ✅ 
-- 37501 AT510 is Kia Niro Hybrid 11 kWh ✅ 
+- 37501 AT510 is Kia Niro Hybrid 11 kWh ✅
+- 37501 HF050 is Hyundai Kona ✅
 
 Ioniq 28kWh packs use the following options:
 

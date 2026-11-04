@@ -224,9 +224,9 @@ The login uses HTTP Basic authentication. This protection level is not particula
 
 ### Battery config
 
-![image](../../images/webserver-guide-15.png){ width="570" height="164" }
+![image](../../images/webserver-guide-01.png)
 
-Select the integration of your battery from the **Battery** dropdown list, and the **Battery interface** the battery is wired to. Each battery has its own [page in this wiki](../../battery/index.md) with the wiring and the settings it needs. **Battery chemistry** sets the cell chemistry the system assumes; integrations that know the chemistry of their battery override it.
+Select the integration of your battery from the **Battery** dropdown list, the **Battery interface** the battery is wired to, and any battery-specific settings that may be required. Each battery has its own [page in this wiki](../../battery/index.md) with the wiring and the settings it needs. 
 
 An interesting type is the [Fake battery for testing purposes](../../battery/fake_battery.md), which simulates a single, double or triple battery towards the inverter and the integration platforms. Its voltage and SOH are set for each pack on the [More battery info](#more-battery-info) page.
 
@@ -234,7 +234,7 @@ Depending on the battery selected, more options appear:
 
 | Option | Shown for | Description |
 |---|---|---|
-| **BMS starting sequence request**, **Automatic current offset correction**, **Interlock required** | Nissan LEAF | See [Nissan LEAF software configuration](../../battery/nissan_leaf_e_nv200.md#software-configuration). Changing the starting sequence request offers to reset the BMS right away, as the BMS only reads it while starting up. |
+| **Balancing strategy**, **Automatic current offset correction**, **Interlock required** | Nissan LEAF | See [Nissan LEAF software configuration](../../battery/nissan_leaf_e_nv200.md#software-configuration). Changing the starting sequence request offers to reset the BMS right away, as the BMS only reads it while starting up. |
 | **Digital HVIL (2024+)**, **Right hand drive**, **Country code**, **Map region**, **Chassis type**, **Pack type** | Tesla Model 3/Y, Tesla Model S/X | See [Tesla Model 3/Y](../../battery/tesla_model_3_y.md#software-configuration) |
 | Power limits | Daly BMS | See [Daly BMS configuration](../../battery/bms/daly_smartbms.md#battery-emulator-configuration) |
 | **Manual charging power, watt**, **Manual discharge power, watt** | Integrations whose battery does not report usable power limits | The continuous charge and discharge power allowed. Do not set them too high! |
@@ -289,7 +289,7 @@ The log shows a line when tapering engages. Both options can be used on their ow
 
 | Setting | Description |
 |---|---|
-| **Charger** and **Charger interface** | An optional HV charger controlled by the Emulator. See [Chargers](../chargers/index.md) and [Charger settings](#charger-settings). |
+| **Charger** and **Charger interface** | An optional HV charger controlled by the Emulator. See [Chargers](../chargers/index.md) and [Charger settings](#charger-settings). Not available on the [small flash boards](../../hardware/index.md#small-flash-boards). |
 | **Measurement** and **Interface** | An optional current measurement device: a [BMW SBox](../../battery/bms/shunt_bmw_sbox.md), the [QNHCK2-16 DC current clamp](../hardware/shunt_qnhck2_16.md#configuration), the CT clamp of a [CHAdeMO](../../battery/wip/chademo_vehicle.md) setup (**Custom Clamp**), or the current measured by the inverter (**Using inverter values**, only for the BYD CAN inverter protocol). Only the types usable with the selected battery and inverter are listed. |
 
 ### Hardware config

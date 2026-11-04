@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="7qxLFt_qctgpqIUmhrec">
-    <mxGraphModel dx="3449" dy="3400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="3548" dy="3145" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -157,15 +157,15 @@
         <mxCell id="-BcaU61ho3dP1yQ4QYUV-69" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;fontSize=32;labelBackgroundColor=default;" value="&lt;font style=&quot;font-size: 50px;&quot;&gt;Pre-Charge&lt;/font&gt;" vertex="1">
           <mxGeometry height="70" width="280" x="-320" y="-555" as="geometry" />
         </mxCell>
-        <mxCell id="-BcaU61ho3dP1yQ4QYUV-70" edge="1" parent="1" style="endArrow=oval;html=1;rounded=1;curved=0;startArrow=oval;startFill=1;endFill=1;jumpStyle=arc;strokeWidth=4;strokeColor=#18F511;" value="">
-          <mxGeometry height="50" relative="1" width="50" as="geometry">
+        <mxCell id="-BcaU61ho3dP1yQ4QYUV-70" edge="1" parent="1" style="endArrow=oval;html=1;rounded=1;curved=0;startArrow=oval;startFill=1;endFill=1;jumpStyle=arc;strokeWidth=4;strokeColor=#67AB9F;" value="">
+          <mxGeometry height="50" relative="1" width="50" x="-0.0196" as="geometry">
             <Array as="points">
-              <mxPoint x="320" y="-350" />
+              <mxPoint x="320" y="-380" />
               <mxPoint x="320" y="-480" />
               <mxPoint x="110" y="-480" />
               <mxPoint x="110" y="-430" />
             </Array>
-            <mxPoint x="370" y="-350" as="sourcePoint" />
+            <mxPoint x="390" y="-380" as="sourcePoint" />
             <mxPoint x="30" y="-430" as="targetPoint" />
           </mxGeometry>
         </mxCell>

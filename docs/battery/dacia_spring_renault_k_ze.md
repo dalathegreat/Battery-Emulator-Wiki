@@ -2,7 +2,7 @@
 title: "Dacia Spring/Renault K-ZE (CMFA-EV)"
 ---
 
-The Dacia Spring Electric (27.4kWh) / Renault K-ZE (26.8kWh) are both vehicles on the CMFA-EV platform. 
+The **Dacia Spring Electric (27.4kWh) / Renault K-ZE (26.8kWh**) are both vehicles on the **CMFA-EV platform**. 
 
 There are also a few Chinese EVs that share the same CMFA-EV battery platform; all the following models are compatible with the Battery-Emulator integration:
 
@@ -23,29 +23,35 @@ Some 2024+ batteries seem to not respond to CAN. Investigation ongoing!
 
 ### General info
 
-These batteries have 72 cells in series, which results in an operating voltage of approximately 216 to 302 VDC. Make sure [the inverter](../inverter/index.md#compatible-inverters-list) you are planning to use is compatible with this voltage range!
+These batteries have 72 cells in series, resulting in an operating voltage of approximately 216-302 VDC. Make sure [the inverter](../inverter/index.md#compatible-inverters-list) you are planning to use is compatible with this voltage range!
 
 ![image](../images/dacia-spring-renault-k-ze-01.png)
 
 ### Testing the battery
 In order to read the information from the BMS, you need:
 
-- [LiLyGo T-CAN485](https://s.click.aliexpress.com/e/_oDPdyMg) or [Waveshare ESP32-S3-RS485-CAN](https://s.click.aliexpress.com/e/_c45gWHQD) with Battery Emulator installed and configured for this battery and NO inverter.
+- [LiLyGo T-2CAN](https://dalathegreat.github.io/Battery-Emulator-Wiki/hardware/lilygo_t_2can/) or [Waveshare ESP32-S3-RS485-CAN](https://dalathegreat.github.io/Battery-Emulator-Wiki/hardware/waveshare_esp32_s3_rs485_can/) with Battery Emulator installed and configured for this battery (CMFA Platform) and **NO inverter**.
 - 12V source for the board and battery (it can be a Gel battery, UPS, 12V adapter, etc)
 - Low Voltage battery Connector with those wires connected: 12V, GND, CAN-L and CAN-H (see the [connections](../images/dacia-spring-renault-k-ze-24.png))
+
+![Dacia Spring Test Rig](../images/Spring_Test_Rig.jpeg)
+
+Look for SoC, SoH, and Cell Delta (low is better); see [this example](../images/Spring_be_test.jpeg).
 
 ### Shopping list
 Here is a detailed [shopping list](https://docs.google.com/spreadsheets/d/14ghFL5mUg0hlUOsraOJc9BExlsMp5ClRRITRSQVLfkA/htmlview#gid=1550632359) for this battery implementation.
 
 ## Software configuration
-For this battery type, use the option called "CMFA platform, 27kWh battery" under the "Battery Protocol" section, NMC chemistry.
+For this battery type, use the option called **"CMFA platform, 27kWh battery"** under the "Battery Protocol" section.
 
-![setari](../images/dacia-spring-renault-k-ze-02.jpg)
+NOTE: Some batteries are locked and do not send valid allowed charge/discharge power. If you encounter one of these batteries, enable "Use estimated charge limits" checkbox and manually specify allowed charge/discharge power
 
-See [Fronius Gen24 settings](../images/dacia-spring-renault-k-ze-25.jpg)
+![setari](../images/Spring_batt_Config.png)
 
-## Battery module - BMS pin diagram. 
-BMS reads from each module the cell voltage + one GND, and 2 temperature sensors (one for each module). should be ~17Kohm range.
+See [Fronius Gen24 settings](../images/Full_Spring_Conf.jpg)
+
+## Battery module - BMS pin diagram
+The BMS reads the cell voltage from each module, plus one GND and 2 temperature sensors (one per module); they should be in the ~17 kω range.
 
 ![image](../images/dacia-spring-renault-k-ze-22.png)
 
@@ -61,13 +67,13 @@ The battery contains a terminating resistor.
 
 ![Fronius Dacia Spring Waveshare ESP32-S3-RS485-CAN](../images/Fronius_Dacia_Spring_Waveshare.jpg)
 
-The original drawing file can be found [here](../images/Fronius_Dacia_Spring_Waveshare.drawio) and can be edited in [draw.io](https://app.diagrams.net/).
+The original drawing file can be found [here](https://drive.google.com/file/d/15E6hzqurfeQikxyK09DTve1eBq5_k_Qm/view?usp=sharing) and can be edited in [draw.io](https://app.diagrams.net/).
 
 ### LilyGo T-CAN485
 
-![Fronius Dacia Spring LilyGo T-CAN485](../images/dacia-spring-renault-k-ze-03.jpg)
+![Fronius Dacia Spring LilyGo T-CAN485](../images/Fronius_Dacia_Spring_T-can485.jpg)
 
-The original drawing file can be found [here](../images/working_Spring-Schema.drawio) and can be edited in [draw.io](https://app.diagrams.net/).
+The original drawing file can be found [here](https://drive.google.com/file/d/1YSzWctvrlvYAQNVv0NmDN6hR19TNYFDT/view?usp=sharing) and can be edited in [draw.io](https://app.diagrams.net/).
 
 The LV connector on the battery has the following pinout:
 
@@ -81,24 +87,32 @@ Try to source at least the LV connector; scrapers are happy to cut the cables an
 The LV connector usually goes to scrap with the car.
 You can buy LV connector using the PT06A-12-10S from [here](https://www.conrad.com/en/p/amphenol-62in-16a-12-10s-6a-cable-socket-62in-nominal-current-details-7-5-a-pins-10-n-a-739514.html)
 
+If you cannot find an LV connector, you can use the [individual female pins of an OBD2 socket](https://s.click.aliexpress.com/e/_c4n9xqVT).
+Don't forget to use insulation (shrink tubing) on the pins and 0.5-0.75 mm copper wires. See [this PDF file](../images/Spring_LV_DIY_pins.pdf).
+
+See this video on [how to crimp the wires](https://www.youtube.com/watch?v=A8TIqNG7Yfk).
+
 Get the HV connector too; it makes things look nicer. 
 Search for the HV cable and connector on [eBay](https://www.ebay.com/sch/i.html?_nkw=297A21306R), part#: 297A21306R
 
+There are [two versions of the LV connector](../images/LV_Connector_generations.jpeg), but the **only difference** is the wiring colors.
 Connect the battery to the Battery-Emulator according to this diagram:
 
-![conexiuni](../images/dacia-spring-renault-k-ze-06.jpg)
+![conexiuni](../images/Spring_pins_Color_Wires_LV.jpg)
 
 ![schema_conectare](../images/dacia-spring-renault-k-ze-24.png)
 
-The original drawing file can be found [here](../images/Miguel-2026-03-19-2107.excalidraw)
+The original drawing file is available [here](../images/Miguel-2026-03-19-2107.excalidraw) and can be edited in Excalidraw (https://excalidraw.com).
 
-12V power info: The precharge+contactors consume 1.5A. The BMS itself uses 0.1A
+12V power info: The precharge+contactors consume 1.5A; the BMS itself uses 0.1A
 
 Use a relay board (NO) (5V or 12V) to apply GND to the pins (pin 2AE / 2AD / 2AC all accept a **GND signal** to be toggled on).
 
 See [4ch SSR on DIN rail **(DC-CN)**](https://s.click.aliexpress.com/e/_olDgyMC)
 
 ![4ch SSR on DIN GND](../images/dacia-spring-renault-k-ze-07.jpg)
+
+![Ready to deploy system](../images/Spring_BE_Final_Test.jpeg)
 
 ## Wiring, High voltage
 The battery has a service disconnect switch:
@@ -109,16 +123,23 @@ Note that there are two versions of the service disconnect switch. The 2021 mode
 
 ![image](../images/dacia-spring-renault-k-ze-09.png)
 
-The polarity of the High Voltage outputs can be seen here, Left is **positive**, Right is **negative**.
+**2022** battery year fuse:
+
+![image](../images/Spring_fuse_2022.jpg)
+
+The polarity of the high-voltage outputs is shown here: left is **positive**, Right is **negative**.
 
 ![Polarity](../images/dacia-spring-renault-k-ze-10.jpg)
 
 ## HV Cable preparation
 Beware of the mantle strings (cut them) to avoid touching the copper conductor.
 The optional [ferrule](https://www.aliexpress.com/item/1005007192861678.html) for the copper conductor is 35smm
-![HV cable](../images/dacia-spring-renault-k-ze-11.jpg)
+![Dacia Spring HV cable](../images/dacia-spring-renault-k-ze-11.jpg)
 
-![HV_box](../images/dacia-spring-renault-k-ze-12.jpg)
+![Dacia Spring HV_box](../images/dacia-spring-renault-k-ze-12.jpg)
+
+![Dacia Spring Hv box 2](../images/Spring_HV_Open_box.jpeg)
+
 
 ## Configuring the software
 Enable the `CMFA platform, 27 kWh battery` option in the software.
@@ -126,7 +147,7 @@ Enable the `CMFA platform, 27 kWh battery` option in the software.
 Do **NOT** use PWM contactor control.
 
 Spring keeps the HV voltage between 220V (0% SOC) and 296V (100% SOC)
-You can adjust the SOC min and max percentages in the emulator settings to keep the battery voltage within the above voltage range. Like -5 / 85 with current build (June 2025).
+You can adjust the SOC min and max percentages in the emulator settings to keep the battery voltage within that range. Like -5 / 85 with current build (June 2025).
 
 This battery also benefits from automated 30s daily resets, which can be automated with BMS power output. See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details.
 
@@ -149,8 +170,8 @@ ex, for a 5kW inverter: 5000W / 218V = 23A => use a [25A fuse](https://s.click.a
 ![PE on the case](../images/dacia-spring-renault-k-ze-16.jpg)
 
 ## Note on missing cell voltages
-If you are not seeing all 72 cells in the cell monitor page, the fuses on the cell taps might be damaged.
-A telltale sign is that some values become corrupted and the charge current drops to 0. This can be repaired by opening the battery and repairing the damaged traces.
+If you don't see all 72 cells on the cell monitor page, the fuses on the cell taps may be damaged.
+A telltale sign is that some values become corrupted and the charge current drops to 0. You can fix this by opening the battery and repairing the damaged traces.
 
 ![image](../images/dacia-spring-renault-k-ze-17.png)
 
@@ -160,10 +181,10 @@ A telltale sign is that some values become corrupted and the charge current drop
 ![Dacia Spring battery 225A fuse](../images/dacia-spring-renault-k-ze-18.jpg)
 
 2. One main BMS + 6 slaves BMS
-The Master <=> Slave BMSs seem **not** to be software-locked, so you can easily swap the main BMS if it's the same part number (printed on the box).
+The Master <=> Slave BMSs don't seem software-locked, so you can easily swap the main BMS if it's the same part number (printed on the box).
 
 ![Dacia Spring battery BMS](../images/dacia-spring-renault-k-ze-19.jpg)
 
 3. Inside look.
-The battery case opens very easily. It has many M7 screws; no glue is used to seal it.
+The battery case opens very easily. It uses many M7 screws, and no glue seals it.
 ![inside Dacia Spring battery](../images/dacia-spring-renault-k-ze-20.jpeg)

@@ -4,13 +4,17 @@ title: "Waveshare ESP32‐S3‐RS485‐CAN"
 
 **MCU / flash:** ESP32-S3 R8 (Xtensa LX7 dual-core, 240 MHz) with 8 MB octal/OPI PSRAM, 16 MB flash. 
 
-The Waveshare ESP32-S3-RS485-CAN is an affordable and easy-to-source board. It supports 1x CAN channel and 1x RS485 port. It comes with a DIN-mountable case and accepts an input voltage between 7-36V.
+The **Waveshare ESP32-S3-RS485-CAN** is an affordable and easy-to-source board. 
+ - It supports 1x CAN channel and 1x RS485 port.
+ - It comes with a DIN-mountable case and accepts an input voltage between 7-36V.
 
 ![image](../images/waveshare-esp32-s3-rs485-can-01.png)
 
 ### Where this hardware shines
 
-For setups that require RS485 and have CAN-controlled contactors (E.g., a Tesla Battery with a Fronius inverter), it's a plug-and-play solution. This board is a more future-proof alternative compared to the [LilyGo T-CAN485](lilygo_t_can485.md).
+For setups that require RS485 and have CAN-controlled contactors (E.g., a Tesla Battery with a Fronius inverter), it's a plug-and-play solution. 
+
+This board is a more **future-proof** alternative compared to the [LilyGo T-CAN485](lilygo_t_can485.md).
 
 | GPIO | Function |
 |---|---|
@@ -103,6 +107,21 @@ Once wired, open the **Settings** page in the web interface and set **GPIO 1/2 f
 
 !!! note "NOTE"
     The status LED and I2C display are mutually exclusive — only one can be active at a time.
+
+### Note on temperature
+
+![Waveshare chipset temperature](../images/Waveshare_Temperature.jpg)
+
+ - with WIFI AP ON, the ESP32 S3 chip is about +50C
+ - with WIFI AP OFF, the ESP32 S3 chip is about +40C
+
+ With WIFI AP OFF, it is still connected to a Wi-Fi network, but it does not broadcast its own SSID.
+
+ They're rated to operate up to +85C (185F), but if the medium is very hot, consider ventilation, some holes in the case, and a [small heatsink](https://s.click.aliexpress.com/e/_c4080m2l) on the ESP32S3 chip.
+
+![Waveshare chipset with heatsink](../images/Waveshare_with_Heatsink.jpeg) 
+
+ See FLIR images of the ESP32-S3 chipset AP ON, [without a heatsink](../images/Waveshare_NO_Heatsink_Flir.jpeg), and [with a heatsink](../images/Waveshare_With_Heatsink_Flir.jpeg).
 
 ### See also
 

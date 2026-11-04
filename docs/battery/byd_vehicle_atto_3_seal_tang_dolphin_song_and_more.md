@@ -33,6 +33,7 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | PM7 | Seal U | 71.80 kWh | 170Ah | 422.4V | 488-513 kg | ✅ 
 | VM7 | Sealion 8 DM-p (AU) | 35.62 kWh | 78.4Ah | 454.4V | 266 kg | :x: (Type C LV connector)
 | PW4 | Seal 7 | 91.392 kWh | 170Ah | 537.6V | 637 kg | ✅
+| VG9 | Shark | 29.58 kWh | 81.1Ah | 364.8V | ? kg | :x: (Type B LV connector)
 
 Confirmed working BYD Seal 60kWh battery example sticker:
 

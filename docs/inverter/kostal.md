@@ -23,7 +23,7 @@ Note that for some models the battery feature is optional, and needs to be activ
 ![image](../images/kostal-01.png)
 
 ## Which protocol to use
-For this inverter type, use the option called "BYD battery via Kostal RS485" under the "Inverter Protocol" setting. Also set the "Inverter Interface" to the "RS485" option.
+For this inverter type, use the option called "BYD HVS/HVM via Kostal RS485" under the "Inverter Protocol" setting. Also set the "Inverter Interface" to the "RS485" option.
 
 ![image](../images/kostal-02.png){ width="488" height="66" }
 

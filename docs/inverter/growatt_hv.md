@@ -4,13 +4,12 @@ title: "Growatt"
 
 ## Growatt HV
 
-The current implementation "Growatt High Voltage protocol via CAN Bus" emulates a "HVC 60050-A1 BMS". This means the following inverters work:
+The current implementation "Growatt HV over CAN" emulates a "HVC 60050-A1 BMS". This means the following inverters work:
 
 * Growatt SPH 10 10000TL3 BH-UP ✅
-* Growatt MOD 10KTL3-XH ✅ 
 * Growatt SPA 4000-10000TL3 BH-UP :question:
 
-We can also emulate a WIT battery when selecting the "Growatt WIT compatible battery via CAN" option. This enables compatibility with the following inverters.
+We can also emulate a WIT battery when selecting the "Growatt WIT over CAN" option. This enables compatibility with the following inverters.
 
 * Growatt WIT 50XHU ✅
 * Growatt WIT 100HU ✅
@@ -31,7 +30,7 @@ We can also emulate a WIT battery when selecting the "Growatt WIT compatible bat
 The Growatt HV inverter works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
 
 ### Which protocol to use
-For this inverter type, use the option called **Growatt High Voltage protocol via CAN Bus** under the "Inverter Protocol" setting.
+For this inverter type, use the option called **Growatt HV over CAN** under the "Inverter Protocol" setting.
 
 ![image](../images/growatt-hv-01.png){ width="491" height="66" }
 
@@ -42,7 +41,7 @@ For this inverter type, use the option called **Growatt High Voltage protocol vi
 The Growatt LV compatible inverters works via CAN. A board with a single CAN channel, such as the LilyGo T-CAN485, can have both a CAN battery and a CAN inverter connected on the same pins. When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
 
 ### Which protocol to use
-For this inverter type, use the option called **Growatt Low Voltage (48V) protocol via CAN** under the "Inverter Protocol" setting.
+For this inverter type, use the option called **Growatt LV (48V) over CAN** under the "Inverter Protocol" setting.
 
 ![image](../images/growatt-lv-01.png){ width="483" height="68" }
 
@@ -60,7 +59,7 @@ Here is the inverter CAN definitions:
 
 ### Which protocol to use
 
-For this inverter type, use the option called **Growatt WIT compatible battery via CAN** under the "Inverter Protocol" setting.
+For this inverter type, use the option called **Growatt WIT over CAN** under the "Inverter Protocol" setting.
 
 ![image](../images/growatt-wit-01.png){ width="490" height="63" }
 
