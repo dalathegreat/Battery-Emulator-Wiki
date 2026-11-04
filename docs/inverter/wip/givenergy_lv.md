@@ -27,10 +27,10 @@ The inverter's BMS cable ends in an RJ45 plug at the battery. Only two of its co
 
 | RJ45 pin | Signal |
 |---|---|
-| 7 | RS485 A+ |
-| 8 | RS485 B− |
+| 6 | RS485 A+ |
+| 7 | RS485 B− |
 
-Count the pins with the clip away from you and the contacts up, 1 to 8 from left to right. The cable has no ground core. Connect pins 7 and 8 to Battery-Emulator's RS485 A and B.
+Count the pins with the clip away from you and the contacts up, 1 to 8 from left to right. The cable has no ground core. Connect pin 6 to Battery-Emulator's RS485 A and pin 7 to its B. Pins 6 and 7 aren't one of the cable's twisted pairs, but at 9600 baud over a few metres that doesn't matter.
 
 The bus runs at 9600 baud, 8N1. At that speed over a few metres, the RS485 link doesn't need termination, so leave the board's RS485 120 ohm termination off. Turn the CAN termination on, because Battery-Emulator is one end of the CAN bus to the battery. On the Waveshare ESP32-S3-RS485-CAN, the H1 (CAN) and H2 (RS485) headers inside the case set these. Pins 1 and 2 bridged turn the 120 ohm on, and pins 2 and 3 turn it off.
 
