@@ -173,3 +173,4 @@ Because the pack voltage and SOH are free inputs, the Fake battery is a convenie
 - **DC bus reported as not live.** The Fake battery declares the DC bus dead at startup. With GPIO contactor control enabled, the flag is corrected as soon as precharge completes. Without contactor control it stays false, and inverters that gate on it — notably BYD-Modbus — report **STANDBY** instead of **ACTIVE** to the inverter. Enable contactor control, or expect standby on the inverter side.
 - Neither the voltage nor the SOH is stored in NVM, every reboot returns every pack to 370.0 V and 99.00 %.
 - Charged/discharged energy counters are frozen constants, they never move.
+- **No parallel charge raise.** With double or triple, the combined charge limit stays at 5000 W: [parallel headroom tracking](../setup/software/battery_2x.md#parallel-headroom-tracking) needs each pack's measured current, and every Fake pack reports 0 A.

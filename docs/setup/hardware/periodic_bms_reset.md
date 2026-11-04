@@ -98,5 +98,8 @@ The `BMSRESET` command (and the auto-discovered "BMS Power reset" Home Assistant
 
 ![image](../../images/periodic-bms-reset-03.png){ width="579" height="32" }
 
-With **Allow remote BMS Power reset** option enabled, the GPIO pin will be toggled ON upon boot. It will be toggled OFF and back ON after the configured time when the command arrives. It doesn't send any battery protocol/CAN message. It performs a **hardware power-cycle of the BMS** by toggling the `BMS_POWER` GPIO pin, using the exact same routine as the built-in feature. 
+With **Allow remote BMS Power reset** option enabled, the GPIO pin will be toggled ON upon boot. It will be toggled OFF and back ON after the configured time when the command arrives. It doesn't send any battery protocol/CAN message. It performs a **hardware power-cycle of the BMS** by toggling the `BMS_POWER` GPIO pin, using the exact same routine as the built-in feature.
+
+!!! note "NOTE"
+    This is not the software **BMS Reset** of the More Battery/Cell Info page. With a Tesla battery, that one has its own [MQTT command and Home Assistant button](../software/mqtt.md#tesla-bms-reset-and-soc-reset), which restarts the BMS controller over CAN and needs no GPIO pin or setting. 
 
