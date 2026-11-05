@@ -24,6 +24,7 @@ Part number is 1EA907190G, but it's likely different letters at the end will wor
 
 ## Wiring diagram
 Low voltage connector pinout
+
 ![image](../../images/meb-dcdc-01.png)
 
 ## Notes on running
