@@ -224,7 +224,7 @@ The login uses HTTP Basic authentication. This protection level is not particula
 
 #### Without password protection
 
-While password protection is off, the web interface only answers devices on the local network, and only when they reach it by a local name or address. A device outside the local network gets an empty page (HTTP 403), so nothing in the answer tells an internet scanner what it reached. A device on the local network that used a name the board does not accept gets a page explaining why. Either way, the [general log](#debug-options) shows a warning, at most once a minute, with the address and the name that were refused, and the `WEB_403` warning [event](#events) is raised. Its **Count** grows by one for each of these minutes, so it shows how long something has been knocking. The event stays active, with the main page and the status LED yellow, until the board restarts or the events are cleared with **Clear all events**.
+While password protection is off, the web interface only answers devices on the local network, and only when they reach it by a local name or address. A device outside the local network gets an empty page (HTTP 403). A device on the local network that used a name the board does not accept gets a page explaining why. Either way, the [general log](#debug-options) shows a warning, at most once a minute, with the address and the name that were refused, and the `WEB_403` warning [event](#events) is raised. Its **Count** grows by one for each of these minutes, it's an estimate for how long something has been knocking. 
 
 A request counts as local when both of these hold:
 
