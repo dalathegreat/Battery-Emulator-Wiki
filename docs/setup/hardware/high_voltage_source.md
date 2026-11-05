@@ -16,7 +16,22 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 You can use the MEB DC/DC converter (Safest OEM option), or a cheap HIA4V1 chinese PCB (cheap and unsafe) to perform the HV precharge
 
 # Option A: Volkswagen DC/DC converter
-This is the recommended option if you can source the DC/DC converter from a MEB vehicle. See the Wiki page for the DC/DC converter for more info
+This is the recommended option if you can source the DC/DC converter from a MEB vehicle.
+
+![image](../../images/meb-dcdc-02.png)
+
+Part number is 1EA907190G, but it's likely different letters at the end will work as well.
+
+## Wiring diagram
+Low voltage connector pinout
+![image](../../images/meb-dcdc-01.png)
+
+## Notes on running
+
+Configure the usage of DC/DC in web settings. The 12V charging voltage is also configurable.
+By setting the minimum voltage the DC/DC goes in stand-by after the precharge is performed and it's also possible to remove it's power supply, so it doesn't consume energy at all.
+
+NOTE: These DC/DC converters can be crash locked, but they are unlockable by BE
 
 # Option B: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
 The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Compatibility with this was added in firmware v10.11.0.
