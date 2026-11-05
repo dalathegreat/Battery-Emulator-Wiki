@@ -13,12 +13,12 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 - Capacitance: Capacitor needed to wake battery. Can be raw capacitor, or a DC/DC converter that has capacitance
 - No precharge on inverter side: Means inverter internally has no contactors, exposing capacitance on BAT input
 
-One of the options is the HIA4V1 board original or modified. 
+You can use the MEB DC/DC converter (Safest OEM option), or a cheap HIA4V1 chinese PCB (cheap and unsafe) to perform the HV precharge
 
-!!! warning "CAUTION"
-    There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
+# Option A: Volkswagen DC/DC converter
+This is the recommended option if you can source the DC/DC converter from a MEB vehicle. See the Wiki page for the DC/DC converter for more info
 
-# Option A: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
+# Option B: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
 The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Compatibility with this was added in firmware v10.11.0.
 
 ## Wiring diagram
@@ -43,7 +43,10 @@ Jumper settings for the TPS55288EVM-045 board:
 - JP3: OPEN
 - JP4: OPEN  
 
-# Option B: HIA4V1
+# Option C: HIA4V1
+!!! warning "CAUTION"
+    There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
+
 The HIA4V1 has been used successfully to precharge the MEB battery's inverter port. It can be found on aliexpress. Without modification it requires manually tuning the resistor (marked 104 in the picture below) to match the external voltage to the internal battery voltage. Given the thin traces on the board, it is probably a good idea to put a circuit breaker between the battery and this board.
 
 ![image](../../images/high-voltage-source-01.png)
