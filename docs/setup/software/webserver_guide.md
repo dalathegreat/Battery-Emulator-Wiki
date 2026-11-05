@@ -224,7 +224,7 @@ The login uses HTTP Basic authentication. This protection level is not particula
 
 #### Without password protection
 
-While password protection is off, the web interface only answers devices on the local network, and only when they reach it by a local name or address. Anything else gets a page saying so (HTTP 403), and the [general log](#debug-options) shows a warning, at most once a minute, with the address and the name that were refused.
+While password protection is off, the web interface only answers devices on the local network, and only when they reach it by a local name or address. A device outside the local network gets an empty page (HTTP 403), so nothing in the answer tells an internet scanner what it reached. A device on the local network that used a name the board does not accept gets a page explaining why. Either way, the [general log](#debug-options) shows a warning, at most once a minute, with the address and the name that were refused.
 
 A request counts as local when both of these hold:
 
