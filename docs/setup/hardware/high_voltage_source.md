@@ -27,6 +27,30 @@ Low voltage connector pinout
 
 ![image](../../images/meb-dcdc-01.png)
 
+Pinout and connectors part number:
+- 1EA971398 High voltage harness which contains the HV connector.
+- 4H0973714B (or without any letter at the end) 8pin low voltage.
+- the case of the DC-DC is the GND.
+
+<img src="../../images/meb-dcdc-03.png" alt="pinout" width="800">
+
+Basic integration schematic:
+
+![Basic integration schematic for the DC/DC converter](../../images/high-voltage-with-dcdc.svg)
+
+- The schematic above is just a reference, and everyone should adapt it to their setup.
+- The DC/DC draws around 360mA in standby mode.
+- The HV capacitor is needed for the DC/DC to generate voltage. Its capacitance can be higher or lower, but during tests a value of 470 µF worked fine.
+- The MCB is rated at 32A in this example; adapt it according to the inverter specifications.
+
+A few details on how this works:
+- Case A: Using a PSU with manual cold start switch (off-grid or blackout)
+    K1 closes, the DC/DC pre-charges from the AGM, and the BMS closes the contactors. After that the Battery Emulator either keeps K1 closed so the DC/DC charges the AGM, or opens it so the DC/DC is completely unpowered and you save the 360 mA.
+- Case B: No PSU, DC/DC is keeping the 12V battery charged. (Active cooling might be needed)
+    Startup is the same, but K1 stays closed. The DC/DC floats the AGM and also feeds the 13.8V rail through the 5A fuse, the cold-start switch and the diode, so the ESP32 and BMS run from the DC/DC.
+
+NOTE: K1 relay control is not yet implemented in the software and must currently be handled externally (manual switch).
+
 ## Notes on running
 
 Configure the usage of DC/DC in web settings. The 12V charging voltage is also configurable.
@@ -166,4 +190,3 @@ I measured the following:
 - With bias resistors installed powered with 12V **with** battery connected: 287V DC
 
 (The voltage indeed went up when the battery was connected, BMS powered, but not configured in BE.)
-
