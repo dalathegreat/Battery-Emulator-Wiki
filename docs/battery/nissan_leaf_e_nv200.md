@@ -10,7 +10,7 @@ Connectors on an AZE0, ZE1 pack:
 
 Connection principle of the Nissan Leaf battery (internal):
 
-<img width="1520" height="723" alt="image" src="https://github.com/user-attachments/assets/6cb5d7be-e6ca-4173-945b-4bbc5d010bb0" />
+![image](../images/nissan-leaf-e-nv200-26.png)
 
 The following pictures show an example of hooking up a LEAF battery to a [Fronius Gen24 inverter](../inverter/fronius.md). The same diagram can be useful for planning other inverter combinations.
 
