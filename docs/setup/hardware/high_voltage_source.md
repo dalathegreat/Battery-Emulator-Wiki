@@ -13,12 +13,52 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 - Capacitance: Capacitor needed to wake battery. Can be raw capacitor, or a DC/DC converter that has capacitance
 - No precharge on inverter side: Means inverter internally has no contactors, exposing capacitance on BAT input
 
-One of the options is the HIA4V1 board original or modified. 
+You can use the MEB DC/DC converter (Safest OEM option), or a cheap HIA4V1 chinese PCB (cheap and unsafe) to perform the HV precharge
 
-!!! warning "CAUTION"
-    There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
+# Option A: Volkswagen DC/DC converter
+This is the recommended option if you can source the DC/DC converter from a MEB vehicle.
 
-# Option A: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
+![image](../../images/meb-dcdc-02.png)
+
+Part number is 1EA907190G, but it's likely different letters at the end will work as well.
+
+## Wiring diagram
+Low voltage connector pinout
+
+![image](../../images/meb-dcdc-01.png)
+
+Pinout and connectors part number:
+- 1EA971398 High voltage harness which contains the HV connector.
+- 4H0973714B (or without any letter at the end) 8pin low voltage.
+- the case of the DC-DC is the GND.
+
+<img src="../../images/meb-dcdc-03.png" alt="pinout" width="800">
+
+Basic integration schematic:
+
+![Basic integration schematic for the DC/DC converter](../../images/high-voltage-with-dcdc.svg)
+
+- The schematic above is just a reference, and everyone should adapt it to their setup.
+- The DC/DC draws around 360mA in standby mode.
+- The HV capacitor is needed for the DC/DC to generate voltage. Its capacitance can be higher or lower, but during tests a value of 470 µF worked fine.
+- The MCB is rated at 32A in this example; adapt it according to the inverter specifications.
+
+A few details on how this works:
+- Case A: Using a PSU with manual cold start switch (off-grid or blackout)
+    K1 closes, the DC/DC pre-charges from the AGM, and the BMS closes the contactors. After that the Battery Emulator either keeps K1 closed so the DC/DC charges the AGM, or opens it so the DC/DC is completely unpowered and you save the 360 mA.
+- Case B: No PSU, DC/DC is keeping the 12V battery charged. (Active cooling might be needed)
+    Startup is the same, but K1 stays closed. The DC/DC floats the AGM and also feeds the 13.8V rail through the 5A fuse, the cold-start switch and the diode, so the ESP32 and BMS run from the DC/DC.
+
+NOTE: K1 relay control is not yet implemented in the software and must currently be handled externally (manual switch).
+
+## Notes on running
+
+Configure the usage of DC/DC in web settings. The 12V charging voltage is also configurable.
+By setting the minimum voltage the DC/DC goes in stand-by after the precharge is performed and it's also possible to remove it's power supply, so it doesn't consume energy at all.
+
+NOTE: These DC/DC converters can be crash locked, but they are unlockable by BE
+
+# Option B: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
 The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Compatibility with this was added in firmware v10.11.0.
 
 ## Wiring diagram
@@ -43,7 +83,10 @@ Jumper settings for the TPS55288EVM-045 board:
 - JP3: OPEN
 - JP4: OPEN  
 
-# Option B: HIA4V1
+# Option C: HIA4V1
+!!! warning "CAUTION"
+    There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
+
 The HIA4V1 has been used successfully to precharge the MEB battery's inverter port. It can be found on aliexpress. Without modification it requires manually tuning the resistor (marked 104 in the picture below) to match the external voltage to the internal battery voltage. Given the thin traces on the board, it is probably a good idea to put a circuit breaker between the battery and this board.
 
 ![image](../../images/high-voltage-source-01.png)
@@ -147,4 +190,3 @@ I measured the following:
 - With bias resistors installed powered with 12V **with** battery connected: 287V DC
 
 (The voltage indeed went up when the battery was connected, BMS powered, but not configured in BE.)
-

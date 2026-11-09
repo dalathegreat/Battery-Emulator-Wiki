@@ -289,7 +289,7 @@ Link state (`BATTERY_DETECTED`, `CAN_ALIVE`, `CAN_ERROR_COUNTER`, `REAL_BMS_STAT
 
 Sent with `battery_id = 0` once per second, **only when more than one battery is configured**. With a single pack it would repeat the `BATTERY` frame verbatim, so it is omitted.
 
-This frame is what the inverter is actually given. How each value is combined is documented on the [Double Battery](battery_2x.md) page — in short, capacities, current, power and lifetime energy add up; SOC follows the emptiest pack, blending towards the fullest above 90 %; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the power limits are the **lowest** any pack allows, not the sum.
+This frame is what the inverter is actually given. How each value is combined is documented on the [Double Battery](battery_2x.md) page — in short, capacities, current, power and lifetime energy add up; SOC follows the emptiest pack, blending towards the fullest above 90 %; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the power limits start from the **lowest** any pack allows, the charge limit then raised to what the packs take together ([Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking)).
 
 These are deliberately their own keys rather than a reuse of `0x50..0x74`, so a receiver that dispatches on key alone cannot mistake one pack's reading for the installation's.
 

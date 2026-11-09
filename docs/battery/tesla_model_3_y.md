@@ -260,6 +260,17 @@ When enabling the Manual LFP balancing , the forced top charge runs for the spec
 
 There is an ongoing open source project called the CellKeeper that aims to replace the BMS inside the Tesla battery with a standalone controller. This would instantly solve the balancing issue. Note that this board is still in development, and as soon as it is ready this page will be updated.
 
+## BMS Reset and SOC Reset
+
+With the "Tesla Model 3/Y" or "Tesla Model S/X" battery protocol selected, the **More Battery/Cell Info** page of the webserver has two buttons that talk to the BMS over CAN. No extra wiring or setting is needed. Both only work while the **contactors are open**: press "Pause", wait for the current to go to 0A, and then press "Open Contactors", like for balancing above.
+
+- **BMS Reset** restarts the BMS controller. It has been seen to recover a BMS that ends up in a FAULT state after an equipment stop, where closing the contactors then fails. The reset is refused if the BMS reports that it is blocked.
+- **SOC Reset** asks the BMS to run its SOC reset routine, which recalibrates the state of charge. It is only accepted when the real SOC is below 15% or above 90%, so it can be used at the top or at the bottom of the range to recalibrate right away, instead of waiting for the BMS to do it on its own. After a successful SOC reset the emulator also resets the BMS controller.
+
+When a request is refused or fails, an info event tells why: *BMS reset request failed - check contactors are open.* or *SOC reset routine failed - check SOC is < 15 or > 90, and contactors are open.* A successful reset is reported as *BMS reset request completed successfully.* or *SOC reset routine was successful.* With a [double battery](../setup/software/battery_2x.md) setup the page resets one pack at a time, selected by the tabs at the top.
+
+Both resets can also be started over MQTT, for instance from a Home Assistant automation that recovers the BMS after an equipment stop, see [Tesla BMS Reset and SOC Reset](../setup/software/mqtt.md#tesla-bms-reset-and-soc-reset).
+
 ## Example integration
 
 Check out this excellent summary from user "k" on the Discord server 🙌 

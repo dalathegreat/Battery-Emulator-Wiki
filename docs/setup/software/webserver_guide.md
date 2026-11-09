@@ -5,7 +5,7 @@ title: "Webserver guide"
 Battery Emulator has a built-in web interface. With it you can check the battery status, change the configuration, update the software over-the-air, check events, monitor the cell voltages and much more. It makes commissioning a new system easy, and it is the preferred way to monitor a newly set up battery.
 
 !!! info "IMPORTANT"
-    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted.
+    Never expose Battery Emulator to the internet without a firewall. **Never ever port forward it** to be accessible directly on a WAN port! Use a private VPN to the site to access its web interface over an encrypted channel. The web interface uses plain HTTP, so nothing you send to it is encrypted. Without password protection the board [refuses requests from outside the local network](#without-password-protection), but treat that only as a safety net.
 
 ## Connecting to the web interface
 
@@ -104,7 +104,7 @@ The colour of the card shows the state of the system:
 
 When there is a warning or an error, check the [Events](#events) page to see what went wrong. The [status LED](../../hardware/index.md#status-led) of the board follows the same colours.
 
-With a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, a combined card on top shows the whole installation, which is what the inverter sees, and one card per battery pack below it shows that pack's own data, unscaled, with the power limits its own BMS asked for. See [How the packs become one virtual battery](battery_2x.md#how-the-packs-become-one-virtual-battery) for details.
+With a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, a combined card on top shows the whole installation, which is what the inverter sees, and one card per battery pack below it shows that pack's own data, unscaled, with the power limits its own BMS asked for. The combined card's charge limit can be higher than any single pack's ([Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking)). See [How the packs become one virtual battery](battery_2x.md#how-the-packs-become-one-virtual-battery) for details.
 
 Next to the **Max discharge current** and **Max charge current** you can see what is setting the limit:
 
@@ -222,6 +222,26 @@ The login uses HTTP Basic authentication. This protection level is not particula
 !!! note "NOTE"
     If you forget the password, a [factory reset with the BOOT button](boot_button_functions.md#factory-reset) clears it, together with all other settings.
 
+#### Without password protection
+
+While password protection is off, the web interface only answers devices on the local network, and only when they reach it by a local name or address. Anything else gets a page saying so (HTTP 403), and the [general log](#debug-options) shows a warning, at most once a minute, with the address and the name that were refused.
+
+A request counts as local when both of these hold:
+
+| Checked | Accepted |
+|---|---|
+| The address of the connecting device | A private address (`10.x.x.x`, `172.16.x.x`-`172.31.x.x`, `192.168.x.x`), a link-local address (`169.254.x.x`) or an address in the board's own subnet. Never the router (gateway) itself, and never a carrier-grade NAT address (`100.64.x.x`-`100.127.x.x`). |
+| The name or address in the browser's address bar | The board's own IP address, on the home network or on its access point; its hostname, alone or followed by any domain (`battery-emulator-a1b2`, `battery-emulator-a1b2.local`, `battery-emulator-a1b2.fritz.box`); any name without a dot; or a name ending in `.local`, `.lan`, `.home`, `.home.arpa`, `.internal` or `.localdomain`. |
+
+This refuses a port forward whether it is reached by your public IP address or by a dynamic DNS name, also on routers that hand forwarded connections over with their own address. It refuses a few setups inside the home network too:
+
+- Opening the board through your public address or dynamic DNS name from inside the network. Use its local IP address or hostname instead.
+- A local DNS name under a real domain that does not start with the board's hostname, for example `solar.example.com`. Use the IP address or the hostname, or turn password protection on.
+- A reverse proxy that passes the original public name on to the board.
+
+!!! warning "WARNING"
+    This is a safety net against exposing the board by accident, not access control. A proxy, tunnel or NAT that rewrites both the address and the name looks local. Turning password protection on lifts the restriction entirely: from then on the login is the only thing between the internet and the board, and it travels over plain HTTP. For remote access this is still not safe enough, use a VPN as described at the top of this page.
+
 ### Battery config
 
 ![image](../../images/webserver-guide-01.png)
@@ -243,6 +263,7 @@ Depending on the battery selected, more options appear:
 | **Battery max/min design voltage (V)**, **Cell max/min design voltage (mV)** | BMS type integrations (Orion, SIMPBMS, Daly, RJXZS etc.) and some others | The safe voltage range of the whole pack and of a single cell, used as charge target and protection limits |
 | **Pylon CAN baudrate (kbps)** | Pylon HV battery | 500 kbps for most batteries, 250 kbps for some |
 | **Double battery** with **2ⁿᵈ interface**, then **Triple battery** with **3ʳᵈ interface** | Integrations that support [double](battery_2x.md) or [triple](battery_3x.md) batteries | Run two or three packs in parallel, each on a CAN interface of its own |
+| **Parallel headroom tracking** | Double or triple battery | Raises the combined charge limit above the lowest pack limit, to what the packs take together. Off by default. See [Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking) |
 
 ### Inverter config { #inverter-config }
 
@@ -273,7 +294,7 @@ The following options apply to all inverters:
 - **Start tapering at SOC, percent** (50-99, default 95): the (scaled) SOC where charge power tapering begins.
 - **Float charge power, W** (0-2000, default 400): the minimum charge power held during tapering until 100% SOC is reached. Recommended to set it to 5-10% of the inverter's max power for a single battery (for double and triple, you can increase the value accordingly). 0 disables this, tapering will go linearly to 0 W. It is never applied when the battery or the safety layer itself allows no charging.
 
-The log shows a line when tapering engages. Both options can be used on their own or together.
+The log shows a line when tapering engages. Both options can be used on their own or together. With a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, both work on the combined limits of all packs, after [parallel headroom tracking](battery_2x.md#parallel-headroom-tracking) has raised the charge limit.
 
 !!! info "IMPORTANT"
     Remember to set [Max charge current and Max discharge current](#battery-chargedischarge-limit) correctly to match your setup for these options to work properly! Both options start from the power these limits allow.
@@ -300,7 +321,7 @@ The log shows a line when tapering engages. Both options can be used on their ow
 | **Contactor control via GPIO**, **Precharge time ms**, **Use Normally Closed logic** | See [Contactor control via GPIO](contactor_control_via_gpio_pins.md#software-setup) |
 | **2ⁿᵈ / 3ʳᵈ battery contactor control via GPIO** | See [Double battery](battery_2x.md#gpio-controlled-contactors) |
 | **PWM contactor control**, **PWM Frequency Hz**, **PWM Hold** | See [PWM control](contactor_control_via_gpio_pins.md#pwm-control-for-lower-power-draw) |
-| **Periodic BMS reset**, **Every**, **Defer reset if SOC less than 15%**, **Skip reset for one period if balancing** | See [Periodic BMS reset](../hardware/periodic_bms_reset.md#timed-trigger) |
+| **Periodic BMS Power reset**, **Every**, **Defer reset if SOC less than 15%**, **Skip reset for one period if balancing** | See [Periodic BMS Power reset](../hardware/periodic_bms_reset.md#timed-trigger) |
 | **External precharge via HIA4V1** and its options | See [External precharge](../hardware/high_voltage_source.md#software-configuration) |
 | **Measure CPU temperature**, **CPU temperature calibration offset (°C)** | Shows the CPU temperature on the main page. The reading of the internal sensor can be corrected with an offset, measured with a separate thermometer. |
 | **Status LED pattern** | How the [status LED](../../hardware/index.md#status-led) animates: **Classic** pulses steadily, **Energy Flow** pulses differently while charging, discharging or idle, **Heartbeat** beats faster on a warning or an error. The LilyGo T-2CAN also offers GRB versions, for LEDs with a different colour order. |
@@ -312,7 +333,7 @@ The log shows a line when tapering engages. Both options can be used on their ow
 |---|---|
 | **Start ESPNow at boot**, **ESPNow receiver MACs** | See [ESPNow](espnow.md#enabling-it) |
 | **Enable MQTT** and its options | See [MQTT](mqtt.md#enabling-mqtt) |
-| **Allow remote BMS reset via MQTT** | See [Periodic BMS reset](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt) |
+| **Allow remote BMS Power reset** | See [Periodic BMS Power reset](../hardware/periodic_bms_reset.md#remote-trigger-through-mqtt) |
 | **Home Assistant autodiscovery** and its options | See [Home Assistant Discovery](mqtt.md#home-assistant-discovery) |
 
 ### Debug options
@@ -397,9 +418,9 @@ Disabled by default. This option can be enabled to manually limit the min/max vo
 
 ![image](../../images/webserver-guide-07.png)
 
-#### Periodic BMS reset
+#### Periodic BMS Power reset
 
-**Periodic BMS reset off time** (1-600 s, default 30) sets how long the BMS stays powered off during a reset, and **Perform a BMS reset now** starts a reset on demand. Both are shown when **Periodic BMS reset** or **Allow remote BMS reset via MQTT** is enabled. See the dedicated page for [Periodic BMS reset](../hardware/periodic_bms_reset.md#on-demand-trigger).
+**Periodic BMS Power reset OFF time** (1-600 s, default 30) sets how long the BMS stays powered off during a reset, and **Perform a BMS Power reset now** starts a reset on demand. Both are shown when **Periodic BMS Power reset** or **Allow remote BMS Power reset** is enabled. See the dedicated page for [Periodic BMS Power reset](../hardware/periodic_bms_reset.md#on-demand-trigger).
 
 #### Undercharged emergency recovery mode
 
