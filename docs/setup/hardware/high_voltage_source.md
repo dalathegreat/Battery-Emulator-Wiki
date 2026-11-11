@@ -13,8 +13,9 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 
 You can use the MEB DC/DC converter (Safest OEM option), or a cheap HIA4V1 chinese PCB (cheap and unsafe) to perform the HV precharge
 
-## Option A: Volkswagen DC/DC converter
-This is the recommended option if you can source the DC/DC converter from a MEB vehicle.
+## Option A: DC/DC converter
+
+This is the recommended option if you can source the DC/DC converter from a Volkswagen MEB vehicle.
 
 ![image](../../images/meb-dcdc-02.png)
 
@@ -59,7 +60,7 @@ By setting the minimum voltage the DC/DC goes in stand-by after the precharge is
 !!! note "NOTE"
     These DC/DC converters can be crash locked, but they are unlockable by BE
 
-## Option B: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
+## Option B: TPS55288EVM-045 + XPPOWER (emco) G05
 
 The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Compatibility with this was added in firmware v10.11.0.
 
@@ -97,9 +98,9 @@ The HIA4V1 has been used successfully to precharge the MEB battery's inverter po
 
 ![image](../../images/high-voltage-source-02.png)
 
-### Modified HIA4V1 directly controlled via digital output ESP32
+### Mod to directly control by ESP32
 
-The HIA4V1 contains a 555 based oscillator, with the output connected to a MOSFET. This MOSFET is 3v3 compatible, which means we can directly control it from an ESP32 based board like the lilygo.
+Modified HIA4V1 directly controlled via digital output ESP32: The HIA4V1 contains a 555 based oscillator, with the output connected to a MOSFET. This MOSFET is 3v3 compatible, which means we can directly control it from an ESP32 based board.
 
 To do this:
 
@@ -126,9 +127,9 @@ Note that these values depend on the current the HIA4V1 has to provide.
 !!! warning "CAUTION"
     It is absolutely necessary to bias HIA4V1 board with 4x 140k resistors in series across the HV output (4x to increase voltage handling capability), to prevent very high output voltage in no-load situations (which may damage connected equipment). I didn't do it and I destroyed one battery control unit like this :-(.
 
-### Modified HIA4V1 for control via FET board
+### Mod to control via FET
 
-HIA4V1 modifications:
+Modify HIA4V1 for control via FET board:
 
 * Remove 6 (marked) components on the primary side of the transformer
 * Bridge the primary side of the coil to the power pin (A)
