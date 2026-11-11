@@ -2,9 +2,7 @@
 title: "Options for high voltage precharge"
 ---
 
-# Options for external high voltage precharge
-
-### Why
+## Why
 
 The MEB battery, but also CCS charge ports require an external high (precharge) voltage to be applied before contactors are closed. This should not be confused with the other Precharge terms used;
 
@@ -15,14 +13,14 @@ The MEB battery, but also CCS charge ports require an external high (precharge) 
 
 You can use the MEB DC/DC converter (Safest OEM option), or a cheap HIA4V1 chinese PCB (cheap and unsafe) to perform the HV precharge
 
-# Option A: Volkswagen DC/DC converter
+## Option A: Volkswagen DC/DC converter
 This is the recommended option if you can source the DC/DC converter from a MEB vehicle.
 
 ![image](../../images/meb-dcdc-02.png)
 
 Part number is 1EA907190G, but it's likely different letters at the end will work as well.
 
-## Wiring diagram
+### Wiring diagram
 
 Low voltage connector pinout
 
@@ -53,7 +51,7 @@ A few details on how this works:
 !!! note "NOTE"
     K1 relay control is not yet implemented in the software and must currently be handled externally (manual switch).
 
-## Notes on running
+### Notes on running
 
 Configure the usage of DC/DC in web settings. The 12V charging voltage is also configurable.
 By setting the minimum voltage the DC/DC goes in stand-by after the precharge is performed and it's also possible to remove it's power supply, so it doesn't consume energy at all.
@@ -61,11 +59,11 @@ By setting the minimum voltage the DC/DC goes in stand-by after the precharge is
 !!! note "NOTE"
     These DC/DC converters can be crash locked, but they are unlockable by BE
 
-# Option B: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
+## Option B: TPS55288EVM-045 + XPPOWER (emco) G05 high voltage source
 
 The Texas Instruments TPS55288EVM-045 Evaluation Module + XPPOWER (emco) G05 high voltage source is the latest option in external precharge. Compatibility with this was added in firmware v10.11.0.
 
-## Wiring diagram
+### Wiring diagram
 
 Parts needed:
 
@@ -88,7 +86,7 @@ Jumper settings for the TPS55288EVM-045 board:
 - JP3: OPEN
 - JP4: OPEN  
 
-# Option C: HIA4V1
+## Option C: HIA4V1
 
 !!! warning "CAUTION"
     There are various HIA4V1 board versions available that have different output polarization! Make sure to test separately (testmode described below) before connecting to the battery. There has been cases where the HIA4V1 has damaged the BMS due to overvoltage/wrong polarity. So going for other hardware is recommended.
@@ -99,7 +97,7 @@ The HIA4V1 has been used successfully to precharge the MEB battery's inverter po
 
 ![image](../../images/high-voltage-source-02.png)
 
-## Modified HIA4V1 directly controlled via digital output ESP32
+### Modified HIA4V1 directly controlled via digital output ESP32
 
 The HIA4V1 contains a 555 based oscillator, with the output connected to a MOSFET. This MOSFET is 3v3 compatible, which means we can directly control it from an ESP32 based board like the lilygo.
 
@@ -128,7 +126,7 @@ Note that these values depend on the current the HIA4V1 has to provide.
 !!! warning "CAUTION"
     It is absolutely necessary to bias HIA4V1 board with 4x 140k resistors in series across the HV output (4x to increase voltage handling capability), to prevent very high output voltage in no-load situations (which may damage connected equipment). I didn't do it and I destroyed one battery control unit like this :-(.
 
-## Modified HIA4V1 for control via FET board
+### Modified HIA4V1 for control via FET board
 
 HIA4V1 modifications:
 
