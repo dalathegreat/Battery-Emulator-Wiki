@@ -479,8 +479,8 @@ mqtt:
       icon: mdi:battery-arrow-down
 ```
 
-> [!NOTE]
-> The emulator doesn't publish the current scaling limits, so these entities are `optimistic`: they show the last value sent from Home Assistant. Changes aren't saved to the emulator's settings. After an emulator reboot it goes back to its saved values, but Home Assistant keeps showing the last value it sent. To apply the values again after a reboot, trigger an automation on the emulator's availability topic going `online`.
+!!! note "NOTE"
+    The emulator doesn't publish the current scaling limits, so these entities are `optimistic`: they show the last value sent from Home Assistant. Changes aren't saved to the emulator's settings. After an emulator reboot it goes back to its saved values, but Home Assistant keeps showing the last value it sent. To apply the values again after a reboot, trigger an automation on the emulator's availability topic going `online`.
 
 ### User interface for [SET_LIMITS](mqtt.md#set_limits)
 
