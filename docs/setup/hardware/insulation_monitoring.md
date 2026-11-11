@@ -43,7 +43,7 @@ This is readily detected by the battery as an insulation failure. Despite this, 
 
 - Some batteries have more sophisticated insulation monitoring using DSP that can distinguish between the transformerless inverter leakage and a real insulation fault.
 
-## Inverter-wise
+### Inverter-wise
 
 EV batteries do not normally cause problems with the inverter's insulation monitoring. The battery's test currents are usually low enough to not be detected as leakage by the inverter, although an exceptionally sensitive inverter might still detect them.
 
@@ -63,14 +63,17 @@ It is hard to be sure whether a given battery/inverter combination will have pro
 If the battery or inverter detects an insulation failure and decides to open the contactors under load, this is bad as it will damage contactors.
 
 ### Contactor opening issues
+
 Telltale signs of an issue might be that the battery runs fine for a few seconds/minutes, but then instantly opens contactors. This has been noticed on many EV platforms, for instance the Stellantis ECMP is notorious for opening contactors if battery detects leakage. If your integration supports DTC Reading/Clearing, you will most likely find a "P0AA6" Isolation DTC or similar
 
-To get around this issue, users have experimented with disabling the insulation monitoring on the battery side, either via software mod or hardware mod.
+To get around this issue, users have experimented with **disabling the insulation monitoring** on the battery side, either via software mod or hardware mod.
 
-#### Disabling insulation monitoring via software
+#### Via software
+
 It is very rare to be able to do this, but for instance on the "Stellantis CMP Smart" platform, we are able to via CAN command the battery to not perform any type of insulation testing. This avoids any issues when using the battery in stationary storage mode. No other EV platform has been cracked as well as this one!
 
-#### Disabling insulation monitoring via hardware
+#### Via hardware
+
 Another way to get around this issue is to break the battery BMS way of performing insulation monitoring. This can involve isolating the BMS from the ground plane, clever connection of PE wiring, using galvanically isolated CAN wiring setups etc. See each batteries Wiki page for more info on any potential workarounds needed. [Example of ECMP platform, disabling insulation check via HW mod](../../battery/stellantis_ecmp_citroen_ds_opel_peugeot.md#disabling-isolation-monitoring-via-hw-modification)
 
 List of things you can try:
