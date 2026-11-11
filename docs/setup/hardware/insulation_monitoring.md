@@ -2,9 +2,8 @@
 title: "What is insulation monitoring?"
 ---
 
-# What is insulation monitoring?
+## Inside an EV battery
 
-## Insulation monitoring inside an EV battery
 All EVs have some form of insulation monitoring. The vehicle/battery constantly checks the insulation resistance between the HV+ to chassis ground, along with HV- to chassis ground. If a high voltage leak is detected, the vehicle will set a fault code, and if the leak is severe it will halt the operation of the vehicle.
 
 Generally it can be said than EV batteries have to comply to at least 100 Ω per volt for DC, meaning that a 400V battery needs to provide at least 40 kΩ insulation resistance (ISO 6469-3 / UNECE R100). PV inverters / stationary energy storage systems may be stricter, tend to be designed to comply to 1kΩ per volt, thus they offer measurement ranges between 100 kΩ and 1 MΩ. 
@@ -14,10 +13,12 @@ Generally it can be said than EV batteries have to comply to at least 100 Ω per
 
 See [this excellent Youtube video](https://www.youtube.com/watch?v=00eEj_EgMas) explaining insulation resistance on EV side. 
 
-## Insulation monitoring on solar inverter side
+## On solar inverter side
+
 All solar inverters perform insulation monitoring. The inverter keeps track of PV panel strings, and if these leak high voltage DC to protective earth, error codes are set. The solar inverter also keeps track of HV Battery, and if either HV+ or HV- is leaking towards protective earth, error codes are set and operation might be halted.
 
-## Insulation monitoring in hybrid inverters
+## In hybrid inverters
+
 Hybrid inverters usually have two different types of insulation monitoring:
 
 1. Active pre-check insulation monitoring
@@ -28,7 +29,10 @@ Hybrid inverters usually have two different types of insulation monitoring:
 
    Once the inverter is in use, the inverter checks for leakage by measuring the 'residual current' (the difference between the currents in both battery terminals), to detect if any current is leaking to ground.
 
-## How inverters affect the battery insulation monitoring
+## How inverters affect insulation monitoring
+
+### Battery-wise
+
 Most hybrid inverters are 'transformerless', meaning they do not have galvanic insulation between the battery HV connections and the grid live/neutral. When an EV battery is connected and in use, a current path is created from the HV connections, through the inverter to grid neutral, through the neutral-PE tie, and back through PE to the battery case. This appears to the battery as a low (and very noisy) insulation resistance.
 
 This is readily detected by the battery as an insulation failure. Despite this, most EV batteries will still allow the contactors to remain closed:
@@ -39,13 +43,14 @@ This is readily detected by the battery as an insulation failure. Despite this, 
 
 - Some batteries have more sophisticated insulation monitoring using DSP that can distinguish between the transformerless inverter leakage and a real insulation fault.
 
-## How batteries affect the inverter insulation monitoring
+## Inverter-wise
 
 EV batteries do not normally cause problems with the inverter's insulation monitoring. The battery's test currents are usually low enough to not be detected as leakage by the inverter, although an exceptionally sensitive inverter might still detect them.
 
 Some batteries do have Y-capacitors between the HV terminals and ground, for interference suppression (and sometimes also as part of the insulation measurement circuit). These will leak some AC to ground, which may cause a leakage current high enough for the inverter to detect (or even to trip an RCD, if the capacitors are large enough).
 
-## Battery/inverter compatibility
+## Compatibility
+
 In stationary use, insulation resistance cam be a key early indicator of the battery pack health (moisture ingress, degrading waterproofing). For several compatible battery types it is visible in the More Battery Info page, but that's just the momentary value, which is completely irrelevant in the majority of the cases. Being exposed over MQTT integration allowing long-term trending, dashboards and alerting in various third party systems.
 
 !!! note "NOTE"
