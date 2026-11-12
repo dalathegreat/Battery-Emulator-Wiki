@@ -60,7 +60,7 @@ Save and reboot. Open the "CAN logger" page:
 
 ![image](../../images/can-wiring-practices-and-troubleshooting-08.png)
 
-You can see  both RX0/TX1 (CAN) function, and RX6/TX3 (CAN-FD). In this successful test both CAN buses can send and receive, since both are visible in the log :heavy_check_mark: 
+You can see  both RX0/TX1 (CAN) function, and RX6/TX3 (CAN-FD). In this successful test both CAN buses can send and receive, since all four signals visible in the log :heavy_check_mark: . If you only see TX but no RX, the interface is having issues :x:
 
 Bonus: You can also use this handy automated test page for the Stark CMR: [redispose](https://redispose.se/tests/) For all other hardwares, the above mentioned is a good test!
 
