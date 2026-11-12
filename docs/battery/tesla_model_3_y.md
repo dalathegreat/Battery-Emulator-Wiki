@@ -281,7 +281,7 @@ Steps:
 
 Remember to install charger for 12V support battery before enabling this method!
 
-<img width="700" height="344" alt="image" src="https://github.com/user-attachments/assets/3f85c267-8994-422a-a5d5-ecf8d3ade7e3" />
+![image](../images/tesla-model-3-y-01.png)
 
    
 ### Replacement BMS to balance
