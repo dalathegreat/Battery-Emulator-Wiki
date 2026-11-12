@@ -2,26 +2,15 @@
 title: "Nissan LEAF / e-NV200"
 ---
 
-## Software configuration
-For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
-
-![image](../images/nissan-leaf-e-nv200-09.png)
-
-- keep the **Automatic current offset correction** enabled, which will calibrate current measurement skew during open contactors (more info below).
-- On a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
-       - If you enable this setting on an AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus, for these, it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and manually insulate one of them). Instead, just block off the unused HV port with a 3D-printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
-- the **Balancing strategy** setting is **Aggressive** by default. Start with this value if this pack is newly deployed, or experiences high cell voltage deltas (> 150mV). You can start experimenting with the **Conservative** when you have gained some experience on how balancing and degradation perform over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md), like for example [Home Assistant](../setup/software/home_assistant.md), to observe behavior is strongly recommended). Changing this setting requires a BMS reset.
-
-!!! tip "TIP"
-    **Balancing strategy** set to **Conservative** avoids overbalancing when your pack is in good shape (small cell voltage delta in your preferred SOC range). The **Aggressive** setting corresponds to the way the battery used to balance when in the car duing driving, **Conservative** is the way it used to balance during AC charging. **Off** corresponds to the balancing strategy that used to be applied during quick charge of the car.
-
-    The setting can be applied individually per pack in [double](../setup/software/battery_2x.md) or [triple](../setup/software/battery_3x.md) battery setups.
-
 ## Wiring diagrams 🔌
 
 Connectors on an AZE0, ZE1 pack:
 
 ![connectors_aze0](../images/nissan-leaf-e-nv200-21.png)
+
+Connection principle of the Nissan Leaf battery (internal):
+
+![image](../images/nissan-leaf-e-nv200-26.png)
 
 The following pictures show an example of hooking up a LEAF battery to a [Fronius Gen24 inverter](../inverter/fronius.md). The same diagram can be useful for planning other inverter combinations.
 
@@ -104,22 +93,54 @@ Voltage levels: between 10.5-16V measured at the pin against GND.
 !!! success "TIP"
     Check out our [Low Voltage wiring](../setup/hardware/wiring_tips_lv.md) page on how to make the connections in practice.
 
+## Software configuration
+
+For this battery type, use the option named **Nissan LEAF battery** under the **Battery Protocol** setting.
+
+![image](../images/nissan-leaf-e-nv200-09.png)
+
+- keep the **Automatic current offset correction** enabled, which will calibrate current measurement skew during open contactors (more info below).
+- On a ZE0 (2011-2012 24kWh) battery, you can enable **Interlock required** for extra safety. The system checks that the original high voltage connectors and SDS are properly seated in before you can start.
+       - If you enable this setting on an AZE0 or ZE1 (2013-2023) battery, both HV plugs need to be seated (80kW motor and 6kW heater). Thus, for these, it is recommended to **not** use **Interlock required** due to the inconvenience of having to source both HV connectors (and manually insulate one of them). Instead, just block off the unused HV port with a 3D-printed [cover](../setup/hardware/list_of_3d_printable_parts.md#heater-port-cover).
+- the **Balancing strategy** setting is **Aggressive** by default. Start with this value if this pack is newly deployed, or experiences high cell voltage deltas (> 150mV). You can start experimenting with the **Conservative** when you have gained some experience on how balancing and degradation perform over time (using some monitoring solution over [MQTT](../setup/software/mqtt.md), like for example [Home Assistant](../setup/software/home_assistant.md), to observe behavior is strongly recommended). Changing this setting requires a BMS reset.
+
+### Balancing strategy
+
+The setting named **Balancing strategy** determines the way the battery is started up after a BMS Reset or after a cold boot. The options correspond to the way the battery was started when it was in the car:
+
+- **Aggressive** setting corresponds to the way the battery used to balance when in the car during driving. It's aggressive because it can't be predicted, discharging and regen charging were depending on how the car used to participate in the traffic.
+- **Conservative** is the way it used to balance during AC charging. It's conservative as the BMS could perfectly calculate the amount of balancing required over the entire, predictable charging process.
+- **Off** corresponds to the balancing strategy that used to be applied during quick charge of the car. It has been observed that during this mode no balancing occurs on the cells.
+
+Despite having **Balancing** in the name, it has been observed that this setting also influences the charge/discharge power limits reported by the BMS. The **Aggressive** setting imposes limits sooner, to protect the battery cells from high regen peaks that could occur at high SOC during driving. Since such peaks are unlikely to ever appear in stationary storage, the consequence is that charging in this strategy will become very slow above 95-97% SOC. 
+
+!!! tip "TIP"
+    Set to **Conservative** to avoid overbalancing when your pack is in good shape (small cell voltage delta in your preferred SOC range).  
+
+The setting can be applied individually per pack in [double](../setup/software/battery_2x.md) or [triple](../setup/software/battery_3x.md) battery setups.
+
+There's also a fourth setting under the hood, *shutdown*, this is naturally unselectable from here, but it is used with the *Periodic restart of BMS* setting described below.
+
 ## Periodic restart of BMS
 
 The BMS in the Nissan LEAF packs was not originally designed to operate 24/7 under all conditions. Over time, the SOC% will become less accurate, and under certain conditions, even the GIDS (Wh remaining) becomes confused (see [Issue 86](https://github.com/dalathegreat/Battery-Emulator/issues/86)). The **BAT** pin can be under +12V continuously; the **IGN** pin should be the one turned off from time to time (as the wiring diagram above). 
 
 See the [Periodic Reset page](../setup/hardware/periodic_bms_reset.md) for details. 
-Set **Periodic BMS Power reset OFF time** to **120 seconds** for Nissan LEAF packs. Based on empirical observations, the 30kWh (2013–2017, AZE0) pack benefits most from the **24h** period, together with the **Skip reset for one period if balancing** option enabled. Changing **Balancing strategy** to **Conservative** may improve balancing on packs that are in good shape (small cell voltage delta over the entire SOC range you use).
+
+Set **Periodic BMS Power reset OFF time:** to **120 seconds** for Nissan LEAF packs. Based on empirical observations, the 30kWh (2013–2017, AZE0) pack benefits most from the **24h** period, together with the **Skip reset for one period if balancing** option enabled. Changing **Balancing strategy** to **Conservative** may improve balancing on packs that are in good shape (small cell voltage delta over the entire SOC range you use).
 
 !!! tip "TIP"
     The LEAF BMS uses *passive* balancing: each of the 96 cells has a small resistor (shunt) that can be switched on to dissipate a small amount of energy as heat, slowly bringing fuller cells down to the level of the lowest cells.
     At the start of a balancing cycle, it measures all cells and flags any cell that is more than a small tolerance above the lowest one.
     While draining, it keeps track of how much it has taken from each flagged cell and switches that cell's shunt off once the count indicates it is close enough to the lowest one.
-    So a small difference between cells is normal, and the flagged cells aren't always the ones with the highest voltage at that moment. The target cell delta is around 17mV.
+    So a small difference between cells is normal, and the flagged cells aren't always the ones with the highest voltage at that moment. The target cell delta is around **17mV**.
 
 The same cells may stay flagged for many hours (sometimes a day) before draining really starts: the [Cellmonitor](../setup/software/webserver_guide.md#cellmonitor) shows them as cyan bars marked **Pending**, then **Balancing** while the list keeps changing, until it's empty.
 
 A BMS reset discards the progress and restarts the whole process, waiting included — which is why the **Skip reset for one period if balancing** option helps.
+
+!!! note "NOTE"
+    In the past, we used to recommend wiring the battery pack's **IGN** and **BAT** inputs together, and doing the periodic BMS power reset would have cut the power to both of them. Since then, it turned out that this is incorrect. The proper method is to have only **IGN** getting cut, BMS sent a shutdown command and CAN stopped for at least about a minute (as when you turn off the car), and keep **BAT** always at +12V (as you don't normally remove your 12V battery from the car either when you get out): this lets the BMS save to persistent memory and do household tasks. If you have an older system running with **IGN** and **BAT** inputs wired together, it's *recommended* (but not mandatory) to correct the wiring and switch periodically only **IGN**.
 
 ## More Battery Info 📜
 
