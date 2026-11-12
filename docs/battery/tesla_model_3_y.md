@@ -230,16 +230,20 @@ Connections info: [electrek](https://electrek.co/2017/08/24/tesla-model-3-exclus
 
 ## Note on balancing :b: 
 
-Tesla batteries are very specific when they want to balance, and it is hard to get a battery to balance. NMC chemistry seems to be more stable long term, and millivolt deviations between cells are kept low even years in operation in stationary storage. LFP chemistry however get out of balance more easily. LFP also has a very specific need to be charged to 100% to calibrate SOC, and sit at this state to balance, which is unlikely to occur in stationary systems that are used 24/7.
+Tesla batteries need to reach SOC 100% level for balancing, and it is hard to get a battery to balance if SOC 100% is not reached. NMC chemistry seems to be more stable long term, and millivolt deviations between cells are kept low even years in operation in stationary storage. LFP chemistry however get out of balance more easily. LFP also has a very specific need to be charged to 100% to calibrate SOC, and sit at this state to balance, which is unlikely to occur in stationary systems that are used 24/7.
 
 ### Current theory on balancing conditions
 
 !!! warning "WARNING"
     Not all inverters are OK with contactors opening in operation. One user damaged their Fronius inverter while opening contactors under load. Always ensure 0 current before opening contactors, and if unsure, power off inverter.
 
-Tesla batteries are intended to fully charge, and then enter a balancing phase after charging is completed and contactors open. This means that in order to balance the Tesla batteries, you cannot use them 24/7, and have to periodically charge the batteries full (99%) and press the "Pause" button, wait for current to go to 0A, and then press "Open Contactors" button in the webserver.
+### OPTION 1:
 
-Tesla batteries will balance ~2mV per 24h or balancing.
+### Works in healthy, well balanced batteries
+
+Tesla batteries are intended to fully charge, and then enter a balancing phase after charging is completed and contactors open. This means that in order to balance the Tesla batteries, you cannot use them 24/7, and have to periodically charge the batteries full (100%) and press the "Pause" button, wait for current to go to 0A, and then press "Open Contactors" button in the webserver.
+
+Tesla batteries will balance ~200mV per 24h or balancing.
 
 Once you are done balancing, you can press the "Close Contactors" button, and "Unpause" to resume operation.
 
@@ -248,14 +252,38 @@ Once you are done balancing, you can press the "Close Contactors" button, and "U
 
 ![image](../images/tesla-model-s-3-x-y-24.png){ width="902" height="289" }
 
-### Periodic forced charge-balancing (Can potentially aid to balance LFP)
+### OPTION 2:
 
-To help keep LFP batteries balanced outside of a Tesla vehicle, the emulator has a forced charging mode. The forced charging mode can be enabled via the Settings page. It is recommended to run this ?once per month? on Tesla LFP batteries. Before enabling, make sure battery is close to full, and you have enough sun or grid power to continue charging and forcing the balance!
+### Periodic forced charge-balancing (Use regularly and if SOC 100% level is not met)
+
+To help keep LFP batteries balanced outside of a Tesla vehicle, the emulator has a forced charging mode. The forced charging mode can be enabled via the Settings page. It is recommended to run this ?once per month? on Tesla LFP batteries. Before enabling, make sure battery is close to full (>95%) and also monitor cell voltages to have enough deviation. Ensure you have enough force feed power from inverter (~2x the selected balancing power set in BE)!
 
 When enabling the Manual LFP balancing , the forced top charge runs for the specified amount of time, set in Balancing max time. The balancing parameters, Balancing float power , Max battery voltage , Max cell voltage and Max cell voltage deviation can also be adjusted from here. During this time, the SOC% is faked towards the inverter, and we allow the charge W set by user. This will help the battery reach higher SOC needed to balance?
 
 ![image](../images/tesla-model-s-3-x-y-25.png){ width="414" height="382" }
 
+### OPTION 3:
+
+### Pulse method:(Use if SOC 100% level is not met)
+Steps:
+1. Set battery to charge to 100%
+2. Activate forced charging from inverter
+3. Monitor progress in BE
+4. When the highest cell reaches 3450mV limit the charge to ~200w
+5. Tesla BMS will charge until 3650mV is reached and start to "pulse"
+6. Pulsing will be performed between 3620mV - 3650mV
+7. Pulsing will slowly raise the voltage from lower cells
+ - It might take several hours to meet SOC 100%
+8. Keep monitoring BE and as soon as BE shows 100% SOC:
+ - Hit Pause in BE (within 10sec from reaching 100%)
+ - Hit Open contactors in BE (within 30sec from pausing)
+9. You must be constantly monitor the SOC level after 99.60% point! When the SOC 100% is reached, the 12v battery support from PCS and internal resistance will rapidly lower the needed "high state cells" so that the automatic balancing will not start.
+
+Remember to install charger for 12V support battery before enabling this method!
+
+<img width="700" height="344" alt="image" src="https://github.com/user-attachments/assets/3f85c267-8994-422a-a5d5-ecf8d3ade7e3" />
+
+   
 ### Replacement BMS to balance
 
 There is an ongoing open source project called the CellKeeper that aims to replace the BMS inside the Tesla battery with a standalone controller. This would instantly solve the balancing issue. Note that this board is still in development, and as soon as it is ready this page will be updated.
