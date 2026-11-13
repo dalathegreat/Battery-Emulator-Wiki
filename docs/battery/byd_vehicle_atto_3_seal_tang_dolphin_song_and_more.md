@@ -15,7 +15,7 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | PK3 | Atto 3 (2026) | 49.92kWh | 150Ah | 332.8V | 330 kg | ✅
 | P48 | Atto 3 | 60.48kWh | 150Ah | 403.2V | 402 kg | ✅ 
 | P4S | ? | 74.8kWh | 150Ah | 499.2V | 520 kg | ✅ 
-| VD6 | Seal U DM-i | 18,32kWh | 54Ah | 339.2V | 175-181 kg | :x: (Type B LV connector)
+| VD6 | Seal U DM-i | 18,32kWh | 54Ah | 339.2V | 175-181 kg | ✅ ([DM pack](#dm-phev-packs), Type B LV connector)
 | PA4 | Tang | 86.4kWh  | 135Ah | 640V | 600 kg | :x: (Type B LV connector)
 | PE2 | Han | 85.4kWh  | 150Ah | 569.6V | 600 kg | :x: (Type B LV connector)
 | PE5 | Seal   | 82.56kWh | 150Ah | 550.4V | 580 kg | ✅ 
@@ -31,9 +31,9 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | PR2| Song Plus | 87.04 kWh | 170Ah | 512.0V | 580 kg | ?
 | PF9| Song Plus | 87.04 kWh | 170Ah | 512.0V | 580 kg | ?
 | PM7 | Seal U | 71.80 kWh | 170Ah | 422.4V | 488-513 kg | ✅ 
-| VM7 | Sealion 8 DM-p (AU) | 35.62 kWh | 78.4Ah | 454.4V | 266 kg | :x: (Type C LV connector)
+| VM7 | Sealion 8 DM-p (AU) | 35.62 kWh | 78.4Ah | 454.4V | 266 kg | ✅ ([DM pack](#dm-phev-packs), Type C LV connector)
 | PW4 | Seal 7 | 91.392 kWh | 170Ah | 537.6V | 637 kg | ✅
-| VG9 | Shark | 29.58 kWh | 81.1Ah | 364.8V | ? kg | :x: (Type B LV connector)
+| VG9 | Shark | 29.58 kWh | 81.1Ah | 364.8V | ? kg | ✅ ([DM pack](#dm-phev-packs), Type B LV connector)
 
 Confirmed working BYD Seal 60kWh battery example sticker:
 
@@ -49,6 +49,17 @@ Select **BYD Atto 3/Seal/Dolphin** under **Battery Protocol**.
 
 !!! note "IMPORTANT"
     The battery needs to be on its own CAN channel. It cannot share the same CAN channel as the solar inverter. LilyGo T-2CAN or similar double CAN hardware is recommended!
+
+### DM (PHEV) packs
+
+DM (plug-in hybrid) packs such as the VD6, VG9 and VM7 use the same **BYD Atto 3/Seal/Dolphin** protocol. Battery-Emulator detects a DM pack automatically from the BMS messages, so there is no extra setting.
+
+On a DM pack:
+
+- Contactor control over CAN works as on other BYD packs. Battery-Emulator sends the extra message these packs need before they will close.
+- [Native charging and balancing](#charging-and-soc-calibration) are not available yet; the panel is greyed out and shows **Not available on DM packs**. Use the [artificial SOC auto-calibration](#artificial-soc-auto-calibration) and [manual calibration](#manual-soc-and-capacity-calibration) instead.
+- The BMS does not support the [automatic insulation monitor disable](#insulation-monitor-and-native-charging), so Battery-Emulator does not attempt it.
+- The VG9 and VM7 needed HV interlock pins 30 and 31 bridged. A floating collision signal input sets **P1A5100**, but this does not stop the contactors closing.
 
 ### Example battery install, Atto 3 P48 battery
 
@@ -78,7 +89,7 @@ The connection diagram is derived from reverse engineering the pins. The followi
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-09.png)
 
 ## LV Connector Type B
-This connector appears on newer battery types, such as the PA4. The software is NOT fully compatible with TypeB batteries yet. :x:
+This connector appears on newer battery types, such as the PA4. [DM (PHEV) packs](#dm-phev-packs) (VD6, VG9, and the Type C VM7 listed here) are supported. Other Type B batteries (PA4, PC5B, PE2) are NOT fully compatible yet. :x:
 Pinout varies between different batteries despite the plug & socket being the same.
 
 *Development ongoing, many details can be found in the Discord*
@@ -89,44 +100,45 @@ Pinout varies between different batteries despite the plug & socket being the sa
 | **PC5B** (upside down compared to PA4) | ![PC5B plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-11.png){ width="280" } | ![PC5B wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-12.png){ width="280" } | [See below](#pinout-comparison) |
 | **VD6** | ![VD6 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-13.png){ width="280" } | ![VD6 wiring diagram](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-14.png){ width="280" } | [See below](#pinout-comparison) |
 | **VM7** | ![VM7 plug](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-15.png){ width="280" } | — | Mostly unknown at the moment, derived from in car measurements and comparison to VD6 |
+| **VG9** | — | — | [See below](#pinout-comparison), from the BYD Shark 6 circuit diagram manual (connector BK51) |
 
 ### Pinout comparison
 
-| Pin | PC5B | VD6 | VM7 |
-|---|---|---|---|
-| 1 | — | — | — |
-| 2 | — | — | — |
-| 3 | — | — | — |
-| 4 | Constant 12V power | Constant power supply | Constant 12V |
-| 5 | Ignition 12V power | Power network CAN-H | Power network CAN-H |
-| 6 | — | Power network CAN-L | Power network CAN-L |
-| 7 | — | — | GND (CAN twisted pair shield) |
-| 8 | Charging Subnet CAN-L | IG3 | ? (maybe IG, based on VD6) |
-| 9 | — | Vehicle battery GND | GND |
-| 10 | Energy Subnet CAN-L | Vehicle battery GND | GND |
-| 11 | — | Charging connection signal | ? |
-| 12 | DC charging pos/neg power supply (12V in) | — | ? |
-| 13 | HV interlock signal 1 | Collision signal | ? |
-| 14 | DC+ temp sensor signal | — | ? |
-| 15 | Charging Subnet CAN-H | — | — |
-| 16 | GND | — | — |
-| 17 | Energy Subnet CAN-H | Charging CAN-H | Charging CAN-H |
-| 18 | HV interlock signal 2 | Charging CAN-L | Charging CAN-L |
-| 19 | — | Temperature test 1+ | ? |
-| 20 | DC- temp sensor signal | Temperature test 2+ | ? |
-| 21 | DC charging port temp sensor GND | Fast-charging pos/neg contactor GND | — |
-| 22 | Collision signal | Fast-charging positive contactor 1 | — |
-| 23 | GND | Fast-charging negative contactor 1 | — |
-| 24 | DC charging pos contactor control signal | — | — |
-| 25 | Charging connection confirmation CC | CC contactor burn-detection point | — |
-| 26 | DC charging aux power supply wakeup A+ | DC charging port voltage status signal CC+ | — |
-| 27 | — | Temperature detection GND | ? |
-| 28 | — | — | — |
-| 29 | Ignition 12V power | — | — |
-| 30 | On board charging connection signal | HV interlock input signal 1 | ? (Interlock +?) |
-| 31 | DC charging negative contactor control signal | HV interlock output signal 1 | ? (Interlock -?) |
-| 32 | DC charging sensor signal | — | — |
-| 33 | Charging connection confirmation CC2 | CC contactor burn-detection GND | — |
+| Pin | PC5B | VD6 | VM7 | VG9 |
+|---|---|---|---|---|
+| 1 | — | — | — | — |
+| 2 | — | — | — | — |
+| 3 | — | — | — | — |
+| 4 | Constant 12V power | Constant power supply | Constant 12V | Constant power supply |
+| 5 | Ignition 12V power | Power network CAN-H | Power network CAN-H | Energy network CAN-H |
+| 6 | — | Power network CAN-L | Power network CAN-L | Energy network CAN-L |
+| 7 | — | — | GND (CAN twisted pair shield) | — |
+| 8 | Charging Subnet CAN-L | IG3 | ? (maybe IG, based on VD6) | IG3 power supply |
+| 9 | — | Vehicle battery GND | GND | GND |
+| 10 | Energy Subnet CAN-L | Vehicle battery GND | GND | GND |
+| 11 | — | Charging connection signal | ? | Charging connection signal |
+| 12 | DC charging pos/neg power supply (12V in) | — | ? | — |
+| 13 | HV interlock signal 1 | Collision signal | ? | Collision signal |
+| 14 | DC+ temp sensor signal | — | ? | — |
+| 15 | Charging Subnet CAN-H | — | — | — |
+| 16 | GND | — | — | — |
+| 17 | Energy Subnet CAN-H | Charging CAN-H | Charging CAN-H | DC charging CAN-H |
+| 18 | HV interlock signal 2 | Charging CAN-L | Charging CAN-L | DC charging CAN-L |
+| 19 | — | Temperature test 1+ | ? | Temperature detection point 1+ |
+| 20 | DC- temp sensor signal | Temperature test 2+ | ? | Temperature detection point 2+ |
+| 21 | DC charging port temp sensor GND | Fast-charging pos/neg contactor GND | — | — |
+| 22 | Collision signal | Fast-charging positive contactor 1 | — | — |
+| 23 | GND | Fast-charging negative contactor 1 | — | — |
+| 24 | DC charging pos contactor control signal | — | — | — |
+| 25 | Charging connection confirmation CC | CC contactor burn-detection point | — | — |
+| 26 | DC charging aux power supply wakeup A+ | DC charging port voltage status signal CC+ | — | — |
+| 27 | — | Temperature detection GND | ? | Temperature detection GND |
+| 28 | — | — | — | — |
+| 29 | Ignition 12V power | — | — | — |
+| 30 | On board charging connection signal | HV interlock input signal 1 | ? (Interlock +?) | HV interlock input signal 1 |
+| 31 | DC charging negative contactor control signal | HV interlock output signal 1 | ? (Interlock -?) | HV interlock output signal 1 |
+| 32 | DC charging sensor signal | — | — | GND |
+| 33 | Charging connection confirmation CC2 | CC contactor burn-detection GND | — | — |
 
 ## HV Connectors
 High voltage connectors vary a bit between the different BYD variants. Due to this, it is best to try and source the high voltage cable from the same type of vehicle that the battery came from.
@@ -216,6 +228,9 @@ The panel shows the charge session state and the highest cell voltage and cell s
 !!! note "Primary battery only"
     In firmware **12.5.0**, native charging and the automatic balancing contactor cycle are available on the primary battery only. They are not available on the second battery.
 
+!!! note "DM (PHEV) packs"
+    Native charging and balancing are not available on [DM packs](#dm-phev-packs).
+
 ### Cell balancing
 
 From firmware **12.5.0**, Battery-Emulator can briefly disconnect the battery after a native full charge to trigger the BMS to start balancing.
@@ -240,7 +255,7 @@ These are lifetime counters, so they show that balancing happened between readin
 
 The BMS will refuse a native charge session while it reports an insulation fault. The **Isolation resistance monitor** section on More Battery Info shows the monitor status and controls.
 
-If automatic monitor disable is enabled, firmware **12.5.0** reapplies it when the BMS turns monitoring back on after the contactors open. This also covers the contactor cycle used for balancing. Disabling the monitor does not repair an insulation fault.
+If automatic monitor disable is enabled, firmware **12.5.0** reapplies it when the BMS turns monitoring back on after the contactors open. This also covers the contactor cycle used for balancing. Disabling the monitor does not repair an insulation fault. DM packs do not support disabling the monitor.
 
 <span id="soc-drift-overtime"></span>
 
