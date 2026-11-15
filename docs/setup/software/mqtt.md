@@ -380,13 +380,17 @@ Use command `ESPNOW_RUN` with payload `1` to start and `0` to stop ESPNow. To se
 
 | Payload | Mode |
 | ------- | ---- |
-| `0` or `disable` | Use the SOC from the BMS |
+| `0`, `disable` or `bms` | Use the SOC from the BMS |
 | `1` or `auto` | Use SOC Havrla if it differs from the BMS SOC by more than 3 percentage points |
-| `2` or `enable` | Always use SOC Havrla |
+| `2`, `enable` or `havrla` | Always use SOC Havrla |
+
+The payload is not case sensitive, and `Disabled` and `Enabled` are accepted too, so the published mode texts can be sent back as they are.
 
 Unlike `SET_LIMITS`, the mode is **stored in flash**, so it survives a reboot. An invalid payload is ignored and logged. The current mode is published as `bmwi3_soc_havrla_mode` (`Disabled`, `Auto` or `Enabled`) on the `info` topic.
 
-The command, and the SOC Havrla values on the `info` topic, are not available on the LilyGo T-CAN485 and the ESP32 DevKit.
+With [Home Assistant](home_assistant.md) auto-discovery enabled, a BMW i3 also gets a **SoC Havrla Mode Select** entity (a `select`, in the configuration category) with the options `Disabled`, `Auto` and `Enabled`. It shows the current mode and sends `SET_BMWI3_SOCHAVR` when it is changed.
+
+The command, the select and the SOC Havrla values on the `info` topic are not available on the LilyGo T-CAN485 and the ESP32 DevKit.
 
 ## Home Assistant Discovery
 
