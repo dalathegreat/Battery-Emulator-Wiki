@@ -82,6 +82,8 @@ Example: Shipping container
 
 ![image](../images/installation-guidelines-06.png)
 
+While vertical orientation is the preferred installation method to save space, some manufacturers specify limitations on orientation. For instance Nissan LEAF batteries are not meant to be mounted upside down (why would you even?), but wallmounted orientation is OK. So far we have not experienced any issues even when going against manufacturer guidelines, but there are theories that some pouch-modules might "pool" electrolyte if you orient it the wrong way, which may in the very long term cause uneven degradation (no references to this are known). So the bottom line is, mount it however you want, but avoid upside down batteries.
+
 ## Optional stuff!
 
 !!! tip "TIP"
