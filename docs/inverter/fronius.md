@@ -85,7 +85,7 @@ You will need a **technician** login to the inverter to make changes to the setu
 
 Setup for battery operation is done via the inverter's web UI in **Device Configuration > Components > Add Component > Battery**. Select the battery type matching the [protocol you chose](#which-protocol-to-use): **BYD HVS/HVM** for *BYD HVS/HVM over Modbus*, or **BYD HVS+/HVM+/HVB, UL Battery** for *Fronius Generic Storage*:
 
-<img width="1256" height="430" alt="image" src="https://github.com/user-attachments/assets/da7410ad-11ae-4280-b627-72f0e8c0738a" />
+![image](../images/fronius-20.png)
 
 After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter ([Waveshare ESP32‐S3‐RS485‐CAN](../hardware/waveshare_esp32_s3_rs485_can.md) and LEAF battery example):
 
