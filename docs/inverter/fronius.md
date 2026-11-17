@@ -83,9 +83,9 @@ You will need a **technician** login to the inverter to make changes to the setu
 !!! note "NOTE"
     You will also need a Fronius Smartmeter so that the system can measure consumption and generation. 
 
-Setup for battery operation is done via the **Solar.start** app or **Device Configuration > Components > Add Component > Battery**. Select the battery type matching the [protocol you chose](#which-protocol-to-use): **BYD HVS/HVM** for BYD HVS/HVM over Modbus (shown below), or **BYD HVS+/HVM+/HVB, UL Battery** for Fronius Generic Storage:
+Setup for battery operation is done via the inverter's web UI in **Device Configuration > Components > Add Component > Battery**. Select the battery type matching the [protocol you chose](#which-protocol-to-use): **BYD HVS/HVM** for *BYD HVS/HVM over Modbus*, or **BYD HVS+/HVM+/HVB, UL Battery** for *Fronius Generic Storage*:
 
-![FroniusSetup](../images/fronius-18.png)
+<img width="1256" height="430" alt="image" src="https://github.com/user-attachments/assets/da7410ad-11ae-4280-b627-72f0e8c0738a" />
 
 After adding the battery, connect the Modbus/RS485 terminals of the Battery-Emulator hardware to the inverter ([Waveshare ESP32‐S3‐RS485‐CAN](../hardware/waveshare_esp32_s3_rs485_can.md) and LEAF battery example):
 
@@ -127,7 +127,7 @@ With this protocol the inverter tells the battery which operating mode it wants,
 
 Inactive means the battery is connected but no current flows, the same as Battery Emulator's **Pause**.
 
-The inverter puts the battery into Standby when it has reached its minimum SOC and there is no PV. It only does this if **no backup power is configured** in the inverter: with backup power it keeps the battery Active at all times, ready for a grid outage, so the contactors stay closed just as with BYD HVS/HVM over Modbus.
+The inverter puts the battery into Standby when it has reached its minimum SOC and there is no PV. It only does this if **no backup power is configured in the inverter**: with backup power it keeps the battery Active at all times, ready for a grid outage, so the contactors stay closed just as with BYD HVS/HVM over Modbus.
 
 Before opening the contactors, Battery Emulator first reports Standby, then waits until:
 
@@ -162,7 +162,7 @@ Each fault is reported once, with the time it occurred by the inverter's clock. 
 
 Besides the [settings shared with BYD HVS/HVM over Modbus](#other-settings), this protocol adds:
 
-**Include battery in insulation test**: when enabled, the inverter includes the battery's DC path in its insulation measurement. The inverter reads this only when it sets up the battery, so restart the inverter after changing it. Off by default.
+**Include battery in insulation test**: when enabled, the inverter includes the battery's DC path in its insulation measurement. The inverter reads this only when it sets up the battery, so restart the inverter after changing it. Off by default. This only matters actually when **no backup power is configured in the inverter**: with backup power it keeps the battery Active at all times, ready for a grid outage, and since the contactors stay closed continuously, the insulation test will include the batteries anyway.
 
 **Inverter Contactor Workaround**: with **No Workaround** (the default) the contactors follow the inverter as described above. **Keep contactors always closed** keeps them closed regardless, and **Lock contactors closed after first close request** keeps them closed from the first time the inverter asks for the battery. The state reported to the inverter follows its requests either way.
 
