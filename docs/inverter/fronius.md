@@ -156,7 +156,7 @@ Battery Emulator reports its faults (events at error level) to the inverter, whi
 
 Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
 
-Each fault is reported once, with the time it occurred by the inverter's clock. The inverter sends its time to Battery Emulator once an hour, so after Battery Emulator starts it can take up to an hour until the time is known. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
+Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
 
 ### Settings for Fronius Generic Storage {#settings-for-fronius-generic-storage}
 
@@ -189,10 +189,16 @@ Fronius: Inverter has seen STANDBY, contactors may open (4012 ms)
 
 **Fronius Primo, 450V maxvoltage cap**: see [Invalid battery size detected](#invalid-battery-size-detected).
 
-**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive).
+**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive). Battery Emulator sets its own clock from it, see [Battery Emulator's clock](#battery-emulators-clock).
 
 !!! note "NOTE"
     If you intend to use the [Periodic Reset](../setup/hardware/periodic_bms_reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
+
+### Battery Emulator's clock {#battery-emulators-clock}
+
+Battery Emulator has no network time, so with either protocol it sets its clock from the time the inverter sends once an hour. Once set, the time (UTC) is shown at the bottom of the main page's [status card](../setup/software/webserver_guide.md#system-status), and Fronius Generic Storage dates the [faults it reports](#faults-in-the-inverter-event-log) by it.
+
+The clock keeps running through a restart of Battery Emulator, such as **Reboot Emulator**, a crash or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the clock is not set, and the main page shows no time until the inverter sends it, which can take up to an hour.
 
 ### Notes on Scaled SOC + Fronius min/max SOC
 
