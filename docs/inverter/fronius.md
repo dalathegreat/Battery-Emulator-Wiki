@@ -146,21 +146,17 @@ Battery Emulator reports its faults (events at error level) to the inverter, whi
 | Battery Emulator event | Shown in the inverter as |
 |---|---|
 | CAN_BATTERY_MISSING | The battery control unit (BCU) cannot communicate with all the battery modules |
-| DISCHARGE_LIMIT_EXCEEDED | Over current during discharge detected |
-| CELL_CRITICAL_UNDER_VOLTAGE, BATTERY_UNDERVOLTAGE | Cell Under Voltage 3 |
-| CHARGE_LIMIT_EXCEEDED | Charge Over Current |
-| CELL_CRITICAL_OVER_VOLTAGE, BATTERY_OVERVOLTAGE | Cell Over Voltage 3 |
+| CELL_CRITICAL_UNDER_VOLTAGE | Cell Under Voltage 3 |
+| CELL_CRITICAL_OVER_VOLTAGE | Cell Over Voltage 3 |
 | BATTERY_OVERHEAT | Charge Over Temperature 3 |
-| BATTERY_FROZEN | Charge Under Temperature 3 |
-| CELL_DEVIATION_HIGH | Battery Imbalance |
 | THERMAL_RUNAWAY | Cell Failure |
-| CONTACTOR_WELDED, CONTACTOR_OPEN | BCU_Main Circuit Failure |
-| BATTERY_FUSE, INTERNAL_OPEN_FAULT | Battery Break |
+| INTERNAL_OPEN_FAULT | Battery Break |
 | HVIL_FAILURE | Hardware fault at the battery control unit (BCU) |
-| PRECHARGE_FAILURE, AUTOMATIC_PRECHARGE_FAILURE | Pre-charge Fault |
-| BATTERY_ISOLATION | DCBusFault |
+| AUTOMATIC_PRECHARGE_FAILURE | Pre-charge Fault |
 
-Where an event also exists for a 2nd or 3rd battery, those are reported too. Each fault is reported once, when it occurs. The entry carries the inverter's own clock time, so faults are only reported once the inverter has sent its time to Battery Emulator.
+Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
+
+Each fault is reported once, with the time it occurred by the inverter's clock. The inverter sends its time to Battery Emulator once an hour, so after Battery Emulator starts it can take up to an hour until the time is known. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
 
 ### Settings for Fronius Generic Storage {#settings-for-fronius-generic-storage}
 
