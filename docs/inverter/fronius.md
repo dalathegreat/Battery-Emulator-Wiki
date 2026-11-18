@@ -166,7 +166,7 @@ Besides the [settings shared with BYD HVS/HVM over Modbus](#other-settings), thi
 
 **Inverter Contactor Workaround**: with **No Workaround** (the default) the contactors follow the inverter as described above. **Keep contactors always closed** keeps them closed regardless, and **Lock contactors closed after first close request** keeps them closed from the first time the inverter asks for the battery. The state reported to the inverter follows its requests either way.
 
-**Inverter** shows the name and firmware version the inverter has sent, for example *Fronius Symo GEN24 6.0, firmware 1.42.9-1*. **Requested operating mode** shows the last mode the inverter asked for. Both read "not yet received" until the inverter has sent them.
+**Inverter type** shows the name and firmware version the inverter has sent, for example *Fronius Symo GEN24 6.0, firmware 1.42.9-1*. The inverter only sends them while it has not detected the battery yet. They are purely informational, so Battery Emulator does not save them, and a reboot clears them. **Requested operating mode** shows the last mode the inverter asked for. Both read "not yet received" until the inverter has sent them.
 
 ### Following it in the log {#fronius-generic-storage-log}
 
