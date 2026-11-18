@@ -49,7 +49,7 @@ Keep this amperage limit in mind when choosing a battery for the Fronius!
 
 Battery Emulator talks to a Fronius inverter with Fronius' storage protocol, which comes in two versions. Both use the same Modbus RS485 wiring. In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol** and the version under **Storage protocol**. 
 
-<img width="780" height="198" alt="image" src="https://github.com/user-attachments/assets/625a5277-ac9e-40d2-b42d-cd37561d23f6" />
+![image](../images/fronius-21.png)
 
 In the inverter, select the battery type that matches the version. The main page then shows the protocol as *Fronius Generic Storage v1* or *Fronius Generic Storage v2*.
 
@@ -162,7 +162,7 @@ Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulat
 
 ## Settings {#other-settings}
 
-<img width="645" height="286" alt="image" src="https://github.com/user-attachments/assets/953bd8ab-c366-4293-af90-4d6d4305cf64" />
+![image](../images/fronius-22.png)
 
 **Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` (`507` with Version 2) will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
 
