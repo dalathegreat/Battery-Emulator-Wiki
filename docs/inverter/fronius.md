@@ -47,7 +47,11 @@ Keep this amperage limit in mind when choosing a battery for the Fronius!
 
 ## Choosing a Storage protocol version {#which-protocol-to-use}
 
-Battery Emulator talks to a Fronius inverter with Fronius' storage protocol, which comes in two versions. Both use the same Modbus RS485 wiring. In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol** and the version under **Storage protocol**. In the inverter, select the battery type that matches the version. The main page then shows the protocol as *Fronius Generic Storage v1* or *Fronius Generic Storage v2*.
+Battery Emulator talks to a Fronius inverter with Fronius' storage protocol, which comes in two versions. Both use the same Modbus RS485 wiring. In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol** and the version under **Storage protocol**. 
+
+<img width="780" height="198" alt="image" src="https://github.com/user-attachments/assets/625a5277-ac9e-40d2-b42d-cd37561d23f6" />
+
+In the inverter, select the battery type that matches the version. The main page then shows the protocol as *Fronius Generic Storage v1* or *Fronius Generic Storage v2*.
 
 | Storage protocol in Battery Emulator | Battery type to select in the Fronius inverter |
 |---|---|
@@ -101,8 +105,6 @@ When the low voltage communication is handled, also connect the high voltage sid
 ## Storage protocol Version 1 {#version-1}
 
 In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol**, **Version 1** under **Storage protocol**, and **Modbus** as the **Inverter interface**. In the inverter, the battery type is **BYD HVS/HVM**.
-
-![settings](../images/fronius-19.png)
 
 The battery identifies itself as a BYD Battery-Box Premium HV. Battery Emulator closes the contactors on its own shortly after it starts, and keeps them closed; the inverter has no say in it. The inverter doesn't discharge the battery below 5% SOC, a limit it fixes for this battery type.
 
@@ -158,6 +160,19 @@ Where an event also exists for a 2nd or 3rd battery, those are reported too, exc
 
 Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
 
+## Settings {#other-settings}
+
+<img width="645" height="286" alt="image" src="https://github.com/user-attachments/assets/953bd8ab-c366-4293-af90-4d6d4305cf64" />
+
+**Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` (`507` with Version 2) will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
+
+**Fronius Primo, 450V maxvoltage cap**: see [Invalid battery size detected](#invalid-battery-size-detected).
+
+**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive). Battery Emulator sets its own clock from it, see [Battery Emulator's clock](#battery-emulators-clock).
+
+!!! note "NOTE"
+    If you intend to use the [Periodic Reset](../setup/hardware/periodic_bms_reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
+
 ### Settings for Version 2 {#settings-for-fronius-generic-storage}
 
 Besides the [settings shared with Version 1](#other-settings), Version 2 adds:
@@ -182,17 +197,6 @@ Fronius: Inverter requests operating mode 0 (Standby)
 Fronius: Reporting state 0 (Standby) to the inverter
 Fronius: Inverter has seen STANDBY, contactors may open (4012 ms)
 ```
-
-## Settings shared by both versions {#other-settings}
-
-**Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` (`507` with Version 2) will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
-
-**Fronius Primo, 450V maxvoltage cap**: see [Invalid battery size detected](#invalid-battery-size-detected).
-
-**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive). Battery Emulator sets its own clock from it, see [Battery Emulator's clock](#battery-emulators-clock).
-
-!!! note "NOTE"
-    If you intend to use the [Periodic Reset](../setup/hardware/periodic_bms_reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
 
 ### Battery Emulator's clock {#battery-emulators-clock}
 
