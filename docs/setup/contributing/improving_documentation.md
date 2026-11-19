@@ -38,9 +38,9 @@ The editor opens with the text of the page in Markdown format. Make the changes 
 ![Editing the page](../../images/improving-documentation-04.png)
 
 !!! note
-    GitHub's preview is close to, but not the same as, this site. [Boxes](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types) like this one, image sizes and icons only show up correctly once the site is built. See Material for MkDocs documentation for advanced stuff.
+    GitHub's preview is close to, but not the same as, this site. [Boxes](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types) like this one, image sizes and icons only show up correctly once the site is built. See Material for MkDocs documentation for advanced stuff. When unsure, look at how other pages do it and keep the existing formatting.
 
-    When unsure, look at how other pages do it and keep the existing formatting.
+    You'll be able to get a final preview after you submitted the PR, before merging, later in **Step 7**.
 
 Keep a change focused on one topic. A few small, separate changes are easier to review than one big one.
 
@@ -70,7 +70,20 @@ Then click **Create pull request** to send it in:
 
 ![Create pull request go](../../images/improving-documentation-07.png)
 
-## Step 7: Review and merge
+This will automatically trigger a couple of actions processing the changes you made.
+
+## Step 7: Preview how it will look like
+
+One of the actions will start deploying a minimal preview of your suggested changes, making an automated comment containing the URLs where you can access the preview:
+
+![Preview](../../images/improving-documentation-11.png)
+
+The URL will be accessible only after the green ✔️ checkmark will appear next to the Preview PR.
+
+!!! warning
+    Due to constrained resources, a single task is used globally per site to generate the previews. This means, if several users work on several PRs simultaneously, certain preview tasks may be cancelled before they finish. That's when you'll see a ❌ next to the Preview PR. To retry, comment `/preview` to restart the rebuild. Don't abuse this function, it's rate-limited.
+
+## Step 8: Review and merge
 
 The project team admins review the changes you suggested. They may merge them right away, or ask questions or request changes in the comments of the pull request. GitHub notifies you about these by e-mail and under the bell icon on GitHub.
 
