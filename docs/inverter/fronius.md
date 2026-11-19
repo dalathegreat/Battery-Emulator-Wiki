@@ -25,7 +25,7 @@ It is recommended to always use latest software version of both the Fronius inve
 
 ![working](../images/fronius_anim.gif)
 
-## Hardware limits :zap:
+### Hardware limits :zap:
 
 * Fronius GEN24 **Symo 3-5kW** inverters are capped to max **12.5A** on the battery port.
 * Fronius GEN24 **Symo 6-12kW** inverters are capped to max **22A** on the battery port (also the SC model).
@@ -44,44 +44,6 @@ Keep this amperage limit in mind when choosing a battery for the Fronius!
     This can also be seen from the label on the inverter, incase "Plus" is missing:
 
     ![bild](../images/fronius-02.png)
-
-## Choosing a Storage protocol version {#which-protocol-to-use}
-
-Battery Emulator talks to a Fronius inverter with Fronius' storage protocol, which comes in two versions. Both use the same Modbus RS485 wiring. In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol** and the version under **Storage protocol**. 
-
-![image](../images/fronius-21.png)
-
-In the inverter, select the battery type that matches the version. The main page then shows the protocol as *Fronius Generic Storage v1* or *Fronius Generic Storage v2*.
-
-| Storage protocol in Battery Emulator | Battery type to select in the Fronius inverter |
-|---|---|
-| [Version 1](#version-1) | **BYD HVS/HVM** |
-| [Version 2](#version-2) | **BYD HVS+/HVM+/HVB, UL Battery** |
-
-**Version 1** makes the battery look like a BYD Battery-Box Premium HVS/HVM. It is the established way of connecting Battery Emulator to a Fronius inverter. Earlier releases offered it as the inverter protocol *BYD HVS/HVM over Modbus*: after updating, such a setup shows up as Fronius Generic Storage with Version 1, and nothing needs changing.
-
-**Version 2** uses the newer version of the same Fronius protocol. The battery appears under its own name, the inverter decides when the contactors close and open, and Battery Emulator's faults show up in the inverter's event log.
-
-### Comparison
-
-| | Version 1 | Version 2 |
-|---|---|---|
-| **Battery type in the inverter** | BYD HVS/HVM | BYD HVS+/HVM+/HVB, UL Battery |
-| **How the battery identifies itself** | BYD Battery-Box Premium HV, with the same serial number on every Battery Emulator | Manufacturer "Battery Emulator", the battery type selected in Battery Emulator as model (for example "Nissan LEAF battery"), the Battery Emulator version as firmware, and a serial number made from the board's MAC address |
-| **Lowest SOC the inverter discharges to** | 5%, fixed by the inverter | 1%, set by Battery Emulator |
-| **Contactors** | Closed by Battery Emulator shortly after it starts, then kept closed | Closed and opened as the inverter asks, see [Contactors follow the inverter](#contactors-follow-the-inverter) |
-| **Battery size** | Capacity reported to the inverter capped at about 58 kWh, power limits at 30 kW | No caps (not yet tested above 58 kWh) |
-| **Battery Emulator faults** | The inverter only sees that the battery is in fault | Each fault becomes an entry in the inverter's event log, see [Faults in the inverter's event log](#faults-in-the-inverter-event-log) |
-| **Insulation test** | The battery is never included | Optional, see [Settings for Version 2](#settings-for-fronius-generic-storage) |
-| **Status** | Established | New, tested so far on a Symo GEN24 6.0 with firmware 1.42.9-1 |
-
-### Which one to choose
-
-- Choose **Version 2** if you want to use the battery down to 1% instead of 5%, have a battery bigger than 58 kWh or 30 kW, want Battery Emulator's faults in the inverter's event log, show the real battery type in SolarWeb, or want the contactors to open while the inverter doesn't need the battery (if no backup power is configured in the inverter).
-- Choose **Version 1** if you prefer the classic setup faking a *BYD Battery-Box Premium HV*, or if your inverter firmware doesn't offer **BYD HVS+/HVM+/HVB, UL Battery** in its list of batteries.
-
-!!! warning "WARNING"
-    Version selected in Battery Emulator **must match** the corresponding battery type in the inverter. Otherwise the inverter may read erroneous data from the battery, as described further down below in the Troubleshooting section.
 
 ## Setting up the Fronius inverter with Battery Emulator
 
@@ -105,7 +67,45 @@ When the low voltage communication is handled, also connect the high voltage sid
 !!! warning "WARNING"
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO or CAN will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. 
 
-### Changing protocol in the inverter {#version-change-inverter}
+### Choosing a Storage protocol version {#which-protocol-to-use}
+
+Battery Emulator talks to a Fronius inverter with Fronius' storage protocol, which comes in two versions. Both use the same Modbus RS485 wiring. In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol** and the version under **Storage protocol**. 
+
+![image](../images/fronius-21.png)
+
+In the inverter, select the battery type that matches the version. The main page then shows the protocol as *Fronius Generic Storage v1* or *Fronius Generic Storage v2*.
+
+| Storage protocol in Battery Emulator | Battery type to select in the Fronius inverter |
+|---|---|
+| [Version 1](#version-1) | **BYD HVS/HVM** |
+| [Version 2](#version-2) | **BYD HVS+/HVM+/HVB, UL Battery** |
+
+**Version 1** makes the battery look like a BYD Battery-Box Premium HVS/HVM. It is the established way of connecting Battery Emulator to a Fronius inverter. Earlier releases offered it as the inverter protocol *BYD HVS/HVM over Modbus*: after updating, such a setup shows up as Fronius Generic Storage with Version 1, and nothing needs changing.
+
+**Version 2** uses the newer version of the same Fronius protocol. The battery appears under its own name, the inverter decides when the contactors close and open, and Battery Emulator's faults show up in the inverter's event log.
+
+#### Comparison
+
+| | Version 1 | Version 2 |
+|---|---|---|
+| **Battery type in the inverter** | BYD HVS/HVM | BYD HVS+/HVM+/HVB, UL Battery |
+| **How the battery identifies itself** | BYD Battery-Box Premium HV, with the same serial number on every Battery Emulator | Manufacturer "Battery Emulator", the battery type selected in Battery Emulator as model (for example "Nissan LEAF battery"), the Battery Emulator version as firmware, and a serial number made from the board's MAC address |
+| **Lowest SOC the inverter discharges to** | 5%, fixed by the inverter | 1%, set by Battery Emulator |
+| **Contactors** | Closed by Battery Emulator shortly after it starts, then kept closed | Closed and opened as the inverter asks, see [Contactors follow the inverter](#contactors-follow-the-inverter) |
+| **Battery size** | Capacity reported to the inverter capped at about 58 kWh, power limits at 30 kW | No caps (not yet tested above 58 kWh) |
+| **Battery Emulator faults** | The inverter only sees that the battery is in fault | Each fault becomes an entry in the inverter's event log, see [Faults in the inverter's event log](#faults-in-the-inverter-event-log) |
+| **Insulation test** | The battery is never included | Optional, see [Settings for Version 2](#settings-for-fronius-generic-storage) |
+| **Status** | Established | New, tested so far on a Symo GEN24 6.0 with firmware 1.42.9-1 |
+
+#### Which one to choose
+
+- Choose **Version 2** if you want to use the battery down to 1% instead of 5%, have a battery bigger than 58 kWh or 30 kW, want Battery Emulator's faults in the inverter's event log, show the real battery type in SolarWeb, or want the contactors to open while the inverter doesn't need the battery (if no backup power is configured in the inverter).
+- Choose **Version 1** if you prefer the classic setup faking a *BYD Battery-Box Premium HV*, or if your inverter firmware doesn't offer **BYD HVS+/HVM+/HVB, UL Battery** in its list of batteries.
+
+!!! warning "WARNING"
+    Version selected in Battery Emulator **must match** the corresponding battery type in the inverter. Otherwise the inverter may read erroneous data from the battery, as described further down below in the Troubleshooting section.
+
+#### Changing protocol in the inverter {#version-change-inverter}
 
 If you want to switch between the protocols, you need to remove and re-add the battery in the inverter. In the inverter's web UI in **Device Configuration > Components** click on the **trashcan icon** in the battery row to delete it, and press **Save** in the popup that appears:
 
@@ -116,19 +116,19 @@ After saving, the page will offer again the possibility to **Add Component > Bat
 !!! note "NOTE"
     The inverter may pop up a warning *A bat­tery has been de­tec­ted, but is not con­figured.* during these steps, which is normal.
 
-## Storage protocol Version 1 {#version-1}
+### Version 1 {#version-1}
 
 In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol**, **Version 1** under **Storage protocol**, and **Modbus** as the **Inverter interface**. In the inverter, the battery type is **BYD HVS/HVM**.
 
 The battery identifies itself as a *BYD Battery-Box Premium HV*. Battery Emulator closes the contactors on its own shortly after it starts, and keeps them closed; the inverter has no say in it. The inverter doesn't discharge the battery below 5% SOC, a limit it fixes for this battery type.
 
-## Storage protocol Version 2 {#version-2}
+### Version 2 {#version-2}
 
 In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol**, **Version 2** under **Storage protocol**, and **Modbus** as the **Inverter interface**. In the inverter, the battery type is **BYD HVS+/HVM+/HVB, UL Battery**.
 
 The battery identifies itself to the inverter with manufacturer "Battery Emulator", the battery type selected in Battery Emulator as model (for example "Nissan LEAF battery"), the Battery Emulator version as firmware, and a serial number made from the board's MAC address. Capacity and power limits are sent without the caps of Version 1, and the inverter can use the battery down to 1% SOC.
 
-### Contactors follow the inverter {#contactors-follow-the-inverter}
+#### Contactors follow the inverter {#contactors-follow-the-inverter}
 
 With this protocol the inverter tells the battery which operating mode it wants, and Battery Emulator closes and opens the contactors to match:
 
@@ -155,7 +155,7 @@ After Battery Emulator starts, the contactors close only once the inverter asks 
 !!! note "New"
     Version 2 is new. So far it has been tested on a Symo GEN24 6.0 with firmware 1.42.9-1. If you try it on another model or firmware, please report back how it works.
 
-### Faults in the inverter's event log {#faults-in-the-inverter-event-log}
+#### Faults in the inverter's event log {#faults-in-the-inverter-event-log}
 
 Battery Emulator reports its faults (events at error level) to the inverter, which lists them in its event log with the texts it has for BYD batteries:
 
@@ -187,9 +187,7 @@ Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulat
 !!! note "NOTE"
     If you intend to use the [Periodic Reset](../setup/hardware/periodic_bms_reset.md) option with your battery, make sure to enable the "Defer reset if SOC less than 15%" option to avoid charging from grid if you reached the reserved level, and if Battery Emulator would want to do that at night.
 
-### Settings for Version 2 {#settings-for-fronius-generic-storage}
-
-Besides the [settings shared with Version 1](#other-settings), Version 2 adds:
+Besides the these, Version 2 adds:{#settings-for-fronius-generic-storage}
 
 **Include battery in insulation test**: when enabled, the inverter includes the battery's DC path in its insulation measurement, by closing its contactors. This only matters actually when **no backup power is configured in the inverter**: with backup power it keeps the battery Active at all times, ready for a grid outage, and since the contactors stay closed continuously, the insulation test will include the batteries anyway. The inverter reads this setting only when it sets up the battery, so restart the inverter after changing it, or remove and re-add the battery. OFF by default.
 
@@ -197,7 +195,7 @@ Besides the [settings shared with Version 1](#other-settings), Version 2 adds:
 
 **Inverter type** shows the name and firmware version the inverter has sent, for example *Fronius Symo GEN24 6.0, firmware 1.42.9-1*. The inverter only sends them while it has not detected the battery yet. They are purely informational, so Battery Emulator does not save them, and a reboot clears them. **Requested operating mode** shows the last mode the inverter asked for. Both read "not yet received" until the inverter has sent them.
 
-### Following it in the log {#fronius-generic-storage-log}
+## Following it in the log {#fronius-generic-storage-log}
 
 In the [log](../setup/software/webserver_guide.md#log), all lines of this protocol start with `Fronius: `, for example:
 
@@ -212,13 +210,13 @@ Fronius: Reporting state 0 (Standby) to the inverter
 Fronius: Inverter has seen STANDBY, contactors may open (4012 ms)
 ```
 
-### Battery Emulator's clock {#battery-emulators-clock}
+## Battery Emulator's clock {#battery-emulators-clock}
 
 Battery Emulator has no network time, so with either version it sets its clock from the time the inverter sends once an hour. Once set, the time (UTC) is shown at the bottom of the main page's [status card](../setup/software/webserver_guide.md#system-status), and Version 2 dates the [faults it reports](#faults-in-the-inverter-event-log) by it.
 
 The clock keeps running through a restart of Battery Emulator, such as **Reboot Emulator**, a crash or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the clock is not set, and the main page shows no time until the inverter sends it, which can take up to an hour.
 
-### Notes on Scaled SOC + Fronius min/max SOC
+## Notes on Scaled SOC + Fronius min/max SOC
 
 In the Fronius settings it is possible to configure "SoC Minimum" and "SoC Maximum" values. If you are using the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to always leave in Fronius the "SoC Maximum" to 100%, and adjust the "SOC max percentage" setting in Battery Emulator instead, to be able to take advantage of the "Charge power tapering based on SOC" which avoids power oscillations.
 
@@ -265,13 +263,13 @@ Important to note when shutting down is to not open any DC breakers/isolators un
 6. Turn off the Battery DC isolator switch
 7. Turn off the Solar DC isolator switch
 
-## Day to day monitoring
+## Troubleshooting
+
+### Day to day monitoring
 
 The performance of the system can be tracked with the app "Solar.web". This app gives direct info on current output/input, SOC% level of battery, graphs, and more. No settings can be changed via this app, but it is a great tool for visualizations and quick status checks. You can also see at a glance if an inverter firmware update becomes available for you.
 
 ![SolarApp](../images/fronius-08.png)
-
-## Troubleshooting
 
 ### Battery not detected
 
