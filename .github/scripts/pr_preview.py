@@ -16,6 +16,10 @@ Subcommands
            gh-pages well under the 1 GB GitHub Pages limit.
   comment  Create or update the single preview comment on the PR.
   remove   Delete one preview, or every preview whose PR is no longer open.
+  rebuild  Restart the PR's latest preview build, once it is finished.
+           Used by the image normalizer when it is done and by the
+           `/preview` comment command; a restarted build always builds the
+           PR's latest commit.
 """
 
 from __future__ import annotations
@@ -28,12 +32,15 @@ import posixpath
 import re
 import shutil
 import sys
+import time
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, unquote, urlparse
 
 PREVIEW_ROOT = "pr-preview"
+BUILD_WORKFLOW = "pr-preview-build.yml"
+COMMAND = "/preview"
 MARKER = "<!-- pr-preview -->"
 LIVE_MARKER = "<!-- pr-preview: live -->"   # a preview is currently published
 
@@ -264,12 +271,15 @@ def cmd_comment(args) -> int:
             body += [f"<details><summary>⚠️ {len(warnings)} build warning(s) "
                      "in changed pages</summary>", "", "```text", *warnings,
                      "```", "</details>", ""]
-        body.append("<sub>Rebuilt on every push and removed when the PR is "
-                    "closed. GitHub Pages may take a minute or two to show a "
-                    "new version.</sub>")
+        body += [f"🔁 Comment `{COMMAND}` to rebuild the preview from the "
+                 "latest commit.", "",
+                 "<sub>Also rebuilt on every push, after the image normalizer, "
+                 "and removed when the PR is closed. GitHub Pages may take a "
+                 "minute or two to show a new version.</sub>"]
     elif args.state == "failed":
         body += [f"❌ The preview build failed for {sha} — see the "
-                 f"[build log]({args.run_url}).", ""]
+                 f"[build log]({args.run_url}). Push a fix, or comment "
+                 f"`{COMMAND}` to retry.", ""]
         if existing and LIVE_MARKER in existing["body"]:
             body += [LIVE_MARKER, f"The last successful preview is still at {url}", ""]
         tail = log_excerpt(log, None)
@@ -312,10 +322,61 @@ def cmd_remove(args) -> int:
             shutil.rmtree(d)
             removed.append(pr)
     print("Removed previews: " + (", ".join(f"#{n}" for n in removed) or "none"))
+    set_output(removed=" ".join(map(str, removed)))
+    return 0
+
+
+# --------------------------------------------------------------------------
+# rebuild
+# --------------------------------------------------------------------------
+
+def set_output(**values: str) -> None:
     if os.environ.get("GITHUB_OUTPUT"):
         with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
-            fh.write(f"removed={' '.join(map(str, removed))}\n")
-    return 0
+            for key, value in values.items():
+                fh.write(f"{key}={value}\n")
+
+
+def cmd_rebuild(args) -> int:
+    repo = os.environ["GITHUB_REPOSITORY"]
+
+    def done(result: str, message: str) -> int:
+        print(("::notice::" if result != "restarted" else "") + message)
+        set_output(result=result, message=message)
+        return 0
+
+    pr = github("GET", f"/repos/{repo}/pulls/{args.pr}")
+    if pr["state"] != "open":
+        return done("closed", f"PR #{args.pr} is closed, no preview to rebuild.")
+    head_repo = (pr["head"]["repo"] or {}).get("full_name")
+    head_ref = pr["head"]["ref"]
+
+    runs = github("GET", f"/repos/{repo}/actions/workflows/{BUILD_WORKFLOW}/runs"
+                         f"?event=pull_request&branch={quote(head_ref, safe='')}"
+                         "&per_page=50")["workflow_runs"]
+    runs = [r for r in runs
+            if (r.get("head_repository") or {}).get("full_name") == head_repo]
+    if not runs:
+        return done("none", "There is no preview build to restart yet: it starts "
+                            "with the first push that changes `docs/`, "
+                            "`snippets/` or `mkdocs.yml`.")
+
+    run = runs[0]                            # newest first
+    deadline = time.monotonic() + args.wait
+    while run["status"] != "completed" and time.monotonic() < deadline:
+        print(f"Waiting for {run['html_url']} ({run['status']})")
+        time.sleep(10)
+        run = github("GET", f"/repos/{repo}/actions/runs/{run['id']}")
+    if run["status"] != "completed":
+        return done("busy", "The preview build is still running; try again when "
+                            f"it has finished: {run['html_url']}")
+    if run["conclusion"] == "action_required":
+        return done("approval", "The preview build is waiting for a maintainer to "
+                                "approve workflows for this PR; it builds the "
+                                f"latest commit once approved: {run['html_url']}")
+
+    github("POST", f"/repos/{repo}/actions/runs/{run['id']}/rerun")
+    return done("restarted", f"Restarted the preview build: {run['html_url']}")
 
 
 # --------------------------------------------------------------------------
@@ -344,6 +405,12 @@ def main() -> int:
     p.add_argument("--pages", required=True)
     p.add_argument("--pr", type=int, help="omit to remove all previews of closed PRs")
     p.set_defaults(func=cmd_remove)
+
+    p = sub.add_parser("rebuild")
+    p.add_argument("--pr", type=int, required=True)
+    p.add_argument("--wait", type=int, default=300,
+                   help="seconds to wait for a running build to finish")
+    p.set_defaults(func=cmd_rebuild)
 
     args = ap.parse_args()
     return args.func(args)

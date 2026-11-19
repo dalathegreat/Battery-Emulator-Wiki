@@ -37,8 +37,8 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      BUILT: ${{ github.event.workflow_run.conclusion == 'success' }}
-      HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+      ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+      RUN_ID: ${{ github.event.workflow_run.id }}
       RUN_URL: ${{ github.event.workflow_run.html_url }}
 
     steps:
@@ -49,17 +49,31 @@ jobs:
           HEAD_REPO: ${{ github.event.workflow_run.head_repository.full_name }}
           HEAD_OWNER: ${{ github.event.workflow_run.head_repository.owner.login }}
           HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
         run: |
           NUM="$(gh api -X GET "repos/${GITHUB_REPOSITORY}/pulls" \
                    -f state=open -f head="${HEAD_OWNER}:${HEAD_BRANCH}" \
                    --jq 'map(select(.head.repo.full_name == env.HEAD_REPO)) | .[0].number // empty')"
           if [ -z "$NUM" ]; then
             echo "::notice::No open pull request for ${HEAD_REPO}:${HEAD_BRANCH}, nothing to do"
+            exit 0
+          fi
+          ARTIFACTS="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts?per_page=100" \
+                         --jq '.artifacts[].name')"
+          if [ "$CONCLUSION" = failure ]; then
+            MODE=failed
+          elif grep -qx "pr-preview-site-${ATTEMPT}" <<< "$ARTIFACTS"; then
+            MODE=deploy
+          else
+            # The build skipped itself to wait for the image normalizer
+            echo "::notice::Run attempt ${ATTEMPT} built nothing (waiting for the image normalizer)"
+            exit 0
           fi
           echo "number=${NUM}" >> "$GITHUB_OUTPUT"
+          echo "mode=${MODE}" >> "$GITHUB_OUTPUT"
 
       - name: Check out the preview scripts (default branch)
-        if: steps.pr.outputs.number
+        if: steps.pr.outputs.mode
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.repository.default_branch }}
@@ -70,32 +84,39 @@ jobs:
             mkdocs.yml
           sparse-checkout-cone-mode: false
 
-      - name: Read the live site URL
-        if: steps.pr.outputs.number
-        id: site
-        run: echo "url=$(sed -n 's/^site_url:[[:space:]]*//p' trusted/mkdocs.yml | head -n1 | tr -d "\"' ")" >> "$GITHUB_OUTPUT"
-
-      - name: Download the built site
-        if: steps.pr.outputs.number && env.BUILT == 'true'
-        uses: actions/download-artifact@v4
-        with:
-          name: pr-preview-site
-          path: preview
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Download the build log
-        if: steps.pr.outputs.number
+        if: steps.pr.outputs.mode
         continue-on-error: true
         uses: actions/download-artifact@v4
         with:
-          name: pr-preview-log
+          name: pr-preview-log-${{ github.event.workflow_run.run_attempt }}
           path: log
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Read the site URL and the built commit
+        if: steps.pr.outputs.mode
+        id: info
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          echo "site_url=$(sed -n 's/^site_url:[[:space:]]*//p' trusted/mkdocs.yml | head -n1 | tr -d "\"' ")" >> "$GITHUB_OUTPUT"
+          # A restarted build builds the PR's latest commit and records it
+          SHA="$(head -c 40 log/sha.txt 2>/dev/null || true)"
+          [[ "$SHA" =~ ^[0-9a-f]{40}$ ]] || SHA="$HEAD_SHA"
+          echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Download the built site
+        if: steps.pr.outputs.mode == 'deploy'
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-preview-site-${{ github.event.workflow_run.run_attempt }}
+          path: preview
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Check out gh-pages
-        if: steps.pr.outputs.number && env.BUILT == 'true'
+        if: steps.pr.outputs.mode == 'deploy'
         uses: actions/checkout@v4
         with:
           ref: gh-pages
@@ -103,26 +124,29 @@ jobs:
           fetch-depth: 1
 
       - name: Publish the preview
-        if: steps.pr.outputs.number && env.BUILT == 'true'
+        if: steps.pr.outputs.mode == 'deploy'
         working-directory: gh-pages
         env:
           PR_NUMBER: ${{ steps.pr.outputs.number }}
-          SITE_URL: ${{ steps.site.outputs.url }}
+          SITE_URL: ${{ steps.info.outputs.site_url }}
+          SHA: ${{ steps.info.outputs.sha }}
         run: |
           python3 ../trusted/.github/scripts/pr_preview.py publish \
             --preview ../preview --pages . --pr "$PR_NUMBER" --site-url "$SITE_URL"
           bash ../trusted/.github/scripts/push_gh_pages.sh \
-            "Preview PR #${PR_NUMBER} at ${HEAD_SHA::7}"
+            "Preview PR #${PR_NUMBER} at ${SHA::7}"
 
       - name: Comment on the pull request
-        if: steps.pr.outputs.number
+        if: steps.pr.outputs.mode
         env:
           PR_NUMBER: ${{ steps.pr.outputs.number }}
-          SITE_URL: ${{ steps.site.outputs.url }}
+          MODE: ${{ steps.pr.outputs.mode }}
+          SITE_URL: ${{ steps.info.outputs.site_url }}
+          SHA: ${{ steps.info.outputs.sha }}
         run: |
           python3 trusted/.github/scripts/pr_preview.py comment \
-            --state "$([ "$BUILT" = true ] && echo deployed || echo failed)" \
-            --pr "$PR_NUMBER" --site-url "$SITE_URL" --sha "$HEAD_SHA" \
+            --state "$([ "$MODE" = deploy ] && echo deployed || echo failed)" \
+            --pr "$PR_NUMBER" --site-url "$SITE_URL" --sha "$SHA" \
             --run-url "$RUN_URL" --log log/build.log
 
   remove:
