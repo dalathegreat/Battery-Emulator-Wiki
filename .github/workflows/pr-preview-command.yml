@@ -1,0 +1,71 @@
+name: PR preview command
+
+# `/preview` in a pull request comment rebuilds the PR preview from the
+# PR's latest commit. Allowed for the PR author and for maintainers.
+#
+# It only restarts the existing "PR preview build" run of the PR, which
+# keeps that build in its own read-only context; nothing from the PR is
+# checked out or executed here.
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  actions: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: pr-preview-command-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    if: >-
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/preview') &&
+      (github.event.comment.user.login == github.event.issue.user.login ||
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR_NUMBER: ${{ github.event.issue.number }}
+      COMMENT_ID: ${{ github.event.comment.id }}
+
+    steps:
+      - name: Acknowledge the command
+        run: |
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}/reactions" \
+            -f content=eyes
+
+      - name: Check out the preview script (default branch)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          path: trusted
+          persist-credentials: false
+          sparse-checkout: |
+            .github/scripts/pr_preview.py
+          sparse-checkout-cone-mode: false
+
+      - name: Restart the preview build
+        id: rebuild
+        run: python3 trusted/.github/scripts/pr_preview.py rebuild --pr "$PR_NUMBER"
+
+      - name: Report back
+        if: always()
+        env:
+          RESULT: ${{ steps.rebuild.outputs.result }}
+          MESSAGE: ${{ steps.rebuild.outputs.message }}
+        run: |
+          if [ "$RESULT" = restarted ]; then
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}/reactions" \
+              -f content=rocket
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}/reactions" \
+              -f content=confused
+            gh api "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" \
+              -f body="\`/preview\`: ${MESSAGE:-the preview build could not be restarted, see ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}}"
+          fi

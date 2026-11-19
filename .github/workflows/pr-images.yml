@@ -21,6 +21,8 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  # to restart the PR preview build once the images are normalized
+  actions: write
 
 concurrency:
   group: pr-images-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr }}
@@ -114,3 +116,23 @@ jobs:
           IMAGES_DIR: 'docs/images'
           SKIP_HOSTS: 'img.shields.io,shields.io,badgen.net,camo.githubusercontent.com'
         run: python ../.normalizer/.github/scripts/normalize_pr_images.py
+
+      # The PR preview build skips itself while this workflow is running on
+      # its commit; restart it now so the preview shows the final images.
+      - name: Check out the preview script (default branch)
+        if: ${{ !cancelled() && steps.pr.outputs.number }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          path: .preview
+          persist-credentials: false
+          sparse-checkout: |
+            .github/scripts/pr_preview.py
+          sparse-checkout-cone-mode: false
+
+      - name: Refresh the PR preview
+        if: ${{ !cancelled() && steps.pr.outputs.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        run: python .preview/.github/scripts/pr_preview.py rebuild --pr "$PR_NUMBER"
