@@ -77,8 +77,11 @@ In the inverter, select the battery type that matches the version. The main page
 
 ### Which one to choose
 
-- Choose **Version 2** if you want the contactors to open while the inverter doesn't need the battery, want to use the battery down to 1% instead of 5%, have a battery bigger than 58 kWh or 30 kW, or want Battery Emulator's faults in the inverter's event log. Note that the contactors only open if no backup power is configured in the inverter.
-- Choose **Version 1** if you prefer the proven setup, or if your inverter firmware doesn't offer **BYD HVS+/HVM+/HVB, UL Battery** in its list of batteries.
+- Choose **Version 2** if you want to use the battery down to 1% instead of 5%, have a battery bigger than 58 kWh or 30 kW, want Battery Emulator's faults in the inverter's event log, show the real battery type in SolarWeb, or want the contactors to open while the inverter doesn't need the battery (if no backup power is configured in the inverter).
+- Choose **Version 1** if you prefer the classic setup faking a *BYD Battery-Box Premium HV*, or if your inverter firmware doesn't offer **BYD HVS+/HVM+/HVB, UL Battery** in its list of batteries.
+
+!!! warning "WARNING"
+    Version selected in Battery Emulator **must match** the corresponding battery type in the inverter. Otherwise the inverter may read erroneous data from the battery, as described further down below in the Troubleshooting section.
 
 ## Setting up the Fronius inverter with Battery Emulator
 
@@ -102,16 +105,21 @@ When the low voltage communication is handled, also connect the high voltage sid
 !!! warning "WARNING"
     New hardware requirement for Fronius :warning: Battery voltage is reported towards Fronius inverters only after contactors are engaged. **This means that old legacy installs using manual A/B/C switches for turning on battery contactors will no longer function with Fronius inverters.** Only automatically controlled  contactors via GPIO or CAN will work. This is a new stricter safety requirement to get the Fronius inverter to startup faster and with less errors. 
 
+### Changing protocol in the inverter {#version-change-inverter}
+
+If you want to switch between the protocols, you need to remove and re-add the battery in the inverter. In the inverter's web UI in **Device Configuration > Components** click on the **trashcan icon** in the battery row to delete it, and press **Save** in the popup that appears:
+
+<img width="611" height="273" alt="image" src="https://github.com/user-attachments/assets/d318be70-0a8c-4ca2-a828-ced0eab06c42" />
+
+After saving, the page will offer again the possibility to **Add Component > Battery**, where you can select the battery type matching the protocol you'd like to change to.
+
 ## Storage protocol Version 1 {#version-1}
 
 In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol**, **Version 1** under **Storage protocol**, and **Modbus** as the **Inverter interface**. In the inverter, the battery type is **BYD HVS/HVM**.
 
-The battery identifies itself as a BYD Battery-Box Premium HV. Battery Emulator closes the contactors on its own shortly after it starts, and keeps them closed; the inverter has no say in it. The inverter doesn't discharge the battery below 5% SOC, a limit it fixes for this battery type.
+The battery identifies itself as a *BYD Battery-Box Premium HV*. Battery Emulator closes the contactors on its own shortly after it starts, and keeps them closed; the inverter has no say in it. The inverter doesn't discharge the battery below 5% SOC, a limit it fixes for this battery type.
 
 ## Storage protocol Version 2 {#version-2}
-
-!!! note "New"
-    Version 2 is new. So far it has been tested on a Symo GEN24 6.0 with firmware 1.42.9-1. If you try it on another model or firmware, please report back how it works.
 
 In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol**, **Version 2** under **Storage protocol**, and **Modbus** as the **Inverter interface**. In the inverter, the battery type is **BYD HVS+/HVM+/HVB, UL Battery**.
 
@@ -140,6 +148,9 @@ Before opening the contactors, Battery Emulator first reports Standby, then wait
 If the inverter doesn't read the state at all, the contactors open after a minute.
 
 After Battery Emulator starts, the contactors close only once the inverter asks for the battery. Until then the main page shows **Inverter allows contactor closing: ✗**.
+
+!!! note "New"
+    Version 2 is new. So far it has been tested on a Symo GEN24 6.0 with firmware 1.42.9-1. If you try it on another model or firmware, please report back how it works.
 
 ### Faults in the inverter's event log {#faults-in-the-inverter-event-log}
 
@@ -177,7 +188,7 @@ Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulat
 
 Besides the [settings shared with Version 1](#other-settings), Version 2 adds:
 
-**Include battery in insulation test**: when enabled, the inverter includes the battery's DC path in its insulation measurement. The inverter reads this only when it sets up the battery, so restart the inverter after changing it. Off by default. This only matters actually when **no backup power is configured in the inverter**: with backup power it keeps the battery Active at all times, ready for a grid outage, and since the contactors stay closed continuously, the insulation test will include the batteries anyway.
+**Include battery in insulation test**: when enabled, the inverter includes the battery's DC path in its insulation measurement, by closing its contactors. This only matters actually when **no backup power is configured in the inverter**: with backup power it keeps the battery Active at all times, ready for a grid outage, and since the contactors stay closed continuously, the insulation test will include the batteries anyway. The inverter reads this setting only when it sets up the battery, so restart the inverter after changing it, or remove and re-add the battery. OFF by default.
 
 **Inverter Contactor Workaround**: with **No Workaround** (the default) the contactors follow the inverter as described above. **Keep contactors always closed** keeps them closed regardless, and **Lock contactors closed after first close request** keeps them closed from the first time the inverter asks for the battery. The state reported to the inverter follows its requests either way.
 
@@ -216,7 +227,6 @@ Avoid double-rescaling:
     Fronius's **BYD HVS/HVM** implementation (Version 1) limits SOC minimum to 5% to avoid battery undercharge when sitting idle empty. It does a trickle charge/discharge cycle during an *Energy saving mode* procedure. Thus, if you enable **Rescale SOC** in Battery Emulator, keep in mind of this requirement at the low end.
 
     With **Version 2** the minimum is 1% instead, set by Battery Emulator.
-
 
 ![scaled](../images/fronius-05.png)
 
@@ -317,6 +327,14 @@ The inverter reports *DC connection between inverter and battery interrupted (! 
 
 With Version 2, contactors opened on the inverter's request wait until it has seen the battery go to Standby. If the message appears anyway, the [log lines starting with `Fronius: `](#fronius-generic-storage-log) show what the inverter asked for and what Battery Emulator reported before it.
 
+### Battery enable signal is missing or erroneous readings
+
+<img width="734" height="205" alt="image" src="https://github.com/user-attachments/assets/43668705-09b0-4e77-82e3-b319998d4629" />
+
+<img width="1072" height="713" alt="image" src="https://github.com/user-attachments/assets/eebdd357-4ac1-4fb5-8eae-c5dd8513a8e4" />
+
+These errors are caused by protocol version mismatch between the inverter and Battery Emulator. Choose the correct battery type for the protocol version selected in Battery Emulator.
+
 ## Off-Grid/Backup Configuration
 
 Symo/Primo Gen24 inverters that are smaller than 6.0kW are **not** compatible with running full backup mode (the Primo 5.0 is). On these smaller inverters, your best bet is to utilize the PVpoint outlet to get power out of the battery.
@@ -331,11 +349,11 @@ If needed for a future grid or generator power source, the smart-meter can be wi
 
 To hard wire the Gen24 as off-grid and 'cold-start' using the EV battery pack or PV, I/O pins 6 and 7 need to be jumpered to the V+ on the I/O connector as shown below. 
 
-![Screenshot 2026-05-12 at 12 19 41 pm](../images/fronius-15.png){ width="403" height="478" }
+![sshot](../images/fronius-15.png)
 
 Additionally, Full-Backup mode needs to be configured on the Gen24 as follows:
 
-![image](../images/fronius-16.png){ width="610" height="671" }
+![image](../images/fronius-16.png)
 
 Pin0 is not used when hard wiring for full backup. Pin0 is used for automatic switchover to full-backup int the event of a grid failure. Follow the Fronius documentation for this type of configuration. 
 
@@ -352,6 +370,7 @@ The Fronius Gen24 configuration documents describe both automatic and manual swi
 All normal earthing requirements when running in 'off-grid' must still be followed. Consult a qualified electrician for advice. 
 
 ## Advanced control of energy (Spot price, scheduled charge/discharge etc.)
+
 Once you have your battery connected to the Fronius, it is possible to add additional hardware into the mix for advanced control of how energy should flow in the system. This is useful for those with spot-price electricity, or a nightly tariff. Below are some examples you can utilize to control the Fronius Gen24 directly via Modbus TCP.
 
 - You can setup forced nightly charging via the webinterface of the Gen24 (Requires connecting to the inverter directly, not available via SolarWeb). This is very useful if you have a cheap night tariff, and want to charge the battery during the night and use the energy during the day
