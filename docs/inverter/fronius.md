@@ -113,6 +113,9 @@ If you want to switch between the protocols, you need to remove and re-add the b
 
 After saving, the page will offer again the possibility to **Add Component > Battery**, where you can select the battery type matching the protocol you'd like to change to.
 
+!!! note "NOTE"
+    The inverter may pop up a warning *A bat­tery has been de­tec­ted, but is not con­figured.* during these steps, which is normal.
+
 ## Storage protocol Version 1 {#version-1}
 
 In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol**, **Version 1** under **Storage protocol**, and **Modbus** as the **Inverter interface**. In the inverter, the battery type is **BYD HVS/HVM**.
