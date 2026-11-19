@@ -76,7 +76,7 @@ This will automatically trigger a couple of actions processing the changes you m
 
 One of the actions will start deploying a minimal preview of your suggested changes, making an automated comment containing the URLs where you can access the preview:
 
-<img width="1056" height="613" alt="Preview" src="https://github.com/user-attachments/assets/17f1fde1-b5d9-40e4-adb7-5aff7b2c9b77" />
+![Preview](../../images/improving-documentation-10.png)
 
 The URL will be accessible only after the green ✔️ checkmark will appear next to the Preview PR.
 
