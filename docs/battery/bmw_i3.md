@@ -36,6 +36,41 @@ For this battery type, use the option called "BMW i3" under the "Battery Protoco
 
 ![image](../images/bmw-i3-02.png){ width="487" height="90" }
 
+### SOC Havrla (voltage-based SOC)
+The SOC reported by the i3 BMS can drift a long way from the real state of charge, especially if the battery is not balanced regularly. SOC Havrla is an alternative SOC that the Battery-Emulator calculates itself from the cell voltages. It is selected with the **SOC Havrla** setting, which is shown on the Settings page when "BMW i3" is the selected battery:
+
+| Mode | What the emulator reports as SOC |
+| ---- | -------------------------------- |
+| **Disable (use BMS SOC)** | The SOC from the BMS, as before. This is the default. |
+| **Auto (use Havrla if >3% difference)** | The BMS SOC, unless SOC Havrla differs from it by more than 3 percentage points. Then SOC Havrla is used. |
+| **Enable (always use Havrla)** | Always SOC Havrla. |
+
+How it is calculated:
+
+- Above an average cell voltage of 3.8 V the highest cell voltage is used, below it the lowest. A full pack is then judged by its highest cell, and an empty pack by its lowest.
+- The cell voltage is corrected for the voltage drop over the pack's internal resistance at the present current. Charging raises the measured voltage, so the correction is subtracted while charging and added while discharging. Over the last 0.5 % near empty and near full the correction is faded out.
+- The emulator estimates the internal resistance itself. When the current steps by at least 1 A, it compares the voltage before the step with the voltage 1 s after it, and then waits 5 s before the next measurement. Results outside 5-500 mΩ are ignored. The estimate starts at 80 mΩ and every measurement only moves it a little, so it settles over many load changes.
+- The corrected voltage is looked up in a voltage/SOC table for the detected pack size (60, 94 or 120 Ah).
+- Smoothing: when the result is within 5 percentage points of the SOC shown, the shown SOC moves at most 1 % per minute. It does not move against the current, so it does not rise while discharging or fall while charging (above 1 A). Bigger differences, for example right after start-up, are followed faster.
+
+When the setting is on **Auto** or **Enable**, the emulator also does the following. On **Disable** the BMW i3 behaves as before.
+
+- The SOC is sent to the inverter in whole percent, with 1 % hysteresis so it does not flip between two values. For example, 100 % is only shown once SOC Havrla reaches 100.00 %, and it stays at 100 % until SOC Havrla has dropped to 99.00 %.
+- Extra charge and discharge current limits close to full and close to empty. They can only lower the limits that the BMS sends, never raise them. A limit is tightened right away, but it is only released again by 1 A per minute (2 A per minute for discharge on the 120 Ah pack).
+
+| Pack | Charge limit (highest cell) | Discharge limit (lowest cell) |
+| ---- | --------------------------- | ----------------------------- |
+| 60 Ah | 15 A at the 97 % cell voltage, down to 1 A at 99.8 % | 30 A at the 12 % cell voltage, down to 1 A at 10 % |
+| 94 Ah | 25 A at the 97.5 % cell voltage, down to 1 A at 99.8 % | 30 A at the 11 % cell voltage, down to 3 A at 9 % |
+| 120 Ah | 30 A at the 98 % cell voltage, down to 1 A at 99.8 % | 30 A at the 11 % cell voltage, down to 1 A at 5 % |
+
+The cell voltages are taken from the voltage/SOC table of the detected pack. For a 60 Ah pack, for example, the charge current is limited from a highest cell of 4.068 V and is down to 1 A at 4.083 V. The current then stays at about 1 A until the pack is full, which gives a short settling phase before balancing. On top of that, charging is limited from 30 A at 98.0 % SOC Havrla down to 1 A at 99.8 %, on all pack sizes.
+
+Both values are shown on the **More Battery Info** page as "Internal resistance" and "SOC Havrla". Even with the setting on Disable, you can compare them with the BMS SOC there before you switch modes.
+
+!!! note "NOTE"
+    SOC Havrla is not available on the LilyGo T-CAN485 and the ESP32 DevKit, as these boards don't have the flash space for it. On those boards the BMS SOC is always used.
+
 ## Connection diagram
 
 ### High voltage connector
