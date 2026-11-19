@@ -3,6 +3,9 @@ title: "Chevrolet Volt Gen1"
 ---
 
 # Charger Details
+
+--8<-- "snippets/small_flash.md"
+
 ## Overview
 The Battery-Emulator project is compatible with the independent battery chargers starting in release 5.0. This feature is optional, intended to facilitate emergency charging from generators, supplemental charging when inverter lacks an onboard charger, or as part of battery commissioning/maintenance. 
 

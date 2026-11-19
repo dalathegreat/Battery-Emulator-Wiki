@@ -38,6 +38,8 @@ By default a 100 millisecond long precharge is performed. This value should be s
 !!! tip "TIP"
     There is also an option to use **Use Normally Closed logic** for very rare contactor setups, and should for 99.99% of users not be enabled.
 
+In a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, their contactor control also appear as options: **2ⁿᵈ battery contactor control via GPIO** and **3ʳᵈ battery contactor control via GPIO**.
+
 ## PWM control for lower power draw 🧊 
 
 Optional: It is also possible to reduce power consumption of keeping the big contactors engaged via PWM control. This requires Solid State Relays (SSR). The PWM signal will very quickly turn on/off the SSR, and still keep the contactor engaged. Do be careful, and test this properly before using it. It is very much depending on what SSR and battery contactor combination you use. 
@@ -77,7 +79,13 @@ This schematic shows a wiring example with LilyGo T‐CAN485:
 
 Before the contactors turn on, both Inverter and Battery needs to give OK ✅ signal. This can be verified via the Webinterface. In this screenshot, battery is preventing startup:
 
-![bild](../../images/nissan-leaf-e-nv200-08.png)
+- Emulator allows contactor closing: ✓
+- Inverter allows contactor closing: ✓
+
+In a [double](battery_2x.md) or [triple](battery_3x.md) battery setup, their contactor control is also shown:
+
+- 2ⁿᵈ battery allowed to join: ✓
+- 3ʳᵈ battery allowed to join: ✓
 
 !!! warning "WARNING"
     In case the whole Emulator goes into Fault state, the contactors will open, and latch. To get them to close again, you need to restart the entire Battery-Emulator (after having analysed the fault)

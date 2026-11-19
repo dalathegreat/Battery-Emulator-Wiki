@@ -80,7 +80,7 @@ When turning the system on, follow this startup procedure. Work quick, to avoid 
 
 ## Which protocol to use
 
-For this inverter type, use the option called "BYD Battery-Box Premium HVS over CAN Bus" under the "Inverter Protocol" setting.
+For this inverter type, use the option called "BYD HVS/HVM over CAN" under the "Inverter Protocol" setting.
 
 ![GoodWe Settings](../images/goodwe-03.jpg)
 

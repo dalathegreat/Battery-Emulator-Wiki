@@ -2,16 +2,15 @@
 title: "CONTRIBUTING"
 ---
 
-### Contributing to the Battery-Emulator project
+## Contributing to the Battery-Emulator project
 
-What can I do? 🦸
---------------
+**What can I do?** 🦸
 
 **"Help - I want to contribute something, but I don't know what?"**
 
 You're in luck. There's various sources to contribute:
 
- - Improve the [Wiki documentation](../../index.md)
+ - Improve the [Wiki documentation](improving_documentation.md)
      - Especially battery/inverter specific pages need updating. Attach pictures of batteries, wiring diagrams, helpful info etc.
      - Whenever you make a software improvement don't forget to update the documentation accordingly. Replace outdated screenshots, describe functional changes, etc. 
  - Have a look at the [issue tracker](https://github.com/dalathegreat/Battery-Emulator/issues), especially issues with labels:
@@ -21,30 +20,12 @@ You're in luck. There's various sources to contribute:
      - [Discussion page](https://github.com/dalathegreat/Battery-Emulator/discussions)
      - [Discord server](https://www.patreon.com/dala) 
 
-## Notes on using AI 🤖
-
-Using AI (i.e., LLMs) as tools for coding is welcome. A high bar is held for all contributions to this project. Moreover, the project maintainers remain responsible for any code that is published as part of a release. Contributors are expected to be responsible for any code they publish.
-
-**AI should not be used to generate comments when communicating with maintainers**. Comments are expected to be written by humans. Comments that are believed to be written by AI may be hidden without notice.
-
-If you are opening an issue, you should be able to describe the problem in your own words.
-
-If you are opening a pull request, you are expected to be able to explain the proposed changes in your own words. This includes the pull request body and responses to questions. **Do not copy responses from the AI when replying to questions from maintainers.**
-
-This project requires a human in the loop who understands the work produced by AI. **Autonomous agents are not allowed to be used for contributing to this project**. Pull requests that appear in violation of this will be closed, perhaps without notice.
-
-If you wish to include context from an interaction with AI in your comments, it must be in a quote block (e.g., using `>`) and disclosed as such. It must be accompanied by human commentary explaining the relevance and implications of the context. Do not share long snippets.
-
-AI is useful when communicating as a non-native English speaker. If you are using AI to edit your comments for this purpose, please take the time to ensure it reflects your own voice and ideas. If using AI for translation, we recommend writing in your native language and including the AI translation in a quote block.
-
-This policy was adapted from [uv's AI policy].
-
-[uv's AI policy]: https://github.com/astral-sh/.github/blob/c5187e200db51bfe11d56e13053d29bd3793fdd8/AI_POLICY.md
-
 ## Notes on embedded system 🕙
+
 The Battery-Emulator is a real-time control system, which performs lots of time critical operations. Some operations, like contactor control, need to complete within 10 milliseconds periodically. Even a drift for the 10ms task towards 13ms can cause contactors to open! The resources of the ESP32 microcontroller is limited, so keeping track of CPU and memory usage is essential. Keep this in mind when coding for the system! Performance profiling the system can be done by enabling the "Enable performance profiling:" option in the webserver.
 
 ### Notes on CPU architecture and hardware 🤖
+
 The project is compatible **only** with ESP32 boards. Out of the box, a handful of easy to source boards are compatible. You can even add your own board by modifying the Hardware Abstraction Layer (HAL) file, and essentially port the emulator to any ESP32 variant.
 
 The code utilizes the dual cores that the ESP32 offers. The critical task loop (CAN/Modbus/RS485/Safeties) runs one core 0, and the optional communication loop (Wifi/MQTT/ESPNow/Webserver) runs on core 1. This way even while the communication loop gets loaded heavily, the critical operations can continue and still meet the realtime timing requirements.
@@ -52,7 +33,34 @@ The code utilizes the dual cores that the ESP32 offers. The critical task loop (
 The project started out in 2022 with compatibility for the "LilyGo T-CAN485", which is a quite flash limited ESP32 CPU with only 4MB of flash. Newer hardware options have 8MB or even 16MB of flash. There are hundreds of older boards in operation that still requires support, so the project aims to still provide updates for these flash limited devices. Not all new features can fit onto the 4MB board, so the SMALL_FLASH_DEVICE build flag is used to remove certain parts of the program for the oldest hardware. This way the oldest boards can still get important safety updates, while new future battery integrations are reserved to only running on the more modern hardware with larger flash (Stark CMR v2 / LilyGO T-2CAN / Waveshare ESP32 etc.)
 
 #### Why are you not compatible with architecture X ❔
+
 _Why are you not compatible with Raspberry Pi / STM32 / X86 / ARM_ etc. This question gets from time to time. The reason is that the project is very popular (over 2500 installs done at start of 2026), and we already have great hardware options on ESP32. The development team is equipped with all compatible ESP32 boards, and can assist with any issues that are board particular. Expanding the hardware selection to other hardware architecture platforms would introduce a very high support load on the developers, spreading them thin. Maintaining a fork of the software to run on other architectures would also be extremely time consuming. There has been some Raspberry Pi offshoots, but these have died since after the port, the upstream changes from this repository has never made it back to the fork. So whoever ports the software would need to almost fulltime take in patches, or build a development pipeline that can keep up with the rapid development here. This is free open source software, anyone is free to fork and develop whatever they want, but officially this project will only be compatible with ESP32, and support from developers will only be given to ESP32 users.
+
+## Notes on safety critical operations ⚠️
+
+Since Battery-Emulator has either explicit contactor control via GPIO, or a CAN controlled contactor option where it can command a pack to close/open contactors, it comes with great responsibility to try and actuate the contactors according to the incoming BMS sensor data. These are the most critical operations that BE needs to perform:
+
+* Open contactors if battery voltage goes over the designed battery pack max voltage
+* Open contactors if battery voltage goes under the designed battery pack min voltage
+* Open contactors if a cell goes over the designed cell max voltage
+* Open contactors if a cell goes under the designed cell min voltage
+* Open contactors if the battery temperature goes above the designed max temperature
+* Open contactors if the battery temperature goes below the designed min temperature
+* Open contactors if a FAULT event triggers (Component communication down, HVIL broken, etc.)
+* Only allow contactor closing if no FAULTs are active
+* If a fault latches for more than 120s, latch permanently OFF
+* Stop allowing power in/out if battery says 0A allowed
+
+All other scenarios to turn off the battery are up to the solar inverter (insulation leak, inverter problem). Note that BE relies on CAN data, and cannot spot corrosion, damage, water ingress, loose terminals etc. That is up to the user to periodically inspect.
+
+We stop allowing further discharge if:
+
+* SOC reaches 0%
+* Battery sends 0A allowed
+* Pack goes undervoltage (252V 84S, 288V 96S, 312V 104S, 324V 108S)
+* Cell goes undervoltage (2700mV)
+
+Keep these in mind when contributing. Changes must never weaken or bypass any of the above protections. Note that they are only as reliable as the data the BMS reports: if the BMS itself is confused or sends wrong values, BE cannot know.
 
 ## Setting up the compilation environment (VScode + PlatformIO) 💻
 

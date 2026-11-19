@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block announce %}
+  {%- if config.extra.pr_preview -%}
+    Preview of <a href="{{ config.extra.pr_preview.url }}">pull request #{{ config.extra.pr_preview.number }}</a> &ndash; not published yet
+  {%- endif -%}
+{% endblock %}
+
 {% block content %}
   {{ super() }}
   

@@ -46,6 +46,9 @@ CAN transceivers are often the first to fail due to surges caused by lightning. 
 
 If you suspect damage, you may need to replace the transceiver ICs or even the entire BMS.
 
+!!! tip "TIP"
+    If you replace parts by guessing what is broken, start with the BE-CAN transceiver instead of BMS itself!
+
 Below is an example of a damaged CAN transceiver, caused by direct lightning strike to equipment.
 ![image](../../images/lightning-strike-01.png)
 
@@ -90,3 +93,4 @@ Example of CAN isolator in use, and PE connections between elements:
 ## See also
 
 - [Lots of useful Safety Earth references here](https://www.sciencedirect.com/topics/engineering/safety-earth)
+- [BEAMA Guide to Surge Protection Devices (SPDs)](https://www.beama.org.uk/resourceLibrary/beama-surge-protection-guide-.html)

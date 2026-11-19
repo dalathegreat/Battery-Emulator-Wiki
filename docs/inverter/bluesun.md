@@ -4,4 +4,4 @@ title: "Bluesun"
 
 ## Setup
 
-The Blueseun inverters work with the "Pylontech HV battery over CAN bus" option.
+The Blueseun inverters work with the "Pylontech HV over CAN" option.

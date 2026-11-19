@@ -11,7 +11,7 @@ title: "Sofar"
 * HYD 15KTL
 * HYD 20KTL
 
-The inverters started out development with using "Pylontech battery over CAN bus", but you can also use the new [SOFAR_CAN](sofar.md#sofar-can) if you have multiple batteries. At the moment it is recommended to use Sofar CAN!
+The inverters started out development with using "Pylontech HV over CAN", but you can also use the new [SOFAR_CAN](sofar.md#sofar-can) if you have multiple batteries. At the moment it is recommended to use Sofar CAN!
 
 ## Communication wiring
 The Sofar inverter works via CAN. You can have both a CAN battery and a CAN inverter connected on the same pins (when using Pylon protoocl). When the board is used with two CAN devices at the same time that have termination resistors in all ends, the terminating resistor needs to be removed from the board. Please measure CAN termination if you have issues. This is explained in [CAN-troubleshooting](../setup/can_related/can_wiring_practices_and_troubleshooting.md)
@@ -21,7 +21,7 @@ Note, if you use Sofar CAN protocol instead, the inverter will need to be on a d
 --8<-- "snippets/grounding_termination.md"
 
 ## Which protocol to use
-For this inverter type, use the option called "Sofar BMS (Extended) via CAN" under the "Inverter Protocol" setting.
+For this inverter type, use the option called "Sofar BMS (extended) via CAN" under the "Inverter Protocol" setting.
 
 ![image](../images/sofar-03.png)
 
@@ -58,7 +58,7 @@ If you use Sofar CAN, select the "General" option
 ![image](../images/sofar-06.png)
 
 ## Sofar CAN
-This inverter can also use the dedicated "Sofar BMS (Extended) via CAN" protocol. The bonus of this protocol, is that it is compatible with multiple batteries, using separate IDs for each battery. 
+This inverter can also use the dedicated "Sofar BMS (extended) via CAN" protocol. The bonus of this protocol, is that it is compatible with multiple batteries, using separate IDs for each battery. 
 
 In "Advanced Settings/Battery Parameters" choose `GENERAL` as battery type and set address accordingly to address set in Battery Emulator.
 To run two separate batteries on two different DC terminals first you have to enable `BAT 1` and `BAT 2` in Input channel setting. Then, when setting parameters for each batteries use two different address for `BAT 1` and `BAT 2`. 

@@ -40,7 +40,11 @@ After opening the release you want to update to, at the bottom of the page selec
 
 * Congratulations, you have now updated the firmware remotely over the air! 🥳 
 
+!!! note "Updating while the system is running"
+    It is safe to update while the battery system is running normally. As soon as the upload starts, the emulator pauses the battery (charge and discharge power set to 0 W) but keeps talking to the battery and the inverter. After a successful upload it waits for the current to drop, at most 10 seconds, then restarts and reconnects. If the upload fails or stalls for 15 seconds, the pause is lifted and the old firmware keeps running. In an off-grid installation the battery supplies no power from the start of the upload until the restart is complete, so expect a short outage unless PV or another source covers the loads.
+
 ### If the new firmware does not work
+
 An update has to prove itself before it is kept. The board keeps the previous firmware in the second flash slot, and the new firmware is confirmed only once it has been running for 42 seconds.
 
 * If the new firmware crashes, trips the watchdog, or the board loses power within those first 42 seconds, the bootloader brings back the previous firmware by itself. No USB cable and no erase are needed, your settings are kept, and the event log records which version failed.

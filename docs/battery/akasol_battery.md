@@ -148,7 +148,7 @@ The "More Battery Info" page shows BMM01 state, both contactor bits, the alive-c
 
 ### Notes for SolaX inverters
 
-The pack works with the SolaX "Triple Power LFP over CAN bus" protocol. SolaX battery types describe LFP packs of 16 cells per module, so pick the type whose voltage window is closest to the Akasol's:
+The pack works with the "SolaX Triple Power LFP over CAN" protocol. SolaX battery types describe LFP packs of 16 cells per module, so pick the type whose voltage window is closest to the Akasol's:
 
 - Battery type **89 (HS25)**, **13 modules** → 665.6 V nominal, 759.2 V max, 50 Ah per string. That is within about 1.6 % of the Akasol's 655 V and 0.4 % of its 756 V ceiling.
 - Contactor workaround: **No Workaround**.

@@ -4,13 +4,17 @@ title: "Deployment guidelines"
 
 This section will guide you towards making a safer installation of the battery. Please start by familiarizing yourself with your local regulations regarding solar inverters and stationary storage requirements. Make sure the inverter selection is approved by your grid operator before ordering parts. Finally, make sure the person installing the hardware has a valid electrical safety & installation training.
 
-!!! warning "CAUTION"
+!!! warning ""
     ***At the end of the day, you alone are responsible for the system.***
 
 ## Battery placement
 The most important decision to make is battery placement. Any used EV pack should always be operated in an area where a potential fire would not be of risk for human life. Almost all salvage batteries come from crashed vehicles, with an unknown history. While the Battery-Emulator and your solar inverter performs several safety checks, note that almost all checks rely on communication data, so a physical error (damaged cell casings, ruptured/leaking cells, corrosion etc.) wont be easily detectable via software.
 
-Due to all this, it is recommended to only install batteries in the following places:
+![image](../images/installation-guidelines-16.png)
+
+Example, EV battery (MG 40kWh) that caught fire. 3 meter high flames, and burning for over 4 hours.
+
+Due to this, it is recommended to only install batteries in the following places:
 
 * Outside
 * Detached garage
@@ -18,7 +22,11 @@ Due to all this, it is recommended to only install batteries in the following pl
 * Underground
 * Shipping container
 
-Regardless of placement, great care must be taken to avoid water getting into the battery. While most EV batteries are splash proof, they cannot cope with large amounts of water/rain. If you are installing a battery outside, construct a roof to keep the battery dry.
+**Water intrusion:** Regardless of placement, great care must be taken to avoid water getting into the battery. While most EV batteries are splash proof, they cannot cope with large amounts of water/rain. If you are installing a battery outside, construct a roof to keep the battery dry.
+
+**Ventilation and pressure relief:** In the rare event of a fire or thermal runaway, a battery can vent gas with considerable force. Whatever location you choose, the enclosure must never be airtight. Provide a permanent opening or pressure-relief path directed away from people and buildings. For sheds, containers and garages this typically means adequate vents at high level (and low-level air inlet), or a blow-out panel. Do not seal a battery inside a closed box.
+
+Note that this is general guidance, and that local fire codes and building regulations (and your insurer!) may have additional or stricter requirements.
 
 !!! tip "TIP"
     Batteries can often be tilted, and installed on the side of a wall to save space. To this date we have not encountered any packs that would not function in a wallmounted position!
@@ -73,6 +81,8 @@ Example: Underground concrete sarcophagus
 Example: Shipping container
 
 ![image](../images/installation-guidelines-06.png)
+
+While vertical orientation is the preferred installation method to save space, some manufacturers specify limitations on orientation. For instance Nissan LEAF batteries are not meant to be mounted upside down (why would you even?), but wallmounted orientation is OK. So far we have not experienced any issues even when going against manufacturer guidelines, but there are theories that some pouch-modules might "pool" electrolyte if you orient it the wrong way, which may in the very long term cause uneven degradation (no references to this are known). So the bottom line is, mount it however you want, but avoid upside down batteries.
 
 ## Optional stuff!
 

@@ -185,6 +185,11 @@ This requires the DTC error clearing and then contactors will immediately close.
 ### Missing HVIL
 If you see the DTC "U351B High Voltage System Interlock Circuit 'D' Low", you will get contactor opening during load. You will need to seat HVIL jumpers on the large DC connector.
 
+### Opening of contactors
+One user reported the following;
+
+I’ve now found the solution for my setup, Inverter Sofar HYD 10KTL,  Battery: Ford Mach-E NMC 98.8 kWh; Battery emulator: Stark CMR v2. My problem was that the battery would disconnect after about 25 seconds. I had mistakenly thought the inverter was sending a signal over the HV DC cables that the battery's BMS interpreted as an insulation fault. What the inverter actually does every 25 seconds is send a "wake-up" signal to the batteries—standard behavior for units like Pylontech, for example. I ordered and installed a CAN repeater, which immediately solved the issue. The only change I haven't reverted is that the battery's BMS is mounted completely isolated from the battery itself; however, the conclusion is that this inverter and battery combination requires CAN isolation. 
+
 ## 3D-printable parts
 
 You can print your own 4 Pin C295 DC/DC Converter connector, check out the [3D‐printable parts page](../setup/hardware/list_of_3d_printable_parts.md).

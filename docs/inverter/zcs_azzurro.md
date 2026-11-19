@@ -8,7 +8,7 @@ TODO: Add list
 
 ## Which protocol to use
 
-For this inverter type, use the option called "Pylontech battery over CAN" under the "Inverter Config" setting. Send group 1 might be needed if inverter throws error.
+For this inverter type, use the option called "Pylontech HV over CAN" under the "Inverter Config" setting. Send group 1 might be needed if inverter throws error.
 
 ![image](../images/zcs-azzurro-01.png)
 

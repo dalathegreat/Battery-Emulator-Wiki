@@ -16,7 +16,7 @@ The Afore inverter works via CAN. A board with a single CAN channel can have bot
 
 ## Which protocol to use
 
-For this inverter type, use the option called **BYD Battery-Box Premium HVS over CAN Bus** or **Afore battery over CAN** under the **Inverter Protocol** setting.
+For this inverter type, use the option called **BYD HVS/HVM over CAN** or **Afore battery over CAN** under the **Inverter Protocol** setting.
 
 ![image](../images/afore-01.png)
 

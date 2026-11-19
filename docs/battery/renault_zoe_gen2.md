@@ -13,6 +13,8 @@ There are 4x batteries available for the Zoe, This page focuses on the Gen2 50/5
 * 50kWh 2019-, Gen2
 * 52kWh 2020-, Gen2
 
+The packs are 1,60x1,28m, same physical dimensions as the Gen1 batteries. See the Gen1 page for more info on physical shape
+
 Stickers signaling that the battery is the Gen2 50/52kWh battery
 ![test](../images/renault-zoe-gen2-01.jpg)
 

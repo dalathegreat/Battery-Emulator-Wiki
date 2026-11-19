@@ -18,14 +18,14 @@ To start using MQTT, enable the **Enable MQTT** checkbox under the Integration s
 
 | Setting | Range / default | Meaning |
 | ------- | --------------- | ------- |
-| **MQTT server** | hostname or IP | Broker address (plain TCP; TLS is not implemented) |
-| **MQTT port** | 1–65535, default `1883` | Broker port |
-| **MQTT user** / **MQTT password** | printable ASCII | Credentials; leaving the password field blank keeps the stored one |
-| **MQTT timeout ms** | 1–60000, default `2000` | Network timeout of the underlying esp-mqtt client |
-| **MQTT publish interval (seconds)** | 1–300, default `5` | Main publish cadence (see [Published data](#published-data)) |
-| **Send all cellvoltages via MQTT** | off | Enables the `spec_data*` topics |
+| **Server** | hostname or IP | Broker address (plain TCP; TLS is not implemented) |
+| **Port** | 1–65535, default `1883` | Broker port |
+| **Username** / **Password** | printable ASCII | Credentials; leaving the password field blank keeps the stored one |
+| **Timeout (ms)** | 1–60000, default `2000` | Network timeout of the underlying esp-mqtt client |
+| **Publish interval (s)** | 1–300, default `5` | Main publish cadence (see [Published data](#published-data)) |
+| **Publish cellvoltages** | off | Enables the `spec_data*` topics |
 | **Publish heap metric diagnostics** | off | Adds four heap sensors to `/info` and to autodiscovery |
-| **Allow remote BMS reset via MQTT** | off | Gates the `BMSRESET` command |
+| **Allow remote BMS Power reset** | off | Gates the `BMSRESET` command |
 | **Home Assistant autodiscovery** | off | Publishes retained HA discovery configs |
 | **Autodiscovery topic** | default `homeassistant` | Base topic for discovery messages |
 | **Publish at firmware updates** | off | Publish the discovery configs whenever a firmware update is detected |
@@ -61,7 +61,7 @@ With more than one battery configured, a further topic `.../info_multi` carries 
 
 Two publish cadences are used:
 
-- The **main interval** is the configurable **MQTT publish interval** (default **5 s**) and covers `events` and all `info` topics. On each cycle the order is: `events` → `info` → `info_multi` → `info_2` → `info_3`.
+- The **main interval** is the configurable **Publish interval** (default **5 s**) and covers `events` and all `info` topics. On each cycle the order is: `events` → `info` → `info_multi` → `info_2` → `info_3`.
 - **Cell data** (`spec_data*`) is published on a fixed **60-second** cadence, independent of the main interval. Cell voltages change slowly, and these are by far the largest payloads.
 
 Publishing is skipped entirely while an **OTA update** is in progress, so a firmware upload is not competing with MQTT traffic.
@@ -194,7 +194,7 @@ Example payload for two Nissan LEAF packs (21.8 kWh + 17.9 kWh), published to `b
 }
 ```
 
-How each value is combined is documented on the [Double Battery](battery_2x.md) page. In short: capacities, current, power and lifetime energy add up; SOC follows the emptiest pack; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the **power limits are the lowest any pack allows, not the sum**.
+How each value is combined is documented on the [Double Battery](battery_2x.md) page. In short: capacities, current, power and lifetime energy add up; SOC follows the emptiest pack; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the **power limits start from the lowest any pack allows**, the charge limit then raised to what the packs take together ([Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking)).
 
 `charged_energy` and `discharged_energy` appear only if at least one configured pack tracks lifetime energy. Most integrations - the Nissan LEAF among them - do not, in which case both keys are absent from this topic.
 
@@ -221,7 +221,7 @@ The reasoning:
 
 **`<hostname>/spec_data`**
 
-Published only when **Send all cellvoltages via MQTT** is enabled, and only on battery implementations that report per-cell voltages. Published every **60 seconds** (see above). Cell voltages are in **volts** as floats; the per-cell balancing status is included in the same message.
+Published only when **Publish cellvoltages** is enabled, and only on battery implementations that report per-cell voltages. Published every **60 seconds** (see above). Cell voltages are in **volts** as floats; the per-cell balancing status is included in the same message.
 
 ```json
 {
@@ -280,6 +280,8 @@ The currently supported commands are:
 - `RESUME` - Resumes from the paused state, and clears an equipment stop, allowing contactors to re-close (see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume))
 - `RESTART` - Restarts the Battery-Emulator (pauses, then reboots the board after a short delay)
 - `STOP` - Triggers the equipment stop (opens contactors); see [Opening and closing contactors](#opening-and-closing-contactors-stop-and-pause-vs-resume)
+- `TESLA_BMS_RESET` - Runs the software BMS Reset of a Tesla battery, the same as the **BMS Reset** button of the More Battery/Cell Info page; see [Tesla BMS Reset and SOC Reset](#tesla-bms-reset-and-soc-reset)
+- `TESLA_SOC_RESET` - Runs the software SOC Reset of a Tesla battery, the same as the **SOC Reset** button of the More Battery/Cell Info page; see [Tesla BMS Reset and SOC Reset](#tesla-bms-reset-and-soc-reset)
 - `SET_SCALESOC` - Sets SOC scaling limits at runtime
 - `SET_LIMITS` - Sets a temporary charge and/or discharge limit
 - `ESPNOW_RUN` - Runtime control of [ESPNow](espnow.md) (payload `1` = start, `0` = stop).
@@ -306,6 +308,27 @@ Two things to keep in mind:
 
 - `RESUME` *allows* the contactors to close; it does not *force* them closed. They only actually close if the inverter also permits closing and the normal preconditions are met (battery detected, past the post-boot startup delay, no faults). If the inverter is what is holding the contactors open, `RESUME` will not override that.
 - `RESUME` does double duty - it both ends a `PAUSE` and clears an equipment stop. There is no command that closes the contactors without also resuming charge/discharge, just as `STOP` cannot open them without also pausing.
+
+### Tesla BMS Reset and SOC Reset
+
+With a [Tesla battery](../../battery/tesla_model_3_y.md#bms-reset-and-soc-reset) selected, the two software resets of the **More Battery/Cell Info** page are also available as commands, so an automation can run them without anyone pressing the buttons on the web page:
+
+| Command | Home Assistant button | Same as the page button | Available for |
+| ------- | --------------------- | ----------------------- | ------------- |
+| `TESLA_BMS_RESET` | Tesla BMS Reset | **BMS Reset** | Tesla Model 3/Y, Tesla Model S/X and Tesla Model S/X 2012-2020 |
+| `TESLA_SOC_RESET` | Tesla SOC Reset | **SOC Reset** | Tesla Model 3/Y and Tesla Model S/X (the 2012-2020 pack has no SOC Reset) |
+
+How they behave:
+
+- **The payload is ignored.** Any message published to the command topic runs the command, for example `battery-emulator-a1b2/command/TESLA_BMS_RESET`.
+- **They are not the BMS Power reset.** `BMSRESET` (the **BMS Power reset** button) power-cycles the BMS through a GPIO pin and has to be enabled in the settings. The Tesla commands restart the BMS controller, or run its SOC reset routine, over CAN. They need no extra wiring and no setting.
+- **The battery decides whether to run them.** The commands only raise the same request as the web page buttons. The battery then checks its own conditions: for the BMS Reset the contactors have to be open and the BMS must allow the reset; for the SOC Reset the contactors have to be open and the real SOC below 15% or above 90%. If they are not met, nothing is sent to the BMS and an info event is raised instead (*BMS reset request failed - check contactors are open.* or *SOC reset routine failed - check SOC is < 15 or > 90, and contactors are open.*). Open the contactors first, for example with `PAUSE` and `STOP`. This describes the Model 3/Y and Model S/X integrations; the Model S/X 2012-2020 runs its own BMS reset sequence, which writes its progress to the log instead of raising these events.
+- **The result is reported as an event** (Model 3/Y and Model S/X). On success the event is *BMS reset request completed successfully.* or *SOC reset routine was successful.* Events are published on the `events` topic and show up in the **Event** entity, so an automation can follow the outcome and log it. After a successful SOC reset the emulator also resets the BMS controller by itself.
+- **All Tesla packs are reset.** With a [double](battery_2x.md) Tesla setup one command reaches both packs, and each pack applies the conditions above on its own. The web page resets one pack at a time, selected by the tabs at the top.
+- **Other batteries ignore them.** The buttons are only auto-discovered when a Tesla battery is selected, and with any other battery the commands do nothing.
+
+!!! note "NOTE"
+    Installations that already have the Home Assistant discovery configs published get the new buttons the next time they are published, see **Publish at firmware updates** and **Publish at next boot** under [Enabling MQTT](#enabling-mqtt).
 
 ### SET_SCALESOC
 
@@ -525,11 +548,13 @@ Topic: `<discovery topic>/button/<hostname>/<command>/config`
 
 | Button | Command | Icon | Action |
 | ------ | ------- | ---- | ------ |
-| Reset BMS | `BMSRESET` | `mdi:star-four-points-box-outline` | Triggers the BMS reset feature (only if remote BMS reset is enabled) |
+| BMS Power reset | `BMSRESET` | `mdi:star-four-points-box-outline` | Triggers the BMS Power reset feature (only if **Allow remote BMS Power reset** is enabled) |
 | Pause charge/discharge | `PAUSE` | `mdi:battery-minus-outline` | Triggers the pause feature |
 | Resume charge/discharge | `RESUME` | `mdi:battery-sync-outline` | Resumes from the paused state |
 | Reboot Emulator | `RESTART` | `mdi:restart` | Restarts the Battery-Emulator (diagnostic entity) |
 | Open Contactors | `STOP` | `mdi:battery-remove-outline` | Triggers the stop feature |
+| Tesla BMS Reset | `TESLA_BMS_RESET` | `mdi:restart-alert` | Runs the software BMS Reset of a Tesla battery. Only discovered with a Tesla battery |
+| Tesla SOC Reset | `TESLA_SOC_RESET` | `mdi:battery-check-outline` | Runs the software SOC Reset of a Tesla battery. Only discovered with a Tesla Model 3/Y or Model S/X battery |
 
 ## Running multiple Battery Emulators on one broker
 

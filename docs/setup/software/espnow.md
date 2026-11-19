@@ -289,7 +289,7 @@ Link state (`BATTERY_DETECTED`, `CAN_ALIVE`, `CAN_ERROR_COUNTER`, `REAL_BMS_STAT
 
 Sent with `battery_id = 0` once per second, **only when more than one battery is configured**. With a single pack it would repeat the `BATTERY` frame verbatim, so it is omitted.
 
-This frame is what the inverter is actually given. How each value is combined is documented on the [Double Battery](battery_2x.md) page — in short, capacities, current, power and lifetime energy add up; SOC follows the emptiest pack, blending towards the fullest above 90 %; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the power limits are the **lowest** any pack allows, not the sum.
+This frame is what the inverter is actually given. How each value is combined is documented on the [Double Battery](battery_2x.md) page — in short, capacities, current, power and lifetime energy add up; SOC follows the emptiest pack, blending towards the fullest above 90 %; state of health follows the weakest; cell voltages and temperatures are the extremes across the packs; and the power limits start from the **lowest** any pack allows, the charge limit then raised to what the packs take together ([Parallel headroom tracking](battery_2x.md#parallel-headroom-tracking)).
 
 These are deliberately their own keys rather than a reuse of `0x50..0x74`, so a receiver that dispatches on key alone cannot mistake one pack's reading for the installation's.
 
@@ -346,6 +346,9 @@ There are no cell arrays, balancing, insulation or battery-specific keys here. T
 
 !!! note "0xA5 is retired"
     `0xA5 EVENT_DATA` carried the payload as an unsigned byte. The payload is signed and wider than a byte, so under the compatibility rules below the key was **retired rather than redefined**, and `0xAA EVENT_DATA_I16` allocated in its place. A receiver written against the old key will simply stop seeing event data; it will not misread it.
+
+!!! warning "Identify events by name"
+    `EVENT_ID` is the event's position in the firmware's list of events. It shifts whenever a firmware version adds or removes events before it, so the same ID can mean a different event after an update. Match events on `EVENT_NAME` instead, which only changes when an event is renamed, and treat `EVENT_ID` as valid within one firmware version only.
 
 ### Enumerated values
 

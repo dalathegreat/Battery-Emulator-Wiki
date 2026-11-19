@@ -14,7 +14,7 @@ title: "Solxpow"
 * Feel free to add more known working inverters to the list!
 
 ## Which protocol to use
-For this inverter type, use the option called "Solxpow compatible battery" under the "Inverter Protocol" setting.
+For this inverter type, use the option called "Solxpow over CAN" under the "Inverter Protocol" setting.
 
 ![image](../images/solxpow-01.png){ width="573" height="221" }
 

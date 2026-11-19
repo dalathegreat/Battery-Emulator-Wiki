@@ -36,7 +36,9 @@ Here is the best way to ensure that there are no paths for spikes in CAN voltage
 
 ## Control signal (12V)
 
-HV battery packs from EVs usually require an external 12V input at least to power the BMS. Many packs despite having built-in HV contactors, they are controlled externally with 12V signals. Since contactors themselves contain coils which draw rather high currents compared to what a microcontroller can provide, external relays/SSRs/Mosfets are used to drive these.
+HV battery packs from EVs usually require an external 12V input at least to power the BMS. Many packs despite having built-in HV contactors, they are controlled externally with 12V signals. Since contactors themselves contain coils which draw rather high currents compared to what a microcontroller can provide, external relays/SSRs/Mosfets are used to drive these. For example, this is the wiring principle of a Nissan LEAF battery pack: 
+
+![nissan_leaf_priniciple](../../images/wiring-tips-lv-01.png)
 
 !!! tip "Precharge/Contactor closing"
     Almost all EV batteries contain contactors and precharge relays. Contactors act like big relays, and are used to control electrical circuits where currents are high. They are designed to be able to break the flow of current in a safe manner without electrical arcing. Usually there are at least two of them, one for positive and one for negative, and a third one for circuit precharging. To avoid electrical arcing when turning on the battery, the initial inrush of current is led thru a precharge resistor, to allow for slow charging of the capacitors inside the inverter. If the inverter has been turned off for a long time, the capacitors inside will act almost as a dead-short, 0 ohm resistance. If you would skip using the precharge, then your contactors will spark every time you close them, wearing them out prematurely. Negative, precharge and positive need to be switched separately in order, to ensure safe operation even if some malfunction would occur. Now that we know what the contactors/precharge does, we can look at how to control it.

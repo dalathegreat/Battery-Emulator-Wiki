@@ -35,7 +35,7 @@ You can also enable "Contactor Control via GPIO" to automate contactor opening a
 ## Safety fuse/switch
 **Note the battery fuse**. 
 Do not confuse it with the version from the 52kWh battery; using the wrong one could blow fuses or worse. 
-Use the OEM fuse, part no: 
+Use the OEM fuse, part#: 
 - [297C13111R](https://www.ebay.com/sch/i.html?_nkw=297C13111R) for 22kWh.
 - [297C12645R](https://www.ebay.com/sch/i.html?_nkw=297C12645R) for 40kWh.
 
@@ -50,21 +50,21 @@ Renault ZOE Gen 1 fuse has to have **continuity** between the two external sides
 ![image](../images/Zoe_fuse_gen1_1.jpg)
 
 
-Two other fuses are also inside the pack. One fuse is under the contactor cover, and another is at the join of the two halves of the pack at the opposite end from the connectors. If the middle fuse blows, this shows as a cell imbalance, with cell 48 around 0V. Replacing the fuse restores operation.
+Two other fuses are also inside the pack. One fuse is under the contactor cover, and another is at the joint between the two halves of the pack at the end opposite the connectors. If the middle fuse blows, this shows as a cell imbalance, with cell 48 around 0V. Replacing the fuse restores operation.
 
 ## Part numbers for Renault Zoe 23/41kWh batteries
 
 |  Product |  Purchase Link |
 | :--------: | :---------: |
-| Battery communication connector, Yazaki 7282-8854-30 |  [AliExpress](https://de.aliexpress.com/item/4000174903780.html)  OR [Aliexpress wired](https://www.aliexpress.com/item/1005006870591288.html) - You need the Female plug|
+| Battery communication connector, Yazaki 7282-8854-30 |  [AliExpress](https://s.click.aliexpress.com/e/_c3Tr3Yu5)  OR [Aliexpress wired](https://s.click.aliexpress.com/e/_c4FmGS2t) - You need the **Female** plug|
 | High voltage connector 80kW 297A6-5SH1A OR 297A22581R |  [Ebay](https://www.ebay.com/sch/i.html?_from=R40&_nkw=297A65SH1A&_sacat=0)   |
 | Safety switch/fuse | OEM Part no: [297C13111R](https://www.ebay.com/sch/i.html?_nkw=297C13111R) for 22kWh and [297C12645R](https://www.ebay.com/sch/i.html?_nkw=297C12645R)  for 40kWh |
-| Relays | [AliExpress DIN](https://www.aliexpress.com/item/1005007825084745.html) - get the "DC control DC CN" version (schematic to be added to this page)|
+| Relays | [AliExpress DIN](https://s.click.aliexpress.com/e/_c4pTXxG1) - get the "DC control DC CN" version (schematic to be added to this page)|
 
 ## Wiring diagrams
 
 !!! info "IMPORTANT"
-    This battery has no negative contactor. You only control the precharge and positive contactor.
+    This battery has no negative contactor. You control only the precharge and the positive contactor. The control of these are NEGATIVE switched, which is very rare for automotive contactors. This means you supply GND to get the pre/pos-contactor to operate.
 
 Example of contactor control via SSR relays, connected to a LilyGo T-CAN485 board:
 
@@ -78,9 +78,9 @@ Alternate version with one power supply and 2 SSR DD NO relays using StarkCMR v2
 ![Image](../images/renault-zoe-gen1-09.jpeg)
 
 ## Notes on balancing :b: 
-The Zoe Gen1 batteries appear to start top-balancing at around 93% SOC. Because of this, we recommend fully charging the battery from time to time to give it enough time to balance the cells.
+The Zoe Gen1 batteries appear to start top-balancing at around 93% SOC. Because of this, we recommend fully charging the battery from time to time to allow it to balance the cells.
 
-You can observe cell-mV-delta at high SOC to confirm when balancing is active; unfortunately, the Zoe Gen1 battery does not send which specific cells are being balanced, so there is no visualisation in the Cellmonitor page.
+You can observe cell-mV-delta at high SOC to confirm when balancing is active; unfortunately, the Zoe Gen1 battery does not indicate which specific cells are being balanced, so there is no visualization on the Cellmonitor page.
 
 ## Troubleshooting
 
