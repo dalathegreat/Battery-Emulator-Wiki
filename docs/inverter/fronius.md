@@ -109,7 +109,7 @@ When the low voltage communication is handled, also connect the high voltage sid
 
 If you want to switch between the protocols, you need to remove and re-add the battery in the inverter. In the inverter's web UI in **Device Configuration > Components** click on the **trashcan icon** in the battery row to delete it, and press **Save** in the popup that appears:
 
-<img width="611" height="273" alt="image" src="https://github.com/user-attachments/assets/d318be70-0a8c-4ca2-a828-ced0eab06c42" />
+![image](../images/fronius-23.png)
 
 After saving, the page will offer again the possibility to **Add Component > Battery**, where you can select the battery type matching the protocol you'd like to change to.
 
@@ -329,9 +329,9 @@ With Version 2, contactors opened on the inverter's request wait until it has se
 
 ### Battery enable signal is missing or erroneous readings
 
-<img width="734" height="205" alt="image" src="https://github.com/user-attachments/assets/43668705-09b0-4e77-82e3-b319998d4629" />
+![image](../images/fronius-24.png)
 
-<img width="1072" height="713" alt="image" src="https://github.com/user-attachments/assets/eebdd357-4ac1-4fb5-8eae-c5dd8513a8e4" />
+![image](../images/fronius-25.png)
 
 These errors are caused by protocol version mismatch between the inverter and Battery Emulator. Choose the correct battery type for the protocol version selected in Battery Emulator.
 
