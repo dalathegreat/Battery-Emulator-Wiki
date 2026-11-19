@@ -67,7 +67,7 @@ In the inverter, select the battery type that matches the version. The main page
 | | Version 1 | Version 2 |
 |---|---|---|
 | **Battery type in the inverter** | BYD HVS/HVM | BYD HVS+/HVM+/HVB, UL Battery |
-| **How the battery identifies itself** | BYD Battery-Box Premium HV, with the same serial number on every Battery Emulator | Manufacturer "BatteryEmulator", the battery type selected in Battery Emulator as model (for example "Nissan LEAF battery"), the Battery Emulator version as firmware, and a serial number made from the board's MAC address |
+| **How the battery identifies itself** | BYD Battery-Box Premium HV, with the same serial number on every Battery Emulator | Manufacturer "Battery Emulator", the battery type selected in Battery Emulator as model (for example "Nissan LEAF battery"), the Battery Emulator version as firmware, and a serial number made from the board's MAC address |
 | **Lowest SOC the inverter discharges to** | 5%, fixed by the inverter | 1%, set by Battery Emulator |
 | **Contactors** | Closed by Battery Emulator shortly after it starts, then kept closed | Closed and opened as the inverter asks, see [Contactors follow the inverter](#contactors-follow-the-inverter) |
 | **Battery size** | Capacity reported to the inverter capped at about 58 kWh, power limits at 30 kW | No caps (not yet tested above 58 kWh) |
@@ -123,7 +123,7 @@ The battery identifies itself as a *BYD Battery-Box Premium HV*. Battery Emulato
 
 In Battery Emulator, select **Fronius Generic Storage** under **Inverter protocol**, **Version 2** under **Storage protocol**, and **Modbus** as the **Inverter interface**. In the inverter, the battery type is **BYD HVS+/HVM+/HVB, UL Battery**.
 
-The battery identifies itself to the inverter with manufacturer "BatteryEmulator", the battery type selected in Battery Emulator as model (for example "Nissan LEAF battery"), the Battery Emulator version as firmware, and a serial number made from the board's MAC address. Capacity and power limits are sent without the caps of Version 1, and the inverter can use the battery down to 1% SOC.
+The battery identifies itself to the inverter with manufacturer "Battery Emulator", the battery type selected in Battery Emulator as model (for example "Nissan LEAF battery"), the Battery Emulator version as firmware, and a serial number made from the board's MAC address. Capacity and power limits are sent without the caps of Version 1, and the inverter can use the battery down to 1% SOC.
 
 ### Contactors follow the inverter {#contactors-follow-the-inverter}
 
