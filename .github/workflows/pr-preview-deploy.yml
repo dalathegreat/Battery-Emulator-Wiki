@@ -1,0 +1,178 @@
+name: PR preview deploy
+
+# Publishes the site built by "PR preview build" to GitHub Pages under
+# pr-preview/pr-<N>/, keeps one comment on the PR that links to it, and
+# removes the preview when the PR is closed.
+#
+# This half has a write token, so it always runs from the default branch and
+# never checks out or executes anything from the PR: the built site is only
+# copied and text-rewritten by .github/scripts/pr_preview.py.
+
+on:
+  workflow_run:
+    workflows: [PR preview build]
+    types: [completed]
+  pull_request_target:
+    types: [closed]
+  # Manual clean-up of leftover previews whose PR is already closed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+# One queue per PR branch, so a deploy and the removal never overlap
+concurrency:
+  group: pr-preview-deploy-${{ github.event.workflow_run.head_repository.full_name || github.event.pull_request.head.repo.full_name || 'prune' }}-${{ github.event.workflow_run.head_branch || github.event.pull_request.head.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      contains(fromJSON('["success","failure"]'), github.event.workflow_run.conclusion)
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      BUILT: ${{ github.event.workflow_run.conclusion == 'success' }}
+      HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+      RUN_URL: ${{ github.event.workflow_run.html_url }}
+
+    steps:
+      # The PR number comes from GitHub, not from the (untrusted) artifact
+      - name: Find the pull request
+        id: pr
+        env:
+          HEAD_REPO: ${{ github.event.workflow_run.head_repository.full_name }}
+          HEAD_OWNER: ${{ github.event.workflow_run.head_repository.owner.login }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          NUM="$(gh api -X GET "repos/${GITHUB_REPOSITORY}/pulls" \
+                   -f state=open -f head="${HEAD_OWNER}:${HEAD_BRANCH}" \
+                   --jq 'map(select(.head.repo.full_name == env.HEAD_REPO)) | .[0].number // empty')"
+          if [ -z "$NUM" ]; then
+            echo "::notice::No open pull request for ${HEAD_REPO}:${HEAD_BRANCH}, nothing to do"
+          fi
+          echo "number=${NUM}" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the preview scripts (default branch)
+        if: steps.pr.outputs.number
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          path: trusted
+          persist-credentials: false
+          sparse-checkout: |
+            .github/scripts
+            mkdocs.yml
+          sparse-checkout-cone-mode: false
+
+      - name: Read the live site URL
+        if: steps.pr.outputs.number
+        id: site
+        run: echo "url=$(sed -n 's/^site_url:[[:space:]]*//p' trusted/mkdocs.yml | head -n1 | tr -d "\"' ")" >> "$GITHUB_OUTPUT"
+
+      - name: Download the built site
+        if: steps.pr.outputs.number && env.BUILT == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-preview-site
+          path: preview
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download the build log
+        if: steps.pr.outputs.number
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-preview-log
+          path: log
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check out gh-pages
+        if: steps.pr.outputs.number && env.BUILT == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+
+      - name: Publish the preview
+        if: steps.pr.outputs.number && env.BUILT == 'true'
+        working-directory: gh-pages
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          SITE_URL: ${{ steps.site.outputs.url }}
+        run: |
+          python3 ../trusted/.github/scripts/pr_preview.py publish \
+            --preview ../preview --pages . --pr "$PR_NUMBER" --site-url "$SITE_URL"
+          bash ../trusted/.github/scripts/push_gh_pages.sh \
+            "Preview PR #${PR_NUMBER} at ${HEAD_SHA::7}"
+
+      - name: Comment on the pull request
+        if: steps.pr.outputs.number
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          SITE_URL: ${{ steps.site.outputs.url }}
+        run: |
+          python3 trusted/.github/scripts/pr_preview.py comment \
+            --state "$([ "$BUILT" = true ] && echo deployed || echo failed)" \
+            --pr "$PR_NUMBER" --site-url "$SITE_URL" --sha "$HEAD_SHA" \
+            --run-url "$RUN_URL" --log log/build.log
+
+  remove:
+    if: github.event_name == 'pull_request_target' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+
+    steps:
+      - name: Check out the preview scripts (default branch)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          path: trusted
+          persist-credentials: false
+          sparse-checkout: |
+            .github/scripts
+            mkdocs.yml
+          sparse-checkout-cone-mode: false
+
+      # Only the previews folder is needed to delete from it
+      - name: Check out gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+          sparse-checkout: pr-preview
+
+      - name: Remove the preview(s)
+        id: remove
+        working-directory: gh-pages
+        run: |
+          if [ -n "$PR_NUMBER" ]; then
+            python3 ../trusted/.github/scripts/pr_preview.py remove --pages . --pr "$PR_NUMBER"
+            MESSAGE="Remove preview of PR #${PR_NUMBER}"
+          else
+            python3 ../trusted/.github/scripts/pr_preview.py remove --pages .
+            MESSAGE="Remove previews of closed PRs"
+          fi
+          bash ../trusted/.github/scripts/push_gh_pages.sh "$MESSAGE"
+
+      - name: Update the preview comment
+        if: steps.remove.outputs.removed
+        env:
+          REMOVED: ${{ steps.remove.outputs.removed }}
+        run: |
+          SITE_URL="$(sed -n 's/^site_url:[[:space:]]*//p' trusted/mkdocs.yml | head -n1 | tr -d "\"' ")"
+          for n in $REMOVED; do
+            python3 trusted/.github/scripts/pr_preview.py comment \
+              --state removed --pr "$n" --site-url "$SITE_URL"
+          done

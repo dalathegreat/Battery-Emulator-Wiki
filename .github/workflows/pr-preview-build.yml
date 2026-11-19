@@ -1,0 +1,74 @@
+name: PR preview build
+
+# Builds the site of a pull request so it can be previewed before merging.
+#
+# This half runs the PR's own content and config, so it gets no secrets and
+# a read-only token, which also makes it safe for PRs from forks. It only
+# uploads the built site; "PR preview deploy" picks it up from there and
+# publishes it under pr-preview/pr-<N>/ on GitHub Pages.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'docs/**'
+      - 'snippets/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/pr-preview-build.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-preview-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      # Keep in step with ci.yml
+      - run: pip install mkdocs-material mkdocs-awesome-nav mkdocs-redirects
+
+      - name: Build the preview
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          set -o pipefail
+          SITE_URL="$(sed -n 's/^site_url:[[:space:]]*//p' mkdocs.yml | head -n1 | tr -d "\"' ")"
+          # Same config, but served from the preview folder and showing a banner
+          cat > mkdocs.preview.yml <<EOF
+          INHERIT: mkdocs.yml
+          site_url: ${SITE_URL%/}/pr-preview/pr-${PR_NUMBER}/
+          extra:
+            pr_preview:
+              number: ${PR_NUMBER}
+              url: ${PR_URL}
+          EOF
+          mkdocs build -f mkdocs.preview.yml -d site 2>&1 | tee build.log
+
+      - name: Upload the site
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview-site
+          path: site
+          retention-days: 5
+
+      - name: Upload the build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview-log
+          path: build.log
+          retention-days: 5
+          if-no-files-found: ignore
