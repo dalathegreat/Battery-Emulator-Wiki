@@ -74,7 +74,7 @@ Select the appropriate inverter protocol for your FoxESS inverter using the comp
 
 ![image](../images/foxess-h1-h3-ac1-kh-07.png)
 
-The default values allow for a 400V EV battery to be used. If you are using a low voltage battery, you can lower the "FoxESS module count", it works in steps of 1-8 , each step being 50V. So if you are using a 200V battery, set the module count to 4
+The default values allow for a 400V EV battery to be used. If you are using a low voltage battery, you can lower the "FoxESS module count", it works in steps of 1-8 , each step being 50V. So if you are using a 150V battery, set the module count to 3
 
 ![image](../images/foxess-h1-h3-ac1-kh-08.png)
 

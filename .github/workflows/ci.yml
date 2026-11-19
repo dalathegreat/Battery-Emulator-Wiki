@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
@@ -28,4 +24,19 @@ jobs:
       - run: pip install mkdocs-material
       - run: pip install mkdocs-awesome-nav
       - run: pip install mkdocs-redirects
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs build
+      # Not `mkdocs gh-deploy --force`: that replaces the whole branch and
+      # would wipe the PR previews kept under pr-preview/.
+      - name: Check out gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+      - name: Publish to gh-pages
+        working-directory: gh-pages
+        run: |
+          touch ../site/.nojekyll
+          rsync -a --delete --exclude '/.git' --exclude '/pr-preview/' --exclude '/CNAME' ../site/ ./
+          bash ../.github/scripts/push_gh_pages.sh \
+            "Deployed ${GITHUB_SHA::7} with MkDocs version: $(mkdocs --version | awk '{print $3}')"

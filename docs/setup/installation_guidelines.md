@@ -4,7 +4,7 @@ title: "Deployment guidelines"
 
 This section will guide you towards making a safer installation of the battery. Please start by familiarizing yourself with your local regulations regarding solar inverters and stationary storage requirements. Make sure the inverter selection is approved by your grid operator before ordering parts. Finally, make sure the person installing the hardware has a valid electrical safety & installation training.
 
-!!! warning "CAUTION"
+!!! warning ""
     ***At the end of the day, you alone are responsible for the system.***
 
 ## Battery placement
@@ -81,6 +81,8 @@ Example: Underground concrete sarcophagus
 Example: Shipping container
 
 ![image](../images/installation-guidelines-06.png)
+
+While vertical orientation is the preferred installation method to save space, some manufacturers specify limitations on orientation. For instance Nissan LEAF batteries are not meant to be mounted upside down (why would you even?), but wallmounted orientation is OK. So far we have not experienced any issues even when going against manufacturer guidelines, but there are theories that some pouch-modules might "pool" electrolyte if you orient it the wrong way, which may in the very long term cause uneven degradation (no references to this are known). So the bottom line is, mount it however you want, but avoid upside down batteries.
 
 ## Optional stuff!
 

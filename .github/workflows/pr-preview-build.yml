@@ -1,0 +1,119 @@
+name: PR preview build
+
+# Builds the site of a pull request so it can be previewed before merging.
+#
+# This half runs the PR's own content and config, so it gets no secrets and
+# a read-only token, which also makes it safe for PRs from forks. It only
+# uploads the built site; "PR preview deploy" picks it up from there and
+# publishes it under pr-preview/pr-<N>/ on GitHub Pages.
+#
+# The preview should show the images after "Normalize PR images" moved
+# them into docs/images. While the normalizer is still working on the same
+# commit, this run skips the build; the normalizer restarts it when done.
+# A restarted run, including one started with `/preview` in a PR comment
+# (pr-preview-command.yml), always builds the PR's latest commit.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'docs/**'
+      - 'snippets/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/pr-preview-build.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pr-preview-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  wait:
+    name: Wait for the image normalizer
+    runs-on: ubuntu-latest
+    outputs:
+      build: ${{ steps.check.outputs.build }}
+
+    steps:
+      - name: Check whether the normalizer is still running
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          STATUS=""
+          if [ "$ATTEMPT" = 1 ]; then
+            # On any API error, fall back to building right away
+            STATUS="$(gh api -X GET "repos/${GITHUB_REPOSITORY}/actions/workflows/pr-images.yml/runs" \
+                        -f event=pull_request_target -f head_sha="$HEAD_SHA" \
+                        --jq '.workflow_runs | map(select(.head_repository.full_name == env.HEAD_REPO)) | .[0].status // empty')" || STATUS=""
+          fi
+          if [ -n "$STATUS" ] && [ "$STATUS" != completed ]; then
+            echo "::notice::Normalize PR images is still working on ${HEAD_SHA::7} and restarts this build when it is done."
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    needs: wait
+    if: needs.wait.outputs.build == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      # The PR's latest commit, which may be newer than the one that started
+      # this run (the normalizer may have pushed since, or this is a restart)
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number }}/head
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      # Keep in step with ci.yml
+      - run: pip install mkdocs-material mkdocs-awesome-nav mkdocs-redirects
+
+      - name: Build the preview
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          set -o pipefail
+          git rev-parse HEAD > sha.txt
+          SITE_URL="$(sed -n 's/^site_url:[[:space:]]*//p' mkdocs.yml | head -n1 | tr -d "\"' ")"
+          # Same config, but served from the preview folder and showing a banner
+          cat > mkdocs.preview.yml <<EOF
+          INHERIT: mkdocs.yml
+          site_url: ${SITE_URL%/}/pr-preview/pr-${PR_NUMBER}/
+          extra:
+            pr_preview:
+              number: ${PR_NUMBER}
+              url: ${PR_URL}
+          EOF
+          mkdocs build -f mkdocs.preview.yml -d site 2>&1 | tee build.log
+
+      # Named per attempt, so a restarted run never mixes up artifacts
+      - name: Upload the site
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview-site-${{ github.run_attempt }}
+          path: site
+          retention-days: 5
+
+      - name: Upload the build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview-log-${{ github.run_attempt }}
+          path: |
+            build.log
+            sha.txt
+          retention-days: 5
+          if-no-files-found: ignore
