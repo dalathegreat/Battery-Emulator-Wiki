@@ -5456,15 +5456,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-review-and-merge" class="md-nav__link">
+  <a href="#step-7-preview-how-it-will-look-like" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 7: Review and merge
+        Step 7: Preview how it will look like
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 7: Review and merge">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-review-and-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Review and merge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Review and merge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5637,15 +5648,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-review-and-merge" class="md-nav__link">
+  <a href="#step-7-preview-how-it-will-look-like" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 7: Review and merge
+        Step 7: Preview how it will look like
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 7: Review and merge">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-review-and-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Review and merge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Review and merge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5725,8 +5747,8 @@
 <p><img alt="Editing the page" src="../../../images/improving-documentation-04.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>GitHub's preview is close to, but not the same as, this site. <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types">Boxes</a> like this one, image sizes and icons only show up correctly once the site is built. See Material for MkDocs documentation for advanced stuff.</p>
-<p>When unsure, look at how other pages do it and keep the existing formatting.</p>
+<p>GitHub's preview is close to, but not the same as, this site. <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types">Boxes</a> like this one, image sizes and icons only show up correctly once the site is built. See Material for MkDocs documentation for advanced stuff. When unsure, look at how other pages do it and keep the existing formatting.</p>
+<p>You'll be able to get a final preview after you submitted the PR, before merging, later in <strong>Step 7</strong>.</p>
 </div>
 <p>Keep a change focused on one topic. A few small, separate changes are easier to review than one big one.</p>
 <div class="admonition tip">
@@ -5748,7 +5770,16 @@
 </ul>
 <p>Then click <strong>Create pull request</strong> to send it in:</p>
 <p><img alt="Create pull request go" src="../../../images/improving-documentation-07.png" /></p>
-<h2 id="step-7-review-and-merge">Step 7: Review and merge<a class="headerlink" href="#step-7-review-and-merge" title="Permanent link">~</a></h2>
+<p>This will automatically trigger a couple of actions processing the changes you made.</p>
+<h2 id="step-7-preview-how-it-will-look-like">Step 7: Preview how it will look like<a class="headerlink" href="#step-7-preview-how-it-will-look-like" title="Permanent link">~</a></h2>
+<p>One of the actions will start deploying a minimal preview of your suggested changes, making an automated comment containing the URLs where you can access the preview:</p>
+<p><img alt="Preview" src="../../../images/improving-documentation-11.png" /></p>
+<p>The URL will be accessible only after the green ✔️ checkmark will appear next to the Preview PR.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to constrained resources, a single task is used globally per site to generate the previews. This means, if several users work on several PRs simultaneously, certain preview tasks may be cancelled before they finish. That's when you'll see a ❌ next to the Preview PR. To retry, comment <code>/preview</code> to restart the rebuild. Don't abuse this function, it's rate-limited.</p>
+</div>
+<h2 id="step-8-review-and-merge">Step 8: Review and merge<a class="headerlink" href="#step-8-review-and-merge" title="Permanent link">~</a></h2>
 <p>The project team admins review the changes you suggested. They may merge them right away, or ask questions or request changes in the comments of the pull request. GitHub notifies you about these by e-mail and under the bell icon on GitHub.</p>
 <p>If you added images by pasting them into the markdown file, or linked them from third party sites, a dedicated action will take care of importing/converting them into the site's own <code>images\</code> subdir, and correct the links appropriately.</p>
 <p>Once merged, your changes are published on the live site.</p>
