@@ -24,11 +24,11 @@ Be sure to checkout the [installation guidelines](../setup/installation_guidelin
 | BMW<br>[i3 (all sizes)](bmw_i3.md) | 18 / 22 / 40<br>259 / 403 | ⭐⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>1</sup> |
 | BMW<br>[iX & i4-7 Platform](bmw_ix_i4_i7_gen5_platform.md) | 68 / 80.7<br>218 / 464 | ⭐⭐ | 🅱️ | 2️⃣ | CAN |  |
 | BMW<br>[PHEV (330e/530e etc)](bmw_phev_gen_3_and_4_platform.md) | 12/24<br>300 / 465 | ⚠️ Testing ongoing (2021+ Gen4 CAN logs wanted!) |  |  | CAN |  |
-| BYD<br>[Atto 3](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | 50 / 60<br>380 / 440 | ⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>2</sup> |
-| BYD<br>[Yuan Plus](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | 50 / 60<br>380 / 440 | ⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>2</sup> |
-| BYD<br>[Dolphin mini/E3](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | Multiple<br>307 / 332 | ⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>2</sup> |
-| BYD<br>[Seal](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | Multiple<br>380/510 / 440/597 | ⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>2</sup> |
-| BYD<br>[Song](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | Multiple<br>380 / 440 | ⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>2</sup> |
+| BYD<br>[Atto 3](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | 50 / 60<br>380 / 440 | ⭐⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>12</sup> |
+| BYD<br>[Yuan Plus](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | 50 / 60<br>380 / 440 | ⭐⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>12</sup> |
+| BYD<br>[Dolphin mini/E3](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | Multiple<br>307 / 332 | ⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>12</sup> |
+| BYD<br>[Seal](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | Multiple<br>380/510 / 440/597 | ⭐⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>12</sup> |
+| BYD<br>[Song](byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md) | Multiple<br>380 / 440 | ⭐⭐ | 🅱️ | 2️⃣ | CAN | <sup>12</sup> |
 | Chevrolet<br>[Bolt](ampera_e_64_kwh.md) | 60/66<br>251 / 404 | ⭐ |  | 2️⃣ | GPIO |  |
 | Citroen<br>[Basalt (Stellantis CMP Smart Car)](stellantis_cmp_smart_car_platform.md) | 44<br>290 / 370 | ⭐⭐ | 🅱️ | 2️⃣ | CAN |  |
 | Citroen<br>[C-Zero](i_miev_czero_ion.md) | 16<br>316 / 370 | ⭐ | ⚠️ |  | GPIO |  |
@@ -114,6 +114,7 @@ Be sure to checkout the [installation guidelines](../setup/installation_guidelin
 9. Molten salt or NCM variants. Isolation monitoring is very sensitive.
 10. Requires a precharge circuit.
 11. Requires a DC/DC load, otherwise the battery can lock itself permanently.
+12. Balancing starts after a native full charge followed by at least 5 minutes with the contactors open, which Battery-Emulator can do automatically. The balancing itself then runs with the contactors closed, whether the battery is charging, discharging or idle.
 
 ### Other batteries
 

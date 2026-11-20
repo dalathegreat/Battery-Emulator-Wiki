@@ -6,7 +6,7 @@ title: "BYD Vehicle Batteries"
 
 The code is compatible with a variety of BYD vehicle batteries. Check the product code sticker, and verify that the battery has already been tested with the Battery-Emulator, indicated by the ✅-mark that contactor closing works and the pack has been confirmed working.
 
-To get contactor closing to function, start BYD battery first, and Battery-Emulator afterwards. If you start Battery-Emulator before the battery, it wont close contactors before you restart the emulator. Also make sure no FAULT events are active when trying to start, this will prevent contactor operation.
+Make sure no FAULT events are active when trying to start, this will prevent contactor operation.
 
 |  Product Type |  Byd Model  | Energy | Capacity | Nominal voltage | Approx. weight | Status |
 | :-----------: | :---------: | :----: | :------: | :-------------: | :------------: | :----: |
@@ -16,7 +16,7 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | P48 | Atto 3 | 60.48kWh | 150Ah | 403.2V | 402 kg | ✅ 
 | P4S | ? | 74.8kWh | 150Ah | 499.2V | 520 kg | ✅ 
 | VD6 | Seal U DM-i | 18,32kWh | 54Ah | 339.2V | 175-181 kg | ✅ ([DM pack](#dm-phev-packs), Type B LV connector)
-| PA4 | Tang | 86.4kWh  | 135Ah | 640V | 600 kg | :x: (Type B LV connector)
+| PA4 | Tang | 86.4kWh  | 135Ah | 640V | 600 kg | ? (Type B LV connector, not yet tested on firmware 13.3.0 or later)
 | PE2 | Han | 85.4kWh  | 150Ah | 569.6V | 600 kg | :x: (Type B LV connector)
 | PE5 | Seal   | 82.56kWh | 150Ah | 550.4V | 580 kg | ✅ 
 | PE6 | Seal   | 82.56kWh | 150Ah | 550.4V | 580 kg | ✅ 
@@ -24,7 +24,7 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | P07 | T3     | 50.37kWh | 115Ah | 438V | 390 kg | -
 | P94 | Dolphin | 44.928kWh | 135Ah | 332.8V | ? | ✅ 
 | P99 | ? | 44.928kWh | 135Ah | 320.0V | ? | -
-| PC5B | Dolphin mini | 38.8kWh | 135Ah | 288V | ? | :x: (Type B LV connector)
+| PC5B | Dolphin mini | 38.8kWh | 135Ah | 288V | ? | ⚠️ (Type B LV connector, contactor close reported on 13.5.0, native charging untested)
 | ? | Song Plus | 82.56kWh | 150Ah | 550.4V | 580 kg | ✅ 
 | PM6 | Song Plus | 87.04 kWh | 170Ah | 512.0V | 580 kg | ✅
 | PM6B|? | 87.04 kWh | 170Ah | 512.0V | 580 kg | ✅
@@ -42,6 +42,8 @@ Confirmed working BYD Seal 60kWh battery example sticker:
 !!! note "NOTE"
     If you intend to run two BYD batteries in [parallel](../setup/software/battery_2x.md), make sure they are both the same model!
 
+    With two BYD batteries, the second battery's charge limit can stop the charge before the primary battery finishes, so native charging and balancing may never happen. Support for two batteries is in development.
+
 ## Software setup
 Select **BYD Atto 3/Seal/Dolphin** under **Battery Protocol**.
 
@@ -57,8 +59,8 @@ DM (plug-in hybrid) packs such as the VD6, VG9 and VM7 use the same **BYD Atto 3
 On a DM pack:
 
 - Contactor control over CAN works as on other BYD packs. Battery-Emulator sends the extra message these packs need before they will close.
-- [Native charging and balancing](#charging-and-soc-calibration) are not available yet; the panel is greyed out and shows **Not available on DM packs**. Use the [artificial SOC auto-calibration](#artificial-soc-auto-calibration) and [manual calibration](#manual-soc-and-capacity-calibration) instead.
-- The BMS does not support the [automatic insulation monitor disable](#insulation-monitor-and-native-charging), so Battery-Emulator does not attempt it.
+- From firmware **13.6.0**, [native charging and balancing](#charging-and-soc-calibration) work on DM packs as on other BYD packs. This has been confirmed on a VG9, including a full charge, termination and balancing. It has not been confirmed on the VD6 or VM7 yet.
+- The BMS does not support the [automatic insulation monitor disable](#insulation-monitor-and-native-charging), so Battery-Emulator does not attempt it. An insulation fault on a DM pack has to be cleared at its source, for example by isolating the pack case from earth.
 - The VG9 and VM7 needed HV interlock pins 30 and 31 bridged. A floating collision signal input sets **P1A5100**, but this does not stop the contactors closing.
 
 ### Example battery install, Atto 3 P48 battery
@@ -89,10 +91,12 @@ The connection diagram is derived from reverse engineering the pins. The followi
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-09.png)
 
 ## LV Connector Type B
-This connector appears on newer battery types, such as the PA4. [DM (PHEV) packs](#dm-phev-packs) (VD6, VG9, and the Type C VM7 listed here) are supported. Other Type B batteries (PA4, PC5B, PE2) are NOT fully compatible yet. :x:
+This connector appears on newer battery types, such as the PA4. [DM (PHEV) packs](#dm-phev-packs) (VD6, VG9, and the Type C VM7 listed here) are supported. Other Type B batteries (PA4, PE2) have not been confirmed working yet. A PC5B has been reported to close its contactors on firmware 13.5.0; native charging has not been tested on it.
 Pinout varies between different batteries despite the plug & socket being the same.
 
 *Development ongoing, many details can be found in the Discord*
+
+Firmware **13.2.0** added support for 200-cell packs such as the PA4. From **13.3.0**, Battery-Emulator can also read diagnostics from Type B packs that use a different diagnostic address. The PA4 has not been tested on these versions yet.
 
 | Battery | Plug Image | Wiring Diagram | Pinout |
 |---|---|---|---|
@@ -159,9 +163,8 @@ Battery-Emulator requests the contactors open when equipment stop is active, the
 
 ### Notes
 
-- Power the BYD battery first, then Battery-Emulator.
 - Losing the web UI or VPN connection does not request a shutdown. The battery remains under the control of the equipment-stop, fault and inverter interlocks.
-- Firmware **12.5.0** corrects the link voltage reported to the BMS during precharge. Earlier versions could report full pack voltage too early and cause the BMS to store **P1A3400 Pre-charge Failure**.
+- Firmware **12.5.0** corrects the link voltage reported to the BMS during precharge. Earlier versions could report full pack voltage too early and cause the BMS to store **P1A3400 Pre-charge Failure**. Firmware **12.6.0** refines this: Battery-Emulator waits for the BMS to start precharging, and if the battery has not closed within 15 seconds it stops and reports a contactor mismatch.
 
 ## Contactor Block Modification
 In the event of the battery being locked, the pre-charge and two contactors can be wired to manually switch on, or preferably to automatically activate via 3 SSRs with the GPIO pins on the Lilygo board (see [Contactor control via GPIO pins](../setup/software/contactor_control_via_gpio_pins.md)).
@@ -209,11 +212,27 @@ It is recommended to check your handiwork, by performing an insulation test on t
 
 ![image](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-21.png)
 
+## Reading fault codes (DTCs)
+
+**More Battery Info** has **Read DTC** and **Erase DTC** buttons. Read DTC lists the fault codes stored in the BMS, with a description of each.
+
+Codes that come up often:
+
+| Code | Meaning |
+| :--- | :--- |
+| P1A0000 | Serious electric leakage (insulation) fault. See [Insulation monitor and native charging](#insulation-monitor-and-native-charging). |
+| P1A3400 | Pre-charge failure. |
+| P1AC000 | Collision alarm from the airbag ECU: the pack is crash-locked. See [How do I unlock a crashed battery?](#how-do-i-unlock-a-crashed-battery) |
+| P1A5100 | Collision signal fault. Seen on DM packs with the collision input left floating; it does not stop the contactors closing. |
+| P1AC400 | Serious cell imbalance. |
+
+The BMS keeps a code marked active until it next restarts, even after the fault has cleared. To see what is failing right now, press **Erase DTC** (it reads the codes again automatically), wait a few minutes, then press **Read DTC**. On a pack out of a car, communication codes for car modules that are not there, such as U014100 and U02A200, come back straight away. This is expected.
+
 ## How do I know if I have a crashed & locked battery?
 
 Contactors failing to close does not, by itself, confirm that the battery is crash-locked. Check the startup order, CAN communication, active faults and inverter permission first. The **More Battery Info** page shows the contactor state reported by the BMS.
 
-A BMS SOC reading that stays fixed while the battery is charging or discharging can also be a sign of a locked pack. Use this alongside the other checks rather than treating it as proof on its own.
+A BMS SOC reading that stays fixed while the battery is charging or discharging can also be a sign of a locked pack. Use this alongside the other checks rather than treating it as proof on its own. A stored **P1AC000** code (see [Reading fault codes](#reading-fault-codes-dtcs)) is a strong sign that the pack is crash-locked.
 
 ## Charging and SOC calibration
 
@@ -226,22 +245,25 @@ Once the BMS finishes charging, Battery-Emulator stops requesting charge. With b
 The panel shows the charge session state and the highest cell voltage and cell spread recorded at the last native charge termination.
 
 !!! note "Primary battery only"
-    In firmware **12.5.0**, native charging and the automatic balancing contactor cycle are available on the primary battery only. They are not available on the second battery.
-
-!!! note "DM (PHEV) packs"
-    Native charging and balancing are not available on [DM packs](#dm-phev-packs).
+    Native charging and the automatic balancing contactor cycle are available on the primary battery only. They are not available on the second battery.
 
 ### Cell balancing
 
 From firmware **12.5.0**, Battery-Emulator can briefly disconnect the battery after a native full charge to trigger the BMS to start balancing.
 
-To use this, leave native charging enabled and turn on **Balancing enabled** in the same panel. Balancing is **off by default**. **Hold for** sets how long the contactors stay open, with a default of **30 minutes**.  Through experimentation on the Discord, users have reported this to work with as little as 3 minutes open time. Press **Save** after changing the hold time.
+To use this, leave native charging enabled and turn on **Balancing enabled** in the same panel. Balancing is **off by default**. **Hold for** sets how long the contactors stay open, with a default of **30 minutes**. Use at least **5 minutes**. A 2-minute hold did not start balancing in testing; 5 minutes and longer have worked every time. Press **Save** after changing the hold time.
 
-During this hold, the battery cannot supply or accept power. Once the hold ends, Battery-Emulator closes the contactors again. The BMS can then continue balancing while the battery is in use; it does not need to remain disconnected for the whole balancing period. The panel shows the hold state and remaining time while the battery is held open.
+During this hold, the battery cannot supply or accept power. Once the hold ends, Battery-Emulator closes the contactors again. The BMS then continues balancing with the contactors closed, whether the battery is charging, discharging or idle; it does not need to remain disconnected for the whole balancing period. The panel shows the hold state and remaining time while the battery is held open.
 
-Testing so far shows that the BMS selects the highest-voltage cells at the end of charging and balances those cells for around **17-18 hours**. Further full-charge cycles let it work through other cells, so an uneven pack may take several cycles to improve. The open time is what triggers the BMS to start balancing; it is not the total balancing time.
+Testing so far shows that the BMS selects the highest-voltage cells at the moment charging ends (between 5 and 27 cells have been seen) and balances each of them for around **17 hours**, then stops. The next full charge selects the next-highest cells, so an uneven pack works through its cells over several cycles. How far the battery is discharged between charges makes no difference. The open time is what triggers the BMS to start balancing; it is not the total balancing time. No balancing happens while the contactors are open; it starts once they close again.
 
 If the battery will not close again, Battery-Emulator makes a limited number of retries, then leaves it open and reports a contactor mismatch for you to investigate.
+
+### Cell spread at full charge
+
+The panel and the balance timers page show the cell spread (**Delta at Full**) at the moment charging ended. A spread of 300 mV or more here is normal for LFP cells: in the last few percent of a charge, small differences between cells turn into large voltage differences. The same pack measured 7-10 mV mid-charge.
+
+BYD's own imbalance check (code **P1AC400** in the Atto 3 diagnostic manual) measures the spread at 40-60% SOC and flags it above 90 mV. Judge the pack's balance there, not at full charge.
 
 ### Full charge with SOC scaling
 
@@ -267,17 +289,27 @@ Things to be aware of:
 
 ### Checking the balance timers
 
-Open **More Battery Info → Cell Balance Timers**, then press **Read Timers**. This reads the total balancing hours recorded by the BMS for each cell.
+Open **More Battery Info → Cell Balance Timers**. The page reads the total balancing hours the BMS has recorded for each cell. These are lifetime counters: they show that balancing happened between two readings, not which cells are balancing right now.
 
-Take a reading before a balancing cycle, then read again the following day using the same browser. The page compares the readings and highlights cells whose totals have increased.
+- **Read Timers** takes a reading now.
+- **Automatic readings** (off by default) takes a reading after each completed charge, so you can see which cells the BMS balanced after each one.
+- **By Charge** shows the cells balanced after a chosen charge, **Since Last Read** compares with your previous reading, and **Lifetime** shows the totals.
+- The summary shows the number of completed charges, the cell spread at full charge, and how many cells were balanced.
+- **Charge history** lists each completed charge, and **Export CSV** saves it.
 
-These are lifetime counters, so they show that balancing happened between readings. They do not show which cells are balancing right now. Readings are taken manually, and the comparison history is saved in your browser.
+History is kept in your browser. Battery-Emulator itself keeps the last three charges until it restarts.
 
 ### Insulation monitor and native charging
 
 The BMS will refuse a native charge session while it reports an insulation fault. The **Isolation resistance monitor** section on More Battery Info shows the monitor status and controls.
 
-If automatic monitor disable is enabled, firmware **12.5.0** reapplies it when the BMS turns monitoring back on after the contactors open. This also covers the contactor cycle used for balancing. Disabling the monitor does not repair an insulation fault. DM packs do not support disabling the monitor.
+Automatic monitor disable is **on by default**. Firmware **12.5.0** reapplies it when the BMS turns monitoring back on after the contactors open. This also covers the contactor cycle used for balancing. Disabling the monitor does not repair an insulation fault. DM packs do not support disabling the monitor.
+
+On a stationary install, the most common cause of an insulation fault (**P1A0000**) is the pack case being earthed, for example through a metal mounting frame, while the inverter runs its own isolation test. The BMS's monitor is more sensitive than the inverter's and reports the inverter's test as a fault. The BMS then limits discharge to around 20 kW and ends charge sessions early. Keeping the monitor disabled avoids this. Otherwise, isolate the pack case from earth.
+
+Once the fault has been stored, erasing DTCs or restarting Battery-Emulator does not remove the power limit. Switch the battery's 12 V supply off and on again.
+
+If you isolate the case, treat it as live until you have measured it. A floating case has been measured at around 50 V to earth.
 
 <span id="soc-drift-overtime"></span>
 
@@ -313,6 +345,8 @@ Manual calibration has been available on **More Battery Info** since firmware **
 2. Check **Target capacity**. This defaults to the capacity read from the BMS, and changing it affects the reported SOH.
 3. Press **Calibrate SOC** to write the values.
 
+A native full charge recalibrates the capacity as well as the SOC, so a capacity you write here is replaced by the BMS's own figure at the next native charge termination.
+
 The screenshot below shows the controls in an older firmware version; the labels and layout have since changed.
 
 ![Manual SOC calibration controls in an older firmware version](../images/byd-vehicle-atto-3-seal-tang-dolphin-song-and-more-22.png){ width="493" height="199" }
@@ -323,8 +357,10 @@ There are two methods to try and unlock the battery. The methods are via More Ba
 !!! info "IMPORTANT"
     To be able to unlock, you need separate control over B+ and IGN pin going towards battery (The two 12V pins on the battery). These need to be powered on/off in a specific sequence.
 
-- Pin 4 12v+ BMS
-- Pin 5 12v+ ignition
+- On the Type A connector:
+    - Pin 4 12v+ BMS
+    - Pin 5 12v+ ignition
+- On Type B connectors the ignition pin is different: pins 5 and 29 on the PC5B, pin 8 on the VD6 and VG9. Pin 4 is the constant 12V on all of them. See the [pinout comparison](#pinout-comparison).
 - Also make sure 12V supply has at least 12.8V and 2A available before starting the unlock procedure
 
 ### More Battery Info Unlock
