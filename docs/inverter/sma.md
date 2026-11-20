@@ -10,6 +10,8 @@ title: "SMA"
 * Sunny Boy Storage 3.7 (SBS3.7-10) ✅
 * Sunny Boy Storage 5.0 (SBS5.0-10) ✅
 * Sunny Boy Storage 6.0 (SBS6.0-10) ✅
+* Sunny Boy Storage 8.0 (SBS8.0-10) ✅
+* Sunny Boy Storage 9.9 (SBS9.9-10) ✅
 
 !!! note "NOTE"
       The inverter contains a 120 Ohm terminating resistor on CAN-L/H pins. The SBS2.5-1VL-10 inverter has a slightly different protocol than the other SBS inverters.
