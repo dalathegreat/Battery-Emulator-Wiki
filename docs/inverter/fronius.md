@@ -100,21 +100,28 @@ Optional setting: If you have multiple AC coupled inverters in your network, and
 
 ## Faults in the inverter's event log {#faults-in-the-inverter-event-log}
 
-Battery Emulator reports its faults (events at error level) to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:
+Battery Emulator reports its faults (events at error level), and some of its warnings, to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:
 
-| Battery Emulator event | Shown in the inverter as |
-|---|---|
-| CAN_BATTERY_MISSING | `BYD2-1` The battery control unit (BCU) cannot communicate with all the battery modules |
-| CELL_CRITICAL_UNDER_VOLTAGE | `BYD2-13` Cell Under Voltage 3 |
-| CELL_CRITICAL_OVER_VOLTAGE | `BYD2-24` Cell Over Voltage 3 |
-| BATTERY_OVERHEAT | `BYD2-27` Charge Over Temperature 3 |
-| THERMAL_RUNAWAY | `BYD2-38` Cell Failure |
-| INTERNAL_OPEN_FAULT | `BYD2-45` Battery Break |
-| EQUIPMENT_STOP | `BYD2-45` Battery Break |
-| HVIL_FAILURE | `BYD2-47` Hardware fault at the battery control unit (BCU) |
-| AUTOMATIC_PRECHARGE_FAILURE | `BYD2-48` Pre-charge Fault |
+| Battery Emulator event | Level | Shown in the inverter as |
+|---|---|---|
+| CAN_BATTERY_MISSING | error | `BYD2-1` The battery control unit (BCU) cannot communicate with all the battery modules |
+| DISCHARGE_LIMIT_EXCEEDED | info | `BYD2-7` Over current during discharge detected |
+| CELL_CRITICAL_UNDER_VOLTAGE | error | `BYD2-13` Cell Under Voltage 3 |
+| BATTERY_UNDERVOLTAGE | warning | `BYD2-13` Cell Under Voltage 3 |
+| CHARGE_LIMIT_EXCEEDED | info | `BYD2-18` Charge Over Current |
+| CELL_CRITICAL_OVER_VOLTAGE | error | `BYD2-24` Cell Over Voltage 3 |
+| BATTERY_OVERVOLTAGE | warning | `BYD2-24` Cell Over Voltage 3 |
+| BATTERY_OVERHEAT | error | `BYD2-27` Charge Over Temperature 3 |
+| THERMAL_RUNAWAY | error | `BYD2-38` Cell Failure |
+| CONTACTOR_OPEN | warning | `BYD2-45` Battery Break |
+| BATTERY_FUSE | warning | `BYD2-45` Battery Break |
+| INTERNAL_OPEN_FAULT | error | `BYD2-45` Battery Break |
+| EQUIPMENT_STOP | error | `BYD2-45` Battery Break |
+| HVIL_FAILURE | error | `BYD2-47` Hardware fault at the battery control unit (BCU) |
+| PRECHARGE_FAILURE | info | `BYD2-48` Pre-charge Fault |
+| AUTOMATIC_PRECHARGE_FAILURE | error | `BYD2-48` Pre-charge Fault |
 
-Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
+An error stops Battery Emulator, and goes to the inverter as a Fault2. Warning and info events go as the milder Fault1, since Battery Emulator carries on through them. Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Other events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
 
 Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
 
