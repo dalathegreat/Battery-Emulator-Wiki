@@ -5986,54 +5986,99 @@
 <p><img alt="scaled" src="/Battery-Emulator-Wiki/images/fronius-05.png" /></p>
 <p>Optional setting: If you have multiple AC coupled inverters in your network, and they all reside behind the SmartMeter, you can enable <strong>Battery charging from other sources</strong> and select <strong>from other generators in the home network</strong>.</p>
 <h2 id="faults-in-the-inverter-event-log">Faults in the inverter's event log<a class="headerlink" href="#faults-in-the-inverter-event-log" title="Permanent link">~</a></h2>
-<p>Battery Emulator reports its faults (events at error level) to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:</p>
+<p>Battery Emulator reports its faults (events at error level), and some of its warnings, to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:</p>
 <table>
 <thead>
 <tr>
 <th>Battery Emulator event</th>
+<th>Level</th>
 <th>Shown in the inverter as</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>CAN_BATTERY_MISSING</td>
+<td>error</td>
 <td><code>BYD2-1</code> The battery control unit (BCU) cannot communicate with all the battery modules</td>
 </tr>
 <tr>
+<td>DISCHARGE_LIMIT_EXCEEDED</td>
+<td>info</td>
+<td><code>BYD2-7</code> Over current during discharge detected</td>
+</tr>
+<tr>
 <td>CELL_CRITICAL_UNDER_VOLTAGE</td>
+<td>error</td>
 <td><code>BYD2-13</code> Cell Under Voltage 3</td>
 </tr>
 <tr>
+<td>BATTERY_UNDERVOLTAGE</td>
+<td>warning</td>
+<td><code>BYD2-13</code> Cell Under Voltage 3</td>
+</tr>
+<tr>
+<td>CHARGE_LIMIT_EXCEEDED</td>
+<td>info</td>
+<td><code>BYD2-18</code> Charge Over Current</td>
+</tr>
+<tr>
 <td>CELL_CRITICAL_OVER_VOLTAGE</td>
+<td>error</td>
+<td><code>BYD2-24</code> Cell Over Voltage 3</td>
+</tr>
+<tr>
+<td>BATTERY_OVERVOLTAGE</td>
+<td>warning</td>
 <td><code>BYD2-24</code> Cell Over Voltage 3</td>
 </tr>
 <tr>
 <td>BATTERY_OVERHEAT</td>
+<td>error</td>
 <td><code>BYD2-27</code> Charge Over Temperature 3</td>
 </tr>
 <tr>
 <td>THERMAL_RUNAWAY</td>
+<td>error</td>
 <td><code>BYD2-38</code> Cell Failure</td>
 </tr>
 <tr>
+<td>CONTACTOR_OPEN</td>
+<td>warning</td>
+<td><code>BYD2-45</code> Battery Break</td>
+</tr>
+<tr>
+<td>BATTERY_FUSE</td>
+<td>warning</td>
+<td><code>BYD2-45</code> Battery Break</td>
+</tr>
+<tr>
 <td>INTERNAL_OPEN_FAULT</td>
+<td>error</td>
 <td><code>BYD2-45</code> Battery Break</td>
 </tr>
 <tr>
 <td>EQUIPMENT_STOP</td>
+<td>error</td>
 <td><code>BYD2-45</code> Battery Break</td>
 </tr>
 <tr>
 <td>HVIL_FAILURE</td>
+<td>error</td>
 <td><code>BYD2-47</code> Hardware fault at the battery control unit (BCU)</td>
 </tr>
 <tr>
+<td>PRECHARGE_FAILURE</td>
+<td>info</td>
+<td><code>BYD2-48</code> Pre-charge Fault</td>
+</tr>
+<tr>
 <td>AUTOMATIC_PRECHARGE_FAILURE</td>
+<td>error</td>
 <td><code>BYD2-48</code> Pre-charge Fault</td>
 </tr>
 </tbody>
 </table>
-<p>Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.</p>
+<p>An error stops Battery Emulator, and goes to the inverter as a Fault2. Warning and info events go as the milder Fault1, since Battery Emulator carries on through them. Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Other events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.</p>
 <p>Each fault is reported once, dated by <a href="#battery-emulators-clock">Battery Emulator's clock</a>, which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.</p>
 <h2 id="battery-emulators-clock">Battery Emulator's clock<a class="headerlink" href="#battery-emulators-clock" title="Permanent link">~</a></h2>
 <p>Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once synced, the time (UTC) is shown at the bottom of the main page's <a href="../../setup/software/webserver_guide/#system-status">status card</a>, and the <a href="#faults-in-the-inverter-event-log">faults it reports</a> are dated by it.</p>
