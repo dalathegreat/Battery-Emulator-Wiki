@@ -22,6 +22,8 @@ Here's a collection of 3D-printable parts that you can utilize in your build.
 
 - Front connector cover port: [Abdeckung HV Anschluss Motor vorn.step.zip](https://github.com/user-attachments/files/29167093/Abdeckung.HV.Anschluss.Motor.vorn.step.zip)
 - Front connector cover port O-ring version: [Verschlussdeckel Klimaleitung mit O-Ring 2,5mm.step.zip](https://github.com/user-attachments/files/29182999/Verschlussdeckel.Klimaleitung.mit.O-Ring.2.5mm.step.zip)
+- Shark 6 CCS HV Port cover: [hv_cover_plug.zip](https://github.com/user-attachments/files/35118822/hv_cover_plug.zip)
+
 
 ## Ford Mach‐E
 
