@@ -78,9 +78,9 @@ For this inverter type, use the option called **BYD HVS/HVM over Modbus** under 
 
 ### Other settings
 
-**Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
-
-**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive). Battery Emulator sets its own clock from it, see [Battery Emulator's clock](#battery-emulators-clock).
+- **Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
+- **WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons.
+- **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive). Battery Emulator sets its own clock from it, see [Battery Emulator's clock](#battery-emulators-clock).
 
 ### Notes on Scaled SOC + Fronius min/max SOC
 
@@ -120,9 +120,9 @@ Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulat
 
 ## Battery Emulator's clock {#battery-emulators-clock}
 
-Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once set, the time (UTC) is shown at the bottom of the main page's [status card](../setup/software/webserver_guide.md#system-status), and the [faults it reports](#faults-in-the-inverter-event-log) are dated by it.
+Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once synced, the time (UTC) is shown at the bottom of the main page's [status card](../setup/software/webserver_guide.md#system-status), and the [faults it reports](#faults-in-the-inverter-event-log) are dated by it.
 
-The clock keeps running through a restart of Battery Emulator, such as **Reboot Emulator**, a crash or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the clock is not set, and the main page shows no time until the inverter sends it, which can take up to an hour.
+The clock keeps running through a restart of Battery Emulator, such as rebooted from the web UI, a crash, an OTA or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the time is lost, and the clock cannot be set until the inverter transmits the time again, which can take up to an hour. The main page shows no time until the sync happens.
 
 ## Starting and stopping the system
 
