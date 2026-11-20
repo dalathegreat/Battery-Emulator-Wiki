@@ -17,7 +17,7 @@ To get contactor closing to function, start BYD battery first, and Battery-Emula
 | VD6 | Seal U DM-i | 18,32kWh | 54Ah | 339.2V | 175-181 kg | ✅ ([DM pack](#dm-phev-packs), Type B LV connector)
 | PA4 | Tang | 86.4kWh  | 135Ah | 640V | 600 kg | :x: (Type B LV connector)
 | PE2 | Han | 85.4kWh  | 150Ah | 569.6V | 600 kg | :x: (Type B LV connector)
-| PE4 | Seal | 61.66kWh | 150Ah | 409.6V | 437kg | ✅
+| PE4 | Seal | 61.44kWh | 150Ah | 409.6V | 437kg | ✅
 | PE5 | Seal   | 82.56kWh | 150Ah | 550.4V | 580 kg | ✅ 
 | PE6 | Seal   | 82.56kWh | 150Ah | 550.4V | 580 kg | ✅ 
 | P0B | Dolphin | 43.2kWh | 150Ah | 288V | 310 kg | -
