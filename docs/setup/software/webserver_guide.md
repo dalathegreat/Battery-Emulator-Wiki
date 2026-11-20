@@ -138,6 +138,7 @@ If no current is flowing in or out of the battery, the text simply says **Batter
 - **Inverter allows contactor closing**: whether the inverter permits closing the contactors (for inverter protocols that control the battery contactors)
 - **2ⁿᵈ / 3ʳᵈ battery allowed to join**: ✗ (voltage mismatch) while the voltage of the extra pack differs too much from the main battery to connect it in parallel
 - **Contactors control**: when Battery Emulator drives the contactors itself ([contactor control via GPIO](contactor_control_via_gpio_pins.md)), the state of the contactors: OFF (DISCONNECTED), PRECHARGE, ON (or **Economized** with [PWM control](contactor_control_via_gpio_pins.md#pwm-control-for-lower-power-draw)), or OFF (FAULT), which needs a reboot to recover from. Otherwise it shows **non-exclusive**: the contactors are controlled via CAN or other methods, and Battery Emulator has only limited influence over them.
+- The date and time, such as **2026-11-18 08:08:21 UTC**: Battery Emulator's clock, ticking. Shown only once the inverter has set it, which only [Fronius](../../inverter/fronius.md#battery-emulators-clock) does, over **BYD HVS/HVM over Modbus**.
 
 If a [charger](../chargers/index.md) is configured, an 🟧 orange card shows its state and output values.
 

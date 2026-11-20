@@ -80,7 +80,7 @@ For this inverter type, use the option called **BYD HVS/HVM over Modbus** under 
 
 **Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
 
-**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive).
+**WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons, just like **Inverter time (UTC)**, which is communicated by the inverter once per hour (shows "not yet received" after boot, until the first packets arrive). Battery Emulator sets its own clock from it, see [Battery Emulator's clock](#battery-emulators-clock).
 
 ### Notes on Scaled SOC + Fronius min/max SOC
 
@@ -97,6 +97,32 @@ Avoid double-rescaling:
 ![scaled](../images/fronius-05.png)
 
 Optional setting: If you have multiple AC coupled inverters in your network, and they all reside behind the SmartMeter, you can enable **Battery charging from other sources** and select **from other generators in the home network**.
+
+## Faults in the inverter's event log {#faults-in-the-inverter-event-log}
+
+Battery Emulator reports its faults (events at error level) to the inverter, which lists them in its event log with the texts it has for the BYD HVS/HVM:
+
+| Battery Emulator event | Shown in the inverter as |
+|---|---|
+| CAN_BATTERY_MISSING | The battery control unit (BCU) cannot communicate with all the battery modules |
+| CELL_CRITICAL_UNDER_VOLTAGE | Undervoltage of the cells (3) |
+| CELL_CRITICAL_OVER_VOLTAGE | Cell overvoltage 3 |
+| BATTERY_OVERHEAT | Charging overtemperature 3 |
+| THERMAL_RUNAWAY | System overtemperature |
+| INTERNAL_OPEN_FAULT | Battery main switch |
+| EQUIPMENT_STOP | Battery main switch |
+| HVIL_FAILURE | Hardware fault at the battery control unit (BCU) |
+| AUTOMATIC_PRECHARGE_FAILURE | Precharge fault |
+
+Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
+
+Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
+
+## Battery Emulator's clock {#battery-emulators-clock}
+
+Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once set, the time (UTC) is shown at the bottom of the main page's [status card](../setup/software/webserver_guide.md#system-status), and the [faults it reports](#faults-in-the-inverter-event-log) are dated by it.
+
+The clock keeps running through a restart of Battery Emulator, such as **Reboot Emulator**, a crash or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the clock is not set, and the main page shows no time until the inverter sends it, which can take up to an hour.
 
 ## Starting and stopping the system
 
