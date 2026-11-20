@@ -81,6 +81,12 @@ For this inverter type, use the option called **BYD HVS/HVM over Modbus** under 
 - **Accept reboot command from inverter**, as the name says, when a non-zero `RebootCommand` is written by the inverter to Modbus register `407` will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.
 - **WatchDog Timeout** is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons.
 
+### Battery Emulator's clock {#battery-emulators-clock}
+
+Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once synced, the time (UTC) is shown at the bottom of the main page's [status card](../setup/software/webserver_guide.md#system-status), and the [faults it reports](#faults-in-the-inverter-event-log) are dated by it.
+
+The clock keeps running through a restart of Battery Emulator, such as rebooted from the web UI, a crash, an OTA or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the time is lost, and the clock cannot be set until the inverter transmits the time again, which can take up to an hour. The main page shows no time until the sync happens.
+
 ### Notes on Scaled SOC + Fronius min/max SOC
 
 In the Fronius settings it is possible to configure "SoC Minimum" and "SoC Maximum" values. If you are using the [Rescale SOC](../setup/software/webserver_guide.md#rescale-soc) functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to always leave in Fronius the "SoC Maximum" to 100%, and adjust the "SOC max percentage" setting in Battery Emulator instead, to be able to take advantage of the "Charge power tapering based on SOC" which avoids power oscillations.
@@ -96,39 +102,6 @@ Avoid double-rescaling:
 ![scaled](../images/fronius-05.png)
 
 Optional setting: If you have multiple AC coupled inverters in your network, and they all reside behind the SmartMeter, you can enable **Battery charging from other sources** and select **from other generators in the home network**.
-
-## Faults in the inverter's event log {#faults-in-the-inverter-event-log}
-
-Battery Emulator reports its faults (events at error level), and some of its warnings, to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:
-
-| Battery Emulator event | Level | Shown in the inverter as |
-|---|---|---|
-| CAN_BATTERY_MISSING | error | `BYD2-1` The battery control unit (BCU) cannot communicate with all the battery modules |
-| DISCHARGE_LIMIT_EXCEEDED | info | `BYD2-7` Over current during discharge detected |
-| CELL_CRITICAL_UNDER_VOLTAGE | error | `BYD2-13` Cell Under Voltage 3 |
-| BATTERY_UNDERVOLTAGE | warning | `BYD2-13` Cell Under Voltage 3 |
-| CHARGE_LIMIT_EXCEEDED | info | `BYD2-18` Charge Over Current |
-| CELL_CRITICAL_OVER_VOLTAGE | error | `BYD2-24` Cell Over Voltage 3 |
-| BATTERY_OVERVOLTAGE | warning | `BYD2-24` Cell Over Voltage 3 |
-| BATTERY_OVERHEAT | error | `BYD2-27` Charge Over Temperature 3 |
-| THERMAL_RUNAWAY | error | `BYD2-38` Cell Failure |
-| CONTACTOR_OPEN | warning | `BYD2-45` Battery Break |
-| BATTERY_FUSE | warning | `BYD2-45` Battery Break |
-| INTERNAL_OPEN_FAULT | error | `BYD2-45` Battery Break |
-| EQUIPMENT_STOP | error | `BYD2-45` Battery Break |
-| HVIL_FAILURE | error | `BYD2-47` Hardware fault at the battery control unit (BCU) |
-| PRECHARGE_FAILURE | info | `BYD2-48` Pre-charge Fault |
-| AUTOMATIC_PRECHARGE_FAILURE | error | `BYD2-48` Pre-charge Fault |
-
-An error stops Battery Emulator, and goes to the inverter as a Fault2. Warning and info events go as the milder Fault1, since Battery Emulator carries on through them. Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Other events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
-
-Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
-
-## Battery Emulator's clock {#battery-emulators-clock}
-
-Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once synced, the time (UTC) is shown at the bottom of the main page's [status card](../setup/software/webserver_guide.md#system-status), and the [faults it reports](#faults-in-the-inverter-event-log) are dated by it.
-
-The clock keeps running through a restart of Battery Emulator, such as rebooted from the web UI, a crash, an OTA or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the time is lost, and the clock cannot be set until the inverter transmits the time again, which can take up to an hour. The main page shows no time until the sync happens.
 
 ## Starting and stopping the system
 
@@ -160,13 +133,40 @@ Important to note when shutting down is to not open any DC breakers/isolators un
 6. Turn off the Battery DC isolator switch
 7. Turn off the Solar DC isolator switch
 
-## Day to day monitoring
+## Faults in the inverter's event log {#faults-in-the-inverter-event-log}
+
+Battery Emulator reports its faults (events at error level), and some of its warnings, to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:
+
+| Battery Emulator event | Level | Shown in the inverter as |
+|---|---|---|
+| CAN_BATTERY_MISSING | error | `BYD2-1` The battery control unit (BCU) cannot communicate with all the battery modules |
+| DISCHARGE_LIMIT_EXCEEDED | info | `BYD2-7` Over current during discharge detected |
+| CELL_CRITICAL_UNDER_VOLTAGE | error | `BYD2-13` Cell Under Voltage 3 |
+| BATTERY_UNDERVOLTAGE | warning | `BYD2-13` Cell Under Voltage 3 |
+| CHARGE_LIMIT_EXCEEDED | info | `BYD2-18` Charge Over Current |
+| CELL_CRITICAL_OVER_VOLTAGE | error | `BYD2-24` Cell Over Voltage 3 |
+| BATTERY_OVERVOLTAGE | warning | `BYD2-24` Cell Over Voltage 3 |
+| BATTERY_OVERHEAT | error | `BYD2-27` Charge Over Temperature 3 |
+| THERMAL_RUNAWAY | error | `BYD2-38` Cell Failure |
+| CONTACTOR_OPEN | warning | `BYD2-45` Battery Break |
+| BATTERY_FUSE | warning | `BYD2-45` Battery Break |
+| INTERNAL_OPEN_FAULT | error | `BYD2-45` Battery Break |
+| EQUIPMENT_STOP | error | `BYD2-45` Battery Break |
+| HVIL_FAILURE | error | `BYD2-47` Hardware fault at the battery control unit (BCU) |
+| PRECHARGE_FAILURE | info | `BYD2-48` Pre-charge Fault |
+| AUTOMATIC_PRECHARGE_FAILURE | error | `BYD2-48` Pre-charge Fault |
+
+An error stops Battery Emulator, and goes to the inverter as a Fault2. Warning and info events go as the milder Fault1, since Battery Emulator carries on through them. Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Other events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
+
+Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
+
+## Troubleshooting
+
+### Day to day monitoring
 
 The performance of the system can be tracked with the app "Solar.web". This app gives direct info on current output/input, SOC% level of battery, graphs, and more. No settings can be changed via this app, but it is a great tool for visualizations and quick status checks. You can also see at a glance if an inverter firmware update becomes available for you.
 
 ![SolarApp](../images/fronius-08.png)
-
-## Troubleshooting
 
 ### Battery not detected
 
