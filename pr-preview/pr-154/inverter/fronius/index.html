@@ -963,6 +963,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#battery-emulators-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battery Emulator's clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#notes-on-scaled-soc-fronius-minmax-soc" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -975,28 +986,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#faults-in-the-inverter-event-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Faults in the inverter's event log
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#battery-emulators-clock" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Battery Emulator's clock
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1040,10 +1029,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#day-to-day-monitoring" class="md-nav__link">
+  <a href="#faults-in-the-inverter-event-log" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Day to day monitoring
+        Faults in the inverter's event log
       
     </span>
   </a>
@@ -1061,6 +1050,17 @@
   
     <nav class="md-nav" aria-label="Troubleshooting">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#day-to-day-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Day to day monitoring
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#battery-not-detected" class="md-nav__link">
@@ -5733,6 +5733,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#battery-emulators-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battery Emulator's clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#notes-on-scaled-soc-fronius-minmax-soc" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5745,28 +5756,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#faults-in-the-inverter-event-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Faults in the inverter's event log
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#battery-emulators-clock" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Battery Emulator's clock
-      
-    </span>
-  </a>
   
 </li>
       
@@ -5810,10 +5799,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#day-to-day-monitoring" class="md-nav__link">
+  <a href="#faults-in-the-inverter-event-log" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Day to day monitoring
+        Faults in the inverter's event log
       
     </span>
   </a>
@@ -5831,6 +5820,17 @@
   
     <nav class="md-nav" aria-label="Troubleshooting">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#day-to-day-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Day to day monitoring
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#battery-not-detected" class="md-nav__link">
@@ -5974,6 +5974,9 @@
 <li><strong>Accept reboot command from inverter</strong>, as the name says, when a non-zero <code>RebootCommand</code> is written by the inverter to Modbus register <code>407</code> will trigger the reboot of the emulator, pausing charge/discharge and opening the contactors first. Disabled by default, will raise an event. If you get this event, it's recommended to reboot Battery Emulator as soon as possible.</li>
 <li><strong>WatchDog Timeout</strong> is set by the inverter when it powers up, and is 60s by default. This is the time interval the inverter and Battery Emulator check each other for correct operation. It's persistently saved to flash. It's displayed purely for informational reasons.</li>
 </ul>
+<h3 id="battery-emulators-clock">Battery Emulator's clock<a class="headerlink" href="#battery-emulators-clock" title="Permanent link">~</a></h3>
+<p>Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once synced, the time (UTC) is shown at the bottom of the main page's <a href="../../setup/software/webserver_guide/#system-status">status card</a>, and the <a href="#faults-in-the-inverter-event-log">faults it reports</a> are dated by it.</p>
+<p>The clock keeps running through a restart of Battery Emulator, such as rebooted from the web UI, a crash, an OTA or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the time is lost, and the clock cannot be set until the inverter transmits the time again, which can take up to an hour. The main page shows no time until the sync happens.</p>
 <h3 id="notes-on-scaled-soc-fronius-minmax-soc">Notes on Scaled SOC + Fronius min/max SOC<a class="headerlink" href="#notes-on-scaled-soc-fronius-minmax-soc" title="Permanent link">~</a></h3>
 <p>In the Fronius settings it is possible to configure "SoC Minimum" and "SoC Maximum" values. If you are using the <a href="../../setup/software/webserver_guide/#rescale-soc">Rescale SOC</a> functionality in the Battery-Emulator, you will be applying double-rescaling of the usable capacity. It is recommended to always leave in Fronius the "SoC Maximum" to 100%, and adjust the "SOC max percentage" setting in Battery Emulator instead, to be able to take advantage of the "Charge power tapering based on SOC" which avoids power oscillations.</p>
 <p>Avoid double-rescaling:</p>
@@ -5984,6 +5987,41 @@
 </div>
 <p><img alt="scaled" src="/Battery-Emulator-Wiki/images/fronius-05.png" /></p>
 <p>Optional setting: If you have multiple AC coupled inverters in your network, and they all reside behind the SmartMeter, you can enable <strong>Battery charging from other sources</strong> and select <strong>from other generators in the home network</strong>.</p>
+<h2 id="starting-and-stopping-the-system">Starting and stopping the system<a class="headerlink" href="#starting-and-stopping-the-system" title="Permanent link">~</a></h2>
+<p>When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode, but pay attention to each step.</p>
+<h3 id="startup">Startup<a class="headerlink" href="#startup" title="Permanent link">~</a></h3>
+<ol>
+<li>Power on the Battery-Emulator hardware and the EV battery respectively</li>
+<li>Turn on the Solar DC switch and the Battery DC switch if there is any</li>
+<li>Set the DC disconnector to the "On" switch position on the Fronius inverter</li>
+<li>Start the Fronius inverter via AC breaker</li>
+<li>Wait until contactors close at the EV battery (CAN controlled / GPIO control), and Fronius will start to use it</li>
+</ol>
+<h3 id="shutdown">Shutdown<a class="headerlink" href="#shutdown" title="Permanent link">~</a></h3>
+<p>Important to note when shutting down is to not open any DC breakers/isolators under load! Doing so can cause DC arcs and prematurely wear them out, and in worst case start a fire.</p>
+<ol>
+<li>
+<p>Signal to the inverter that battery is not available, with any of the following options:</p>
+<ul>
+<li>
+<p>Press PAUSE in the Webserver (best option)</p>
+</li>
+<li>
+<p>Press optional Equipment stop if installed</p>
+</li>
+<li>
+<p>Press Open contactors in the Webserver</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Once Fronius stops using battery after a few seconds (verify in app to make sure) it can be powered down</p>
+</li>
+<li>Turn off the Fronius inverter via AC breaker</li>
+<li>Turn off the Fronius inverter via the DC switch on the Fronius itself</li>
+<li>Turn off the Battery DC isolator switch</li>
+<li>Turn off the Solar DC isolator switch</li>
+</ol>
 <h2 id="faults-in-the-inverter-event-log">Faults in the inverter's event log<a class="headerlink" href="#faults-in-the-inverter-event-log" title="Permanent link">~</a></h2>
 <p>Battery Emulator reports its faults (events at error level), and some of its warnings, to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:</p>
 <table>
@@ -6079,48 +6117,10 @@
 </table>
 <p>An error stops Battery Emulator, and goes to the inverter as a Fault2. Warning and info events go as the milder Fault1, since Battery Emulator carries on through them. Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Other events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.</p>
 <p>Each fault is reported once, dated by <a href="#battery-emulators-clock">Battery Emulator's clock</a>, which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.</p>
-<h2 id="battery-emulators-clock">Battery Emulator's clock<a class="headerlink" href="#battery-emulators-clock" title="Permanent link">~</a></h2>
-<p>Battery Emulator has no network time, so it sets its clock from the time the inverter sends once an hour. Once synced, the time (UTC) is shown at the bottom of the main page's <a href="../../setup/software/webserver_guide/#system-status">status card</a>, and the <a href="#faults-in-the-inverter-event-log">faults it reports</a> are dated by it.</p>
-<p>The clock keeps running through a restart of Battery Emulator, such as rebooted from the web UI, a crash, an OTA or the inverter's reboot command, if the inverter sent its time in the 2 hours before. It may then be slightly off until the inverter's next time corrects it. After a power cycle the time is lost, and the clock cannot be set until the inverter transmits the time again, which can take up to an hour. The main page shows no time until the sync happens.</p>
-<h2 id="starting-and-stopping-the-system">Starting and stopping the system<a class="headerlink" href="#starting-and-stopping-the-system" title="Permanent link">~</a></h2>
-<p>When turning the system on, follow this startup procedure. Work quick, to avoid the inverter getting stuck in battery not detected mode, but pay attention to each step.</p>
-<h3 id="startup">Startup<a class="headerlink" href="#startup" title="Permanent link">~</a></h3>
-<ol>
-<li>Power on the Battery-Emulator hardware and the EV battery respectively</li>
-<li>Turn on the Solar DC switch and the Battery DC switch if there is any</li>
-<li>Set the DC disconnector to the "On" switch position on the Fronius inverter</li>
-<li>Start the Fronius inverter via AC breaker</li>
-<li>Wait until contactors close at the EV battery (CAN controlled / GPIO control), and Fronius will start to use it</li>
-</ol>
-<h3 id="shutdown">Shutdown<a class="headerlink" href="#shutdown" title="Permanent link">~</a></h3>
-<p>Important to note when shutting down is to not open any DC breakers/isolators under load! Doing so can cause DC arcs and prematurely wear them out, and in worst case start a fire.</p>
-<ol>
-<li>
-<p>Signal to the inverter that battery is not available, with any of the following options:</p>
-<ul>
-<li>
-<p>Press PAUSE in the Webserver (best option)</p>
-</li>
-<li>
-<p>Press optional Equipment stop if installed</p>
-</li>
-<li>
-<p>Press Open contactors in the Webserver</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Once Fronius stops using battery after a few seconds (verify in app to make sure) it can be powered down</p>
-</li>
-<li>Turn off the Fronius inverter via AC breaker</li>
-<li>Turn off the Fronius inverter via the DC switch on the Fronius itself</li>
-<li>Turn off the Battery DC isolator switch</li>
-<li>Turn off the Solar DC isolator switch</li>
-</ol>
-<h2 id="day-to-day-monitoring">Day to day monitoring<a class="headerlink" href="#day-to-day-monitoring" title="Permanent link">~</a></h2>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">~</a></h2>
+<h3 id="day-to-day-monitoring">Day to day monitoring<a class="headerlink" href="#day-to-day-monitoring" title="Permanent link">~</a></h3>
 <p>The performance of the system can be tracked with the app "Solar.web". This app gives direct info on current output/input, SOC% level of battery, graphs, and more. No settings can be changed via this app, but it is a great tool for visualizations and quick status checks. You can also see at a glance if an inverter firmware update becomes available for you.</p>
 <p><img alt="SolarApp" src="/Battery-Emulator-Wiki/images/fronius-08.png" /></p>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">~</a></h2>
 <h3 id="battery-not-detected">Battery not detected<a class="headerlink" href="#battery-not-detected" title="Permanent link">~</a></h3>
 <p><img alt="err2" src="/Battery-Emulator-Wiki/images/fronius-09.png" /></p>
 <p>If you see <code>No bat­tery de­tec­ted</code> or <code>No bat­tery voltage meas­ured but bat­tery is act­ive</code> in the <strong>Service Messages</strong>:</p>
