@@ -5983,7 +5983,7 @@
 <p><img alt="scaled" src="/Battery-Emulator-Wiki/images/fronius-05.png" /></p>
 <p>Optional setting: If you have multiple AC coupled inverters in your network, and they all reside behind the SmartMeter, you can enable <strong>Battery charging from other sources</strong> and select <strong>from other generators in the home network</strong>.</p>
 <h2 id="faults-in-the-inverter-event-log">Faults in the inverter's event log<a class="headerlink" href="#faults-in-the-inverter-event-log" title="Permanent link">~</a></h2>
-<p>Battery Emulator reports its faults (events at error level) to the inverter, which lists them in its event log with the texts it has for the BYD HVS/HVM:</p>
+<p>Battery Emulator reports its faults (events at error level) to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:</p>
 <table>
 <thead>
 <tr>
@@ -5994,39 +5994,39 @@
 <tbody>
 <tr>
 <td>CAN_BATTERY_MISSING</td>
-<td>The battery control unit (BCU) cannot communicate with all the battery modules</td>
+<td><code>BYD2-1</code> The battery control unit (BCU) cannot communicate with all the battery modules</td>
 </tr>
 <tr>
 <td>CELL_CRITICAL_UNDER_VOLTAGE</td>
-<td>Undervoltage of the cells (3)</td>
+<td><code>BYD2-13</code> Cell Under Voltage 3</td>
 </tr>
 <tr>
 <td>CELL_CRITICAL_OVER_VOLTAGE</td>
-<td>Cell overvoltage 3</td>
+<td><code>BYD2-24</code> Cell Over Voltage 3</td>
 </tr>
 <tr>
 <td>BATTERY_OVERHEAT</td>
-<td>Charging overtemperature 3</td>
+<td><code>BYD2-27</code> Charge Over Temperature 3</td>
 </tr>
 <tr>
 <td>THERMAL_RUNAWAY</td>
-<td>System overtemperature</td>
+<td><code>BYD2-38</code> Cell Failure</td>
 </tr>
 <tr>
 <td>INTERNAL_OPEN_FAULT</td>
-<td>Battery main switch</td>
+<td><code>BYD2-45</code> Battery Break</td>
 </tr>
 <tr>
 <td>EQUIPMENT_STOP</td>
-<td>Battery main switch</td>
+<td><code>BYD2-45</code> Battery Break</td>
 </tr>
 <tr>
 <td>HVIL_FAILURE</td>
-<td>Hardware fault at the battery control unit (BCU)</td>
+<td><code>BYD2-47</code> Hardware fault at the battery control unit (BCU)</td>
 </tr>
 <tr>
 <td>AUTOMATIC_PRECHARGE_FAILURE</td>
-<td>Precharge fault</td>
+<td><code>BYD2-48</code> Pre-charge Fault</td>
 </tr>
 </tbody>
 </table>
