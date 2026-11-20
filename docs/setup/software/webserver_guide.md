@@ -279,7 +279,7 @@ Depending on the protocol selected, more options appear right below:
 | **Sofar Battery ID (0-15)** | Sofar | Battery ID, for running several packs in parallel. See [Sofar](../../inverter/sofar.md) |
 | **Pylon, send group**, **30k offset**, **invert byteorder**, **manufacturer name** | Pylon HV | Compatibility options needed by some inverters using this protocol, for example [Sofar](../../inverter/sofar.md#which-protocol-to-use), [Hoymiles](../../inverter/hoymiles.md) or [Deye](../../inverter/deye.md#note-on-pylon) |
 | **Deye avoid over/undercharge fix** | BYD CAN | See [Deye](../../inverter/deye.md#notes-on-protocol-violation) |
-| **Accept reboot command from inverter**, **Fronius Primo, 450V maxvoltage cap**, **WatchDog Timeout**, **Inverter time (UTC)** | BYD Modbus | See [Fronius](../../inverter/fronius.md#other-settings). The last two only display what the inverter has sent. |
+| **Accept reboot command from inverter**, **Fronius Primo, 450V maxvoltage cap**, **WatchDog Timeout** | BYD Modbus | See [Fronius](../../inverter/fronius.md#other-settings). The last one only displays what the inverter has sent. |
 | **Reported cell count**, **module count**, **cells per module**, **voltage level**, **Ah capacity** | Ferroamp, Pylon HV, Solxpow (module count also Solax) | Override what is reported to the inverter, 0 keeps the default |
 | **Reported battery type** | Solax | See [Solax battery type information](../../inverter/solax.md#battery-type-information-2026) |
 | **FoxESS battery type**, **subtype**, **module count** | FoxESS | Override what is reported to the inverter, 0 keeps the default |
