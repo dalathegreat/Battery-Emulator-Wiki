@@ -147,13 +147,17 @@ Battery Emulator reports these events to the inverter, which lists them in its e
 | CELL_CRITICAL_OVER_VOLTAGE | error | `BYD2-24` Cell Over Voltage 3 |
 | BATTERY_OVERVOLTAGE | warning | `BYD2-24` Cell Over Voltage 3 |
 | BATTERY_OVERHEAT | error | `BYD2-27` Charge Over Temperature 3 |
+| BATTERY_FROZEN | info | `BYD2-29` Charge Under Temperature 3 |
+| BATTERY_COLD | info | `BYD2-29` Charge Under Temperature 3 |
 | THERMAL_RUNAWAY | error | `BYD2-38` Cell Failure |
-| CONTACTOR_OPEN | warning | `BYD2-45` Battery Break |
+| CONTACTOR_WELDED | warning | `BYD2-45` Battery Break |
 | BATTERY_FUSE | warning | `BYD2-45` Battery Break |
 | INTERNAL_OPEN_FAULT | error | `BYD2-45` Battery Break |
-| EQUIPMENT_STOP | error | `BYD2-45` Battery Break |
 | HVIL_FAILURE | error | `BYD2-47` Hardware fault at the battery control unit (BCU) |
-| AUTOMATIC_PRECHARGE_FAILURE | error | `BYD2-48` Pre-charge Fault |
+| PRECHARGE_FAILURE | info | `BYD2-48` Pre-charge Fault - Fault2 |
+| AUTOMATIC_PRECHARGE_FAILURE | error | `BYD2-48` Pre-charge Fault - Fault2 |
+| CONTACTOR_OPEN | warning | `BYD2-49` DCBusFault |
+| EQUIPMENT_STOP | error | `BYD2-49` DCBusFault |
 
 Errors go to the inverter as a Fault2, warnings and info events as a Fault1. Where an event also exists for a 2nd or 3rd battery, those are reported too, except CAN_BATTERY_MISSING, which is only reported for the main battery. No other event is reported.
 
