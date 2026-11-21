@@ -135,31 +135,28 @@ Important to note when shutting down is to not open any DC breakers/isolators un
 
 ## Faults in the inverter's event log {#faults-in-the-inverter-event-log}
 
-Battery Emulator reports these events to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:
+Battery Emulator reports these events to the inverter, with the codes it has for the BYD HVS/HVM. The inverter's event log shows each with a short text, and Solar.web with a cause and a solution:
 
-| Battery Emulator event | Level in Battery Emulator | Shown in the inverter as |
-|---|---|---|
-| CAN_BATTERY_MISSING | error | `BYD2-1` The battery control unit (BCU) cannot communicate with all the battery modules |
-| DISCHARGE_LIMIT_EXCEEDED | info | `BYD2-7` Over current during discharge detected |
-| CELL_CRITICAL_UNDER_VOLTAGE | error | `BYD2-13` Cell Under Voltage 3 |
-| BATTERY_UNDERVOLTAGE | warning | `BYD2-13` Cell Under Voltage 3 |
-| CHARGE_LIMIT_EXCEEDED | info | `BYD2-18` Charge Over Current |
-| CELL_CRITICAL_OVER_VOLTAGE | error | `BYD2-24` Cell Over Voltage 3 |
-| BATTERY_OVERVOLTAGE | warning | `BYD2-24` Cell Over Voltage 3 |
-| BATTERY_OVERHEAT | error | `BYD2-27` Charge Over Temperature 3 |
-| BATTERY_FROZEN | info | `BYD2-29` Charge Under Temperature 3 |
-| BATTERY_COLD | info | `BYD2-29` Charge Under Temperature 3 |
-| THERMAL_RUNAWAY | error | `BYD2-38` Cell Failure |
-| CONTACTOR_WELDED | warning | `BYD2-45` Battery Break |
-| BATTERY_FUSE | warning | `BYD2-45` Battery Break |
-| INTERNAL_OPEN_FAULT | error | `BYD2-45` Battery Break |
-| HVIL_FAILURE | error | `BYD2-47` Hardware fault at the battery control unit (BCU) |
-| PRECHARGE_FAILURE | info | `BYD2-48` Pre-charge Fault - Fault2 |
-| AUTOMATIC_PRECHARGE_FAILURE | error | `BYD2-48` Pre-charge Fault - Fault2 |
-| CONTACTOR_OPEN | warning | `BYD2-49` DCBusFault |
-| EQUIPMENT_STOP | error | `BYD2-49` DCBusFault |
+| Code | Shown in the inverter as | Cause in Solar.web | Battery Emulator events |
+|---|---|---|---|
+| `BYD2-0` | The battery control unit (BCU) cannot communicate with one of the battery modules | The battery control unit (BCU) cannot communicate with one of the battery modules | CAN_BATTERY_MISSING of the 2nd or 3rd battery (warning) |
+| `BYD2-1` | The battery control unit (BCU) cannot communicate with all the battery modules | BCU communication error | CAN_BATTERY_MISSING (error) |
+| `BYD2-7` | Over current during discharge detected | The discharge current is too high | DISCHARGE_LIMIT_EXCEEDED (info) |
+| `BYD2-13` | Cell Under Voltage 3 | Undervoltage of the cells, voltage below 2.0 V | CELL_UNDER_VOLTAGE (warning), BATTERY_UNDERVOLTAGE (warning) |
+| `BYD2-18` | Charge Over Current | The charging current is too high | CHARGE_LIMIT_EXCEEDED (info) |
+| `BYD2-24` | Cell Over Voltage 3 | Cell-Overvoltage | CELL_OVER_VOLTAGE (warning), CELL_CRITICAL_OVER_VOLTAGE (error), BATTERY_OVERVOLTAGE (warning) |
+| `BYD2-27` | Charge Over Temperature 3 | The maximum cell temperature is more than 70 degrees centigrade | BATTERY_OVERHEAT (error), THERMAL_RUNAWAY (error) |
+| `BYD2-29` | Charge Under Temperature 3 | The minimum cell temperature is lower than -10 degrees centigrade | BATTERY_FROZEN (info), BATTERY_COLD (info) |
+| `BYD2-32` | Battery Imbalance | Voltage differences between the cells | CELL_DEVIATION_HIGH (warning) |
+| `BYD2-38` | Cell Failure | The minimum cell voltage is lower than 1.5 V | CELL_CRITICAL_UNDER_VOLTAGE (error) |
+| `BYD2-44` | BCU_Main Circuit Failure | The battery can't be discharged | BATTERY_DISCHG_STOP_REQ (error), BATTERY_CHG_DISCHG_STOP_REQ (error) |
+| `BYD2-45` | Battery Break | Battery main switch has tripped | CONTACTOR_OPEN (warning), BYD_CONTACTOR_FORCE_OPEN (error), BATTERY_FUSE (warning), ERROR_OPEN_CONTACTOR (info), EQUIPMENT_STOP (error) |
+| `BYD2-46` | Communication error between inverter and battery | A restart process has been initiated | MODBUS_INVERTER_MISSING (error), and after an unexpected restart its cause: RESET_UNKNOWN, RESET_PANIC, RESET_INT_WDT, RESET_TASK_WDT, RESET_WDT, RESET_BROWNOUT, RESET_EFUSE, RESET_PWR_GLITCH or RESET_CPU_LOCKUP (info or warning) |
+| `BYD2-47` | Hardware fault at the battery control unit (BCU) | Internal hardware failure at the battery control unit (BCU) | CONTACTOR_WELDED (warning), WATER_INGRESS (error) |
+| `BYD2-48` | Pre-charge Fault - Fault2 | Precharging takes too long | PRECHARGE_FAILURE (info), AUTOMATIC_PRECHARGE_FAILURE (error), CONTACTOR_WATCHDOG_FAILED (warning) |
+| `BYD2-49` | DCBusFault | Faulty wiring of the battery supply line | INTERNAL_OPEN_FAULT (error), HVIL_FAILURE (error), BATTERY_ISOLATION (warning) |
 
-Errors go to the inverter as a Fault2, warnings and info events as a Fault1. Where an event also exists for a 2nd or 3rd battery, those are reported too, except CAN_BATTERY_MISSING, which is only reported for the main battery. No other event is reported.
+Errors go to the inverter as a Fault2, warnings and info events as a Fault1. Where an event also exists for a 2nd or 3rd battery, those are reported with the same code, except CAN_BATTERY_MISSING. No other event is reported.
 
 Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
 
