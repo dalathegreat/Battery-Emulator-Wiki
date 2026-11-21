@@ -135,9 +135,9 @@ Important to note when shutting down is to not open any DC breakers/isolators un
 
 ## Faults in the inverter's event log {#faults-in-the-inverter-event-log}
 
-Battery Emulator reports its faults (events at error level), and some of its warnings, to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:
+Battery Emulator reports these events to the inverter, which lists them in its event log with the codes and texts it has for the BYD HVS/HVM:
 
-| Battery Emulator event | Level | Shown in the inverter as |
+| Battery Emulator event | Level in Battery Emulator | Shown in the inverter as |
 |---|---|---|
 | CAN_BATTERY_MISSING | error | `BYD2-1` The battery control unit (BCU) cannot communicate with all the battery modules |
 | DISCHARGE_LIMIT_EXCEEDED | info | `BYD2-7` Over current during discharge detected |
@@ -153,10 +153,9 @@ Battery Emulator reports its faults (events at error level), and some of its war
 | INTERNAL_OPEN_FAULT | error | `BYD2-45` Battery Break |
 | EQUIPMENT_STOP | error | `BYD2-45` Battery Break |
 | HVIL_FAILURE | error | `BYD2-47` Hardware fault at the battery control unit (BCU) |
-| PRECHARGE_FAILURE | info | `BYD2-48` Pre-charge Fault |
 | AUTOMATIC_PRECHARGE_FAILURE | error | `BYD2-48` Pre-charge Fault |
 
-An error stops Battery Emulator, and goes to the inverter as a Fault2. Warning and info events go as the milder Fault1, since Battery Emulator carries on through them. Where an event also exists for a 2nd or 3rd battery, those are reported too, except a missing 2nd or 3rd battery, which is only a warning. Other events at warning or info level, such as BATTERY_ISOLATION or CELL_DEVIATION_HIGH, are not reported.
+Errors go to the inverter as a Fault2, warnings and info events as a Fault1. Where an event also exists for a 2nd or 3rd battery, those are reported too, except CAN_BATTERY_MISSING, which is only reported for the main battery. No other event is reported.
 
 Each fault is reported once, dated by [Battery Emulator's clock](#battery-emulators-clock), which follows the inverter's. After a power cycle that clock waits for the inverter's next time, which can take up to an hour. Faults that occur before then are held, and show up in the inverter's event log as soon as the time arrives, dated when they occurred. Battery Emulator holds the last 10 faults this way.
 
