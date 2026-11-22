@@ -196,6 +196,9 @@ When using batteries with CAN controlled contactors (Tesla/Kia/Hyundai etc.), si
 
 If your setup has batteries with CAN-controlled contactors, it's enough to add a single-pole contactor to the **2ⁿᵈ battery contactor control via GPIO** control, and intrerrupt only the positive or negative link. The internal contactors will still act on both + and - when it's time to do so.
 
+!!! warning
+    CAN controlled packs in double operation are way trickier than GPIO controlled ones. Be very careful so the packs **are not engaged at the same time**, you will blow fuses or at worst damage the batteries if they dump massive amounts of energy inbetween them.
+
 ### Taking Double Battery into use.
 
 In the settings:
