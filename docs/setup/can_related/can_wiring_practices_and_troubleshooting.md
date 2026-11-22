@@ -22,7 +22,7 @@ Battery Emulator raises several CAN-related events:
 There has been no CAN communication on the battery or inverter interface for a long time (60s+).
 
 ### CAN_..._BUFFER_FULL
-Battery Emulator is sending a CAN message to the battery or inverter, but it is not being acknowledged by the other end, so it keeps trying to send it over and over again. So many unsent messages have now queued up that the buffer is full. This can sometimes be a software issue, caused by trying to send too many messages in one go.
+Battery Emulator is sending a CAN message to the battery or inverter, but it is not being acknowledged by the other end, so it keeps trying to send it over and over again. So many unsent messages have now queued up that the buffer is full. This can sometimes be a software issue, caused by trying to send too many messages in one go. It can also be a hardware issue, for instance missing INT pin on an add-on board.
 
 ### CAN_..._BUS_ERROR
 The number of transmit or receive errors has crossed the warning threshold. This threshold is roughly 15 failed or corrupted transmits, or 96 corrupted receives (or a combination of both), with the error counters slowly decrementing after successful communications. This can indicate wiring quality issues.
