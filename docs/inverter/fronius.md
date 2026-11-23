@@ -113,8 +113,11 @@ If you want to switch between the protocols, you need to remove and re-add the b
 
 After saving, the page will offer again the possibility to **Add Component > Battery**, where you can select the battery type matching the protocol you'd like to change to.
 
-!!! note "NOTE"
+!!! note "Note"
     The inverter may pop up a warning *A bat­tery has been de­tec­ted, but is not con­figured.* during these steps, which is normal.
+
+!!! info "Service Message 995"
+    If your inverter is registered in Fronius's [Solar.web](https://www.solarweb.com) service, 36 hours (by default) after you change the battery type in the inverter you'll get a Service Message `995 (Error)` with the description *Communication failure of the Battery (Battery Blackout Detection Function)*. This means the cloud system gets reports about the new battery, not the old one, you just removed. It's safe to ignore this message. Note that if you experiment by exchanging protocol versions (and the corresponding battery types) more often, you'll get the message after each time you do the change. You can change the timeout (hours) or even disable the message by logging into Solar.web, going to *Settings* → *Service Messages* → *EDIT* and change the value for *No connection to battery since [h]*.
 
 ### Version 1 {#version-1}
 
