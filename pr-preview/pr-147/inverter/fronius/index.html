@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/be.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -6286,8 +6286,12 @@
 <p><img alt="image" src="../../images/fronius-23.png" /></p>
 <p>After saving, the page will offer again the possibility to <strong>Add Component &gt; Battery</strong>, where you can select the battery type matching the protocol you'd like to change to.</p>
 <div class="admonition note">
-<p class="admonition-title">NOTE</p>
+<p class="admonition-title">Note</p>
 <p>The inverter may pop up a warning <em>A bat­tery has been de­tec­ted, but is not con­figured.</em> during these steps, which is normal.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Service Message 995</p>
+<p>If your inverter is registered in Fronius's <a href="https://www.solarweb.com">Solar.web</a> service, 36 hours (by default) after you change the battery type in the inverter you'll get a Service Message <code>995 (Error)</code> with the description <em>Communication failure of the Battery (Battery Blackout Detection Function)</em>. This means the cloud system gets reports about the new battery, not the old one, you just removed. It's safe to ignore this message. Note that if you experiment by exchanging protocol versions (and the corresponding battery types) more often, you'll get the message after each time you do the change. You can change the timeout (hours) or even disable the message by logging into Solar.web, going to <em>Settings</em> → <em>Service Messages</em> → <em>EDIT</em> and change the value for <em>No connection to battery since [h]</em>.</p>
 </div>
 <h3 id="version-1">Version 1<a class="headerlink" href="#version-1" title="Permanent link">~</a></h3>
 <p>In Battery Emulator, select <strong>Fronius Generic Storage</strong> under <strong>Inverter protocol</strong>, <strong>Version 1</strong> under <strong>Storage protocol</strong>, and <strong>Modbus</strong> as the <strong>Inverter interface</strong>. In the inverter, the battery type is <strong>BYD HVS/HVM</strong>.</p>
