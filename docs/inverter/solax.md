@@ -9,9 +9,8 @@ title: "Solax"
 * Solax X1 (all revisions)
 * Solax X1 VAST (all revisions)
 
-# ⚠️ Word of caution, CAN overvoltage ⚠️
-
-Solax inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE.
+!!! warning "⚠️ CAN overvoltage ⚠️"
+    Solax inverters can have high voltage potential on the CAN chip. They can be 110V when measuring between CAN and PE. It can burn up your Battery-Emulator CAN chips if there is a path to protective earth. This becomes a problem if the board you are using has GND on the same plane as PE. Then the 110V diff might leak over and damage the chips. A way to avoid this is to use a PSU to power the Battery-Emulator board that is not connected to PE. For instance a 2-prong phone charger would effectively be isolated from PE.
 
 ![image](../images/foxess-h1-h3-ac1-kh-01.png)
 
@@ -23,17 +22,16 @@ Failure to implement any of the above solutions will lead to the VP231 CAN trans
 
 Alternatively, using hardware with built-in galvanic isolation (such as the [LilyGo T-2CAN](../hardware/lilygo_t_2can.md)) should avoid this problem without imposing extra power supply requirements.
 
-# Word of caution, isolated CAN
+!!! warning "Isolated CAN"
+    ⚠️ This inverter does not handle a CAN connected EV battery on the same channel.
 
-⚠️ This inverter does not handle a CAN connected EV battery on the same channel.
 If the inverter which likes to see only extended CAN frames sees standard automotive CAN frames, the inverter will enter a fault state.
 
-This can be solved in three ways:
+This can be solved in multiple ways:
 
 * You can [add an isolated MCP2515 CAN channel](../setup/can_related/can_add_on_mcp2515.md)
 * You can [add an isolated MCP2518 CANFD channel, and run it in classic CAN mode](../setup/can_related/can_fd_add_on_mcp2518fd.md)
-* You can use the [Stark CMR](../hardware/stark_cmr.md) hardware
-* You can use the [LilyGo T-2CAN](../hardware/lilygo_t_2can.md) hardware
+* You can use a board with isolated ports like [LilyGo T-2CAN](../hardware/lilygo_t_2can.md) or [Stark CMR](../hardware/stark_cmr.md)
 * You can use a [CAN filter](../setup/can_related/can_filter_hardware.md) between inverter and the rest of the system 
 
 --8<-- "snippets/grounding_termination.md"
@@ -58,74 +56,74 @@ For this inverter type, use the option called "SolaX Triple Power LFP over CAN" 
 
 Solax inverters are designed to be used with Solax brand batteries. Battery Emulator can be set to emulate any of the battery types on the list below.
 
-A good choice is type 131, which is the T-BAT-SYS-HV-R2.5, a 16S LFP pack:
+A good choice is type `131`, which is the **T-BAT-SYS-HV-R2.5**, a 16S LFP pack:
 
-Battery type | Num modules | Min voltage | Nom voltage | Max voltage
--- | -- | -- | -- | --
-131 | 2 | 89.6 | 102.4 | 116.8
-131 | 3 | 134.4 | 153.6 | 175.2
-131 | 4 | 179.2 | 204.8 | 233.6
-131 | 5 | 224 | 256 | 292
-131 | 6 | 268.8 | 307.2 | 350.4
-131 | 7 | 313.6 | 358.4 | 408.8
-131 | 8 | 358.4 | 409.6 | 467.2
-131 | 9 | 403.2 | 460.8 | 525.6
-131 | 10 | 448 | 512 | 584
-131 | 11 | 492.8 | 563.2 | 642.4
-131 | 12 | 537.6 | 614.4 | 700.8
-131 | 13 | 582.4 | 665.6 | 759.2
+| Battery type | Num modules | Min voltage | Nom voltage | Max voltage |
+| -- | -- | -- | -- | -- |
+| 131 | 2 | 89.6 | 102.4 | 116.8 |
+| 131 | 3 | 134.4 | 153.6 | 175.2 |
+| 131 | 4 | 179.2 | 204.8 | 233.6 |
+| 131 | 5 | 224 | 256 | 292 |
+| 131 | 6 | 268.8 | 307.2 | 350.4 |
+| 131 | 7 | 313.6 | 358.4 | 408.8 |
+| 131 | 8 | 358.4 | 409.6 | 467.2 |
+| 131 | 9 | 403.2 | 460.8 | 525.6 |
+| 131 | 10 | 448 | 512 | 584 |
+| 131 | 11 | 492.8 | 563.2 | 642.4 |
+| 131 | 12 | 537.6 | 614.4 | 700.8 |
+| 131 | 13 | 582.4 | 665.6 | 759.2 |
 
 (note that the enforced min/max limits will be wider than the range shown here - choose a setting where the maximum is high enough for your battery).
 
-List of battery names and type codes (decimal):
+List of battery type codes (decimal) and names:
 
-```
-BAK: 81
-T58 V1: 82
-Sinowatt: 83
-T30: 84
-T50: 85
-TR25: 86
-TR36: 87
-THS50E: 88
-HS25: 89
-HS36: 90
-T58 V2: 91
-LR25/36: 92
-LD53: 93
-LD150: 94
-LD51: 95
-TP012: 96
-TP013: 97
-TP014: 98
-LD117: 99
-T58V3: 100
-LD160: 101
-LD143: 102
-X-BP 2700: 103
-TP020(LD321): 104
-TP021(LD51E): 105
-TP022(LD160E): 106
-BMS-Parallel BOX-II: 129
-T50_P: 130
-TR25_P: 131
-BMS-Parallel BOX-II V2: 132
-TCBox-70: 140
-BMS-Parallel BOX-II G2: 141
-HS51: 145
-HS50A: 146
-TPCU001_R140: 161
-TPCU002_R460: 162
-TR-HR140: 163
-TPCU004_R522_DC: 164
-TPCU005_HR1044_FOREGIN: 165
-TPCU006_HR1044_CHINA: 166
-TPCU007_HR76: 167
-TPCU008_1044KWH: 168
-TPCU009_HR522_CHINA: 169
-TPCU010(B57): 170
-TPCU011(HR522): 171
-```
+| Battery type code | Battery name |
+|:---:|:---:|
+| 81 | BAK |
+| 82 | T58 V1 |
+| 83 | Sinowatt |
+| 84 | T30 |
+| 85 | T50 |
+| 86 | TR25 |
+| 87 | TR36 |
+| 88 | THS50E |
+| 89 | HS25 |
+| 90 | HS36 |
+| 91 | T58 V2 |
+| 92 | LR25/36 |
+| 93 | LD53 |
+| 94 | LD150 |
+| 95 | LD51 |
+| 96 | TP012 |
+| 97 | TP013 |
+| 98 | TP014 |
+| 99 | LD117 |
+| 100 | T58V3 |
+| 101 | LD160 |
+| 102 | LD143 |
+| 103 | X-BP 2700 |
+| 104 | TP020(LD321) |
+| 105 | TP021(LD51E) |
+| 106 | TP022(LD160E) |
+| 129 | BMS-Parallel BOX-II |
+| 130 | T50_P |
+| 131 | TR25_P |
+| 132 | BMS-Parallel BOX-II V2 |
+| 140 | TCBox-70 |
+| 141 | BMS-Parallel BOX-II G2 |
+| 145 | HS51 |
+| 146 | HS50A |
+| 161 | TPCU001_R140 |
+| 162 | TPCU002_R460 |
+| 163 | TR-HR140 |
+| 164 | TPCU004_R522_DC |
+| 165 | TPCU005_HR1044_FOREGIN |
+| 166 | TPCU006_HR1044_CHINA |
+| 167 | TPCU007_HR76 |
+| 168 | TPCU008_1044KWH |
+| 169 | TPCU009_HR522_CHINA |
+| 170 | TPCU010(B57) |
+| 171 | TPCU011(HR522) |
 
 ## Notes on CAN controlled contactors
 
@@ -152,6 +150,7 @@ The `Keep contactors always closed` workaround is ineffective with these inverte
 
 
 ## Connection diagram
+
 BMS port pin 4 is CAN-H pin 5 CAN-L (for Solax X3 G4). Connect only these two wires to the Battery-Emulator.
 
 ![image](../images/solax-03.png)
