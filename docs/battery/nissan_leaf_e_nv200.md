@@ -115,7 +115,7 @@ The setting named **Balancing strategy** determines the way the battery is start
 Despite having **Balancing** in the name, it has been observed that this setting also influences the charge/discharge power limits reported by the BMS. The **Aggressive** setting imposes limits sooner, to protect the battery cells from high regen peaks that could occur at high SOC during driving. Since such peaks are unlikely to ever appear in stationary storage, the consequence is that charging in this strategy will become very slow above 95-97% SOC. 
 
 !!! tip "TIP"
-    Set to **Conservative** to avoid overbalancing when your pack is in good shape (small cell voltage delta in your preferred SOC range).  
+    Set to **Conservative** to avoid overbalancing when your pack is in good shape (small cell voltage delta in your preferred SOC range), and to get the charge limits higher near high SOC.  
 
 The setting can be applied individually per pack in [double](../setup/software/battery_2x.md) or [triple](../setup/software/battery_3x.md) battery setups.
 
