@@ -336,7 +336,7 @@ Sets the **runtime** SOC scaling limits (the max and/or min percentage used by "
 
 The [Settings page](webserver_guide.md#rescale-soc) marks the values in use:
 
-<img width="733" height="142" alt="image" src="https://github.com/user-attachments/assets/0c02ab12-ba08-490c-997b-b92e950a99d7" />
+![image](../../images/mqtt-01.png)
 
 Limits are set in percent, e.g. `90.0` = 90.0 %.
 
