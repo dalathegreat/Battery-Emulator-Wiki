@@ -6285,7 +6285,7 @@ This is how the SDS is used <a href="https://www.youtube.com/watch?v=tbo2Qzdj-Rg
 <p>Despite having <strong>Balancing</strong> in the name, it has been observed that this setting also influences the charge/discharge power limits reported by the BMS. The <strong>Aggressive</strong> setting imposes limits sooner, to protect the battery cells from high regen peaks that could occur at high SOC during driving. Since such peaks are unlikely to ever appear in stationary storage, the consequence is that charging in this strategy will become very slow above 95-97% SOC. </p>
 <div class="admonition tip">
 <p class="admonition-title">TIP</p>
-<p>Set to <strong>Conservative</strong> to avoid overbalancing when your pack is in good shape (small cell voltage delta in your preferred SOC range).  </p>
+<p>Set to <strong>Conservative</strong> to avoid overbalancing when your pack is in good shape (small cell voltage delta in your preferred SOC range), and to get the charge limits higher near high SOC.  </p>
 </div>
 <p>The setting can be applied individually per pack in <a href="../../setup/software/battery_2x/">double</a> or <a href="../../setup/software/battery_3x/">triple</a> battery setups.</p>
 <p>There's also a fourth setting under the hood, <em>shutdown</em>, this is naturally unselectable from here, but it is used with the <em>Periodic restart of BMS</em> setting described below.</p>
