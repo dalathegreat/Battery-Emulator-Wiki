@@ -12,6 +12,10 @@ name: PR preview build
 # commit, this run skips the build; the normalizer restarts it when done.
 # A restarted run, including one started with `/preview` in a PR comment
 # (pr-preview-command.yml), always builds the PR's latest commit.
+#
+# The normalizer's own commit also starts a run, as github-actions[bot],
+# which GitHub holds for approval on fork PRs. That run does nothing (the
+# normalizer restarts the real one) and the normalizer deletes it.
 
 on:
   pull_request:
@@ -27,7 +31,9 @@ permissions:
   actions: read
 
 concurrency:
-  group: pr-preview-build-${{ github.event.pull_request.number }}
+  # Runs of the normalizer's commit get their own group, so approving one
+  # never cancels the real build
+  group: pr-preview-build-${{ github.event.pull_request.number }}${{ github.actor == 'github-actions[bot]' && '-bot' || '' }}
   cancel-in-progress: true
 
 jobs:
@@ -45,7 +51,13 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           ATTEMPT: ${{ github.run_attempt }}
+          ACTOR: ${{ github.actor }}
         run: |
+          if [ "$ACTOR" = 'github-actions[bot]' ]; then
+            echo "::notice::Started by the image normalizer's commit, which restarts the PR's own preview build instead. Nothing to do here."
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           STATUS=""
           if [ "$ATTEMPT" = 1 ]; then
             # On any API error, fall back to building right away
