@@ -376,7 +376,7 @@ See the page about [CAN logging](../can_related/can_logging.md) for more informa
 
 ### Battery limits and actions
 
-![image](../../images/webserver-guide-04.png)
+<img width="1012" height="540" alt="image" src="https://github.com/user-attachments/assets/857b5962-04c7-4d13-b282-67433d4330a4" />
 
 These values are changed with their **Edit** button, which asks for the new value. They are stored and take effect immediately, no saving or reboot is needed. The ⓘ icons explain them on the page.
 
@@ -390,7 +390,7 @@ If enabled, the system rescales the SOC% between the configured **SOC min percen
 
 Turn it on or off with the **Enable**/**Disable** button, which asks for confirmation first. **SOC min percentage** must stay below **SOC max percentage**, and both are taken in 0.1% steps: an edit that breaks either rule is refused with a message. At boot, a saved value outside these ranges, or a minimum not below the maximum, is replaced by its default.
 
-![image](../../images/webserver-guide-18.png)
+<img width="1009" height="533" alt="image" src="https://github.com/user-attachments/assets/16d1a649-cb40-4044-810d-9df32bc9aab3" />
 
 For [double](battery_2x.md) and [triple](battery_3x.md) setups SOC scaling is applied once, to the installation aggregated total, per-pack values remain unchanged. The scaling can also be changed through [MQTT](mqtt.md#set_scalesoc).
 
@@ -420,7 +420,7 @@ These settings cap the current that can go in/out of the battery (0-1000 A). Eve
 
 Disabled by default. This option can be enabled with its **Enable** button (the page asks for confirmation, and the button then reads **Disable**) to manually limit the min/max voltage in the system, with **Target charge voltage** (default 450.0 V) and **Target discharge voltage** (default 300.0 V). Note that not all inverters are compatible with voltage based limits, the setting was primarily developed for BYD CAN (see for example [Deye](../../inverter/deye.md#manual-charge-voltage-limits)). If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC is enabled).
 
-![image](../../images/webserver-guide-07.png)
+<img width="667" height="142" alt="image" src="https://github.com/user-attachments/assets/34518fc1-f2dc-4320-8b98-568070c7a480" />
 
 #### Periodic BMS Power reset
 
