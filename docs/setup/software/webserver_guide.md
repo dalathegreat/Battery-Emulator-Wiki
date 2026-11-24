@@ -179,7 +179,7 @@ The page recovers automatically as soon as the connection is reestablished. When
 The Settings page holds all the configuration of Battery Emulator. It is made of two parts:
 
 - **The settings form** (the cards from Network config to Debug options). Changes made here are stored by the **Save** button at the bottom of the page, and most of them take effect only after a reboot: after saving, the message **Settings saved. Reboot to take the new settings into use.** appears at the top and at the bottom of the page, with a **Reboot** button.
-- **The battery limits and actions** below the form (the green card, starting with Rescale SOC). These are changed one by one with their **Edit** or **Start** buttons, are stored right away and take effect immediately, without a reboot. See [Battery limits and actions](#battery-limits-and-actions).
+- **The battery limits and actions** below the form (the green card, starting with Rescale SOC). These are changed one by one with their **Edit**, **Enable**/**Disable** or **Start** buttons, are stored right away and take effect immediately, without a reboot. See [Battery limits and actions](#battery-limits-and-actions).
 
 Most fields only appear when they are relevant: options of a specific battery, inverter or component appear when that one is selected, and the details of an option appear once it is ticked. Below the form, a grey card shows the interfaces the running battery, inverter and measurement device use.
 
@@ -280,7 +280,7 @@ Depending on the protocol selected, more options appear right below:
 | **Deye avoid over/undercharge fix** | BYD CAN | See [Deye](../../inverter/deye.md#notes-on-protocol-violation) |
 | **Accept reboot command from inverter**, **Fronius Primo, 450V maxvoltage cap**, **WatchDog Timeout**, **Inverter time (UTC)** | BYD Modbus | See [Fronius](../../inverter/fronius.md#other-settings). The last two only display what the inverter has sent. |
 | **Reported cell count**, **module count**, **cells per module**, **voltage level**, **Ah capacity** | Ferroamp, Pylon HV, Solxpow (module count also Solax) | Override what is reported to the inverter, 0 keeps the default |
-| **Reported battery type** | Solax | See [Solax battery type information](../../inverter/solax.md#battery-type-information-2026) |
+| **Reported battery type** | Solax | See [Solax battery type information](../../inverter/solax.md#battery-type-information) |
 | **FoxESS battery type**, **subtype**, **module count** | FoxESS | Override what is reported to the inverter, 0 keeps the default |
 | **Battery model** | Sungrow | See [Sungrow SBRXXX protocol](../../inverter/sungrow.md#sungrow-sbrxxx-protocol) |
 | **Inverter Contactor Workaround** | Kostal, Solax | See [Notes on CAN controlled contactors](../../inverter/solax.md#notes-on-can-controlled-contactors) |
@@ -376,7 +376,7 @@ See the page about [CAN logging](../can_related/can_logging.md) for more informa
 
 ### Battery limits and actions
 
-![image](../../images/webserver-guide-04.png)
+![image](../../images/webserver-guide-09.png)
 
 These values are changed with their **Edit** button, which asks for the new value. They are stored and take effect immediately, no saving or reboot is needed. The ⓘ icons explain them on the page.
 
@@ -388,9 +388,13 @@ How much energy can your battery store? Some batteries autodetect this via CAN c
 
 If enabled, the system rescales the SOC% between the configured **SOC min percentage** (-10 to 50, default 20) and **SOC max percentage** (50 to 100, default 80): the inverter sees 0% when the real SOC reaches the minimum, and 100% when it reaches the maximum. By not using the entire battery, the amount of cycles the battery can last increases. Good practice is to use this feature, and restrict SOC% between 20-80%, however, scaling SOC max too low may cause oscillations when charge approaches the scaled 100%. If you run into this, enable [Ramp up charge limits gradually](#inverter-config) in **Inverter config** and raise SOC max percentage to 100%.
 
-![image](../../images/webserver-guide-18.png)
+Turn it on or off with the **Enable**/**Disable** button, which asks for confirmation first. **SOC min percentage** must stay below **SOC max percentage**, and both are taken in 0.1% steps: an edit that breaks either rule is refused with a message. At boot, a saved value outside these ranges, or a minimum not below the maximum, is replaced by its default.
+
+![image](../../images/webserver-guide-10.png)
 
 For [double](battery_2x.md) and [triple](battery_3x.md) setups SOC scaling is applied once, to the installation aggregated total, per-pack values remain unchanged. The scaling can also be changed through [MQTT](mqtt.md#set_scalesoc).
+
+While something else holds the window, the page shows the value in use with the saved one next to it: *(remote override, saved 80.0)* after an MQTT `SET_SCALESOC`, until the next reboot, or *(battery override, saved 80.0)* while a [BYD Atto 3 full charge](../../battery/byd_vehicle_atto_3_seal_tang_dolphin_song_and_more.md#full-charge-with-soc-scaling) has raised the top of the window to 100%.
 
 !!! note "Chemistry"
     For some battery chemistries (LFP especially), rescaling SOC% prevents the battery from top-balancing properly. For these chemistries it is recommended to rescale only the bottom section with **SOC min percentage** (e.g. using 20-100%).
@@ -414,9 +418,9 @@ These settings cap the current that can go in/out of the battery (0-1000 A). Eve
 
 #### Manual charge voltage limits
 
-Disabled by default. This option can be enabled to manually limit the min/max voltage in the system, with **Target charge voltage** (default 450.0 V) and **Target discharge voltage** (default 300.0 V). Note that not all inverters are compatible with voltage based limits, the setting was primarily developed for BYD CAN (see for example [Deye](../../inverter/deye.md#manual-charge-voltage-limits)). If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC is enabled).
+Disabled by default. This option can be enabled with its **Enable** button (the page asks for confirmation, and the button then reads **Disable**) to manually limit the min/max voltage in the system, with **Target charge voltage** (default 450.0 V) and **Target discharge voltage** (default 300.0 V). Note that not all inverters are compatible with voltage based limits, the setting was primarily developed for BYD CAN (see for example [Deye](../../inverter/deye.md#manual-charge-voltage-limits)). If left disabled, the system will automatically use the entire voltage range of your battery (unless Rescale SOC is enabled).
 
-![image](../../images/webserver-guide-07.png)
+![image](../../images/webserver-guide-11.png)
 
 #### Periodic BMS Power reset
 

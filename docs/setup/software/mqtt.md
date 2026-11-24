@@ -332,7 +332,11 @@ How they behave:
 
 ### SET_SCALESOC
 
-Sets the **runtime** SOC scaling limits (the max and/or min percentage used by "Rescale SOC"). The change is not saved to flash, so a reboot restores the saved values. It only has an effect when "Rescale SOC" is enabled; otherwise the command is ignored.
+Sets the **runtime** SOC scaling limits (the max and/or min percentage used by "Rescale SOC"). The change is not saved to flash, so a reboot restores the saved values, even if other settings are saved on the Settings page in the meantime. It only has an effect when **Rescale SOC** is enabled; otherwise the command is ignored. 
+
+The [Settings page](webserver_guide.md#rescale-soc) marks the values in use:
+
+![image](../../images/mqtt-01.png)
 
 Limits are set in percent, e.g. `90.0` = 90.0 %.
 
@@ -341,7 +345,9 @@ Limits are set in percent, e.g. `90.0` = 90.0 %.
 | `max_pct` | number    | 50.0 to 100.0  | keep current max |
 | `min_pct` | number    | -10.0 to 50.0  | keep current min |
 
-If `max_pct` or `min_pct` is omitted, the corresponding limit is left unchanged. A value outside the accepted range is ignored and a warning is logged.
+If `max_pct` or `min_pct` is omitted, the corresponding limit is left unchanged. A value outside the accepted range is ignored and a warning is logged; the other key in the same payload still applies. A payload that would leave the minimum at or above the maximum is ignored as a whole, also with a warning. Both ranges accept 50.0, so this can happen.
+
+Retained messages are ignored and logged (`MQTT: SET_SCALESOC retained copy ignored, publish it without retain`). The broker would hand them out again on every reconnect and boot, overriding the saved values a reboot is meant to restore. Publish without retain, and to apply the values again after a reboot, use an automation on the `<hostname>/status` availability topic going `online`, as the [Home Assistant](home_assistant.md) page suggests.
 
 Example payload (max 90.0 %, min 10.0 %), published to `battery-emulator-a1b2/command/SET_SCALESOC`:
 

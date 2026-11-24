@@ -482,6 +482,8 @@ mqtt:
 !!! note "NOTE"
     The emulator doesn't publish the current scaling limits, so these entities are `optimistic`: they show the last value sent from Home Assistant. Changes aren't saved to the emulator's settings. After an emulator reboot it goes back to its saved values, but Home Assistant keeps showing the last value it sent. To apply the values again after a reboot, trigger an automation on the emulator's availability topic going `online`.
 
+    Leave `retain` off on these entities (the default): the emulator ignores retained `SET_SCALESOC` messages. It also refuses a min that isn't below the current max, and a max that isn't above the current min, so with both set to 50 the later one has no effect.
+
 ### User interface for [SET_LIMITS](mqtt.md#set_limits)
 
 Use an input number helper to select the **limit timeout**, and create two MQTT number entities to select the desired current limits. Always set the desired timeout first, and change the current values after.
