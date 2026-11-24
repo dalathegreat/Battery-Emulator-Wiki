@@ -332,7 +332,11 @@ How they behave:
 
 ### SET_SCALESOC
 
-Sets the **runtime** SOC scaling limits (the max and/or min percentage used by "Rescale SOC"). The change is not saved to flash, so a reboot restores the saved values, even if other settings are saved on the Settings page in the meantime. The [Settings page](webserver_guide.md#rescale-soc) marks the values in use with *(remote override, saved xx.x)*. It only has an effect when "Rescale SOC" is enabled; otherwise the command is ignored.
+Sets the **runtime** SOC scaling limits (the max and/or min percentage used by "Rescale SOC"). The change is not saved to flash, so a reboot restores the saved values, even if other settings are saved on the Settings page in the meantime. It only has an effect when **Rescale SOC** is enabled; otherwise the command is ignored. 
+
+The [Settings page](webserver_guide.md#rescale-soc) marks the values in use:
+
+<img width="733" height="142" alt="image" src="https://github.com/user-attachments/assets/0c02ab12-ba08-490c-997b-b92e950a99d7" />
 
 Limits are set in percent, e.g. `90.0` = 90.0 %.
 
