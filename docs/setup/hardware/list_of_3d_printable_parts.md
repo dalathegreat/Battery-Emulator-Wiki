@@ -20,19 +20,18 @@ Here's a collection of 3D-printable parts that you can utilize in your build.
 
 ## BYD Vehicles
 
-- Front connector cover port: [Abdeckung HV Anschluss Motor vorn.step.zip](https://github.com/user-attachments/files/29167093/Abdeckung.HV.Anschluss.Motor.vorn.step.zip)
-- Front connector cover port O-ring version: [Verschlussdeckel Klimaleitung mit O-Ring 2,5mm.step.zip](https://github.com/user-attachments/files/29182999/Verschlussdeckel.Klimaleitung.mit.O-Ring.2.5mm.step.zip)
-- Shark 6 CCS HV Port cover: [hv_cover_plug.zip](https://github.com/user-attachments/files/35118822/hv_cover_plug.zip)
-
+- Front connector cover port: [Abdeckung HV Anschluss Motor vorn](https://github.com/user-attachments/files/29167093/Abdeckung.HV.Anschluss.Motor.vorn.step.zip)
+- Front connector cover port O-ring version: [Verschlussdeckel Klimaleitung mit O-Ring 2,5mm](https://github.com/user-attachments/files/29182999/Verschlussdeckel.Klimaleitung.mit.O-Ring.2.5mm.step.zip)
+- Shark 6 CCS HV Port cover: [hv_cover_plug](https://github.com/user-attachments/files/35118822/hv_cover_plug.zip)
 
 ## Ford Mach‐E
 
-- The 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm.zip](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
+- The 4 Pin C295 DC/DC Converter connector: [DC Cover 1 +5mm](https://github.com/user-attachments/files/28693976/DC.Cover.1.%2B5mm.zip)
 
 ## Kia/Hyundai 39/64kWh
 
-- AUX HV cover [AUX HV COVER KIA HYUNDAI.zip](https://github.com/user-attachments/files/18517606/AUX.HV.COVER.KIA.HYUNDAI.zip)
-- low voltage plug to collect all cables to 20mm pipe [LV COVER KIA HYUNDAI.zip](https://github.com/user-attachments/files/18517605/LV.COVER.KIA.HYUNDAI.zip)
+- AUX HV cover [AUX HV COVER KIA HYUNDAI](https://github.com/user-attachments/files/18517606/AUX.HV.COVER.KIA.HYUNDAI.zip)
+- low voltage plug to collect all cables to 20mm pipe [LV COVER KIA HYUNDAI](https://github.com/user-attachments/files/18517605/LV.COVER.KIA.HYUNDAI.zip)
 
 ## Nissan LEAF
 
@@ -79,7 +78,7 @@ If you are mounting the battery indoors, you can also 3D-print a high voltage pl
 
 ## Volkswagen MEB
 
-- Cover for the LV connector: [meb_CAN_cover_v1.zip](https://github.com/user-attachments/files/19849815/meb_CAN_cover_v1.zip)
-- Cover for the AC Charger port: [MEB-Cover_for_internal_Charger.zip](https://github.com/user-attachments/files/27005556/MEB-Cover_for_internal_Charger.zip)
-- Cover for the CCS or Inverter connector: [MEB-Cover_for_inverter_or_CCS.zip](https://github.com/user-attachments/files/26513415/MEB-Cover_for_inverter_or_CCS.zip)
+- Cover for the LV connector: [meb_CAN_cover_v1](https://github.com/user-attachments/files/19849815/meb_CAN_cover_v1.zip)
+- Cover for the AC Charger port: [MEB-Cover_for_internal_Charger](https://github.com/user-attachments/files/27005556/MEB-Cover_for_internal_Charger.zip)
+- Cover for the CCS or Inverter connector: [MEB-Cover_for_inverter_or_CCS](https://github.com/user-attachments/files/26513415/MEB-Cover_for_inverter_or_CCS.zip)
 
