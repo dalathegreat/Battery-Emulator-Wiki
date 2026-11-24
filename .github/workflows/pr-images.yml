@@ -135,4 +135,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ steps.pr.outputs.number }}
-        run: python .preview/.github/scripts/pr_preview.py rebuild --pr "$PR_NUMBER"
+          STARTED_AT: ${{ steps.pr.outputs.sha }}
+        run: python .preview/.github/scripts/pr_preview.py rebuild --pr "$PR_NUMBER" --since "$STARTED_AT"

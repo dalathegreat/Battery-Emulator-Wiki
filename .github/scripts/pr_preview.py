@@ -33,6 +33,7 @@ import re
 import shutil
 import sys
 import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,6 +41,7 @@ from urllib.parse import quote, unquote, urlparse
 
 PREVIEW_ROOT = "pr-preview"
 BUILD_WORKFLOW = "pr-preview-build.yml"
+BOT = "github-actions[bot]"
 COMMAND = "/preview"
 MARKER = "<!-- pr-preview -->"
 LIVE_MARKER = "<!-- pr-preview: live -->"   # a preview is currently published
@@ -337,6 +339,43 @@ def set_output(**values: str) -> None:
                 fh.write(f"{key}={value}\n")
 
 
+def build_runs(repo: str, head_repo: str | None, head_ref: str) -> list[dict]:
+    """The PR's preview build runs, newest first."""
+    runs = github("GET", f"/repos/{repo}/actions/workflows/{BUILD_WORKFLOW}/runs"
+                         f"?event=pull_request&branch={quote(head_ref, safe='')}"
+                         "&per_page=50")["workflow_runs"]
+    return [r for r in runs
+            if (r.get("head_repository") or {}).get("full_name") == head_repo]
+
+
+def started_by_bot(run: dict) -> bool:
+    return (run.get("actor") or {}).get("login") == BOT
+
+
+def drop_bot_runs(repo: str, runs: list[dict]) -> list[dict]:
+    """Leave out runs started by the normalizer's own commit.
+
+    On a fork PR, the normalizer's push (as github-actions[bot]) starts a
+    preview build that GitHub holds for approval. Such a run is useless even
+    when approved: it skips itself, and runs started by the Actions token
+    never trigger the deploy. The restart builds that same commit, so the
+    ones still awaiting approval are deleted to clear the PR's banner.
+    """
+    kept = []
+    for run in runs:
+        if not started_by_bot(run):
+            kept.append(run)
+        elif run["conclusion"] == "action_required":
+            try:
+                github("DELETE", f"/repos/{repo}/actions/runs/{run['id']}")
+                print(f"Deleted {run['html_url']}: started by the normalizer's "
+                      "commit and awaiting approval")
+            except urllib.error.HTTPError as error:
+                print(f"::warning::Could not delete {run['html_url']} "
+                      f"(HTTP {error.code}); it can be ignored")
+    return kept
+
+
 def cmd_rebuild(args) -> int:
     repo = os.environ["GITHUB_REPOSITORY"]
 
@@ -349,13 +388,18 @@ def cmd_rebuild(args) -> int:
     if pr["state"] != "open":
         return done("closed", f"PR #{args.pr} is closed, no preview to rebuild.")
     head_repo = (pr["head"]["repo"] or {}).get("full_name")
-    head_ref = pr["head"]["ref"]
+    head_ref, head_sha = pr["head"]["ref"], pr["head"]["sha"]
 
-    runs = github("GET", f"/repos/{repo}/actions/workflows/{BUILD_WORKFLOW}/runs"
-                         f"?event=pull_request&branch={quote(head_ref, safe='')}"
-                         "&per_page=50")["workflow_runs"]
-    runs = [r for r in runs
-            if (r.get("head_repository") or {}).get("full_name") == head_repo]
+    runs = build_runs(repo, head_repo, head_ref)
+    # Just pushed to a fork by the normalizer: its run appears a few seconds
+    # later, so wait for it here to delete it.
+    if args.since and head_sha != args.since and head_repo != repo:
+        deadline = time.monotonic() + 60
+        while (not any(r["head_sha"] == head_sha and started_by_bot(r) for r in runs)
+               and time.monotonic() < deadline):
+            time.sleep(5)
+            runs = build_runs(repo, head_repo, head_ref)
+    runs = drop_bot_runs(repo, runs)
     if not runs:
         return done("none", "There is no preview build to restart yet: it starts "
                             "with the first push that changes `docs/`, "
@@ -410,6 +454,7 @@ def main() -> int:
     p.add_argument("--pr", type=int, required=True)
     p.add_argument("--wait", type=int, default=300,
                    help="seconds to wait for a running build to finish")
+    p.add_argument("--since", help="PR head commit when the normalizer started")
     p.set_defaults(func=cmd_rebuild)
 
     args = ap.parse_args()
