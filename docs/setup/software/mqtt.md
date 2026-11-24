@@ -412,7 +412,9 @@ The firmware only checks the ranges above. It does not check the values against 
 MQTT is meant for temporary changes, not for remote configuration. These commands only change the running values; they are not written to flash. A reboot (also a watchdog restart) restores the values saved on the settings page. To change them permanently, use the settings page.
 
 !!! note "NOTE"
-    The settings page stores all battery limits together. If you save any of them with its **Edit** button while values set over MQTT are active, those running values are saved too. The same applies to `SET_SCALESOC`.
+    The settings page stores all battery limits together when you save one of them with its **Edit** button. The SOC limits (`max_pct`/`min_pct`) set with `SET_SOCSCALING` are kept out of that, the settings page saves its own values for them. The on/off state (`active`) set with `SET_SOCSCALING` and all values set with `SET_VOLTLIMITS` are not: if they are active when you save any battery limit on the settings page, they are saved too.
+
+Publish these commands without the retain flag. The broker hands a retained message out again on every reconnect and after every boot, so the values would be applied again each time.
 
 ### RESET_DTC
 
