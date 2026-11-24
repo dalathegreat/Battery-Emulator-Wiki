@@ -3703,10 +3703,65 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#periodic-forced-charge-balancing-can-potentially-aid-to-balance-lfp" class="md-nav__link">
+  <a href="#option-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Periodic forced charge-balancing (Can potentially aid to balance LFP)
+        OPTION 1:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#works-in-healthy-well-balanced-batteries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Works in healthy, well balanced batteries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 2:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#periodic-forced-charge-balancing-use-regularly-and-if-soc-100-level-is-not-met" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Periodic forced charge-balancing (Use regularly and if SOC 100% level is not met)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulse-methoduse-if-soc-100-level-is-not-met" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pulse method:(Use if SOC 100% level is not met)
       
     </span>
   </a>
@@ -5903,10 +5958,65 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#periodic-forced-charge-balancing-can-potentially-aid-to-balance-lfp" class="md-nav__link">
+  <a href="#option-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Periodic forced charge-balancing (Can potentially aid to balance LFP)
+        OPTION 1:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#works-in-healthy-well-balanced-batteries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Works in healthy, well balanced batteries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 2:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#periodic-forced-charge-balancing-use-regularly-and-if-soc-100-level-is-not-met" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Periodic forced charge-balancing (Use regularly and if SOC 100% level is not met)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulse-methoduse-if-soc-100-level-is-not-met" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pulse method:(Use if SOC 100% level is not met)
       
     </span>
   </a>
@@ -6264,24 +6374,44 @@ Connections info: <a href="https://electrek.co/2017/08/24/tesla-model-3-exclusiv
 <p><img alt="bild" src="../../images/tesla-model-s-3-x-y-13.png" /></p>
 <p><img alt="image" src="../../images/tesla-model-s-3-x-y-14.png" /></p>
 <h2 id="note-on-balancing">Note on balancing <img alt="🅱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f171.svg" title=":b:" /><a class="headerlink" href="#note-on-balancing" title="Permanent link">~</a></h2>
-<p>Tesla batteries are very specific when they want to balance, and it is hard to get a battery to balance. NMC chemistry seems to be more stable long term, and millivolt deviations between cells are kept low even years in operation in stationary storage. LFP chemistry however get out of balance more easily. LFP also has a very specific need to be charged to 100% to calibrate SOC, and sit at this state to balance, which is unlikely to occur in stationary systems that are used 24/7.</p>
+<p>Tesla batteries need to reach SOC 100% level for balancing, and it is hard to get a battery to balance if SOC 100% is not reached. NMC chemistry seems to be more stable long term, and millivolt deviations between cells are kept low even years in operation in stationary storage. LFP chemistry however get out of balance more easily. LFP also has a very specific need to be charged to 100% to calibrate SOC, and sit at this state to balance, which is unlikely to occur in stationary systems that are used 24/7.</p>
 <h3 id="current-theory-on-balancing-conditions">Current theory on balancing conditions<a class="headerlink" href="#current-theory-on-balancing-conditions" title="Permanent link">~</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
 <p>Not all inverters are OK with contactors opening in operation. One user damaged their Fronius inverter while opening contactors under load. Always ensure 0 current before opening contactors, and if unsure, power off inverter.</p>
 </div>
-<p>Tesla batteries are intended to fully charge, and then enter a balancing phase after charging is completed and contactors open. This means that in order to balance the Tesla batteries, you cannot use them 24/7, and have to periodically charge the batteries full (99%) and press the "Pause" button, wait for current to go to 0A, and then press "Open Contactors" button in the webserver.</p>
-<p>Tesla batteries will balance ~2mV per 24h or balancing.</p>
+<h3 id="option-1">OPTION 1:<a class="headerlink" href="#option-1" title="Permanent link">~</a></h3>
+<h3 id="works-in-healthy-well-balanced-batteries">Works in healthy, well balanced batteries<a class="headerlink" href="#works-in-healthy-well-balanced-batteries" title="Permanent link">~</a></h3>
+<p>Tesla batteries are intended to fully charge, and then enter a balancing phase after charging is completed and contactors open. This means that in order to balance the Tesla batteries, you cannot use them 24/7, and have to periodically charge the batteries full (100%) and press the "Pause" button, wait for current to go to 0A, and then press "Open Contactors" button in the webserver.</p>
+<p>Tesla batteries will balance ~200mV per 24h or balancing.</p>
 <p>Once you are done balancing, you can press the "Close Contactors" button, and "Unpause" to resume operation.</p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
 <p>During balancing with contactors open, 12V lead acid battery will NOT be charged. Make sure the lead acid battery has an external charger available while in this state.</p>
 </div>
 <p><img alt="image" height="289" src="../../images/tesla-model-s-3-x-y-24.png" width="902" /></p>
-<h3 id="periodic-forced-charge-balancing-can-potentially-aid-to-balance-lfp">Periodic forced charge-balancing (Can potentially aid to balance LFP)<a class="headerlink" href="#periodic-forced-charge-balancing-can-potentially-aid-to-balance-lfp" title="Permanent link">~</a></h3>
-<p>To help keep LFP batteries balanced outside of a Tesla vehicle, the emulator has a forced charging mode. The forced charging mode can be enabled via the Settings page. It is recommended to run this ?once per month? on Tesla LFP batteries. Before enabling, make sure battery is close to full, and you have enough sun or grid power to continue charging and forcing the balance!</p>
+<h3 id="option-2">OPTION 2:<a class="headerlink" href="#option-2" title="Permanent link">~</a></h3>
+<h3 id="periodic-forced-charge-balancing-use-regularly-and-if-soc-100-level-is-not-met">Periodic forced charge-balancing (Use regularly and if SOC 100% level is not met)<a class="headerlink" href="#periodic-forced-charge-balancing-use-regularly-and-if-soc-100-level-is-not-met" title="Permanent link">~</a></h3>
+<p>To help keep LFP batteries balanced outside of a Tesla vehicle, the emulator has a forced charging mode. The forced charging mode can be enabled via the Settings page. It is recommended to run this ?once per month? on Tesla LFP batteries. Before enabling, make sure battery is close to full (&gt;95%) and also monitor cell voltages to have enough deviation. Ensure you have enough force feed power from inverter (~2x the selected balancing power set in BE)!</p>
 <p>When enabling the Manual LFP balancing , the forced top charge runs for the specified amount of time, set in Balancing max time. The balancing parameters, Balancing float power , Max battery voltage , Max cell voltage and Max cell voltage deviation can also be adjusted from here. During this time, the SOC% is faked towards the inverter, and we allow the charge W set by user. This will help the battery reach higher SOC needed to balance?</p>
 <p><img alt="image" height="382" src="../../images/tesla-model-s-3-x-y-25.png" width="414" /></p>
+<h3 id="option-3">OPTION 3:<a class="headerlink" href="#option-3" title="Permanent link">~</a></h3>
+<h3 id="pulse-methoduse-if-soc-100-level-is-not-met">Pulse method:(Use if SOC 100% level is not met)<a class="headerlink" href="#pulse-methoduse-if-soc-100-level-is-not-met" title="Permanent link">~</a></h3>
+<p>Steps:
+1. Set battery to charge to 100%
+2. Activate forced charging from inverter
+3. Monitor progress in BE
+4. When the highest cell reaches 3450mV limit the charge to ~200w
+5. Tesla BMS will charge until 3650mV is reached and start to "pulse"
+6. Pulsing will be performed between 3620mV - 3650mV
+7. Pulsing will slowly raise the voltage from lower cells
+ - It might take several hours to meet SOC 100%
+8. Keep monitoring BE and as soon as BE shows 100% SOC:
+ - Hit Pause in BE (within 10sec from reaching 100%)
+ - Hit Open contactors in BE (within 30sec from pausing)
+9. You must be constantly monitor the SOC level after 99.60% point! When the SOC 100% is reached, the 12v battery support from PCS and internal resistance will rapidly lower the needed "high state cells" so that the automatic balancing will not start.</p>
+<p>Remember to install charger for 12V support battery before enabling this method!</p>
+<p><img alt="image" src="../../images/tesla-model-3-y-01.png" /></p>
 <h3 id="replacement-bms-to-balance">Replacement BMS to balance<a class="headerlink" href="#replacement-bms-to-balance" title="Permanent link">~</a></h3>
 <p>There is an ongoing open source project called the CellKeeper that aims to replace the BMS inside the Tesla battery with a standalone controller. This would instantly solve the balancing issue. Note that this board is still in development, and as soon as it is ready this page will be updated.</p>
 <h2 id="bms-reset-and-soc-reset">BMS Reset and SOC Reset<a class="headerlink" href="#bms-reset-and-soc-reset" title="Permanent link">~</a></h2>
