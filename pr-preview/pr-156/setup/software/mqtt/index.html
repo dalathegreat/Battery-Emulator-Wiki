@@ -6546,7 +6546,9 @@
 <p>Installations that already have the Home Assistant discovery configs published get the new buttons the next time they are published, see <strong>Publish at firmware updates</strong> and <strong>Publish at next boot</strong> under <a href="#enabling-mqtt">Enabling MQTT</a>.</p>
 </div>
 <h3 id="set_scalesoc">SET_SCALESOC<a class="headerlink" href="#set_scalesoc" title="Permanent link">~</a></h3>
-<p>Sets the <strong>runtime</strong> SOC scaling limits (the max and/or min percentage used by "Rescale SOC"). The change is not saved to flash, so a reboot restores the saved values, even if other settings are saved on the Settings page in the meantime. The <a href="../webserver_guide/#rescale-soc">Settings page</a> marks the values in use with <em>(remote override, saved xx.x)</em>. It only has an effect when "Rescale SOC" is enabled; otherwise the command is ignored.</p>
+<p>Sets the <strong>runtime</strong> SOC scaling limits (the max and/or min percentage used by "Rescale SOC"). The change is not saved to flash, so a reboot restores the saved values, even if other settings are saved on the Settings page in the meantime. It only has an effect when <strong>Rescale SOC</strong> is enabled; otherwise the command is ignored. </p>
+<p>The <a href="../webserver_guide/#rescale-soc">Settings page</a> marks the values in use:</p>
+<p><img alt="image" src="../../../images/mqtt-01.png" /></p>
 <p>Limits are set in percent, e.g. <code>90.0</code> = 90.0 %.</p>
 <table>
 <thead>
