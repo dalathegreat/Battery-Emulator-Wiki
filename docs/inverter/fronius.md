@@ -151,7 +151,7 @@ Battery Emulator reports these events to the inverter, with the codes it has for
 | `BYD2-38` | Cell Failure | The minimum cell voltage is lower than 1.5 V | CELL_CRITICAL_UNDER_VOLTAGE (error) |
 | `BYD2-44` | BCU_Main Circuit Failure | The battery can't be discharged | BATTERY_DISCHG_STOP_REQ (error), BATTERY_CHG_DISCHG_STOP_REQ (error) |
 | `BYD2-45` | Battery Break | Battery main switch has tripped | CONTACTOR_OPEN (warning), BYD_CONTACTOR_FORCE_OPEN (error), BATTERY_FUSE (warning), ERROR_OPEN_CONTACTOR (info), EQUIPMENT_STOP (error) |
-| `BYD2-46` | Communication error between inverter and battery | A restart process has been initiated | MODBUS_INVERTER_MISSING (error), and after an unexpected restart its cause: RESET_UNKNOWN, RESET_PANIC, RESET_INT_WDT, RESET_TASK_WDT, RESET_WDT, RESET_BROWNOUT, RESET_EFUSE, RESET_PWR_GLITCH or RESET_CPU_LOCKUP (info or warning) |
+| `BYD2-46` | Communication error between inverter and battery | A restart process has been initiated | MODBUS_INVERTER_MISSING (error), and after an unexpected restart its cause: RESET_UNKNOWN, RESET_PANIC, RESET_INT_WDT, RESET_TASK_WDT, RESET_BROWNOUT, RESET_EFUSE, RESET_PWR_GLITCH or RESET_CPU_LOCKUP (info or warning) |
 | `BYD2-47` | Hardware fault at the battery control unit (BCU) | Internal hardware failure at the battery control unit (BCU) | CONTACTOR_WELDED (warning), WATER_INGRESS (error) |
 | `BYD2-48` | Pre-charge Fault - Fault2 | Precharging takes too long | PRECHARGE_FAILURE (info), AUTOMATIC_PRECHARGE_FAILURE (error), CONTACTOR_WATCHDOG_FAILED (warning) |
 | `BYD2-49` | DCBusFault | Faulty wiring of the battery supply line | INTERNAL_OPEN_FAULT (error), HVIL_FAILURE (error), BATTERY_ISOLATION (warning) |
