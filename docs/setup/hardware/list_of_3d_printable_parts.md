@@ -12,7 +12,7 @@ Here's a collection of 3D-printable parts that you can utilize in your build.
 - LilyGo T_2CAN case: [LilyGo T-2CAN case](https://www.thingiverse.com/thing:7172799)
 - LilyGo T_2CAN case [with LCD and DIN rail support](https://www.printables.com/model/1567398-lilygo-t2-can-display-din-rail-mount)
 - LilyGo T_2CAN [Open Frame DIN](https://www.thingiverse.com/thing:7278747)
-- LilyGo T-2CAN 2.42 Display DIN rail: [T-2CAN 2.42 Display.zip](https://github.com/user-attachments/files/35182771/T-2CAN.2.42.Display.zip)
+- LilyGo T-2CAN 2.42 Display DIN rail: [T-2CAN 2.42 Display](https://github.com/user-attachments/files/35182771/T-2CAN.2.42.Display.zip)
 - MCP2518FD Pro add-on board [DIN rail holder](https://www.printables.com/model/1835246-mcp2518fd-pro-board-din-rail-holder) (for the small one)
 
 ## BMW iX, i4‐i7 (Gen5)
