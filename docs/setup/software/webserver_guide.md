@@ -138,6 +138,7 @@ If no current is flowing in or out of the battery, the text simply says **Batter
 - **Inverter allows contactor closing**: whether the inverter permits closing the contactors (for inverter protocols that control the battery contactors)
 - **2ⁿᵈ / 3ʳᵈ battery allowed to join**: ✗ (voltage mismatch) while the voltage of the extra pack differs too much from the main battery to connect it in parallel
 - **Contactors control**: when Battery Emulator drives the contactors itself ([contactor control via GPIO](contactor_control_via_gpio_pins.md)), the state of the contactors: OFF (DISCONNECTED), PRECHARGE, ON (or **Economized** with [PWM control](contactor_control_via_gpio_pins.md#pwm-control-for-lower-power-draw)), or OFF (FAULT), which needs a reboot to recover from. Otherwise it shows **non-exclusive**: the contactors are controlled via CAN or other methods, and Battery Emulator has only limited influence over them.
+- The date and time, such as **2026-11-18 08:08:21 UTC**: Battery Emulator's clock, ticking. Shown only once the inverter has set it, which only [Fronius](../../inverter/fronius.md#battery-emulators-clock) does, over **BYD HVS/HVM over Modbus**.
 
 If a [charger](../chargers/index.md) is configured, an 🟧 orange card shows its state and output values.
 
@@ -278,7 +279,7 @@ Depending on the protocol selected, more options appear right below:
 | **Sofar Battery ID (0-15)** | Sofar | Battery ID, for running several packs in parallel. See [Sofar](../../inverter/sofar.md) |
 | **Pylon, send group**, **30k offset**, **invert byteorder**, **manufacturer name** | Pylon HV | Compatibility options needed by some inverters using this protocol, for example [Sofar](../../inverter/sofar.md#which-protocol-to-use), [Hoymiles](../../inverter/hoymiles.md) or [Deye](../../inverter/deye.md#note-on-pylon) |
 | **Deye avoid over/undercharge fix** | BYD CAN | See [Deye](../../inverter/deye.md#notes-on-protocol-violation) |
-| **Accept reboot command from inverter**, **Fronius Primo, 450V maxvoltage cap**, **WatchDog Timeout**, **Inverter time (UTC)** | BYD Modbus | See [Fronius](../../inverter/fronius.md#other-settings). The last two only display what the inverter has sent. |
+| **Accept reboot command from inverter**, **Fronius Primo, 450V maxvoltage cap**, **WatchDog Timeout** | BYD Modbus | See [Fronius](../../inverter/fronius.md#other-settings). The last one only displays what the inverter has sent. |
 | **Reported cell count**, **module count**, **cells per module**, **voltage level**, **Ah capacity** | Ferroamp, Pylon HV, Solxpow (module count also Solax) | Override what is reported to the inverter, 0 keeps the default |
 | **Reported battery type** | Solax | See [Solax battery type information](../../inverter/solax.md#battery-type-information-2026) |
 | **FoxESS battery type**, **subtype**, **module count** | FoxESS | Override what is reported to the inverter, 0 keeps the default |
