@@ -58,7 +58,7 @@ The high voltage connector(HV009): This is the main HV connector from the batter
 The 52.5 kWh battery has an amphenol HVC3P80MV108227U19 connector, it fits with a high voltage cable MG part number 10824432.
 The 50.3 kWh and 61.1 kWh batteries should fit with HV cable MG part number 10863642(to be confirmed)
 
-![image](../images/mg5-marvel-r-07.png){ width="1469" height="600" }
+<img width="1808" height="870" alt="image" src="https://github.com/user-attachments/assets/69c33e02-a71a-48e6-b65b-e3fc95b81ccf" />
 
 The low voltage connector(EB212): This connector is the same for all battery versions. It fits the molex connector part 643193211. You can either assemble the connector on your own with crimp terminals(64322 and 64323) and plugs(643191201 and 643251010) and a cap(643191201) or you can buy a premade connector from AliExpress.
 
