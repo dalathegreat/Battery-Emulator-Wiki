@@ -283,7 +283,10 @@ The currently supported commands are:
 - `TESLA_BMS_RESET` - Runs the software BMS Reset of a Tesla battery, the same as the **BMS Reset** button of the More Battery/Cell Info page; see [Tesla BMS Reset and SOC Reset](#tesla-bms-reset-and-soc-reset)
 - `TESLA_SOC_RESET` - Runs the software SOC Reset of a Tesla battery, the same as the **SOC Reset** button of the More Battery/Cell Info page; see [Tesla BMS Reset and SOC Reset](#tesla-bms-reset-and-soc-reset)
 - `SET_SCALESOC` - Sets SOC scaling limits at runtime
+- `SET_SOCSCALING` - Sets "Rescale SOC" (on/off and limits) at runtime; see [SET_SOCSCALING](#set_socscaling)
+- `SET_VOLTLIMITS` - Sets the manual charge voltage limits at runtime; see [SET_VOLTLIMITS](#set_voltlimits)
 - `SET_LIMITS` - Sets a temporary charge and/or discharge limit
+- `RESET_DTC` - Erases the diagnostic trouble codes of a battery, the same as the **Erase DTC** button; see [RESET_DTC](#reset_dtc)
 - `ESPNOW_RUN` - Runtime control of [ESPNow](espnow.md) (payload `1` = start, `0` = stop).
 
 For example: `battery-emulator-a1b2/command/PAUSE`
@@ -353,6 +356,77 @@ Example payload (max 90.0 %, min 10.0 %), published to `battery-emulator-a1b2/co
 ```
 
 Use case for this is to increase the usable SOC window during winter or when weather is worse and charging is slower, decrease it during summer when charge is faster - all these to increase battery lifespan, but still be able to max out the battery capacity when it's really needed - automated by an external system.
+
+### SET_SOCSCALING
+
+Sets [Rescale SOC](webserver_guide.md#rescale-soc) at **runtime**, the same values as on the settings page. Unlike `SET_SCALESOC`, it can also switch "Rescale SOC" on or off.
+
+Limits are set in percent, e.g. `95.0` = 95.0 %.
+
+| Parameter | Data type | Accepted range | Default             |
+| --------- | --------- | -------------- | ------------------- |
+| `active`  | boolean   | `true`/`false` | keep current on/off |
+| `max_pct` | number    | 50.0 to 100.0  | keep current max    |
+| `min_pct` | number    | -10.0 to 50.0  | keep current min    |
+
+Any parameter can be left out to keep its current value. If a value is outside the accepted range, the whole command is rejected, nothing is changed and a line is written to the log.
+
+Example payload (Rescale SOC on, max 95.0 %, min 5.0 %), published to `battery-emulator-a1b2/command/SET_SOCSCALING`:
+
+```json
+{
+  "active": true,
+  "max_pct": 95.0,
+  "min_pct": 5.0
+}
+```
+
+### SET_VOLTLIMITS
+
+Sets the [Manual charge voltage limits](webserver_guide.md#manual-charge-voltage-limits) at **runtime**, the same values as on the settings page. `max_v` is **Target charge voltage** and `min_v` is **Target discharge voltage**.
+
+Voltages are set in volts, e.g. `403.0` = 403.0 V.
+
+| Parameter | Data type | Accepted range  | Default             |
+| --------- | --------- | --------------- | ------------------- |
+| `active`  | boolean   | `true`/`false`  | keep current on/off |
+| `max_v`   | number    | 0.1 to 1000.0   | keep current max    |
+| `min_v`   | number    | 0.1 to 1000.0   | keep current min    |
+
+Any parameter can be left out to keep its current value. If a value is outside the accepted range, or `min_v` ends up equal to or above `max_v`, the whole command is rejected, nothing is changed and a line is written to the log.
+
+Example payload (limits on, max 403.0 V, min 300.0 V), published to `battery-emulator-a1b2/command/SET_VOLTLIMITS`:
+
+```json
+{
+  "active": true,
+  "max_v": 403.0,
+  "min_v": 300.0
+}
+```
+
+The firmware only checks the ranges above. It does not check the values against the battery, so make sure they fit your pack. Not all inverters follow voltage based limits, see [Manual charge voltage limits](webserver_guide.md#manual-charge-voltage-limits).
+
+#### SET_SOCSCALING and SET_VOLTLIMITS are not saved
+
+MQTT is meant for temporary changes, not for remote configuration. These commands only change the running values; they are not written to flash. A reboot (also a watchdog restart) restores the values saved on the settings page. To change them permanently, use the settings page.
+
+!!! note "NOTE"
+    The settings page stores all battery limits together when you save one of them with its **Edit** button. The SOC limits (`max_pct`/`min_pct`) set with `SET_SOCSCALING` are kept out of that, the settings page saves its own values for them. The on/off state (`active`) set with `SET_SOCSCALING` and all values set with `SET_VOLTLIMITS` are not: if they are active when you save any battery limit on the settings page, they are saved too.
+
+Publish these commands without the retain flag. The broker hands a retained message out again on every reconnect and after every boot, so the values would be applied again each time.
+
+### RESET_DTC
+
+Erases the diagnostic trouble codes (DTCs) of a battery, the same as the **Erase DTC** button on the More Battery Info page. This can help get a battery going again after the cause of a fault has been fixed, for example a BMW i3 that still holds DTCs after a shutdown or a balancing run and does not return to normal operation. Erasing the codes does not fix the cause.
+
+The payload is the battery number: `1`, `2` or `3` for a [double](battery_2x.md) or triple setup. An empty payload means battery 1. Any other payload is rejected and a line is written to the log.
+
+Example, erasing the DTCs of the second battery: publish `2` to `battery-emulator-a1b2/command/RESET_DTC`.
+
+The command only does something for batteries that have the **Erase DTC** button. With any other battery, a line is written to the log and nothing is sent.
+
+`SET_SOCSCALING`, `SET_VOLTLIMITS` and `RESET_DTC` are commands only; no Home Assistant buttons or entities are discovered for them.
 
 ### SET_LIMITS
 
