@@ -6770,8 +6770,9 @@
 <p>MQTT is meant for temporary changes, not for remote configuration. These commands only change the running values; they are not written to flash. A reboot (also a watchdog restart) restores the values saved on the settings page. To change them permanently, use the settings page.</p>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
-<p>The settings page stores all battery limits together. If you save any of them with its <strong>Edit</strong> button while values set over MQTT are active, those running values are saved too. The same applies to <code>SET_SCALESOC</code>.</p>
+<p>The settings page stores all battery limits together when you save one of them with its <strong>Edit</strong> button. The SOC limits (<code>max_pct</code>/<code>min_pct</code>) set with <code>SET_SOCSCALING</code> are kept out of that, the settings page saves its own values for them. The on/off state (<code>active</code>) set with <code>SET_SOCSCALING</code> and all values set with <code>SET_VOLTLIMITS</code> are not: if they are active when you save any battery limit on the settings page, they are saved too.</p>
 </div>
+<p>Publish these commands without the retain flag. The broker hands a retained message out again on every reconnect and after every boot, so the values would be applied again each time.</p>
 <h3 id="reset_dtc">RESET_DTC<a class="headerlink" href="#reset_dtc" title="Permanent link">~</a></h3>
 <p>Erases the diagnostic trouble codes (DTCs) of a battery, the same as the <strong>Erase DTC</strong> button on the More Battery Info page. This can help get a battery going again after the cause of a fault has been fixed, for example a BMW i3 that still holds DTCs after a shutdown or a balancing run and does not return to normal operation. Erasing the codes does not fix the cause.</p>
 <p>The payload is the battery number: <code>1</code>, <code>2</code> or <code>3</code> for a <a href="../battery_2x/">double</a> or triple setup. An empty payload means battery 1. Any other payload is rejected and a line is written to the log.</p>
