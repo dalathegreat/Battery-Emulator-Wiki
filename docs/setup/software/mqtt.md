@@ -76,6 +76,7 @@ Values are only published once **valid data** exists. Battery values appear only
 - `cell_voltage_delta` is the raw difference and is published in **millivolts**.
 - `battery_current` is in amperes, power values in watts, energy/capacity values in watt-hours.
 - `insulation_resistance` is in **kΩ**.
+- `bmwi3_pack_resistance_mohm` is in **mΩ**.
 - Temperatures are in °C. `cpu_temp` is published as a float (display precision is suggested to HA as 1 decimal).
 - Heap values are in **bytes**, `heap_fragmentation` in percent.
 - ESPNow running status in `espnow_running`, `1` = running, `0` = not running.
@@ -128,6 +129,7 @@ Keys appear conditionally:
 - `dc_dc_current` / `dc_dc_voltage` - only for Tesla Model 3/Y and Model S/X.
 - `autocal_taper`, `autocal_dwell_s`, `autocal_cooldown_ready`, `autocal_soc_drift`, `min_cell_number`, `max_cell_number` - only for the BYD Atto 3.
 - `leaf_hx` - only for the Nissan Leaf, and only once a battery-group reply with a known layout has been decoded.
+- `bmwi3_pack_resistance_mohm`, `bmwi3_soc_havrla`, `bmwi3_soc_havrla_mode` - only for the BMW i3 ([SOC Havrla](../../battery/bmw_i3.md#soc-havrla-voltage-based-soc)), and not on the LilyGo T-CAN485 or the ESP32 DevKit.
 - `SOC`, `remaining_capacity` and `limiting_factor` - **only in single-battery setups**. See [What changes on the per-battery topics](#what-changes-on-the-per-battery-topics) below.
 
 **Status strings**
@@ -285,6 +287,7 @@ The currently supported commands are:
 - `SET_SCALESOC` - Sets SOC scaling limits at runtime
 - `SET_LIMITS` - Sets a temporary charge and/or discharge limit
 - `ESPNOW_RUN` - Runtime control of [ESPNow](espnow.md) (payload `1` = start, `0` = stop).
+- `SET_BMWI3_SOCHAVR` - Sets the BMW i3 SOC Havrla mode; see [Setting the BMW i3 SOC Havrla mode](#setting-the-bmw-i3-soc-havrla-mode)
 
 For example: `battery-emulator-a1b2/command/PAUSE`
 
@@ -394,6 +397,24 @@ Being able to start and stop [ESPNow](espnow.md) at runtime remotely lets an aut
 
 Use command `ESPNOW_RUN` with payload `1` to start and `0` to stop ESPNow. To see the current status, watch topic `info/espnow_running`, where the same values reflect the running status.
 
+### Setting the BMW i3 SOC Havrla mode
+
+`SET_BMWI3_SOCHAVR` changes the [SOC Havrla](../../battery/bmw_i3.md#soc-havrla-voltage-based-soc) setting of a BMW i3, the same setting as on the webserver's Settings page. The payload is the mode:
+
+| Payload | Mode |
+| ------- | ---- |
+| `0`, `disable` or `bms` | Use the SOC from the BMS |
+| `1` or `auto` | Use SOC Havrla if it differs from the BMS SOC by more than 3 percentage points |
+| `2`, `enable` or `havrla` | Always use SOC Havrla |
+
+The payload is not case sensitive, and `Disabled` and `Enabled` are accepted too, so the published mode texts can be sent back as they are.
+
+Unlike `SET_LIMITS`, the mode is **stored in flash**, so it survives a reboot. An invalid payload is ignored and logged. The current mode is published as `bmwi3_soc_havrla_mode` (`Disabled`, `Auto` or `Enabled`) on the `info` topic.
+
+With [Home Assistant](home_assistant.md) auto-discovery enabled, a BMW i3 also gets a **SoC Havrla Mode Select** entity (a `select`, in the configuration category) with the options `Disabled`, `Auto` and `Enabled`. It shows the current mode and sends `SET_BMWI3_SOCHAVR` when it is changed.
+
+The command, the select and the SOC Havrla values on the `info` topic are not available on the LilyGo T-CAN485 and the ESP32 DevKit.
+
 ## Home Assistant Discovery
 
 When [Home Assistant](home_assistant.md) auto-discovery is enabled, the device publishes retained configuration topics so entities are created automatically. Discovery topics are published under the configurable **Home Assistant auto discovery topic** (default `homeassistant`); the entity/object portion and the device identity are both derived from the device's hostname.
@@ -479,11 +500,11 @@ The same sensor for a second battery (`.../SOC_2/config`) differs only in: `"nam
 #### How the discovery payload is built
 
 - **`value_template` uses `| default(none)`.** Keys that are legitimately absent (a battery that has not been detected yet, a capacity that is not known yet) therefore land in Home Assistant as *unknown* instead of raising a template error on every message.
-- **`state_class`** is set to `measurement` for every sensor that has a `device_class`. The numeric sensors that deliberately have no `device_class` - `balancing_active_cells`, `insulation_resistance`, `leaf_hx`, `heap_fragmentation` - get `measurement` explicitly.
+- **`state_class`** is set to `measurement` for every sensor that has a `device_class`. The numeric sensors that deliberately have no `device_class` - `balancing_active_cells`, `insulation_resistance`, `bmwi3_pack_resistance_mohm`, `leaf_hx`, `heap_fragmentation` - get `measurement` explicitly.
 - **Capacity sensors use `device_class: energy_storage`**, not `energy`. Home Assistant rejects `energy` combined with `state_class: measurement`, and `total_capacity*` / `remaining_capacity*` represent a currently stored amount rather than a running total.
 - **`charged_energy` / `discharged_energy` keep `device_class: energy`** but use `state_class: total_increasing`, since they are genuine lifetime counters.
-- **`suggested_display_precision`** is set to 3 for cell min/max voltage, 2 for `leaf_hx`, 1 for battery current, CPU temperature, both SoC sensors and heap fragmentation, and 0 for insulation resistance. It is deliberately not applied to `battery_voltage`.
-- **MDI icons** are assigned centrally: by entity for the status-like sensors (`mdi:fuel-cell` for the balancing pair, `mdi:information-box-outline` for BMS status, `mdi:resistor` for insulation, `mdi:battery-heart-variant` for Hx, `mdi:home-battery` / `mdi:home-battery-outline` for charging state and limiting factor, `mdi:information-outline` for emulator status / event level, `mdi:battery-outline` for pause status, `mdi:tag-outline` for the version, `mdi:memory` for the heap sensors), and by device class for the rest (`mdi:current-dc` for voltage, `mdi:equal` for current).
+- **`suggested_display_precision`** is set to 3 for cell min/max voltage, 2 for `leaf_hx`, 1 for battery current, CPU temperature, both SoC sensors and heap fragmentation, and 0 for insulation resistance and the BMW i3 pack resistance. It is deliberately not applied to `battery_voltage`.
+- **MDI icons** are assigned centrally: by entity for the status-like sensors (`mdi:fuel-cell` for the balancing pair, `mdi:information-box-outline` for BMS status, `mdi:resistor` for insulation and the BMW i3 pack resistance, `mdi:battery-heart-variant` for Hx, `mdi:home-battery` / `mdi:home-battery-outline` for charging state and limiting factor, `mdi:information-outline` for emulator status / event level, `mdi:battery-outline` for pause status, `mdi:tag-outline` for the version, `mdi:memory` for the heap sensors), and by device class for the rest (`mdi:current-dc` for voltage, `mdi:equal` for current).
 
 ### Cell-voltage discovery
 
